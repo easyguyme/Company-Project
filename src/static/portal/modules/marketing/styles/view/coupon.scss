@@ -1,0 +1,97 @@
+$coupon-detail-title-border: #bcbcbc;
+$coupon-detail-title-label: #878787;
+
+.coupon-view-wrapper {
+  margin-left: 15px;
+
+  .no-data {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  label {
+    font-weight: 400;
+    color: $coupon-detail-title-label;
+    margin-bottom: 0;
+    width: 30%;
+  }
+
+  .coupon-backdrop {
+    z-index: 1000;
+    position: absolute;
+    width: 300px;
+    height: 800px;
+
+    .coupon-mobile-title {
+      margin-top: 28px;
+      color: $white-color;
+      font-size: 18px;
+      text-align: center;
+    }
+  }
+
+  .coupon-show-mobile {
+    padding-top: 58px;
+    background-image: url('/images/product/iphone_head.jpg');
+    background-repeat: no-repeat;
+    width: 300px;
+    padding-left: 0;
+    background-size: 300px;
+  }
+
+  .coupon-show-iframe {
+    height: 680px;
+    border: 0;
+  }
+
+  .coupon-show-detail {
+    margin-left: 48px;
+    padding-left: 8px;
+
+    .detail-title {
+      border-left: 4px solid $coupon-detail-title-border;
+      margin-left: -6px;
+    }
+
+    .detail-title-label {
+      margin-left: 2px;
+    }
+
+    .coupon-group {
+      margin: 30px 0;
+
+      +.coupon-group {
+        margin: 50px 0;
+      }
+
+      .coupon-item {
+        margin: 30px 0;
+
+        label {
+          float: left;
+        }
+
+        span {
+          float: left;
+          width: 70%;
+          word-break: break-word;
+        }
+
+        .coupon-discount-title {
+          float: left;
+          width: auto;
+          word-break: break-word;
+        }
+      }
+    }
+
+    .coupon-table {
+      margin-top: 20px;
+    }
+
+    .coupon-all-stores {
+      margin-left: 189px;
+      margin-top: -18px;
+    }
+  }
+}

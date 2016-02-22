@@ -1,0 +1,74 @@
+<div class="panel panel-main-content clearfix">
+
+  <div class="clearfix" wm-breadcrumb="order.breadcrumb">
+    <li class="pull-right order-breadcrumb-btn" ng-if="order.info.status == 'pending'">
+      <button class="btn btn-success user-btn" translate="store_order_confirm" ng-click="order.handleOrder('finished')"></button>
+      <button class="btn btn-success user-btn" translate="store_order_revoke" ng-click="order.handleOrder('canceled')"></button>
+    </li>
+  </div>
+
+  <div class="order-block">
+    <label class="order-block-title">{{'store_order_info' | translate}}</label>
+
+    <ol class="order-detail">
+      <li class="order-detail-item" ng-class="{'order-single-row': order.info.status == 'finished'}">
+        <span class="quotes-text">{{'store_order_status' | translate}}</span>
+        <span class="order-customer-text">{{order.status | translate}}</span>
+      </li>
+
+      <li class="order-detail-item item-right" ng-if="order.info.status == 'canceled'">
+        <span class="quotes-text">{{'store_order_revoked_at' | translate}}</span>
+        <span class="order-customer-text">{{order.info.operateTime}}</span>
+      </li>
+
+      <li class="order-detail-item" ng-if="order.info.status == 'finished'">
+        <span class="quotes-text">{{'store_order_payment_method' | translate}}</span>
+        <span class="order-customer-text">{{order.info.payWay | translate}}</span>
+      </li>
+
+      <li class="order-detail-item item-right" ng-if="order.info.status == 'finished'">
+        <span class="quotes-text">{{'store_order_paid_at' | translate}}</span>
+        <span class="order-customer-text">{{order.info.operateTime}}</span>
+      </li>
+
+      <li class="line"></li>
+
+      <li class="order-detail-item">
+        <span class="quotes-text">{{'store_order_id' | translate}}</span>
+        <span class="order-customer-text">{{order.info.orderNumber}}</span>
+      </li>
+
+      <li class="order-detail-item item-right">
+        <span class="quotes-text">{{'store_order_ordered_at' | translate}}</span>
+        <span class="order-customer-text">{{order.info.createdAt}}</span>
+      </li>
+
+      <li class="order-detail-item">
+        <span class="quotes-text">{{'store_order_service_staff' | translate}}</span>
+        <span class="order-customer-text">{{order.info.staff.name}}</span>
+      </li>
+
+      <li class="order-detail-item item-right">
+        <span class="quotes-text">{{'store_order_goods_total_price' | translate}}</span>
+        <span class="order-customer-text red-content">{{order.info.totalPrice | currency: '￥'}}</span>
+      </li>
+    </ol>
+  </div>
+
+  <div class="order-block">
+    <label class="order-block-title">{{'store_order_customer_info' | translate}}</label>
+
+    <img class="header-img" ng-src="{{order.info.consumer.avatar}}"/>
+    <ol class="customer-info order-customer-text">
+      <li>{{order.info.consumer.name}}</li>
+      <li class="customer-phone" nf-if="order.info.consumer.phone">{{order.info.consumer.phone}}</li>
+    </ol>
+  </div>
+
+  <div class="order-block">
+    <label class="order-block-title">{{'store_order_goods_info' | translate}}</label>
+
+    <div wm-table ng-model="order.list" class="colored-table"></div>
+  </div>
+
+</div>

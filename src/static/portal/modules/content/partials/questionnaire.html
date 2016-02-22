@@ -1,0 +1,13 @@
+<div class="panel panel-default panel-questionnaire-content clearfix">
+  <div wm-breadcrumb="questionnaire.breadcrumb">
+    <button class="btn btn-success btn-listheader" ng-click="questionnaire.newQuestionnaire()" translate="content_new_questionnaire"></button>
+  </div>
+  <div>
+    <wm-table ng-model="questionnaire.list" class="colored-table"></wm-table>
+  </div>
+
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="questionnaire.currentPage" page-size="questionnaire.pageSize" total-items="questionnaire.totalCount" on-change-size="questionnaire.changePageSize" on-change-page="questionnaire.changePage">
+    </div>
+  </div>
+</div>

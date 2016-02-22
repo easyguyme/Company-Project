@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "productId": {
+      "type": "yes",
+      "required": false,
+      "description": "商品Id"
+    },
+    "count": {
+      "type": "yes",
+      "required": false,
+      "description": "小于100000大于等于0"
+    },
+    "gift": {
+      "type": "array",
+      "required": true,
+      "description": "赠品配置如下"
+    },
+    "gift.type": {
+      "type": "string",
+      "required": true,
+      "description": "赠品类型, score或者lottery"
+    },
+    "gift.config": {
+      "type": "array",
+      "required": true,
+      "description": "赠品规则"
+    },
+    "gift.config.method": {
+      "type": "string",
+      "required": false,
+      "description": "gift.type为score时为scale或者number gift.type为lottery时为times或score"
+    },
+    "gift.config.number": {
+      "type": "int",
+      "required": false,
+      "description": "gift.type为score时必填 倍数或积分"
+    },
+    "gift.config.prize": {
+      "type": "array",
+      "required": false,
+      "description": "如下"
+    },
+    "gift.config.prize.name": {
+      "type": "string",
+      "required": false,
+      "description": "gift.type为lottery时必填 奖品名"
+    },
+    "gift.config.prize.number": {
+      "type": "int",
+      "required": false,
+      "description": "gift.type为lottery时必填 奖品数目或中奖人数比例"
+    },
+    "filename": {
+      "type": "string",
+      "required": true,
+      "description": "the file name"
+    },
+    "codeType": {
+      "type": "string",
+      "required": true,
+      "description": "when generate code ,codeType is generate and upload file the codeType is import"
+    },
+    "import": {
+      "type": "boolean",
+      "required": true,
+      "description": "decide to import the code"
+    }
+  }
+}

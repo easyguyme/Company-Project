@@ -1,0 +1,16 @@
+<div wm-breadcrumb="product.breadcrumb"></div>
+<div wm-tabs="product.changeTab()" tabs="product.tabs" ng-model="product.curTab" class="mb20"></div>
+<div class="goods-filter clearfix">
+  <!-- The title of table. -->
+  <div wm-list-header content="{{product.totalCount <= 1 ? (product.categoryType == 'product' ? 'product_goods_total_commodity' : 'product_goods_total_service') :  (product.categoryType == 'product' ? 'product_goods_total_commodities' : 'product_goods_total_services') | translate:'{ count: product.totalCount }'}}" icon="{'url': '/images/product/product_goods_default.png'}">
+    <input type="button" class="btn btn-success pull-right btn-listheader" ng-click="product.newGoods()" value="{{product.categoryType == 'product' ? 'product_goods_add_item' : 'product_new_service' | translate}}" />
+  </div>
+  <!-- The table -->
+  <div class="table-wrap goods-table-wrap">
+    <wm-table ng-model="product.list" ></wm-table>
+  </div>
+  <!-- The pagination -->
+  <div class="broadcast-pagination" >
+    <div wm-pagination current-page="product.currentPage" page-size="product.pageSize" total-items="product.totalCount" on-change-size="product.changeSize" on-change-page="product.changePage"></div>
+  </div>
+</div>

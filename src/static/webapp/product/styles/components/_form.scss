@@ -1,0 +1,46 @@
+.mb-form {
+  padding: 1rem;
+
+  .mb-form-group {
+    position: relative;
+    margin-bottom: .5rem;
+
+    label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.3rem;
+      color: $yellow-bg-color;
+    }
+
+    input {
+      border: 1px solid $yellow-bg-color;
+      height: 3.5rem;
+      width: 100%;
+      padding-left: 6rem;
+      border-radius: .2rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .mb-validate-btn {
+    position: absolute;
+    width: auto;
+    padding: 0 1rem;
+    top: .3rem;
+    right: .3rem;
+    height: 2.9rem;
+    line-height: 2.9rem;
+    font-size: 1.2rem;
+  }
+
+  .mb-confrim-btn {
+    margin-top: 1.25rem;
+  }
+
+  .mb-error-tip {
+    color: $error-text-color;
+    padding: .5rem 0;
+    display: block;
+  }
+}

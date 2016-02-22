@@ -1,0 +1,3006 @@
+#%RAML 0.8
+title: api
+baseUri: http://{domainName}
+baseUriParameters:
+  domainName:
+    type: string
+    description: The address of quncrm
+    example: staging.quncrm.com
+/product:
+  /campaigns:
+    get:
+      description: Get all campaign
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中）
+          required: true
+         page :
+          description: No 默认为1
+          required: false
+         per-page :
+          type: string
+          description: No 默认为20
+          required: false
+         search :
+          type: string
+          description: 查找条件
+          required: false
+         orderBy :
+          type: string
+          description: 排序
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/campaigns/get/response.json
+    post:
+      description: Create campaign
+      body:
+        application/json:
+          schema: !include schemas/product/campaigns/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/campaigns/post/response.json
+  /campaign:
+    /{campaign_id}:
+      get:
+        description: Get campaign by id
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/campaign/campaign_id/get/response.json
+    /names:
+      get:
+        description: Get campaign name by ids
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+           campaignIds :
+            type: string
+            description: campaign ids
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/campaign/names/get/response.json
+    /all:
+      get:
+        description: Get all campaigns
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/campaign/all/get/response.json
+    /{campaignId}:
+      put:
+        description: Update campaign by id
+        body:
+          application/json:
+            example: !include examples/product/campaign/campaignId/put/request.json
+            schema: !include schemas/product/campaign/campaignId/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/campaign/campaignId/put/response.json
+    /product-info:
+      get:
+        description: get the info of product from campaign
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+           pageSize :
+            description: if yuo do not pass this param,and you can get the all products.if you pass this param,you must pass a param that is page
+            required: false
+           page :
+            description: page number
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/campaign/product-info/get/response.json
+  /coupons:
+    get:
+      description: get coupon list
+      queryParameters:
+         title :
+          type: string
+          description:
+          required: false
+         orderby :
+          description:
+          required: false
+         unexpired :
+          description: 毫秒
+          required: false
+         unlimited :
+          type: boolean
+          description: when the value is true,the response data is diffrent from response example
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/coupons/get/response.json
+    post:
+      description: create coupon
+      body:
+        application/json:
+          schema: !include schemas/product/coupons/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/coupons/post/response.json
+  /coupon:
+    /{couponId}:
+      get:
+        description: View coupon detail
+        queryParameters:
+           total :
+            description:
+            required: false
+           url :
+            type: string
+            description:
+            required: false
+           time :
+            description:
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+    /qrcode:
+      post:
+        description: create coupon qrcode and update coupon qrcode
+        body:
+          application/json:
+            schema: !include schemas/product/coupon/qrcode/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/coupon/qrcode/post/response.json
+    /coupon-store:
+      get:
+        description: get store info  about coupon from mobile
+        queryParameters:
+           couponId :
+            type: string
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+  /membership-discount:
+    /{membershiDiscountId}:
+      get:
+        description: View membershipDiscount.
+        queryParameters: {}
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/membership-discount/membershiDiscountId/get/response.json
+  /membership-discounts:
+    get:
+      description: Query membershipDiscounts.
+      queryParameters:
+         memberId :
+          type: string
+          description: memberId
+          required: true
+         status :
+          type: string
+          description: the status of coupon
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/membership-discounts/get/response.json
+  /coupon-log:
+    /stats-coupon:
+      /{couponId}:
+        get:
+          description: Stats coupon
+          queryParameters:
+             startTime :
+              description: 开始时间（毫秒时间戳）
+              required: true
+             endTime :
+              description: 结束时间（毫秒时间戳）
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/product/coupon-log/stats-coupon/couponId/get/response.json
+    /stats-total-coupon:
+      /{couponId}:
+        get:
+          description: Stats the total of receivedNum, redeemedNum and deletedNum for conpon.
+          queryParameters: {}
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/product/coupon-log/stats-total-coupon/couponId/get/response.json
+  /coupon-logs:
+    get:
+      description: View coupon recieved(领取),redeemed(核销),deleted(删除) records
+      queryParameters:
+         status :
+          type: string
+          description: recieved(领取),redeemed(核销),deleted(删除)
+          required: true
+         startTime :
+          type: string
+          description: 开始时间（毫秒时间戳）
+          required: false
+         endTime :
+          type: string
+          description: 结束时间（毫秒时间戳）
+          required: false
+         searchKey :
+          type: string
+          description: 会员名称, 手机号, 优惠券名称
+          required: false
+         per-page :
+          description: Page size. Default value is 20
+          required: false
+         page :
+          description: Page Number. Default value is 1
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/coupon-logs/get/response.json
+  /goods:
+    /update:
+      /{goodsId}:
+        put:
+          description: Update goods by id
+          body:
+            application/json:
+              schema: !include schemas/product/goods/update/goodsId/put/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/product/goods/update/goodsId/put/response.json
+    /view:
+      /{goodsId}:
+        get:
+          description: Get goods by id
+          queryParameters:
+             accesstoken :
+              type: string
+              description: 用户token（放在querystring中）
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/product/goods/view/goodsId/get/response.json
+    /update-goods-status:
+      put:
+        description: update the goods status
+        body:
+          application/json:
+            schema: !include schemas/product/goods/update-goods-status/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/goods/update-goods-status/put/response.json
+    /exchange:
+      put:
+        description: Exchange goods
+        body:
+          application/json:
+            example: !include examples/product/goods/exchange/put/request.json
+            schema: !include schemas/product/goods/exchange/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/goods/exchange/put/response.json
+    /index:
+      get:
+        description: Get goods list
+        queryParameters:
+           category :
+            type: string
+            description: If not provided, all the product will be listed
+            required: false
+           orderBy :
+            description: If not provided, the result will be ordered by createdAt(desc) as default
+            required: false
+           searchKey :
+            type: string
+            description: keyword
+            required: false
+           page :
+            description:
+            required: false
+           per-page :
+            description:
+            required: false
+           status :
+            type: string
+            description:
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/goods/index/get/response.json
+  /goods-exchange-logs:
+    get:
+      description: Get all goodsExchangeLog
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中）
+          required: true
+         key :
+          type: string
+          description: 查找关键词
+          required: false
+         startTime :
+          description: 兑换时间范围开始时间
+          required: false
+         endTime :
+          description: 兑换时间范围开始时间
+          required: false
+         usedScoreMin :
+          description: 消耗积分范围
+          required: false
+         usedScoreMax :
+          description: 消耗积分范围
+          required: false
+         memberId :
+          type: string
+          description: 会员id
+          required: false
+         channelId :
+          type: string
+          description: 兑换渠道id
+          required: false
+         isDelivered :
+          type: boolean
+          description: if user select all, you don't need to pass this param
+          required: false
+         receiveMode :
+          type: string
+          description: receive mode
+          required: false
+         orderBy :
+          type: string
+          description: 排序
+          required: false
+         page :
+          description: No  页数默认为1
+          required: false
+         per-page :
+          type: string
+          description: No 每页条数默认为20
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/goods-exchange-logs/get/response.json
+  /goods-exchange-log:
+    /member:
+      /{memberId}:
+        post:
+          description: Get goodsExchangeLog by memberId
+          body:
+            application/json:
+              schema: !include schemas/product/goods-exchange-log/member/memberId/post/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/product/goods-exchange-log/member/memberId/post/response.json
+    /{goodExchangeLogId}:
+      delete:
+        description: Remove goodsExchangeLog
+        body:
+          application/json:
+            schema: !include schemas/product/goods-exchange-log/goodExchangeLogId/delete/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+    /address:
+      /{productId}:
+        get:
+          description: Get Address
+          queryParameters:
+             accesstoken :
+              type: string
+              description: 用户token（放在querystring中）
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/product/goods-exchange-log/address/productId/get/response.json
+  /products:
+    get:
+      description: Get product list
+      queryParameters:
+         category :
+          type: string
+          description: If not provided, all the product will be listed
+          required: false
+         orderBy :
+          description: If not provided, the result will be ordered by createdAt(desc) as default
+          required: false
+         searchKey :
+          type: string
+          description: keyword
+          required: false
+         assigned :
+          type: string
+          description: 1 or 0
+          required: false
+         page :
+          description:
+          required: false
+         per-page :
+          description:
+          required: false
+         isAll :
+          type: boolean
+          description: whether to get all products
+          required: false
+         storeId :
+          type: string
+          description: 门店Id,会返回isStoreGoods字段
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/products/get/response.json
+    post:
+      description: Create new product
+      body:
+        application/json:
+          schema: !include schemas/product/products/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/products/post/response.json
+  /product:
+    /name:
+      get:
+        description: get productName by string that is maked up of id
+        queryParameters:
+           id :
+            type: string
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/product/name/get/response.json
+    /{product_id}:
+      put:
+        description: Update the product
+        body:
+          application/json:
+            schema: !include schemas/product/product/product_id/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/product/product_id/put/response.json
+    /get-product-sku:
+      get:
+        description: Create the number of product
+        queryParameters:
+           propertyId :
+            type: string
+            description: the property id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/product/get-product-sku/get/response.json
+  /product-categorys:
+    get:
+      description: Get the category list from product
+      queryParameters: {}
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/product-categorys/get/response.json
+    post:
+      description: Create the category of product
+      body:
+        application/json:
+          schema: !include schemas/product/product-categorys/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/product-categorys/post/response.json
+  /product-category:
+    /{category_id}:
+      put:
+        description: update the category of product
+        body:
+          application/json:
+            schema: !include schemas/product/product-category/category_id/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/product-category/category_id/put/response.json
+  /category-propertys:
+    /:
+      post:
+        description: Create the proprty of category
+        body:
+          application/json:
+            schema: !include schemas/product/category-propertys//post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/category-propertys//post/response.json
+  /category-property:
+    /{category_id}:
+      put:
+        description: update the property of category
+        body:
+          application/json:
+            schema: !include schemas/product/category-property/category_id/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/category-property/category_id/put/response.json
+  /promotion-code:
+    /check-code:
+      post:
+        description: Check the promotionCode in the excel
+        body:
+          application/json:
+            schema: !include schemas/product/promotion-code/check-code/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+    /export:
+      get:
+        description: Export promotionCode
+        queryParameters:
+           productId :
+            type: string
+            description:
+            required: true
+           createdAt :
+            description: timestamp
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+    /history:
+      get:
+        description: Get promotionCode history
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+           productId :
+            type: string
+            description: productId
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/promotion-code/history/get/response.json
+    /del-history:
+      post:
+        description: Delete promotionCode history
+        body:
+          application/json:
+            schema: !include schemas/product/promotion-code/del-history/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/promotion-code/del-history/post/response.json
+    /exchange:
+      post:
+        description: exchange the promotion code
+        body:
+          application/json:
+            schema: !include schemas/product/promotion-code/exchange/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+    /check:
+      get:
+        description: check the promotion code
+        queryParameters:
+           code :
+            type: string
+            description: promotion code
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+    /get-status:
+      get:
+        description: Check the resque
+        queryParameters:
+           token :
+            type: string
+            description: the rersqu id
+            required: true
+           productId :
+            type: string
+            description: the product number
+            required: true
+           filename :
+            type: string
+            description: upload file name
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+    /clear-cache:
+      get:
+        description: Delete the promotion code resque
+        queryParameters:
+           filename :
+            type: string
+            description: the filename
+            required: true
+           productId :
+            type: string
+            description: the product number
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+  /promotion-codes:
+    post:
+      description: Import promotionCode
+      body:
+        application/json:
+          schema: !include schemas/product/promotion-codes/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+  /promotion-cod-analysis:
+    /index:
+      get:
+        description: analysic the promotion code
+        queryParameters:
+           type :
+            description: the type of analysis,if you pass a array,you will get data from the type in the array
+            required: false
+           startDate :
+            description:
+            required: true
+           endDate :
+            description:
+            required: true
+           campaignId :
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/promotion-cod-analysis/index/get/response.json
+  /promotion-code-analysis:
+    /export:
+      get:
+        description: export the promotion code log
+        queryParameters:
+           type :
+            description: the type of analysis
+            required: true
+           startDate :
+            description:
+            required: true
+           endDate :
+            description:
+            required: true
+           campaignId :
+            description:
+            required: true
+           campaignName :
+            type: string
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/promotion-code-analysis/export/get/response.json
+    /export-campaign-analysis:
+      get:
+        description: export the promotion code log for all campaign
+        queryParameters:
+           type :
+            description: the type of analysis
+            required: true
+           startDate :
+            description:
+            required: true
+           endDate :
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/promotion-code-analysis/export-campaign-analysis/get/response.json
+  /message:
+    /generate-email-template:
+      post:
+        description: generate email template for exchange score
+        body:
+          application/json:
+            schema: !include schemas/product/message/generate-email-template/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+    /send-redemption-email:
+      post:
+        description: send email with exchange score
+        body:
+          application/json:
+            schema: !include schemas/product/message/send-redemption-email/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+    /generate-mobile-template:
+      post:
+        description: generate phone emplate for exchange score
+        body:
+          application/json:
+            schema: !include schemas/product/message/generate-mobile-template/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+    /send-redemption-message:
+      post:
+        description: send phone message with exchange score
+        body:
+          application/json:
+            schema: !include schemas/product/message/send-redemption-message/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+  /campaign-logs:
+    get:
+      description: get the campaignLog
+      queryParameters:
+         accesstoken :
+          type: string
+          description:
+          required: true
+         memberId :
+          type: string
+          description: member id
+          required: false
+         filter :
+          type: string
+          description:
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/campaign-logs/get/response.json
+  /campaign-log:
+    /total:
+      get:
+        description: get the total prize of promotion code
+        queryParameters:
+           accesstoken :
+            type: string
+            description:
+            required: true
+           memberId :
+            type: string
+            description: member id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/campaign-log/total/get/response.json
+  /associations:
+    get:
+      description: Get all productAssociation
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中）
+          required: true
+         page :
+          description: 第几页
+          required: false
+         per-page :
+          description: 每页条数
+          required: false
+         orderBy :
+          type: string
+          description: 排序
+          required: false
+         searchKey :
+          type: string
+          description: 查找
+          required: false
+         giftType :
+          description: \score\ 或者 \lottery\结果包含没有赠品的关联
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/associations/get/response.json
+    post:
+      description: Create productAssociation
+      body:
+        application/json:
+          example: !include examples/product/associations/post/request.json
+          schema: !include schemas/product/associations/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/associations/post/response.json
+  /association:
+    /{associationId}:
+      put:
+        description: Update productAssociation
+        body:
+          application/json:
+            example: !include examples/product/association/associationId/put/request.json
+            schema: !include schemas/product/association/associationId/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/association/associationId/put/response.json
+      delete:
+        description: Delete productAssociation by Id
+        body:
+          application/json:
+            schema: !include schemas/product/association/associationId/delete/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/association/associationId/delete/response.json
+  /receive-addresss:
+    post:
+      description: Create a receive address
+      body:
+        application/json:
+          schema: !include schemas/product/receive-addresss/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/receive-addresss/post/response.json
+    get:
+      description: get receive address list
+      queryParameters: {}
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/product/receive-addresss/get/response.json
+  /receive-address:
+    /{id}:
+      put:
+        description: update a exist receive address
+        body:
+          application/json:
+            schema: !include schemas/product/receive-address/id/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/receive-address/id/put/response.json
+      delete:
+        description: delete a exist receive address
+        body:
+          application/json:
+            schema: !include schemas/product/receive-address/id/delete/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+      get:
+        description: get a exist receive address
+        queryParameters: {}
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/product/receive-address/id/get/response.json
+/management:
+  /channel:
+    /qrcode:
+      /key-indicator:
+        get:
+          description: qrcode indicator
+          queryParameters:
+             time :
+              type: string
+              description: current time(millisecond)
+              required: true
+             channelId :
+              type: string
+              description: channel id
+              required: true
+             qrcodeId :
+              type: string
+              description: qrcode id
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/management/channel/qrcode/key-indicator/get/response.json
+      /time-series:
+        get:
+          description: Trend of Scans & Followers
+          queryParameters:
+             channelId :
+              type: string
+              description: channel id
+              required: true
+             qrcodeId :
+              type: string
+              description: qrcode id
+              required: true
+             endDate :
+              type: string
+              description: end time
+              required: true
+             startDate :
+              type: string
+              description: start time
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/management/channel/qrcode/time-series/get/response.json
+    /init-alipay:
+      post:
+        description: Init alipay
+        body:
+          application/json:
+            example: !include examples/management/channel/init-alipay/post/request.json
+            schema: !include schemas/management/channel/init-alipay/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/init-alipay/post/response.json
+    /{id}:
+      delete:
+        description: Delete channel
+        body:
+          application/json:
+            example: !include examples/management/channel/id/delete/request.json
+            schema: !include schemas/management/channel/id/delete/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/id/delete/response.json
+    /open-wechat-payment:
+      post:
+        description: Open wechat payment.
+        body:
+          application/json:
+            example: !include examples/management/channel/open-wechat-payment/post/request.json
+            schema: !include schemas/management/channel/open-wechat-payment/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/open-wechat-payment/post/response.json
+    /wechat-payment_message:
+      get:
+        description: View the message of wechat payment.
+        queryParameters: {}
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/wechat-payment_message/get/response.json
+    /edit-wechat-payment:
+      post:
+        description: Edit wechat payment.
+        body:
+          application/json:
+            example: !include examples/management/channel/edit-wechat-payment/post/request.json
+            schema: !include schemas/management/channel/edit-wechat-payment/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/edit-wechat-payment/post/response.json
+    /check-payment:
+      post:
+        description: Check Payment.
+        body:
+          application/json:
+            example: !include examples/management/channel/check-payment/post/request.json
+            schema: !include schemas/management/channel/check-payment/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/check-payment/post/response.json
+    /check-refund:
+      post:
+        description: Check refund.
+        body:
+          application/json:
+            example: !include examples/management/channel/check-refund/post/request.json
+            schema: !include schemas/management/channel/check-refund/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/channel/check-refund/post/response.json
+  /ding:
+    /department:
+      get:
+        description: Get DingDing department
+        queryParameters: {}
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/ding/department/get/response.json
+    /sync-user:
+      post:
+        description: Sync dingding department user
+        body:
+          application/json:
+            example: !include examples/management/ding/sync-user/post/request.json
+            schema: !include schemas/management/ding/sync-user/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/ding/sync-user/post/response.json
+    /user:
+      get:
+        description: Get ding User list
+        queryParameters: {}
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/ding/user/get/response.json
+    /authorize:
+      put:
+        description: Authorize ding user with spefied authority
+        body:
+          application/json:
+            example: !include examples/management/ding/authorize/put/request.json
+            schema: !include schemas/management/ding/authorize/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/ding/authorize/put/response.json
+  /application:
+    /refresh:
+      /{applicationId}:
+        put:
+          description: Refresh app private key
+          body:
+            application/json:
+              schema: !include schemas/management/application/refresh/applicationId/put/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/management/application/refresh/applicationId/put/response.json
+    /refresh-key:
+      put:
+        description: Refresh account access key and sercet key
+        body:
+          application/json:
+            schema: !include schemas/management/application/refresh-key/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/application/refresh-key/put/response.json
+  /message-templates:
+    get:
+      description: get name of message template
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token
+          required: true
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/management/message-templates/get/response.json
+  /message-template:
+    /ID:
+      put:
+        description: update the message template
+        body:
+          application/json:
+            schema: !include schemas/management/message-template/ID/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/management/message-template/ID/put/response.json
+/channel:
+  /qrcode:
+    /export-qrcode-info:
+      get:
+        description: Export trend of scans & followers
+        queryParameters:
+           channelId :
+            type: string
+            description: channel id
+            required: true
+           qrcodeId :
+            type: string
+            description: qrcode id
+            required: true
+           endDate :
+            type: string
+            description: end time
+            required: true
+           startDate :
+            type: string
+            description: start time
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/channel/qrcode/export-qrcode-info/get/response.json
+  /trade-payment:
+    /export:
+      get:
+        description: export trade payments
+        queryParameters:
+           orderBy :
+            description: If not provided, the result will be ordered by createdAt(desc) as default
+            required: false
+           page :
+            description: the current page
+            required: false
+           per-page :
+            description: show how many records in every page
+            required: false
+           startTime :
+            type: string
+            description: the start of service time (时间戳)
+            required: false
+           endTime :
+            type: string
+            description: the end of service time (时间戳)
+            required: false
+           searchKey :
+            type: string
+            description: the key of search
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/channel/trade-payment/export/get/response.json
+  /trade-refund:
+    /export:
+      get:
+        description: export trade refund
+        queryParameters:
+           orderBy :
+            description: If not provided, the result will be ordered by createdAt(desc) as default
+            required: false
+           page :
+            description: the current page
+            required: false
+           per-page :
+            description: show how many records in every page
+            required: false
+           startTime :
+            type: string
+            description: the start of service time (时间戳)
+            required: false
+           endTime :
+            type: string
+            description: the end of service time (时间戳)
+            required: false
+           searchKey :
+            type: string
+            description: the key of search
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/channel/trade-refund/export/get/response.json
+  /message:
+    /interact-message:
+      get:
+        description: get interact message
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+           channelId :
+            type: string
+            description:
+            required: true
+           per-page :
+            description:
+            required: true
+           next :
+            type: string
+            description: createTime
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/channel/message/interact-message/get/response.json
+  /follower:
+    /property:
+      get:
+        description: Get follower property by openId
+        queryParameters:
+           openId :
+            type: string
+            description: openId
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/channel/follower/property/get/response.json
+  /offlinestore:
+    /store:
+      /index:
+        get:
+          description: Get store list
+          queryParameters:
+             orderBy :
+              description: If not provided, the result will be ordered by createdAt(desc) as default
+              required: false
+             per-page :
+              description: Page size. Default value is 20
+              required: false
+             page :
+              description: Page Number. Default value is 1
+              required: false
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/channel/offlinestore/store/index/get/response.json
+      /view:
+        /{store_id}:
+          get:
+            description: Get a store info
+            queryParameters: {}
+            body:
+              application/json:
+            responses:
+              200:
+                body:
+                  application/json:
+                    example: !include examples/channel/offlinestore/store/view/store_id/get/response.json
+      /statistic:
+        get:
+          description: Get a store statistic
+          queryParameters:
+             storeId :
+              type: string
+              description: Store Id
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/channel/offlinestore/store/statistic/get/response.json
+      /analysis:
+        get:
+          description: Get a store analysis data
+          queryParameters:
+             storeId :
+              type: string
+              description: Store Id
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/channel/offlinestore/store/analysis/get/response.json
+      /sync:
+        post:
+          description: Sync store data from wechat
+          body:
+            application/json:
+              schema: !include schemas/channel/offlinestore/store/sync/post/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/channel/offlinestore/store/sync/post/response.json
+      /push:
+        post:
+          description: Sync store data to wechat
+          body:
+            application/json:
+              schema: !include schemas/channel/offlinestore/store/push/post/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/channel/offlinestore/store/push/post/response.json
+      /check-sync:
+        get:
+          description: Check whether sync finish
+          queryParameters:
+             token :
+              type: string
+              description: check aync token
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+/common:
+  /channels:
+    get:
+      description: Get channels
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+          required: true
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/common/channels/get/response.json
+  /job:
+    /status:
+      get:
+        description: Get job status
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           data :
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/common/job/status/get/response.json
+  /channel:
+    /get-channel-info:
+      get:
+        description: get channel info by channelId
+        queryParameters:
+           accesstoken :
+            type: string
+            description:
+            required: true
+           channelId :
+            type: string
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/common/channel/get-channel-info/get/response.json
+  /tags:
+    get:
+      description: Get tag stats list
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+          required: false
+         per-page :
+          description: Page size. Default value is 20
+          required: false
+         page :
+          description: Page Number. Default value is 1
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/common/tags/get/response.json
+  /tag:
+    /remove:
+      put:
+        description: Remove tag by name
+        body:
+          application/json:
+            example: !include examples/common/tag/remove/put/request.json
+            schema: !include schemas/common/tag/remove/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/common/tag/remove/put/response.json
+    /rename:
+      put:
+        description: Rename tag by name
+        body:
+          application/json:
+            example: !include examples/common/tag/rename/put/request.json
+            schema: !include schemas/common/tag/rename/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/common/tag/rename/put/response.json
+/content:
+  /questionnaires:
+    get:
+      description: Query questionnaire.
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中）
+          required: true
+         orderBy :
+          description: If not provided, the result will be ordered by createdAt(desc) as default
+          required: false
+         page :
+          description: the current page
+          required: false
+         per-page :
+          description: show how many records in every page
+          required: false
+         where :
+          type: string
+          description: the condition of search
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/content/questionnaires/get/response.json
+    post:
+      description: Create new questionnaires
+      body:
+        application/json:
+          schema: !include schemas/content/questionnaires/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/content/questionnaires/post/response.json
+  /questionnaire:
+    /question-names:
+      get:
+        description: Get questionnaire's questions
+        queryParameters:
+           questionnaireId :
+            type: string
+            description: 问卷Id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/content/questionnaire/question-names/get/response.json
+    /{questionnaireId}:
+      get:
+        description: View questionnaire by id.
+        queryParameters:
+           id :
+            type: string
+            description: ObjectId
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/content/questionnaire/questionnaireId/get/response.json
+      put:
+        description: Update new question
+        body:
+          application/json:
+            schema: !include schemas/content/questionnaire/questionnaireId/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/content/questionnaire/questionnaireId/put/response.json
+  /stats-questionnaire:
+    /{questionnaireId}:
+      get:
+        description: Stats questionnaire
+        queryParameters:
+           startTime :
+            description: 开始时间（毫秒时间戳）
+            required: true
+           endTime :
+            description: 结束时间（毫秒时间戳）
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/content/stats-questionnaire/questionnaireId/get/response.json
+    /answers:
+      post:
+        description: Answers stats
+        body:
+          application/json:
+            schema: !include schemas/content/stats-questionnaire/answers/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/content/stats-questionnaire/answers/post/response.json
+    /question-answers:
+      post:
+        description: Get all answers by questionId
+        body:
+          application/json:
+            schema: !include schemas/content/stats-questionnaire/question-answers/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/content/stats-questionnaire/question-answers/post/response.json
+/questionnaire:
+  /{phoneId}:
+    get:
+      description: View questionnaire by id for phone.
+      queryParameters:
+         id :
+          type: string
+          description: ObjectId
+          required: true
+         channelId :
+          type: string
+          description: ObjectId
+          required: false
+         openId :
+          type: string
+          description: ObjectId
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/questionnaire/phoneId/get/response.json
+  /answer:
+    post:
+      description: Answer questionnaire
+      body:
+        application/json:
+          example: !include examples/questionnaire/answer/post/request.json
+          schema: !include schemas/questionnaire/answer/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+/ding:
+  /user:
+    post:
+      description: Upsert Ding User
+      body:
+        application/json:
+          schema: !include schemas/ding/user/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/ding/user/post/response.json
+/helpdesk:
+  /self-settings:
+    post:
+      description: Create, update and delete SelfHelpDeskSetting.
+      body:
+        application/json:
+          schema: !include schemas/helpdesk/self-settings/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+    get:
+      description: Get SelfHelpDeskSetting
+      queryParameters: {}
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/helpdesk/self-settings/get/response.json
+  /self-setting:
+    /publish:
+      post:
+        description: Publish SelfHelpDeskSetting
+        body:
+          application/json:
+            schema: !include schemas/helpdesk/self-setting/publish/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+  /conversation:
+    /statistics:
+      get:
+        description: Get conversation statistics
+        queryParameters:
+           startTime :
+            description: The start time
+            required: false
+           endTime :
+            description: the end time
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/helpdesk/conversation/statistics/get/response.json
+/member:
+  /member:
+    /{memberId}:
+      get:
+        description: Get member by id
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/member/memberId/get/response.json
+    /export:
+      get:
+        description: Export member
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/member/export/get/response.json
+    /merge:
+      post:
+        description: Merge member
+        body:
+          application/json:
+            schema: !include schemas/member/member/merge/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/member/merge/post/response.json
+    /check-qrcode-help:
+      post:
+        description: Check qrcode help
+        body:
+          application/json:
+            schema: !include schemas/member/member/check-qrcode-help/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/member/check-qrcode-help/post/response.json
+    /checkMember:
+      get:
+        description: check the phone of member
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+           searchKey:
+            type: string
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/member/checkMember/get/response.json
+  /stats:
+    /signup-summary:
+      get:
+        description: Stats member signup summary
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           start :
+            type: string
+            description: 时间戳
+            required: true
+           end :
+            type: string
+            description: 时间戳
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/stats/signup-summary/get/response.json
+    /active-tracking:
+      get:
+        description: Stats member active tracking
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/stats/active-tracking/get/response.json
+    /engagement:
+      get:
+        description: Stats member engagement
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           year :
+            type: string
+            description: 年
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/stats/engagement/get/response.json
+    /export-signup-summary:
+      get:
+        description: Export member signup summary
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           start :
+            type: string
+            description: 时间戳
+            required: true
+           end :
+            type: string
+            description: 时间戳
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/stats/export-signup-summary/get/response.json
+    /export-active-tracking:
+      get:
+        description: Export member active tracking
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/stats/export-active-tracking/get/response.json
+    /export-engagement:
+      get:
+        description: Export member engagement
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           year :
+            type: string
+            description: 年
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/stats/export-engagement/get/response.json
+  /conversations:
+    get:
+      description: Get member help desk record
+      queryParameters:
+         memberId :
+          type: string
+          description: 会员Id
+          required: true
+         page :
+          type: string
+          description: 默认为1
+          required: false
+         per-page :
+          type: string
+          description: 默认为20
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/member/conversations/get/response.json
+  /order:
+    /stats:
+      get:
+        description: Get member order stats
+        queryParameters:
+           memberId :
+            type: string
+            description: 会员Id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/order/stats/get/response.json
+  /orders:
+    get:
+      description: Get member orders
+      queryParameters:
+         expand :
+          type: string
+          description: 请填写\store\
+          required: true
+         memberId :
+          type: string
+          description: 会员Id
+          required: true
+         beginCreatedAt :
+          description: 毫秒时间戳
+          required: false
+         endCreatedAt :
+          description: 毫秒时间戳
+          required: false
+         page :
+          type: string
+          description: 默认为1
+          required: false
+         per-page :
+          type: string
+          description: 默认为20
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/member/orders/get/response.json
+  /cards:
+    post:
+      description: create card
+      body:
+        application/json:
+          example: !include examples/member/cards/post/request.json
+          schema: !include schemas/member/cards/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+    get:
+      description: get member card list
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+          required: true
+         where :
+          type: string
+          description: 查询条件
+          required: false
+         orderBy :
+          type: string
+          description: 排序
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/member/cards/get/response.json
+  /card:
+    /set-default:
+      put:
+        description: Set default card
+        body:
+          application/json:
+            example: !include examples/member/card/set-default/put/request.json
+            schema: !include schemas/member/card/set-default/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+  /score-rule:
+    /{id}:
+      get:
+        description: get the detail of score rule
+        queryParameters:
+           expand :
+            type: string
+            description:
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+      put:
+        description: update score rule
+        body:
+          application/json:
+            schema: !include schemas/member/score-rule/id/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/score-rule/id/put/response.json
+  /menu:
+    /channels:
+      get:
+        description: Get all channel.
+        queryParameters:
+           memberId :
+            type: string
+            description: 会员Id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/menu/channels/get/response.json
+    /stats-menus-hits:
+      get:
+        description: Get hits for menus.
+        queryParameters:
+           channelId :
+            type: string
+            description: 渠道Id
+            required: true
+           openId :
+            type: string
+            description: 会员社交账号Id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/menu/stats-menus-hits/get/response.json
+    /stats-menu-hits:
+      get:
+        description: Get menus list.
+        queryParameters:
+           channelId :
+            type: string
+            description: 渠道Id
+            required: true
+           openId :
+            type: string
+            description: 会员社交账号Id
+            required: true
+           page :
+            description: the current page
+            required: false
+           per-page :
+            description: show how many records in every page
+            required: false
+           orderby :
+            type: string
+            description: 排序
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/menu/stats-menu-hits/get/response.json
+    /stats-menu:
+      get:
+        description: View menu.
+        queryParameters:
+           menuId :
+            type: string
+            description: menuId
+            required: true
+           channelId :
+            type: string
+            description: 渠道Id
+            required: true
+           openId :
+            type: string
+            description: 会员社交账号Id
+            required: true
+           page :
+            description: the current page
+            required: false
+           per-page :
+            description: show how many records in every page
+            required: false
+           orderby :
+            type: string
+            description: 排序
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/menu/stats-menu/get/response.json
+  /interact-message:
+    /stats-messages:
+      get:
+        description: Get count for interact messages.
+        queryParameters:
+           channelId :
+            type: string
+            description: 渠道Id
+            required: true
+           openId :
+            type: string
+            description: 会员社交账号Id
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/interact-message/stats-messages/get/response.json
+    /stats-message:
+      get:
+        description: Get interact messages list.
+        queryParameters:
+           channelId :
+            type: string
+            description: 渠道Id
+            required: true
+           openId :
+            type: string
+            description: 会员社交账号Id
+            required: true
+           page :
+            description: the current page
+            required: false
+           per-page :
+            description: show how many records in every page
+            required: false
+           ordering :
+            type: string
+            description:
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/interact-message/stats-message/get/response.json
+    /messages:
+      get:
+        description: Get interact messages.
+        queryParameters:
+           channelId :
+            type: string
+            description: 渠道Id
+            required: true
+           openId :
+            type: string
+            description: 会员社交账号Id
+            required: true
+           page :
+            description: the current page
+            required: false
+           per-page :
+            description: show how many records in every page
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/member/interact-message/messages/get/response.json
+/microsite:
+  /articles:
+    get:
+      description: Get article list
+      queryParameters:
+         channels :
+          description: If not provided, all the articles will be listed
+          required: false
+         orderBy :
+          description: If not provided, the result will be ordered by createdAt(desc) as default
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/microsite/articles/get/response.json
+    post:
+      description: Create new article
+      body:
+        application/json:
+          schema: !include schemas/microsite/articles/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/microsite/articles/post/response.json
+  /article:
+    /{article_id}:
+      put:
+        description: Update the acticle
+        body:
+          application/json:
+            schema: !include schemas/microsite/article/article_id/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/microsite/article/article_id/put/response.json
+  /article-channels:
+    get:
+      description: Create article channel
+      queryParameters:
+         name :
+          type: string
+          description: The name of the channel
+          required: true
+         fields :
+          description:
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/microsite/article-channels/get/response.json
+  /article-channel:
+    /{channel_id}:
+      get:
+        description: update article channel
+        queryParameters:
+           name :
+            type: string
+            description: The name of the channel
+            required: true
+           fields :
+            description: If the field is exsisted, the id for the field is required, or it will be considered as new field
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/microsite/article-channel/channel_id/get/response.json
+  /materials:
+    get:
+      description: Get article&page list
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+          required: false
+         per-page :
+          type: string
+          description: 默认为10
+          required: false
+         searchKey :
+          type: string
+          description: 查找关键字
+          required: false
+         timeFrom :
+          type: string
+          description: 时间戳
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/microsite/materials/get/response.json
+  /title:
+    get:
+      description: Get article&page title by url
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+          required: false
+         url :
+          type: string
+          description: urlencoded
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/microsite/title/get/response.json
+/mobile:
+  /send-captcha:
+    post:
+      description: Send captcha
+      body:
+        application/json:
+          schema: !include schemas/mobile/send-captcha/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/mobile/send-captcha/post/response.json
+  /open-coupon:
+    get:
+      description: Open coupon.
+      queryParameters:
+         couponId :
+          type: string
+          description: ObjectId
+          required: true
+         memberId :
+          type: string
+          description: ObjectId
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/mobile/open-coupon/get/response.json
+/captcha:
+  /index:
+    get:
+      description: Get img captcha
+      queryParameters: {}
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/captcha/index/get/response.json
+/store:
+  /staffs:
+    get:
+      description: get the list of the staff
+      queryParameters:
+         accesstoken :
+          type: string
+          description:
+          required: true
+         where :
+          description:
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/store/staffs/get/response.json
+    post:
+      description: create the staff
+      body:
+        application/json:
+          schema: !include schemas/store/staffs/post/schema.json
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/store/staffs/post/response.json
+  /store:
+    /{store_id}:
+      get:
+        description: Get a store info
+        queryParameters: {}
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/store/store/store_id/get/response.json
+  /goods:
+    /index:
+      get:
+        description: Get storeGoods list
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中）
+            required: true
+           storeId :
+            type: string
+            description: 门店id
+            required: true
+           searchKey :
+            type: string
+            description: 查找关键字
+            required: false
+           categoryIds :
+            type: string
+            description: 类别id
+            required: false
+           status :
+            type: string
+            description: on或者off
+            required: false
+           saleTimeFrom :
+            type: string
+            description: 时间戳(毫秒)
+            required: false
+           saleTimeTo :
+            type: string
+            description: 时间戳(毫秒)
+            required: false
+           priceFrom :
+            type: string
+            description: 价格区间（小值）
+            required: false
+           priceTo :
+            type: string
+            description: 价格区间（大值）
+            required: false
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/store/goods/index/get/response.json
+    /create:
+      post:
+        description: Create storeGoods
+        body:
+          application/json:
+            example: !include examples/store/goods/create/post/request.json
+            schema: !include schemas/store/goods/create/post/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/store/goods/create/post/response.json
+    /update:
+      /{storeGoodsId}:
+        put:
+          description: Update storeGoods
+          body:
+            application/json:
+              example: !include examples/store/goods/update/storeGoodsId/put/request.json
+              schema: !include schemas/store/goods/update/storeGoodsId/put/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/store/goods/update/storeGoodsId/put/response.json
+    /delete:
+      /{storeGoods}:
+        delete:
+          description: Delete storeGoods
+          body:
+            application/json:
+              schema: !include schemas/store/goods/delete/storeGoods/delete/schema.json
+          responses:
+            200:
+              body:
+                application/json:
+    /view:
+      /{storeGoodsId}:
+        get:
+          description: Get storeGoods by Id
+          queryParameters:
+             accesstoken :
+              type: string
+              description: 用户token（放在querystring中）
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+                  example: !include examples/store/goods/view/storeGoodsId/get/response.json
+    /sale:
+      put:
+        description: Sale storeGoods
+        body:
+          application/json:
+            example: !include examples/store/goods/sale/put/request.json
+            schema: !include schemas/store/goods/sale/put/schema.json
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/store/goods/sale/put/response.json
+  /orders:
+    get:
+      description: order info
+      queryParameters:
+         accesstoken :
+          type: string
+          description: 用户token
+          required: true
+         storeId :
+          type: string
+          description: 门店id
+          required: true
+         orderNumber:
+          type: string
+          description: order number
+          required: false
+         status :
+          type: string
+          description: status of order,if you select all,you can not pass this param
+          required: false
+         beginCreatedAt :
+          type: string
+          description:
+          required: false
+         endCreatedAt :
+          type: string
+          description:
+          required: false
+         minAmount :
+          description:
+          required: false
+         maxAmount :
+          description:
+          required: false
+         staff :
+          type: string
+          description:
+          required: false
+         member :
+          type: string
+          description:
+          required: false
+      body:
+        application/json:
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include examples/store/orders/get/response.json
+  /order:
+    /view:
+      /{orderId}:
+        get:
+          description: get order info by id
+          queryParameters:
+             accesstoken :
+              type: string
+              description: 用户token（放在querystring中）
+              required: true
+          body:
+            application/json:
+          responses:
+            200:
+              body:
+                application/json:
+/uhkklp:
+  /stats-property:
+    /product-operator-avg:
+      get:
+        description: Operator avg FT vs PULL
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/product-operator-avg/get/response.json
+    /export-product-operator-avg:
+      get:
+        description: Export Operator avg
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/export-product-operator-avg/get/response.json
+    /product-code:
+      get:
+        description: KLP Channel Penetration in Volume
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/product-code/get/response.json
+    /export-product-code:
+      get:
+        description: export KLP Channel Penetration in Volume
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/export-product-code/get/response.json
+    /member-participant:
+      get:
+        description: KLP Channel Penetration in Acct
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/member-participant/get/response.json
+    /export-member-participant:
+      get:
+        description: export KLP Channel Penetration in Acct
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/export-member-participant/get/response.json
+    /member-monthly:
+      get:
+        description: FT and Pull Participant Summary
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           start :
+            type: string
+            description: 时间戳
+            required: true
+           end :
+            type: string
+            description: 时间戳
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/member-monthly/get/response.json
+    /export-member-monthly:
+      get:
+        description: Export FT and Pull Participant Summary
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: true
+           start :
+            type: string
+            description: 时间戳
+            required: true
+           end :
+            type: string
+            description: 时间戳
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/export-member-monthly/get/response.json
+    /code-avg-quarterly:
+      get:
+        description: SKU Summary Pull vs FT
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/code-avg-quarterly/get/response.json
+    /export-code-avg-quarterly:
+      get:
+        description: Export SKU Summary Pull vs FT
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-property/export-code-avg-quarterly/get/response.json
+  /stats-promotion:
+    /product:
+      get:
+        description: Promotion SKU Summary
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-promotion/product/get/response.json
+    /export-product:
+      get:
+        description: export Promotion SKU Summary
+        queryParameters:
+           accesstoken :
+            type: string
+            description: 用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须
+            required: false
+           year :
+            type: string
+            description: 年
+            required: true
+           quarter :
+            type: string
+            description: 季度
+            required: true
+        body:
+          application/json:
+        responses:
+          200:
+            body:
+              application/json:
+                example: !include examples/uhkklp/stats-promotion/export-product/get/response.json

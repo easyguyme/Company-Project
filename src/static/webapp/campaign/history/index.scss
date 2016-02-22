@@ -1,0 +1,86 @@
+.total-box {
+  display: inline-block;
+  text-align: center;
+  @include background-image("/images/mobile/campaign_total_bg.png");
+  color: #4e4e4e;
+  width: 10.6rem;
+  margin: 2rem 0;
+
+  &.ponits-box {
+    margin-left: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  &.gift-box {
+    margin-left: 1rem;
+    margin-right: 1.5rem;
+  }
+
+  .total-title {
+    font-size: 1.4rem;
+  }
+
+  .total-content {
+    margin: 1rem 0;
+  }
+  .total-value {
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0.5rem;
+  }
+}
+
+.history-box {
+  margin: 0 1.5rem;
+  background-color: #fbfbd8;
+
+  .history-title {
+    color: #8c8c8b;
+    text-align: left;
+    font-size: 1.3rem;
+    margin: 0 1rem;
+    padding-top: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #c2c2c2;
+  }
+
+  .history-list {
+    padding-top: 1.5rem;
+    padding-bottom: 1px;
+    text-align: left;
+    li {
+      margin: 0 1rem;
+      margin-bottom: 1.2rem;
+      .history-time {
+        font-size: 1.2rem;
+        color: #747474;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 2rem;
+      }
+      .history-msg {
+        font-size: 1.3rem;
+        color: #383838;
+        display: inline-block;
+        width: 9.2rem;
+      }
+    }
+  }
+
+  .no-historys {
+    color: #747474;
+    display: inline-block;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.history-box-tail {
+  background-image: url("/images/mobile/campaign_history_bg.png");
+  background-repeat: repeat-x;
+  height: 0.6rem;
+  margin: 0 1.5rem;
+  margin-top: -1rem;
+  background-size: 30rem;
+}

@@ -1,0 +1,15 @@
+{
+    "items": [
+        {
+            "name": "银牌会员",
+            "followerCount": 5,
+            "memberCount": 3
+        }
+    ],
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

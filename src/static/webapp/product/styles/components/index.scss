@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 12px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: $list-bg-color;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.text-el {
+  @include text-overflow();
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: inline-block;
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@mixin background-image ($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+}

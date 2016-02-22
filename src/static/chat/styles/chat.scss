@@ -1,0 +1,801 @@
+$border-color: #d9e0ea;
+$tip-text-color: #c9c9c9;
+$green-color: #38c4a9;
+$blue-color: #2699e9;
+$background-color: #eee;
+$navbar-background-color: #fff;
+$a-color: #cdcdcd;
+$vertical-background-color: #2a3546;
+$a-hover-color: #3d4b62;
+$badge-background-color: #f37b73;
+$customer-name-color: #6e7d91;
+$session-info-color: #787878;
+$footer-color: #c2cfdf;
+$notice-main-color: #1c1c1c;
+$td-color: #bbb;
+$last-chat-color: #5eade0;
+$notification-tip-color: #c9c9c9;
+$notification-tip-description-color: #8d9cae;
+$font-tag-color: #354052;
+$tag-color: #555;
+$tag-background-color: #f0f2f5;
+$category-background-color: #ebebeb;
+$bottom-line-color: #dee4ed;
+$wiki-faq-question-color: #8d9cae;
+$helpdesk-tabs-title-color: #8d9cae;
+
+.gray-bg {
+  background-color: $background-color;
+}
+
+.chat-main-content-wrap {
+  height: 100%;
+  padding-top: 50px;
+  min-width: 1350px;
+
+  .main-content {
+    height: 100%;
+    min-height: 660px;
+
+    .viewport-wrap {
+      height: 100%;
+      padding: 0;
+    }
+  }
+}
+
+.chat-content {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.navbar {
+  background-color: $navbar-background-color;
+  border-bottom-width: 0; // to remove the 1px white line under the navbar
+
+  .navbar-header {
+    background-color: $green-color;
+    margin-left: 0;
+    min-width: initial;
+  }
+
+  .nav>li>a:hover,
+  .nav>li>a:focus,
+  .nav .open>a,
+  .nav .open>a:hover,
+  .nav .open>a:focus,
+  .dropdown-menu>li>a:hover,
+  .dropdown-menu>li>a:focus,
+
+  .dropdown-menu {
+    background-color: $navbar-background-color;
+
+    a {
+      color: $a-color;
+    }
+  }
+}
+
+.navbar-vertical {
+  background-color: $vertical-background-color;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: 100%;
+  overflow-y: auto;
+
+  li:hover a {
+    background-color: $a-hover-color;
+    color: $conversation-text-color;
+  }
+
+  .session-title {
+    background-color: $conversation-title-color;
+    background-image: url('/images/core/icon_chat.png');
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    color: $navbar-background-color;
+    padding: 20px;
+    padding-left: 30px;
+  }
+
+  .session-empty {
+    margin-top: 100px;
+    color: $background-color;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .customer-avatar {
+    height: 20px;
+  }
+
+  .message {
+    margin-top: 12px;
+    line-height: 1;
+    height: 14px;
+  }
+
+  .list-group-item {
+    background-color: inherit;
+    border-color: $a-hover-color;
+    padding: 0;
+
+    a {
+      border: 0;
+      padding: 10px 10px 12px 12px;
+      color: $conversation-text-color;
+    }
+
+    .last-message {
+      display: inline-block;
+      width: 80%;
+    }
+
+    .badge {
+      background-color: $badge-background-color;
+      float: right;
+      margin-top: -2px;
+    }
+
+    .close-session {
+      width: 20px;
+      height: 20px;
+      background-image: url('/images/core/end_conversation_default.png');
+      background-size: 20px;
+      background-repeat: no-repeat;
+      float: right;
+
+      &:hover {
+        background-image: url('/images/core/end_conversation_hover.png');
+      }
+    }
+  }
+
+  .active-customer {
+    background-color: $a-hover-color;
+
+    .customer {
+      color: $conversation-actived-color;
+    }
+  }
+}
+
+.viewport-wrap {
+  background-color: $background-color;
+
+  .helpdesk-chat-wiki {
+    height: 100%;
+    margin: 0;
+    padding-right: 410px;
+    display: flex;
+  }
+
+  .viewport {
+    background-color: $navbar-background-color;
+    padding: 0;
+  }
+
+  .chat-wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 30px 0 80px;
+    padding: 0 15px;
+  }
+
+  .tabs-wrapper {
+    width: 410px;
+    margin: 30px 0 80px;
+    position: absolute;
+    height: calc(100% - 110px);
+    overflow: hidden;
+  }
+
+  .helpdesk-md-chat {
+    height: calc(100% - 110px);
+    width: 100%;
+    padding-top: 72px;
+  }
+
+  .helpdesk-md-wiki {
+    background-color: $navbar-background-color;
+    width: 100%;
+    height: 100%;
+
+    .tab-panes {
+      height: calc(100% - 40px);
+      overflow-y: auto;
+    }
+  }
+
+
+  .helpdesk-chat-noselection {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    position: relative;
+
+    .noselection-wrapper {
+      width: 126px;
+      height: 68px;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .noselection-text-line {
+      margin-top: 20px;
+    }
+
+    .noselection-icon-line {
+      line-height: 1;
+    }
+
+    .left-sessions-icon {
+      display: inline-block;
+      width: 54px;
+      height: 48px;
+      background-image: url('/images/core/choose_conversation.png');
+      vertical-align: bottom;
+    }
+  }
+}
+
+.customer-info {
+  width: 100%;
+  min-height: 72px;
+  padding-left: 25px;
+  padding-top: 10px;
+  position: absolute;
+  top: 0;
+
+  .customer-avatar-wrapper {
+    text-align: right;
+  }
+
+  .customer-avatar {
+    height: 50px;
+    max-width: 100%;
+  }
+
+  .customer-name {
+    color: $customer-name-color;
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+
+    %online-status {
+      margin-left: 20px;
+      font-size: 14px;
+      font-family: 'Microsoft YaHei', Arial;
+    }
+
+    .online {
+      @extend %online-status;
+
+      color: $white-background-text-color;
+    }
+
+    .offline {
+      @extend %online-status;
+
+      color: $red-text-color;
+    }
+  }
+
+  .session-info {
+    color: $session-info-color;
+    font-size: 14px;
+    white-space: nowrap;
+
+    li {
+      display: inline;
+      margin-right: 19px;
+
+      &.session-info-membercard {
+        margin-right: 5px;
+      }
+    }
+
+    .member-card-icon {
+      display: inline-block;
+      vertical-align: middle;
+      background-image: url('/images/core/vipcard.png');
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .transfer-btn-space {
+    margin-top: 9px;
+    padding-right: 30px;
+    text-align: right;
+
+    .transfer-btn {
+      margin-right: 12px;
+    }
+
+    .btn-disabled {
+      color: $white-color;
+    }
+  }
+
+  .source-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: text-top;
+    margin-right: 3px;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .helpdesk-wechat-icon {
+    background-image: url('/images/core/tag_wechat.png');
+  }
+
+  .helpdesk-wechat-service-icon {
+    background-image: url('/images/customer/wechat_service.png');
+  }
+
+  .helpdesk-wechat-subscription-icon {
+    background-image: url('/images/customer/wechat_subscription.png');
+  }
+
+  .helpdesk-weibo-icon {
+    background-image: url('/images/customer/weibo.png');
+  }
+
+  .helpdesk-website-icon {
+    background-image: url('/images/customer/app_web.png');
+  }
+
+  .helpdesk-alipay-icon {
+    background-image: url('/images/customer/alipay.png');
+  }
+}
+
+.session-history {
+  border: 1px solid $border-color;
+  border-left: 0;
+  border-right: 0;
+  overflow-y: auto;
+  height: 60%;
+
+  &.client-history {
+    background: $navbar-background-color;
+    border: 1px solid $border-color;
+    height: 60%;
+    margin: 20px;
+    margin-bottom: 0;
+  }
+
+  %tip-history-current {
+    position: relative;
+    text-align: center;
+  }
+
+  .history-tip {
+    @extend %tip-history-current;
+  }
+
+  .current-session-tip {
+    @extend %tip-history-current;
+    height: 19px;
+  }
+
+  .current-session-tip:before {
+    background-color: $tip-text-color;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 20px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+  }
+
+  .session-time {
+    color: $green-color;
+  }
+
+  .split-word {
+    background-color: $navbar-background-color;
+    color: $tip-text-color;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .show-history {
+    background-image: url('/images/core/icon_time.png');
+    background-repeat: no-repeat;
+    color: $green-color;
+    margin-right: 10px;
+    padding-left: 25px;
+  }
+}
+
+.middle {
+  color: $tip-text-color;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+.chat-form {
+  overflow: hidden;
+  padding: 20px;
+  height: 40%;
+
+  .chat-box {
+    height: 60px;
+    margin-bottom: 15px;
+    resize: none;
+  }
+
+  // Override the wm wechat message directive styles
+  .chat-wechat-message {
+    height: calc(100% - 33px);
+  }
+
+  .wechat-message-wrap {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+
+    .message-input {
+      height: calc(100% - 17px);
+    }
+
+    .content {
+      height: calc(100% - 30px);
+      min-height: inherit;
+
+      .message {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+      }
+    }
+  }
+
+  .btn {
+    margin-left: 15px;
+  }
+
+  .btn-disabled {
+    color: $navbar-background-color;
+    pointer-events: none;
+  }
+}
+
+.footer {
+  background-color: $customer-name-color;
+  color: $footer-color;
+}
+
+.offline-dialog {
+  color: $session-info-color;
+  font-size: 14px;
+  text-align: center;
+
+  .modal-content {
+    width: 450px;
+  }
+
+  .modal-header {
+    color: $green-color;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  .main-notice {
+    background: url('/images/core/warning_icon.png') no-repeat;
+    color: $notice-main-color;
+    font-size: 16px;
+    margin: 15px auto 30px;
+    padding-left: 25px;
+    width: 315px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .modal-footer {
+    width: 100%;
+    text-align: center;
+
+    .btn {
+      margin: 35px auto 50px;
+      width: 82px;
+    }
+  }
+}
+
+.transfer-dialog {
+  color: $session-info-color;
+  font-size: 14px;
+
+  .modal-dialog {
+    width: 876px;
+    height: 444px;
+  }
+
+  .modal-header {
+    height: 84px;
+    padding: 0 30px;
+    background-color: $right-slide-backgroud-color;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid $transfer-modal-box-line-color;
+
+    .close {
+      margin: 35px 0;
+      width: 14px;
+      height: 13px;
+    }
+
+    .modal-title {
+      margin: 33px 0;
+      display: inline-block;
+    }
+  }
+
+  .modal-body {
+    padding: 30px;
+    max-height: 400px;
+    overflow-y: auto;
+
+    .scroll-body {
+      max-height: 156px;
+      overflow-y: auto;
+      border-bottom: 1px solid $transfer-modal-box-line-color;
+    }
+
+    .empty-body {
+      width: 814px;
+      border: 1px solid $transfer-modal-box-line-color;
+      border-top-width: 0;
+      padding: 42px 0 50px;
+      text-align: center;
+    }
+  }
+
+  .modal-footer {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 40px;
+
+    .btn {
+      width: 82px;
+    }
+  }
+}
+
+.table.helpdesk-transfer-table {
+  width: 100%;
+  margin-bottom: 0;
+  border: 1px solid $transfer-modal-box-line-color;
+  border-bottom-width: 0;
+  border-radius: 2px;
+
+  &:nth-child(2) {
+    border-top-width: 0;
+  }
+
+  .wm-radio {
+    margin-right: 2px;
+  }
+
+  %cell-width {
+    &:nth-child(1) {
+      width: 338px;
+      padding-left: 10px;
+      padding-right: 5px;
+    }
+
+    &:nth-child(2) {
+      width: 248px;
+      padding-right: 5px;
+    }
+
+    &:nth-child(3) {
+      padding-right: 5px;
+    }
+
+    &:nth-child(4) {
+      width: 96px;
+    }
+  }
+
+  th {
+    @extend %cell-width;
+    padding: 0;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 2px solid $transfer-modal-box-line-color;
+    font-weight: 100;
+    color: $customer-name-color;
+  }
+
+  tbody {
+    td {
+      @extend %cell-width;
+      padding: 0;
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid $transfer-modal-box-line-color;
+      color: $session-info-color;
+    }
+
+    tr:last-child {
+      td {
+        border-bottom-width: 0;
+      }
+    }
+
+    .badge-cell {
+      display: inline-block;
+      max-width: 238px;
+      vertical-align: middle;
+    }
+  }
+
+  .busy-status {
+    pointer-events: none;
+
+    td {
+      color: $td-color;
+    }
+  }
+}
+
+.badge.last-chat {
+  background-color: $last-chat-color;
+}
+
+.helpdesk-notification {
+  .helpdesk-notification-header {
+    margin-bottom: 10px;
+  }
+
+  .notification-title {
+    color: $session-info-color;
+    margin-bottom: 0;
+  }
+
+  .notification-title-tip {
+    color: $notification-tip-color;
+    font-size: 12px;
+  }
+
+  .notification-option {
+    margin-bottom: 10px;
+
+    .radio-inline {
+      color: $session-info-color;
+    }
+  }
+
+  .notification-option-tip {
+    color: $notification-tip-color;
+    font-size: 12px;
+    padding-left: 24px;
+  }
+
+  ~ .modal-footer {
+    text-align: center;
+  }
+}
+
+.notification-tipbox {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 320px;
+  background-color: $navbar-background-color;
+  padding: 15px;
+  box-shadow: 1px 1px 1px 1px $notification-tip-color;
+
+  .notification-tipbox-title {
+    font-size: 18px;
+  }
+
+  .notification-tipbox-title-tip {
+    font-size: 12px;
+    color: $notification-tip-description-color;
+    margin-bottom: 10px;
+  }
+}
+
+.helpdesk-md-wiki {
+  border-radius: 4px;
+
+  .tabs {
+    border-radius: 4px;
+
+    .tab {
+      border-width: 0;
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid $border-color;
+      background-repeat: no-repeat;
+      background-position: center 10px;
+
+      &.active {
+        border-bottom: 2px solid $white-background-text-color;
+        background-color: $navbar-background-color;
+        box-shadow: 0 0;
+        color: $session-info-color;
+      }
+
+      &:hover {
+        border-bottom: 2px solid $white-background-text-color;
+        background-color: $navbar-background-color;
+        box-shadow: 0 0;
+        color: $session-info-color;
+      }
+
+      &:nth-child(1) {
+        background-image: url('/images/helpdesk/customer_info_default.png');
+
+        &.active {
+          background-image: url('/images/helpdesk/customer_info_hover.png');
+        }
+
+        &:hover {
+          background-image: url('/images/helpdesk/customer_info_hover.png');
+        }
+      }
+
+      &:nth-child(2) {
+        background-image: url('/images/helpdesk/tickets_default.png');
+
+        &.active {
+          background-image: url('/images/helpdesk/tickets_hover.png');
+        }
+
+        &:hover {
+          background-image: url('/images/helpdesk/tickets_hover.png');
+        }
+      }
+
+      &:nth-child(3) {
+        background-image: url('/images/helpdesk/message_default.png');
+
+        &.active {
+          background-image: url('/images/helpdesk/message_hover.png');
+        }
+
+        &:hover {
+          background-image: url('/images/helpdesk/message_hover.png');
+        }
+      }
+
+      &:nth-child(4) {
+        background-image: url('/images/helpdesk/knowledge_base_default.png');
+
+        &.active {
+          background-image: url('/images/helpdesk/knowledge_base_hover.png');
+        }
+
+        &:hover {
+          background-image: url('/images/helpdesk/knowledge_base_hover.png');
+        }
+      }
+    }
+  }
+
+  .helpdesk-tabs-title {
+    font-weight: normal;
+    font-size: 16px;
+    margin: 14px 0 20px;
+    color: $helpdesk-tabs-title-color;
+  }
+}

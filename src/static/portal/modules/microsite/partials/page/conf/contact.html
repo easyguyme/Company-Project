@@ -1,0 +1,29 @@
+<div ng-controller="wm.ctrl.microsite.page.config.contact as contact">
+  <form id="form-contact" ng-submit="cpts.sendData(contact.data)">
+    <div class="form-group">
+      <label translate="content_component_config_contact"></label>
+    </div>
+    <div class="form-group">
+      <label class="sub-title" for="contact-name" translate="content_component_config_contact_name"></label>
+      <input class="form-control" type="text" id="contact-name" ng-model="contact.data.name" form-tip="{{'content_component_config_contact_tip'|translate}}" maxlength="14" required>
+    </div>
+    <div class="form-group">
+      <label class="sub-title" for="contact-tel" translate="content_component_config_contact_tel"></label>
+      <input class="form-control" type="text" id="contact-tel" ng-model="contact.data.tel" required>
+    </div>
+    <div class="form-group">
+      <label class="sub-title" for="contact-email" translate="content_component_config_contact_email"></label>
+      <input class="form-control" type="text" id="contact-email" ng-model="contact.data.email">
+    </div>
+    <div class="form-group">
+      <label class="sub-title" for="contact-qq" translate="content_component_config_contact_qq"></label>
+      <input class="form-control" type="text" id="contact-qq" ng-model="contact.data.qq" wm-validate="contact.validateQQ">
+    </div>
+    <div class="form-group">
+      <label class="sub-title" translate="content_component_config_contact_location"></label>
+      <div wm-microsite-location ng-model="contact.data.location"></div>
+      <input class="form-control contact-placeholder" type="text" ng-model="contact.data.detailLoc" maxlength="50" placeholder="{{'customer_member_location_detail' | translate}}"/>
+    </div>
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+  </form>
+</div>

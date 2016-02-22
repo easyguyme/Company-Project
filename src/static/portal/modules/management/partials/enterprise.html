@@ -1,0 +1,95 @@
+<div ng-controller="wm.ctrl.management.enterprise as enterprise" class="enterprise-main-content">
+  <!-- <div class="enterprise-head">
+    <label class="enterprise-label-title words-style">{{'enterprise_management' | translate}}</label>
+  </div> -->
+  <div wm-breadcrumb="enterprise.breadcrumb"></div>
+  <div class="enterprise-body">
+    <div class="enterprise-block-info clearfix">
+      <div class="block-title-info padding-bottom">
+        <div class="pull-left icon-style title-icon title-info-icon"></div>
+        <label class="block-padding words-style">{{'management_enterprise_info' | translate}}</label>
+      </div>
+      <div class="block-info-content webkit-inline-style">
+        <label class="pull-left content-padding info-content-name words-style">{{'management_enterprise_name' | translate}}:</label>
+        <div class="pull-left block-show-pane show-info-box" ng-show="!enterprise.isShowEditEnterprisePane">
+          <span class="info-style" ng-bind="enterprise.defaultEnterpriseRemarks"></span>
+          <span class="icon-style edit-enterprise-icon " ng-click="enterprise.showEditEnterprisePane()"></span>
+        </div>
+        <div class="pull-left block-show-pane pane-padding company-textbox" ng-if="enterprise.isShowEditEnterprisePane">
+          <input type="text" id="company" class="form-control textbox-enterprise-pane" ng-model="enterprise.defaultEnterpriseRemarks" maxlength="200" placeholder="{{'management_enterprise_name' | translate}}" wm-validate="enterprise.checkedCompany" form-tip="{{'management_enterprise_words_length'| translate}}" required without-star/>
+          <div class="enterprise-button confirm-select">
+            <span class="btn btn-success mr20" translate="ok" ng-click="enterprise.saveCompany()" ng-disabled="!enterprise.defaultEnterpriseRemarks"></span>
+            <span class="btn btn-default" translate="cancel" ng-click="enterprise.cancelEditCompany()"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- begin: helpdesk phone pane -->
+      <div class="block-info-content webkit-inline-style">
+        <label class="pull-left content-padding info-content-name words-style">{{'product_coupon_help_tel' | translate}}:</label>
+        <div class="pull-left block-show-pane show-info-box" ng-show="!enterprise.isShowEditHelpdeskPhonePane">
+          <span class="info-style" ng-bind="enterprise.defaultHelpdeskPhone"></span>
+          <span class="icon-style edit-enterprise-icon " ng-click="enterprise.showEditHelpdeskPhonePane()"></span>
+        </div>
+        <div class="pull-left block-show-pane pane-padding company-textbox" ng-if="enterprise.isShowEditHelpdeskPhonePane">
+          <input type="text" id="helpdeskPhone" class="form-control textbox-enterprise-pane" ng-model="enterprise.defaultHelpdeskPhone" maxlength="200" required without-star />
+          <div class="enterprise-button confirm-select">
+            <span class="btn btn-success mr20" translate="ok" ng-click="enterprise.saveHelpdeskPhone()" ng-disabled="!enterprise.defaultHelpdeskPhone"></span>
+            <span class="btn btn-default" translate="cancel" ng-click="enterprise.cancelHelpdeskPhone()"></span>
+          </div>
+        </div>
+      </div>
+      <!-- end: helpdesk phone pane -->
+
+    </div>
+    <div class="enterprise-block-contact">
+      <div class="block-title-contact padding-bottom">
+        <div class="pull-left icon-style title-icon title-contact-icon"></div>
+        <label class="block-padding words-style">{{'management_enterprise_contact' | translate}}</label>
+      </div>
+      <div class="block-contact-content">
+        <div class="webkit-inline-style">
+          <label class="pull-left content-padding contact-content-name words-style">{{'name' | translate}}:</label>
+          <div class="pull-left block-show-pane show-info-box" ng-show="!enterprise.isShowEditContactNamePane">
+            <span class="info-style" ng-bind="enterprise.defaultContactNameRemarks"></span>
+            <span class="icon-style edit-enterprise-icon " ng-click="enterprise.showEditContactNamePane()"></span>
+          </div>
+          <div class="pull-left block-show-pane pane-padding contactbox-width" ng-if="enterprise.isShowEditContactNamePane">
+            <input type="text" class="form-control" ng-model="enterprise.defaultContactNameRemarks" maxlength="10" placeholder="{{'management_enterprise_contact' | translate}}" wm-validate="enterprise.checkedName" form-tip="{{'management_name_empty'| translate}}" required without-star/>
+            <div class="enterprise-button confirm-select">
+              <span class="btn btn-success mr20" translate="ok" ng-click="enterprise.saveName()" ng-disabled="!enterprise.defaultContactNameRemarks"></span>
+              <span class="btn btn-default" translate="cancel" ng-click="enterprise.cancelEditName()"></span>
+            </div>
+          </div>
+        </div>
+        <div class="webkit-inline-style">
+          <label class="pull-left content-padding contact-content-tel words-style">{{'telephone_number' | translate}}:</label>
+          <div class="pull-left block-show-pane show-info-box" ng-show="!enterprise.isShowEditContactTelPane">
+            <span class="info-style" ng-bind="enterprise.defaultContactTelRemarks"></span>
+            <span class="icon-style edit-enterprise-icon" ng-click="enterprise.showEditContactTelPane()"></span>
+          </div>
+          <div class="pull-left block-show-pane show-pane-texbox pane-padding" ng-if="enterprise.isShowEditContactTelPane">
+            <div class="form-group textbox-tel-check clearfix">
+              <input wm-validate="enterprise.checkNum" type="text" id="phone" class="form-control" ng-model="enterprise.defaultContactTelRemarks" maxlength="11" placeholder="{{'telephone_number' | translate}}" form-tip="{{'management_enterprise_phone_length'| translate}}" required without-star/>
+            </div>
+            <div class="form-group verification-wrapper">
+              <input type="text" ng-model="enterprise.verificationCode" maxlength="4" class="form-control verification-code" placeholder="{{'verification_code_prompt' | translate}}" ng-blur="enterprise.checkedVerification()" ng-focus="enterprise.restoreVerification()" required without-star/>
+              <div id="verification" class="pic-verification-wrapper">
+                <img class="icon-verification-code" ng-src="{{enterprise.verification.link}}" />
+                <a class="link-change-validate" ng-click="enterprise.getVerificationCode()" translate="try_another_verification_code"></a>
+              </div>
+            </div>
+            <div class="captcha-block">
+              <input type="text" class="form-control" id="captcha" maxlength="8" ng-model="enterprise.checkedTel" placeholder="{{'management_enterprise_input_captcha' | translate}}" required without-star/>
+              <button class="module-send-verification module-send-verification-{{enterprise.isSent}}" ng-click="enterprise.sendCode()" ng-disabled="!enterprise.isSent">{{enterprise.requestCaptcha | translate :{'timing':enterprise.times} }}</button>
+            </div>
+            <div class="enterprise-button confirm-select">
+              <span class="btn btn-success mr20" translate="ok" ng-click="enterprise.savePhone()"></span>
+              <span class="btn btn-default" translate="cancel" ng-click="enterprise.cancelPhone()"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

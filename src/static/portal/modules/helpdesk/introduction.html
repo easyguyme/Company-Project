@@ -1,0 +1,22 @@
+<div class="extension-continue-title" ng-if="extension.detail.active">
+  <img class="extension-icon-mr" src="/images/management/alert.png">
+  <span class="extension-gray2 fs16">{{'management_extension_continue' | translate}}</span>
+</div>
+<div class="extension-continue-helpdesk row" ng-if="extension.detail.active">
+  <div class="col-md-12 extension-channel-title pd0">
+    <a ng-href="{{extension.detail.link.addHelpdeskChannel}}" class="fs18">{{'management_extension_add_helpdesk_account' | translate}}</a>
+  </div>
+  <ul class="advantage-wrapper clearfix">
+    <li class="pull-left" ng-repeat="advantage in extension.detail.advantages track by $index">
+      <img ng-src="/images/{{extension.detail.name}}/introduction/paragraphbreak_default.png">
+      <span>{{advantage | translate}}</span>
+    </li>
+  </ul>
+  <ul class="helpdesk-function-img-wrapper clearfix">
+    <li ng-repeat="item in extension.detail.functionImages track by $index" ng-class ="{'odd-style':$index%2==0,'even-style':$index%2==1}">
+      <div class="mb15"><img class="paragragh-split" src="/images/management/paragraphbreak.png">
+      <span>{{item.title | translate}}</span></div>
+      <img class="helpdesk-function-img" ng-src="{{item.image}}">
+    </li>
+  </ul>
+</div>

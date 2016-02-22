@@ -1,0 +1,23 @@
+.page-basic {
+  margin-top: 35px;
+  margin-left: 15px;
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .page-title {
+    margin-bottom: 10px;
+    line-height: 1;
+    display: inline-block;
+    font-weight: normal;
+  }
+
+  .page-buttons {
+    padding-top: 20px;
+  }
+
+  textarea {
+    resize: none;
+  }
+}

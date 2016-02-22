@@ -1,0 +1,25 @@
+.icon-copy {
+  background-image: url('/images/core/copy_default.png');
+  cursor: pointer;
+  display: inline-block;
+  height: 14px;
+  margin: 0 5px;
+  vertical-align: middle;
+  width: 12px;
+
+  &:hover,
+  &.zeroclipboard-is-hover {
+    background-image: url('/images/core/copy_hover.png');
+  }
+
+  &:active,
+  &:focus,
+  &.zeroclipboard-is-active {
+    background-image: url('/images/core/copy_click.png');
+  }
+}
+
+.copy-text {
+  display: inline-block;
+  width: calc(100% - 40px);
+}

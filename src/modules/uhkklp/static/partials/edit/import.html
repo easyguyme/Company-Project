@@ -1,0 +1,25 @@
+<div id="upload-loading" class="mask-loading product-upload-loading">
+    <div class="loading-icon"></div>
+</div>
+<div class="modal-header pd30">
+  <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+  <h4 class="modal-title create-user-title">{{'recipe_import' | translate}}</h4>
+</div>
+<form name="promocodeForm" ng-submit="import()" class="member-import-color">
+  <div class="modal-body modal-bgcolor create-user-body member-import clearfix">
+    <p class="product-detail-name member-file-name" translate="member_upload_select_file"></p>
+    <div class="form-group clearfix">
+      <div style="margin-left:7px" class="file-upload-input col-md-10 col-xs-10">
+        <input class="form-control" name="code-file" id="import-file" ng-model="file" readonly="readonly" placeholder="{{'product_no_file' | translate}}"/>
+        <div id="upload" ng-file-select ng-file-change="upload($files)" class="file-upload-wrap" multiple="true" ng-model="file">
+        </div>
+        <div>
+          <span class="form-tip">{{'recipe_import_max_tip' | translate}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer modal-bgcolor center-text create-user-footer">
+    <input ng-disabled="file == '' || status != true" type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+  </div>
+</form>

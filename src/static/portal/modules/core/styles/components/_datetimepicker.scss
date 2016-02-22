@@ -1,0 +1,203 @@
+$datetimepicker-header-color: #5eade0;
+$datepicker-hover-bg: #248be4;
+$datepicker-day-bg: #f7f7f7;
+$datepicker-day-bottom: #ddd;
+$datepicker-even-bg: #f9f9f9;
+$datepicker-border-right: #549bc9;
+$datepicker-default-color: #333;
+$datepicker-disabled-color: #eee;
+
+.bootstrap-datetimepicker-widget {
+  width: 280px;
+
+  .table-condensed {
+    width: 280px;
+
+    tr {
+      height: 40px;
+
+      .prev,
+      .next {
+        width: 40px;
+      }
+
+      th,
+      td {
+        @include border-bottom-radius(0);
+        @include border-top-radius(0);
+
+        &.day {
+          width: 14.2%;
+        }
+      }
+    }
+
+    thead {
+
+      tr:first-child {
+        background-color: $datetimepicker-header-color;
+        font-size: 16px;
+
+        th {
+          color: $white-background-color;
+          font-weight: normal;
+        }
+
+        th:hover {
+          background-color: $datepicker-hover-bg;
+        }
+      }
+
+      tr + tr {
+        background-color: $datepicker-day-bg;
+        border-bottom: 1px solid $datepicker-day-bottom;
+        color: $base-text-color;
+        font-size: 14px;
+
+        th {
+          font-weight: normal;
+        }
+      }
+    }
+
+    tbody {
+
+      tr:nth-of-type(odd) {
+        background-color: $white-background-color;
+      }
+
+      tr:nth-of-type(even) {
+        background-color: $datepicker-even-bg;
+      }
+    }
+
+    .glyphicon-chevron-up,
+    .glyphicon-chevron-down {
+      color: $datetimepicker-header-color;
+    }
+
+    .btn-primary {
+      background-color: $datetimepicker-header-color;
+    }
+  }
+
+  &.dropdown-menu {
+    padding: 0;
+    width: initial;
+  }
+
+  .collapse.in {
+    @include clearfix();
+  }
+}
+
+.picker-switch.accordion-toggle {
+  .table-condensed {
+
+    tr {
+      height: 40px;
+
+      &:empty {
+        height: 0;
+      }
+    }
+  }
+
+  .glyphicon {
+    color: $datetimepicker-header-color;
+  }
+
+}
+
+.datepicker-months,
+.datepicker-years {
+  color: $datepicker-default-color;
+
+  table thead {
+
+    tr:first-child {
+      background-color: $datetimepicker-header-color;
+      font-weight: normal;
+    }
+
+    th {
+      border-right: 1px solid $datepicker-border-right;
+    }
+  }
+}
+
+.datepicker-days {
+  color: $datepicker-default-color;
+}
+
+.date-time-picker-div {
+  background-color: $white-background-color;
+  width: 100%;
+
+  .date-time-picker-input {
+    background-color: rgba(255, 255, 255, 0);
+
+    &[disabled] {
+      background-color: $datepicker-disabled-color;
+      cursor: not-allowed !important;
+
+      + .date-time-picker-span {
+        z-index: 4;
+        background-color: $datepicker-disabled-color;
+      }
+    }
+  }
+
+  .date-time-picker-span {
+    background-color: $white-background-color;
+    border: 0;
+    padding: 0;
+    position: absolute;
+    right: 17px;
+    top: 7px;
+  }
+
+  .form-tip {
+    margin-top: 30px;
+    position: absolute;
+  }
+
+  .min-width-500 {
+    min-width: 500px;
+  }
+}
+
+//Quarter picker relate styles
+$quarter-hover-color: #eee;
+
+.quarter-picker-wrapper {
+  position: relative;
+  padding-top: 15px;
+
+  .quarter-picker-icon {
+    position: absolute;
+    top: 24px;
+    right: 5px;
+    pointer-events: none;
+  }
+
+  .quarter-item {
+    text-align: center;
+    cursor: pointer;
+    height: 40px;
+    line-height: 40px;
+
+    &:hover {
+      background-color: $quarter-hover-color;
+    }
+  }
+
+  .bootstrap-datetimepicker-widget {
+    position: absolute;
+    left: inherit;
+    top: 50px;
+    right: 0;
+    border: 1px solid rgba(0, 0, 0, .15);
+    z-index: 50;
+  }
+}

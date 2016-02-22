@@ -1,0 +1,57 @@
+<div wm-breadcrumb="webpage.breadcrumb"></div>
+
+<div class="container-fluid">
+  <form role="form" class="articles-form" ng-submit="webpage.submit()">
+
+    <!-- articles name -->
+    <div class="articles-fields-item row">
+      <div class="form-group col-md-6 col-sm-8 col-xs-10">
+        <label class="fields-item-label" translate="content_articles_name"></label>
+        <div class="fields-item-content">
+          <input class="form-control" maxlength="30" ng-model="webpage.article.name" form-tip="{{'content_article_title_tip'|translate}}" required />
+        </div>
+      </div>
+    </div>
+
+    <!-- articles picture -->
+    <div class="articles-fields-item row">
+      <div class="form-group col-md-6 col-sm-8 col-xs-10">
+        <label class="fields-item-label" translate="content_articles_image"></label>
+        <div class="fields-item-content fields-picture-box">
+          <input class="form-control" name="picUrl" ng-model="webpage.article.picUrl" readonly="readonly"/>
+          <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="webpage.article.picUrl">
+            <span></span>
+          </div>
+          <input class="form-control hidden" name="picUrl" ng-model="webpage.article.picUrl"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- articles content -->
+    <div class="articles-fields-item row">
+      <div class="form-group col-md-6 col-sm-8 col-xs-10">
+        <label class="fields-item-label" translate="content_articles_content"></label>
+        <div id="ueditor-wrapper" class="fields-item-content">
+          <div wm-authorize wm-button-link class="ueditor" name="content" ng-model="webpage.article.content" config="webpage.ueditorConfig"></div>
+          <input class="form-control hidden" ng-model="webpage.article.content" required/>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Property template -->
+    <div class="articles-fields-item row" ng-repeat="property in webpage.article.fields track by $index">
+      <div class="form-group col-md-6 col-sm-8 col-xs-10">
+          <label class="member-attr-label" translate="{{property.name}}" ng-class="{'required-field': property.isRequired}"></label>
+          <div ng-include="property.url"></div>
+      </div>
+    </div>
+
+    <div class="articles-fields-item">
+      <div class="articles-operation-item">
+        <button class="btn btn-success" translate="submit"></button>
+        <span class="btn btn-default" translate="cancel" ng-click="webpage.cancel()"></span>
+      </div>
+    </div>
+  </form>
+</div>

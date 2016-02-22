@@ -1,0 +1,106 @@
+$default-slider-bg-color: #dde1e1;
+$selection-slider-bg-color: #37c3aa;
+
+.slider-wrapper {
+  .slider {
+    .slider-track-high {
+      background: $default-slider-bg-color;
+      border-radius: 0;
+    }
+
+    .slider-track-low {
+      background: $default-slider-bg-color;
+      border-radius: 0;
+    }
+
+    .slider-selection {
+      background: $selection-slider-bg-color;
+      border-radius: 0;
+    }
+
+    .slider-handle {
+      @include square(18px);
+      border-radius: 0;
+
+      background-image: url('/images/core/sliderbar_btn.png');
+      background-repeat: no-repeat;
+      background-size: 18px 18px;
+
+      outline: 0;
+
+      .slider-handle-info {
+        display: inline-block;
+        margin-left: -16px;
+        width: 50px;
+        text-align: center;
+      }
+    }
+
+    &.slider-disabled {
+      opacity: 0.8;
+    }
+  }
+
+  .slider-horizontal {
+    @include size(100%, 45px);
+    margin-bottom: 0 !important;
+
+    .slider-track {
+      height: 8px
+    }
+  }
+
+  .slider-vertical {
+    height: 100%;
+  }
+
+  .slider-track {
+    border-radius: 0;
+
+    .slider-tick {
+      display: none;
+
+    }
+  }
+
+  .slider-tick-label {
+    color: $wm-dark-gray;
+  }
+
+}
+
+.ticks-slider-wrapper {
+
+  .slider-horizontal {
+    position: relative;
+
+    .slider-track {
+      top: 30px;
+    }
+
+    .slider-tick-label-container {
+      height: 20px;
+      line-height: 20px;
+      margin-top: 0;
+      top: 0;
+      position: absolute;
+
+      .slider-tick-label {
+        padding-top: 0;
+      }
+    }
+
+    .slider-handle {
+      background-color: $white-background-color;
+      box-shadow: none;
+      color: $white-background-text-color;
+      line-height: 20px;
+      height: 18px;
+      text-align: center;
+      padding-top: 18px;
+    }
+  }
+
+
+}
+

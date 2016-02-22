@@ -1,0 +1,25 @@
+<div ng-controller="wm.ctrl.microsite.page.completion as completion">
+  <div class="container-fluid">
+    <div class="page-completion">
+      <div class="pull-left">
+        <div class="mobile-bg mobile-position">
+          <div class="mobile-wrap">
+            <div class="mobile-content">
+              <iframe class="full-frame frame-height" ng-src="{{completion.url}}" frameborder="0"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="operation">
+          <button class="btn btn-default" ng-click="completion.back()">{{"content_completion_prev_step"|translate}}</button>
+          <button class="btn btn-success btn-next" ng-click="completion.finish()">{{"content_completion_finish"|translate}}</button>
+        </div>
+      </div>
+
+      <div class="pull-left qrcode-wrapper">
+        <div class="qrcode-header">{{"content_completion_qrcode_header"|translate}}</div>
+        <div class="qrcode" wm-qrcode text="completion.url"></div>
+        <div class="qrcode-footer">{{"content_completion_qrcode_footer"|translate}}</div>
+      </div>
+    </div>
+  </div>
+</div>

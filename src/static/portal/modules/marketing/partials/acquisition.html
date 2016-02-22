@@ -1,0 +1,71 @@
+<div class="acquisition clearfix" ng-controller="wm.ctrl.marketing.coupon.acquisition as acquisition">
+  <!-- the search bar and filter-toggle button -->
+  <div class="coupon-filter">
+    <div wm-list-header head-class="listheader-search-condition">
+      <wm-search ng-model="acquisition.searchKey" class="search-wrapper-input" click-func="acquisition.search()" placeholder="{{'product_acquisition_search_names' | translate}}"></wm-search>
+      <span class="btn-operate-condition" ng-click="acquisition.toggleFilter()">
+        {{'customer_follower_screening_conditions' | translate}}<span class="condition-mark-wrapper" ng-class="{true:'condition-up', false:'condition-down'}[!acquisition.isHidden]"></span>
+      </span>
+    </div>
+
+  <!-- the filter wrapper-->
+  <div class="management-fans-item mt20 clearfix" ng-show="acquisition.isShow">
+    <!-- the datepicker filter -->
+    <section class="management-fans-tag dark-gray row follower-channel-items">
+      <label ng-if="acquisition.pageType === '1'" class="label-condition-title" translate="product_acquisition_acquired_date" ng-class="{true: 'col-md-3', false: 'col-md-2'}[user.language=='en_us']" for="acquisition-date" ></label>
+      <label ng-if="acquisition.pageType === '2'" class="label-condition-title" translate="product_redemption_redeemed_date" ng-class="{true: 'col-md-3', false: 'col-md-2'}[user.language=='en_us']" for="redemption-date"></label>
+      <label ng-if="acquisition.pageType === '3'" class="label-condition-title" translate="product_deletion_deleted_date" ng-class="{true: 'col-md-3', false: 'col-md-2'}[user.language=='en_us']" for="deletion-date"></label>
+      <div class="row follower-accounts-item" ng-class="{true: 'col-md-9', false: 'col-md-10'}[user.language=='en_us']">
+        <div class="col-md-6 clear-container-padding select-attention-time">
+          <div class="datepicker datepicker-container">
+            <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="beginPicker" min-date-picker-id="endPicker" less-than-today="{{true}}" ng-model="acquisition.startTime" icon="calendar"></div>
+          </div>
+          <div class="pull-left datepicker-between-text">-</div>
+          <div class="datepicker datepicker-container">
+            <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="endPicker" max-date-picker-id="beginPicker" less-than-today="{{true}}" ng-model="acquisition.endTime" icon="calendar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- the search and clear button group -->
+    <section class="management-fans-btn-group">
+      <span class="btn btn-success" ng-click="acquisition.search()" translate="product_acquisition_search"></span>
+      <span class="btn btn-default clear-btn-style" ng-click="acquisition.clearFilters()" translate="product_acquisition_clear"></span>
+    </section>
+  </div>
+
+  <!-- the chosen filter wrapper -->
+  <div class="management-fans-item-all mt20" ng-show="acquisition.showCondition">
+    <div class="dark-gray">
+      <label class="management-fans-tag follower-selected-conditions" for="selected-conditions" translate="customer_follower_selected_condition"></label>
+
+      <div class="management-shrink-condition clearfix">
+        <div class="display-button dark-gray follower-tag-items">
+          <!-- condition of datepicker -->
+          <section class="panel panel-tags-default panel-center-content" ng-show="acquisition.filters.startTime || acquisition.filters.endTime">
+            <div class="tags-style">
+              <label class="position-label-style">{{'customer_follower_attention_spans' | translate}}:
+                <label class="label-style">{{(acquisition.filters.startTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(acquisition.filters.endTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</label>
+              </label>
+              <label class="close-btn" ng-click="acquisition.clearTime()"></label>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- the acquisition records table wrapper -->
+  <div class="table-wrapper">
+    <wm-table ng-model="acquisition.list" class="colored-table member-setting"></wm-table>
+  </div>
+
+  <!-- pagination wrapper -->
+  <div class="broadcast-pagination" ng-if="acquisition.pagination.pageCount > 0">
+    <div wm-pagination current-page="acquisition.pagination.currentPage" page-size="acquisition.pagination.pageSize" total-items="acquisition.pagination.totalItems" on-change-size="acquisition.pagination.changeSize" on-change-page="acquisition.pagination.changePage"></div>
+  </div>
+</div>

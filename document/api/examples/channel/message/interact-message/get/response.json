@@ -1,0 +1,137 @@
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "pageSize": 100,
+        "pageNum": 1,
+        "totalAmount": 192,
+        "next": "1434611703383",
+        "results": [
+            {
+                "id": "55b875c8e4b0a28cbdb7e7d6",
+                "accountId": "54fd0571e4b055a0030461fb",
+                "userId": "5551bfc7ddb753946833fa77",
+                "msgType": "TEXT",
+                "direction": "SEND",
+                "keycode": "RESUBSCRIBE",
+                "matchedRuleId": "555d87b0e4b05a574aac5f1a",
+                "createTime": 1438152136450,
+                "message": {
+                    "fromUser": "gh_ea167ba0879b",
+                    "toUser": "ojmADuPByNRg7YuUkJwdD75RJ7P0",
+                    "msgType": "TEXT",
+                    "content": "乌拉拉，乌拉拉，乌拉拉，欢迎您回家···",
+                    "createTime": 1438152136450
+                }
+            },
+            {
+                "id": "55b6eff9e4b0a28cbdb7e4c9",
+                "accountId": "54fd0571e4b055a0030461fb",
+                "userId": "5551bfc7ddb753946833fa77",
+                "msgType": "TEXT",
+                "direction": "RECEIVE",
+                "createTime": 1438052345000,
+                "message": {
+                    "fromUser": "ojmADuPByNRg7YuUkJwdD75RJ7P0",
+                    "toUser": "gh_ea167ba0879b",
+                    "msgType": "TEXT",
+                    "content": "情怀",
+                    "createTime": 1438052345000,
+                    "messageId": "6176387791930943073"
+                },
+                "sender": {
+                    "id": "5551bfc7ddb753946833fa77",
+                    "accountId": "54fd0571e4b055a0030461fb",
+                    "subscribed": true,
+                    "originId": "ojmADuPByNRg7YuUkJwdD75RJ7P0",
+                    "nickname": "八宝周",
+                    "gender": "FEMALE",
+                    "language": "en",
+                    "city": "云阳",
+                    "province": "重庆",
+                    "country": "中国",
+                    "headerImgUrl": "http://wx.qlogo.cn/mmopen/XzhF92tBcey5paCtNenjwuYSQ49Yua8RRk40QA6GdFnRrEvBMc2ZaWH5v44NjbUfTsYKTM808yxY4wllfaEr0w/0",
+                    "subscribeTime": 1438152135000,
+                    "unionId": "o8nGSjuIOcI-Gg3MzlK5fWRemqIc",
+                    "massSendUsageCount": 39,
+                    "tags": [
+                        "银卡会员"
+                    ],
+                    "subscribeSource": "qrscene_131",
+                    "firstSubscribeSource": "other",
+                    "firstSubscribeTime": 1430363800000,
+                    "interactMessageCount": 95,
+                    "lastInteractMessageTime": 1438052345924,
+                    "lastInteractEventTime": 1438152136400,
+                    "userCounts": null,
+                    "createTime": 1431420871548,
+                    "unsubscribeTime": null,
+                    "member": false
+                }
+            },
+            {
+                "id": "55b1e3b6e4b0fcecc53d4029",
+                "accountId": "54fd0571e4b055a0030461fb",
+                "userId": "5551bfc7ddb753946833fa77",
+                "msgType": "TEXT",
+                "direction": "SEND",
+                "matchedRuleId": "55b1e3aae4b0fcecc53d4027",
+                "createTime": 1437721526520,
+                "message": {
+                    "fromUser": "gh_ea167ba0879b",
+                    "toUser": "ojmADuPByNRg7YuUkJwdD75RJ7P0",
+                    "msgType": "TEXT",
+                    "content": "白阿比",
+                    "createTime": 1437721526520
+                }
+            },
+            {
+                "id": "55b1e3b6e4b0fcecc53d4028",
+                "accountId": "54fd0571e4b055a0030461fb",
+                "userId": "5551bfc7ddb753946833fa77",
+                "msgType": "TEXT",
+                "direction": "RECEIVE",
+                "keycode": "小白猫",
+                "matchedRuleId": "55b1e3aae4b0fcecc53d4027",
+                "createTime": 1437721525000,
+                "message": {
+                    "fromUser": "ojmADuPByNRg7YuUkJwdD75RJ7P0",
+                    "toUser": "gh_ea167ba0879b",
+                    "msgType": "TEXT",
+                    "content": "小白猫",
+                    "createTime": 1437721525000,
+                    "messageId": "6174966930850001809"
+                },
+                "sender": {
+                    "id": "5551bfc7ddb753946833fa77",
+                    "accountId": "54fd0571e4b055a0030461fb",
+                    "subscribed": true,
+                    "originId": "ojmADuPByNRg7YuUkJwdD75RJ7P0",
+                    "nickname": "八宝周",
+                    "gender": "FEMALE",
+                    "language": "en",
+                    "city": "云阳",
+                    "province": "重庆",
+                    "country": "中国",
+                    "headerImgUrl": "http://wx.qlogo.cn/mmopen/XzhF92tBcey5paCtNenjwuYSQ49Yua8RRk40QA6GdFnRrEvBMc2ZaWH5v44NjbUfTsYKTM808yxY4wllfaEr0w/0",
+                    "subscribeTime": 1438152135000,
+                    "unionId": "o8nGSjuIOcI-Gg3MzlK5fWRemqIc",
+                    "massSendUsageCount": 39,
+                    "tags": [
+                        "银卡会员"
+                    ],
+                    "subscribeSource": "qrscene_131",
+                    "firstSubscribeSource": "other",
+                    "firstSubscribeTime": 1430363800000,
+                    "interactMessageCount": 95,
+                    "lastInteractMessageTime": 1438052345924,
+                    "lastInteractEventTime": 1438152136400,
+                    "userCounts": null,
+                    "createTime": 1431420871548,
+                    "unsubscribeTime": null,
+                    "member": false
+                }
+            }
+        }
+    ]
+}

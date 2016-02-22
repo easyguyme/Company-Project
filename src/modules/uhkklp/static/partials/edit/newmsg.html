@@ -1,0 +1,83 @@
+<div wm-breadcrumb="newmsg.breadcrumb"></div>
+<div ng-if="loading" class="modal-backdrop fade in" style="z-index: 1040;"></div>
+<div ng-if="loading" class="mask-loading" style="display: inline-block;">
+  <div class="loading-icon"></div>
+</div>
+<div class="uhkklp edit-msg-wrap">
+  <form name="messageForm" ng-submit="submit()" novalidate>
+    <div class="form-group">
+      <label for="content">{{'mt_newmsgtb_content' | translate}}
+        <!-- <font ng-show="reachMax" style="color: #f0ad4e;" class="form-tip-label">{{'mt_tip_reachmax' | translate}}</font> -->
+      </label>
+      <div class="model-wrap">
+        <input type="text" name="content" ng-model="message.content" class="form-control" ng-class="{'mt-required': messageForm.content.$invalid && submitted}" style="width: 50%;" id="content" wm-validate="messageForm.content" form-tip="{{'mt_msgpl_content' | translate}}" required/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">{{'mt_newmsgtb_pushmethod' | translate}}
+        <span ng-if="message.pushMethod == 'nameList'">
+          <font class="form-tip-label" ng-show="messageForm.pushDevices.$invalid && submitted">{{'mt_bt_choose_excel' | translate}}</font>
+          <!-- <font class="form-tip-label" ng-show="excelConversionError && !submitted">{{excelConversionError | translate}}</font> -->
+          <input class="invisible-input" name="pushDevices" ng-model="message.pushDevices" binded="false" required>
+        </span>
+      </label>
+      <input type="hidden" value="pushMethod" required>
+      <div class="model-wrap">
+        <div class="block-radio">
+          <input wm-radio ng-model="message.pushMethod" value="all">{{'mt_rd_pushall' | translate}}
+        </div>
+        <div class="block-radio">
+          <input wm-radio ng-model="message.pushMethod" value="nameList">{{'mt_rd_namelist' | translate}}
+          <div class="model-son" ng-if="message.pushMethod == 'nameList'">
+            <input id="chooseExcelBtn" style="display: none;" type="file" ng-file-select="onFileSelect(files)" ng-model="files">
+            <span class="btn btn-primary" ng-click="chooseExcelBtnClick()">{{'mt_bt_choose_excel' | translate}}</span>
+            <div ng-if="message.pushDevices">
+              <div class="device-list-title">{{'mt_lb_namelist' | translate}}</div>
+              <ul class="device-list">
+                <li ng-repeat="device in message.pushDevices track by $index">{{device}}</li>
+              </ul>
+            </div>
+
+            <!-- <div ng-if="numError && !submitted">
+              <div class="device-list-title-error">{{numError | translate}}</div>
+              <ul class="device-list-error">
+                <li ng-repeat="wrongNum in wrongNums track by $index">{{wrongNum}}</li>
+              </ul>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">{{'mt_newmsgtb_pushtime' | translate}}</label>
+      <div class="model-wrap" ng-class="{'time-invalid': messageForm.pushTimeHidden.$invalid && submitted}">
+        <input type="hidden" name="pushTimeHidden" ng-model="message.pushTime" required binded="false">
+        <input style="width: 30%;" name="pushTime" ng-model="message.pushTime" wm-datetime-picker more-than-today="true" format-type="YYYY-MM-DD HH:mm" picker-id="pushTime" required-field="true">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">{{'mt_newmsgtb_linktype' | translate}}</label>
+      <input type="hidden" value="linkType" required>
+      <div class="model-wrap">
+        <div class="block-radio">
+          <input wm-radio ng-model="message.linkType" value="app">{{'mt_rd_link_app' | translate}}
+        </div>
+        <div class="block-radio">
+          <input wm-radio ng-model="message.linkType" value="list">{{'mt_rd_link_list' | translate}}
+        </div>
+        <div class="block-radio">
+          <input wm-radio ng-model="message.linkType" value="news">{{'mt_rd_link_news' | translate}}
+          <div class="model-son" ng-if="message.linkType == 'news'">
+            <div>{{'mt_lb_newsid' | translate}}</div>
+            <input style="width: 50%;" mtt-format="" name="newsId" ng-model="message.newsId" class="form-control" type="text" placeholder="{{'mt_pl_newsid' | translate}}" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group model-wrap">
+      <button class="btn btn-primary">{{'mt_bt_send' | translate}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/uhkklp/newmsg" class="btn btn-default active">{{'mt_bt_return_back' | translate}}</a>
+    </div>
+  </form>
+</div>

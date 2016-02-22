@@ -1,0 +1,158 @@
+.feedback-add-wrapper {
+  @include size(100%, auto);
+  padding-top: 25px;
+
+  .input-form-group {
+    margin-bottom: 15px;
+    padding: 0 11px;
+    position: relative;
+
+    .md {
+      margin: 15px 0;
+    }
+
+    .feedback-tip {
+      @include size(100%, 30px);
+      @include font-style($wm-input-componet-tip-size, $wm-tip-font-color);
+      line-height: 30px;
+      text-align: center;
+      border-radius: 4px;
+      margin: 15px 0;
+      background-color: $wm-tip-bg-color;
+    }
+
+    .input-label {
+      @include font-style($wm-input-componet-font-size, $wm-mobile-default-color);
+      margin-left: 9px;
+      position: absolute;
+      line-height: 52px;
+    }
+
+    .input-form {
+      @include size(100%, 52px);
+      @include font-style($wm-input-componet-font-size, $wm-mobile-default-color);
+      @include box-shadow(0 0 7px rgba(#c1c1c1, .24));
+
+      box-sizing: border-box;
+      padding-left: 66px;
+      padding-right: 10px;
+      border: 1px solid $wm-mobile-default-border-color;
+      border-radius: 4px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .textarea-wrapper {
+      @include size(100%, 230px);
+      @include box-shadow(0 0 7px rgba(#c1c1c1, .24));
+      position: relative;
+      border: 1px solid $wm-mobile-default-border-color;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+      .textarea-label {
+        @include font-style($wm-input-componet-font-size, $wm-mobile-default-color);
+        left: 9px;
+        top: 10px;
+        position: absolute;
+      }
+
+      .textarea-form-wrapper {
+        height: 150px;
+        margin: 10px 15px 0 8px;
+
+        .textarea-form {
+          @include font-style($wm-input-componet-font-size, $wm-mobile-default-color);
+          @include size(100%, 140px);
+          resize: none;
+          border: 0;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .attachments-wrapper {
+        position: absolute;
+        left: 10px;
+        bottom: 2px;
+        right: 10px;
+
+        .thumbnail-wrapper {
+          @include size(60px, 60px);
+          border: 1px solid $wm-mobile-default-border-color;
+          position: relative;
+          overflow: hidden;
+          margin-right: 8px;
+          margin-bottom: 8px;
+          float: left;
+
+          .btn-delete-attachment {
+            @include size(20px, 20px);
+            position: absolute;
+            right: 1px;
+            top: 1px;
+          }
+        }
+
+        .input-wrapper {
+          @include size(60px, 60px);
+          overflow: hidden;
+          margin-right: 8px;
+          margin-bottom: 8px;
+          position: relative;
+          float: left;
+
+          .img-upload {
+            @include size(60px, 60px);
+          }
+
+          .input-file {
+            @include size(60px, 60px);
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+    @each $field in $form-fields {
+      .center-#{$field}-form-tip {
+        @include font-style($wm-feedback-tip-font-size, $wm-form-tip-font-color);
+        height: 18px;
+        margin-top: 5px;
+        display: block;
+
+        &:empty {
+          height: initial;
+        }
+      }
+    }
+  }
+}
+
+.feedback-success-wrapper {
+  @include font-style($wm-success-tip-font-size, $wm-feedback-success-tip-font-color);
+  width: 100%;
+  text-align: center;
+  padding-top: 150px;
+  display: none;
+
+  .success-tip {
+    margin-top: 15px;
+    margin-bottom: 40px;
+  }
+
+  .img-success {
+    @include size(60px, 60px);
+  }
+
+  .thanks-tip {
+    margin-bottom: 11px;
+  }
+}

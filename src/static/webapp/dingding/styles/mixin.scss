@@ -1,0 +1,11 @@
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap/mixins';
+
+@mixin background-image ($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}

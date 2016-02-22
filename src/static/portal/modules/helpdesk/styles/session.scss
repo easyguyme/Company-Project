@@ -1,0 +1,163 @@
+$wm-helpdesk-table-color: #555;
+$wm-helpdesk-table-border-color: #ddd;
+$helpdesk-session-items-color: #999;
+$session-sender-info-color: #aaa;
+$helpdesk-session-head-bgcolor: #eee;
+
+.panel-helpdesk-session {
+  @include box-shadow(0 0 0);
+  margin: 20px 20px 0;
+
+  .helpdesk-session-items {
+    th {
+      font-weight: normal;
+      color: $helpdesk-session-items-color;
+    }
+
+    tbody {
+      tr:last-child {
+        td {
+          border-bottom: 1px solid $wm-helpdesk-table-border-color;
+        }
+      }
+
+      td {
+        padding: 10px 15px;
+        vertical-align: middle;
+      }
+    }
+
+    .operation-col {
+      width: 10%;
+    }
+  }
+
+  .helpdesk-session-title {
+    padding: 5px 10px;
+    background-color: $helpdesk-session-head-bgcolor;
+
+    .session-title-label {
+      line-height: 30px;
+      margin-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+      font-weight: normal;
+      color: $base-text-color;
+      width: auto;
+    }
+
+    .session-title-spacing {
+      max-width: 18px;
+    }
+  }
+}
+
+.session-foot-pagination {
+  margin: 0;
+}
+
+.session-detail-dialog {
+  max-width: 620px;
+
+  .session-dialog-header {
+    padding: 17.5px 12px;
+
+    .popup-close {
+      margin-top: 2px;
+      outline: none;
+    }
+  }
+}
+
+.session-detail-body {
+  padding: 15px;
+
+  .session-detail-item {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 0;
+
+    .row {
+      padding: 5px 0;
+    }
+  }
+
+  .reveived-row {
+    padding-left: 55px;
+
+    + .send-row {
+      border-top: 1px solid $wm-helpdesk-table-border-color;
+    }
+  }
+
+  .send-row {
+    + .reveived-row {
+      border-top: 1px solid $wm-helpdesk-table-border-color;
+    }
+  }
+}
+
+.session-detail-info {
+  .session-sender-info {
+    padding-left: 15px;
+
+    .message-illustrate {
+      margin-bottom: 5px;
+
+      .customer-nickname {
+        color: $session-sender-info-color;
+        width: auto;
+        margin-right: 5px;
+      }
+
+      .send-time {
+        color: $session-sender-info-color;
+        vertical-align: bottom;
+      }
+    }
+  }
+}
+
+.session-quick-time {
+  height: 31px;
+
+  .select {
+    .select-btn {
+      padding: 2px 10px;
+    }
+
+    .select-dropdown li {
+      padding: 3px 10px;
+    }
+
+  }
+}
+
+.panel-session-container {
+  padding: 15px 0 0;
+
+  .session-statistics-body {
+    height: auto;
+    padding-top: 30px;
+  }
+}
+
+.session-channel-cell {
+  .icon-style {
+    @include size(24px, auto);
+  }
+}
+
+.session-channel-head {
+  width: 15%;
+}
+
+.session-desk-head {
+  width: 30%;
+}
+
+.session-nickname-head,
+.session-time-head {
+  width: 20%;
+}

@@ -1,0 +1,177 @@
+.helpdeskwiki {
+  .helpdesk-tabs-title {
+    margin: 20px 10px 0;
+  }
+
+  .wiki-title {
+    border-bottom: 1px solid $bottom-line-color;
+    height: 48px;
+
+    label {
+      line-height: 48px;
+      color: $font-tag-color;
+      font-size: 20px;
+      padding-left: 18px;
+    }
+  }
+
+  .wiki-faq-content {
+    height: calc(100% - 48px);
+    width: 100%;
+  }
+
+  .wiki-categories {
+    padding: 0 10px;
+
+    .category-list {
+      padding: 16px 0 24px;
+      height: 66px;
+      overflow-y: visible;
+
+      .category-style {
+        margin-bottom: 5px;
+        padding: 3px 5px;
+        float: left;
+        color: $session-info-color;
+        text-align: center;
+        background-color: $category-background-color;
+        cursor: pointer;
+        border-radius: 2px;
+      }
+
+      li {
+        margin-right: 10px;
+      }
+
+      .category-clicked-style {
+        background-color: $green-color;
+        color: $navbar-background-color;
+      }
+    }
+  }
+
+  .wiki-category-content {
+    padding: 0 10px;
+    height: calc(100% - 118px);
+
+    .tag-btn-style {
+      float: right;
+      margin-right: 5px;
+      border: 1px solid $bottom-line-color;
+      line-height: 30px;
+      padding: 0 5px;
+      text-align: center;
+      margin-top: 4px;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+
+    .dis-pointer {
+      pointer-events: none;
+    }
+
+    .faq-detail-body {
+      padding: 0 15px;
+      overflow: auto;
+      height: calc(100% - 65px);
+
+      .faq-item {
+        line-height: 1;
+        position: relative;
+      }
+
+      .faq-item:hover {
+        .faq-send-button {
+          display: block;
+        }
+      }
+
+      li {
+        border-bottom: 1px solid $border-color;
+      }
+
+      .faq-question-style {
+        display: inline-block;
+        color: $wiki-faq-question-color;
+        padding-top: 14px;
+        max-width: 270px;
+      }
+
+      .faq-answer-style {
+        margin: 14px 0;
+        max-width: 345px;
+        display: inline-block;
+        color: $session-info-color;
+      }
+
+      .faq-send-button {
+        text-align: center;
+        padding: 0 2px;
+        height: 24px;
+        line-height: 24px;
+        position: absolute;
+        right: 0;
+        top: 12px;
+        display: none;
+      }
+    }
+  }
+
+  .wiki-search {
+    padding: 12px 10px 0;
+    position: relative;
+
+    %icon-base {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .search-icon {
+      @extend %icon-base;
+      background-image: url('/images/core/search.png');
+      left: 22px;
+      top: 24px;
+    }
+
+    .clear-icon {
+      @extend %icon-base;
+      background-image: url('/images/core/clear.png');
+      top: 24px;
+      right: 22px;
+      display: none;
+    }
+
+    .show-clear {
+      display: inline-block;
+    }
+
+    .search-input {
+      padding-left: 38px;
+      height: 32px;
+    }
+  }
+
+  .tag-style {
+    background-color: $tag-background-color;
+    line-height: 30px;
+    color: $tag-color;
+    font-size: 14px;
+    font-weight: 100;
+    width: 100%;
+    padding-left: 10px;
+    margin: 0;
+  }
+
+  .large-tag-style {
+    line-height: 40px;
+  }
+
+  .pagination-wrapper {
+    margin-top: 16px;
+    margin-right: 20px;
+    float: right;
+  }
+}

@@ -1,0 +1,17 @@
+<div ng-controller="wm.ctrl.microsite.page.basic as basic">
+  <form class="clearfix page-basic" ng-submit="basic.submit()">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label class="page-title">{{'content_page_title'|translate}}</label>
+        <input class="form-control" type="text" ng-model="basic.page.title" maxlength="10" form-tip="{{'content_page_title_tip'|translate}}" required/>
+      </div>
+      <div class="form-group">
+        <label class="page-title">{{'content_page_description'|translate}}</label>
+        <textarea class="form-control" ng-model="basic.page.description" maxlength="50" form-tip="{{'content_page_description_tip'|translate}}" required></textarea>
+      </div>
+      <div class="form-group page-buttons mb0">
+        <button class="btn btn-primary">{{'next'|translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>

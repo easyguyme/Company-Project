@@ -1,0 +1,5 @@
+<!-- type is email -->
+<div class="member-attr-item member-attr-email clearfix">
+  <input id="{{property.id}}" type="email" class="form-control member-attr" ng-model="property.value" required wm-email ng-if="property.isRequired">
+  <input id="{{property.id}}" type="email" class="form-control member-attr" ng-model="property.value" wm-email ng-if="!property.isRequired">
+</div>

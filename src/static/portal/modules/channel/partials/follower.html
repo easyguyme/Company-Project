@@ -1,0 +1,352 @@
+<div ng-show="follower.isListPage" class="followers-wrapper clearfix">
+  <div wm-breadcrumb="follower.breadcrumb"></div>
+  <div class="panel panel-default panel-follower-content clearfix">
+    <div class="panel-heading panel-fans-title">
+      <!-- <form class="form-inline form-style" role="form">
+        <div class="form-group mt15">
+          <wm-search ng-model="follower.searchFollower" class="search-style" click-func="follower.search()" placeholder="{{'nickname' | translate}}"></wm-search>
+          <button class="navbar-toggle form-control padding-form-style select-form-style" type="button" ng-click="follower.showConditions()">{{'customer_follower_screening_conditions' | translate}}
+            <div ng-class="{isshow:follower.isShow, ishide:!follower.isShow}"></div>
+          </button>
+        </div>
+      </form> -->
+      <div wm-list-header head-class="listheader-search-condition">
+        <wm-search ng-model="follower.searchFollower" class="search-wrapper-input" click-func="follower.search()" placeholder="{{'nickname' | translate}}"></wm-search>
+        <span class="btn-operate-condition" ng-click="follower.showConditions()">
+          {{'customer_follower_screening_conditions' | translate}}<span class="condition-mark-wrapper" ng-class="{true:'condition-up', false:'condition-down'}[!!follower.isShow]"></span>
+        </span>
+      </div>
+
+      <!-- filter follower conditions -->
+      <div class="management-fans-item mt20 clearfix" ng-show="follower.isShow">
+
+        <!-- tags list wrapper -->
+        <section class="management-fans-tag dark-gray row">
+          <label class="label-condition-title" ng-class="{true: 'col-md-3', false: 'col-md-2'}[user.language=='en_us']" translate="customer_follower_tag"></label>
+          <div class="row clear-container-padding clear-container-margin" ng-class="{true: 'col-md-9', false: 'col-md-10'}[user.language=='en_us']">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="check-all-items">
+                <wm-checkbox ng-model="follower.tagAll" ng-click="follower.selectAll('tag',follower.tagAll)" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+              </label>
+            </div>
+
+            <ul class="follower-tags-items col-md-10 clear-container-padding">
+              <li class="col-md-2 col-sm-3 col-xs-4 follower-tag-item clear-container-padding tag-name-wrapper text-el" ng-repeat="tag in follower.tags track by $index">
+                <wm-checkbox ng-model="tag.checked" ng-click="follower.selectItem('tag', tag.checked)" class="follower-checkbox-style"></wm-checkbox><span class="tag-name" wm-tooltip="{{tag.name}}">{{tag.name}}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- whether subscribe channel wrapper -->
+        <section class="management-fans-tag dark-gray row">
+          <label class="label-condition-title" ng-class="{true: 'col-md-3', false: 'col-md-2'}[user.language=='en_us']" translate="channel_subscribe_channel"></label>
+          <div class="row clear-container-padding clear-container-margin" ng-class="{true: 'col-md-9', false: 'col-md-10'}[user.language=='en_us']">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="check-all-items">
+                <wm-checkbox ng-model="follower.channelAll" ng-click="follower.selectAll('channel', follower.channelAll)" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+              </label>
+            </div>
+
+            <ul class="follower-tags-items col-md-10 clear-container-padding">
+              <li class="col-md-2 col-sm-3 col-xs-4 follower-tag-item clear-container-padding tag-name-wrapper text-el" ng-repeat="channel in follower.channels track by $index">
+                <wm-checkbox ng-model="channel.checked" ng-click="follower.selectItem('channel', channel.checked)" class="follower-checkbox-style"></wm-checkbox><span class="tag-name" wm-tooltip="{{channel.name | translate}}">{{channel.name | translate}}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- fetch info wrapper -->
+        <!--
+        <section class="management-fans-tag dark-gray row">
+          <label class="label-condition-title" ng-class="{true: 'col-md-3', false: 'col-md-2'}[user.language=='en_us']" translate="channel_fetch_info"></label>
+          <div class="row clear-container-padding clear-container-margin" ng-class="{true: 'col-md-9', false: 'col-md-10'}[user.language=='en_us']">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="check-all-items">
+                <wm-checkbox ng-model="follower.infoAll" ng-click="follower.selectAll('info', follower.infoAll)" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+              </label>
+            </div>
+
+            <ul class="follower-tags-items col-md-10 clear-container-padding">
+              <li class="col-md-2 col-sm-3 col-xs-4 follower-tag-item clear-container-padding tag-name-wrapper text-el" ng-repeat="info in follower.infos track by $index">
+                <wm-checkbox ng-model="info.checked" ng-click="follower.selectItem('info', info.checked)" class="follower-checkbox-style"></wm-checkbox><span class="tag-name" wm-tooltip="{{info.name | translate}}">{{info.name | translate}}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+        -->
+
+        <!-- follower attributes wrapper -->
+        <section class="management-fans-attribute">
+          <div class="dark-gray row follower-fans-attribute">
+            <label class="label-condition-title" ng-class="{true: 'col-md-3 col-sm-3 col-xs-3', false: 'col-md-2 col-sm-2 col-xs-2'}[user.language=='en_us']" for="social-account" translate="customer_follower_attribute"></label>
+            <div class="container-fluid clear-container-padding follower-filter-conditions" ng-class="{true: 'col-md-9 col-sm-9 col-xs-9', false: 'col-md-10 col-sm-10 col-xs-10'}[user.language=='en_us']">
+              <div>
+                <!-- datetime picker -->
+                <div class="inline-block follower-attribute-distance">
+                  <span translate="member_follow_time" class="inline-block follower-filter-label"></span>
+                  <div class="inline-block follower-pick-width">
+                    <div class="pull-left coupon-date pd0">
+                        <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="beginPicker" min-date-picker-id="endPicker" ng-model="follower.startTime" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+                      </div>
+                      <div class="pull-left coupon-horizon-line">&minus;</div>
+                      <div class="pull-left coupon-date pd0">
+                        <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="endPicker" max-date-picker-id="beginPicker" ng-model="follower.endTime" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+                      </div>
+                  </div>
+                </div>
+
+                <!-- gender -->
+                <div class="inline-block">
+                  <span class="inline-block follower-filter-label" translate="customer_follower_sex"></span>
+                  <div wm-select on-change="follower.changeGender" ng-model="follower.gender" text-field="text" value-field="value" items="follower.genderOptions" class="select-sex-style"></div>
+                </div>
+
+                <!-- location -->
+                <div>
+                  <span class="inline-block follower-filter-label" translate="customer_follower_location"></span>
+                  <div wm-location channel-id="{{follower.channelId}}" ng-model="follower.location" class="follower-location-item location follower-location-wrapper"></div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <section class="management-fans-btn-group">
+          <span class="btn btn-success" ng-click="follower.search()" translate="customer_follower_search"></span>
+          <span class="btn btn-default clear-btn-style" ng-click="follower.clearQueryCondition()" translate="customer_follower_clear"></span>
+        </section>
+      </div>
+
+      <!-- display chosen conditions wrapper -->
+      <div ng-show="!follower.isShow && (follower.params.tags.length > 0 || follower.params.channels.length > 0 || follower.params.subscribeTimeFrom || follower.params.subscribeTimeTo || follower.params.gender || follower.params.country)" class="management-fans-item-all mt20">
+        <div class="dark-gray">
+          <label class="management-fans-tag follower-selected-conditions" for="selected-conditions" translate="customer_follower_selected_condition"></label>
+
+          <div class="management-shrink-condition clearfix">
+            <div class="display-button dark-gray follower-tag-items">
+
+              <!-- condition of selected tags wrapper -->
+              <section class="panel panel-tags-default panel-center-content" ng-show="follower.params.tags.length > 0">
+                <div class="tags-style">
+                  {{'customer_follower_tag' | translate}}:&nbsp;&nbsp;&nbsp;
+                  <span ng-repeat="tag in follower.params.tags track by $index">
+                    {{tag.name}}&nbsp;&nbsp;
+                  </span>
+                  <label class="close-btn" ng-click="follower.clearCheckbox('tag', true)"></label>
+                </div>
+              </section>
+
+              <!-- condition of selected subscribe or unsubscribe channel wrapper -->
+              <section class="panel panel-tags-default panel-center-content" ng-show="follower.params.channels.length > 0">
+                <div class="tags-style">
+                  {{'channel_subscribe_channel' | translate}}:&nbsp;&nbsp;&nbsp;<span ng-repeat="channel in follower.params.channels track by $index">
+                    {{channel.name | translate}}&nbsp;&nbsp;
+                  </span>
+                  <label class="close-btn" ng-click="follower.clearCheckbox('channel', true)"></label>
+                </div>
+              </section>
+
+              <!-- condition of selected fetch info wrapper -->
+              <!--
+              <section class="panel panel-tags-default panel-center-content" ng-show="follower.params.infos.length > 0">
+                <div class="tags-style">
+                  {{'channel_fetch_info' | translate}}:&nbsp;&nbsp;&nbsp;
+                  <span ng-repeat="info in follower.params.infos track by $index">
+                    {{info.name | translate}}&nbsp;&nbsp;
+                  </span>
+                  <label class="close-btn" ng-click="follower.clearCheckbox('info', true)"></label>
+                </div>
+              </section>
+              -->
+
+              <!-- condition of selected time wrapper -->
+              <section class="panel panel-tags-default panel-center-content" ng-show="follower.params.subscribeTimeFrom || follower.params.subscribeTimeTo">
+                <div class="tags-style">
+                  <label class="position-label-style">{{'member_follow_time' | translate}}:
+                    <label class="label-style">{{(follower.params.subscribeTimeFrom|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(follower.params.subscribeTimeTo|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</label>
+                  </label>
+                  <label class="close-btn" ng-click="follower.clearTime()"></label>
+                </div>
+              </section>
+
+              <!-- condition of selected gender wrapper -->
+              <section class="panel panel-tags-default panel-center-content" ng-show="follower.params.gender">
+                <div class="tags-style">
+                  <label class="position-label-style">{{'customer_follower_sex' | translate}}:
+                    <label class="label-style">{{follower.getTextByValue(follower.genderOptions, follower.params.gender) | translate}}</label>
+                  </label>
+                  <label class="close-btn" ng-click="follower.clearGender()"></label>
+                </div>
+              </section>
+
+              <!-- condition of selected location wrapper -->
+              <section class="panel panel-tags-default panel-center-content" ng-show="follower.params.country">
+                <div class="tags-style">
+                  <label class="position-label-style">{{'customer_follower_location' | translate}}:
+                    <label class="label-style" ng-model="follower.location">{{follower.params.country | translate}}&nbsp;{{follower.params.province | translate}}&nbsp;{{follower.params.city | translate}}</label>
+                  </label>
+                  <label class="close-btn" ng-click="follower.clearLocation()"></label>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- followers table header wrapper -->
+  <div wm-list-header content="{{follower.totalItems <= 1 ? 'customer_follower_follower' : 'customer_follower_followers' | translate:'{ count: follower.totalItems }'}}" icon="{'url': '/images/customer/fans_numbers_icon.png', 'width': 16, height: 15}"></div>
+
+  <!-- <div class="panel panel-default panel-center-content">
+    <div class="panel-center-title panel-follower-header clearfix">
+      <div class="total-follower-style">
+        <div class="follower clearfix">
+          <div class="total-follower-icon-style"> </div>
+          <div class="total-follower">
+            <span translate="customer_follower_total"></span>
+            <span class="member-span" ng-if="follower.totalItems > 1">{{'customer_follower_followers' | translate:'{ count: follower.totalItems }'}}</span>
+            <span class="member-span" ng-if="follower.totalItems <= 1">{{'customer_follower_follower' | translate:'{ count: follower.totalItems }'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- batch bind tags or send message wrapper-->
+  <div class="tag-dropdown-wrap assist-table-wrapper" ng-show="follower.checkedFollowersStore.length > 0">
+
+    <div class="tag-dropdown mr5" ng-click="follower.showBatchBindTag()">{{'customer_follower_tag'|translate}}<b class="caret"></b></div>
+    <!-- Label -->
+    <div wm-label class="follower-label" checked-item-store="follower.checkedFollowersStore" selected-account="follower.channelId" module="follower" on-change="follower.updateTags()" type="batch" ng-if="follower.isShowBatchBindTagDropdown" on-close="follower.hideTagModal"></div>
+    <div ng-show="follower.checkedFollowersStore.length > 1" class="tag-dropdown broadcast-dropdown point-issued-wrapper" ng-click="follower.showMessageModal()">
+      {{'channel_wechat_broadcast_message'|translate}}
+    </div>
+  </div>
+
+  <!-- followers list wrapper -->
+  <div class="table-wrap follower-table-wrap">
+    <wm-table ng-model="follower.list" is-select-all="true"></wm-table>
+  </div>
+
+  <!-- pagination wrapper -->
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="follower.currentPage" page-size="follower.pageSize" total-items="follower.totalItems" on-change-size="follower.changeSize" on-change-page="follower.changePage"></div>
+  </div>
+
+  <!-- single bind tags wrapper -->
+  <div class="tag-modal member-tag-show" ng-if="follower.isShowEditTagDropdown" ng-style="follower.tagStyle">
+    <div wm-label class="follower-label" checked-item-store="follower.bindTagFollowerStore" selected-account="follower.channelId" module="follower" on-change="follower.updateTags()" type="single" channel-id="follower.channelId" bound-tags="follower.targetBoundTags" on-close="follower.hideTagModal"></div>
+  </div>
+</div>
+
+<!-- modal wrapper -->
+<div class="modal-no-color" ng-show="follower.isShowBatchBindTagDropdown || follower.isShowEditTagDropdown" ng-click="follower.hideTagModal()">
+</div>
+
+<!-- FANS DETAIL-->
+<div ng-show="!follower.isListPage">
+  <div class="follower-fans-detail">
+    <div wm-breadcrumb="follower.breadcrumb"></div>
+    <div class="follower-fans-detail-body row">
+      <img class="follower-fans-detail-body-img col-md-1" ng-src="{{follower.detail.headerImgUrl}}" />
+      <div class="follower-fans-detail-body-content col-md-10">
+        <div class="follower-fans-detail-body-content-name fz18">
+          {{follower.detail.nickname}}
+          <img class="follower-fans-detail-body-content-sex" src="/images/customer/female.png" ng-show="follower.detail.gender == 'FEMALE'" />
+          <img class="follower-fans-detail-body-content-sex" src="/images/customer/male.png" ng-show="follower.detail.gender == 'MALE'" />
+        </div>
+        <div class="follower-fans-detail-body-content-region fz14" translate="customer_follower_region">:
+          <span class="follower-fans-detail-body-content-region-country">{{follower.detail.country}}</span>
+          <span class="follower-fans-detail-body-content-region-district">{{follower.detail.province}}</span>
+          <span class="follower-fans-detail-body-content-region-district">{{follower.detail.city}}</span>
+        </div>
+        <div class="follower-fans-detail-body-content-signature fz14" translate="customer_follower_language">:
+          <span class="follower-fans-detail-body-content-signature-content">{{follower.detail.language | translate}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="follower-fans-detail-footer fz14">
+    <span class="follower-fans-detail-footer-name" ng-show="follower.detail.tags.length != 0 && follower.detail.tags" translate="customer_follower_tags">:</span>
+    <span class="follower-fans-detail-footer-tag" ng-repeat="tag in follower.detail.tags">{{tag}}</span>
+  </div>
+</div>
+
+<div class="modal-dialog broadcast-detail-dialog w45p follower-broadcast-wrapper" ng-show="follower.isCollapsed">
+  <div class="modal-header reply-dialog-header">
+    <button type="button" class="close popup-close replay-dialog-close follower-replay-close" ng-click="follower.closeMessage()"></button>
+    <h4 class="modal-title create-user-title reply-message-title fs16" translate="channel_wechat_broadcast_message"></h4>
+  </div>
+  <form name="userCreateForm" ng-submit="follower.sendMessage()">
+    <div class="modal-body modal-bgcolor create-user-body replay-message-body">
+      <div class="form-group">
+        <div class="mb10">{{'channel_wechat_mass_target' | translate}}</div>
+        <div class="mb30">
+          <span class="mr5">{{follower.sendCount}}{{'channel_follwers' | translate}}</span><span class="broadcast-manual-select">( {{'channel_manual_select' | translate}} )</span>
+        </div>
+      </div>
+      <div class="follower-broadcast-message mb30">
+        <div wm-wechat-message remain-character="follower.remainCharacter" ng-model="follower.message"></div>
+      </div>
+      <div class="form-group">
+        <div class="mb10">{{'channel_wechat_mass_time' | translate}}</div>
+        <div class="mb20">
+          <div class="pull-left broadcast-type-distance">
+            <wm-radio ng-model="follower.sendType" value="immediate"></wm-radio><span>{{'channel_wechat_mass_immediate' | translate}}</span>
+          </div>
+          <div class="send-type-item">
+            <wm-radio ng-model="follower.sendType" value="timing"></wm-radio><span>{{'channel_wechat_mass_scheduled' | translate}}</span>
+          </div>
+        </div>
+        <div class="follower-broadcast-timepicker" wm-datetime-picker picker-id="schedule-picker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" ng-model="follower.scheduleTime" more-than-today="true" required-field="true" ng-if="follower.sendType == 'timing'"></div>
+      </div>
+      <div class="message-mixed-wrapper">
+        <wm-checkbox ng-model="follower.mixed"></wm-checkbox>{{'channel_wechat_mass_mixed_msg'| translate}}
+        <div class="message-mixed-tip" ng-if="follower.mixed">{{'channel_wechat_mass_mixed_tip'|translate}}</div>
+      </div>
+      <div class="form-group mt30">
+        <input type="submit" class="btn btn-success" value="{{'send' | translate}}" />
+      </div>
+    </div>
+  </form>
+</div>
+
+<div ng-if="!!follower.isCollapsed" class="modal-backdrop fade in follower-modal-backdrop" ng-click="follower.closeMessage()"></div>
+
+<script type="text/ng-template" id="followerDetail.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="follower.hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'channel_follower_detail' | translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor follower-detail-body clearfix">
+    <section class="form-group clearfix">
+
+      <!-- Follower name and gender -->
+      <div class="col-md-9 pd0 mb10">{{follower.follower.nickname}}<img class="follower-sex-img" ng-src="{{follower.gender}}" ng-if="follower.gender" /></div>
+
+      <!-- Follower properties-->
+      <div class="col-md-12 pd0" ng-repeat="prop in follower.baseInfo">
+        <label class="normal-label col-md-3 pd0 text-el">{{prop.name | translate}}: </label>
+        <div class="col-md-9 pd0">{{prop.value | translate}}</div>
+      </div>
+
+      <!-- Aavatar -->
+      <img class="follower-head-img" ng-src="{{follower.follower.headerImgUrl}}" />
+    </section>
+
+    <section class="form-group clearfix" ng-show="follower.followerProperty.length > 0">
+      <div class="mb10" translate="customer_property"></div>
+      <div class="col-md-12 pd0" ng-repeat="prop in follower.detail" ng-if="prop.name != 'gender'">
+        <label class="normal-label col-md-3 pd0 text-el">{{prop.name | translate}}: </label>
+        <div class="col-md-9 pd0">{{prop.value}}</div>
+      </div>
+    </section>
+  </div>
+
+</script>

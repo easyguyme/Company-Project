@@ -1,0 +1,55 @@
+.config-wrap {
+  $styleColor: #6ab3f7;
+  %bg-style {
+    width: 45px;
+    color: #fff;
+    background: $styleColor;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -15px;
+      display: block;
+      width: 15px;
+      height: 25px;
+      @include background-image("/images/content/conf/title_style_flag.png");
+    }
+  }
+  .title-style {
+    position: relative;
+    margin: 20px 0 50px 25px;
+    padding: 3px;
+    &.dot-style {
+      padding-left: 20px;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        display: block;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: $styleColor;
+      }
+      &:after {
+        content: "";
+        display: block;
+        width: 55px;
+        height: 1px;
+        margin-left: -15px;
+        margin-top: 10px;
+        background: $styleColor;
+      }
+    }
+    &.flag-style {
+      @extend %bg-style;
+    }
+    &.arrow-style {
+      @extend %bg-style;
+      &:after {
+        background-image: url("/images/content/conf/title_style_arrow.png");
+      }
+    }
+  }
+}

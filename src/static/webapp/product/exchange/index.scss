@@ -1,0 +1,100 @@
+.goods-snap {
+  position: relative;
+  color: $item-name-color;
+  font-size: 1.4rem;
+  margin: 1rem;
+  background-color: #fff;
+  box-shadow: 0 0.1rem 0.5rem $item-shadow-color;
+
+  img {
+    display: block;
+    height: 8rem;
+    width: 9rem;
+  }
+  .goods-snap-title {
+    @include text-overflow();
+    position: absolute;
+    left: 10.5rem;
+    top:  2rem;
+    width: 50%;
+  }
+  .goods-snap-points {
+    position: absolute;
+    left: 10.5rem;
+    top: 5rem;
+    padding-left: 1.5rem;
+    @include background-image("/images/mobile/integral.png");
+    background-size: 0.7rem 0.8rem;
+    background-position: 0.1rem 0.3rem;
+  }
+}
+
+.exchange-detail {
+  background-color: #fff;
+  box-shadow: 0 0.1rem 0.5rem $item-shadow-color;
+  margin-bottom: 1.6rem;
+
+  .exchange-item {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid $item-shadow-color;
+
+    .mb-number {
+      margin-top: -0.3rem;
+    }
+  }
+  .exchange-label {
+    color: $yellow-bg-color;
+    font-size: 1.3rem;
+  }
+  .exchange-points {
+    font-size: 1.2rem;
+    .value {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.exchange-msg-card {
+  background-color: #fff;
+  margin: 1rem;
+  padding: 1rem;
+  padding-bottom: 1.8rem;
+  box-shadow: 0 0.1rem 0.5rem $item-shadow-color;
+  color: #414141;
+  font-size: 1.3rem;
+
+  .exchange-msg, .error-msg {
+    line-height: 2.5rem;
+  }
+
+  .exchange-msg-title {
+    color: $item-name-color;
+    font-size: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 2rem;
+    @include background-image("/images/mobile/success.png");
+    background-size: 1.5rem;
+    background-position: 0 0.2rem;
+    padding-left: 2rem;
+    &.error-msg {
+      @include background-image("/images/mobile/fail.png");
+    }
+  }
+  .exchange-time {
+    font-size: 1.1rem;
+    color: #adadad;
+  }
+}
+
+.return-btn {
+  width: 8.4rem;
+  height: 2.9rem;
+  line-height: 2.9rem;
+  margin-right: 1rem;
+  font-size: 1.4rem;
+}
+
+.view-order {
+  margin-top: 0.5rem;
+  margin-right: 1rem;
+}

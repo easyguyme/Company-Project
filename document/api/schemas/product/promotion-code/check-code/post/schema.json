@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "file": {
+      "type": "array",
+      "required": true,
+      "description": "file data"
+    },
+    "productId": {
+      "type": "string",
+      "required": true,
+      "description": "product number"
+    }
+  }
+}

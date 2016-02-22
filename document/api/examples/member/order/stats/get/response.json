@@ -1,0 +1,12 @@
+{
+    "lastOperateTime": "2015-04-22",//最后购买时间
+    "operateInterval": 30,//距离最后一次消费的天数
+    "consumptionAmount": 120,//累计消费总额
+    "consumptionAmountAvg": 180,//平均累计消费总额
+    "recentConsumption": 11,//最近6个月购买次数
+    "recentConsumptionAvg": 12,//最近6个月平局购买次数
+    "consumption": 11,//该会员平均每次消费金额
+    "consumptionAvg": 12,//总的平均每次消费金额
+    "memberMaxConsumption": 11,//该会员单次最大消费额
+    "maxConsumption": 12,//单次最大消费额
+}

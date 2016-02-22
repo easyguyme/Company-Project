@@ -1,0 +1,37 @@
+<div wm-breadcrumb="activity.breadcrumb"></div>
+
+<div class="activity-download-wrapper">
+  <div class="extension-title clearfix">
+    <div class="pull-left">
+      <span class="extension-gray2">{{activity.activityName}}</span>
+    </div>
+  </div>
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_user_title"></span>
+      <a class="btn btn-success btn-xs" href="#" ng-click="activity.exportPrizeStatistic()" id="prizeStatisticBtn" translate="activity_prize_statistic"></a>
+      <a class="btn btn-success btn-xs" href="#" ng-click="activity.exportUserPlayCount()" id="userPlayCountBtn" translate="export_user_play_count"></a>
+      <a class="btn btn-success btn-xs" href="#" ng-click="activity.exportBarUseRecord()" id="barUseRecordBtn" translate="export_bar_use_record"></a>
+    </div>
+    <div class="activity-item-body">
+      <div class="tab-view-wrap">
+        <div wm-table class="colored-table" ng-model="activity.list"></div>
+
+        <div class="activity-download-clearfix">
+          <div class="broadcast-pagination">
+            <div wm-pagination current-page="activity.currentPage" page-size="activity.pageSize" total-items="activity.totalCount" on-change-size="activity.changeSize" on-change-page="activity.changePage"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="statistics-chart-item">
+    <div class="activity-item-body back-panel">
+      &nbsp;&nbsp;
+      <a ng-href="/uhkklp/activity"><span class="btn btn-default active">{{'activity_back_btn'|translate}}</span></a>
+    </div>
+  </div>
+
+
+</div>

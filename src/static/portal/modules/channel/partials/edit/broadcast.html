@@ -1,0 +1,70 @@
+  <div wm-breadcrumb="broadcast.breadcrumb"></div>
+    <div class="panel-body container-fluid panel-mass-container">
+      <form id="broadcast-form" ng-submit="broadcast.submit()">
+        <div class="mass-filter-wrapper">
+          <div class="row mlr0">
+            <div class="col-md-2 pd0">
+              <label>{{'channel_wechat_mass_target' | translate}}</label>
+              <div>
+                <div wm-select on-change="broadcast.changeObjectItems" ng-model="broadcast.object" text-field="text" value-field="value" items="broadcast.objectItems"></div>
+              </div>
+            </div>
+            <div class="all-fans col-md-10 pd0 hide" ng-class="{'show':broadcast.object == 'all'}">
+              <div class="row mlr0">
+                <div class="col-md-2 pd0 mr20">
+                  <label>{{'channel_wechat_mass_gender' | translate}}</label>
+                  <div>
+                    <div wm-select on-change="broadcast.changeGenderItems" ng-model="broadcast.gender" text-field="text" value-field="value" items="broadcast.genderItems"></div>
+                  </div>
+                </div>
+                <div class="col-md-6 pd0">
+                  <label>{{'channel_wechat_mass_address' | translate}}</label>
+                  <div wm-location ng-model="broadcast.location" channel-id="{{broadcast.channelId}}" class="location"></div>
+                </div>
+              </div>
+            </div>
+            <div class="choose-tags col-md-7 pd0 hide" ng-class="{'show':broadcast.object == 'tag'}">
+              <div>
+                  <label>{{'channel_wechat_mass_tag' | translate}}</label>
+                  <div class=""><div wm-auto-complete localdata="broadcast.autoCompleteItems" ng-model="broadcast.tags" id="broadcast-tag" add-new-tags="false" max-length="30" tag-place-holder=""></div></div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="mass-message-wrapper form-group">
+          <div wm-wechat-message remain-character="broadcast.remainCharacter" ng-model="broadcast.message" preview="{{currentChannel.type}}" preview-func="broadcast.preview()"></div>
+        </div>
+        <div class="send-type-wrapper clearfix">
+          <label class="mb10">{{'channel_wechat_mass_time' | translate}}</label>
+          <div class="mb20">
+            <div class="pull-left send-type-item">
+              <wm-radio ng-model="broadcast.sendType" value="immediate"></wm-radio><span>{{'channel_wechat_mass_immediate' | translate}}</span>
+            </div>
+            <div class="send-type-item">
+              <wm-radio ng-model="broadcast.sendType" value="timing"></wm-radio>{{'channel_wechat_mass_scheduled' | translate}}
+            </div>
+          </div>
+          <div wm-datetime-picker picker-id="schedule-picker" format-type="YYYY-MM-DD HH:mm:00" pick-date="true" pick-time="true" ng-model="broadcast.scheduleTime" more-than-today="true" required-field="true" ng-if="broadcast.sendType == 'timing'"></div>
+          <div class="message-mixed-wrapper">
+            <wm-checkbox ng-model="broadcast.mixed"></wm-checkbox>{{'channel_wechat_mass_mixed_msg'| translate}}
+            <div class="message-mixed-tip" ng-if="broadcast.mixed">{{'channel_wechat_mass_mixed_tip'|translate}}</div>
+          </div>
+        </div>
+        <div class="mass-operation-wrapper">
+          <input type="submit" class="btn btn-success mr20 user-btn" value="{{'channel_wechat_mass_submit' | translate}}" form="broadcast-form"/>
+          <span class="btn btn-default user-btn" ng-click="broadcast.cancel()">{{'channel_wechat_mass_cancel' | translate}}</span>
+        </div>
+      </form>
+    </div>
+
+<!-- preview modal -->
+<script type="text/ng-template" id="preview.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="menu-modal-title">{{'channel_wechat_preview_title' | translate}}</h4>
+  </div>
+  <div class="menu-modal-body modal-body">
+    <img ng-src="{{qrcode}}" class="mass-preview-qrcode"/>
+    <p class="mass-preview-tip">{{'channel_wechat_preview_tip' | translate}}</p>
+  </div>
+</script>

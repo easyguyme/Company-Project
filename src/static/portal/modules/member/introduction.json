@@ -1,0 +1,26 @@
+{
+  "name": "member",
+  "title": "management_extension_member_title",
+  "havePartial": true,
+  "link": {
+    "enterFunction": "/member/member",
+    "createCard": "/member/edit/card/setting"
+  },
+  "introductions": ["management_extension_member_introduction1", "management_extension_member_introduction2"],
+  "stepOne": ["management_extension_member_stepone1", "management_extension_member_stepone2", "management_extension_member_stepone3", "management_extension_member_stepone4"],
+  "stepTwo": ["management_extension_member_steptwo21", "management_extension_member_steptwo22", "management_extension_member_steptwo23", "management_extension_member_steptwo24"],
+  "firstDot": "/images/management/paragraphbreak.png",
+  "secondDot": "/images/management/paragraphbreak_secondlevel.png",
+  "functions": [
+    {
+      "title": "management_extension_member_list",
+      "image": ["/images/member/introduction/magnifier_clientlist.png"]
+    },
+    {
+      "title": "management_extension_member_card_point",
+      "image": ["/images/member/introduction/magnifier_integralrule.png"]
+    }
+  ],
+  "images": ["/images/member/introduction/magnifier_membercard.png", "/images/member/introduction/magnifier_membersetting.png", "/images/member/introduction/magnifier_membercenter.png"],
+  "illustrations": ["management_extension_member_illustration1", "management_extension_member_illustration2"]
+}

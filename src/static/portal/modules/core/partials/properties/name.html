@@ -1,0 +1,5 @@
+<!-- type is input and property name is 'name'-->
+<div class="member-attr-item member-attr-name clearfix">
+  <input id="{{property.id}}" type="text" class="form-control member-attr" ng-model="property.value" maxlength="30" minlength="2" form-tip="{{'customer_member_name_tip' | translate}}" wm-validate="property.validateHandler || member.checkName" ng-if="!property.isRequired" />
+  <input id="{{property.id}}" type="text" class="form-control member-attr" ng-model="property.value" required maxlength="30" minlength="2" form-tip="{{'customer_member_name_tip' | translate}}" wm-validate="property.validateHandler || member.checkName" ng-if="property.isRequired" />
+</div>

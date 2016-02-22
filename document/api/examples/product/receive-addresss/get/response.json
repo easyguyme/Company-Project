@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "id": "562f40bc971374e2488b456e",
+            "address": "安徽太湖",
+            "location": {
+                "province": "安徽省",
+                "city": "安庆市",
+                "district": "太湖县",
+                "detail": "江塘"
+            },
+            "phone": "１８６１５４５０６２８"
+        },
+        {
+            "id": "562f1a2397137431048b4568",
+            "address": "上海浦东新区张江店",
+            "location": {
+                "province": "上海市",
+                "city": "松江区",
+                "district": "漕河泾",
+                "detail": ""
+            },
+            "phone": "11111111111"
+        }
+    ]
+}

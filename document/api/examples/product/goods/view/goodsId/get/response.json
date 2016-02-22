@@ -1,0 +1,30 @@
+{
+    "id": "554ac94ed6f97f233d8b4572",
+    "productId": "55374623d6f97f7d7e8b4567",
+    "pictures": [
+        "http://ww4.sinaimg.cn/bmiddle/6106a4f0gw1eo94gprrhaj20dw0agdhe.jpg",
+        "http://ww4.sinaimg.cn/bmiddle/6106a4f0gw1eo94gprrhaj20dw0agdhe.jpg"
+    ],
+    "score": 100,
+    "total": 20,
+    "usedCount": 1,
+    "status": "on",
+    "onSaleTime": "2015-05-08 09:56",
+    "url": "http://u.augmarketing.cn/BP1y",
+    "order": 10,
+    "categoryName": "asd",
+    "clicks": "1",
+    "receiveModes":['self']
+    "addresses": [
+        {
+            "address":"自提地址名称",
+            "location" {
+                "province":"省"
+                "city":"市"
+                "district":"县/区"
+                "detail":"详细地址（不包括省市地区）"
+            },
+            "phone":"14245157867"
+        }
+    ]
+}

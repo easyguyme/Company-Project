@@ -1,0 +1,22 @@
+<div class="mb30 clearfix" ng-controller="wm.ctrl.member.profile.helpdesk as helpdesk">
+  <div ng-if="helpdesk.totalItems > 0">
+    <div class="member-table-title">
+      <span class="title-space">
+        {{'member_use_helpdesk' | translate}}：<span class="title-keyword">{{helpdesk.count}}</span>
+      </span>
+      <span>
+        {{'member_helpdesk_last_visit_time' | translate}}：<span class="title-keyword">{{helpdesk.lastChatDate}}</span>
+      </span>
+    </div>
+
+    <wm-table ng-model="helpdesk.list" class="colored-table member-helpdesk-table-wrapper"></wm-table>
+
+    <div class="member-point-pagination">
+      <div wm-pagination current-page="helpdesk.currentPage" page-size="helpdesk.pageSize" total-items="helpdesk.totalItems" on-change-size="helpdesk.changeSize" on-change-page="helpdesk.changePage" extra-size="5"></div>
+    </div>
+  </div>
+
+  <div ng-if="helpdesk.totalItems == 0" class="member-no-record">
+    {{'member_no_helpdesk_record' | translate}}
+  </div>
+</div>

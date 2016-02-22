@@ -1,0 +1,441 @@
+$wm-screen-md-min: 992px;
+$wm-screen-sm-min: 768px;
+$wm-customer-filter-bg: #eee;
+$wm-member-expired-time: #999;
+$wm-view-text-color: #3f7f36;
+$member-point-black: #2b2b2b;
+$member-point-gray: #a0a0a0;
+$member-point-black: #000;
+$member-import-color: #f7f7f7;
+
+.customer-filter .form-style {
+  background-color: $wm-customer-filter-bg;
+  height: 40px;
+  text-align: left;
+  width: 100%;
+}
+
+.member-span {
+  margin: 0 2px 0 5px;
+}
+
+.member-scores-items {
+  table {
+    tr {
+      td:nth-child(4) {
+        @include text-overflow();
+      }
+    }
+  }
+}
+
+.isshow {
+  @include size(10px, 10px);
+  background: url('/images/customer/filtrate_icon_up.png') no-repeat;
+  display: inline-block;
+  margin-top: 1px;
+}
+
+.ishide {
+  @include size(10px, 10px);
+  background: url('/images/customer/filtrate_icon_down.png') no-repeat;
+  display: inline-block;
+  margin-top: 1px;
+}
+
+.member-card-items {
+  margin-bottom: 0;
+
+  .member-card-item {
+    line-height: 35px;
+    padding-right: 20px;
+    word-break: break-word;
+  }
+}
+
+@media (max-width: $wm-screen-sm-min) {
+  .member-card-items {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: $wm-screen-md-min) {
+  .member-card-items {
+    padding-left: 15px;
+  }
+}
+
+.wm-data-table {
+  tr {
+    .member-score {
+      width: 12%;
+    }
+
+    .member-account-thead {
+      width: 14%;
+    }
+
+    .member-account-tbody {
+      @include text-overflow();
+      .panel-icon-default {
+        margin-right: 5px;
+      }
+
+      .icon-style {
+        @include size(24px, auto);
+
+        margin: 0 5px 2px;
+      }
+    }
+  }
+}
+
+.member-management {
+
+  .operation-col {
+    width: 120px;
+  }
+}
+
+.member-table-wrap {
+
+  .table>thead>tr {
+
+    th:nth-child(1) {
+      width: 4%;
+    }
+
+    th:nth-child(2) {
+      width: 10%;
+    }
+
+    th:nth-child(3) {
+      width: 15%;
+    }
+
+    th:nth-child(4) {
+      width: 13%;
+    }
+
+    th:nth-child(5) {
+      width: 10%;
+    }
+
+    th:nth-child(6) {
+      width: 12%;
+    }
+
+    th:nth-child(7) {
+      width: 9%;
+    }
+
+    th:nth-child(8) {
+      width: 10%;
+    }
+
+    th:nth-child(9) {
+      width: 6%;
+    }
+  }
+}
+
+.member-expired-time {
+  color: $wm-member-expired-time;
+  font-size: 11px;
+}
+
+.merge-member-dialog {
+  .modal-dialog {
+    width: 1000px;
+  }
+}
+
+.view-member-text {
+  color: $wm-view-text-color;
+  text-decoration: underline;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.member-merge-operation {
+  width: 190px;
+}
+
+.member-view-scores {
+  margin-bottom: 35px;
+
+  th:nth-child(1) {
+    width: 260px;
+  }
+
+  th:nth-child(2) {
+    width: 130px;
+  }
+
+  th:nth-child(3) {
+    width: 210px;
+  }
+}
+
+.point-issued-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  .tag-modal {
+    width: 430px;
+
+    .tag-content {
+      height: auto;
+    }
+  }
+}
+
+.normal-label {
+  font-weight: normal;
+  color: $base-text-color;
+}
+
+.block {
+  display: block;
+}
+
+.txteare-nosize {
+  resize: none;
+}
+
+.show-box {
+  font-size: 12px;
+}
+
+.img {
+  @include size(24px, 24px);
+}
+
+.choose-card-type {
+  width: 50%;
+}
+
+.member-tag-show {
+  right: 30px;
+  border: 0;
+}
+
+.members-wrapper {
+  margin-bottom: 80px;
+}
+
+.member-input-search {
+  margin-top: -2px;
+}
+
+.member-tags-item {
+  margin-bottom: 0;
+}
+
+.member-fans {
+  margin-left: 0;
+}
+
+.member-filter {
+  padding-right: 10px;
+}
+
+.member-button-success {
+  margin: 4px 15px;
+}
+
+.member-button-export {
+  margin: 5px 10px;
+}
+
+.member-button-import {
+  margin: 10px;
+}
+
+.datepicker {
+  float: left;
+  width: 44.5%;
+}
+
+.member-location {
+  margin-top: 10px;
+}
+
+.member-point-pagination {
+  float: right;
+  margin-top: 20px;
+  margin-right: 30px;
+}
+
+.member-table-title {
+  color: $member-point-gray;
+  margin: 10px 0;
+
+  .title-space {
+    margin-right: 15px;
+  }
+
+  .title-keyword {
+    font-style: italic;
+    font-weight: bold;
+    color: $member-point-black;
+    font-size: 16px;
+  }
+}
+
+.over-text {
+
+  span {
+    max-width: 100%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+// member tab content
+.member-wechat-interact .wm-data-table .icon-style {
+  @include size(24px, 24px);
+}
+
+.member-switch-tab {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.member-overview-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  color: $member-point-gray;
+
+  li {
+    margin-right: 20px;
+  }
+
+  .overview-value {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    color: $member-point-black;
+  }
+}
+
+.member-hint-keyword {
+  background-color: $white-background-text-color;
+  border-radius: 1px;
+  color: $white-background-color;
+}
+
+.message-table {
+
+  thead th:nth-child(1) {
+    width: 530px;
+  }
+}
+
+.pagination-no-padding {
+  padding-bottom: 0;
+}
+
+.member-menu-content {
+  padding-right: 20px;
+}
+
+.member-message-log {
+  cursor: pointer;
+  background-image: url('/images/customer/messagelogging_hover.png');
+  display: inline-block;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  color: $white-background-text-color;
+
+  &:hover {
+    color: $white-background-text-hover-color;
+  }
+}
+
+.member-message-wrapper {
+  padding-bottom: 50px;
+
+  .history-message-body {
+    padding: 0;
+    border: 0;
+    max-height: 500px;
+    min-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+.member-profile-select {
+  width: 17%;
+}
+
+.member-point-table-wrapper {
+
+  thead {
+
+    th:nth-child(1) {
+      width: 25%;
+    }
+
+    th:nth-child(2) {
+      width: 15%;
+    }
+
+    th:nth-child(3) {
+      width: 20%;
+    }
+
+    th:nth-child(4) {
+      width: 40%;
+    }
+  }
+}
+
+.member-helpdesk-table-wrapper {
+
+  thead {
+
+    th:nth-child(1) {
+      width: 40%;
+    }
+
+    th:nth-child(2) {
+      width: 40%;
+    }
+
+    th:nth-child(3) {
+      width: 20%;
+    }
+  }
+}
+
+.member-no-record {
+  text-align: center;
+  color: $member-point-gray;
+  margin-top: 15px;
+}
+
+.member-no-record-order {
+  text-align: center;
+  margin-left: -50px;
+}
+
+.member-helpdesk-icon {
+  padding-left: 33px !important;
+}
+
+.member-import-color {
+  background-color: $member-import-color;
+}
+
+.member-import {
+  margin-left: 38px;
+}
+
+.member-file-name {
+  margin-left: 21px;
+}

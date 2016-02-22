@@ -1,0 +1,363 @@
+$codechange-border-color: #efefef;
+$offline-manage-filter-boder-color: #c2c2c2;
+$add-item-info-color: #8b8b8b;
+$front-triangle-color: #fff;
+$front-content-color: #f7f7f7;
+$invalid-code-color: #dd5c5c;
+
+.btn-input-search {
+  padding: 4.5px 12px;
+  min-width: 70px;
+}
+
+.input-search-wrapper {
+  vertical-align: top;
+}
+
+.redeemer-search-wrapper {
+  margin-bottom: 40px;
+}
+
+.redeemer-info-wrapper {
+  padding: 0 50px 0 20px;
+
+  .info-box {
+    padding-top: 20px;
+  }
+
+  .default-member-wrapper {
+    $default-color: #999;
+
+    background-image: url('/images/product/sousuo.png');
+    background-repeat: no-repeat;
+    background-size: 36px 38px;
+    background-position: center 0;
+    color: $default-color;
+
+    height: 68px;
+    line-height: 30px;
+    margin-top: 30px;
+    padding-top: 38px;
+    text-align: center;
+  }
+}
+
+.add-item-wrapper {
+  text-align: center;
+  margin-top: 30px;
+
+  .add-item-icon {
+    background-image: url('/images/management/btn_create_user_default.png');
+    width: 26px;
+    height: 26px;
+    margin: 0 auto 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url('/images/management/btn_create_user_hover.png');
+    }
+
+    &:active {
+      background-image: url('/images/management/btn_create_user_click.png');
+    }
+  }
+
+  .add-item-info {
+    color: $add-item-info-color;
+  }
+}
+
+.info-member-wrapper {
+  position: relative;
+  margin-bottom: 0;
+
+  tr {
+    border-bottom: 1px solid $codechange-border-color;
+  }
+
+  .member-view-customer .member-view-account-detail {
+    .member-account-social {
+      padding-left: 15px;
+    }
+
+    .member-account-channel {
+      margin-left: 0;
+      width: auto;
+    }
+  }
+
+  .default-properties-item {
+    width: auto;
+  }
+
+  .member-view-name {
+    margin: 7px 0 15px;
+  }
+
+  .btn-group-member {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    z-index: 1;
+
+    .btn-operate-member {
+      margin-right: 5px;
+    }
+  }
+}
+
+
+// record page
+.border-wrapper {
+  border-top: 1px solid $codechange-border-color;
+}
+
+.codechange-member-wrapper {
+  $properties: name, phone, integration;
+
+  margin-bottom: 40px;
+
+  .member-item {
+    background-repeat: no-repeat;
+    background-position: 15px 13px;
+    background-size: 15px 15px;
+
+    line-height: 20px;
+    padding: 10px 15px 10px 40px;
+    word-break: break-word;
+  }
+
+  @each $item in $properties {
+    .member-basic-#{$item} {
+      background-image: url('/images/customer/#{$item}.png');
+    }
+  }
+}
+
+.codechange-promocode-wrapper {
+
+  .border-wrapper {
+    $border-wrapper-bg-color: #f5f5f5;
+
+    background-color: $border-wrapper-bg-color;
+    padding: 10px;
+  }
+
+  .operation-promocode-wrapper {
+    padding: 30px 0;
+    margin: 0 25%;
+
+    .input-add-wrapper {
+      padding-left: 10px;
+      vertical-align: top;
+
+      .btn-input-add {
+        border-radius: 2px;
+      }
+    }
+  }
+
+  .display-promocode-wrapper {
+    .fixed-table-nodata {
+      padding: 50px 0 181px;
+    }
+
+    .tbody-wrapper {
+      height: 250px;
+
+      tbody td {
+        padding: 5px 20px;
+      }
+    }
+
+    .statistics-promocode-wrapper {
+      padding: 10px 0 15px;
+
+      .statistics-promocode-item {
+        display: inline-block;
+
+        + .statistics-promocode-item {
+          padding-left: 30px;
+        }
+      }
+    }
+
+    .fixed-table-loading {
+      .loading-wrapper {
+        margin-top: 50px;
+      }
+    }
+  }
+
+}
+
+.btn-promocode-wrapper {
+  margin-bottom: 50px;
+}
+
+
+// add member modal dialog
+.add-member-dialog {
+
+  .modal-content {
+    background-color: $front-content-color;
+  }
+
+  .modal-header {
+    background-color: $front-triangle-color;
+    border-radius: 4px;
+  }
+
+  .member-attr-item {
+    max-width: initial;
+  }
+
+  .member-attr-checkbox {
+    .row li {
+      width: 33.3%;
+      min-width: 180px;
+    }
+  }
+
+  .member-attr-radio {
+    .row li {
+      width: 33.3%;
+      min-width: 180px;
+      margin-top: 5px;
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          margin-top: 0;
+        }
+      }
+
+    }
+  }
+
+  .form-add-member {
+    max-height: 500px;
+  }
+
+  .member-attr-wrapper {
+    .autodropdown-body .autodropdown-tags {
+      margin: 0;
+      min-height: 30px;
+      line-height: 30px;
+
+      .autodropdown-keycode-wrapper {
+        height: 30px;
+      }
+
+      .autodropdown-input {
+        display: inline-block;
+        height: 30px;
+        margin: 0;
+        padding: 6px 12px;
+        vertical-align: top;
+      }
+
+      .autodropdown-tag {
+        height: auto;
+      }
+    }
+
+    .autodropdown-items .autodropdown-item {
+      &:hover {
+        background-color: initial;
+      }
+
+      &.selected {
+        background-color: $white-background-text-color;
+      }
+    }
+  }
+
+}
+
+.exchange-success-wrapper {
+  margin: 8px 0;
+
+  .btn-redeem-now {
+    background-color: $state-success-text;
+    margin-left: 10px;
+    padding: 4.5px 12px;
+  }
+}
+
+.offline-manage-filter {
+  display: inline-block;
+  border: 1px solid $offline-manage-filter-boder-color;
+  background-color: $white-background-color;
+  border-radius: 2px;
+  cursor: pointer;
+  line-height: 21px;
+  position: relative;
+  color: $wm-dark-gray;
+  min-width: 96px;
+  padding: 4px 7px;
+  margin: 0 15px;
+}
+
+.new-member-btn {
+  float: right;
+  margin: 5px;
+}
+
+.product-redeem-tip {
+  text-align: center;
+}
+
+.product-categories-title {
+  width: auto;
+}
+
+.member-add {
+  background-color: $front-content-color;
+  margin-bottom: 50px;
+}
+
+.offline-datetime-picker {
+  width: 50%;
+}
+
+.offline-exchange-footer {
+  margin-right: 100px;
+}
+
+.promocodes-table {
+  .promocodes-invalid-code {
+    td {
+      color: $invalid-code-color !important;
+    }
+  }
+
+  .wm-data-table {
+    thead {
+      th:nth-child(1) {
+        width: 30%;
+      }
+
+      th:nth-child(2) {
+        width: 40%;
+      }
+
+      th:nth-child(3) {
+        width: 30%;
+      }
+    }
+
+    tbody {
+      td:nth-child(1) {
+        width: 30%;
+      }
+
+      td:nth-child(2) {
+        width: 40%;
+      }
+
+      td:nth-child(3) {
+        width: 30%;
+      }
+    }
+  }
+}

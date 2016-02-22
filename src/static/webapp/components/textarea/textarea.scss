@@ -1,0 +1,32 @@
+.c-textarea {
+  background-color: $textarea-default-bg;
+  color: $input-text-color;
+  border: 0;
+  height: 3rem;
+  width: 100%;
+  resize: none;
+  outline: 0;
+  outline-offset: 0;
+  padding: .47rem .31rem;
+  font-size: .41rem;
+
+  &:-moz-placeholder { // Mozilla Firefox 4 to 18
+    color: $textarea-placeholder-color;
+    font-style: italic;
+  }
+
+  &::-moz-placeholder { // Mozilla Firefox 19+
+    color: $textarea-placeholder-color;
+    font-style: italic;
+  }
+
+  &:-ms-input-placeholder { // Internet Explorer 10+
+    color: $textarea-placeholder-color;
+    font-style: italic;
+  }
+
+  &::-webkit-input-placeholder { // WebKit browsers
+    color: $textarea-placeholder-color;
+    font-style: italic;
+  }
+}

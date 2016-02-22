@@ -1,0 +1,18 @@
+.c-radio {
+  @include square(.44rem);
+
+  background-image: url('/images/mobile/components/radio_normal.png');
+  background-repeat: no-repeat;
+  background-size: .42rem;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  &--checked {
+    background-image: url('/images/mobile/components/radio_checked.png');
+  }
+
+  &--disabled {
+    background-image: url('/images/mobile/components/radio_disabled.png');
+  }
+}

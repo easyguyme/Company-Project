@@ -1,0 +1,313 @@
+$table-cell-height:        30px;
+$table-heder-text-color:   #787878;
+$table-cell-text-color:    #555;
+$table-border-color:       #ededed;
+$table-th-color:           #999;
+$table-back-color:         #efefef;
+$table-delete-hover-color: #f58f88;
+$fixed-table-nodata-text-color: #999;
+$red-text-color: #b42d14;
+
+.wm-data-table {
+  border-top: 1px solid $border-color;
+  table-layout: fixed;
+  margin-bottom: 0;
+
+  //table header
+  thead th {
+    color: $table-th-color;
+    position: relative;
+  }
+
+  tbody tr td {
+    color: $table-cell-text-color;
+    height: $table-cell-height;
+    line-height: $table-cell-height;
+    vertical-align: middle;
+
+    span {
+      word-wrap: break-word;
+    }
+  }
+
+  //sotable icons
+  .icon-sortable {
+    @include icon(7px, 11px, '/images/core/icon_sort_down.png');
+    float: left;
+    margin-left: 10px;
+    position: absolute;
+    bottom: 18px;
+
+    &.up {
+      @include background-image('/images/core/icon_sort_up.png');
+    }
+  }
+
+  //checkbox columns
+  .checkbox-col {
+    width: 50px;
+  }
+
+  //operation columns
+  .operation-col {
+    width: 160px;
+  }
+
+  .operate-icon {
+    cursor: pointer;
+    display: inline-block;
+    height: $table-cell-height;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: $table-cell-height;
+  }
+
+  .icon-selected {
+    background-image: url('/images/core/icon_more_selected.png');
+  }
+
+  @each $icon in $operate-icons {
+    .#{$icon}-icon-table {
+      @include background-image('/images/core/icon_#{$icon}_default.png');
+      &:hover {
+        @include background-image('/images/core/icon_#{$icon}_hover.png');
+      }
+    }
+  }
+
+  @each $icon in $operate-icons {
+    .#{$icon}-icon-disable {
+      @include background-image('/images/core/icon_#{$icon}_disable.png');
+      cursor: not-allowed;
+    }
+  }
+
+  .operation-text {
+    color: $base-text-color;
+    text-decoration: underline;
+    margin-right: 20px;
+
+    &:hover {
+      color: $white-background-text-hover-color;
+    }
+  }
+
+  .operation-delete-text {
+    &:hover {
+      color: $table-delete-hover-color;
+    }
+  }
+
+  .more-operations {
+    position: absolute;
+    top: 25px;
+    z-index: 9999;
+
+    .list-group-item {
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+  }
+
+  .icon-style {
+    margin-bottom: 2px;
+    margin-right: 12px;
+  }
+
+  .icon-table-copy {
+    vertical-align: top;
+    margin-top: 8px;
+  }
+}
+
+.wm-table-wrap {
+  margin: 30px 10px;
+}
+
+//table with theme
+.colored-table {
+  border: 1px solid $table-border-color;
+  border-top: 0;
+
+  .table {
+    border-top: 0;
+    margin-bottom: 0;
+
+    .icon-sortable {
+      bottom: 9px;
+    }
+  }
+
+  table {
+    thead tr th {
+      background-color: $table-back-color;
+      border-bottom: 0;
+      font-size: 12px;
+      padding: 8px 20px;
+    }
+
+    tbody tr td {
+      border-top: 0;
+      padding: 15px 20px;
+    }
+  }
+}
+
+.with-underline-table {
+  table {
+    tbody tr td {
+      border-bottom: 1px solid $table-border-color;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.table-title-word {
+  float: left;
+  line-height: 1.1;
+  vertical-align: top;
+}
+
+
+.delete-word-position {
+  margin-left: 27px;
+}
+
+.goods-icon-block {
+  max-width: 100%;
+  float: left;
+}
+
+.goods-check {
+  width: 7%;
+}
+
+.goods-icon-show {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.fixed-table-nodata {
+  color: $fixed-table-nodata-text-color;
+  font-size: 14px;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.tbody-wrapper {
+  overflow-y: auto;
+  background-color: $white-background-color;
+
+  .fixed-table-border {
+    border-bottom: 1px solid $table-border-color;
+
+    .mark-text {
+      $mark-text-bg-color: rgba(165, 208, 104, .75);
+      background-color: $mark-text-bg-color;
+      border-radius: 3px;
+      color: $white-background-color;
+      cursor: pointer;
+      padding: 2px 5px;
+      font-size: 12px;
+      display: inline-block;
+      line-height: 16px;
+    }
+  }
+
+  .input-text-wrapper {
+    display: inline-block;
+  }
+
+  .input-text-unit {
+    vertical-align: top;
+  }
+
+  &.loading-tbody-wrapper {
+    min-height: 250px;
+    position: relative;
+
+    .fixed-table-loading {
+      background-color: $white-background-color;
+      height: 100%;
+      width: 100%;
+      min-height: 250px;
+      position: absolute;
+      top: 0;
+
+      .loading-wrapper {
+        height: 20px;
+        text-align: center;
+      }
+
+      .loading-text {
+        color: $table-th-color;
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        padding-left: 22px;
+      }
+
+      .loading-icon {
+        margin-top: 4px;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.mark-content {
+  height: 22px;
+}
+
+.green-text-color {
+  color: $white-background-text-color;
+}
+
+.single-row {
+  padding: 5px 20px !important;
+}
+
+.red-content {
+  color: $red-text-color;
+}
+
+.table-pen {
+  @include background-image('/images/content/editor_default.png');
+  @include size(14px, 13px);
+  display: inline-block;
+
+  &:hover {
+    @include background-image('/images/content/editor_hover.png');
+  }
+}
+
+.modify-text {
+  max-width: calc(100% - 30px);
+  display: inline-block;
+  line-height: 14px;
+}
+
+.link-explaination {
+  color: $table-th-color;
+  margin-left: 5px;
+  font-size: 13px;
+}
+
+.table {
+
+  td[class='text-el'] {
+
+    span,
+    a {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+      float: left;
+    }
+  }
+}

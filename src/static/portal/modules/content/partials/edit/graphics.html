@@ -1,0 +1,64 @@
+<div class="graphics" wm-before-unload="graphics.isSaved">
+  <div wm-breadcrumb="graphics.breadcrumb"></div>
+
+  <div class="main-content container-fluid">
+    <div class="col-xs-6 col-md-4">
+      <div wm-wechat-graphic graphic="graphics.graphic" is-edit="graphics.isEdit" article-select="graphics.selectGraphic" article-delete="graphics.deleteGraphic" default-data="graphics.default" selected-index="graphics.selectedIndex"></div>
+    </div>
+    <div class="col-xs-6 col-md-6">
+      <form id="graphic-form" ng-submit="graphics.submit()">
+        <div class="graphics-edit">
+          <div class="form-group clearfix">
+            <label class="col-md-12" for="title">{{'content_graphics_title'|translate}}</label>
+            <div class="col-md-12">
+              <input class="form-control" name="title" ng-model="graphics.selectedGraphic.title" below-msg required maxlength="35" form-tip="{{'content_graphics_title_tip'|translate}}"/>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <label class="col-md-12" for="picUrl">{{'content_graphics_cover'|translate}}</label>
+            <div class="col-md-12">
+              <input class="form-control readonly-style" name="picUrl" ng-model="graphics.selectedGraphic.picUrl" onkeydown="return false;" below-msg required form-tip="{{'content_graphics_cover_tip'|translate}}"/>
+              <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="graphics.selectedGraphic.picUrl">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group clearfix" ng-show="graphics.type===graphics.types.single">
+            <label class="col-md-12" for="description">{{'content_graphics_summary'|translate}}</label>
+            <div class="col-md-12">
+              <textarea maxlength="120" class="form-control" name="description" ng-model="graphics.selectedGraphic.description"></textarea>
+              <span class="form-tip normal">{{'content_graphics_summary_tip'|translate}}</span>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <label class="col-md-12" for="content">{{'content_graphics_content'|translate}}</label>
+            <div id="ueditor-wrapper" class="col-md-12">
+              <div wm-authorize class="ueditor" name="content" ng-model="graphics.selectedGraphic.content" config="graphics.ueditorConfig"></div>
+              <input class="form-control hidden" ng-model="graphics.selectedGraphic.content" required/>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <label class="col-md-12" for="sourceUrl">{{'content_graphics_link'|translate}}</label>
+            <div class="col-md-12">
+              <input class="form-control" type="url" name="sourceUrl" ng-model="graphics.selectedGraphic.sourceUrl" below-msg  wm-url form-tip="{{'content_graphics_link_tip'|translate}}"/>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <div class="col-md-12">
+              <wm-checkbox ng-model="graphics.selectedGraphic.showCoverPic"></wm-checkbox>
+                <span>{{'content_graphics_show_cover_pic' | translate}}</span>
+            </div>
+          </div>
+          <div class="graphics-btns" ng-show="graphics.type===graphics.types.single">
+            <input type="submit" class="btn btn-primary" value="{{'content_graphics_ok'|translate}}" />
+          </div>
+          <i class="back-triangle"></i>
+          <i class="front-triangle"></i>
+        </div>
+        <div class="graphics-multiple-btns" ng-show="graphics.type===graphics.types.multiple">
+          <input type="submit" class="btn btn-primary" value="{{'content_graphics_ok'|translate}}" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

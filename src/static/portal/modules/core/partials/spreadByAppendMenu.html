@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="close()"></button>
+  <h4 class="modal-title create-graphics-title" translate="spread_menu_title"></h4>
+</div>
+<div class="modal-body spread-menu-body">
+  <form ng-submit="submit()">
+    <section class="modal-body-header">
+      <h5 class="modal-body-title" translate="{{ title }}"></h5>
+      <p class="form-tip" translate="{{ description }}"></p>
+    </section>
+
+    <section class="qrcode-channel-wrapper">
+      <div class="clearfix mb10" ng-repeat="type in channelTypes track by $index" ng-if="(channels | filter:{'type': type}).length">
+        <div class="mb10"><span translate="spread_{{ type }}_channel"></span></div>
+        <div class="col-md-6 col-xs-6" ng-repeat="channel in channels | filter:{'type': type} track by $index">
+          <div class="col-md-2 col-xs-2 qrcode-radio"><div wm-radio ng-model="$parent.$parent.$parent.pickedChannel" value="{{ channel.id }}"></div></div>
+          <div class="qrcode-channel-box col-md-10 col-xs-10">
+            <img ng-src="{{ channel.avatar }}" />
+            <span class="channel-name text-el" wm-tooltip="{{ channel.name }}">{{ channel.name }}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="center-text modal-footer">
+      <button class="btn btn-success" ng-click="submit()" translate="ok" ng-disabled="!pickedChannel"></button>
+      <!-- <a class="btn btn-success" translate="ok" disabled="disabled" ng-if="!pickedChannel"></a> -->
+    </section>
+  </form>
+</div>

@@ -1,0 +1,267 @@
+<div wm-breadcrumb="earlybird.breadcrumb"></div>
+<div wm-tabs="earlybird.changeTab()" tabs="earlybird.tabs" ng-model="earlybird.curTab"></div>
+
+<!-- SMS -->
+<div class="uhkklp-earlybird" ng-show="earlybird.sms">
+  <!-- 模板一 -->
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span translate="earlybird_sms_template_one"></span>
+    </div>
+    <div class="earlybird-item-body">
+      <div class="sms-left">
+        <textarea class="sms-sample-text" ng-model="earlybird.smsOne" readonly></textarea> <br/>
+        <label class="sms-tip" translate="earlybird_template_one_tip"></label> <br/>
+        <input type="button" class="btn btn-success user-btn" ng-click="earlybird.sendSms($event, 'sms_one')" value="{{'earlybird_btn_send'|translate}}" id="smsOne"/>&nbsp;&nbsp;
+        <input type="button" class="btn btn-success user-btn" value="{{'earlybird_btn_test'|translate}}" ng-click="earlybird.showTestSms('sms_one')"/>
+      </div>
+      <div class="sms-right">
+        <span class="sms-record-span" translate="earlybird_last_sms_record"></span>
+        <div class="sms-record-div" ng-show="earlybird.showOne">
+          <label>{{'earlybird_text_sms_total'|translate}}: {{earlybird.totalOne}}，</label>&nbsp;
+          <label>{{'earlybird_text_successful'|translate}}: {{earlybird.successfulOne}}，</label>&nbsp;
+          <label>{{'earlybird_text_failed'|translate}}: {{earlybird.failedOne}}</label>&nbsp;
+          <label ng-click="earlybird.exportFailedSms('sms_one')">
+            <span class="sms-record-span sms-pointer" ng-show="earlybird.failedOne > 0">
+              {{'earlybird_text_export_failed_sms'|translate}}
+            </span>
+          </label>
+        </div>
+        <div class="sms-record-div" ng-show="!earlybird.showOne">
+          <label translate="earlybird_no_sms_record"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模板二 -->
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span translate="earlybird_sms_template_two"></span>
+    </div>
+    <div class="earlybird-item-body">
+      <div class="sms-left">
+        <textarea class="sms-sample-text" ng-model="earlybird.smsTwo" readonly></textarea> <br/>
+        <input type="button" class="btn btn-success user-btn" ng-click="earlybird.sendSms($event, 'sms_two')" value="{{'earlybird_btn_send'|translate}}" id="smsTwo"/>&nbsp;&nbsp;
+        <input type="button" class="btn btn-success user-btn" value="{{'earlybird_btn_test'|translate}}" ng-click="earlybird.showTestSms('sms_two')"/>
+      </div>
+      <div class="sms-right">
+        <span class="sms-record-span" translate="earlybird_last_sms_record"></span>
+        <div class="sms-record-div" ng-show="earlybird.showTwo">
+          <label>{{'earlybird_text_sms_total'|translate}}: {{earlybird.totalTwo}}，</label>&nbsp;
+          <label>{{'earlybird_text_successful'|translate}}: {{earlybird.successfulTwo}}，</label>&nbsp;
+          <label>{{'earlybird_text_failed'|translate}}: {{earlybird.failedTwo}}</label>&nbsp;
+          <label ng-click="earlybird.exportFailedSms('sms_two')">
+            <span class="sms-record-span sms-pointer" ng-show="earlybird.failedTwo > 0" >
+              {{'earlybird_text_export_failed_sms'|translate}}
+            </span>
+          </label>
+        </div>
+        <div class="sms-record-div" ng-show="!earlybird.showTwo">
+          <label translate="earlybird_no_sms_record"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 模板三 -->
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span translate="earlybird_sms_template_three"></span>
+    </div>
+    <div class="earlybird-item-body">
+      <div class="sms-left">
+        <textarea class="sms-sample-text" ng-model="earlybird.smsThree" readonly></textarea> <br/>
+        <label class="sms-tip" translate="earlybird_template_three_tip"></label> <br/>
+        <input type="button" class="btn btn-success user-btn" ng-click="earlybird.sendSms($event, 'sms_three')" value="{{'earlybird_btn_send'|translate}}" id="smsThree"/>&nbsp;&nbsp;
+        <input type="button" class="btn btn-success user-btn" value="{{'earlybird_btn_test'|translate}}" ng-click="earlybird.showTestSms('sms_three')"/>
+      </div>
+      <div class="sms-right">
+        <span class="sms-record-span" translate="earlybird_last_sms_record"></span>
+        <div class="sms-record-div" ng-show="earlybird.showThree">
+          <label>{{'earlybird_text_sms_total'|translate}}: {{earlybird.totalThree}}，</label>&nbsp;
+          <label>{{'earlybird_text_successful'|translate}}: {{earlybird.successfulThree}}，</label>&nbsp;
+          <label>{{'earlybird_text_failed'|translate}}: {{earlybird.failedThree}}</label>&nbsp;
+          <label ng-click="earlybird.exportFailedSms('sms_three')">
+            <span class="sms-record-span sms-pointer" ng-show="earlybird.failedThree > 0">
+              {{'earlybird_text_export_failed_sms'|translate}}
+            </span>
+          </label>
+        </div>
+        <div class="sms-record-div" ng-show="!earlybird.showThree">
+          <label translate="earlybird_no_sms_record"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+</div>
+
+
+<!-- 抽獎 -->
+<div class="uhkklp-earlybird" ng-show="earlybird.draw">
+  <div class="statistics-chart-item draw-item">
+    <div class="statistics-item-title">
+      <span translate="earlybird_text_draw_set"></span>
+    </div>
+    <div class="earlybird-item-body">
+      <div class="draw-date-set">
+        <label translate="earlybird_text_activity_during"></label>
+        <div class="draw-date">
+          <input wm-datetime-picker picker-id="startDatePicker" min-date-picker-id="endDatePicker" ng-model="earlybird.startDate" required />
+        </div>
+        <div class="draw-date">
+          <span class="cut-off"> ~ </span>
+        </div>
+        <div class="draw-date">
+          <input wm-datetime-picker picker-id="endDatePicker" max-date-picker-id="startDatePicker" ng-model="earlybird.endDate" required />
+        </div>
+      </div>
+
+      <!-- 抽奖设置 -->
+      <div class="prize-set">
+        <label translate="earlybird_text_prize_option"></label>
+        <div class="prize">
+          <div class="prize-order">
+            <label translate="earlybird_text_prize_one"></label>
+            <label translate="earlybird_text_prize_points"></label>
+            <div class="prize-input">
+              <input class="form-control" type="text" ng-model="earlybird.pointsOne" wm-validate="earlybird.checkPositiveInt('pointOne', earlybird.pointsOne)" form-tip="{{'earlybird_point_tip'|translate}}" id="pointOne" required />
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="quantity">
+              <label translate="earlybird_text_prize_quantity"></label>
+              <div class="prize-input quantity-input">
+                <input class="form-control" type="text" ng-model="earlybird.quantityOne" wm-validate="earlybird.checkPositiveInt('quantityOne', earlybird.quantityOne)" form-tip="{{'earlybird_quantity_tip'|translate}}" id="quantityOne" required />
+              </div>
+            </div>
+            <div class="prize-name">
+              <label translate="earlybird_text_prize_name"></label>
+              <div class="prize-input name-input">
+                <input class="form-control" type="text" ng-model="earlybird.prizeNameOne" form-tip="{{'earlybird_prize_name_tip'|translate}}" maxlength="30" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="prize-order">
+            <label translate="earlybird_text_prize_two"></label>
+            <label translate="earlybird_text_prize_points"></label>
+            <div class="prize-input">
+              <input class="form-control" type="text" ng-model="earlybird.pointsTwo" wm-validate="earlybird.checkPositiveInt('pointsTwo', earlybird.pointsTwo)" form-tip="{{'earlybird_point_tip'|translate}}" id="pointsTwo" required />
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="quantity">
+              <label translate="earlybird_text_prize_quantity"></label>
+              <div class="prize-input quantity-input">
+                <input class="form-control" type="text" ng-model="earlybird.quantityTwo" wm-validate="earlybird.checkPositiveInt('quantityTwo', earlybird.quantityTwo)" form-tip="{{'earlybird_quantity_tip'|translate}}" id="quantityTwo" required />
+              </div>
+            </div>
+            <div class="prize-name">
+              <label translate="earlybird_text_prize_name"></label>
+              <div class="prize-input name-input">
+                <input class="form-control" type="text" ng-model="earlybird.prizeNameTwo" form-tip="{{'earlybird_prize_name_tip'|translate}}" maxlength="30" required />
+              </div>
+            </div>
+          </div>
+
+          <div class="prize-order">
+            <label translate="earlybird_text_prize_three"></label>
+            <label translate="earlybird_text_prize_points"></label>
+            <div class="prize-input">
+              <input class="form-control" type="text" ng-model="earlybird.pointsThree" wm-validate="earlybird.checkPositiveInt('pointsThree', earlybird.pointsThree)" form-tip="{{'earlybird_point_tip'|translate}}" id="pointsThree" required />
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="quantity">
+              <label translate="earlybird_text_prize_quantity"></label>
+              <div class="prize-input quantity-input">
+                <input class="form-control" type="text" ng-model="earlybird.quantityThree" form-tip="{{'earlybird_quantity_tip'|translate}}" wm-validate="earlybird.checkPositiveInt('quantityThree', earlybird.quantityThree)" id="quantityThree" required />
+              </div>
+            </div>
+            <div class="prize-name">
+              <label translate="earlybird_text_prize_name"></label>
+              <div class="prize-input name-input">
+                <input class="form-control" type="text" ng-model="earlybird.prizeNameThree" form-tip="{{'earlybird_prize_name_tip'|translate}}" maxlength="30" required />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 抽奖短信 -->
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span translate="earlybird_text_send_draw_sms"></span> &nbsp;&nbsp;
+      <span class="btn btn-success" ng-click="earlybird.sendSms($event, 'sms_four')" id="smsFour">
+        {{'earlybird_btn_send'|translate}}
+      </span>&nbsp;&nbsp;
+      <span class="btn btn-success" ng-click="earlybird.showTestSms('sms_four')">
+        {{'earlybird_btn_test'|translate}}
+      </span>
+      <span class="btn-export pull-right" translate="export" wm-tooltip="{{'earlybird_draw_export_tip' | translate}}" ng-click="earlybird.exportDrawMembers()">
+      </span>
+    </div>
+    <div class="earlybird-item-body">
+      <div class="sms-left">
+        <textarea class="sms-sample-text" ng-model="earlybird.smsFour" readonly></textarea> <br/>
+        <label class="sms-tip" translate="earlybird_draw_sms_tip"></label> <br/>
+      </div>
+      <div class="sms-right">
+        <span class="sms-record-span" translate="earlybird_last_sms_record"></span>
+        <div class="sms-record-div" ng-show="earlybird.showFour">
+          <label>{{'earlybird_text_sms_total'|translate}}: {{earlybird.totalFour}}，</label>&nbsp;
+          <label>{{'earlybird_text_successful'|translate}}: {{earlybird.successfulFour}}，</label>&nbsp;
+          <label>{{'earlybird_text_failed'|translate}}: {{earlybird.failedFour}}</label>&nbsp;
+          <label ng-click="earlybird.exportSmsDetails('sms_four')" ng-show="earlybird.totalFour > 0">
+            <span class="sms-record-span sms-pointer">{{'earlybird_text_export_sms_detail'|translate}}</span>
+          </label>
+        </div>
+        <div class="sms-record-div" ng-show="!earlybird.showFour">
+          <label translate="earlybird_no_sms_record"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 抽奖 -->
+  <div class="statistics-chart-item draw-item-panel">
+    <div class="statistics-item-title">
+      <span translate="earlybird_text_draw"></span> &nbsp;&nbsp;
+      <span class="btn btn-success" ng-click="earlybird.drawPrize()" translate="earlybird_btn_draw"></span>
+    </div>
+    <div class="earlybird-draw-body">
+      <div class="winner-list">
+        <div wm-table class="colored-table" ng-model="earlybird.list"></div>
+        <div class="clearfix">
+          <div class="broadcast-pagination">
+            <div wm-pagination current-page="earlybird.currentPage" page-size="earlybird.pageSize" total-items="earlybird.totalCount" on-change-size="earlybird.changeSize" on-change-page="earlybird.changePage"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 弹出窗 -->
+<script type="text/ng-template" id="showTestSms.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title" translate="earlybird_text_test_sms"></h4>
+  </div>
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="form-group">
+      <label class="dark-gray" translate="earlybird_text_sms_content"></label>
+      <textarea class="form-control" rows="5" readonly ng-model="testSms"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="dark-gray" translate="earlybird_text_test_sms_mobile"></label>
+      <input class="form-control" ng-model="testMobile" readonly />
+    </div>
+    <div class="center-text">
+      <input type="button" class="btn btn-success user-btn" value="{{'earlybird_btn_send'|translate}}" ng-click="sendTestSms()" />&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class="btn btn-default active" ng-click="hideModal()">&nbsp;&nbsp;{{'earlybird_btn_cancel'|translate}}&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</script>

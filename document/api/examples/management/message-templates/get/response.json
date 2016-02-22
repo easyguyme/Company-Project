@@ -1,0 +1,18 @@
+[
+  {
+        "id": "559b836f475df481788b4567",
+        "name": "商品兑换模板",
+        "weChat": {
+            "templateId": "",
+            "templateContent": ""
+        },
+        "email": {
+            "title": "",
+            "content": ""
+        },
+        "mobile": {
+            "message": ""
+        },
+        "updatedAt": "2015-07-07 15:44:47"
+    }
+]

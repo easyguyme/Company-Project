@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'dynamic-variables';
+@import 'bootstrap/bootstrap-theme';
+
+// Core variables and mixins
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap/variables';
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap/mixins';
+// Vendor css files
+@import url('../../../vendor/bower/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css');
+@import url('../../../vendor/bower/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css');
+@import url('../../../vendor/bower/tooltipster/css/tooltipster.css');
+
+@import 'bootstrap/bootstrap';
+@import 'loader';

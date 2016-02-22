@@ -1,0 +1,36 @@
+{
+    "items": [
+        {
+            "id": "54b5c1f8db4c0eea6e8b4569",
+            "name": "test",
+            "properties": [
+                {
+                    "id": "54b62e4edb3b6eae048b4584",
+                    "order": 1,
+                    "name": "属性的名称",
+                    "type": "input",
+                    "options": "",
+                    "defaultValue": "test",
+                    "isRequired": true,
+                }
+            ],
+            'isDeletedCategory': true,
+        },
+        {
+            "id": "54b5c1f8db4c0eea6e8b4569",
+            "name": "test22",
+            "properties": [
+                {
+                    "id": "54b62e4edb3b6eae048b4585",
+                    "order": 2,
+                    "name": "性别",
+                    "type": "select",
+                    "options": "男，女，保密",
+                    "defaultValue": "男",
+                    "isRequired": true,
+                }
+            ],
+            'isDeletedCategory': false,
+        }
+    ]
+}

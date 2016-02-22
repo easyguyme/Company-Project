@@ -1,0 +1,6 @@
+---
+- name: update supervisor
+  # TODO: Only restart affected processes.
+  shell: supervisorctl update
+  # Some modules will call this blindly as a handler, supervisor may not have been installed yet.
+  ignore_errors: yes

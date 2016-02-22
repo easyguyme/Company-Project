@@ -1,0 +1,100 @@
+$product-date-background-color: #eee;
+$wm-screen-md-min: 992px;
+$wm-product-color: #d8d8d8;
+
+.shelf-position {
+  margin-top: -10px;
+
+  .shelf-date {
+    margin-right: -145px;
+    margin-left: 50px;
+  }
+
+  .activity-short-item {
+    background-color: $product-date-background-color;
+    width: calc(50% - 50.5px);
+  }
+}
+
+.shelf-date-time-picker {
+  background-color: $product-date-background-color;
+}
+
+.product-create-shelf {
+  .goods-check {
+    width: 10%;
+  }
+}
+
+.shelf-edit {
+  margin-top: 60px;
+}
+
+.store-selected-goods {
+  width: 710px;
+}
+
+
+.edit-date {
+  .date-time-picker-div {
+    width: 100%;
+  }
+}
+
+.store-no-search {
+  padding-top: 15%;
+}
+
+.shelf-dialog {
+  .modal-dialog {
+    width: 850px;
+  }
+}
+
+.shelf-padding-b {
+  padding-bottom: 100px;
+}
+
+.shelf-wrapper {
+  @media (max-width: $wm-screen-md-min) {
+    .status-wrapper {
+      padding-left: 15px;
+
+      .select {
+        max-width: 180px;
+      }
+    }
+
+    .onshelf-time-title {
+      padding-left: 0;
+    }
+  }
+
+  .onshelf-time-title {
+    width: auto;
+  }
+
+  .condition-item-title {
+    max-width: 120px;
+    font-weight: bolder;
+  }
+}
+
+.shelf-search-tip {
+  color: $wm-product-color;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: $product-date-background-color;
+}
+
+.shelf-modal {
+  @include size(400px, 258px);
+  color: $base-text-color;
+  margin-top: 7px;
+
+  .store-channel-content {
+    height: 210px;
+  }
+}

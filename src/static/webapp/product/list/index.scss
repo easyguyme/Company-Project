@@ -1,0 +1,139 @@
+.list-header {
+  @include size(100%, 4rem);
+  background-color: $yellow-bg-color;
+  color: $white;
+  padding: 1rem;
+  margin-bottom: .25rem;
+
+  .list-icon {
+    @include square(2rem);
+    @include background-image('/images/mobile/myintegral.png');
+    display: inline-block;
+    background-size: cover;
+    margin-right: 1.5rem;
+  }
+
+  .list-point-tip {
+    font-size: 1.3rem;
+    display: inline-block;
+    line-height: 2.2rem;
+    vertical-align: top;
+    margin-right: 1rem;
+  }
+
+  .list-points {
+    @extend .list-point-tip;
+    font-size: 1.75rem;
+    line-height: 2.1rem;
+  }
+}
+
+.list-bg {
+  padding-bottom: 1rem;
+  overflow-x: hidden;
+
+  .swiper-container {
+    background-color: $white;
+  }
+
+  .swiper-wrapper {
+    color: $tab-color;
+    font-size: 1.3rem;
+    padding: 0 1rem;
+    margin-bottom: 0;
+
+    .swiper-slide {
+      // @include text-overflow();
+      float: left;
+      padding: 1rem .5rem;
+      text-align: center;
+
+      &.tab-active {
+        border-bottom: 0.25rem solid $yellow-bg-color;
+      }
+    }
+  }
+}
+
+.list-content {
+  padding: 1rem;
+
+  .list-item {
+    box-shadow: 2px 2px 0.4rem $item-shadow-color;
+    margin-bottom: .5rem;
+    position: relative;
+    background-color: $white;
+
+    a {
+        color: $item-name-color;
+        text-decoration: none;
+    }
+
+    .item-shadow {
+      @include background-image('/images/mobile/soldout.png');
+      @include size(100%, 14.5rem);
+      background-position: center;
+      background-color: rgba($item-shadow-bg, 0.5);
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .item-pic {
+    @include size(100%, 14.5rem);
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.item-name {
+  padding: 0 1rem;
+  min-height: 3rem;
+  font-size: 1.3rem;
+  line-height: 3rem;
+  border-bottom: 1px solid $item-border-color;
+  word-break: break-word;
+
+  .item-remain-status {
+    color: $item-status-color;
+    font-size: 1.1rem;
+    float: right;
+  }
+}
+
+.no-more-tip {
+  text-align: center;
+  font-size: 1.4rem;
+  color: $item-status-color;
+}
+
+.m-loading {
+  margin: .5rem auto;
+  width: 3px; height:3px;
+  border-radius: 100%;                      /* 圆角 */
+  box-shadow: 0 -10px 0 1px $loading-color,           /* 上, 1px 扩展 */
+              10px 0px #333,                /* 右 */
+              0 10px #333,                  /* 下 */
+              -10px 0 #333,                 /* 左 */
+
+              -7px -7px 0 .5px $loading-color,        /* 左上, 0.5px扩展 */
+              7px -7px 0 1.5px $loading-color,        /* 右上, 1.5px扩展 */
+              7px 7px #333,                 /* 右下 */
+              -7px 7px #333;                /* 左下 */
+}
+.m-spin {
+  -webkit-transform: rotate(360deg);
+  -webkit-animation: spin 1s linear infinite;
+}
+@-webkit-keyframes spin {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform: rotate(360deg);}
+}
+.m-spin {
+  transform: rotate(360deg);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}

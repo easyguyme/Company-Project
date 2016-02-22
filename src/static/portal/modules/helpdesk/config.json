@@ -1,0 +1,42 @@
+{
+  "name": "helpdesk",
+  "states": [
+    "helpdesk-helpdesk",
+    "helpdesk-wiki",
+    "helpdesk-session",
+    "helpdesk-helpdeskvip",
+    "helpdesk-setting",
+    "helpdesk-issue",
+    "helpdesk-helpdeskselfservice"
+  ],
+  "resources": {
+    "helpdesks": "/api/helpdesk/help-desks",
+    "helpdesk": "/api/helpdesk/help-desk",
+    "helpdeskEmail": "/api/helpdesk/help-desk/send-email",
+    "setting": "/api/helpdesk/setting",
+    "settingDetail": "/api/helpdesk/settings",
+    "settingDeleteChannel": "/api/helpdesk/setting/remove-channel",
+    "settingRemoveWeChatCp": "/api/helpdesk/setting/cancel-authorization",
+    "settingDeleteWebsite": "/api/helpdesk/setting/remove-website",
+    "sessions": "/api/helpdesk/conversations",
+    "messages": "/api/helpdesk/messages",
+    "settingAddWebsite": "/api/helpdesk/setting/add-website",
+    "settingAddChannel": "/api/helpdesk/setting/add-channel",
+    "settingBindWeChatCp": "/api/helpdesk/setting/authorize-wechat-cp",
+    "helpdeskCheckUnique": "/api/helpdesk/help-desk/check-unique",
+    "heldeskChangeStatus": "/api/helpdesk/help-desk/change-status",
+    "sessionStatistics": "/api/helpdesk/conversation/statistics",
+    "helpdeskListByTag": "/api/helpdesk/help-desk/list-by-tag",
+    "helpdeskListExcludeTag": "/api/helpdesk/help-desk/list-exclude-tag",
+    "helpdeskAssignTag": "/api/helpdesk/help-desk/assign-tag",
+    "helpdeskRemoveTag": "/api/helpdesk/help-desk/remove-tag",
+    "helpdeskselfservice": "/api/helpdesk/self-settings",
+    "helpdeskselfservicepublish": "/api/helpdesk/self-setting/publish",
+    "wikiAddCategory": "/api/helpdesk/faq/add-faq-category",
+    "wikiCategory": "/api/helpdesk/faq/get-category-list",
+    "wikiFaqs": "/api/helpdesk/faqs",
+    "wikiFaq": "/api/helpdesk/faq",
+    "wikiRemoveCategory": "/api/helpdesk/faq/remove-category",
+    "getCategories": "/api/helpdesk/faq/get-faqs-by-category"
+  }
+}

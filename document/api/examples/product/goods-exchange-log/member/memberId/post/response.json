@@ -1,0 +1,41 @@
+{
+    "items": [
+        {
+            "id": "558289ced6f97f5f7e8b4568",
+            "goods": [
+                {
+                    "id": "5576c119d6f97fc7778b4567",
+                    "productId": "55753c71d6f97fe3338b4567",
+                    "sku": "1433746522779750",
+                    "picture": "http://vincenthou.qiniudn.com/52bb59a2fb73449030ac384a.jpg",
+                    "productName": "友陈肉松饼",
+                    "count": 2
+                }
+            ],
+            "memberId": "55796c85d6f97f462c8b456d",
+            "createdAt": "2015-06-18 17:05:18",
+            "memberName": "刘金海 Hardy",
+            "telephone": "13027785897",
+            "usedScore": 20,
+            "count": 2,
+            "usedFrom": {
+                "id": "54d9c155e4b0abe717853ee1",
+                "type": "wechat",
+                "name": "熊猫Baby"
+            },
+            "exceptedScore": 20,
+            "address": "上海市浦东新区"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/product/goods-exchange-log/member/55796c85d6f97f462c8b456d?tmoffset=-8&accesstoken=5da91224-9a6a-1011-8e37-b14add65cff8&page=1&per-page=10"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 10
+    }
+}

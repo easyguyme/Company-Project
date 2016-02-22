@@ -1,0 +1,27 @@
+.microsite-map-components {
+  height: 100%;
+  width: 100%;
+
+  .microsite-map-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+
+  .microsite-map-close {
+    $map-close-btn-color: #428bca;
+    $map-close-btn-bgcolor: #fff;
+
+    position: absolute;
+    z-index: 1;
+    right: 8px;
+    font-size: 24px;
+    color: $map-close-btn-color;
+    text-decoration: none;
+    background-color: $map-close-btn-bgcolor;
+    display: inline;
+    vertical-align: top;
+    height: 18px;
+    line-height: 18px;
+  }
+}
+

@@ -1,0 +1,117 @@
+<div class="store-order goods-filter clearfix">
+  <div wm-breadcrumb="order.breadcrumb"></div>
+    <!-- Global search -->
+    <div class="panel-heading panel-fans-title">
+      <div wm-list-header head-class="listheader-search-condition">
+        <wm-search ng-model="order.orderNumber" class="search-wrapper-input" click-func="order.search()" placeholder="{{'store_order_id' | translate}}"></wm-search>
+        <span class="btn-operate-condition" ng-click="order.showConditions()">
+          {{'customer_follower_screening_conditions' | translate}}<span class="condition-mark-wrapper" ng-class="{true:'condition-up', false:'condition-down'}[!!order.isShowCondition]"></span>
+        </span>
+      </div>
+    </div>
+
+    <div ng-show="order.isShowCondition" class="clearfix">
+      <!-- Select condition -->
+      <div class="management-fans-tag dark-gray row clear-margin search-wrapper-condition">
+        <label class="col-md-2 col-xs-12 condition-item-label" translate="store_order_status"></label>
+        <div class="col-md-10 col-xs-12 clear-container-padding clearpadding">
+          <div class="operate-tags-items col-md-1 col-xs-12 clear-container-padding">
+            <label class="check-all-items condition-item-label">
+              <wm-checkbox ng-model="order.statusAll" ng-click="order.selectAllStatus(order.statusAll)" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+            </label>
+          </div>
+          <div class="follower-tags-items col-md-11 col-xs-10 clear-container-padding">
+            <ul class="member-card-items category-position clearfix">
+              <li class="member-card-item pull-left" ng-repeat="item in order.status">
+                <wm-checkbox ng-model="item.check" ng-click="order.selectStatus(item)" class="follower-checkbox-style"></wm-checkbox>{{item.name | translate}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row clear-margin search-wrapper-condition">
+        <label class="col-md-2 col-xs-12 condition-item-label onshelf-time-title" translate="store_order_ordered_at"></label>
+        <div class="col-md-10 col-xs-12 clearfix clear-container-padding datepicker-wrapper">
+          <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+            <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="beginPicker" min-date-picker-id="endPicker" pick-date="true" pick-time="true" ng-model="order.params.beginCreatedAt" first-unbind-handler="true" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+          </div>
+          <div class="pull-left datepicker-between-text">&minus;</div>
+          <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+            <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="endPicker" max-date-picker-id="beginPicker" pick-date="true" pick-time="true" ng-model="order.params.endCreatedAt" first-unbind-handler="true" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row clear-margin search-wrapper-condition">
+        <label class="col-md-2 col-xs-12 condition-item-label onshelf-time-title" translate="store_order_goods_total_price"></label>
+        <div class="col-md-10 col-xs-12 clearfix clear-container-padding">
+          <div id="amounts" class="clearfix">
+            <div class="col-md-4 col-xs-6 clearpadding datepicker-container">
+              <input id="minAmount" type="text" class="form-control" ng-model="order.params.minAmount"wm-input-reg data-reg="^(([1-9]\d*)|0)(\.\d{0,2})?$" wm-validate="order.checkPrice"/>
+            </div>
+            <div class="pull-left datepicker-between-text">&minus;</div>
+            <div class="col-md-4 col-xs-5 clearpadding datepicker-container">
+              <input id="maxAmount" type="text" class="form-control" ng-model="order.params.maxAmount"wm-input-reg data-reg="^(([1-9]\d*)|0)(\.\d{0,2})?$" wm-validate="order.checkPrice"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row clear-margin search-wrapper-condition">
+        <label class="col-md-2 col-xs-12 condition-item-label onshelf-time-title" translate="store_order_service_staff"></label>
+        <div class="col-md-10 col-xs-12 clearfix clear-container-padding datepicker-container">
+          <input type="text" class="form-control" ng-model="order.params.staff"/>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row clear-margin search-wrapper-condition">
+        <label class="col-md-2 col-xs-12 condition-item-label onshelf-time-title" translate="store_order_member_anonymous"></label>
+        <div class="col-md-10 col-xs-12 clearfix clear-container-padding datepicker-container">
+          <input type="text" class="form-control" ng-model="order.params.member"/>
+        </div>
+      </div>
+
+      <!-- The buttom of submit and clear -->
+      <div class="management-fans-btn-group">
+        <span class="btn btn-success" ng-click="order.search()" translate="product_goods_sure"></span>
+        <span type="submit" class="btn btn-default clear-btn-style" ng-click="order.clear()" translate="customer_follower_clear"></span>
+      </div>
+    </div>
+
+    <!-- Show conditions -->
+    <div class="checked-conditions-wrapper" ng-if="!order.isShowCondition && order.conditions">
+      <label class="checked-conditions-label" translate="customer_follower_selected_condition">Selected Condition</label>
+
+      <section class="checked-conditions-content clearfix">
+        <div class="conditions-content-item pull-left" ng-repeat="condition in order.conditions">
+          <div class="content-item-wrapper">{{condition.name | translate}}:&nbsp;<span ng-repeat="item in condition.items">{{item | translate}}&nbsp;</span></div>
+          <span class="btn-remove-condition" ng-click="order.removeCondition(condition.type)"></span>
+        </div>
+      </section>
+    </div>
+
+  <!-- The title of table. -->
+  <div class="panel panel-default panel-center-content">
+    <!-- <div class="panel-center-title panel-follower-header clearfix">
+      <div class="total-follower-style">
+        <div class="follower clearfix">
+          <div class="goods-total-icon"> </div>
+          <div class="total-follower">
+            <span translate="product_goods_total"></span>
+            <span class="member-span">{{'store_order_total_commodities' | translate:'{ count: order.totalCount }'}}</span>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div wm-list-header content="{{'store_order_total_commodities' | translate:'{ count: order.totalCount }'}}" icon="{'url': '/images/store/order.png'}"></div>
+  </div>
+
+  <!-- The table -->
+  <div wm-table ng-model="order.list"></div>
+
+  <!-- The pagination -->
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="order.params.page" page-size="order.params['per-page']" total-items="order.totalCount" on-change-size="order.changeSize" on-change-page="order.changePage"></div>
+  </div>
+</div>

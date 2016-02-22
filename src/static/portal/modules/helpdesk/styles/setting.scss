@@ -1,0 +1,531 @@
+$setting-border-bottom-color: #ededed;
+$setting-channel-title-color: #19be9b;
+$setting-body-background-color: #f5f5f5;
+$setting-reminderupdate-body-text-color: #aaa;
+$setting-service-time-title-color: #555;
+$setting-select-btn-color: #ddd;
+$setting-service-time-select-tail-color: #1c1c1c;
+$setting-service-time-btn-disable: #37c3aa;
+$setting-channel-setting-hover: #f58f88;
+$setting-channel-setting-normal: #f37b73;
+$setting-channel-setting-focus: #f16358;
+$setting-channel-info-color: #fff;
+$setting-channel-avater-color: #00fdfd;
+$setting-account-avater-green: #00d00d;
+$setting-account-avater-yellow: #ffa82c;
+$setting-account-avater-blue: #1d9fdb;
+$setting-helpdesk-title-background-color: #efefef;
+$setting-helpdesk-title-color: #787878;
+$setting-helpdesk-mobile-link-active: #29a891;
+
+.default-td {
+  .default-span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    max-width: 100%;
+  }
+}
+
+.reminderlist-table-wrap {
+  margin: 30px 35px 0 10px;
+  box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+
+  .colored-table {
+    thead {
+      tr {
+        th {
+          padding-bottom: 5px;
+        }
+
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          border-bottom: 1px solid $setting-border-bottom-color;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .reply-col {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
+
+.keyword-table-wrap-keyword {
+  .colored-table {
+    thead {
+      tr {
+        th:nth-child(3) {
+          width: 345px;
+        }
+      }
+    }
+  }
+}
+
+.reminder-dialog {
+
+  .modal-dialog {
+    width: 450px;
+
+    .modal-content {
+      height: 310px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.setting-channel-title {
+  height: 38px;
+
+  .setting-channel-title-close {
+    margin-right: 30px;
+    opacity: 1;
+    width: 18px;
+    height: 18px;
+    background: url('/images/management/icon_popup_close_default.png') no-repeat;
+
+    &:hover {
+      background: url('/images/management/icon_popup_close_hover.png') no-repeat;
+    }
+
+    &:active {
+      background: url('/images/management/icon_popup_close_click.png') no-repeat;
+    }
+  }
+
+  .setting-channel-title-text {
+    line-height: 18px;
+    color: $setting-channel-title-color;
+    margin-left: 30px;
+    margin-top: 22px;
+  }
+}
+
+.reminderupdate-body {
+  background-color: $setting-body-background-color;
+  padding: 40px 30px 50px;
+  height: 250px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  .reminderupdate-body-textarea {
+    resize: none;
+    height: 90px;
+  }
+
+  .reminderupdate-body-text {
+    color: $setting-reminderupdate-body-text-color;
+  }
+
+  .reminderupdate-body-btn {
+    margin-top: 20px;
+  }
+}
+
+.service-time-capacity-div {
+  margin-top: 40px;
+  margin-left: 10px;
+
+  .service-time-capacity-title {
+    font-size: 14px;
+    color: $setting-service-time-title-color;
+    line-height: 14px;
+  }
+
+  .service-time-capacity-two {
+    margin-top: 10px;
+    height: 30px;
+  }
+
+  .service-time-capacity-four {
+    margin-top: 10px;
+    height: 30px;
+  }
+
+  .service-time-capacity-six {
+    margin-top: 10px;
+    height: 30px;
+  }
+
+  .service-time-capacity-three {
+    margin-top: 30px;
+  }
+
+  .service-time-capacity-five {
+    margin-top: 30px;
+  }
+
+  .service-time-capacity-seven {
+    margin-top: 50px;
+  }
+}
+
+.service-time-capacity-select {
+  width: 80px;
+  float: left;
+
+  .select-btn {
+    width: 80px;
+    height: 30px;
+    border-color: $setting-select-btn-color;
+    padding-top: 2px;
+  }
+
+  .select-dropdown {
+    width: 80px;
+
+    li {
+      height: 30px;
+    }
+  }
+}
+
+.service-time-capacity-select-hour {
+
+  .select-dropdown {
+    width: 322px;
+    height: 183px;
+
+    li {
+      float: left;
+      width: 80px;
+    }
+  }
+}
+
+.service-time-capacity-select-tail {
+  font-size: 12px;
+  color: $setting-service-time-select-tail-color;
+  float: left;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+
+.service-time-capacity-select-colon {
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+.service-time-capacity-select-underline {
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
+}
+
+.service-time-capacity-btn-disable[disabled] {
+  opacity: .6;
+  background-color: $setting-service-time-btn-disable;
+}
+
+.delete-icon {
+  background-image: url('/images/core/icon_delete_default.png');
+  background-repeat: no-repeat;
+
+  &:hover {
+    background-image: url('/images/core/icon_delete_hover.png');
+  }
+
+  &:focus {
+    background-image: url('/images/core/icon_delete_selected.png');
+  }
+}
+
+.channel-setting-icon {
+  height: 14px;
+  width: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  background-image: url('/images/core/icon_setting_default.png');
+  background-repeat: no-repeat;
+}
+
+.operate-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.channel-block {
+  margin-bottom: 30px;
+}
+
+.channel-setting {
+  cursor: pointer;
+  color: $setting-channel-setting-normal;
+
+  &:hover {
+    color: $setting-channel-setting-hover;
+
+    .channel-setting-icon {
+      background-image: url('/images/core/icon_setting_hover.png');
+    }
+  }
+
+  &:focus {
+    color: $setting-channel-setting-focus;
+
+    .channel-setting-icon {
+      background-image: url('/images/core/icon_setting_click.png');
+    }
+  }
+}
+// .website-code {
+//   padding-top: 35px;
+// }
+
+.setting-channel-info {
+  width: 180px;
+  min-height: 68px;
+  padding: 10px 15px;
+  background-color: $setting-channel-info-color;
+  border-radius: 2px;
+  box-shadow: 0 0 1px 1px rgba(194, 194, 194, .4);
+}
+
+.setting-channel-check {
+  padding-left: 0;
+  margin-top: 27px;
+}
+
+.setting-channel-avatar-wrap {
+  @include square(36px);
+  border: 1px solid $setting-channel-avater-color;
+  border-radius: 50%;
+  margin-top: 5px;
+  float: left;
+  position: relative;
+
+  .sign-icon {
+    position: absolute;
+    right: -4px;
+    bottom: -1px;
+  }
+}
+
+.setting-channel-avatar {
+  width: 30px;
+  border-radius: 50%;
+  position: relative;
+  right: -2px;
+  top: 2px;
+}
+
+.setting-tag {
+  border-radius: 1px;
+  padding: 2px 5px;
+  font-size: 12px;
+  color: $setting-channel-info-color;
+}
+
+.setting-tags {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.setting-channel-dialog {
+  .modal-dialog {
+    width: 550px;
+    margin: 0 auto;
+    margin-top: 150px;
+  }
+}
+
+.setting-channel-split {
+  margin-bottom: 15px;
+  padding-left: 0;
+}
+
+.setting-channel-name {
+  @include text-overflow();
+}
+
+.setting-channel-info-width {
+  width: 60%;
+  margin-top: 15px;
+}
+
+.no-channels-tip {
+  color: $setting-reminderupdate-body-text-color;
+}
+
+.no-channels-wrapper {
+  text-align: center;
+  margin-bottom: 90px;
+  margin-top: 50px;
+}
+
+.create-user-body .tip {
+  height: 30px;
+}
+
+.account-avatar-green {
+  border: 1px solid $setting-account-avater-green;
+}
+
+.account-avatar-yellow {
+  border: 1px solid $setting-account-avater-yellow;
+}
+
+.account-avatar-blue {
+  border: 1px solid $setting-account-avater-blue;
+}
+
+.account-avatar-border {
+  position: relative;
+
+  .avatar-img {
+    @include square(32px);
+    border-radius: 50%;
+    vertical-align: top;
+    position: relative;
+    bottom: -3px;
+    right: -3px;
+  }
+
+  .avatar-icon {
+    position: absolute;
+    bottom: 0;
+    right: -4px;
+  }
+}
+
+.helpdesk-setting {
+  .helpdesk-mobile-title {
+    margin-bottom: 30px;
+    background-color: $setting-helpdesk-title-background-color;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+    color: $setting-helpdesk-title-color;
+    padding: 0 0 0 20px;
+    line-height: 35px;
+  }
+
+  .mobile-application {
+    font-size: 16px;
+    font-weight: normal;
+    margin-left: -5px;
+  }
+
+  .mobile-application-link {
+    text-align: -webkit-center;
+    margin-bottom: 0;
+    margin-top: 30px;
+
+    .mobile-icon {
+      @include size(25px, 23px);
+      background: url('/images/helpdesk/integration_guide.png') no-repeat;
+    }
+
+    .mobile-link {
+      margin-top: 10px;
+      color: $setting-service-time-btn-disable;
+      text-decoration: underline;
+      cursor: pointer;
+
+      &:hover {
+        color: $setting-helpdesk-mobile-link-active;
+      }
+
+      &:active {
+        color: $setting-helpdesk-mobile-link-active;
+      }
+    }
+  }
+}
+
+.helpdesk-table {
+
+  .table>thead>tr {
+
+    th:nth-child(1) {
+      width: 20%;
+    }
+
+    th:nth-child(2) {
+      width: 55%;
+    }
+
+    th:nth-child(3) {
+      width: 15%;
+    }
+
+    th:nth-child(4) {
+      width: 10%;
+    }
+  }
+}
+
+.btn-wechatcp-delete {
+  color: $setting-helpdesk-title-color;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.helpdesk-wechatcp-dialog .modal-dialog {
+  margin-top: 100px;
+  width: 730px;
+
+  .modal-body {
+    height: 480px;
+    overflow-y: auto;
+
+    .modal-body-content {
+      color: $setting-service-time-title-color;
+      font-size: 14px;
+      margin-left: 50px;
+    }
+
+    .modal-body-title {
+      color: $setting-service-time-title-color;
+      font-size: 16px;
+      margin-bottom: 50px;
+      margin-left: 15px;
+      margin-top: 15px;
+    }
+
+    .step-title {
+      color: $setting-helpdesk-title-color;
+      margin-bottom: 15px;
+    }
+
+    .step-one-bgi {
+      background-image: url('/images/management/addfunctionalitytotheplug-in.png');
+      background-repeat: no-repeat;
+      height: 300px;
+      margin-bottom: 40px;
+      margin-top: 10px;
+    }
+
+    .step-two-bgi {
+      background-image: url('/images/management/viewthedetailsoftheauthorized.png');
+      background-repeat: no-repeat;
+      height: 277px;
+      margin-bottom: 40px;
+      margin-top: 10px;
+    }
+
+    .step-three-bgi {
+      background-image: url('/images/management/cancelthepublicauthorization.png');
+      background-repeat: no-repeat;
+      height: 230px;
+      margin-bottom: 30px;
+      margin-top: 10px;
+    }
+  }
+}

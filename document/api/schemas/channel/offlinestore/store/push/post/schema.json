@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "channelIds": {
+      "type": "array",
+      "required": true,
+      "description": "Channel id list"
+    },
+    "storeIds": {
+      "type": "array",
+      "required": true,
+      "description": "Store id list"
+    }
+  }
+}

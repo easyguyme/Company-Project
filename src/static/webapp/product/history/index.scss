@@ -1,0 +1,230 @@
+.record-wrapper {
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 4rem;
+  position: relative;
+
+  .no-items {
+    display: none;
+    position: relative;
+  }
+}
+
+.btns-wrapper {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+
+  .btn-item-wrapper {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+
+.items-wrapper {
+  background-color: $white;
+  box-shadow: 0 0.1rem 0.4rem $item-shadow-color;
+  margin-top: 0.5rem;
+
+  .order-item {
+    padding: 0.5rem 1rem;
+    height: 9rem;
+    border-bottom: 1px solid $item-border-color;
+    overflow: hidden;
+
+    .order-check {
+      @include square(2rem);
+
+      $radio-border-color: #b8b8b8;
+
+      border: 1px solid $radio-border-color;
+      border-radius: 50%;
+      margin-top: 3rem;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .checked-order {
+      @include background-image("/images/mobile/select.png");
+
+      background-size: 1rem 0.7rem;
+      background-position: center;
+      border: 1px solid $yellow-bg-color;
+    }
+
+    .order-content-wrapper {
+      display: flex;
+      display: -webkit-flex;
+      height: 100%;
+    }
+
+    .order-image {
+      @include size(9rem, 8rem);
+      @include background-image("/images/mobile/article_default.png");
+
+      background-size: cover;
+      box-shadow: 0.1rem 0.1rem 0.4rem $item-shadow-color;
+      display: inline-block;
+      position: relative;
+    }
+
+    .order-content {
+      display: inline-block;
+      height: 100%;
+      padding-left: 1.5rem;
+      vertical-align: top;
+      flex: 1;
+      -webkit-flex: 1;
+    }
+
+    .order-detail {
+      @include size(1rem, 100%);
+      @include background-image("/images/mobile/detail.png");
+
+      background-size: 0.75rem 1.35rem;
+      background-position: right center;
+      display: inline-block;
+      float: right;
+    }
+
+    .order-content-name {
+      color: $item-name-color;
+      font-size: 1.4rem;
+      margin: 1.5rem 0 1rem 0;
+    }
+
+    .order-content-number {
+      color: $gray-text-color;
+      font-size: 1rem;
+    }
+
+    .content-count {
+      display: inline-block;
+      max-width: 100%;
+      padding-right: 1.5rem;
+    }
+
+    .content-score {
+      display: inline-block;
+      max-width: 100%;
+    }
+  }
+
+  .check-item {
+    .order-content-wrapper {
+      display: inline-block;
+      padding-left: 1rem;
+    }
+
+    .order-detail {
+      display: none;
+    }
+  }
+
+  .detail-item {
+    .order-check {
+      display: none;
+    }
+  }
+
+  .order-image-shadow {
+    display: none;
+  }
+}
+
+.gifts-wrapper {
+
+  .order-image-shadow {
+    @include square(100%);
+
+    background-position: 0 0;
+    background-size: 4.5rem 4.5rem;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .shadow-scratchcard {
+    @include background-image("/images/mobile/scratchcard.png");
+  }
+
+  .shadow-luckywheel {
+    @include background-image("/images/mobile/luckywheel.png");
+  }
+
+  .order-item .order-check .order-content-number {
+    font-size: 1.2rem;
+  }
+
+}
+
+.delete-icon-wrapper {
+  @include square(2.5rem);
+  @include background-image("/images/mobile/delete.png");
+
+  background-color: rgba($item-shadow-bg, 0.6);
+  background-position: center;
+  background-size: 1.1rem 1.5rem;
+  border-radius: 0.1rem;
+  bottom: 1rem;
+  cursor: pointer;
+  position: fixed;
+  right: 1rem;
+}
+
+.no-records {
+  padding-bottom: 0 !important;
+
+  .no-items {
+    @include square(100%);
+
+    display: inline-block;
+
+    .no-items-content {
+      $content-text-color: #a0a0a0;
+
+      background-position: center 0;
+      color: $content-text-color;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+  }
+
+  .no-exchanges {
+    .no-items-content {
+      @include background-image("/images/mobile/noexchangeorder.png");
+
+      background-size: 6.5rem 7.5rem;
+      height: 11.2rem;
+      padding-top: 10rem;
+    }
+  }
+
+  .no-gifts {
+    .no-items-content {
+      @include background-image("/images/mobile/nojackpotrecords.png");
+
+      background-size: 8rem 5.515rem;
+      height: 9.215rem;
+      padding-top: 8.015rem;
+    }
+  }
+
+  .has-items {
+    display: none;
+  }
+}
+
+.records-loading-wrapper {
+  margin-top: 2rem;
+
+  .records-loading {
+    display: none;
+  }
+}

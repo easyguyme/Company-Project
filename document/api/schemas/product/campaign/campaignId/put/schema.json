@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "活动名称"
+    },
+    "startTime": {
+      "type": "string",
+      "required": true,
+      "description": "活动开始时间"
+    },
+    "endTime": {
+      "type": "string",
+      "required": true,
+      "description": "活动结束时间"
+    },
+    "participantCount": {
+      "type": "int",
+      "required": false,
+      "description": "参与人数 默认为不限(null)"
+    },
+    "limitTimes": {
+      "type": "int",
+      "required": false,
+      "description": "参与次数限制 默认为不限(null)"
+    },
+    "productIds": {
+      "type": "array",
+      "required": false,
+      "description": "No 默认为[]"
+    },
+    "campaigns": {
+      "type": "string",
+      "required": false,
+      "description": "'unlimited', 'first' 或者 [campaignId]"
+    },
+    "tags": {
+      "type": "array",
+      "required": false,
+      "description": "tags"
+    },
+    "channels": {
+      "type": "array",
+      "required": false,
+      "description": "channelId"
+    },
+    "gift": {
+      "type": "array",
+      "required": true,
+      "description": "赠品配置如下"
+    },
+    "gift.type": {
+      "type": "string",
+      "required": true,
+      "description": "赠品类型, score或者lottery"
+    },
+    "gift.config": {
+      "type": "array",
+      "required": true,
+      "description": "赠品规则"
+    },
+    "gift.config.method": {
+      "type": "string",
+      "required": false,
+      "description": "gift.type为score时为scale或者number gift.type为lottery时为times或score"
+    },
+    "gift.config.number": {
+      "type": "int",
+      "required": false,
+      "description": "gift.type为score时必填 倍数或积分"
+    },
+    "gift.config.prize": {
+      "type": "array",
+      "required": false,
+      "description": "如下"
+    },
+    "gift.config.prize.name": {
+      "type": "string",
+      "required": false,
+      "description": "gift.type为lottery时必填 奖品名"
+    },
+    "gift.config.prize.number": {
+      "type": "int",
+      "required": false,
+      "description": "gift.type为lottery时必填 奖品数目或中奖人数比例"
+    },
+    "isActivated": {
+      "type": "boolean",
+      "required": true,
+      "description": "是否启用"
+    }
+  }
+}

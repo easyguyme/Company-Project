@@ -1,0 +1,381 @@
+@import '../../../vendor/bower/pure/pure.css';
+$chat-customer-title-bgcolor: #f1f1f1;
+$chat-customer-title-color: #2a3546;
+$chat-split-time-color: #eee;
+$chat-light-gray-color: #e0e0e0;
+$chat-light-gray-shadow-color: #bdbdbd;
+$chat-form-border-color: #d9e0ea;
+$chat-button-disabled-bgcolor: #c8c9ca;
+$chat-gray-color: #808080;
+$chat-red-color: #f00;
+
+.wechat-split-word {
+  background-color: $chat-split-time-color;
+  color: $white-color;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.wechat-message-avatar {
+  border-radius: 50% !important;
+}
+
+.reset {
+  width: 78%;
+  float: left;
+  line-height: 21px;
+  position: relative;
+  top: 15%;
+  left: 3%;
+  min-height: 35px;
+  height: auto;
+  max-height: 74px;
+  overflow-y: hidden;
+}
+
+.submitbtn {
+  margin-left: 0 !important;
+  width: 15% !important;
+  position: absolute;
+  right: 2%;
+  font-size: 18px;
+  text-align: center;
+  line-height: 100%;
+  padding: 0 !important;
+  height: 35px;
+  bottom: 10px;
+}
+
+.wechat-btn-info {
+  color: $white-color;
+  background-color: $a-green-color;
+  border-color: transparent;
+}
+
+.wechat-chat-form {
+  padding: 10px 0 !important;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $white-color;
+  border-top: 1px solid $chat-form-border-color;
+  overflow: hidden;
+
+  .btn-disabled {
+    color: $white-color;
+    pointer-events: none;
+    background: $chat-button-disabled-bgcolor !important;
+  }
+}
+
+.main-content-row {
+  min-height: 100%;
+  height: 100%;
+}
+
+.viewport-content {
+  padding: 0;
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .helpdesk-chat-wiki {
+    padding: 0 !important;
+  }
+}
+
+.helpdesk-md-chat-content {
+  width: 100% !important;
+  margin: 0 auto !important;
+  height: 100% !important;
+  padding-top: 0 !important;
+}
+
+.main-content-wra {
+  padding-top: 0 !important;
+  height: 100%;
+}
+
+.chat-wiki {
+  height: 100%;
+}
+
+.wm-select-list {
+  border: 0;
+  background-color: $chat-customer-title-bgcolor;
+  font-size: 20px;
+  margin-top: 11px;
+  text-align: -webkit-center;
+  text-align: center;
+}
+
+.session-history-content {
+  height: -webkit-calc(100% - 56px);
+  border: 0 !important;
+}
+
+.wechat-message-body {
+  max-width: 63% !important;
+  min-height: 39px !important;
+  min-width: 28px !important;
+}
+
+.wechat-system-message-body {
+  max-width: 53% !important;
+  min-height: 39px !important;
+  min-width: 28px !important;
+}
+
+.icon-user-bubble-arrows {
+  left: 63px !important;
+  top: 14px;
+  position: absolute !important;
+}
+
+.icon-helpdesk-bubble-arrows {
+  right: 63px !important;
+  top: 14px;
+  position: absolute !important;
+}
+
+.wechat-notification {
+  position: fixed;
+  top: 50% !important;
+  left: 15% !important;
+  margin: -15px auto 0 !important;
+  max-width: 70%;
+
+  .message {
+    .text {
+      width: 60% !important;
+    }
+  }
+
+  .close-btn {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    margin: 0 !important;
+    position: absolute;
+    top: 33%;
+    right: 5%;
+  }
+}
+
+.wechat-modal {
+  .modal-content {
+    width: 100% !important;
+    text-align: -webkit-left !important;
+
+    .main-notice {
+      width: 100% !important;
+    }
+
+    .modal-footer {
+      padding: 0 !important;
+    }
+  }
+}
+
+.left-message {
+  position: relative;
+
+  .unread-message-count {
+    position: absolute;
+    top: -28px;
+    right: 0;
+  }
+}
+
+.select-list {
+  width: 100%;
+  height: 50px;
+  background-color: $chat-customer-title-bgcolor;
+}
+
+.customer-header {
+
+  .customer-nick {
+    color: $chat-customer-title-color;
+    line-height: 50px;
+    padding-left: 15px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .custom-toggle {
+    width: 34px;
+    height: 34px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    text-decoration: none;
+
+    .bar {
+      background-color: $chat-customer-title-color;
+      display: block;
+      width: 20px;
+      height: 2px;
+      -moz-border-radius: 100px;
+      -webkit-border-radius: 100px;
+      border-radius: 100px;
+      position: absolute;
+      top: 18px;
+      -moz-transition: all .5s;
+      -webkit-transition: all .5s;
+      -ms-transition: all .5s;
+      transition: all .5s;
+    }
+
+    .bar:first-child {
+      -moz-transform: translateY(-12px);
+      -webkit-transform: translateY(-12px);
+      -ms-transform: translateY(-12px);
+      transform: translateY(-12px);
+    }
+
+    .bar:nth-child(2) {
+      -moz-transform: translateY(-6px);
+      -webkit-transform: translateY(-6px);
+      -ms-transform: translateY(-6px);
+      transform: translateY(-6px);
+    }
+
+    &.x {
+      top: 5px;
+
+      .bar {
+        -moz-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+
+      .bar:first-child {
+        -moz-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.unread-message-mark {
+  width: 6px;
+  height: 6px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: $chat-red-color;
+  border-radius: 6px;
+}
+
+.customer-menu {
+  width: 100%;
+  padding-bottom: 5px;
+  position: absolute;
+  z-index: 100;
+  background-color: $chat-customer-title-bgcolor;
+  display: none;
+
+  &.show {
+    display: block;
+
+    .customer-list {
+      background-color: $white-color;
+      color: $chat-customer-title-color;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      min-height: 48px;
+      max-height: 255px;
+      overflow-y: auto;
+      padding-right: 3px;
+      padding-bottom: 5px;
+
+      ul {
+        margin-bottom: 0;
+      }
+
+      .no-session {
+        font-size: 14px;
+        font-style: italic;
+        color: $chat-gray-color;
+        line-height: 30px;
+        padding-left: 15px;
+      }
+
+      .pure-customer-item {
+        font-size: 14px;
+        padding: 5px;
+
+        &.pure-customer-selected {
+          background-color: $chat-light-gray-color;
+          color: $a-green-color;
+          box-shadow: 3px 2px 5px $chat-light-gray-shadow-color;
+          border-radius: 5px;
+        }
+      }
+
+      .customer-item-avatar {
+        float: left;
+        width: 40px;
+        height: 40px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+        .wechat-message-avatar {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      .customer-item-detail {
+        height: 40px;
+
+        span {
+          display: block;
+        }
+
+        .customer-item-lastest-message {
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          display: block;
+          white-space: nowrap;
+          padding-right: .5em;
+          opacity: .5;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .helpdesk-menu-logout {
+      text-align: right;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding: 5px;
+      background-color: $white-color;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+
+      .button-custom {
+        background-color: $a-green-color;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        color: $white-color;
+        font-size: 16px;
+        padding: 5px 10px;
+      }
+    }
+  }
+}

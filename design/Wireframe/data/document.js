@@ -1,0 +1,2293 @@
+﻿$axure.loadDocument({
+  "configuration":{
+    "showPageNotes":true,
+    "showPageNoteNames":false,
+    "showAnnotations":true,
+    "linkStyle":"b",
+    "linkFlowsToPages":true,
+    "linkFlowsToPagesNewWindow":true,
+    "hideAddress":false,
+    "preventScroll":false,
+    "useLabels":false,
+    "enabledViewIds":[],
+    "loadFeedbackPlugin":false},
+  "sitemap":{
+    "rootNodes":[{
+        "pageName":"Scenario- Unbind account",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"No Social Info",
+            "type":"Wireframe",
+            "url":"no_social_info.html"},
+{
+            "pageName":"Manage Menu",
+            "type":"Wireframe",
+            "url":"manage_menu.html"},
+{
+            "pageName":"Admin Profile",
+            "type":"Wireframe",
+            "url":"admin_profile.html"},
+{
+            "pageName":"Password",
+            "type":"Wireframe",
+            "url":"password.html"}]},
+{
+        "pageName":"Weibo",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Publish",
+            "type":"Wireframe",
+            "url":"publish.html",
+            "children":[{
+                "pageName":"Sent",
+                "type":"Wireframe",
+                "url":"sent.html"},
+{
+                "pageName":"Pending Queue",
+                "type":"Wireframe",
+                "url":"pending_queue.html"}]},
+{
+            "pageName":"Followings",
+            "type":"Wireframe",
+            "url":"followings.html"},
+{
+            "pageName":"My fans",
+            "type":"Wireframe",
+            "url":"my_fans.html"},
+{
+            "pageName":"Feeds Gathering",
+            "type":"Wireframe",
+            "url":"feeds_gathering.html",
+            "children":[{
+                "pageName":"Favorite",
+                "type":"Wireframe",
+                "url":"favorite.html",
+                "children":[{
+                    "pageName":"Added",
+                    "type":"Wireframe",
+                    "url":"added.html",
+                    "children":[{
+                        "pageName":"Manage Favorite",
+                        "type":"Wireframe",
+                        "url":"manage_favorite.html"},
+{
+                        "pageName":"Selected All",
+                        "type":"Wireframe",
+                        "url":"selected_all.html"}]}]},
+{
+                "pageName":"Sending Messgae",
+                "type":"Wireframe",
+                "url":"sending_messgae.html"}]},
+{
+            "pageName":"Mail Box_@Me",
+            "type":"Wireframe",
+            "url":"mail_box__me.html",
+            "children":[{
+                "pageName":"Comments @ Me",
+                "type":"Wireframe",
+                "url":"comments___me.html"},
+{
+                "pageName":"Comments",
+                "type":"Wireframe",
+                "url":"comments.html"},
+{
+                "pageName":"My Comments",
+                "type":"Wireframe",
+                "url":"my_comments.html"}]}]},
+{
+        "pageName":"Wechat",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Group Massage",
+            "type":"Wireframe",
+            "url":"group_massage.html",
+            "children":[{
+                "pageName":"Service Accout - Message Pending",
+                "type":"Wireframe",
+                "url":"service_accout_-_message_pending.html",
+                "children":[{
+                    "pageName":"Create Group Message",
+                    "type":"Wireframe",
+                    "url":"create_group_message.html"},
+{
+                    "pageName":"Sending Now",
+                    "type":"Wireframe",
+                    "url":"sending_now.html"},
+{
+                    "pageName":"Review Pic Message",
+                    "type":"Wireframe",
+                    "url":"review_pic_message.html"}]},
+{
+                "pageName":"Create Pic Message",
+                "type":"Wireframe",
+                "url":"create_pic_message.html"},
+{
+                "pageName":"Creat Multi-Pic Message",
+                "type":"Wireframe",
+                "url":"creat_multi-pic_message.html",
+                "children":[{
+                    "pageName":"Editng Sub-pic",
+                    "type":"Wireframe",
+                    "url":"editng_sub-pic.html"}]}]},
+{
+            "pageName":"Interact Messages",
+            "type":"Wireframe",
+            "url":"interact_messages.html",
+            "children":[{
+                "pageName":"Filt based on USER",
+                "type":"Wireframe",
+                "url":"filt_based_on_user.html"},
+{
+                "pageName":"Show Messages actived by Keywords",
+                "type":"Wireframe",
+                "url":"show_messages_actived_by_keywords.html"}]},
+{
+            "pageName":"Auto Reply",
+            "type":"Wireframe",
+            "url":"auto_reply.html",
+            "children":[{
+                "pageName":"Create Keywords",
+                "type":"Wireframe",
+                "url":"create_keywords.html",
+                "children":[{
+                    "pageName":"Keywords Saved",
+                    "type":"Wireframe",
+                    "url":"keywords_saved.html"}]},
+{
+                "pageName":"Reply Rules Management",
+                "type":"Wireframe",
+                "url":"reply_rules_management.html",
+                "children":[{
+                    "pageName":"Editting Rules",
+                    "type":"Wireframe",
+                    "url":"editting_rules.html"}]}]},
+{
+            "pageName":"Customise Wechat Menu blank",
+            "type":"Wireframe",
+            "url":"customise_wechat_menu_blank.html",
+            "children":[{
+                "pageName":"Create Menu1",
+                "type":"Wireframe",
+                "url":"create_menu1.html"},
+{
+                "pageName":"Create Menu2",
+                "type":"Wireframe",
+                "url":"create_menu2.html"}]},
+{
+            "pageName":"QR",
+            "type":"Wireframe",
+            "url":"qr.html",
+            "children":[{
+                "pageName":"create QR",
+                "type":"Wireframe",
+                "url":"create_qr.html"}]}]},
+{
+        "pageName":"Clients",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Member Management",
+            "type":"Wireframe",
+            "url":"member_management.html",
+            "children":[{
+                "pageName":"Member list (Filter Close)",
+                "type":"Wireframe",
+                "url":"member_list__filter_close_.html"},
+{
+                "pageName":"None social media binded，Actived Member system",
+                "type":"Wireframe",
+                "url":"none_social_media_binded_actived_member_system.html"},
+{
+                "pageName":"None Social Media Binded, Member System In-actived",
+                "type":"Wireframe",
+                "url":"none_social_media_binded__member_system_in-actived.html"},
+{
+                "pageName":"Add Social Media",
+                "type":"Wireframe",
+                "url":"add_social_media.html"},
+{
+                "pageName":"Add Members",
+                "type":"Wireframe",
+                "url":"add_members.html"},
+{
+                "pageName":"Edit Member",
+                "type":"Wireframe",
+                "url":"edit_member.html"},
+{
+                "pageName":"Member Information",
+                "type":"Wireframe",
+                "url":"member_information.html"}]},
+{
+            "pageName":"Fans Management",
+            "type":"Wireframe",
+            "url":"fans_management.html"},
+{
+            "pageName":"Clients Segment",
+            "type":"Wireframe",
+            "url":"clients_segment.html",
+            "children":[{
+                "pageName":"Segment Rules",
+                "type":"Wireframe",
+                "url":"segment_rules.html"},
+{
+                "pageName":"Segments For Hobbies",
+                "type":"Wireframe",
+                "url":"segments_for_hobbies.html"},
+{
+                "pageName":"Shopping wills",
+                "type":"Wireframe",
+                "url":"shopping_wills.html"},
+{
+                "pageName":"Stickness",
+                "type":"Wireframe",
+                "url":"stickness.html"},
+{
+                "pageName":"Segments of visitors",
+                "type":"Wireframe",
+                "url":"segments_of_visitors.html"},
+{
+                "pageName":"Segment list full",
+                "type":"Wireframe",
+                "url":"segment_list_full.html"},
+{
+                "pageName":"Segment Detail",
+                "type":"Wireframe",
+                "url":"segment_detail.html"}]},
+{
+            "pageName":"Membership cards List",
+            "type":"Wireframe",
+            "url":"membership_cards_list.html",
+            "children":[{
+                "pageName":"Send Card",
+                "type":"Wireframe",
+                "url":"send_card.html"},
+{
+                "pageName":"Adding Cards",
+                "type":"Wireframe",
+                "url":"adding_cards.html"},
+{
+                "pageName":"Card Detail",
+                "type":"Wireframe",
+                "url":"card_detail.html"}]},
+{
+            "pageName":"Points",
+            "type":"Folder",
+            "url":"",
+            "children":[{
+                "pageName":"Rewarding Points",
+                "type":"Wireframe",
+                "url":"rewarding_points.html"},
+{
+                "pageName":"Rewarding Rules",
+                "type":"Wireframe",
+                "url":"rewarding_rules.html",
+                "children":[{
+                    "pageName":"Rule Details",
+                    "type":"Wireframe",
+                    "url":"rule_details.html"},
+{
+                    "pageName":"Editing Rules-Countting Rule",
+                    "type":"Wireframe",
+                    "url":"editing_rules-countting_rule.html"},
+{
+                    "pageName":"Editting Rules-Points for Birthday",
+                    "type":"Wireframe",
+                    "url":"editting_rules-points_for_birthday.html"},
+{
+                    "pageName":"Editing Rules-Fresh Member",
+                    "type":"Wireframe",
+                    "url":"editing_rules-fresh_member.html"},
+{
+                    "pageName":"Editing Rules- Completing Profile",
+                    "type":"Wireframe",
+                    "url":"editing_rules-_completing_profile.html"},
+{
+                    "pageName":"Editing Rules - Points for Checking-in",
+                    "type":"Wireframe",
+                    "url":"editing_rules_-_points_for_checking-in.html"},
+{
+                    "pageName":"Adding Rules - Campign Rules",
+                    "type":"Wireframe",
+                    "url":"adding_rules_-_campign_rules.html"},
+{
+                    "pageName":"Rules List -Actived",
+                    "type":"Wireframe",
+                    "url":"rules_list_-actived.html"}]}]},
+{
+            "pageName":"Settings",
+            "type":"Wireframe",
+            "url":"settings.html",
+            "children":[{
+                "pageName":"Adding  Attributes",
+                "type":"Wireframe",
+                "url":"adding__attributes.html"},
+{
+                "pageName":"Attributes Added",
+                "type":"Wireframe",
+                "url":"attributes_added.html"}]}]},
+{
+        "pageName":"Material",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Material List",
+            "type":"Wireframe",
+            "url":"material_list.html",
+            "children":[{
+                "pageName":"Creating singe Pic Message",
+                "type":"Wireframe",
+                "url":"creating_singe_pic_message.html"},
+{
+                "pageName":"Creating Multi-Pic Message",
+                "type":"Wireframe",
+                "url":"creating_multi-pic_message.html",
+                "children":[{
+                    "pageName":"Adding Sub-Pic",
+                    "type":"Wireframe",
+                    "url":"adding_sub-pic.html"},
+{
+                    "pageName":"Editing Sub-pic",
+                    "type":"Wireframe",
+                    "url":"editing_sub-pic.html"}]},
+{
+                "pageName":"Editing Pic Message",
+                "type":"Wireframe",
+                "url":"editing_pic_message.html"},
+{
+                "pageName":"Preview Pic Message",
+                "type":"Wireframe",
+                "url":"preview_pic_message.html"}]},
+{
+            "pageName":"Micro-Web_Page List（None Page Status",
+            "type":"Wireframe",
+            "url":"micro-web_page_list_none_page_status.html",
+            "children":[{
+                "pageName":"Web Page Detal",
+                "type":"Wireframe",
+                "url":"web_page_detal.html"},
+{
+                "pageName":"Editing",
+                "type":"Wireframe",
+                "url":"editing.html",
+                "children":[{
+                    "pageName":"Editing Basic Info",
+                    "type":"Wireframe",
+                    "url":"editing_basic_info.html"},
+{
+                    "pageName":"General Functions",
+                    "type":"Wireframe",
+                    "url":"general_functions.html"}]},
+{
+                "pageName":"Adding Page",
+                "type":"Wireframe",
+                "url":"adding_page.html",
+                "children":[{
+                    "pageName":"Creating Single Page（Basic Info）",
+                    "type":"Wireframe",
+                    "url":"creating_single_page_basic_info_.html",
+                    "children":[{
+                        "pageName":"Creating Page（Adding function module）",
+                        "type":"Wireframe",
+                        "url":"creating_page_adding_function_module_.html",
+                        "children":[{
+                            "pageName":"Cover",
+                            "type":"Wireframe",
+                            "url":"cover.html",
+                            "children":[{
+                                "pageName":"Cover2",
+                                "type":"Wireframe",
+                                "url":"cover2.html"},
+{
+                                "pageName":"Cover3",
+                                "type":"Wireframe",
+                                "url":"cover3.html"}]},
+{
+                            "pageName":"General",
+                            "type":"Wireframe",
+                            "url":"general.html"},
+{
+                            "pageName":"Change Theme",
+                            "type":"Wireframe",
+                            "url":"change_theme.html"},
+{
+                            "pageName":"Guides",
+                            "type":"Wireframe",
+                            "url":"guides.html",
+                            "children":[{
+                                "pageName":"Adding Guides",
+                                "type":"Wireframe",
+                                "url":"adding_guides.html"},
+{
+                                "pageName":"Notice- Deleting Guides",
+                                "type":"Wireframe",
+                                "url":"notice-_deleting_guides.html"},
+{
+                                "pageName":"Notice- Editting Undone",
+                                "type":"Wireframe",
+                                "url":"notice-_editting_undone.html"},
+{
+                                "pageName":"Notice- Settings Saved",
+                                "type":"Wireframe",
+                                "url":"notice-_settings_saved.html"}]},
+{
+                            "pageName":"Slides",
+                            "type":"Wireframe",
+                            "url":"slides.html",
+                            "children":[{
+                                "pageName":"Uplode Slides pics",
+                                "type":"Wireframe",
+                                "url":"uplode_slides_pics.html"}]},
+{
+                            "pageName":"Slides Pics",
+                            "type":"Wireframe",
+                            "url":"slides_pics.html"},
+{
+                            "pageName":"Slides Titles",
+                            "type":"Wireframe",
+                            "url":"slides_titles.html"},
+{
+                            "pageName":"Slides Text",
+                            "type":"Wireframe",
+                            "url":"slides_text.html"},
+{
+                            "pageName":"Article List",
+                            "type":"Wireframe",
+                            "url":"article_list.html",
+                            "children":[{
+                                "pageName":"Adding Channel",
+                                "type":"Wireframe",
+                                "url":"adding_channel.html",
+                                "children":[{
+                                    "pageName":"Channel- Cutomise words",
+                                    "type":"Wireframe",
+                                    "url":"channel-_cutomise_words.html"}]}]},
+{
+                            "pageName":"Pic Pack",
+                            "type":"Wireframe",
+                            "url":"pic_pack.html"},
+{
+                            "pageName":"Table",
+                            "type":"Wireframe",
+                            "url":"table.html"},
+{
+                            "pageName":"Connections",
+                            "type":"Wireframe",
+                            "url":"connections.html"},
+{
+                            "pageName":"Telephone",
+                            "type":"Wireframe",
+                            "url":"telephone.html"},
+{
+                            "pageName":"Message",
+                            "type":"Wireframe",
+                            "url":"message.html"},
+{
+                            "pageName":"Map",
+                            "type":"Wireframe",
+                            "url":"map.html",
+                            "children":[{
+                                "pageName":"Locating",
+                                "type":"Wireframe",
+                                "url":"locating.html"}]},
+{
+                            "pageName":"Share",
+                            "type":"Wireframe",
+                            "url":"share.html"},
+{
+                            "pageName":"Message wall",
+                            "type":"Wireframe",
+                            "url":"message_wall.html",
+                            "children":[{
+                                "pageName":"Adding Message wall detail",
+                                "type":"Wireframe",
+                                "url":"adding_message_wall_detail.html"}]},
+{
+                            "pageName":"Html",
+                            "type":"Wireframe",
+                            "url":"html.html"},
+{
+                            "pageName":"Contacts",
+                            "type":"Wireframe",
+                            "url":"contacts.html"},
+{
+                            "pageName":"Separater",
+                            "type":"Wireframe",
+                            "url":"separater.html"},
+{
+                            "pageName":"Tab",
+                            "type":"Wireframe",
+                            "url":"tab.html"}]},
+{
+                        "pageName":"Regular Backup Notice",
+                        "type":"Wireframe",
+                        "url":"regular_backup_notice.html"},
+{
+                        "pageName":"web page created",
+                        "type":"Wireframe",
+                        "url":"web_page_created.html"}]}]},
+{
+                "pageName":"page list (page added status）",
+                "type":"Wireframe",
+                "url":"page_list__page_added_status_.html",
+                "children":[{
+                    "pageName":"page detail",
+                    "type":"Wireframe",
+                    "url":"page_detail.html"},
+{
+                    "pageName":"Edit Page",
+                    "type":"Wireframe",
+                    "url":"edit_page.html",
+                    "children":[{
+                        "pageName":"Edit page Basic info",
+                        "type":"Wireframe",
+                        "url":"edit_page_basic_info.html"},
+{
+                        "pageName":"Preview",
+                        "type":"Wireframe",
+                        "url":"preview.html"}]}]},
+{
+                "pageName":"Articles management",
+                "type":"Wireframe",
+                "url":"articles_management.html",
+                "children":[{
+                    "pageName":"Adding Channel",
+                    "type":"Wireframe",
+                    "url":"adding_channel_1.html",
+                    "children":[{
+                        "pageName":"Adding Customise Words",
+                        "type":"Wireframe",
+                        "url":"adding_customise_words.html"}]},
+{
+                    "pageName":"Preview Article",
+                    "type":"Wireframe",
+                    "url":"preview_article.html"},
+{
+                    "pageName":"Publish Article",
+                    "type":"Wireframe",
+                    "url":"publish_article.html"},
+{
+                    "pageName":"Editing Article",
+                    "type":"Wireframe",
+                    "url":"editing_article.html"}]}]},
+{
+            "pageName":"Picture Material",
+            "type":"Wireframe",
+            "url":"picture_material.html"}]},
+{
+        "pageName":"Stastics",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Increase of Fans",
+            "type":"Wireframe",
+            "url":"increase_of_fans.html",
+            "children":[{
+                "pageName":"Fans' Attributes",
+                "type":"Wireframe",
+                "url":"fans__attributes.html"}]},
+{
+            "pageName":"Increase of Members",
+            "type":"Wireframe",
+            "url":"increase_of_members.html",
+            "children":[{
+                "pageName":"Members' Attributes",
+                "type":"Wireframe",
+                "url":"members__attributes.html"},
+{
+                "pageName":"Members' Activities",
+                "type":"Wireframe",
+                "url":"members__activities.html"}]},
+{
+            "pageName":"Analytics of Pic Message",
+            "type":"Wireframe",
+            "url":"analytics_of_pic_message.html",
+            "children":[{
+                "pageName":"Weibo Analytics",
+                "type":"Wireframe",
+                "url":"weibo_analytics.html"},
+{
+                "pageName":"Account Stickness",
+                "type":"Wireframe",
+                "url":"account_stickness.html"}]}]},
+{
+        "pageName":"Offer",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Offer list",
+            "type":"Wireframe",
+            "url":"offer_list.html",
+            "children":[{
+                "pageName":"Creat Offer",
+                "type":"Wireframe",
+                "url":"creat_offer.html"},
+{
+                "pageName":"Editing Mobile Page",
+                "type":"Wireframe",
+                "url":"editing_mobile_page.html"},
+{
+                "pageName":"Terms and Conditions",
+                "type":"Wireframe",
+                "url":"terms_and_conditions.html"},
+{
+                "pageName":"Offer Detail",
+                "type":"Wireframe",
+                "url":"offer_detail.html"},
+{
+                "pageName":"Stastics for one offer",
+                "type":"Wireframe",
+                "url":"stastics_for_one_offer.html"},
+{
+                "pageName":"Offer Statement",
+                "type":"Wireframe",
+                "url":"offer_statement.html"}]}]},
+{
+        "pageName":"Wechat AnalyticsTBD）",
+        "type":"Wireframe",
+        "url":"wechat_analyticstbd_.html",
+        "children":[{
+            "pageName":"Group Pic Message",
+            "type":"Wireframe",
+            "url":"group_pic_message.html"},
+{
+            "pageName":"Message Analytics",
+            "type":"Wireframe",
+            "url":"message_analytics.html"}]},
+{
+        "pageName":"Manage Center",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Manage Center",
+            "type":"Wireframe",
+            "url":"manage_center.html"},
+{
+            "pageName":"Upgrade Plan",
+            "type":"Wireframe",
+            "url":"upgrade_plan.html"},
+{
+            "pageName":"Biling",
+            "type":"Wireframe",
+            "url":"biling.html"},
+{
+            "pageName":"User",
+            "type":"Wireframe",
+            "url":"user.html"},
+{
+            "pageName":"Adding User",
+            "type":"Wireframe",
+            "url":"adding_user.html"},
+{
+            "pageName":"Extender",
+            "type":"Folder",
+            "url":"",
+            "children":[{
+                "pageName":"Extend Module List",
+                "type":"Wireframe",
+                "url":"extend_module_list.html"},
+{
+                "pageName":"Module- Member Detail",
+                "type":"Wireframe",
+                "url":"module-_member_detail.html",
+                "children":[{
+                    "pageName":"Module Activated- Member Detail",
+                    "type":"Wireframe",
+                    "url":"module_activated-_member_detail.html"}]},
+{
+                "pageName":"Module_Micro Web Detail",
+                "type":"Wireframe",
+                "url":"module_micro_web_detail.html",
+                "children":[{
+                    "pageName":"Module Activated_Micro Web Detail",
+                    "type":"Wireframe",
+                    "url":"module_activated_micro_web_detail.html"}]},
+{
+                "pageName":"Module - Offer Detail",
+                "type":"Wireframe",
+                "url":"module_-_offer_detail.html",
+                "children":[{
+                    "pageName":"Module Activated - Offer Detail",
+                    "type":"Wireframe",
+                    "url":"module_activated_-_offer_detail.html"}]},
+{
+                "pageName":"Module- Customer Service Detail",
+                "type":"Wireframe",
+                "url":"module-_customer_service_detail.html",
+                "children":[{
+                    "pageName":"Module Activated -CS",
+                    "type":"Wireframe",
+                    "url":"module_activated_-cs.html"}]}]},
+{
+            "pageName":"Social Media",
+            "type":"Folder",
+            "url":"",
+            "children":[{
+                "pageName":"First Bind",
+                "type":"Wireframe",
+                "url":"first_bind.html"},
+{
+                "pageName":"Bind Weibo",
+                "type":"Wireframe",
+                "url":"bind_weibo.html"},
+{
+                "pageName":"Bind Wechat",
+                "type":"Wireframe",
+                "url":"bind_wechat.html"}]}]},
+{
+        "pageName":"Customer Service",
+        "type":"Folder",
+        "url":"",
+        "children":[{
+            "pageName":"Service Accounts",
+            "type":"Wireframe",
+            "url":"service_accounts.html"},
+{
+            "pageName":"FAQ",
+            "type":"Wireframe",
+            "url":"faq.html",
+            "children":[{
+                "pageName":"FAQ-Editing Category",
+                "type":"Wireframe",
+                "url":"faq-editing_category.html"},
+{
+                "pageName":"FAQ_Adding Category",
+                "type":"Wireframe",
+                "url":"faq_adding_category.html"},
+{
+                "pageName":"FAQ_Adding Category（Create ）",
+                "type":"Wireframe",
+                "url":"faq_adding_category_create__.html"},
+{
+                "pageName":"FAQ- Editting Reply",
+                "type":"Wireframe",
+                "url":"faq-_editting_reply.html",
+                "children":[{
+                    "pageName":"FAQ- Editting Reply（Create）",
+                    "type":"Wireframe",
+                    "url":"faq-_editting_reply_create_.html"}]},
+{
+                "pageName":"FAQ_Pending",
+                "type":"Wireframe",
+                "url":"faq_pending.html",
+                "children":[{
+                    "pageName":"Allowed",
+                    "type":"Wireframe",
+                    "url":"allowed.html",
+                    "children":[{
+                        "pageName":"Adding Category",
+                        "type":"Wireframe",
+                        "url":"adding_category.html"},
+{
+                        "pageName":"Category Added",
+                        "type":"Wireframe",
+                        "url":"category_added.html"}]}]}]},
+{
+            "pageName":"Conversation list",
+            "type":"Wireframe",
+            "url":"conversation_list.html",
+            "children":[{
+                "pageName":"Message Analytics",
+                "type":"Wireframe",
+                "url":"message_analytics_1.html"}]},
+{
+            "pageName":"VIP service - Settings",
+            "type":"Wireframe",
+            "url":"vip_service_-_settings.html",
+            "children":[{
+                "pageName":"Unsynchronise Groups",
+                "type":"Wireframe",
+                "url":"unsynchronise_groups.html",
+                "children":[{
+                    "pageName":"Service  Staff list",
+                    "type":"Wireframe",
+                    "url":"service__staff_list.html",
+                    "children":[{
+                        "pageName":"Deleting Staff",
+                        "type":"Wireframe",
+                        "url":"deleting_staff.html"},
+{
+                        "pageName":"Editing Groups",
+                        "type":"Wireframe",
+                        "url":"editing_groups.html"},
+{
+                        "pageName":"View Staff info",
+                        "type":"Wireframe",
+                        "url":"view_staff_info.html"},
+{
+                        "pageName":"Assign Staff",
+                        "type":"Wireframe",
+                        "url":"assign_staff.html"},
+{
+                        "pageName":"Inactive Staff - Failed",
+                        "type":"Wireframe",
+                        "url":"inactive_staff_-_failed.html"},
+{
+                        "pageName":"Staff List (Reset URL）",
+                        "type":"Wireframe",
+                        "url":"staff_list__reset_url_.html"},
+{
+                        "pageName":"Help",
+                        "type":"Wireframe",
+                        "url":"help.html"}]}]},
+{
+                "pageName":"System Alert Tone",
+                "type":"Wireframe",
+                "url":"system_alert_tone.html",
+                "children":[{
+                    "pageName":"Editting Tone",
+                    "type":"Wireframe",
+                    "url":"editting_tone.html"}]},
+{
+                "pageName":"Service Time and Amount",
+                "type":"Wireframe",
+                "url":"service_time_and_amount.html"}]},
+{
+            "pageName":"Business Type list",
+            "type":"Wireframe",
+            "url":"business_type_list.html",
+            "children":[{
+                "pageName":"Assign Service Staff",
+                "type":"Wireframe",
+                "url":"assign_service_staff.html"},
+{
+                "pageName":"Deleting Staff",
+                "type":"Wireframe",
+                "url":"deleting_staff_1.html"},
+{
+                "pageName":"Inactive Staff- Not Allowed",
+                "type":"Wireframe",
+                "url":"inactive_staff-_not_allowed.html"},
+{
+                "pageName":"Editting business Type",
+                "type":"Wireframe",
+                "url":"editting_business_type.html"},
+{
+                "pageName":"Adding Business Category",
+                "type":"Wireframe",
+                "url":"adding_business_category.html"},
+{
+                "pageName":"Help",
+                "type":"Wireframe",
+                "url":"help_1.html"}]}]}]},
+  "globalVariables":{
+    "onloadvariable":""},
+  "defaultAdaptiveView":{
+    "name":"",
+    "size":{
+      "width":0,
+      "height":0},
+    "condition":"<="},
+  "adaptiveViews":[],
+  "stylesheet":{
+    "defaultStyles":{
+      "buttonShape":{
+        "id":"fd25ed5e632e4c988bfba24ef4f2758c",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "paragraph":{
+        "id":"d6d7d9acfe9a4a4dbd4ea101037dfbb7",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "h1":{
+        "id":"66f5f817bbba4e008bfa634aaf7bce97",
+        "fontName":"'Arial Negreta', 'Arial'",
+        "fontSize":"32px",
+        "fontWeight":"700",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "h2":{
+        "id":"63e261fe7f6746ab921fce8e41e9b170",
+        "fontName":"'Arial Negreta', 'Arial'",
+        "fontSize":"24px",
+        "fontWeight":"700",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "h3":{
+        "id":"3becdb877a35463aa043155a947fb3eb",
+        "fontName":"'Arial Negreta', 'Arial'",
+        "fontSize":"18px",
+        "fontWeight":"700",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "h4":{
+        "id":"1ce63581263447c794c6553709eded24",
+        "fontName":"'Arial Negreta', 'Arial'",
+        "fontSize":"14px",
+        "fontWeight":"700",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "h5":{
+        "id":"162e6570ba924a2ead1ae4e196d3a8cc",
+        "fontName":"'Arial Negreta', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"700",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "h6":{
+        "id":"44a4c590314f4789bc6a1ee320c091fc",
+        "fontName":"'Arial Negreta', 'Arial'",
+        "fontSize":"10px",
+        "fontWeight":"700",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"0",
+        "paddingBottom":"0",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "imageBox":{
+        "id":"0878f382ce4244c987faf7daed871fe1",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "hyperlink":{
+        "id":"e3a76716adc847f283fe609d118e99dc",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF0000FF,
+          "opacity":1},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "limbo":false},
+      "hyperlinkMouseOver":{
+        "id":"8f451409496147e8a81d1921d6571c55",
+        "underline":true},
+      "hyperlinkMouseDown":{
+        "id":"31495c27960c41f3ad607e81006eea95"},
+      "textBox":{
+        "id":"1b2fd2f7213f43818d14b9ae75779873",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "stateStyles":{
+},
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "textArea":{
+        "id":"f93d1096b6154235b41ba57072b951bc",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "stateStyles":{
+},
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "comboBox":{
+        "id":"27bae20a59cf43ecb0920bb8dcb83a13",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "listBox":{
+        "id":"e309d1adfecd4f1a968c501d233d76de",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "checkbox":{
+        "id":"9f8ab32117844461b3b815ca2756d61c",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "radioButton":{
+        "id":"75a3555456124e4cacb9f97a2c890838",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "flowShape":{
+        "id":"97dec243b0c9445188dcd25dc79f669b",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"linearGradient",
+          "colors":[{
+              "color":0xFFFFFFFF},
+{
+              "color":0xFFF2F2F2},
+{
+              "color":0xFFE4E4E4},
+{
+              "color":0xFFFFFFFF}]},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979},
+        "linePattern":"solid",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "treeNodeObject":{
+        "id":"23d8e7152baf400e9ff6b51d7e41e79e",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "stateStyles":{
+},
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "limbo":false,
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979},
+        "linePattern":"solid"},
+      "button":{
+        "id":"1c64b2716792406496fed9fc850f1bbb",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "imageMapRegion":{
+        "id":"0442ed5d9944406c9be503776fd37cf9",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0"},
+      "inlineFrame":{
+        "id":"fd44e8e986794f22934aa0c243d34acd",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "dynamicPanel":{
+        "id":"bb6402646360461ebd2d5e196a5b8c82",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "referenceDiagramObject":{
+        "id":"a43a1762e15647bcbfe381713fde00df",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false},
+      "repeater":{
+        "id":"10923e879dbe41bb8ea89655f24faf61",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "table":{
+        "id":"780ff4cd740a43a2932d96e874e3b802",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979}},
+      "tableCell":{
+        "id":"c25d882791354d13bf09415f7a6ef987",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"top",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "limbo":false,
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979}},
+      "menuObject":{
+        "id":"a3627d96343e4f3b9d72cd3c4dc77380",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF797979}},
+      "horizontalLine":{
+        "id":"30eadae9f89f4245af0a450d70a50ea7",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "opacity":"1",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF000000},
+        "linePattern":"solid"},
+      "verticalLine":{
+        "id":"77e39d596c6747aba9fb529f50e67e42",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "opacity":"1",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF000000},
+        "linePattern":"solid"},
+      "connector":{
+        "id":"d733d96b33fd4c0b9e6639de7b7755e1",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"13px",
+        "fontWeight":"400",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "limbo":false,
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF0099CC},
+        "linePattern":"solid"}},
+    "customStyles":{
+      "8pt text":{
+        "id":"7c2d316b88fb41a888f9d7b69cbcff62",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"11px",
+        "fontWeight":"normal",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF333333,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF000000},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "label":{
+        "id":"4018eae8eef04a1da2166c5e659fd3f3",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"12px",
+        "fontWeight":"bold",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF666666,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF000000},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "link_active":{
+        "id":"5e54f55d3b354003943a0fda7b716f66",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"12px",
+        "fontWeight":"normal",
+        "fontStyle":"normal",
+        "underline":true,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF0000FF,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF000000},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "link_inactive":{
+        "id":"bea85470625c453d8bbb184f4ab720bc",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"12px",
+        "fontWeight":"normal",
+        "fontStyle":"normal",
+        "underline":true,
+        "horizontalAlignment":"left",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF000099,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFF},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"-1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFF000000},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}},
+      "Button Normal Primary":{
+        "id":"a204054d5f3c4992aeaed632c17e0620",
+        "fontWeight":"bold",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFF76A9E0,
+          "opacity":1},
+        "fill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF},
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFFFFFF}},
+      "error":{
+        "id":"4971dc82b51b4c52a30fd877e6a9cf8f",
+        "fontName":"'Arial Normal', 'Arial'",
+        "fontSize":"12px",
+        "fontWeight":"normal",
+        "fontStyle":"normal",
+        "underline":false,
+        "horizontalAlignment":"center",
+        "verticalAlignment":"middle",
+        "foreGroundFill":{
+          "fillType":"solid",
+          "color":0xFFFF0000,
+          "opacity":1},
+        "baseStyle":"627587b6038d43cca051c114ac41ad32",
+        "lineSpacing":"0px",
+        "stateStyles":{
+},
+        "opacity":"1",
+        "fill":{
+          "fillType":"solid",
+          "color":0x26FF0000},
+        "textShadow":{
+          "on":false,
+          "offsetX":1,
+          "offsetY":1,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.647058823529412}},
+        "paddingTop":"2",
+        "paddingBottom":"2",
+        "location":{
+          "x":0,
+          "y":0},
+        "size":{
+          "width":0,
+          "height":0},
+        "visible":true,
+        "limbo":false,
+        "rotation":"0",
+        "textRotation":"0",
+        "borderWidth":"1",
+        "borderFill":{
+          "fillType":"solid",
+          "color":0xFFFF0000},
+        "linePattern":"solid",
+        "cornerRadiusTopLeft":"0",
+        "outerShadow":{
+          "on":false,
+          "offsetX":5,
+          "offsetY":5,
+          "blurRadius":5,
+          "color":{
+            "r":0,
+            "g":0,
+            "b":0,
+            "a":0.349019607843137}}}}}});

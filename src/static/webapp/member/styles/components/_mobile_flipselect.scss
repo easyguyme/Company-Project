@@ -1,0 +1,22 @@
+$wm-flipselect-operate-icon-width: 8px;
+$wm-flipselect-operate-icon-height: 14px;
+
+.mb-flipselect-component {
+  position: relative;
+}
+
+.mb-flipcheckbox-component {
+  position: relative;
+}
+
+.select-popup-icon {
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  @include size($wm-flipselect-operate-icon-width, $wm-input-componet-height);
+  background-image: url('../../../images/mobile/detail.png');
+  background-repeat: no-repeat;
+  background-size: $wm-flipselect-operate-icon-width, $wm-flipselect-operate-icon-height;
+  background-position-y: ($wm-input-componet-height - $wm-flipselect-operate-icon-height) / 2;
+  padding-right: 22px;
+}

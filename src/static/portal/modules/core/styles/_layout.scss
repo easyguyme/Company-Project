@@ -1,0 +1,48 @@
+@include wm-loop-font-size($wm-min-font-size, $wm-max-font-size);
+
+body {
+  font-family: 'Arial', 'Microsoft YaHei';
+  overflow-x: auto !important;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ov {
+  overflow: hidden;
+}
+
+.rel {
+  position: relative;
+}
+
+.ib {
+  display: inline-block;
+}
+
+.modal-backdrop.in {
+  position: fixed;
+}
+
+.clearpadding {
+  padding: 0;
+}
+
+//Disable the responsive layout
+.container-fluid-fix {
+  min-width: 1350px;
+  position: relative;
+}
+//Disable the responsive layout
+
+//The max-width of nav bar is too short, cause cannot display all.#3944
+.container-fluid-fix-nav {
+  min-width: 1150px;
+}
+
+//  Hide clear button of input in IE
+input::-ms-clear {
+  display: none;
+}

@@ -1,0 +1,12 @@
+- name: setup cron job with schedule
+  cron: name="{{ item.name }}"
+        minute="{{ item.schedules.minute | default("*") }}"
+        hour="{{ item.schedules.hour | default("*") }}"
+        day="{{ item.schedules.day | default("*") }}"
+        month="{{ item.schedules.month | default("*") }}"
+        weekday="{{ item.schedules.weekday | default("*") }}"
+        job="{{ item.job }}"
+        state="{{ item.state }}"
+  when: "crons is defined"
+  delegate_to: "{{ item.host_name }}"
+  with_items: crons

@@ -1,0 +1,33 @@
+<div ng-controller="wm.ctrl.microsite.page.config.tel as tel">
+    <form id="form-tel" ng-submit="cpts.sendData(tel.data)">
+      <div class="form-group">
+        <label class="fwbold" translate="content_component_config_tel_info"></label>
+      </div>
+      <div class="form-group">
+        <label for="tel" translate="content_component_config_tel_number"></label>
+        <span class= "tel-front" without-star>+86</span>
+        <input class="form-control tel-back" type="text" id="tel" ng-model="tel.data.tel" form-tip="{{'content_component_config_tel_number_tip'|translate}}" wm-validate="tel.validateTel" required />
+      </div>
+      <div class="form-group">
+        <label for="tag" translate="content_component_config_tel_define_title"></label>
+          <input class="form-control" type="text" id="tag" ng-model="tel.data.tag" maxlength="10"/>
+          <span class="form-tip normal" translate="content_component_config_tel_define_title_tip"></span>
+      </div>
+      <label translate="content_component_config_tel_display_stype"></label>
+      <ul class="radio-group">
+        <li class="radio-tel radio-block" ng-repeat="style in tel.telStyles">
+            <wm-radio ng-model="tel.data.style" value="{{style.value}}"></wm-radio>
+            <span translate="{{style.label}}"></span>
+            <div class="tel-style{{style.value}}-box tel-bgcolor tel-border-color" ng-if ="style.value == 1">
+              <span class="tel-style{{style.value}}-word" translate="content_component_config_tel_style{{style.value}}_info" ></span>
+            </div>
+            <div class="tel-style{{style.value}}-box tel-border-color" ng-if ="style.value == 2">
+              <span class="tel-style{{style.value}}-word tel-bgcolor" ></span>
+              <span class="m-tel-style-two-word-left" translate="content_component_config_tel_style{{style.value}}_info"></span>
+            </div>
+        </li>
+      </ul>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>
+

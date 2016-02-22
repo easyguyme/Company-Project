@@ -1,0 +1,24 @@
+<div class="panel panel-main-content qrcode-wrapper clearfix">
+  <!-- <div class="panel-heading">
+    <label class="panel-title" translate="promotion_qrcode"></label>
+    <button class="btn btn-success broadcast-new-btn pull-right" ng-click="qrcode.addQrcode()" ng-if="qrcode.qrcodeList.length > 0">{{'channel_wechat_qrcode_add' | translate}}</button>
+  </div> -->
+  <!-- <div wm-list-header content="promotion_qrcode" head-class="qrcode-header-wrapper">
+    <button class="btn btn-success btn-listheader" ng-click="qrcode.addQrcode()" ng-if="qrcode.qrcodeList.length > 0">{{'channel_wechat_qrcode_add' | translate}}</button>
+  </div> -->
+  <div wm-breadcrumb="qrcode.breadcrumb">
+    <button class="btn btn-success btn-listheader" ng-click="qrcode.addQrcode()" ng-if="qrcode.qrcodeList.length > 0">{{'channel_wechat_qrcode_add' | translate}}</button>
+  </div>
+  <div class="mt30 new-wrapper" ng-if="qrcode.qrcodeList.length == 0">
+    <div class="menber-create-icon center-block cp" ng-click="qrcode.addQrcode()"></div>
+    <div class="new-broadcast" >{{'channel_wechat_qrcode_add_new' | translate}}</div>
+  </div>
+  <div class="reminderlist-table-wrap qrcode-table-wrapper" ng-if="qrcode.qrcodeList.length > 0">
+    <wm-table ng-model="qrcode.list" class="colored-table"></wm-table>
+  </div>
+  <div class="broadcast-pagination">
+    <div wm-pagination hide-nodata="qrcode.hideNodata" current-page="qrcode.currentPage" page-size="qrcode.pageSize" total-items="qrcode.totalItems" on-change-size="qrcode.changeSize" on-change-page="qrcode.changePage"></div>
+  </div>
+
+  <div wm-qrcode-download is-url="false" image-link="qrcode.qrcodeUrl" qrcode-title="qrcode.downQrcodeName" is-show="qrcode.isShowQrcodeDropdown" location-top="qrcode.qrcodePaneTop" location-right="50"></div>
+</div>

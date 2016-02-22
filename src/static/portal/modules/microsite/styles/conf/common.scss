@@ -1,0 +1,100 @@
+$conf-item-info-solt-width: 10px;
+$label-control-font-size:   12px;
+$label-control-color:       #555;
+$label-color:               #1c1c1c;
+$border-solid-color:        #37c3aa;
+$border-dashed-color:       #fff;
+$title-color:               #555;
+
+.config-wrap {
+  .form-group > label {
+    color: $label-color;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 10px;
+
+    &.sub-title {
+      color: $title-color;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
+  }
+
+  .radio-group {
+    margin-top: 10px;
+
+    .radio-block {
+      display: inline-table;
+      min-height: 80px;
+      width: 50%;
+    }
+  }
+
+  .fwbold {
+    font-weight: bold;
+  }
+
+  .label-control {
+    color: $label-control-color;
+    font-size: $label-control-font-size;
+
+    &:before {
+      content: '';
+    }
+  }
+
+  .conf-item {
+    border-radius: 2px;
+    margin-bottom: 10px;
+    margin-left: -$conf-item-info-solt-width;
+    margin-right: -$conf-item-info-solt-width;
+    position: relative;
+  }
+
+  .conf-item-info {
+    margin: $conf-item-info-solt-width;
+  }
+
+  .conf-item:hover {
+    border-color: $border-solid-color;
+
+    .conf-delete-icon {
+      display: block;
+    }
+  }
+
+  .conf-delete-icon {
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 10;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .conf-item-border-solid {
+    border-color: $border-solid-color;
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  .conf-item-border-dashed {
+    border-color: $border-dashed-color;
+    border-style: dashed;
+    border-width: 1px;
+  }
+
+  .tel-front {
+    color: $title-color;
+    left: 10px;
+    position: absolute;
+    top: 35px;
+  }
+
+  .tel-back {
+    padding-left: 33px;
+  }
+}

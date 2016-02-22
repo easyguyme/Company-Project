@@ -1,0 +1,52 @@
+.c-modal {
+  .c-modal-content {
+    -webkit-background-clip: padding-box;
+    -webkit-box-shadow: 0 .078rem .234rem rgba(0, 0, 0, .5);
+    box-shadow: 0 .078rem .234rem rgba(0, 0, 0, .5);
+    background-clip: padding-box;
+    box-sizing: border-box;
+    display: block;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: .093rem;
+    outline: 0;
+    background-color: $theme-background-text-color;
+    position: absolute;
+    z-index: 2;
+    margin: auto;
+  }
+
+  .c-modal-header {
+    padding: .234rem;
+    border-bottom: 1px solid $modal-boder-color;
+    min-height: .515rem;
+    position: relative;
+  }
+
+  .c-modal-body {
+    padding: .468rem;
+    border-radius: .078rem;
+    color: $modal-body-font-color;
+    background-color: $modal-body-background-color;
+    position: relative;
+    overflow: auto;
+  }
+
+  .c-modal-close {
+    background: url('/images/management/icon_popup_close_default.png') no-repeat;
+    height: .3rem;
+    width: .33rem;
+    background-size: cover;
+    margin-right: .156rem;
+    margin-top: .125rem;
+    opacity: 1;
+    outline: 0;
+    float: right;
+    border: 0;
+  }
+
+  .c-modal-title {
+    color: $modal-title-color;
+    font-weight: normal;
+    margin: .093rem;
+  }
+}

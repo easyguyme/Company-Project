@@ -1,0 +1,292 @@
+/*             cookbook item             */
+.ulkklp-edit-recipe{
+    .required-tip:before{
+            content: none;
+    }
+    label{
+        font-weight: 100;
+    }
+    th{
+        font-weight: 100;
+    }
+    .valid-border{
+        border: 1px solid #b42d14;
+    }
+    .cookitem{
+        border: 1px solid #eee;
+        margin-left: 15px;
+        margin-right: 15px;
+        .cookitem-title{
+            background-color: #f5f5f5;
+            border-bottom: 1px solid #eee;
+            color: #787878;
+            line-height: 30px;
+            padding: 5px 15px;
+            .cookitem-lbl-required{
+                color: #787878;
+                line-height: 30px;
+                width: 100%;
+                height: 30px;
+                margin: 0px;
+            }
+            .cookitem-lbl-required:before{
+                content: '*';
+                color: #b42d14;
+            }
+            .cookitem-lbl{
+                color: #787878;
+                line-height: 30px;
+                width: 100%;
+                height: 30px;
+                margin: 0px;
+            }
+        }
+        .cookitem-content{
+            padding: 10px;
+            .upload-img{
+                width: 82px;
+                div{
+                    width: inherit;
+                }
+                input{
+                    width: inherit;
+                }
+            }
+            .cookitem-input{
+                width: 400px;
+                border-top-right-radius: 2px;
+                border-top-left-radius: 2px;
+                border-bottom-right-radius: 2px;
+                border-bottom-left-radius: 2px;
+                border-color: #ddd;
+                height: 30px;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857;
+                color: #555;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                border-radius: 0;
+            }
+            .cookItem-input1{
+                width: 400px;
+            }
+            .valid-border{
+                border: 1px solid #b42d14;
+            }
+            .errorTip{
+                color: #b42d14;
+            }
+            .ingredient{
+                table{
+                    width: 75%;
+                    th{
+                        text-align: center;
+                    }
+                    td{
+                        text-align: center;
+                        input{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            .samples{
+                table{
+                    width: 75%;
+                    th{
+                        text-align: center;
+                    }
+                    td{
+                        text-align: center;
+                        input{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            .activity-setting{
+                table{
+                    margin-bottom: 0px;
+                    width: 75%;
+                    th{
+                        text-align: center;
+                    }
+                    td{
+                        text-align: center;
+                        input{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            .cookitem-td{
+                width: 23%;
+                select{
+                    width: 170px;
+                    height: 24px;
+                }
+                .selectActivitySetting{
+                    width: 250px;
+                    height: 24px;
+                }
+                .read-input{
+                    border: 0px;
+                }
+            }
+        }
+    }
+    .img-prev{
+        width: 320px;
+        height: 272px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 272px;
+        color: #a3a3a3;
+    }
+    .cookitem-textarea{
+        width: 75%;
+        height: 120px;
+    }
+}
+/*                 cookbook list               */
+.ulkklp-recipe{
+    .condition-category-style{
+        height: 35px;
+        .condition-style{
+            margin-right: 10px;
+            float: left;
+        }
+    }
+    .recipe-list-table{
+        tr {
+            th:nth-child(2) {
+              width: 250px;
+            }
+            th:nth-child(10){
+            width: 123px;
+            }
+        }
+    }
+    .no-data{
+        margin-top: 70px;
+        text-align: center;
+        float: none;
+        width: 100%;
+        color: #787878;
+    }
+    .tags-select{
+        margin-left: 162px;
+    }
+    .count-tip{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #eee;
+        font-family:'Arial Normal';
+        font-weight:400;
+        font-size:13px;
+        height: 40px;
+        line-height: 40px;
+        .img{
+            width: 20px;
+            height: 20px;
+            background-image: url(/images/product/product_goods_default.png);
+            background-position: 0;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+            float: left;
+            margin: 10px;
+        }
+    }
+    .search-div{
+        position: relative;
+        height: 40px;
+    }
+    .add-button{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        .import-btn{
+            float: right !important;
+            margin-top: 5px;
+            margin-right: 20px;
+        }
+    }
+    table{
+        td{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    table {
+      tr {
+        th:nth-child(2){
+          width: 20%;
+        }
+      }
+    }
+    .show-conditions-button{
+        display: inherit;
+        position: absolute;
+        width: auto;
+        padding: 0px 9px;
+        top: -2px;
+        left: 240px;
+        background-color: white;
+        margin-left: 20px;
+        float: none;
+    }
+    .recipe-categorie{
+        width: 100%;
+        float: left;
+    }
+    .operations-wrapper{
+        position: absolute;
+        left: 120px;
+        margin-top: 6px;
+        .operation-box{
+            margin-bottom: 15px;
+            border-radius: 2px;
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+        .operation-enable{
+            border: 1px solid #ccc;
+            color: #787878;
+            cursor: pointer;
+        }
+        .operation-disable{
+            border: 1px solid #eee;
+            color: #aaa;
+            cursor: default;
+            pointer-events: none;
+        }
+    }
+    .tag-manage{
+        display: inline;
+        top: -6px;
+        float: none;
+    }
+}
+/*                               tag                         */
+.tag{
+    .valid-border{
+        border: 1px solid #b42d14;
+    }
+}
+/* cookingtype */
+.ulkklp-edit-cookingtype{
+    .category-list{
+        margin-left: 0px;
+    }
+    .input-name{
+        width: 320px;
+    }
+    .create-wiki-body{
+        text-align: left;
+        width: 75%;
+        display: inline-block;
+    }
+}

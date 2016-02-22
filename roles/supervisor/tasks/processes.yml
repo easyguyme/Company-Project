@@ -1,0 +1,9 @@
+---
+- name: processes | create conf file
+  template: src=program.conf dest=/etc/supervisor/conf.d/{{ repo.name }}.conf
+  notify: update supervisor
+
+- name: processes | restart processes group if repo changed
+  my_supervisorctl: name='{{ repo.name }}:' state=restarted
+  when: (supervisor_dont_restart is not defined or not supervisor_dont_restart)
+        and rsync_repo_result is defined and rsync_repo_result | changed

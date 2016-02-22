@@ -1,0 +1,34 @@
+$checkbox-width: 16px;
+$check-components: checkbox,radio;
+@each $component in $check-components {
+  .wm-#{$component} {
+    display: inline-block;
+    min-height: $checkbox-width;
+    padding-left: $checkbox-width;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-bottom: 0;
+    margin-right: 5px;
+    @include background-image("/images/core/#{$component}_normal.png");
+    &:hover {
+      @include background-image("/images/core/#{$component}_hover.png");
+    }
+    &.checked {
+      @include background-image("/images/core/#{$component}_checked.png");
+    }
+  }
+
+  .wm-#{$component}-disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+
+    @include background-image("/images/core/#{$component}_disabled.png");
+    &:hover {
+      @include background-image("/images/core/#{$component}_disabled.png");
+    }
+    &.checked {
+      @include background-image("/images/core/#{$component}_disabled.png");
+    }
+  }
+}

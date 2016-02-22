@@ -1,0 +1,67 @@
+{
+    "id" : "560a52d4d4336e39365044be",
+    "settings" : {
+        "content" : "回复数字: 1.　传真处理, 2. 账号密保服务, 3. 充值业务, 4.转人工服务",
+        "type": "reply",
+        "menus" : {
+            "1" : {
+                "content" : "回复数字　1. 绑定, 2. 解绑, 3. 返回上一级",
+                "type": "reply",
+                "menus" : {
+                    "1" : {
+                        "content" : "您已绑定成功",
+                        "type": "reply"
+                    },
+                    "2" : {
+                        "content" : "已为您解绑",
+                        "type": "reply"
+                    },
+                    "3" : {
+                        "content" : "返回上一级",
+                        "type": "back"
+                    }
+                }
+            },
+            "2" : {
+                "content" : "回复数字  1. 短信服务绑定　２.　短信服务解绑　３. 返回上一级",
+                "type": "reply",
+                "menus" : {
+                    "1" : {
+                        "content" : "短信服务绑定",
+                        "type": "reply"
+                    },
+                    "2" : {
+                        "content" : "信服务解绑",
+                        "type": "reply"
+                    },
+                    "3" : {
+                        "content" : "返回上一级",
+                        "type": "back"
+                    }
+                }
+            },
+            "3" : {
+                "content" : "回复数字  1. 密保绑定状态　2. 密保卡使用状态  3. 返回上一级",
+                "type": "reply",
+                "menus" : {
+                    "1" : {
+                        "content" : "密保绑定状态",
+                        "type": "reply"
+                    },
+                    "2" : {
+                        "content" : "密保绑定状态",
+                        "type": "reply"
+                    },
+                    "3" : {
+                        "content" : "返回上一级",
+                        "type": "back"
+                    }
+                }
+            },
+            "4" : {
+                "content" : "回复数字　接人工客服 ",
+                "type": "connect"
+            }
+        }
+    }
+}

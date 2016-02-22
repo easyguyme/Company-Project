@@ -1,0 +1,141 @@
+$article-color : #787878;
+$btn-download-color: #f5f5f5;
+$btn-download-border-color: #eaedf0;
+$color-gray: #808080;
+$article-trend-view-color: #ddd;
+$gallery: #eee;
+
+.article-view,
+.page-view {
+  .article-content {
+    margin: 0 0 50px;
+  }
+
+  .article-info {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  .info-label {
+    color: $article-color;
+    display: inline-block;
+    width: 150px;
+  }
+
+  .info-item {
+    margin-bottom: 20px;
+  }
+
+  .info-left {
+    float: left;
+  }
+
+  .desc-width {
+    max-width: 575px;
+  }
+
+  .content-article-url {
+    width: auto;
+  }
+
+  .content-article-copy {
+    width: 125px;
+  }
+
+  .btn-copy,
+  .btn-download {
+    background-color: $btn-download-color;
+    border: 1px solid $btn-download-border-color;
+    border-radius: 2px;
+    color: $article-color;
+    font-size: 12px;
+    height: 25px;
+    line-height: 8px;
+  }
+
+  .btn-copy {
+    margin-left: 20px;
+  }
+
+  .btn-download {
+    background-image: url('/images/content/download_default.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 10px;
+    margin-top: 75px;
+    width: 35px;
+
+    &:hover {
+      background-image: url('/images/content/download_hover.png');
+    }
+
+    &:focus,
+    &:active {
+      background-image: url('/images/content/download_click.png');
+    }
+  }
+
+  .mobile-preview {
+    background: url('/images/content/mobile.png');
+    height: 615px;
+    width: 310px;
+
+    iframe {
+      border-width: 0;
+      height: 478px;
+      margin: 63px 17px;
+      width: 278px;
+      outline: $gallery solid 1px;
+    }
+  }
+
+  #qrcode-container {
+    height: 100px;
+    width: 100px;
+  }
+
+  .datepicker-container {
+    margin-top: 4px;
+  }
+
+  .select-container {
+    margin-top: 4px;
+  }
+
+  .datepicker-between-text {
+    line-height: 35px;
+  }
+
+  .article-trend-view {
+    background-color: $article-trend-view-color;
+    color: $color-gray;
+    line-height: 36px;
+    margin-bottom: 15px;
+    margin-left: 17px;
+    width: 98%;
+  }
+
+  .article-time-period {
+    color: $color-gray;
+    float: left;
+    font-size: 12px;
+    line-height: 36px;
+    padding-left: 17px;
+  }
+
+  .content-article-visit-time-wrapper {
+
+    .datepicker-title {
+      margin-left: 15px;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+  }
+}
+
+.qrcode-container-url {
+  margin-left: 15px;
+  padding-left: 0;
+  padding-right: 0;
+}
+

@@ -1,0 +1,27 @@
+.c-tags {
+  @include c-box();
+  font-size: .4rem;
+  color: $theme-gray-text;
+
+  &__key {
+    @include text-overflow();
+    width: 1.5rem;
+    vertical-align: top;
+  }
+
+  &__value {
+    @include c-box-flex(1);
+
+    li {
+      float: left;
+      background-color: $tag-background-color;
+      padding: 0 .078rem;
+      margin: 0 .15rem .1rem 0;
+    }
+  }
+
+  .c-tags-nodata {
+    @include c-box-flex(1);
+    vertical-align: top;
+  }
+}

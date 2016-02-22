@@ -1,0 +1,93 @@
+$coupon-record-filter-grey:                    #eee;
+$coupon-record-search-bar-border-grey:         #e4e4e4;
+$coupon-datepick-background:                   #fff;
+$coupon-table-border-color:                    #ededed;
+
+.acquisition {
+  position: relative;
+  margin-top: 15px;
+
+  .coupon-filter {
+    .panel-coupon-title {
+      background-color: $coupon-record-filter-grey;
+      padding: 3px 15px 4px;
+      position: relative;
+
+      .search-style {
+        // border-width: 0 !important;
+      }
+
+      .button-style {
+        margin: 1px 20px;
+      }
+      //for screening conditions, the up-arrow in the right
+      .isshow {
+        @include square(10px);
+        background: url('/images/customer/filtrate_icon_up.png') no-repeat;
+        display: inline-block;
+        margin-top: 1px;
+      }
+      //for screening conditions, the down-arrow in the right
+      .ishide {
+        @include square(10px);
+        background: url('/images/customer/filtrate_icon_down.png') no-repeat;
+        display: inline-block;
+        margin-top: 1px;
+      }
+    }
+  }
+
+  .table-wrapper {
+    margin: 20px 0 0 20px;
+  }
+
+  //temporary set the margin of "-" between two datepickers
+  .datepicker-between-text {
+    margin: 0 15px;
+  }
+
+  .colored-table {
+    thead {
+      tr {
+        th {
+          padding-bottom: 5px;
+        }
+
+        th:nth-child(6) {
+          width: 175px;
+        }
+
+        th:nth-child(7) {
+          width: 175px;
+        }
+
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          border-bottom: 1px solid $coupon-table-border-color;
+          padding-top: 15px;
+          padding-bottom: 20px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        td:nth-child(6) {
+          width: 175px;
+        }
+
+        td:nth-child(7) {
+          width: 175px;
+        }
+
+        .reply-col {
+          width: 200px;
+        }
+
+      }
+    }
+  }
+}

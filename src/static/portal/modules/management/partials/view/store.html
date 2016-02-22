@@ -1,0 +1,32 @@
+<div class="view-store-container" ng-controller="wm.ctrl.management.view.store as channel">
+  <div wm-breadcrumb="channel.breadcrumb"></div>
+  <div class="store-detail-body clearfix">
+    <div class="store-detail-left pull-left">
+      <span class="store-detail-text store-name-box" ng-bind="channel.store.name"></span>
+
+      <label class="store-detail-name pull-left" translate ="management_store_service_type"></label>
+      <span class="store-detail-text pull-left">
+        <span class="store-type-box" ng-bind="channel.store.type"></span><span class="store-subtype-box" ng-bind="channel.store.subtype"></span>
+      </span>
+
+      <label class="store-detail-name pull-left" translate ="address"></label>
+      <span class="store-detail-text pull-left" ng-bind="channel.store.address" ng-class="{'store-name-margin':channel.store.position != ''}"></span>
+
+      <label class="store-detail-name pull-left" ng-show="channel.store.positionIcon != ''">&nbsp;</label>
+      <img class="store-detail-text pull-left store-position-icon" ng-src="{{channel.store.positionIcon}}" ng-show="channel.store.positionIcon != ''"/>
+
+      <label class="store-detail-name pull-left" translate ="content_component_tel"></label>
+      <span class="store-detail-text pull-left" ng-bind="channel.store.telephone"></span>
+
+      <label class="store-detail-name pull-left" translate ="management_store_business_hours"></label>
+      <span class="store-detail-text pull-left" ng-bind="channel.store.businessHours"></span>
+
+      <label class="store-detail-name pull-left" translate ="management_store_recommend"></label>
+      <span class="store-detail-text pull-left" ng-bind-html="channel.store.description"></span>
+
+    </div>
+    <div class="store-detail-right">
+      <div class="store-detail-image" style="background-image: url({{channel.store.image}})"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+{
+    "items": [
+        {
+            "id": "558230bad6f97fd53c8b4568",
+            "goods": [
+                {
+                    "id": "5576c119d6f97fc7778b4567",
+                    "productId": "55753c71d6f97fe3338b4567",
+                    "sku": "1433746522779750",
+                    "picture": "http://****",
+                    "productName": "友陈肉松饼",
+                    "count": 1
+                },
+                {
+                    "id": "5576c291d6f97fcf338b4567",
+                    "productId": "5576c25ed6f97fe84c8b4567",
+                    "sku": "1433846341601811",
+                    "picture": "http://****",
+                    "productName": "乐事薯片",
+                    "count": 2
+                }
+            ],
+            "memberId": "55796c85d6f97f462c8b456d",
+            "createdAt": "2015-06-18 10:45:14",
+            "memberName": "刘金海 Hardy",
+            "telephone": "13027785897",
+            "usedScore": 1,
+            "count": 3,
+            "usedFrom": {
+                "id": "",
+                "type": "offline",
+                "name": "offline_exchange"
+            },
+            "exceptedScore": 50,
+            "address": "上海市浦东新区",
+            "isDelivered" : true,
+            "receiveMode" : "self"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/product/goods-exchange-logs?tmoffset=-8&accesstoken=5da91224-9a6a-1011-8e37-b14add65cff8&page=1&per-page=10"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 10
+    }
+}

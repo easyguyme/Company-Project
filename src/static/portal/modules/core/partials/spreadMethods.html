@@ -1,0 +1,24 @@
+<div class="spread-wrapper create-coupon menu-modal-ext">
+  <div class="has-methods-wrapper" ng-show="methods && methods.length > 0">
+    <section class="coupon-type">
+      <label class="coupon-title" translate="choose_spread_methods"></label>
+      <div class="row clearfix">
+        <div ng-repeat="method in methods track by $index" ng-click="chooseMethod($index)" class="col-md-4 col-xs-4 spread-item-wrapper clearfix">
+          <div class="pull-left">
+            <wm-radio class="menu-modal-ext-radio" ng-model="pickedMethod" value="{{ method.type }}" ng-click="selectMethod(method.type)"></wm-radio>
+          </div>
+          <div class="menu-modal-ext-content menu-modal-ext-{{method.type}}">
+            <p class="menu-modal-ext-title" translate="{{ method.title }}"></p>
+            <span class="menu-modal-ext-item" translate="{{ method.description }}"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="btn-wrapper center-text">
+      <button class="btn btn-success" translate="ok" ng-click="submit()"></button>
+    </section>
+  </div>
+
+  <div class="no-methods-wrapper" translate="no_spread_methods" ng-show="!methods || methods.length === 0"></div>
+</div>

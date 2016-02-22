@@ -1,0 +1,205 @@
+$orange-bg-color: #f9910a;
+$item-text-color: #a7a7a7;
+$coupon-wrapper-color: #f7f7f7;
+$content-name-color: #313131;
+$content-text-expired: #c11111;
+$contetn-name-dotted-color: #e0e0e0;
+
+.coupon-wrapper {
+  width: 100%;
+  min-height: 100%;
+  padding-bottom: 4rem;
+  position: relative;
+  background-color: $coupon-wrapper-color;
+
+  a {
+    text-decoration: none;
+  }
+
+  .has-items {
+    overflow: hidden;
+  }
+
+  .no-items {
+    display: none;
+    position: relative;
+  }
+
+  .mb-tab {
+
+    .mb-tab-item {
+      @include size(33%, 100%);
+
+      .mb-tab-content {
+        border-right: 0;
+      }
+    }
+
+    .mb-checked-item {
+      border-bottom: .25rem solid $orange-bg-color;
+      color: $orange-bg-color;
+      display: inline-block;
+      text-align: center;
+    }
+  }
+}
+
+.items-wrapper {
+  margin: 1rem;
+
+  .delete-button {
+    float: left;
+    height: 12rem;
+    margin-right: 2rem;
+  }
+
+  .delete-icon {
+    @include background-image('/images/mobile/delete_normal.png');
+    background-position-y: 3.5rem;
+    background-size: 6rem;
+
+    &:active {
+      @include background-image('/images/mobile/delete_click.png');
+    }
+  }
+
+  .order-content-wrapper {
+    display: flex;
+    display: -webkit-flex;
+    height: 100%;
+  }
+
+  .order-item {
+    padding: 1.5rem 1.5rem 1.8rem 1rem;
+    height: 9rem;
+    overflow: hidden;
+    box-shadow: 0 .1rem .4rem $item-shadow-color;
+    float: left;
+    background-color: $white;
+    margin-right: 1.5rem;
+
+    .order-image {
+      @include size(30%, 8rem);
+
+      position: relative;
+      display: inline-block;
+    }
+
+    .order-image-center {
+      max-width: 100%;
+      max-height: 100%;
+      margin: auto;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .order-content {
+      display: inline-block;
+      height: 100%;
+      padding-left: 1.5rem;
+      vertical-align: top;
+      flex: 1;
+      -webkit-flex: 1;
+      width: 65%;
+    }
+
+    .nouseds-wrapper {
+      .validity-title {
+        color: $item-text-color;
+      }
+
+      .order-content-name {
+        color: $content-name-color;
+      }
+    }
+
+    .useds-wrapper {
+      .validity-title {
+        color: $item-text-color;
+      }
+
+      .order-content-name {
+        color: $item-text-color;
+      }
+    }
+
+    .expireds-wrapper {
+      .validity-title {
+        color: $content-text-expired;
+      }
+
+      .order-content-name {
+        color: $item-text-color;
+      }
+    }
+
+    .order-content-name {
+      font-size: 1.4rem;
+      margin: 0 0 .9rem;
+      border-bottom: .15rem dotted $contetn-name-dotted-color;
+      height: 67%;
+      position: relative;
+    }
+
+    .content-name {
+      margin: auto 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: inline-table;
+    }
+
+    .validity-time {
+      font-size: 1.2rem;
+
+      .validity-date {
+        color: $item-text-color;
+      }
+    }
+  }
+}
+
+.no-records {
+  padding-bottom: 0 !important;
+
+  .no-items {
+    @include square(100%);
+
+    display: inline-block;
+
+    .no-items-content {
+      $content-text-color: #a0a0a0;
+
+      background-position: center 0;
+      color: $content-text-color;
+      font-size: 1.2rem;
+      text-align: center;
+      padding-top: 10rem;
+    }
+  }
+
+  .has-items {
+    display: none;
+  }
+}
+
+.records-loading-wrapper {
+  margin-top: 2rem;
+
+  .records-loading {
+    display: none;
+  }
+}
+
+.swiper-container-free-mode {
+  margin: 1rem 0;
+}
+
+.swiper-container {
+  overflow: visible;
+}

@@ -1,0 +1,75 @@
+{
+    "items": [
+        {
+            "id": "555c47ddd6f97f4e438b4568",
+            "name": "金卡卡卡卡",
+            "poster": "http://wm.com/images/mobile/membercard.png",
+            "fontColor": "#ffffff",
+            "privilege": "<p>什么都能干</p>",
+            "condition": {
+                "minScore": 101,
+                "maxScore": 200
+            },
+            "usageGuide": "<p>我说的</p>",
+            "isEnabled": true,
+            "isDefault": false,
+            "isAutoUpgrade": true,
+            "scoreResetDate": null,
+            "provideCount": 14,
+            "createdAt": "2015-05-20 16:37:49",
+            "updatedAt": "2015-05-20 16:37:49"
+        },
+        {
+            "id": "5518bfadd6f97f41048b4573",
+            "name": "默认会员卡",
+            "poster": "/images/mobile/membercard.png",
+            "fontColor": "#fff",
+            "privilege": "<p>9折消费折扣</p><ul><li><p>全年消费享有正价商品9折优惠</p></li><li><p><br/></p></li></ul><p>生日礼及寿星折扣</p><ul><li><p>生日當月可憑會員卡到全省門市領取精美生日好禮,且享有壽星200元商品抵用券或8折生日優惠.</p></li><li><p>8折優惠適用於正價商品，不得與會員折扣合併使用，生日禮將不定期更換</p></li></ul>",
+            "condition": {
+                "minScore": 50,
+                "maxScore": 100
+            },
+            "usageGuide": "<p>使用时向工作人员出示本会员卡即可，最终解释权归本品牌所有</p>",
+            "isEnabled": true,
+            "isDefault": true,
+            "isAutoUpgrade": true,
+            "scoreResetDate": null,
+            "provideCount": 16,
+            "createdAt": "2015-03-30 11:14:53",
+            "updatedAt": "2015-05-20 16:40:35"
+        },
+        {
+            "id": "55c326aed6f97f211a8b4568",
+            "name": "bbbbbbbbbb",
+            "poster": "http://wm.com/images/mobile/membercard.png",
+            "fontColor": "#ffffff",
+            "privilege": "<p>bbbbbbbbbbbbbbb</p>",
+            "condition": {
+                "minScore": 0,
+                "maxScore": 49
+            },
+            "usageGuide": "<p>bbbbbbbbbb</p>",
+            "isEnabled": true,
+            "isDefault": false,
+            "isAutoUpgrade": true,
+            "scoreResetDate": {
+                "month": 1,
+                "day": 1
+            },
+            "provideCount": 0,
+            "createdAt": "2015-08-06 17:19:41",
+            "updatedAt": "2015-08-07 16:23:35"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/member/cards?tmoffset=-8&accesstoken=7ec0164d-a543-1a11-9747-a6afc678def6&where=%7B%22isAutoUpgrade%22%3Atrue%7D&orderBy=%7B%22condition.minScore%22%3A%22desc%22%7D&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 3,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

@@ -1,0 +1,23 @@
+$order-color-gray9: #999;
+
+.store-order {
+  .management-fans-tag {
+    margin-bottom: 10px;
+  }
+
+  .goods-total-icon {
+    background-image: url('/images/store/order.png');
+  }
+
+  .order-at {
+    width: 165px;
+  }
+
+  .member-width {
+    width: 183px;
+  }
+
+  .gray9 {
+    color: $order-color-gray9;
+  }
+}

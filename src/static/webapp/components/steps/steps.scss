@@ -1,0 +1,48 @@
+.c-steps {
+  $status-icons: commited, paid, inservice, completed, canceled;
+
+  @each $icon in $status-icons {
+    .#{$icon} {
+      @include background-image('/webapp/build/reservation/images/#{$icon}_default.png');
+    }
+  }
+
+  @each $icon in $status-icons {
+    .#{$icon}-active {
+      @include background-image('/webapp/build/reservation/images/#{$icon}_active.png');
+    }
+  }
+
+  .c-panel {
+    padding: .31rem 0;
+  }
+
+  &__wrapper {
+    color: $theme-gray-text;
+    margin: 0 auto;
+    font-size: .4rem;
+    text-align: center;
+
+    &__item {
+      display: inline-block;
+      text-align: center;
+      width: 2rem;
+      position: relative;
+
+      &__icon {
+        @include square(.94rem);
+        background-size: .94rem;
+        display: inline-block;
+        margin-bottom: .1rem;
+      }
+
+      &__line {
+        border: 1px solid $theme-background-color;
+        left: 1.6rem;
+        position: absolute;
+        top: .5rem;
+        width: .8rem;
+      }
+    }
+  }
+}

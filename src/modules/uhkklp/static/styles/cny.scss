@@ -1,0 +1,132 @@
+$cny-prize-title-width: 90px;
+$cny-prize-input-width: 300px;
+$color-blue: #38c4a9;
+
+.uhkklp-cny {
+  padding: 14px;
+
+  .color-blue {
+    color: $color-blue;
+  }
+
+  .red-text {
+    color: $red-color;
+  }
+
+  .cny-item-body {
+    margin-bottom: 10px;
+  }
+
+  .cny-item {
+    padding: 10px;
+  }
+
+  .required-tip:before {
+    content: '';
+  }
+
+  .red-start:before {
+    content: '*';
+    color: $red-color;
+  }
+
+  .div-need-points {
+    margin-bottom: 10px;
+
+    .form-tip {
+      margin-left: 108px;
+    }
+  }
+
+  .draw-date .top-prize-date {
+    margin-top: 50px;
+    width: 285px;
+
+    .top-prize-date-picker {
+      float: right;
+      width: 170px;
+    }
+  }
+
+  .draw-date .one-prize-date {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 285px;
+
+    .one-prize-date-picker {
+      float: right;
+      width: 170px;
+    }
+  }
+
+  .activity-set {
+    height: 35px;
+
+    .btn-activity-set {
+      float: right;
+      width: 100px;
+    }
+  }
+
+  .indent {
+    margin: 10px 10px 0;
+    width: 470px;
+
+    .need-points {
+      display: inline;
+      width: 360px;
+    }
+
+    .cny-date-picker {
+      float: right;
+      width: 170px;
+    }
+
+    .cut-off {
+      margin: 5px;
+      float: right;
+    }
+
+    .title-div {
+      display: inline-block;
+      width: 105px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .cny-prize-table {
+    margin: 10px 10px 0;
+    width: 700px;
+
+    .prize-remove {
+      float: right;
+    }
+
+    .cny-prize-group {
+      margin-bottom: 15px;
+    }
+
+    .prize-title {
+      font-weight: normal;
+      width: $cny-prize-title-width;
+    }
+
+    .prize-input-div {
+      display: inline;
+      width: $cny-prize-input-width;
+
+      .form-tip {
+        margin-left: $cny-prize-title-width + 2;
+      }
+
+      input {
+        display: inline;
+        width: $cny-prize-input-width;
+      }
+    }
+  }
+
+  .winner-list {
+    padding: 10px;
+  }
+}

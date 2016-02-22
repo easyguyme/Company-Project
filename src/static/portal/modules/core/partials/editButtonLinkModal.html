@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="cancel()"></button>
+  <h4 class="modal-title create-graphics-title" translate="gen_oauth_link"></h4>
+</div>
+<div class="modal-body">
+  <form ng-submit="submitLink()">
+    <div class="form-group oauth-link-wrapper" ng-show="target == 'ueditor'">
+      <label class="oauth-link-label" translate="URL"></label>
+      <div class="oauth-link-content">
+        <input type="url" class="form-control" placeholder="{{'content_choose_channel_enter_url' | translate}}" ng-model="url" wm-url required without-star />
+      </div>
+    </div>
+    <label class="modal-color-title" translate="content_color_picker_title"></label>
+    <div wm-microsite-color-picker="color" colors="colors" pick-color="pickColor" is-disabled="false" ng-style="{opacity: 1}"></div>
+    <div class="color-content">
+      <input class="form-control color-input" placeholder="{{'content_choose_channel_enter_color' | translate}}" ng-model="color" />
+    </div>
+    <label class="modal-color-title" translate="content_text_title"></label>
+    <div class="color-content">
+      <input class="form-control color-input" placeholder="{{'content_choose_channel_enter_text' | translate}}" ng-model="text" />
+    </div>
+    <div class="center-text modal-footer">
+      <button class="btn btn-success" translate="ok"></button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+/**
+ * <i class="help-info" ng-class="{'active':menu.info}" ng-click="menu.showInfo()"></i>
+ * <div class="help-main-info" ng-class="{'active':menu.info}">
+ *     {{'wechat_menu_info'|translate}}
+ *   <div class="info-close" ng-click="menu.info=false">
+ *   </div>
+ * </div>
+ */
+$help-color: #e6e6e6;
+$help-background-color: #2f2f2f;
+.help-info-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.help-info {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  background: url(/images/core/help_normal.png);
+  cursor: pointer;
+  &:hover, &:active, &:focus, &.active {
+    background-image: url(/images/core/help_hover.png);
+  }
+}
+.help-main-info {
+  display: none;
+  position: absolute;
+  left: 20px;
+  top: 0px;
+  padding: 15px;
+  color: $help-color;
+  font-size: 12px;
+  border: 1px outset $help-color;
+  border-radius: 4px;
+  width: 160px;
+  min-height: 77px;
+  background-repeat: no-repeat;
+  background-position: 129px 0;
+  background-image: url(/images/core/helpclose_normal.png);
+  background-color: $help-background-color;
+  &:hover {
+    background-image: url(/images/core/helpclose_hover.png);
+  }
+  &:focus, &:active{
+    background-image: url(/images/core/helpclose_click.png);
+  }
+  &.active {
+    z-index: 10;
+    display: block;
+  }
+  .info-close {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}

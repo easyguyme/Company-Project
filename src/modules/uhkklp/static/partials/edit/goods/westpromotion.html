@@ -1,0 +1,59 @@
+<div class="ulkklp-edit-recipe">
+    <div wm-breadcrumb="westpromotion.breadcrumb"></div>
+
+    <form id="goodsForm" name="goodsForm" method="post" accept-charset="utf-8" enctype="multipart/form-data" ng-submit="submitInfo()" novalidate>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'goods_name' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="name" id="name" class="cookitem-input" type="text" ng-model="formData.name" required form-tip="{{'good_name_tip' | translate}}" maxlength="25" />
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'goods_description' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="description" id="description" class="cookitem-input" type="text" ng-model="formData.description" required form-tip="{{'good_name_tip' | translate}}" maxlength="25" />
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'goods_href' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="href" id="href" class="cookitem-input" type="text" ng-model="formData.href" required form-tip="{{'address_name_maxlength' | translate}}" maxlength="200" />
+            </div>
+            <div style="margin-left:10px;color:#b42d14;font-size: 12px;" ng-show="showError">
+                <div>
+                    <span>{{'link_format' | translate}}</span>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div id="cookitem" class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'goods_pic' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <img class="img-prev" id="img-prev" alt="640 X 544" ng-src="{{formData.image}}" name="image" ng-model="formData.image" ng-class="{'valid-border': (formData.image == '' || formData.image == null) && isSubmitted}"/>
+                <div>
+                    <span class="error-tip" ng-show="(formData.image == '' || formData.image == null) && isSubmitted">{{'goods_required' | translate}}</span>
+                </div>
+                <br/>
+                <div id="imgUpload" wm-file-upload class="file-upload-wrap upload-img" ng-model="formData.image">
+                    <span class="btn btn-success">{{'goods_upload_img' | translate}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="cookitem">
+            <div class="cookitem-content">
+                <input class="btn btn-primary" type="submit" value="{{'recipe_edit_send' | translate}}" ng-disabled="isClickable"/>&nbsp;&nbsp;&nbsp;
+                <a ng-href="/uhkklp/westpromotion?active={{active}}" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+            </div>
+        </div>
+    </form>
+</div>

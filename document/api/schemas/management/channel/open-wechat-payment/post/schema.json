@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "appId": {
+      "type": "string",
+      "required": true,
+      "description": "渠道appId"
+    },
+    "sellerId": {
+      "type": "string",
+      "required": true,
+      "description": "微信商户ID / 卖家支付宝账户号"
+    },
+    "apiKey": {
+      "type": "string",
+      "required": true,
+      "description": "API安全密钥"
+    },
+    "p12Credential": {
+      "type": "file",
+      "required": false,
+      "description": "pkcs12格式"
+    },
+    "pemCredential": {
+      "type": "file",
+      "required": false,
+      "description": "证书pem格式"
+    },
+    "pemCredentialKey": {
+      "type": "file",
+      "required": false,
+      "description": "证书密钥pem格式"
+    },
+    "caCredential": {
+      "type": "file",
+      "required": false,
+      "description": "CA证书"
+    }
+  }
+}

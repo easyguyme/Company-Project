@@ -1,0 +1,66 @@
+<div class="helpdeskcustomerinfo" ng-controller="wm.ctrl.helpdesk.tabs.info as info">
+  <!-- Property template -->
+  <h2 class="helpdesk-tabs-title" translate="helpdesk_customer_info" ng-if="info.properties.length"></h2>
+
+  <section class="client-properties-wrapper default-properties-wrapper" ng-class="{'english-properties-wrapper': info.language == 'en_us'}">
+    <table>
+      <tbody>
+        <tr class="client-attr-row" ng-repeat="property in info.properties | filter: {isDefault: true} track by $index">
+          <td class="attr-name-cell">
+            <div class="client-attr-label" ng-class="without-star-field">{{property.name | string | translate}} :</div>
+          </td>
+          <td class="attr-value-cell">
+            <div class="client-attr-operate" ng-switch="property.status">
+              <form ng-submit="info.updateProperty(property, $event)" class="client-attr-edit attr-edit-{{ property.type }}" ng-switch-when="edit">
+                <div ng-include="property.url" class="client-attrs"></div>
+                <div class="btns-client">
+                  <input class="btn btn-success" value="{{'ok' | translate}}" type="submit" />
+                  <button class="btn btn-default" translate="cancel" ng-click="info.cancelEditingProperty(property)"></button>
+                </div>
+              </form>
+              <div class="client-attr-display" ng-switch-when="view" ng-switch="property.type">
+                <span ng-switch-when="date" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value | date: 'yyyy-MM-dd' }}</span>
+                <span ng-switch-when="checkbox" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value ? property.value.join('、') : '' }}</span>
+                <span ng-switch-default ng-if="property.name === 'gender'" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value | translate}}</span>
+                <span ng-switch-default ng-if="property.name !== 'gender'" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value }}</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section class="client-properties-wrapper extended-properties-wrapper" ng-if="(info.properties | filter: {isDefault: false}) && (info.properties | filter: {isDefault: false}).length" ng-class="{'english-properties-wrapper': info.language == 'en_us'}">
+    <span class="extended-properties-title" translate="member_extented_properties" ng-class="{true: 'is-show', false: 'is-hidden'}[info.isShowExtended]" ng-click="info.switchShowExtended()"></span>
+
+    <table ng-show="info.isShowExtended">
+      <tbody>
+        <tr class="client-attr-row" ng-repeat="property in info.properties | filter: {isDefault: false} track by $index">
+          <td class="attr-name-cell">
+            <div class="client-attr-label" ng-class="without-star-field">{{property.name | string | translate}} :</div>
+          </td>
+          <td class="attr-value-cell">
+            <div class="client-attr-operate" ng-switch="property.status">
+              <form ng-submit="info.updateProperty(property, $event)" class="client-attr-edit attr-edit-{{ property.type }}" ng-switch-when="edit">
+                <div ng-include="property.url" class="client-attrs"></div>
+                <div class="btns-client">
+                  <input class="btn btn-success" value="{{'ok' | translate}}" type="submit" />
+                  <button class="btn btn-default" translate="cancel" ng-click="info.cancelEditingProperty(property)"></button>
+                </div>
+              </form>
+              <div class="client-attr-display" ng-switch-when="view" ng-switch="property.type">
+                <span ng-switch-when="date" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value | date: 'yyyy-MM-dd' }}</span>
+                <span ng-switch-when="checkbox" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value ? property.value.join('、') : ''  }}</span>
+                <span ng-switch-default ng-if="property.name === 'gender'" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value | translate}}</span>
+                <span ng-switch-default ng-if="property.name !== 'gender'" class="attr-value" ng-click="info.editingProperty(property)">{{ property.value }}</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</div>

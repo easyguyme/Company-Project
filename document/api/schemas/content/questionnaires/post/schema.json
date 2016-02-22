@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "the name of questionnaire"
+    },
+    "startTime": {
+      "type": "string",
+      "required": true,
+      "description": "the start time of questionnaire"
+    },
+    "endTime": {
+      "type": "string",
+      "required": true,
+      "description": "the end time of questionnaire"
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "description for questionnaire"
+    },
+    "question": {
+      "type": "array",
+      "required": false,
+      "description": "the question of questionnaires"
+    },
+    "isPublished": {
+      "type": "boolean",
+      "required": false,
+      "description": ""
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "token"
+    },
+    "data": {
+      "type": "json",
+      "required": true,
+      "description": "template for weChat"
+    }
+  }
+}

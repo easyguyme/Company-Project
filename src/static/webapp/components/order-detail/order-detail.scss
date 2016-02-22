@@ -1,0 +1,84 @@
+.c-order-detail {
+
+  &.bottom {
+    padding-bottom: 1.4rem;
+  }
+
+  .c-panel {
+    margin-bottom: .31rem;
+  }
+
+  &__text {
+    margin: 0;
+  }
+
+  &__evalution {
+    &__item {
+      &__title {
+        float: left;
+        width: 2.5rem;
+      }
+
+      &__stars {
+        float: left;
+
+        &__icon {
+          @include square(.625rem);
+          @include background-image('/webapp/build/reservation/images/score_normal.png');
+          display: inline-block;
+          background-size: .625rem;
+          margin-right: .625rem;
+
+          &.active {
+            @include background-image('/webapp/build/reservation/images/score_selected.png');
+          }
+        }
+      }
+    }
+  }
+
+  &__providerwrapper {
+    border-top: 1px solid $detail-provider-line-color;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    .c-panel {
+      margin-bottom: 0;
+    }
+  }
+
+  &__provider {
+    font-size: .4rem;
+    line-height: .7rem;
+    color: $theme-gray-text;
+    padding: .31rem 0;
+
+    &__title {
+      width: 2.5rem;
+      float: left;
+    }
+
+    &__content {
+      float: left;
+    }
+
+    &__icon {
+      @include square(.78rem);
+      @include background-image('/webapp/build/reservation/images/dial_normal.png');
+      background-size: .75rem;
+      float: right;
+
+      &:active {
+        @include background-image('/webapp/build/reservation/images/dial_selected.png');
+      }
+    }
+  }
+
+  .c-title-panel__body {
+    font-size: .4rem;
+    line-height: .7rem;
+    color: $theme-gray-text;
+  }
+}

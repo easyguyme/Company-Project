@@ -1,0 +1,116 @@
+.add-issue-page {
+  @extend %issue-right-slide-page;
+
+  form {
+    height: calc(100% - 59px);
+    -webkit-overflow-scrolling: touch;
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+  }
+
+  .right-slide-page-content {
+    height: calc(100% - 31px) !important;
+
+    .issue-ueditor {
+      .edui-editor-bottomContainer {
+        display: none;
+      }
+    }
+  }
+
+  .add-issue {
+    .attachment-upload-title {
+      font-weight: normal;
+    }
+  }
+}
+
+.issue-attachment-list {
+  .show-attachment-pic {
+    @include width-height(46px, 46px);
+    position: relative;
+    float: left;
+    margin: 9px 6px 10px 0;
+    cursor: pointer;
+    border: 1px solid $border-color;
+
+    &:hover {
+      border: 1px solid $white-background-text-color;
+
+      .attachment-delete-icon {
+        @include issue-norepeat-icon(20px, 20px, '/images/helpdesk/issue/deleteAttachment_hover.png');
+        float: right;
+        position: absolute;
+        background-color: $white-color;
+        border-radius: 14px;
+        background-position: -1px;
+        right: -8px;
+        top: -8px;
+
+        &:hover {
+          background: url('/images/helpdesk/issue/deleteAttachment_normal.png') no-repeat;
+          background-color: $white-color;
+          background-position: -1px;
+        }
+      }
+    }
+
+    .attachment-pic {
+      img {
+        @include width-height(44px, 44px);
+      }
+    }
+
+    .show-type {
+      width: 44px;
+    }
+  }
+}
+
+.issue-add-attachment-operation {
+  @include width-height(45px, 45px);
+  float: left;
+  margin: 10px 6px 10px 0;
+  position: relative;
+
+  .add-attachment {
+    @include width-height(100%, 100%);
+    text-align: center;
+    background-color: $white-color;
+    border: 1px solid $border-color;
+
+    .file-upload-wrap {
+      @include width-height(43px, 45px);
+      left: 1px;
+      overflow: hidden;
+      position: absolute;
+
+      .issue-mask-wrap {
+        @include width-height(44px, 46px);
+        overflow: hidden;
+
+        input {
+          @include width-height(44px, 44px);
+          opacity: 0;
+          position: absolute;
+          padding-top: 45px;
+          left: 0;
+          cursor: pointer;
+          z-index: 10;
+        }
+      }
+    }
+
+    .issue-add-tip {
+      @include issue-norepeat-icon(auto, 45px, '/images/helpdesk/issue/addattachment.png');
+      overflow: hidden;
+      display: inline-block;
+      margin: 11px;
+      line-height: 45px;
+      padding-left: 20px;
+      vertical-align: top;
+    }
+  }
+}

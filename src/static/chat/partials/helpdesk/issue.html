@@ -1,0 +1,18 @@
+<div class="helpdeskissuerecord" ng-controller="wm.ctrl.helpdesk.tabs.issue as issue">
+  <h2 class="helpdesk-tabs-title" translate="helpdesk_issue_record"></h2>
+
+  <input type="button" class="btn btn-success btn-create-issue" ng-click="issue.createIssue()" value="{{'helpdesk_create_issue' | translate}}" />
+
+  <!--
+  <section wm-list-header content="{{'product_promotion_total_records'|translate:'{ recordsCount: issue.totalItems }'}}" height="36" class="issues-header">
+    <input type="button" class="btn btn-success pull-right btn-listheader" ng-click="issue.createIssue()" value="{{'helpdesk_create_issue' | translate}}" />
+  </section>
+  -->
+
+  <section class="issues-wrapper">
+    <div wm-table ng-model="issue.list" class="issues-table"></div>
+    <div class="broadcast-pagination clearfix">
+      <div wm-pagination current-page="issue.currentPage" page-size="issue.pageSize" total-items="issue.totalItems" on-change-size="issue.changeSize" on-change-page="issue.changePage" hide-page-size="true" class="pull-right"></div>
+    </div>
+  </section>
+</div>

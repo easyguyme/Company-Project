@@ -1,0 +1,5 @@
+<!-- type is input -->
+<div class="member-attr-item item-hook member-attr-input clearfix">
+  <input id="{{property.id}}" type="text" class="form-control member-attr" ng-model="property.value" required ng-if="property.isRequired">
+  <input id="{{property.id}}" type="text" class="form-control member-attr" ng-model="property.value" ng-if="!property.isRequired">
+</div>

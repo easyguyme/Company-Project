@@ -1,0 +1,21 @@
+.dd-index-wrap {
+  @include size(100%, 100%);
+  background-color: $gray;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .dd-index-scan {
+    @include background-image('/images/mobile/qr_icon.png');
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    margin: auto;
+    background-position: center;
+    top: 0;
+    bottom: 0;
+  }
+}

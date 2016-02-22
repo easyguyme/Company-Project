@@ -1,0 +1,138 @@
+.score-div {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+
+  .score-title {
+    margin-bottom: 10px;
+    background: url("/images/mobile/memberpoints_smallsize.png");
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position-y: 4px;
+
+    .score-title-text {
+      font-size: $wm-buttom-componet-font-size;
+      color: #171717;
+      margin-left: 20px;
+    }
+
+    .score-title-number {
+      font-size: $wm-score-number-font-size;
+      color: #171717;
+      font-family: 'Segoe UI', 'Semibold';
+      margin-left: 10px;
+      margin-right: -18px;
+    }
+
+    .score-title-line {
+      width: 100%;
+      margin-top: 17.5px;
+      border-top: 1px solid #dadada;
+    }
+  }
+
+  .score-body {
+    padding-top: 3px;
+
+    .score-body-tag {
+      background-image: url("/images/mobile/timeline_timeicon.png");
+      background-repeat: no-repeat;
+      background-position: 3px;
+      border-radius: 2px;
+      padding: 3px;
+      padding-left: 18px;
+      font-size: $wm-score-calendar-font-size;
+      color: #ffffff;
+      background-color: #c6c6c6;
+      margin-left: 24px;
+      background-size: 12px;
+    }
+
+    .score-body-line40 {
+      height: 20px;
+      border-left: 1px solid #c6c6c6;
+      margin-left: 47.3px;
+      margin-top: 2.5px;
+    }
+
+    .score-body-line55 {
+      height: 27.5px;
+      border-left: 1px solid #c6c6c6;
+      margin-left: 47.3px;
+      margin-top: -6px;
+    }
+
+    .score-body-line60 {
+      height: 30px;
+      border-left: 1px solid #c6c6c6;
+      margin-left: 47.3px;
+      margin-top: -5px;
+      margin-bottom: 3px;
+    }
+
+    .score-body-record {
+      line-height: 20px;
+      vertical-align: middle;
+      margin-top: -5px;
+
+      .score-body-record-date {
+        width: 37px;
+        text-align: right;
+        font-size: $wm-score-calendar-font-size;
+        color: #747474;
+        margin-right: 6px;
+        float: left;
+        font-family: 'Segoe UI', 'Semibold';
+      }
+
+      .score-body-record-img {
+        display: inline-block;
+        position: absolute;
+        height: 10px;
+        margin-top: 5px;
+        z-index: 2;
+        left: -5.5px;
+      }
+
+      .score-body-record-main {
+        font-size: $wm-buttom-componet-font-size;
+        position: relative;
+        color: #171717;
+        margin-left: 4.4px;
+        float: left;
+        line-height: 20px;
+        max-width: 50%;
+        border-left: 1px solid #c6c6c6;
+        z-index: 1;
+        padding-left: 20px;
+      }
+
+      &:last-child {
+
+        .score-body-record-main {
+          border-left: none;
+        }
+
+        .score-body-record-img {
+          left: -4.5px;
+        }
+      }
+
+      .red {
+        color: #f9420a;
+      }
+
+      .green {
+        color: #509b00;
+      }
+
+      .score-body-record-number {
+        font-size: $wm-score-number-font-size;
+        float: right;
+        font-family: 'Segoe UI', 'Semibold';
+        line-height: 20px;
+      }
+    }
+  }
+}

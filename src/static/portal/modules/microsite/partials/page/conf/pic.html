@@ -1,0 +1,24 @@
+<div ng-controller="wm.ctrl.microsite.page.config.pic as pic">
+    <form id="form-pic" ng-submit="cpts.sendData(pic.data)">
+      <label class="content-component-config-pic-label" translate="content_component_config_pic_information"></label>
+      <div class="form-group">
+        <label for="pic" translate="content_component_config_pic_name"></label>
+        <input class="form-control" type="text" id="pic" ng-model="pic.data.name" form-tip="{{'content_component_config_title_tip'|translate}}" maxlength="16">
+        <span class="form-tip normal" translate="content_component_config_title_tip"></span>
+      </div>
+      <div class="form-group clearfix">
+        <label for="imageUrl">{{'content_component_config_pic_image'|translate}}</label>
+        <div class="file-upload-input">
+          <input class="form-control content-component-config-pic-input" name="picUrl" id="imageUrl" ng-model="pic.data.imageUrl" readonly="readonly" below-msg required form-tip="{{'content_component_config_slide_picinfo'|translate}}"/>
+          <div id="upload" wm-file-upload class="file-upload-wrap content-component-config-pic-div" ng-model="pic.data.imageUrl">
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group clearfix">
+        <label class="col-md-12 pd0" for="link" translate="content_component_config_pic_link"></label>
+        <div wm-link-select horizontal="true" id="link" ng-model="pic.data.linkUrl"></div>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

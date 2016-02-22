@@ -1,0 +1,43 @@
+<div class="card-detail">
+  <div wm-breadcrumb="card.breadcrumb"></div>
+  <div class="card-detail-body clearfix">
+    <div class="card-detail-left">
+      <label class="card-detail-name">{{'customer_card_name2' | translate}}</label>
+      <label class="card-detail-text">
+        {{card.card.name}}
+        <span class="highlight-tag" ng-if="card.card.isDefault">{{'customer_card_default_card' | translate}}</span>
+      </label>
+
+      <label class="card-detail-name">{{'customer_card_privilege' | translate}}</label>
+      <label class="card-detail-text" ng-bind-html="card.privilege"></label>
+
+      <label class="card-detail-name">{{'customer_card_instruction' | translate}}</label>
+      <label class="card-detail-text" ng-bind-html="card.usageGuide"></label>
+
+      <label class="card-detail-name">{{'member_card_issue_count' | translate}}</label>
+      <label class="card-detail-text">{{card.card.provideCount}}</label>
+
+      <label class="card-detail-name">{{'customer_card_create_time' | translate}}</label>
+      <label class="card-detail-text">{{card.card.createdAt}}</label>
+
+      <label class="card-detail-name">{{'customer_card_update_time' | translate}}</label>
+      <label class="card-detail-text">{{card.card.updatedAt}}</label>
+
+      <div ng-show="card.card.scoreResetDate">
+        <label class="card-detail-name">{{'customer_card_auto_zeroing' | translate}}</label>
+        <label class="card-detail-text">{{'customer_card_auto_zeroing_tip_full' | translate:{'month':card.card.scoreResetDate.month, 'day':card.card.scoreResetDate.day} }}</label>
+      </div>
+
+      <div ng-show="card.card.isAutoUpgrade">
+        <label class="card-detail-name">{{'member_card_upgrade_rule' | translate}}</label>
+        <label class="card-detail-text">{{'member_card_upgrade_text' | translate:{'minScore':card.card.condition.minScore , 'maxScore':card.card.condition.maxScore} }}</label>
+      </div>
+
+    </div>
+    <div class="card-detail-right">
+      <div class="card-detail-right-img" ng-style="{'background-image':'url(' + card.card.poster + ')'}"></div>
+      <label class="card-detail-right-text text-el" ng-style="{color:card.card.fontColor}">{{card.card.name}}</label>
+      <label class="card-detail-right-id text-el" ng-style="{color:card.card.fontColor}">1035256565656</label>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+$enterprise-words-color:         #787878;
+$enterprise-title-color:         #8b8b8b;
+$enterprise-bg-color:            #ddd;
+$enterprise-send-color:          #37b9a0;
+$enterprise-send-color1:         #38c4a9;
+$enterprise-white-color:         #fff;
+
+$basic-spacing-max:              30px;
+$basic-spacing-min:              10px;
+$basic-spacing-center:           15px;
+
+
+.enterprise-main-content {
+  padding-bottom: 0;
+
+  .enterprise-head {
+    background-color: $enterprise-bg-color;
+    height: $basic-spacing-max;
+
+    .enterprise-label-title {
+      line-height: $basic-spacing-max;
+      padding-left: $basic-spacing-center;
+      width: 100%;
+    }
+  }
+
+  .enterprise-body {
+    margin-top: 0;
+
+    .enterprise-block-info {
+      margin-bottom: 50px;
+
+      .company-textbox {
+        width: 40%;
+      }
+    }
+
+    .textbox-tel-check {
+
+      .phone-textbox {
+        margin-right: 5px;
+        max-width: 60%;
+      }
+    }
+  }
+
+  %content-padding-label {
+    height: 30px;
+    line-height: 30px;
+    padding-top: 0;
+  }
+
+  .info-content-name {
+    @extend %content-padding-label;
+  }
+
+  .contact-content-name {
+    @extend %content-padding-label;
+  }
+
+  .contact-content-tel {
+    @extend %content-padding-label;
+  }
+
+  .show-info-box {
+    line-height: 30px;
+  }
+
+  .block-padding {
+    padding-top: 0;
+  }
+
+}
+
+.pull-left {
+  float: left;
+}
+
+.title-icon {
+  background-size: cover;
+  line-height: $basic-spacing-max;
+  margin-left: $basic-spacing-min;
+  margin-right: $basic-spacing-min;
+}
+
+.words-style {
+  color: $enterprise-title-color;
+  font-weight: normal;
+}
+
+.icon-style {
+  @include size(14px, 14px);
+}
+
+.padding-bottom {
+  padding-bottom: 25px;
+}
+
+.title-info-icon {
+  background-image: url('/images/management/enterpriseinformation.png');
+}
+
+.title-contact-icon {
+  background-image: url('/images/management/icon_administrator.png');
+}
+
+.edit-enterprise-icon {
+  background-image: url('/images/management/icon_pencil.png');
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.webkit-inline-style {
+  display: inline-block;
+  padding-bottom: 20px;
+  width: 100%;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.contactbox-width {
+  width: 23%;
+}
+
+.captcha-block {
+  position: relative;
+}
+
+.module-send-verification {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  outline: 0;
+
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  padding: 3px 6px;
+}
+
+.module-send-verification:hover {
+  background-color: $enterprise-send-color;
+}
+
+.module-send-verification-true {
+  background-color: $enterprise-send-color1;
+  color: $enterprise-white-color;
+}
+
+.module-send-verification-false {
+  background-color: $enterprise-bg-color;
+  color: $enterprise-title-color;
+
+  &:hover {
+    background-color: $enterprise-bg-color;
+  }
+}
+
+.enterprise-button {
+  padding-top: 15px;
+}
+
+.info-style {
+  margin-left: $basic-spacing-center;
+  margin-right: $basic-spacing-min;
+}
+
+.pane-padding {
+  padding-left: $basic-spacing-center;
+}
+
+.block-padding {
+  font-size: 12px;
+}
+
+.content-padding {
+  padding-left: 33px;
+}
+
+.pic-verification-wrapper {
+  margin-top: 10px;
+
+  .link-change-validate {
+    display: inline-block;
+    vertical-align: bottom;
+    cursor: pointer;
+  }
+}

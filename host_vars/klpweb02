@@ -1,0 +1,133 @@
+---
+
+repo:
+  name: klpcms
+
+mongodb:
+  db:
+    name: klpunileverfs_tw_klpcms
+    username: klpunileverfs
+    password: qLHd3l26CoTZwO2f
+  host: db-www.klp.unileverfoodsolutions.tw
+  port: 27017
+
+nginx:
+  sites:
+    - name: klpcms.unileverfoodsolutions.tw
+
+settings:
+  mail:
+    api_user: omnisocials_klp_ZUzjGV
+    api_key: MO0JLapIEPmlKGpZ
+    from: info@unileverfoodsolutions.tw
+    from_name: 聯合利華飲食策劃團隊
+
+global:
+  current_env: prod
+
+log:
+  file_log: 1
+  level: error
+  frontend:
+    track_url: http://klpcms.unileverfoodsolutions.tw/api/log/frontend
+  sls:
+    endpoint:
+    access_key_id:
+    access_key_secret:
+    project_id:
+    log_store:
+    log_topic:
+
+resque:
+  host: klpweb01
+  port: 6379
+  db: 2
+
+cache:
+  host: klpweb01
+  port: 6379
+  db: 1
+
+
+qiniu:
+  domain: http://7xk4k9.com5.z0.glb.clouddn.com
+  private_domain: 7xk4p5.com1.z0.glb.clouddn.com
+  bucket: klpcms-production
+  private_bucket: klpcms-private-production
+  access_key: n8PWKkymV4Pz_hLuKtBPGgYfrtmgYarZyRFFI72Z
+  secret_key: XD9Aga-EAsP0YhpeS_gOjF1GyMXJlluslL8sVGaH
+  upload_domain: http://up.qiniug.com
+  thumbnail_lite: ?imageView2/0/w/50
+  thumbnail_small: ?imageView2/0/w/200
+  thumbnail_middle: ?imageView2/0/w/400
+
+shorturl:
+  domain:
+
+wechat:
+  domain:
+  jssdk:
+    app_id:
+    app_secret:
+    domain: http://klpcms.unileverfoodsolutions.tw/
+
+weibo:
+  app_key:
+  app_secret:
+  redirect_url:
+
+webhook:
+  domain: https://klp.unileverfoodsolutions.tw/v1
+  host: klp.unileverfoodsolutions.tw
+
+tuisongbao:
+  domain: https://api.tuisongbao.com
+  app_id: 559a28287a2eb29b11856bcd
+  secret: fff0a7ba40f9a6cc5a47cf01
+  push_app_id:
+  push_secret:
+
+klp:
+  account_id: 559b7615fd604ab7768b4567
+  apiUrl: http://klp.unileverfoodsolutions.tw
+
+yunpian:
+  domain: http://klp.unileverfoodsolutions.tw/index.php?r=sms/send
+  api_key: abcd
+
+supervisor:
+  sock: unix:///var/run//supervisor.sock
+  conf: /etc/supervisor/conf.d/<< repo.name >>.conf
+  group: << repo.name >>
+
+nodejs:
+  version: 0.10.28
+  alias: default
+  npm:
+    install_path: /srv/<< repo.name >>/src/
+    production: no
+
+
+worker:
+  processes:
+    - workerName: scheduler
+      command: php /srv/{{ repo.name }}/src/backend/modules/resque/components/bin/resque-scheduler
+      number: 1
+      redirect_stderr: true
+      autostart: true
+      autorestart: true
+      environment: QUEUE='global',LOGGING='1',APP_INCLUDE='<< repo.path >>/src/backend/modules/resque/components/lib/Resque/RequireFile.php'
+    - workerName: global
+      command: php /srv/{{ repo.name }}/src/backend/modules/resque/components/bin/resque
+      number: 10
+      redirect_stderr: true
+      autostart: true
+      autorestart: true
+      environment: QUEUE='global',LOGGING='1',APP_INCLUDE='/srv/{{ repo.name }}/src/backend/modules/resque/components/lib/Resque/RequireFile.php'
+    - workerName: backend
+      command: php /srv/{{ repo.name }}/src/backend/modules/resque/components/bin/resque
+      number: 10
+      redirect_stderr: true
+      autostart: true
+      autorestart: true
+      environment: QUEUE='backend',LOGGING='1',APP_INCLUDE='/srv/{{ repo.name }}/src/backend/modules/resque/components/lib/Resque/RequireFile.php'

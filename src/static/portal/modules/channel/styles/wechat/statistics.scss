@@ -1,0 +1,56 @@
+.qrcode-statistics {
+  padding-top: 0;
+
+  .panel-section {
+    border: 2px solid $panel-hearder-background-color;
+    margin-bottom: 0;
+
+    .panel-section-header {
+      padding: 10px 20px;
+      background: $panel-hearder-background-color;
+    }
+
+    .panel-section-content {
+      .sub-section {
+        float: left;
+        width: 25%;
+        padding: 20px 0 20px 20px;
+        border-right: 2px solid $panel-hearder-background-color;
+
+        .sub-section-type {
+          font-size: 14px;
+          margin-bottom: 5px;
+        }
+
+        .sub-section-number {
+          font-size: 24px;
+        }
+      }
+
+      .sub-section:last-child {
+        border-right: 0;
+      }
+
+      .start-end-time {
+        margin: 10px 0 10px 20px;
+
+        .start-end-time-label {
+          margin-top: 6px;
+          margin-right: 5px;
+          font-weight: normal;
+        }
+
+        .start-end-time-separator {
+          margin-top: 5px;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+
+        .start-time,
+        .end-time {
+          width: 200px;
+        }
+      }
+    }
+  }
+}

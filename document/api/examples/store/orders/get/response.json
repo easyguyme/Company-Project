@@ -1,0 +1,45 @@
+{
+    "items": [
+        {
+            "id": "55b6e719475df4c51d8b4569",
+            "storeId": "552b763b475df406048b4569",
+            "totalPrice": "10.00",
+            "expectedPrice": "10.00",
+            "staff": {
+                "id": "55b1e06e475df47a6f8b4567",
+                "name": "测试账号"
+            },
+            "consumer": {
+                "id": "55b19f53475df4f07b8b4567",
+                "name": "会员信息",
+                "phone": "13799228651",
+                "avatar": "xxxx"
+            },
+            "storeGoods": [
+                {
+                    "id": "55b083cb475df49e568b4567",
+                    "sku": "143805007379",
+                    "pictures": ['xxx','yy'],
+                    "price": "10.00",
+                    "count": 1,
+                    "totalPrice": "10.00"
+                }
+            ],
+            "status": "finished",
+            "payWay": null,
+            "operateTime": "2015-07-28 10:21:13",
+            "createdAt": "2015-07-28 10:21:13"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/store/orders?tmoffset=-8&accesstoken=081c2f43-62b9-2dfa-ace3-781d27c711ca&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

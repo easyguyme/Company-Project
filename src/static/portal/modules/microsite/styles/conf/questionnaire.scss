@@ -1,0 +1,41 @@
+$questionnaire-white: #fff;
+$questionnaire-blue: #6ab3f7;
+$questionnaire-tip-color: #999;
+
+#form-questionnaire {
+
+  .questionnaire-tip {
+    color: $questionnaire-tip-color;
+    font-size: 12px;
+  }
+}
+
+.questionnaire-radio-items {
+
+  .radio-item {
+
+    .radio-btn {
+      margin: 0 5px 0 0;
+    }
+
+    .radio-content {
+      margin: 10px 20px;
+      border-style: solid;
+      border-width: 1px;
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .radio-content-1 {
+      color: $questionnaire-white;
+      background-color: $questionnaire-blue;
+    }
+
+    .radio-content-2 {
+      color: $questionnaire-blue;
+      background-color: $questionnaire-white;
+      box-shadow: 0 0 1px $questionnaire-blue;
+    }
+  }
+}

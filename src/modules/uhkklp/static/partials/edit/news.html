@@ -1,0 +1,154 @@
+<div class="uhkklp-news-edit">
+    <div class="breadcrumb">
+      <a ng-href="/uhkklp/news">{{'uhkklp_news'|translate}}</a> &nbsp;/&nbsp;
+      <span translate="{{uhkklp_news_title}}"></span>
+    </div>
+    <form id="news-form" role="form" name="newsForm" ng-submit="news.submit()" novalidate >
+      <!-- 活动标题 -->
+      <div class="statistics-chart-item news-item">
+        <div class="statistics-item-title">
+          <span translate="news_list_news_title" class="red-start"></span>
+        </div>
+        <div class="news-item-body">
+          <input class="form-control newsInput" required type="text" form-tip="{{'news_name_tip'|translate}}" ng-model="news.title" maxlength="20" />
+        </div>
+      </div>
+
+      <!-- 新闻类别 -->
+      <div class="statistics-chart-item news-item">
+        <div class="statistics-item-title">
+          <span translate="news_list_news_category" class="red-start"></span>
+        </div>
+        <div class="news-item-body">
+          <div wm-select items="news.categorys" text-field="text" value-field="value" ng-model="news.category" on-change="news.changeSelect" class="newsEditSelect"></div>
+        </div>
+      </div>
+
+        <!-- 是否最新 -->
+        <div class="statistics-chart-item news-item" style="visibility: collapse; height: 0px">
+            <div class="statistics-item-title">
+                <span translate="news_list_news_is_latest" class="red-start"></span>
+            </div>
+            <div class="model-wrap">
+                <div class="news-item-body">
+                    <input wm-radio ng-model="news.isLatest" value="Y">{{'mt_yes' | translate}}
+                </div>
+                <div class="news-item-body">
+                    <input wm-radio ng-model="news.isLatest" value="N">{{'mt_no' | translate}}
+                </div>
+            </div>
+        </div>
+
+      <!-- 活动缩略图 -->
+      <div class="statistics-chart-item news-item">
+        <div class="statistics-item-title">
+          <span translate="news_list_news_thumbnail" class="red-start"></span>
+        </div>
+        <div class="news-item-body">
+          <image ng-src="{{news.thumbnailUrl}}" class="thumbnailImg" ng-class="{'form-control-error': (news.thumbnailUrl == news.thumbnailDefaultUrl) && news.isSubmitted}"></image>
+          <div>
+              <span class="error-tip" ng-show="(news.thumbnailUrl == news.thumbnailDefaultUrl) && news.isSubmitted">{{'recipe_edit_cookbook_img_required' | translate}}</span>
+          </div>
+          <br>
+          <div id="thumbnailUpload" wm-file-upload class="file-upload-wrap" ng-model="news.thumbnailUrl">
+            <span class="btn btn-success">上傳圖片</span>
+          </div>
+        </div>
+      </div>
+
+    <!-- 活动祥图 -->
+    <div class="statistics-chart-item news-item">
+        <div class="statistics-item-title">
+            <span translate="news_list_news_image" class="red-start"></span>
+        </div>
+        <div class="news-item-body">
+            <image ng-src="{{news.imgUrl}}" class="newsImg" alt="640 x 544" ng-class="{'form-control-error': (news.imgUrl == news.imgDefaultUrl) && news.isSubmitted}"></image>
+            <div>
+                <span class="error-tip" ng-show="(news.imgUrl == news.imgDefaultUrl) && news.isSubmitted">{{'recipe_edit_cookbook_img_required' | translate}}</span>
+            </div>
+            <br>
+            <div id="newsImgUpload" wm-file-upload class="file-upload-wrap" ng-model="news.imgUrl">
+                <span class="btn btn-success">上傳圖片</span>
+            </div>
+        </div>
+    </div>
+
+      <!-- 开始时间 -->
+      <div class="statistics-chart-item news-item">
+        <div class="statistics-item-title">
+          <span translate="news_list_news_begin" class="red-start"></span>
+        </div>
+        <div class="news-item-body">
+          <input class="newsDatePicker" wm-datetime-picker picker-id="activityStartDatePicker" min-date-picker-id="activityEndDatePicker" ng-model="news.startDate" more-than-today="{{activity.thanToday}}" required-field="true" name="startDate"/>
+        </div>
+      </div>
+
+        <!-- 分享地址 -->
+        <div class="statistics-chart-item news-item">
+            <div class="statistics-item-title">
+                <span translate="news_list_news_share"></span>
+            </div>
+            <div class="news-item-body">
+                <input class="form-control newsInput" type="text" form-tip="{{'news_list_news_share_tip'|translate}}" ng-model="news.shareUrl" id="newsShareUrl"/>
+            </div>
+        </div>
+
+        <!-- 文章内容 -->
+        <div class="statistics-chart-item news-item">
+            <div class="statistics-item-title">
+                <span translate="news_list_news_content" class="red-start"></span>
+            </div>
+            <div class="news-item-body">
+                <textarea class="newsTextArea" ng-model="news.content" required></textarea>
+            </div>
+        </div>
+
+        <!-- 是否视频 -->
+        <div class="statistics-chart-item news-item">
+            <div class="statistics-item-title">
+                <span translate="news_list_news_is_video" class="red-start"></span>
+            </div>
+            <div class="model-wrap">
+                <div class="news-item-body">
+                    <input wm-radio ng-model="news.isVideo" value="Y">{{'mt_yes' | translate}}
+                </div>
+                <div class="news-item-body">
+                    <input wm-radio ng-model="news.isVideo" value="N">{{'mt_no' | translate}}
+                </div>
+            </div>
+            <div class="news-item-body statistics-item-title" ng-show="news.isVideo == 'Y'" style="margin-top: -15px">
+              <span translate="news_list_news_youtube" class="newsEditTip red-start"></span>
+              <input class="form-control newsInput" type="text" id='youtubeUrl' ng-model="news.youtube" mtv-format="^((http|https):\/\/){0,1}(www\.){0,1}youtube\.com\/watch\?v=\S+$" format-type="url" />
+            </div>
+        </div>
+
+        <!-- 更多信息 -->
+        <div class="statistics-chart-item news-item">
+            <div class="statistics-item-title">
+              <span translate="news_list_news_more" class="red-start"></span>
+            </div>
+            <div class="news-item-body statistics-item-title" style="margin-top: -15px">
+                <span class="newsEditTip red-start">按鈕文字</span>
+                <input class="form-control newsInput" required type="text" ng-model="news.shareBtnTxt" id="news"/>
+            </div>
+            <div class="news-item-body">
+               <div wm-select items="news.gotos" text-field="text" value-field="value" ng-model="news.goto" on-change="news.changeGoto" class="newsEditSelect"></div>
+            </div>
+            <div class="news-item-body statistics-item-title" ng-show="news.goto != 3" style="margin-top: -15px">
+              <span ng-bind="news.gotoTip" class="newsEditTip red-start"></span>
+              <input class="form-control newsInput" type="text" id="gotoInfoTxt" ng-model="news.gotoInfo" id="newsMore" />
+            </div>
+        </div>
+
+      <!-- 送出存储 -->
+      <div class="news-basic-container">
+        <div class="statistics-chart-item news-item">
+          <div class="news-item-body">
+            <input type="submit" class="btn btn-success mr20 user-btn" value="{{'activity_save_btn'|translate}}" id="submitForm"/>&nbsp;&nbsp;
+            <a ng-click="news.goBack()"><span class="btn btn-default active">{{'activity_back_btn'|translate}}</span></a>
+          </div>
+        </div>
+      </div>
+
+    </form>
+</div>

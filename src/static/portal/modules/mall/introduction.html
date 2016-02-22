@@ -1,0 +1,46 @@
+<div class="extension-continue-title" ng-if="extension.detail.active">
+  <img class="extension-icon-mr" src="/images/management/alert.png"/>
+  <span class="extension-gray2 fs16">{{'management_extension_continue' | translate}}</span>
+</div>
+<div ng-if="extension.detail.active">
+  <div class="extension-continue-member row mlr0 extension-gray1 rel extension-todo-spacing">
+    <div class="extension-link-line"></div>
+    <div class="col-md-5 extension-continue">
+      <div class="mb115">
+        <div><img class="extension-step" src="/images/management/stepone.png"/><a ng-href="{{extension.detail.link['layout']}}" class="fs18">{{'reservation_layout' | translate}}</a></div>
+        <div class="clearfix" ng-repeat="stepOne in extension.detail.stepOne">
+          <div class="extension-other-line"></div><div class="other-title"><img ng-src="{{extension.detail.firstDot}}"/>{{stepOne | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 pd0">
+      <img class="col-md-12 pd0" ng-src="{{extension.detail.images[0]}}"/>
+    </div>
+  </div>
+
+  <div class="row mlr0 extension-gray1 extension-todo-spacing">
+    <div class="col-md-6 extension-continue">
+      <div class="mb115">
+        <div class="fs16">
+          <img class="extension-step" src="/images/management/steptwo.png"/>
+          {{'mall_extension_todo_title2' | translate}}
+          <a ng-href="{{extension.detail.link['menu']}}{{extension.channelId}}" class="fs18">{{'management_extension_wechat_menu' | translate}}</a>
+        </div>
+
+        <div class="clearfix">
+          <div class="extension-middle-line"></div><div class="middle-title"><img ng-src="{{extension.detail.firstDot}}"/>{{'mall_extension_todo_steptwo1' | translate}}</div>
+        </div>
+        <div class="clearfix">
+          <div class="extension-long-line"></div><div class="long-title"><img ng-src="{{extension.detail.firstDot}}"/>{{'mall_extension_todo_steptwo2' | translate}}</div>
+        </div>
+        <div class="clearfix">
+          <div class="extension-second-line"></div><div class="other-title"><img ng-src="{{extension.detail.secondDot}}"/>{{'mall_extension_todo_steptwo3' | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 pd0">
+      <img class="col-md-12 pd0" ng-style="{'margin-top': '-26px'}" ng-src="{{extension.detail.images[1]}}"/>
+      <img class="col-md-12 pd0" ng-style="{'margin-top': '75px'}" ng-src="{{extension.detail.images[2]}}"/>
+    </div>
+  </div>
+</div>

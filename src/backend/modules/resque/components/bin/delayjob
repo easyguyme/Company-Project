@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+// change the following paths if necessary
+require(__DIR__ . '/../../../../../vendor/autoload.php');
+require(__DIR__ . '/../../../../../vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../../../../../common/config/bootstrap.php');
+require(__DIR__ . '/../../../../config/bootstrap.php');
+
+$config = yii\helpers\ArrayHelper::merge(
+    require(__DIR__ . '/../../../../config/main.php'),
+    require(__DIR__ . '/../../../../config/main-local.php'),
+    require(__DIR__ . '/../../../../../common/config/main.php'),
+    require(__DIR__ . '/../../../../../common/config/main-local.php')
+);
+
+$app = new yii\web\Application($config);
+
+$accountId = getenv('ACCOUNTID');
+if(empty($accountId)) {
+    die("Set accountId env to work.\n");
+}
+$delay = getenv('DELAY');
+if ($delay) {
+    $in = 10;//s
+    $app->resque->enqueueJobIn($in, 'birthday', 'Job_Birthday', ['accountId' => $accountId]);
+    $app->resque->enqueueJobIn($in, 'statistics', 'Job_Statistics', ['accountId' => $accountId]);
+} else {
+    $app->resque->createJob('birthday', 'Job_Birthday', ['accountId' => $accountId]);
+    $app->resque->createJob('statistics', 'Job_Statistics', ['accountId' => $accountId]);
+}
+
+die("success.\n");

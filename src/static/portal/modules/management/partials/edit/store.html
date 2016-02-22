@@ -1,0 +1,120 @@
+<div ng-controller="wm.ctrl.management.edit.store as channel" wm-before-unload="channel.isSaved">
+  <div wm-breadcrumb="channel.breadcrumb"></div>
+
+  <div class="container-fluid">
+    <form role="form" class="store-form" ng-submit="channel.submit()">
+
+      <!-- Basic information -->
+      <div class="store-basic-container">
+        <span class="title-description basic-title-description" translate="management_store_basic_information"></span>
+        <span class="form-tip store-title-tip" translate="management_store_basic_information_tip"></span>
+
+        <div class="store-fields-item row clear-container-margin" style="margin-top: 10px;">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="management_store_name"></label>
+            <input class="form-control fields-item-content store-name-item" ng-model="channel.store.name" form-tip="{{'management_store_name_tip' | translate}}" required>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="management_store_branch_name"></label>
+            <input class="form-control fields-item-content" ng-model="channel.store.branchName">
+            <span class="form-tip display-form-tip" translate="management_store_branch_name_tip"></span>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label required-field" translate="management_store_service_type"></label>
+            <div class="row">
+              <div class="col-md-4">
+                <div wm-select on-change="channel.changeType" ng-model="channel.store.type" text-field="text" value-field="value" items="channel.types" default-text="type" class=""></div>
+              </div>
+              <div class="col-md-4">
+                <div wm-select ng-model="channel.store.subtype" text-field="text" value-field="value" items="channel.subtypes" default-text="subtype" class=""></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label required-field" translate="address"></label>
+            <div wm-microsite-location ng-model="channel.store.location" vertical="true" change-handler="channel.changeLocation()"></div>
+            <div class="row clear-container-margin">
+              <div id="addressBox" class="col-md-10 address-detial-box">
+                <input class="form-control fields-item-content" placeholder="{{'management_store_fill_detail_address' | translate}}" ng-model="channel.detail" ng-keydown="channel.changeDetail()" required form-tip="{{channel.locationTip | translate}}">
+              </div>
+              <div class="col-md-2 clear-container-padding address-locate-box">
+                <span class="btn btn-success btn-search-location" translate="management_store_search_location" ng-click="channel.locatePosition()"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin" ng-show="channel.positionIcon != ''">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <img class="store-position-icon" ng-src="{{channel.positionIcon}}" />
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin hide">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="management_store_location"></label>
+            <input class="form-control fields-item-content" maxlength="255" ng-model="channel.store.position">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Service information -->
+      <div class="store-service-container">
+        <span class="title-description service-title-description" translate="management_store_service_information"></span>
+
+        <div class="store-fields-item row clear-container-margin" style="margin-top: 10px;">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="management_store_image"></label>
+            <div class="fields-item-content fields-picture-box">
+              <input class="form-control" name="image" ng-model="channel.store.image" readonly="readonly" form-tip="{{'management_store_image_tip'|translate}}"/>
+              <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="channel.store.image" max-size="50">
+                <span></span>
+              </div>
+              <span class="form-tip display-form-tip" translate="management_store_image_tip"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="content_component_tel"></label>
+            <input class="form-control fields-item-content" ng-model="channel.store.telephone" required>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="management_store_business_hours"></label>
+            <input class="form-control fields-item-content" maxlength="50" ng-model="channel.store.businessHours">
+            <span class="form-tip display-form-tip" translate="management_store_business_hours_tip"></span>
+          </div>
+        </div>
+
+        <div class="store-fields-item row clear-container-margin">
+          <div class="form-group col-md-6 col-sm-8 col-xs-10">
+            <label class="fields-item-label" translate="management_store_recommend"></label>
+            <textarea class="form-control" rows="6" ng-model="channel.store.description"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="store-operation-item">
+        <div class="form-group">
+          <button class="btn btn-success" translate="submit"></button>
+          <span class="btn btn-default" translate="cancel" ng-click="channel.cancel()"></span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

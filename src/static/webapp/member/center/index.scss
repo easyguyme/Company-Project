@@ -1,0 +1,320 @@
+%backgroundimage {
+  background-image: url('/images/mobile/background.png'), url('/images/mobile/background_add.png');
+  background-repeat: no-repeat, repeat-y;
+  background-size: 100%;
+}
+
+.member-center-wrapper {
+  @extend %backgroundimage;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+  .member-center-card {
+    margin-bottom: 44px;
+
+    .member-center-card-icon {
+      box-sizing: border-box;
+      border-radius: 4px;
+      background: url('/images/mobile/membercard.png');
+      background-repeat: no-repeat;
+      position: relative;
+      box-shadow: 4px 4px 7px rgba(0, 0, 0, .5);
+      margin: auto;
+
+      .center-icon-component {
+        position: absolute;
+        bottom: 114px;
+        width: 100%;
+      }
+
+      .start-member-btn {
+        @include size(50%, 36px);
+        @include font-style($wm-buttom-componet-font-size, $wm-mobile-btn-text-color);
+        position: absolute;
+        box-sizing: border-box;
+        background-color: $wm-mobile-btn-bg-color;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        border-color: $wm-mobile-btn-bg-color;
+        outline: none;
+        border: 0;
+        right: -7px;
+        top: 7px;
+
+        &:active,
+        &:focus,
+        &:hover {
+          box-sizing: border-box;
+          outline: none;
+          border: 0;
+        }
+      }
+
+      .form-icon {
+        @include size(2px, 0);
+        position: absolute;
+        box-sizing: border-box;
+        display: inline-block;
+        margin-left: 100%;
+        line-height: 0;
+        margin-top: 0;
+        border-width: 7.5px;
+        border-style: solid;
+        border-color: transparent transparent transparent $wm-triangle-bgcolor;
+      }
+    }
+  }
+
+  .mb-popup-container {
+    display: none;
+
+    .qrcode-guide-wrapper {
+      background-image: url('/images/mobile/qrcode_guide.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position-y: top;
+      background-position-x: 100%;
+
+      margin-top: 10px;
+      margin-right: 29px;
+    }
+  }
+}
+
+.member-group {
+  img {
+    max-width: 100%;
+  }
+}
+
+.scorerule-line {
+  height: 1px;
+  background-color: $wm-line-background-color;
+  margin: 15px 13px;
+}
+
+.center-card {
+  margin: 0 auto 43px;
+  border-radius: 4px;
+  box-shadow: -4px 4px 7px rgba(0, 0, 0, .5);
+  background-image: url('/images/mobile/membercard.png');
+  background-repeat: no-repeat;
+  position: relative;
+  display: none;
+
+  .icon-toggle-qrcode {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    cursor: pointer;
+    width: 12%;
+  }
+
+  .card-info-wrapper {
+    .center-component {
+      position: absolute;
+      right: 0;
+      bottom: 84px;
+    }
+
+    .center-left {
+      position: absolute;
+      padding: 0 15px;
+      top: 15px;
+    }
+
+    .center-member-name {
+      position: absolute;
+      bottom: 19px;
+      padding: 0 15px;
+    }
+
+    .start-member-expired-btn {
+      @include font-style($wm-buttom-componet-font-size, $wm-mobile-btn-text-color);
+      height: 36px;
+      box-sizing: border-box;
+      background-color: $wm-mobile-expired-btn-color;
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      border-color: $wm-mobile-expired-btn-color;
+      outline: none;
+      border: 0;
+      bottom: -30px;
+      right: -8px;
+      position: absolute;
+
+      &:active,
+      &:focus,
+      &:hover {
+        box-sizing: border-box;
+        outline: none;
+        border: 0;
+      }
+    }
+
+    .form-expired-icon {
+      @include size(2px, 0);
+      position: relative;
+      box-sizing: border-box;
+      display: inline-block;
+      margin-left: 100%;
+      line-height: 0;
+      border-width: 7.5px;
+      border-style: solid;
+      border-color: transparent transparent transparent $wm-triangle-expired-bgcolor;
+    }
+  }
+
+  .qrcode-info-wrapper {
+    padding: 0 15px;
+    display: none;
+    overflow: hidden;
+
+    .qrcode-picture-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+
+      .picture-qrcode {
+        margin-right: 15px;
+        border-radius: 5px;
+      }
+    }
+
+    .qrcode-text-wrapper {
+      overflow: hidden;
+      display: table-cell;
+      vertical-align: middle;
+      word-wrap: break-word;
+      word-break: break-all;
+      width: 2000px;
+
+      .illustrate-qrcode {
+        @include font-style($wm-input-componet-font-size, $wm-qrcode-text-color);
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+  }
+
+  .center-card-name {
+    font-size: $wm-input-componet-font-size;
+    font-family: 'Arial', 'Microsoft YaHei';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .center-card-username {
+    font-size: $wm-card-name-font-size;
+    font-family: 'Arial', 'Microsoft YaHei';
+  }
+
+  .center-card-number {
+    font-size: $wm-input-componet-font-size;
+    padding-top: 6px;
+    font-family: 'Arial', 'Microsoft YaHei';
+  }
+}
+
+.md40 {
+  padding-bottom: 40px;
+}
+
+.center-list {
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  border: 1px solid $wm-block-color;
+  border-radius: 4px;
+
+  .memberpoints {
+    background-image: url('/images/mobile/memberpoints.png');
+  }
+
+  .memberprivilege {
+    background-image: url('/images/mobile/memberprivilege.png');
+  }
+
+  .personalinformation {
+    background-image: url('/images/mobile/personalinformation.png');
+  }
+
+  .mycoupon {
+    background-image: url('/images/mobile/membercoupon.png');
+  }
+
+  .exchangerecord {
+    background-image: url('/images/mobile/exchangerecord.png');
+  }
+
+  .center-list-block {
+    height: 49px;
+    background-color: $wm-mobile-btn-text-color;
+    background-size: 18px 19px;
+    background-repeat: no-repeat;
+    background-position: 13px;
+    padding-left: 40px;
+
+    .center-list-block-number {
+      @include font-style($wm-score-number-font-size, $wm-mobile-default-color);
+      line-height: 50px;
+      font-family: 'Segoe UI', 'Semibold';
+      max-width: 120px;
+      float: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .center-list-block-text {
+      @include font-style($wm-buttom-componet-font-size, $wm-mobile-default-color);
+      line-height: 50px;
+      font-family: 'Segoe UI', 'SimHei';
+    }
+
+    .center-list-block-arrow {
+      float: right;
+      margin-right: 11px;
+      margin-left: 12px;
+      margin-top: 17.5px;
+      height: 13.5px;
+    }
+
+    .center-list-block-tip {
+      @include font-style($wm-card-name-font-size, $wm-block-tip-color);
+      float: right;
+      margin-top: 17px;
+    }
+
+    + .center-list-block {
+      border-top: 1px solid $wm-block-color;
+    }
+  }
+}
+
+.member-content {
+  p {
+    word-break: break-all;
+  }
+
+  li {
+    margin-top: 8px;
+  }
+}
+
+.member-font-style {
+  color: $wm-form-tip-font-color;
+  font-size: 2.1em;
+}
+
+.member-tip {
+  width: 270px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+}

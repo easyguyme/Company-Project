@@ -1,0 +1,38 @@
+.dropdown {
+  .unfold {
+    @include background-image('/images/site/dropdown_unfold_default.png');
+    display: inline-block;
+    height: 4px;
+    margin-left: 10px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 7px;
+  }
+
+  a {
+    &:hover .unfold,
+    &.active .unfold {
+      background-image: url('/images/site/dropdown_unfold_hover.png');
+    }
+  }
+
+  &.open {
+    .dropdown-toggle {
+      color: $black-background-text-active-color;
+    }
+
+    .unfold {
+      background-image: url('/images/site/dropdown_unfold_selected.png');
+    }
+  }
+}
+
+.dropdown-menu {
+  @include box-shadow(none);
+}
+
+.location {
+  .select-left {
+    width: 69px;
+  }
+}

@@ -1,0 +1,35 @@
+.followers-growth-container {
+  .followers-growth-tabs {
+    height: auto;
+    margin-bottom: 0;
+  }
+}
+
+.follower-growth-chart {
+  border-bottom: 1px solid $property-border-color;
+  border-left: 1px solid $property-border-color;
+  border-right: 1px solid $property-border-color;
+  box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+  padding: 15px;
+
+  .chart-targets-label {
+    font-weight: normal;
+    height: 31px;
+    line-height: 31px;
+    margin-bottom: 0;
+    vertical-align: top;
+  }
+
+  .chart-targets-items {
+    margin-left: 15px;
+    max-width: 160px;
+
+    .select-btn {
+      padding: 2px 10px;
+    }
+
+    .select-dropdown li {
+      padding: 2px 10px;
+    }
+  }
+}

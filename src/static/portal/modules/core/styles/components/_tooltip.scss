@@ -1,0 +1,19 @@
+$tooltip-background-color:                                 #4c4c4c;
+$tooltip-word-color:                                       #fff;
+// <i wm-title="{{'helpdesk_setting_hover_tip' | translate}}"></i>
+
+.tooltipster-wm {
+  border-radius: 5px;
+  background: $tooltip-background-color;
+  color: $tooltip-word-color;
+  word-break: break-word;
+
+  .tooltipster-content {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 8px 10px;
+    overflow: hidden;
+    white-space: pre-wrap;
+  }
+}

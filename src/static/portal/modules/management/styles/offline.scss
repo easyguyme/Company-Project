@@ -1,0 +1,176 @@
+$channel-box-border: #ccc;
+$step-border: #eee;
+$select-border-color: #d2d2d2;
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.pr0 {
+  padding-right: 0;
+}
+
+.qrcode-steps {
+  padding-left: 0;
+  margin-bottom: 20px;
+
+  .complete {
+    .step-number {
+      @include square(16px);
+      background-image: url('/images/content/complete.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .step {
+    width: 50%;
+    background-color: $white-background-color;
+    border: 1px solid $step-border;
+    height: 30px;
+    line-height: 30px;
+  }
+}
+
+.qrcode-dialog {
+  .modal-dialog {
+    margin-top: 50px;
+    width: 620px;
+  }
+}
+
+.qrcode-channel-wrapper {
+  background-color: $white-background-color;
+  width: 100%;
+  border: 1px dashed $channel-box-border;
+  padding: 10px;
+  margin-bottom: 30px;
+
+  .qrcode-radio {
+    margin-top: 20px;
+    padding-left: 0;
+  }
+}
+
+.qrcode-channel-box {
+  height: 60px;
+  box-shadow: 0 0 3px $channel-box-border;
+  border-radius: 2px;
+  margin-bottom: 15px;
+
+  img {
+    @include square(35px);
+    border-radius: 50%;
+    margin-top: 12px;
+    float: left;
+  }
+
+  .channel-name {
+    line-height: 55px;
+    margin-left: 15px;
+    display: inline-block;
+    width: 60%;
+  }
+}
+
+.qrcode-message-wrapper {
+  margin-bottom: 30px;
+
+  .wechat-message-wrap {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+.store-synchronize-icon {
+  @include square(12px);
+  @include animation(rotate 1s linear infinite);
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 20px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba($white-background-text-color, .5) $white-background-text-hover-color;
+  opacity: .9;
+  border-radius: 20px;
+}
+
+.store-synchronize-tip {
+  margin-left: 35px;
+}
+
+.synchronize-dropdown {
+  border: 1px solid $select-border-color;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 5px 8px;
+  padding-left: 10px;
+  margin-left: 30px;
+
+  .caret {
+    color: $select-border-color;
+    margin-left: 20px;
+  }
+}
+
+.synchronizing-dropdown {
+
+  .store-synchronize-icon {
+    margin: 3px 0 0 -3px;
+  }
+}
+
+.syn-text {
+  margin-left: 15px;
+  color: $select-border-color;
+}
+
+.pannel-store-wrap {
+  padding-bottom: 0;
+
+  table {
+    th:nth-child(2) {
+      width: 230px;
+    }
+
+    th:nth-child(4) {
+      width: 200px;
+    }
+
+    th:nth-child(5) {
+      width: 290px;
+    }
+
+    tbody {
+      tr {
+        td {
+          @include text-overflow();
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+}
+
+.store-select-wrap {
+  margin: 0 0 5px 34px;
+  color: $base-text-color;
+}
+
+.store-channel-content {
+  padding: 15px 20px;
+
+  .channel-name {
+    width: 40%;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
+
+.channel-type-wrap {
+  color: $white-background-color;
+  font-size: 12px;
+  padding: 0 3px;
+  border-radius: 2px;
+  display: inline-block;
+}

@@ -1,0 +1,266 @@
+<div class="container-fluid clearfix" ng-class="{'chat-main-content-wrap':isLogined}">
+  <div class="row ov main-content clearfix">
+    <!-- left navbar -->
+    <ul class="navbar-vertical hidden-print col-xs-2 list-group">
+        <!-- current session title -->
+        <li class="session-title">
+          <span class="nav-title" translate="helpdesk_current_session"></span>
+        </li>
+        <div class="session-empty" ng-show="customers.length < 1">{{"helpdesk_no_session" | translate}}</div>
+        <!-- current customer list-->
+        <li class="list-group-item" ng-repeat="cust in customers">
+          <a href="#" ng-click="selectCustomer($index)" ng-class="{'active-customer': customer.target == cust.target}">
+            <div class="customer">
+              <img class="customer-avatar" ng-src="{{cust.avatar}}" alt=""/>
+              <span class="nav-title" translate="{{cust.nick}}"></span>
+              <span class="close-session" ng-click="closeSession($event, $index)"></span>
+            </div>
+            <div class="message">
+              <span class="last-message text-el">{{cust.lastMessage}}</span>
+              <span class="badge" ng-hide="!cust.messages.length || cust.messages.length <= cust.loadedHistoryMessages" ng-bind="cust.messages.length - cust.loadedHistoryMessages"></span>
+            </div>
+          </a>
+        </li>
+    </ul>
+
+    <!-- right wrapper -->
+    <div class="col-xs-10 viewport-wrap clearfix">
+      <!-- content area -->
+      <div class="helpdesk-chat-wiki clear-container-padding clearfix" ng-show="customer">
+        <div class="chat-wrapper clearfix">
+          <div class="viewport embeded helpdesk-md-chat clearfix">
+            <!-- chat customer information -->
+            <div class="customer-info">
+              <div class="row" ng-show="customer.nick">
+                <div class="col-xs-1 customer-avatar-wrapper clear-container-padding">
+                  <img class="customer-avatar" ng-src="{{customer.avatar}}" alt=""/>
+                </div>
+                <div class="col-xs-6">
+                  <h1 class="customer-name">{{customer.nick}}<span class="online" ng-show="customer.isOnline" translate="helpdesk_customer_online"></span><span class="offline" ng-show="!customer.isOnline" translate="helpdesk_customer_offline"></span></h1>
+                  <ul class="session-info">
+                    <li>
+                      <span>{{"helpdesk_session_source"|translate}} :</span>
+                      <span class="source-icon"
+                      ng-class="{'helpdesk-wechat-service-icon':customer.source === 'SERVICE_AUTH_ACCOUNT' || customer.source === 'SERVICE_ACCOUNT',
+                      'helpdesk-wechat-subscription-icon': customer.source === 'SUBSCRIPTION_AUTH_ACCOUNT' || customer.source === 'SUBSCRIPTION_ACCOUNT',
+                      'helpdesk-weibo-icon':customer.source === 'weibo',
+                      'helpdesk-website-icon':customer.source === 'website',
+                      'helpdesk-alipay-icon':customer.source === 'alipay'}" ></span>{{customer.source.toLowerCase() | translate}}
+                      <span ng-bind="customer.sourceName"></span>
+                    </li>
+                    <li ng-show="customer.cardName" class="session-info-membercard">
+                      <span class="member-card-icon" wm-tooltip="{{customer.cardName}}"></span>
+                    </li>
+                    <li ng-show="customer.point">
+                      <span class="point-tag">{{"member_score" | translate}} :</span><span ng-bind="customer.point"></span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="transfer-btn-space col-xs-5">
+                  <button class="btn pull-right btn-default" ng-click="closeSession()" translate="helpdesk_close_session"></button>
+                  <button class="btn pull-right transfer-btn" ng-disabled="!customer.isOnline" ng-class="{'btn-success':customer.isOnline,'btn-disabled':!customer.isOnline}" ng-click="transferHelpDesk()">{{'helpdesk_transfer'|translate}}</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- customer session history -->
+            <div class="session-history rel">
+              <p class="middle" translate="helpdesk_select_customer_tip" ng-hide="hideSelectTip"></p>
+              <ul class="chat-messages">
+                <li ng-repeat="session in sessions">
+                  <ul class="session">
+                    <li class="current-session-tip" ng-show="session.time">
+                      <span class="split-word">{{"helpdesk_current_session_time"|translate}} : {{session.time|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                    </li>
+                    <li class="current-session-tip" ng-show="session.transferedSuccessMessage">
+                      <span class="split-word">{{session.transferedSuccessMessage}}</span>
+                    </li>
+                    <li class="current-session-tip" ng-show="session.showMoreHistoryMessage">
+                      <!-- <span class="split-word">{{session.transferedSuccessMessage}}</span> -->
+                      <a href="#" class="show-history" ng-click="showHistoryOfCurrentConversation()" translate="helpdesk_show_history_tip"></a>
+                    </li>
+                    <li ng-repeat="message in session.messages" class="chat-message" ng-class="{'align-right-message':message.isMine}">
+                      <div ng-if="!message.isMine" ng-switch="message.content.msgType" class="message-title">
+                        <img class="message-avatar" ng-src="{{message.avatar}}" ng-show="message.avatar"/>
+                        <div class="system-message" translate="system_reply" ng-show="!message.avatar"></div>
+                        <div ng-if="message.content.msgType=='NEWS'" class="message-body ib">
+                          <div wm-wechat-graphic graphic="message.content.body" linkable="true" class="message-graphic"></div>
+                        </div>
+                        <span class="icon-system-bubble" ng-if="message.content.msgType=='TEXT'&&message.translate"></span>
+                        <p ng-if="message.content.msgType=='TEXT'&&message.translate" class="message-body system-bubble" translate="{{message.content.body}}"></p>
+                        <span class="icon-user-bubble" ng-if="message.content.msgType=='TEXT'&&!message.translate"></span>
+                        <p ng-if="message.content.msgType=='TEXT'&&!message.translate" class="message-body" ng-bind-html="message.content.body"></p>
+                      </div>
+                      <div ng-if="message.isMine" ng-switch="message.content.msgType" class="message-title">
+                        <div ng-if="message.content.msgType=='NEWS'" class="message-body ib">
+                          <div wm-wechat-graphic graphic="message.content.body" linkable="true" class="message-graphic"></div>
+                        </div>
+                        <p ng-if="message.content.msgType=='TEXT'" class="message-body" ng-bind-html="message.content.body"></p>
+                        <span class="icon-helpdesk-bubble"></span>
+                        <img class="message-avatar" ng-src="{{message.avatar}}"/>
+                      </div>
+                    </li>
+                    <li class="current-session-tip" ng-show="session.transferSuccessMessage">
+                      <span class="split-word">{{session.transferSuccessMessage}}</span>
+                    </li>
+                  </ul>
+                </li>
+                <li><a id="bottom"></a></li>
+              </ul>
+            </div>
+
+            <!-- helpdesk chat form -->
+            <div class="chat-form helpdesk-chat">
+              <div wm-wechat-message class="chat-wechat-message" path="{{graphicPath}}" placeholder="{{helpdesk_chat_tip|translate}}" ng-model="message" disabled-field="!customer.isOnline" keyup-handler="checkKeyCode"></div>
+              <!--
+              <textarea class="form-control chat-box" placeholder="{{helpdesk_chat_tip|translate}}" ng-keyup="checkKeyCode($event, message)" ng-model="message" ng-disabled="!customer.nick" requied></textarea>
+              -->
+              <button class="btn pull-right" ng-class="{'btn-info':customer.isOnline,'btn-disabled':!customer.isOnline}" ng-click="sendMessage(message)" translate="send"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs-wrapper clearfix">
+          <div class="helpdesk-md-wiki">
+            <div wm-tabs="changeTab()" tabs="tabs" ng-model="curTab" inner="true" data-inner="true" hide-name="true" has-tooltip="true"></div>
+            <div wm-tab-panes tabs="tabs" full-path="/build/chat/partials/helpdesk/"></div>
+          </div>
+        </div>
+      </div>
+      <div class="helpdesk-chat-noselection" ng-show="!customer">
+        <div class="noselection-wrapper">
+          <div class="noselection-icon-line">
+            <span class="left-sessions-icon"></span>
+          </div>
+          <div class="noselection-text-line">
+            <span>{{"helpdesk_no_customer_selection_hint" | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div wm-footer ng-class="{'visible':isLogined}"></div>
+    </div>
+
+    <!-- tip box when enabled notification  -->
+    <div class="notification-tipbox enabled-notification" ng-show="notificationTipboxStatus === 'enabled'">
+      <button type="button" class="close" ng-click="closeTipbox()"><span aria-hidden="true">×</span></button>
+      <div class="notification-tipbox-title">{{'helpdesk_desktop_alert_enabled'|translate}}</div>
+      <div class="notification-tipbox-title-tip">{{'helpdesk_notification_option_tip'|translate}}</div>
+      <div class="notification-operations">
+        <button class="btn btn-primary" ng-click="closeTipbox()">{{'ok'|translate}}</button>
+        <a class="btn btn-link" href="#" ng-click="closeNotification()">{{'helpdesk_disable_desktop_alert'|translate}}</a>
+      </div>
+    </div>
+
+    <!-- tip box when disabled notification  -->
+    <div class="notification-tipbox disabled-notification" ng-show="notificationTipboxStatus === 'disabled'">
+      <button type="button" class="close" ng-click="closeTipbox()"><span aria-hidden="true">×</span></button>
+      <div class="notification-tipbox-title">{{'helpdesk_desktop_alert_disabled'|translate}}</div>
+      <div class="notification-tipbox-title-tip" ng-show="language === 'zh_cn'">{{'helpdesk_notification_tipbox_title_tip1'|translate}}<a href="#" ng-click="user.setNotification()">{{'helpdesk_notifications'|translate}}</a>{{'helpdesk_notification_tipbox_title_tip2'|translate}}</div>
+      <div class="notification-tipbox-title-tip" ng-show="language === 'en_us'">
+      {{'helpdesk_notification_tipbox_title_tip1'|translate}}{{'helpdesk_notification_tipbox_title_tip2'|translate}}<a href="#" ng-click="user.setNotification()">{{'helpdesk_notifications'|translate}}</a></div>
+      <div class="notification-operations">
+        <button class="btn btn-primary" ng-click="closeTipbox()">{{'helpdesk_got_it'|translate}}</button>
+      </div>
+    </div>
+
+    <!-- tip box when the browser do not support notification -->
+    <div class="notification-tipbox support-notification" ng-show="notificationTipboxStatus === '' && !notificationSupport">\
+      <button type="button" class="close" ng-click="closeNotificationTipbox()"><span aria-hidden="true">×</span></button>
+      <div class="notification-tipbox-title">{{'helpdesk_desktop_alert_not_support'|translate}}</div>
+      <div class="notification-tipbox-title-tip">{{'helpdesk_notification_browser_tip'|translate}}</div>
+      <div class="notification-operations">
+        <button class="btn btn-primary" ng-click="closeNotificationTipbox()">{{'ok'|translate}}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- helpdesk offline -->
+  <script type="text/ng-template" id="offline.html">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">{{'helpdesk_offline_notice'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+      <p class="main-notice"><i class="notice-warning"></i>{{'helpdesk_offline_notice_main_tip'|translate}}</p>
+      <p>{{'helpdesk_offline_notice_password_tip'|translate}}</p>
+      <p>{{'helpdesk_offline_notice_change_password_tip'|translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="close()">{{'ok'|translate}}</button>
+    </div>
+  </script>
+
+  <!-- helpdesk transfer -->
+  <script type="text/ng-template" id="transfer.html">
+    <div class="modal-header">
+      <h4 class="modal-title">{{'helpdesk_transfer'|translate}}</h4>
+      <button type="button" class="close popup-close" ng-click="close()"></button>
+    </div>
+    <div class="modal-body">
+      <table class="table wm-data-table helpdesk-transfer-table">
+        <thead>
+          <th ng-class="{'fixed-col': hasLastChatHelpdesk}">{{'helpdesk_account_number'|translate}}</th>
+          <th>{{'helpdesk_account_nickname'|translate}}</th>
+          <th>{{'client'|translate}}</th>
+          <th>{{'helpdesk_account_busy'|translate}}</th>
+        </thead>
+      </table>
+      <div class="scroll-body" ng-show="hasClient">
+        <table class="table wm-data-table helpdesk-transfer-table">
+          <tbody>
+            <tr ng-repeat="helpdesk in helpdesks track by $index" ng-if="helpdesk.isOnline" ng-class="{'busy-status': helpdesk.conversationCount == helpdesk.maxClient}">
+              <td>
+                <label class="radio-inline" style="margin-left:-20px">
+                  <span wm-radio value="{{helpdesk.id}}" ng-model="selectedHelpdesk.id"></span>
+                  <span class="text-el badge-cell" wm-tooltip="{{helpdesk.badge}}">{{helpdesk.badge}}</span>
+                </label>
+                <span class="badge last-chat" ng-show="helpdesk.isLastChat">{{'helpdesk_last_session'|translate}}</span></a>
+              </td>
+              <td class="text-el"><span wm-tooltip="{{helpdesk.name}}">{{helpdesk.name}}</span></td>
+              <td class="text-el"><span wm-tooltip="{{helpdesk.loginDevice|translate}}">{{helpdesk.loginDevice|translate}}</span></td>
+              <td><span><img class="icon-style" ng-src="{{helpdesk.busy.icon}}" />{{helpdesk.busy.text}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty-body" ng-show="! hasClient">
+        <span class="no-helpdesk" translate="helpdesk_no_available_helpdesk"></span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="submit()" ng-disabled="! enableOkButton">{{'ok'|translate}}</button>
+    </div>
+  </script>
+
+  <!-- notification setting -->
+  <script type="text/ng-template" id="setNotification.html">
+    <div class="modal-header">
+      <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">{{'helpdesk_notifications'|translate}}</h4>
+    </div>
+    <div class="modal-body helpdesk-notification">
+      <div class="helpdesk-notification-header">
+        <h5 class="notification-title required-field">{{'helpdesk_notification_settings'|translate}}</h5>
+        <div class="notification-title-tip">{{'helpdesk_notification_settings_tip'|translate}}</div>
+      </div>
+      <div class="helpdesk-notification-body">
+        <div class="notification-option">
+          <label class="radio-inline" style="margin-left:-20px">
+            <span wm-radio value="desktop-mark" ng-model="notificationType"></span>
+            <span>{{'helpdesk_desktop_alert'|translate}}+{{'helpdesk_tag'|translate}}</span>
+          </label>
+          <div class="notification-option-tip">{{'helpdesk_notification_option_tip'|translate}}</div>
+        </div>
+        <div class="notification-option">
+          <label class="radio-inline" style="margin-left:-20px">
+            <span wm-radio value="mark" ng-model="notificationType"></span>
+            <span>{{'helpdesk_tag'|translate}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="submit()">{{'management_submit'|translate}}</button>
+    </div>
+  </script>
+</div>

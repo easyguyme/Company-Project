@@ -1,0 +1,90 @@
+<div class="store-info">
+  <div wm-breadcrumb="info.breadcrumb"></div>
+  <div class="store-wrapper">
+    <section class="store-items clearfix">
+      <img ng-if="info.data.image" class="cover-image" ng-src="{{info.data.image | qiniu:'270,165,2'}}"/>
+      <img ng-if="!info.data.image" class="cover-image" src="/images/content/default.png"/>
+      <div class="item-wrapper">
+        <div class="store-header">
+          <div class="store-name">
+            <span class="name">{{info.data.name}}</span>
+            <span class="qrcode qrcode-alipay-icon" ng-show="info.alipayQrcode" ng-click="info.showQrcode('alipay', $event)" ng-if="info.isAlipayQrcodeEnable">{{'alipay_qrcode' | translate}}</span>
+            <span class="qrcode qrcode-weibo-icon" ng-show="info.weiboQrcode" ng-click="info.showQrcode('weibo', $event)" ng-if="info.isWeiboQrcodeEnable">{{'weibo_qrcode' | translate}}</span>
+            <span class="qrcode qrcode-wechat-icon" ng-show="info.wechatQrcode" ng-click="info.showQrcode('wechat', $event)" ng-if="info.isWechatQrcodeEnable">{{'wechat_qrcode' | translate}}</span>
+          </div>
+          <!--wechat qrcode dropdowm-->
+          <div wm-multi-qrcode qrcode-list="info.wechatQrcode" is-show="info.isShowWechatQrcode" self-style="info.wechatQrcode.style" channel="info.wechatQrcode[0].channel" qrcode-title="scan_qrcode_view_graphic"></div>
+          <!--weibo qrcode dropdowm-->
+          <div wm-multi-qrcode qrcode-list="info.weiboQrcode" is-show="info.isShowWeiboQrcode" self-style="info.weiboQrcode.style" channel="info.weiboQrcode[0].channel" qrcode-title="scan_qrcode_view_graphic"></div>
+          <!--alipay qrcode dropdowm-->
+          <div wm-multi-qrcode qrcode-list="info.alipayQrcode" is-show="info.isShowAlipayQrcode" self-style="info.alipayQrcode.style" channel="info.alipayQrcode[0].channel" qrcode-title="scan_qrcode_view_graphic"></div>
+          <div class="store-position">
+            <span>{{info.data.location.province | translate}}{{info.data.location.city | translate}}{{info.data.location.district | translate}}{{info.data.location.detail}}</span>
+            <span id="positionDetail" class="detail" translate="details" ng-mouseover="info.showPosition()" ng-mouseleave="info.hidePosition()"></span>
+          </div>
+          <div id="position" class="view-vipcard-pane position-map" ng-show="info.isShowPosition">
+            <img ng-src="{{info.positionIcon}}"/>
+            <i class="back-triangle"></i>
+            <i class="front-triangle"></i>
+          </div>
+        </div>
+        <div class="store-item">
+          <span class="item-name">{{'content_component_tel' | translate}}:</span>
+          <span class="item-text">{{info.data.telephone}}</span>
+        </div>
+        <div class="store-item">
+          <span class="item-name">{{'store_type' | translate}}:</span>
+          <span class="item-text store-tag" ng-repeat="tag in info.tags">{{tag}}</span>
+        </div>
+        <div class="store-item">
+          <span class="item-name">{{'management_store_business_hours' | translate}}:</span>
+          <span class="item-text">{{info.data.businessHours}}</span>
+        </div>
+        <div class="store-item item-introduction clearfix">
+          <span class="item-name">{{'management_store_recommend' | translate}}:</span>
+          <span class="item-text">{{info.data.description}}</span>
+        </div>
+      </div>
+    </section>
+    <section class="store-content-wrapper clearfix">
+      <div class="content-header">
+        <span class="name">{{'store_shelf' | translate}}</span>
+        <span class="detail" ng-click="info.linkToProductShelf()">{{'view_details' | translate}}</span>
+      </div>
+      <div class="content-body">
+        <div class="body-item">
+          <span class="name">{{'store_shelf_total' | translate}}：</span>
+          <span class="text">{{info.data.storeGoods.total}}</span>
+        </div>
+        <div class="body-item">
+          <span class="name">{{'store_shelf_onsale' | translate}}：</span>
+          <span class="text">{{info.data.storeGoods.onSaleTotal}}</span>
+        </div>
+        <div class="body-item">
+          <span class="name">{{'store_shelf_offsale' | translate}}：</span>
+          <span class="text">{{info.data.storeGoods.offSaleTotal}}</span>
+        </div>
+      </div>
+    </section>
+    <section class="store-content-wrapper clearfix">
+      <div class="content-header">
+        <span class="name">{{'store_shaff' | translate}}</span>
+        <span class="detail" ng-click="info.linkToStaff()">{{'view_details' | translate}}</span>
+      </div>
+      <div class="content-body">
+        <div class="body-item">
+          <span class="name">{{'store_shaff_total' | translate}}：</span>
+          <span class="text">{{info.data.staff.total}}</span>
+        </div>
+        <!-- <div class="body-item">
+          <span class="name">{{'store_shaff_online' | translate}}：</span>
+          <span class="text">{{info.data.staff.onlineTotal}}</span>
+        </div>
+        <div class="body-item">
+          <span class="name">{{'store_shaff_offline' | translate}}：</span>
+          <span class="text">{{info.data.staff.offlineTotal}}</span>
+        </div> -->
+      </div>
+    </section>
+  </div>
+</div>

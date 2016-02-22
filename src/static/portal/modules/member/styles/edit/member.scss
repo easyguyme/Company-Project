@@ -1,0 +1,668 @@
+// Edit Member
+$transparent-color: transparent;
+$view-label-score-color: #333;
+$front-triangle-color: #fff;
+$member-view-margin-color: #787878;
+$wm-member-properties-color: #37c3aa;
+$wm-member-properties-action-color: #268776;
+$front-content-color: #f7f7f7;
+$channels-suffix-text-color: #999;
+$member-border-color: #ddd;
+$member-remark-color: #aaa;
+$member-stats-border-color: #efefef;
+$member-boxshow-color: #e7e7e7;
+$member-black: #191919;
+
+@mixin left-triangles($right, $top, $bottom, $color) {
+  content: '';
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-right: $right solid $color;
+  border-bottom: $bottom solid $transparent-color;
+  border-top: $top solid $transparent-color;
+  position: absolute;
+}
+
+$wm-member-avatar-width: 110px;
+$wm-member-avatar-height: 110px;
+
+$wm-member-view-icons: birthday, email, phone, vipcard, socialsites, female, male, pencil, integration, qrcode;
+
+.clear-container-margin {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.clear-container-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.operate-member-container {
+  margin-bottom: 50px;
+}
+
+.member-attr-label {
+  color: $base-text-color;
+  font-weight: normal;
+}
+
+.member-attr-wrapper {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+.member-attr-item {
+  max-width: 480px;
+
+  .member-avatar-thumbnail {
+    @include size($wm-member-avatar-width, $wm-member-avatar-height);
+
+    border: 0;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+
+
+    .menber-avatar-icon {
+      @include size(100%, 100%);
+      img {
+        @include size(100%, 100%);
+        @include border-top-radius(2px);
+        @include border-bottom-radius(2px);
+      }
+    }
+
+    .member-avatar-upload {
+      bottom: 0;
+      position: absolute;
+
+      .btn-upload-avatar {
+        @include size($wm-member-avatar-width, $wm-member-avatar-height / 4);
+        background-color: rgba($upload-avatar-background-color, .4);
+        color: $white-background-color;
+        line-height: $wm-member-avatar-height / 4;
+        text-align: center;
+      }
+    }
+  }
+
+  .member-gender-label {
+    color: $base-text-color;
+    font-weight: normal;
+    line-height: 16px;
+    margin-bottom: 0;
+    vertical-align: bottom;
+
+    + label {
+      margin-left: 100px;
+    }
+  }
+
+  .member-item-card {
+    max-width: 50%;
+  }
+
+  .member-item-location {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+
+      .col-md-4 {
+        padding-left: 0;
+        padding-right: 5;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .member-select-item {
+    .select-btn {
+      padding: 2px 10px;
+    }
+  }
+}
+
+.member-item-tag {
+  max-width: 95%;
+}
+
+.member-attr-tags {
+  padding-left: 0;
+  padding-right: 0;
+
+  .member-attr-tags-items {
+    margin-bottom: 0;
+    padding-left: 0;
+
+    .checkboxs-style {
+      display: inline-flex;
+    }
+  }
+
+  .check-option-style {
+    padding-left: 2px;
+    word-break: break-all;
+  }
+}
+
+// View Member
+
+.member-view-container {
+  margin: 0 15px 100px;
+}
+
+.member-view-default {
+  margin-bottom: 45px;
+}
+
+.member-view-avatar {
+  @include size($wm-member-avatar-width, $wm-member-avatar-height);
+  @include border-top-radius(2px);
+  @include border-bottom-radius(2px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.member-view-porperty {
+  width: 88%;
+  margin-left: 0;
+}
+
+.member-property-item {
+  line-height: 14px;
+  margin-bottom: 5px;
+  display: inline-block;
+
+  .member-property-content {
+    line-height: 14px;
+    vertical-align: middle;
+  }
+}
+
+.member-view-icon {
+  @include square(16px);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.member-view-icon-gender {
+  @include size(22px, 22px);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: $front-triangle-color;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@each $icon-item in $wm-member-view-icons {
+  .view-icon-#{$icon-item} {
+    background-image: url('/images/customer/#{$icon-item}.png');
+  }
+}
+
+.member-view-name {
+  line-height: 18px;
+  margin-bottom: 5px;
+  padding-right: 0;
+
+  .view-name-info {
+    font-size: 20px;
+    line-height: 20px;
+    margin: 0 20px 5px 0;
+    vertical-align: middle;
+  }
+}
+
+.view-property-detail {
+  margin-left: 10px;
+  font-size: 0;
+  position: relative;
+  display: inline-block;
+
+  .link-show-panel {
+    font-size: 12px;
+  }
+}
+
+.member-view-tag {
+  margin-bottom: 5px;
+
+  .member-tag-label {
+    vertical-align: top;
+    width: auto;
+  }
+
+  .view-tag-item {
+    background-color: $breadcrumb-bg;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: auto;
+  }
+}
+
+.member-view-label {
+  margin-right: 15px;
+  width: auto;
+}
+
+.member-view-label-right {
+  margin-right: 10%;
+}
+
+.view-remark-content {
+  margin-right: 10px;
+  color: $member-remark-color;
+}
+
+.member-operate-icon {
+  cursor: pointer;
+}
+
+.view-icon-socialsites {
+  margin-right: 5px;
+}
+
+.member-birthday-email {
+  border-top: 1px dashed $member-border-color;
+  margin-left: 15px;
+  padding-top: 5px;
+}
+
+.member-view-scores {
+  .view-label-score {
+    color: $view-label-score-color;
+  }
+
+  .member-scores-items {
+    @include box-shadow(0 1px 3px rgba($border-color, .5));
+    border: 1px solid $border-color;
+
+    .table {
+      border-top: 0;
+      margin-bottom: 0;
+    }
+
+    thead {
+      @include box-shadow(0 1px 3px rgba($border-color, .5));
+      background-color: $breadcrumb-bg;
+
+      tr {
+        th {
+          border-bottom: 0;
+          font-weight: normal;
+          padding: 5px 15px;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 7px 15px;
+        }
+      }
+    }
+  }
+}
+
+.member-property-popup {
+  position: relative;
+  width: auto;
+}
+
+.view-popup-pane {
+  @include box-shadow(0 0 3px 2px rgba($border-color, .7));
+  @include border-top-radius(4px);
+  @include border-bottom-radius(4px);
+  background-color: $white-background-color;
+  border: 1px $breadcrumb-bg solid;
+  color: $white-background-color;
+  padding: 10px;
+  position: absolute;
+  top: -20px;
+  z-index: 2;
+  font-size: 14px;
+
+  .back-triangle {
+    @include left-triangles(11px, 12px, 12px, $breadcrumb-bg);
+    left: -11px;
+    top: 15px;
+  }
+
+  .front-triangle {
+    @include left-triangles(12px, 11px, 11px, $front-triangle-color);
+    left: -11px;
+    top: 16px;
+  }
+}
+
+.view-vipcard-pane {
+  @include size(300px, 180px);
+  right: -320px;
+
+  .member-vipcard-icon {
+    @include size(100%, 100%);
+    @include border-top-radius(2px);
+    @include border-bottom-radius(2px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    .vipcard-pane-name {
+      padding-left: 15px;
+      position: absolute;
+      top: 20px;
+    }
+
+    .member-name {
+      bottom: 15px;
+      left: 20px;
+      position: absolute;
+    }
+
+    .member-pane-number {
+      padding-left: 15px;
+      position: absolute;
+      top: 40px;
+    }
+
+    .member-card-expired {
+      background-color: rgba(255, 255, 255, .8);
+      font-size: 12px;
+      color: $member-black;
+      bottom: 15px;
+      right: 0;
+      position: absolute;
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    .member-card-qrcode {
+      @include size(80px, 40px);
+      background-image: url('/images/mobile/img_qrcode.png');
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
+}
+
+.view-qrcode-pane {
+  padding: 0;
+  right: -170px;
+}
+
+.btn-member-operation {
+  max-width: 70px;
+}
+
+.member-extented-properties {
+  color: $wm-member-properties-color;
+  text-decoration: underline;
+  display: inline-block;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &.active {
+    color: $wm-member-properties-action-color;
+    cursor: pointer;
+  }
+}
+
+.member-account-channel {
+  float: left;
+  margin-left: 15px;
+}
+
+.member-account-social {
+  float: left;
+  padding-left: 45px;
+}
+
+.account-detail-content {
+  display: inline;
+  padding-left: 10px;
+  word-break: break-all;
+
+  .member-view-icon {
+    background-size: 16px 16px;
+  }
+}
+
+.member-view-margin {
+  color: $member-view-margin-color;
+  margin-bottom: 10px;
+}
+
+.member-view-account {
+  > div {
+    margin-bottom: 10px;
+  }
+
+  label {
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+}
+
+.member-attr-radio {
+  .row li {
+    display: inline-flex;
+    margin-bottom: 5px;
+  }
+}
+
+.properties-dialog {
+
+  .modal-dialog {
+    width: 480px;
+    vertical-align: center;
+    margin-top: 193px;
+    border-radius: 4px;
+  }
+
+  .modal-content {
+    background-color: $front-content-color;
+  }
+
+  .modal-header {
+    background-color: $front-triangle-color;
+    border-radius: 4px;
+  }
+}
+
+.properties-body {
+  height: auto;
+  margin-bottom: 50px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 25px 25px 10px;
+  position: relative;
+
+  .property-label {
+    color: $member-view-margin-color;
+    font-weight: normal;
+    max-width: 27%;
+    padding-right: 0;
+  }
+
+  .property-value {
+    color: $member-black;
+    max-width: 73%;
+  }
+
+  .member-property {
+    margin: 0 -15px 15px;
+  }
+}
+
+.score-channels-cell {
+  img {
+    width: 20px;
+  }
+
+  .channels-suffix {
+    color: $channels-suffix-text-color;
+  }
+}
+
+.member-separator {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: $member-border-color;
+}
+
+.member-property-spacing {
+  margin-right: 30px;
+}
+
+.member-remark {
+  max-width: 62%;
+
+  .edit-remark {
+    input {
+      height: 30px;
+    }
+
+    .btn {
+      height: 30px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.member-view-records {
+  margin-right: 30px;
+}
+
+.member-view-purchase {
+  .purchase-head {
+    border-bottom: 1px solid $member-border-color;
+    margin: 45px 28px 0 0;
+    padding-bottom: 5px;
+
+    .purchase-head-item {
+      display: inline-block;
+      padding-top: 10px;
+    }
+
+    .purchase-button {
+      height: 30px;
+      padding: 2px 12px;
+    }
+  }
+
+  .purchase-body {
+    padding: 10px 0 0 20px;
+  }
+
+  .purchase-stats {
+    .stats-item {
+      height: 100px;
+      width: 48%;
+      margin: 0 15px 15px 0;
+      border: 2px solid $member-stats-border-color;
+      box-shadow: 0 2px 0 $member-boxshow-color;
+      border-radius: 5px;
+      float: left;
+      padding: 15px 0 0 18px;
+    }
+
+    .stats-title {
+      margin-bottom: 8px;
+    }
+
+    .stats-icon {
+      @include size(40px, 40px);
+      border-radius: 20px;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .stats-label {
+      display: inline-block;
+      width: calc(100% - 50px);
+      margin-left: -13px;
+    }
+
+    .stats-label-one {
+      border-radius: 5px;
+      height: 20px;
+    }
+
+    .stats-label-two {
+      border-radius: 3px;
+      height: 12px;
+    }
+
+    .stats-data {
+      width: 30%;
+      display: inline-block;
+      padding-left: 10px;
+    }
+
+    .stats-data-one {
+      font-size: 24px;
+      line-height: 30px;
+      vertical-align: bottom;
+
+      span {
+        margin-left: 5px;
+        font-size: 14px;
+      }
+    }
+
+    .stats-data-two {
+      margin-top: -5px;
+    }
+  }
+}
+
+.member-purchase-dialog {
+  .modal-dialog {
+    width: 1000px;
+  }
+
+  .modal-body {
+    padding: 30px 30px 150px;
+    min-height: 300px;
+
+    .modal-content-title {
+      margin-bottom: 10px;
+    }
+
+    .span-center {
+      padding-top: 7px;
+    }
+
+    .goodsname-head {
+      width: 130px;
+    }
+
+    .create-head {
+      width: 115px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="coupon-list clearfix" ng-controller="wm.ctrl.marketing.coupon.list as list">
+  <!-- Search filter -->
+  <div class="goods-filter coupon-header-wrapper clearfix">
+    <div wm-list-header head-class="wm-panel-title">
+      <div class="interaction-search pull-left">
+        <wm-search ng-model="list.searchKey" class="search-style" click-func="list.search()" placeholder="{{'product_coupon_name' | translate}}"></wm-search>
+      </div>
+      <a class="btn btn-success pull-right btn-listheader" translate="product_add_coupon" href="/marketing/create/coupon"></a>
+    </div>
+  </div>
+
+  <!-- Click to add when table has no data -->
+  <div class="keywordlist-zero" ng-show="list.couponList.data.length == 0 && list.couponList.emptyMessage == 'no_data'">
+    <a href="/marketing/create/coupon"><div class="keywordlist-zero-img center-block" ng-click="list.addCoupon()"></div></a>
+    <span class="keywordlist-zero-text" translate="product_click_add_coupon"></span>
+  </div>
+
+  <!-- Table -->
+  <div ng-show="list.couponList.data.length > 0 || list.couponList.emptyMessage != 'no_data'" wm-table ng-model="list.couponList"></div>
+
+  <!-- Pagination -->
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="list.currentPage" page-size="list.pageSize" total-items="list.totalCount" on-change-size="list.changeSize" on-change-page="list.changePage"></div>
+  </div>
+
+  <!-- Qrcode -->
+  <div wm-multi-qrcode index="list.couponIndex" qrcode-list="list.qrcodeList" is-show="list.isShowQrcodeDropdown" self-style="list.position" edit-handler="list.editQrcode" qrcode-title="content_article_qrcode"></div>
+  <div class="modal-no-color ng-scope" ng-show="channel.showChannelModal" ng-click="channel.hideTagModal()">
+  </div>
+</div>

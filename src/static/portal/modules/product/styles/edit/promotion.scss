@@ -1,0 +1,453 @@
+$content-font-color: #1c1c1c;
+$table-no-data-border-color: #d2d2d2;
+$error-tip-color: #b42d14;
+$rule-box-bg-color: #f5f5f5;
+$btn-add-default-color: #c7c7c7;
+$chosen-result-item-border-color: #ccc;
+$promotion-panel-header-bgcolor: #ddd;
+$promotion-panel-body-bgcolor: #eee;
+$promotion-link-wrapper-bg-color: #f9f9f9;
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.clear-margin {
+  margin: 0;
+}
+
+.activity-short-item {
+  width: calc(50% - 22.5px);
+}
+
+.field-cross-bar {
+  line-height: 30px;
+  margin-bottom: 0;
+  padding: 0 20px;
+}
+
+.field-unit-label {
+  font-weight: normal;
+  line-height: 30px;
+  margin-bottom: 0;
+  padding-left: 16px;
+}
+
+.fields-item-label {
+  font-weight: normal;
+}
+
+.fields-color-label {
+  color: $wm-dark-gray;
+}
+
+.display-goods-wrapper {
+  color: $content-font-color;
+  display: inline-block;
+  width: 100%;
+}
+
+.error-tip-color {
+  color: $error-tip-color !important;
+}
+
+.promotion-content-color {
+  color: $content-font-color;
+}
+
+.edit-goods-wrapper {
+  color: $gray-background-text-color;
+  line-height: 30px;
+  text-decoration: underline;
+
+  &:hover {
+    color: $gray-background-text-hover-color;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $gray-background-text-active-color;
+    text-decoration: none;
+  }
+}
+
+.repeat-radio-item {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.like-block {
+  display: block;
+}
+
+.associated-gift-item {
+  margin-bottom: 0;
+}
+
+.gift-rule-box {
+  background-color: $rule-box-bg-color;
+}
+
+.score-rule-box {
+  padding: 10px 15px;
+
+  .gift-rule-item {
+    margin-bottom: 0;
+
+    + .gift-rule-item {
+      margin-top: 10px;
+    }
+
+    .basic-score-type {
+      line-height: 30px;
+      min-width: 117px;
+      width: auto;
+    }
+
+    .basic-score-content {
+      padding-left: 10px;
+    }
+
+    .basic-score-number {
+      display: inline-block;
+      width: calc(100% - 35px);
+    }
+
+    .basic-score-unit {
+      display: inline-block;
+      line-height: 30px;
+      width: 30px;
+      vertical-align: top;
+    }
+
+    .basic-score-tip {
+      padding-left: 10px;
+      line-height: 30px;
+    }
+  }
+
+}
+
+.gift-activities-wrapper {
+  background-color: $promotion-panel-body-bgcolor;
+  padding: 10px 15px;
+
+  @media (max-width: 992px) {
+    .gift-activities-items {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .more-activity-wrapper {
+    text-align: center;
+  }
+}
+
+.lottery-rule-box {
+  padding: 20px 15px;
+
+  .lotto-gift-wrapper {
+    $padding-width: 15px;
+    $del-icon-width: 30px;
+
+    background-color: $promotion-panel-header-bgcolor;
+
+    + .lotto-gift-wrapper {
+      margin-top: 10px;
+    }
+
+    .gift-info-wrapper {
+      display: inline-block;
+      padding: $padding-width;
+      border-right: 1px solid $white-background-color;
+
+      .fields-item-label {
+        width: auto;
+        line-height: 30px;
+        margin-bottom: 0;
+        padding-left: 0;
+      }
+
+      .form-control {
+        display: inline-block;
+      }
+
+    }
+
+    .gift-operate-wrapper {
+      display: inline-block;
+      height: $del-icon-width + $padding-width * 2;
+    }
+
+    .gift-operate-del {
+      background-image: url('/images/core/icon_delete_default.png');
+      background-repeat: no-repeat;
+      cursor: pointer;
+      display: inline-block;
+      height: $del-icon-width;
+      vertical-align: middle;
+      width: $del-icon-width;
+
+      &:hover {
+        background-image: url('/images/core/icon_delete_hover.png');
+      }
+    }
+
+    .gift-operate-disable {
+      background-image: url('/images/core/icon_delete_disable.png');
+      cursor: default;
+
+      &:hover {
+        background-image: url('/images/core/icon_delete_disable.png');
+      }
+    }
+  }
+}
+
+.limit-times-wrapper {
+  position: relative;
+
+  .limit-times-label {
+    left: calc(50% - 22.5px);
+    position: absolute;
+    top: 0;
+  }
+
+  .limit-times-input {
+    width: calc(50% - 22.5px);
+  }
+}
+
+
+.btn-add-default {
+  background-image: url('/images/customer/create_disable.png');
+  color: $btn-add-default-color;
+
+  &:hover {
+    background-image: url('/images/customer/create_disable.png');
+    color: $btn-add-default-color;
+  }
+
+  &:active {
+    background-image: url('/images/customer/create_disable.png');
+    color: $btn-add-default-color;
+  }
+}
+
+.operation-item {
+  margin-bottom: 50px;
+}
+
+.chosen-wrapper {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.chosen-title-label {
+  margin-right: 5px;
+  margin-bottom: 0;
+  line-height: 32px;
+  font-weight: normal;
+}
+
+.chosen-result-item {
+  background-color: $white-background-color;
+  border: 1px solid $chosen-result-item-border-color;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  line-height: 20px;
+}
+
+.btn-remove-item {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  background-image: url('/images/customer/icon_close_default.png');
+  background-repeat: no-repeat;
+  margin-left: 5px;
+}
+
+.btn-remove-item:active {
+  background-image: url('/images/customer/icon_close_click.png');
+  background-repeat: no-repeat;
+}
+
+.btn-remove-item:hover {
+  background-image: url('/images/customer/icon_close_hover.png');
+  background-repeat: no-repeat;
+}
+
+.search-container {
+  background-color: $promotion-panel-header-bgcolor;
+  height: 40px;
+}
+
+.search-box {
+  left: 15px;
+  top: 5px;
+}
+
+.associated-goods-pagination {
+  padding: 20px 15px;
+  text-align: right;
+}
+
+.link-text {
+
+  color: $gray-background-text-color;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: $gray-background-text-hover-color;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: $gray-background-text-active-color;
+    text-decoration: none;
+  }
+}
+
+.promotion-detail-wrapper {
+  .clear-padding {
+    padding: 0;
+  }
+
+  .promotion-panel-header {
+    background-color: $promotion-panel-header-bgcolor;
+    padding: 8px 15px;
+  }
+
+  .promotion-panel-body {
+    background-color: $promotion-panel-body-bgcolor;
+    padding: 25px 15px;
+
+    .form-group {
+      margin-bottom: 15px;
+
+      &:first-child {
+        margin-bottom: 25px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      label {
+        margin-bottom: 0;
+      }
+    }
+
+  }
+
+  .rule-body-lottery {
+    .form-group {
+      &:first-child {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .gift-rule-item {
+    margin-bottom: 0;
+
+    + .gift-rule-item {
+      margin-top: 10px;
+    }
+  }
+
+  .redemption-channels-item {
+
+    + .redemption-channels-item {
+      margin-top: 10px;
+    }
+
+    .promotion-links-wrapper {
+      max-width: 100%;
+      display: -webkit-flex;
+      display: flex;
+
+      .links-item-title {
+        line-height: 30px;
+        margin-right: 10px;
+      }
+
+      .links-item-content {
+        -webkit-flex: 1;
+        flex: 1;
+
+        i,
+        input {
+          background-color: $promotion-link-wrapper-bg-color;
+        }
+      }
+    }
+
+  }
+
+  .channels-icon-wrapper {
+    img {
+      max-width: 16px;
+    }
+  }
+
+  .channels-content-wrapper {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .display-redemption-channels {
+    display: inline-block;
+    margin-right: 15px;
+
+    + .display-redemption-channels {
+      margin-top: 0;
+    }
+  }
+}
+
+.associated-goods-dialog {
+  .modal-dialog {
+    width: 850px;
+  }
+
+  .table-mark-cell {
+    color: $white-background-text-color;
+  }
+
+  .table-no-data {
+    border-bottom: 1px solid $table-no-data-border-color;
+    margin: 0 10px 10px;
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .associated-table {
+    padding: 0 10px;
+  }
+
+  .data-select-table {
+    margin-bottom: 10px;
+  }
+}
+
+.promoction-channels-wrapper {
+  margin-bottom: 35px;
+
+  .account-item {
+    margin-right: 20px;
+    margin-bottom: 5px;
+  }
+}
+

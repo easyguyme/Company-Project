@@ -1,0 +1,75 @@
+---
+repo:
+  name: quncrm
+  supports:
+    - name: Harrison Che
+      email: harrison.che@augmentum.com
+  engines:
+    - type: php5
+    - type: nodejs
+      vars:
+        nodejs:
+          version: 0.10.28
+          alias: default
+          npm:
+            install_path: <<repo.path>>/src/
+            production: no
+  templates:
+    - src: deploy/templates/config.php
+      dest: src/common/config/config.php
+    - src: deploy/templates/portalConfig.coffee
+      dest: src/static/portal/coffee/config.coffee
+    - src: deploy/templates/chatConfig.coffee
+      dest: src/static/chat/config.coffee
+
+  worker:
+    processes:
+      - workerName: wmscheduler
+        command: php << repo.path >>/src/backend/modules/resque/components/bin/resque-scheduler
+        number: 1
+        redirect_stderr: true
+        autostart: true
+        autorestart: true
+        environment: QUEUE='global',LOGGING='1',APP_INCLUDE='<< repo.path >>/src/backend/modules/resque/components/lib/Resque/RequireFile.php'
+      - workerName: global
+        command: php << repo.path >>/src/backend/modules/resque/components/bin/resque
+        number: 10
+        redirect_stderr: true
+        autostart: true
+        autorestart: true
+        environment: QUEUE='global',INTERVAL='1',LOGGING='1',APP_INCLUDE='<< repo.path >>/src/backend/modules/resque/components/lib/Resque/RequireFile.php'
+      - workerName: backend
+        command: php << repo.path >>/src/backend/modules/resque/components/bin/resque
+        number: 10
+        redirect_stderr: true
+        autostart: true
+        autorestart: true
+        environment: QUEUE='backend',LOGGING='1',APP_INCLUDE='<< repo.path >>/src/backend/modules/resque/components/lib/Resque/RequireFile.php'
+
+  build_steps:
+    - name: run init
+      shell: php << repo.path >>/src/initProd
+    - name: generate translations
+      shell: 'chdir=<<repo.path>>/src/  {{ nvm_result.use_cmd }} << node_version >>; node translate.js'
+    - name: generate soft link for external module
+      shell: 'chdir=<<repo.path>>/src/  {{ nvm_result.use_cmd }} << node_version >>; grunt linkmodule'
+    - name: run grunt dist
+      shell: 'chdir=<<repo.path>>/src/  {{ nvm_result.use_cmd }} << node_version >>; grunt dist'
+    - name: scan modules
+      shell: php << repo.path >>/src/yii module/scan
+    - name: add account menus and mods
+      shell: php << repo.path >>/src/yii management/account/add-menus-and-mods
+    - name: ensure mongo indexes
+      shell: php << repo.path >>/src/yii management/index
+    - name: ensure cron resque job
+      shell: php << repo.path >>/src/yii management/job/init 1
+
+deploys:
+  # - type: mongodb
+  # - type: redis
+  - type: web_nginx_php5fpm
+    deploy_repo: yes
+  - type: worker
+    deploy_repo: yes
+  # - type: cron
+  #   deploy_repo: yes

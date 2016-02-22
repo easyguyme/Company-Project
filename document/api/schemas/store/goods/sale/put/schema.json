@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "storeGoodsIds": {
+      "type": "array",
+      "required": false,
+      "description": "商品Id"
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "description": "状态"
+    },
+    "onSaleTime": {
+      "type": "string",
+      "required": false,
+      "description": "上架时间"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<!-- type is checkbox -->
+<div class="member-attr-item member-item-tag member-attr-checkbox clearfix highlight" id="{{property.id}}">
+  <div class="container-fluid member-attr-tags clearfix">
+    <ul class="row member-attr-tags-items">
+      <li class="col-md-2 col-sm-3 col-xs-4 col-md-{{property.column}} col-sm-{{property.column}} col-xs-{{property.column}} checkboxs-style" ng-repeat="option in property.options track by $index">
+        <wm-checkbox ng-model="option.check" class="follower-checkbox-style"></wm-checkbox>
+        <span class="check-option-style text-el" wm-tooltip="{{property.hasTooltip?option.name:''}}">{{option.name}}</span>
+      </li>
+    </ul>
+  </div>
+  <span class="form-tip checkbox-form-tip" ng-if="property.isRequired"></span>
+  <span id="{{property.id}}-tip" class="form-tip" ng-class="{'checkbox-form-tip' : property.tip.status && property.tip.status === 'error'}" ng-if="property.tip">{{property.tip.text || '' | translate}}</span>
+</div>

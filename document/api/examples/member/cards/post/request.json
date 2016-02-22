@@ -1,0 +1,13 @@
+{
+    "name": "bbbbbbbbbb",
+    "poster": "http://wm.com/images/mobile/membercard.png",
+    "fontColor": "#ffffff",
+    "privilege": "<p>bbbbbbbbbbbbbbb</p>",
+    "condition": {
+        "minScore": 0,
+        "maxScore": 49
+    },
+    "usageGuide": "<p>bbbbbbbbbb</p>",
+    "isAutoUpgrade": true,
+    "scoreResetDate": null
+}

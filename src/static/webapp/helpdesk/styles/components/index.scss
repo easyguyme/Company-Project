@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 12px;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  height: 100%;
+  margin: 0;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}

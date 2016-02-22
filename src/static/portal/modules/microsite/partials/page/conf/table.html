@@ -1,0 +1,10 @@
+<div ng-controller="wm.ctrl.microsite.page.config.table as table">
+    <form  id="form-table" ng-submit="table.formatData()">
+      <div class="form-group">
+        <label class="fwbold" for="table" translate="content_component_config_table"></label>
+        <div class="ueditor table-editor" config="table.config" ng-model="table.data.content"></div>
+        <input class="form-control hidden" id="table" ng-model="table.data.content" below-msg required/>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName" />
+    </form>
+</div>

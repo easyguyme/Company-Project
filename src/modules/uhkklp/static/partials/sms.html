@@ -1,0 +1,57 @@
+<!-- <div class="uhkklp-earlybird">
+  <br/>
+  <div class="statistics-chart-item" >
+    <div class="statistics-item-title">
+        <span translate="earlybird_sms_template"></span>
+    </div>
+    <div class="earlybird-item-body" style="width:auto;">
+      <div class="sms-left-div">
+        <textarea class="sms-sample-text" ng-model="modelContent"></textarea>&nbsp;&nbsp;
+        <input type="button" class="btn btn-success user-btn" style="margin-top: -23px;" value="{{'sms_save'|translate}}" id="modelSave" ng-click="save()" /><br/>
+        <label class="sms-tip" translate="sms_template_tip"></label> <br/><br/>
+        <label class="sms-tip">{{'sms_tip' | translate : '{wordCount: wordCount, variableCount: variableCount, smsCount: smsCount}'}}</label> <br/><br/>
+        <input type="button" class="btn btn-success user-btn" value="{{'sms_import'|translate}}" id="smsImport" ng-click="import()" />&nbsp;&nbsp;
+        <input type="button" class="btn btn-success user-btn" ng-show="isShowTotal" value="{{'sms_export_model'|translate}}" id="smsExport" ng-click="exportModel()" ng-click="exportModel()" />&nbsp;&nbsp;
+        <br/><br/><label class="sms-tip" ng-show="isShowTotal">{{'sms_total_tip' | translate : '{totalCount: totalCount}'}}</label> <br/>
+        <input type="button" class="btn btn-success user-btn" value="{{'sms_send'|translate}}" id="smsSend"  ng-click="send()"  />&nbsp;&nbsp;
+        <label class="sms-tip">{{'sms_schedule_tip' | translate : '{haveSentCount: haveSentCount, totalToSend: totalToSend}'}}</label> <br/><br/>
+        <div class="cny-draw-body" >
+          <div class="winner-list">
+            <div wm-table class="colored-table" ng-model="sms.list"></div>
+            <div class="clearfix">
+              <div class="broadcast-pagination">
+                <div wm-pagination current-page="currentPage" page-size="pageSize" total-items="totalPageCount" on-change-size="changeSize" on-change-page="changePage">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div wm-breadcrumb="sms.breadcrumb"></div>
+<div wm-tabs="sms.changeTab()" tabs="sms.tabs" ng-model="sms.curTab"></div>
+
+<form class="ulkklp-recipe" ng-if="sms.showSMS">
+  <div class="mt-panel" style="margin-left: 0px;margin-right: 0px;">
+    <img class="mt-panel-img" src="/images/nav/message_default.png">{{'smsRecord_count' | translate : '{count: totalPageCount}'}}
+    <a class="btn btn-success user-btn pull-right" style="margin-right: 5px; margin-top: 5px;" href="/uhkklp/edit/sms?id&active={{sms.curTab.value}}">{{'bt_create_sms' | translate}}</a>
+  </div>
+  <br/>
+  <div class="cny-draw-body">
+    <div class="winner-list" style="padding: 19px;">
+      <div wm-table class="colored-table" ng-model="sms.list"></div>
+      <div class="clearfix">
+        <div class="broadcast-pagination">
+          <div wm-pagination current-page="currentPage" page-size="pageSize" total-items="totalPageCount" on-change-size="changeSize" on-change-page="changePage">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+

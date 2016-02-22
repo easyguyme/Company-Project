@@ -1,0 +1,26 @@
+$detail-title-color: #bbb;
+$detail-white: #fff;
+$detail-border-color: #d9d9d9;
+
+.detail-title {
+  color: $detail-title-color;
+  font-size: 1.5rem;
+  margin: 1.5rem 1.5rem .5rem;
+  display: block;
+}
+
+.detail-content {
+  font-size: 1.5rem;
+  background-color: $detail-white;
+  padding: 1.5rem;
+  border-top: .1rem solid $detail-border-color;
+  border-bottom: .1rem solid $detail-border-color;
+}
+
+.detail-tel {
+  margin-top: 2rem;
+
+  .pull-right {
+    float: right;
+  }
+}

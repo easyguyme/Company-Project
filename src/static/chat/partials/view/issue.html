@@ -1,0 +1,261 @@
+<!-- hack: add class 'viewport-wrap' in order to use notificationService -->
+<div class="help-issue-detail in waterfall-news-list viewport-wrap">
+  <div class="issue-header clear-float">
+    <div class="issue-title">{{"issue_detail_page_title" | translate}}</div>
+    <a href="#" class="close" ng-click="closeDetailPage()"></a>
+  </div>
+
+  <div ng-show="issueDetailData" class="right-slide-page-content detail-content">
+    <div class="scroll-content">
+      <div class="row operation">
+        <div class="col-md-10" ng-class="'title-'+issueDetailData.status">
+          {{issueDetailData.title}}
+        </div>
+        <div ng-if="issueDetailData.status != 'closed'" class="col-md-2 more">
+          <div class="dropdown" dropdown on-toggle="toggled(open)">
+            <a href class="dropdown-toggle more-toggle" dropdown-toggle>
+              {{"issue_detail_page_more" | translate}}
+              <div class="more-icon"></div>
+            </a>
+            <ul class="dropdown-menu issue-dropdwon-menu">
+              <li ng-if="issueDetailData.status != 'resolved'" class="btn-close-issue">
+                <label ng-click="closeIssue()">{{"issue_detail_page_close_task" | translate}}</label>
+              </li>
+              <li>
+                <label ng-click="deleteIssue()">{{"issue_detail_page_delete_task" | translate}}</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="gray-text">
+        {{"issue_create_time" | translate:{date:issueDetailData.createdAt} }}
+      </div>
+
+      <table class="waterfall-news-list issue-table">
+        <tr>
+          <th>{{"issue_detail_page_assignee" | translate}}</th>
+          <th>{{"issue_detail_page_creator" | translate}}</th>
+          <th>{{"issue_detail_page_status" | translate}}</th>
+          <th>{{"issue_detail_page_operation" | translate}}</th>
+        </tr>
+
+        <tr>
+          <td>
+            <span ng-if="issueDetailData.assignee.name!=null">
+              <div class="media">
+                <div class="media-left">
+                  <img class="avatar circle-avatar" ng-src="{{issueDetailData.assignee.avatar | qiniu}}">
+                </div>
+                <div class="media-body vertical-align-middle">
+                  {{issueDetailData.assignee.name}}
+                </div>
+              </div>
+            </span>
+            <span ng-if="issueDetailData.assignee.name==null">
+              <div class="media">
+                <div class="media-left">
+                  <img class="avatar circle-avatar" src="/images/helpdesk/avatar_icon.png">
+                </div>
+                <div class="media-body vertical-align-middle">
+                  {{"issue_detail_page_wating_for_assign" | translate}}
+                </div>
+              </div>
+            </span>
+          </td>
+
+          <td>
+            <div class="media">
+              <div class="media-left">
+                <img class="avatar circle-avatar cursor"
+                  src="/images/helpdesk/issue/default_avatar.png"
+                  ng-src="{{issueDetailData.creator.avatar | qiniu}}"
+                  ng-click="creatorDetail(issueDetailData.creator)">
+              </div>
+              <div class="media-body vertical-align-middle cursor"
+                ng-click="creatorDetail(issueDetailData.creator)">
+                {{issueDetailData.creator.name}}
+              </div>
+            </div>
+          </td>
+          <td>{{issueDetailData.currentIssueStatus.title | translate}}</td>
+          <td>
+            <button class="btn btn-success" ng-if="issueDetailData.currentIssueStatus.status!='closed'" ng-click="updateIssueStatus($event)">
+              {{issueDetailData.currentIssueStatus.btn | translate}}
+            </button>
+            <button class="btn btn-success" ng-if="issueDetailData.currentIssueStatus.status=='closed'" ng-click="deleteIssue($event)">
+              {{issueDetailData.currentIssueStatus.btn | translate}}
+            </button>
+          </td>
+
+        </tr>
+      </table>
+
+      <div class="content-description">
+        <div class="media">
+          <div class="media-left">
+            <div class="task-description-icon"></div>
+          </div>
+          <div class="media-body">
+            <div class="description"></div>
+          </div>
+        </div>
+      </div>
+
+    <div class="content-description thumbnail" ng-show="issueDetailData.hasAttachment">
+      <div class="media-left">
+        <div class="thumbnail-attachment-icon"></div>
+      </div>
+      <div class="media-body media-content">
+        <span class="thumbnail-list">
+          <div class="thumbnail-icon" ng-repeat="attachment in issueDetailData.attachments track by $index">
+            <img class="format-img" ng-if="attachment.format=='Img'" ng-src="{{attachment.url|qiniu:46}}" ng-click="previewAttachment(attachment)" wm-tooltip="{{attachment.name}}.{{attachment.type}}"></img>
+            <span class="format-pic" ng-if="attachment.format!='Img'" ng-class="'format-'+attachment.format" ng-click="previewAttachment(attachment)" wm-tooltip="{{attachment.name}}.{{attachment.type}}">{{attachment.thumbnailName}}</span>
+          </div>
+        </span>
+      </div>
+      <div class="media-body">
+        <div class="attachment-last">
+          <a class="thumbnail-download" ng-click="downloadAll()">{{"download_all_issue_attachments" | translate}}</a>
+        </div>
+      </div>
+   </div>
+
+      <div class="content-description scroll-height">
+        <ul class="activities">
+
+          <li style="margin-bottom: 15px">
+            <div class="media">
+              <div class="media-left">
+                <div class="task-add-icon"></div>
+              </div>
+              <div class="media-body issue-relative">
+                {{issueDetailData.creator.name}} {{"issue_activity_create" | translate}}
+                <span class="gray-text date-position">
+                  {{"issue_detail_format_date" | translate:{date:issueDetailData.createdAt} }}
+                </span>
+                <div class="description-wrapper abbreviative-description"></div>
+              </div>
+            </div>
+          </li>
+
+          <li ng-repeat="activity in issueDetailData.activities">
+            <div ng-if="activity.action=='claim'">
+              <div class="media">
+                <div class="media-left">
+                  <div class="task-claim-icon"></div>
+                </div>
+                <div class="media-body">
+                  {{activity.creator.name}} {{"issue_activity_claim" | translate}}
+                  <span class="gray-text date-position">
+                    {{"issue_detail_format_date" | translate:{date:activity.createdAt} }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="media">
+                <div class="media-left">
+                  <div class="task-status-icon"></div>
+                </div>
+                <div class="media-body">
+                   <div>
+                    {{"issue_activity_change_to_assigned" | translate}}
+                    <span class="gray-text date-position">
+                      {{"issue_detail_format_date" | translate:{date:activity.createdAt} }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div ng-if="activity.action=='resolve'">
+
+              <div class="media">
+                <div class="media-left">
+                  <div class="task-status-icon"></div>
+                </div>
+                <div class="media-body">
+                  {{"issue_activity_change_to_complete" | translate}}
+                  <span class="gray-text date-position">
+                    {{"issue_detail_format_date" | translate:{date:activity.createdAt} }}
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            <div ng-if="activity.action=='close'">
+
+              <div class="media">
+                <div class="media-left">
+                  <div class="task-status-icon"></div>
+                </div>
+                <div class="media-body">
+                  {{"issue_activity_change_to_closed" | translate}}
+                  <span class="gray-text date-position">
+                  {{"issue_detail_format_date" | translate:{date:activity.createdAt} }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="comment" ng-if="activity.action=='comment'">
+              <div class="media">
+                <div class="media-left">
+                  <img class="avatar circle-avatar" ng-src="{{activity.creator.avatar | qiniu}}">
+                </div>
+                <div class="media-body">
+                  <p>
+                    {{activity.creator.name}}
+                    <span class="gray-text date-position">
+                      {{"issue_detail_format_date" | translate:{date:activity.createdAt} }}
+                    </span>
+                  </p>
+                  <p class="comment-text"> {{activity.description}} </p>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div ng-show="issueDetailData" class="issue-footer">
+    <form ng-submit="sendComment()">
+      <div class="form-group clear-float">
+        <textarea class="form-control" placeholder="{{'issue_detail_page_comment' | translate}}" ng-model="comment" requried></textarea>
+        <button class="btn btn-success comment-btn" ng-disabled="comment == ''" type="submit">
+          {{"action_issue_comment_publish" | translate}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- creator's information-->
+<script type="text/ng-template" id="creatorData.html">
+<div class="creator-detail">
+  <div class="modal-header">
+    <h4 class="title">
+      {{"issue_creator_detail_title" | translate}}
+      <button type="button" class="close popup-close" ng-click="closeDialog()"></button>
+    </h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <label class="col-md-3">
+        <span class="badge badge-helpdesk" ng-class="{'badge-user':content.origin=='user'}" translate="{{content.title}}"></span>
+      </label>
+    </div>
+    <div class="row" ng-repeat="detail in content.details">
+      <label class="col-md-3" translate="{{detail.name}}"></label>
+      <label>{{detail.value}}</label>
+    </div>
+    <div class="row" ng-if="content.origin == 'helpDesk'">
+      <label class="col-md-3">{{"issue_creator_detail_avatar" | translate}}</label>
+      <img class="avator" ng-src="{{content.avatar | qiniu:100}}"/>
+    </div>
+  </div>
+</div>
+</script>

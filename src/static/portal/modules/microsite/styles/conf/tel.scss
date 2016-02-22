@@ -1,0 +1,55 @@
+.config-wrap {
+  .radio-group {
+    .radio-tel {
+      width: 100%;
+    }
+  }
+  .tel-style-box {
+    width: 253px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .tel-style1-box {
+    @extend .tel-style-box;
+    color: #fff;
+    background-color: #6ab3f7;
+    border-style: solid;
+    border-width: 1px;
+  }
+  .tel-style2-box {
+    @extend .tel-style-box;
+    color: #1c1c1c;
+    box-shadow: 0 0 1px #6ab3f7;
+    background-color: #ffffff;
+    border-style: solid;
+    border-width: 1px;
+  }
+  .tel-style-box-img {
+    vertical-align: middle;
+    line-height: 35px;
+    background-position-y: center;
+  }
+  .tel-style1-word {
+    @extend .tel-style-box-img;
+    padding-left: 25px;
+    background: url("/images/microsite/phoneicon.png") no-repeat;
+    background-size: 18px 16px;
+  }
+  .tel-style2-word {
+    padding-left: 18px;
+    @extend .tel-style-box-img;
+    background: url("/images/microsite/phoneicon2.png") no-repeat;
+    background-size: 18px 16px;
+  }
+  .tel-border-color {
+    border-color: #6ab3f7!important;
+  }
+  .tel-bgcolor {
+    background-color: #6ab3f7!important;
+  }
+  .m-tel-style-two-word-left {
+    padding-left: 7px;
+  }
+}

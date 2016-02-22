@@ -1,0 +1,113 @@
+<div ng-controller="wm.ctrl.product.promotion.exchangeRecord as exchangeRecord">
+  <!-- Global search -->
+  <section class="table-search-wrapper">
+
+    <div wm-list-header head-class="listheader-search-condition">
+      <wm-search ng-model="exchangeRecord.searchKey" class="search-wrapper-input" click-func="exchangeRecord.search()" placeholder="{{'product_exchange_record_search_key' | translate}}"></wm-search>
+      <span class="btn-operate-condition" ng-click="exchangeRecord.showConditions()">
+        {{'customer_follower_screening_conditions' | translate}}<span class="condition-mark-wrapper" ng-class="{true:'condition-up', false:'condition-down'}[!!exchangeRecord.isShow]"></span>
+      </span>
+    </div>
+
+    <div class="search-wrapper-condition" ng-show="exchangeRecord.isShow">
+      <!-- Select condition -->
+
+      <!-- the range of redeemed time -->
+      <section class="row condition-item-wrapper clear-container-margin">
+        <label class="condition-item-label condition-item-title col-md-2 clearpadding" translate="product_goods_redeemed_time"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <div class="col-md-3 pull-left datepicker-container clearpadding">
+            <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" min-date-picker-id="endDatePicker" ng-model="exchangeRecord.startTime" less-than-today="true" first-unbind-handler="true" icon="calendar"></div>
+          </div>
+          <div class="pull-left datepicker-between-text">&minus;</div>
+          <div class="col-md-3 pull-left datepicker-container clearpadding">
+            <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" ng-model="exchangeRecord.endTime" less-than-today="true" first-unbind-handler="true" icon="calendar"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exchange channels -->
+      <section class="row condition-item-wrapper clear-container-margin">
+        <label class="condition-item-label condition-item-title col-md-2 clearpadding" translate="product_promotion_campaign_channel"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <div wm-channels ng-model="exchangeRecord.accountIds" channels="exchangeRecord.accounts"></div>
+        </div>
+      </section>
+
+      <!-- Exchange activity -->
+      <section class="row condition-item-wrapper clear-container-margin management-fans-item">
+        <label class="condition-item-label condition-item-title col-md-2 clearpadding" translate="activity"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <ul class="member-card-items dark-gray">
+            <li class="member-card-item pull-left" ng-repeat="type in exchangeRecord.campaignTypes track by $index">
+              <wm-radio ng-model="exchangeRecord.campaignType" value="{{type.value}}" class="follower-checkbox-style"></wm-radio>{{type.name | translate}}
+            </li>
+          </ul>
+        </div>
+      </section>
+
+        <!-- The bottom of submit and clear -->
+      <section class="operate-condition-wrapper">
+        <span class="btn btn-success btn-search" ng-click="exchangeRecord.search()" translate="product_goods_sure"></span><span type="submit" class="btn btn-default btn-clear" ng-click="exchangeRecord.clear()" translate="customer_follower_clear"></span>
+      </section>
+    </div>
+  </section>
+
+  <!-- Show conditions -->
+  <div class="checked-conditions-wrapper" ng-if="(!exchangeRecord.isShow && (exchangeRecord.params.startTime || exchangeRecord.params.endTime || exchangeRecord.params.campaignId)) || (!exchangeRecord.isShow &&(exchangeRecord.params.accounts && exchangeRecord.params.accounts.length > 0))">
+    <label class="checked-conditions-label" translate="customer_follower_selected_condition">Selected Condition</label>
+    <div class="checked-conditions-content clearfix">
+      <div ng-if="!exchangeRecord.isShow && (exchangeRecord.params.startTime || exchangeRecord.params.endTime)" class="channel-position">
+        <div class="conditions-content-item pull-left">
+          <div class="content-item-wrapper">{{'product_goods_redeemed_time' | translate}}: {{(exchangeRecord.params.startTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(exchangeRecord.params.endTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</div>
+          <span class="btn-remove-condition" ng-click="exchangeRecord.removeCondition()"></span>
+        </div>
+      </div>
+
+      <!-- Exchange channels -->
+      <div ng-if="exchangeRecord.params.accounts && exchangeRecord.params.accounts.length > 0" class="channel-position">
+        <div class="conditions-content-item pull-left tags-style">
+          {{'customer_follower_social_account' | translate}}:
+          <label class="label-style content-item-wrapper" ng-repeat="account in exchangeRecord.accounts" ng-show="exchangeRecord.isSelectedAccount(account.id)">
+            <div class="channels-icon-wrapper">
+              <img ng-src="/images/customer/{{account.icon}}.png" />
+            </div>
+            <div class="font-social-style label-style" translate="{{account.name}}"></div>
+          </label>
+          <label class="btn-remove-condition label-btn" ng-click="exchangeRecord.clearAccounts()"></label>
+        </div>
+      </div>
+
+      <!-- Exchange campaign -->
+      <div ng-if="!exchangeRecord.isShow && (exchangeRecord.campaignTypeName)" class="channel-position">
+        <div class="conditions-content-item pull-left">
+          <div class="content-item-wrapper">{{'activity' | translate}}: {{exchangeRecord.campaignTypeName | translate}}</div>
+          <span class="btn-remove-condition" ng-click="exchangeRecord.removeCampaign()"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default panel-main-content promotion-manage-pannel">
+    <!-- <div class="panel-heading panel-title clearfix">
+      <div class="panel-title-word pull-left clearfix">
+        <div class="promotion-exchange-log-icon pull-left"></div>
+        <div class="account-title fs16 pull-left pd0">{{'product_promotion_total_records'|translate:'{ recordsCount: exchangeRecord.totalItems }'}}
+        </div>
+      </div>
+
+      <span class="btn-export pull-right" ng-style="{margin: '9px 10px'}" ng-click="exchangeRecord.export()" ng-class="{'export-disabled':!exchangeRecord.enableExport}" translate="export"></span>
+    </div> -->
+    <div wm-list-header content="{{'product_promotion_total_records'|translate:'{ recordsCount: exchangeRecord.totalItems }'}}" icon="{'url': '/images/product/promotion_default.png'}">
+      <span class="btn-export pull-right" ng-style="{margin: '9px 10px'}" ng-click="exchangeRecord.export()" ng-class="{'export-disabled':!exchangeRecord.enableExport}" translate="export"></span>
+    </div>
+    <section class="table-wrapper exchanges-table-wrapper clearfix">
+      <wm-table ng-model="exchangeRecord.list" class="remove-border-top colored-table"></wm-table>
+
+      <div class="broadcast-pagination" ng-if="exchangeRecord.pageCount > 0">
+        <div wm-pagination current-page="exchangeRecord.currentPage" page-size="exchangeRecord.pageSize" total-items="exchangeRecord.totalItems" on-change-size="exchangeRecord.changeSize" on-change-page="exchangeRecord.changePage"></div>
+      </div>
+    </section>
+  </div>
+
+</div>

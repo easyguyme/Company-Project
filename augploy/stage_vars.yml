@@ -1,0 +1,156 @@
+---
+global_vars:
+  nginx:
+    sites:
+      - name: staging.quncrm.com
+        conf_path: deploy/nginx/cp.conf
+      - name: wireframe.augmarketing.cn
+        conf_path: deploy/nginx/wm.conf
+  mongodb:
+    db:
+      name: augmarketing_stage
+      username: aug
+      password: abc123_
+    host: 192.168.161.246
+    port: 27017
+
+  settings:
+    mail:
+      api_user: quncrm_portal
+      api_key: MO0JLapIEPmlKGpZ
+      from: no-reply@quncrm.com
+      from_name: 群脉
+
+  global:
+    current_env: stage
+
+  log:
+    file_log: 2
+    level: error
+    frontend:
+      track_url: https://staging.quncrm.com/api/log/frontend
+    sls:
+      endpoint: cn-hangzhou.sls.aliyuncs.com
+      access_key_id: HCY16IorxExaTugH
+      access_key_secret: 7uG7gJ1APOlbL5ZXuGTUaVqxhhndVY
+      project_id: omnisocials
+      log_store: errorlogs
+      log_topic: WebPortal
+
+  redis:
+    host: 192.168.161.237
+    port: 6379
+
+  resque:
+    host: 192.168.161.237
+    port: 6379
+    db: 2
+    passwd: "null"
+  cache:
+    host: 192.168.161.237
+    port: 6379
+    db: 1
+    passwd: "null"
+
+  crons:
+    - name: "Those command which is perform once a minute"
+      schedules:
+        minute:  "*/1"
+      job: "<< repo.path >>/src/yii cron/minute > /dev/null 2>&1"
+      state: absent
+      host_name: 192.168.161.237
+    - name: "Those command which is perform once a day"
+      schedules:
+        minute: "0"
+        hour:  "1"
+      job: "<< repo.path >>/src/yii cron/daily > /dev/null 2>&1"
+      state: present
+      host_name: 192.168.161.237
+    - name: "automatic clear member score"
+      schedules:
+        minute: "59"
+        hour:  "23"
+      job: "<< repo.path >>/src/yii cron/daily/reset-score > /dev/null 2>&1"
+      state: absent
+      host_name: 192.168.161.237
+
+  qiniu:
+    domain: https://dn-quncrm.qbox.me
+    private_domain: 7xjigt.dl1.z0.glb.clouddn.com
+    bucket: quncrm
+    private_bucket: omnisocials
+    access_key: DFFXNJbhW4YQl1T7-NnD9uhoZEw004DhWajrXl9l
+    secret_key: x0xM3EVZME8rixoQzJmZB7KaKKi2uCQ8L7-KKoDD
+    upload_domain: https://up.qbox.me
+    thumbnail_lite: ?imageView2/0/w/50
+    thumbnail_small: ?imageView2/0/w/200
+    thumbnail_middle: ?imageView2/0/w/400
+
+  shorturl:
+    domain: http://u.omnisocials.com
+
+  wechat:
+    domain: http://staging.wx.quncrm.com
+    jssdk:
+      app_id: wx6559dc399869bc69
+      app_secret: 772712d3ea97e3d5cdf13c131c89536f
+      domain: https://staging.quncrm.com/
+      channel_id: 54fd0571e4b055a0030461fb
+
+  weibo:
+    app_key: 2659029319
+    app_secret: bb7ae6f495845bd9dc5d871d62e3ef37
+    redirect_url: /management/oauth2/accesstoken
+
+  webhook:
+    domain: https://sandbox-api.quncrm.com
+    host: sandbox-api.quncrm.com
+
+  tuisongbao:
+    domain: https://api.tuisongbao.com
+    app_id: 551ba607e944fbf0571b17ad
+    secret: 79c596434b9181a427e57a38
+    push_app_id: 551b4f48e944fbf0571b0b06
+    push_secret: 4a6b5454a977e1dd1a5087ae
+
+  yunpian:
+    domain: http://yunpian.com/v1/sms/send.json
+    api_key: c87163327283e2dc44d3cfe71a251cde
+
+  supervisor:
+    sock: unix:///var/run//supervisor.sock
+    conf: /etc/supervisor/conf.d/<< repo.name >>.conf
+    group: << repo.name >>
+
+  helpdesk:
+    account_id: 54bf3b4c13747372268b4567
+
+deploy_vars:
+  mongodb:
+    hosts:
+      - group: mongodb_standalone
+        hosts:
+          - name: << mongodb.host >>
+            vars:
+              mongodb:
+                instance:
+                  name: mongodb
+                  port: << mongodb.port >>
+        vars:
+          mongodb:
+            dbs:
+              - << mongodb.db >>
+  web_nginx_php5fpm:
+    hosts:
+      - name: 192.168.161.237
+        vars:
+          internal_iface: eth0
+  redis:
+    hosts:
+      - name: 192.168.161.237
+  worker:
+    hosts:
+      - name: 192.168.161.237
+  cron:
+    hosts:
+      - name: 192.168.161.237

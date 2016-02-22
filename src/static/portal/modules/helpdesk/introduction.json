@@ -1,0 +1,44 @@
+{
+  "name": "helpdesk",
+  "title": "management_extension_helpdesk_title",
+  "havePartial": true,
+  "link": {
+    "enterFunction": "/helpdesk/helpdesk",
+    "addHelpdeskChannel": "/helpdesk/setting?active=2"
+  },
+  "introductions": ["management_extension_helpdesk_introduction1", "management_extension_helpdesk_introduction2", "management_extension_helpdesk_introduction3"],
+  "advantages": ["management_extension_helpdesk_use1", "management_extension_helpdesk_use2", "management_extension_helpdesk_use3", "management_extension_helpdesk_use4"],
+  "functionImages": [
+    {
+      "title": "management_extension_helpdesk_wechat",
+      "image": "/images/helpdesk/introduction/tianjiakefujieruqudao_weixin.png"
+    },
+    {
+      "title": "management_extension_customerservice",
+      "image": "/images/helpdesk/introduction/tianjiakefujieruqudao_weixinkefu.png"
+    },
+    {
+      "title": "helpdesk_setting_website",
+      "image": "/images/helpdesk/introduction/tianjiakefujieruqudao_wangzhan.png"
+    },
+    {
+      "title": "management_extension_website_helpdesk",
+      "image": "/images/helpdesk/introduction/tianjiakefujieruqudao_wangzhankefu.png"
+    }
+  ],
+  "functions": [
+    {
+      "title": "management_extension_helpdesk_management",
+      "image": ["/images/helpdesk/introduction/gongnengtexing_kefuzhanghao.png"]
+    },
+    {
+      "title": "management_extension_helpdesk_chat",
+      "image": ["/images/helpdesk/introduction/gongnengtexing_liaotian.png"]
+    },
+    {
+      "title": "management_extension_helpdesk_knowledge",
+      "image": ["/images/helpdesk/introduction/gongnengtexing_zhishiku.png"]
+    }
+  ],
+  "illustrations": ["management_extension_helpdesk_illustration1", "management_extension_helpdesk_illustration2"]
+}

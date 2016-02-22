@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "score": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    },
+    "couponId": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "rewardType": {
+      "type": "strng",
+      "required": true,
+      "description": ""
+    },
+    "triggerTime": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "isEnabled": {
+      "type": "boolean",
+      "required": false,
+      "description": ""
+    },
+    "times": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    },
+    "memberCount": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    },
+    "startTime": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    },
+    "endTime": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    }
+  }
+}

@@ -1,0 +1,61 @@
+<div class="panel panel-default panel-main-content helpdesk-main-content">
+  <div wm-breadcrumb="helpdesk.breadcrumb">
+    <button class="btn btn-success btn-listheader" ng-click="helpdesk.create()" translate="helpdesk_add_account"></button>
+  </div>
+  <div class="panel-body panel-helpdesk-container">
+    <wm-table ng-model="helpdesk.list"></wm-table>
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="helpdesk.currentPage" page-size="helpdesk.pageSize" total-items="helpdesk.totalItems" on-change-size="helpdesk.changeSize" on-change-page="helpdesk.changePage"></div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="createAccount.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'helpdesk_account_new' | translate}}</h4>
+  </div>
+  <form name="accountCreateForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <span class="account-tip mb20">
+        <div class="helpdesk-img"><img src="/images/core/popup_tip.png"/></div>
+        <div>{{'helpdesk_account_email_tip' | translate}}</div>
+      </span>
+      <div class="form-group">
+        <label class="dark-gray" for="email">{{'helpdesk_account_email' | translate}}</label>
+        <input name="email" type="email" id="email" class="form-control" ng-model="email" required wm-email />
+      </div>
+      <div class="form-group">
+        <label class="dark-gray" for="number">{{'helpdesk_account_number' | translate}}</label>
+        <input name="number" type="text" maxlength="15" id="number" class="form-control" ng-model="badge" required form-tip="{{badgeTip | translate}}" wm-validate="checkBadge"/>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>
+
+<script type="text/ng-template" id="updateAccount.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'helpdesk_account_update' | translate}}</h4>
+  </div>
+  <form name="userUpdateForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <div class="form-group">
+        <label class="dark-gray" for="email">{{'helpdesk_account_email' | translate}}</label>
+        <div class="col-md-12">
+          <span>{{email}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="dark-gray" for="number">{{'helpdesk_account_number' | translate}}</label>
+        <input name="number" type="text" maxlength="15" id="number" class="form-control" ng-model="badge" required form-tip="{{badgeTip | translate}}" wm-validate="checkBadgeSame"/>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>

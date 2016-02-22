@@ -1,0 +1,16 @@
+<div class="panel panel-default promotion-activity" ng-controller="wm.ctrl.product.promotion.activity as activity">
+
+  <div wm-list-header head-class="wm-panel-title">
+    <div class="interaction-search pull-left">
+      <wm-search ng-model="activity.searchKey" class="search-style" click-func="activity.search()" placeholder="{{'product_activity' | translate}}"></wm-search>
+    </div>
+    <a class="btn btn-success pull-right btn-listheader" translate="product_activity_create" href="/product/edit/promotion"></a>
+  </div>
+
+  <div class="panel-body promo-table-wrap">
+    <wm-table ng-model="activity.activityList" class="remove-border-top"></wm-table>
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="activity.currentPage" page-size="activity.pageSize" total-items="activity.totalItems" on-change-size="activity.changeSize" on-change-page="activity.changePage"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<!-- <div class="breadcrumb" translate="uhkklp_homepage"></div> -->
+
+<div wm-breadcrumb="breadcrumb"></div>
+<div wm-tabs="changeTab()" tabs="tabs" ng-model="curTab" style="margin-bottom: 30px;"></div>
+
+<a class="btn btn-success btn-setting user-btn" href="/uhkklp/edit/homepage?active=1" translate="update_news_time_add" ng-show="showSecondTab"></a>
+
+<div class="uhkklp edit-msg-wrap" ng-show="showFirstTab">
+  <form name="homeinfoForm" ng-submit="submit()" novalidate>
+    <div class="form-group">
+      <label for="">{{'mt_lb_type' | translate}}
+        <input type="hidden" value="{{homeinfo.type}}" binded="false" required>
+      </label>
+      <div class="model-wrap">
+        <div class="block-radio">
+          <input wm-radio ng-model="homeinfo.type" value="none">{{'mt_cb_none' | translate}}
+        </div>
+        <div class="block-radio">
+          <input wm-radio ng-model="homeinfo.type" value="video">{{'mt_cb_video' | translate}}
+          <div class="model-son valid-wrap" ng-show="homeinfo.type == 'video'">
+            <div>{{'mt_ad_video_url' | translate}}</div>
+            <input name="videoUrl" style="width: 40%;" ng-model="homeinfo.videoContent.videoUrl" class="form-control" type="text" placeholder="{{'mt_ph_video_url' | translate}}" mt-format="^((http|https):\/\/){0,1}(www\.){0,1}youtube\.com\/watch\?v=\S+$" format-type="url" id="videoUrl">
+            <div style="margin-top: 15px;">{{'mt_ad_news_id' | translate}}</div>
+            <input name="videoNewsId" style="width: 40%;" ng-model="homeinfo.videoContent.newsId" class="form-control" type="text"placeholder="{{'mt_ph_news_id' | translate}}" mt-format="^[0-9a-z:]+$" id="videoNewsId">
+          </div>
+        </div>
+        <div class="block-radio">
+          <input wm-radio ng-model="homeinfo.type" value="image-text">{{'mt_cb_img_text' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group" ng-hide="homeinfo.type == 'none'">
+      <label for="">{{'mt_lb_homepage_img' | translate}}
+        <!-- <font class="form-tip-label" ng-show="homeinfo.imgContent.length == 0 && submitted">{{'mt_tip_at_least_one_pic' | translate}}</font> -->
+        <span class="btn btn-primary" ng-click="newImgContent_click()" style="position: absolute; right: 15px; top: 8px;">{{'mt_bt_new_pc' | translate}}</span>
+      </label>
+      <div class="model-wrap">
+
+        <div ng-repeat="content in homeinfo.imgContent" class="img-wrap">
+          <input class="invisible-input" name="{{'imgUrl' + $index}}" ng-model="content.imgUrl" binded="false" required>
+          <div style="margin-bottom: 15px;">
+            <div style="display: inline-block;" wm-file-upload class="file-upload-wrap" ng-model="content.imgUrl">
+              <span class="btn btn-primary">{{'mt_bt_choose_pc' | translate}}</span>
+            </div>
+            <span class="btn btn-warning" ng-click="rmImgContent_click($index, $event)" style="float: right;">{{'mt_bt_rm' | translate}}</span>
+          </div>
+          <font style="color: #b42d14;" class="form-tip-label" ng-show="homeinfo.imgContent[$index].imgUrl == '' && submitted">{{'mt_tp_choose_pc' | translate}}</font>
+          <img ng-class="{'error-border': homeinfo.imgContent[$index].imgUrl == '' && submitted}" class="imgPrev" alt="640 X 544" ng-src="{{content.imgUrl}}">
+          <div ng-if="homeinfo.type == 'image-text'" style="margin-top: 15px;">{{'mt_ad_news_id' | translate}}</div>
+          <input ng-if="homeinfo.type == 'image-text'" style="width: 320px;" name="{{'newsId' + $index}}" ng-model="content.newsId" class="form-control" type="text" placeholder="{{'mt_ph_news_id' | translate}}" mt-format="^[0-9a-z:]+$" id="{{'news_id' + $index}}">
+        </div>
+
+        <!-- <div ng-show="homeinfo.imgContent.length == 0" class="add-img-btn" ng-class="{'require-img': submitted}" ng-click="newImgContent_click()"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;{{'mt_bt_add_pc' | translate}}</div> -->
+        <div class="keywordlist-zero" ng-show="homeinfo.imgContent.length == 0" style="margin-top: 0;" ng-class="{'require-img': submitted}">
+          <a href="#" ng-click="newImgContent_click()"><div class="keywordlist-zero-img center-block"></div></a>
+          <span class="keywordlist-zero-text">{{'mt_bt_add_pc' | translate}}</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group model-wrap">
+      <button class="btn btn-primary">{{'mt_bt_send' | translate}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!-- <a ui-sref="uhkklp-homepage" ui-sref-opts="{reload:true}" class="btn btn-default active">{{'mt_bt_cancel' | translate}}</a> -->
+    </div>
+
+  </form>
+</div>
+
+<div class="uhkklp edit-msg-wrap" ng-show="showSecondTab">
+  <div wm-table class="colored-table" ng-model="updatedTimeList"></div>
+
+  <div class="clearfix">
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="page" page-size="pageSize" total-items="totalCount" on-change-size="changeSize" on-change-page="changePage"></div>
+    </div>
+  </div>
+
+</div>

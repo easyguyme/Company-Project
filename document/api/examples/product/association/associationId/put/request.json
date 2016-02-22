@@ -1,0 +1,11 @@
+{
+    "productId":"5530c520d6f97f47658b456a",
+    "count": 1000,
+    "gift": {
+        "type": "score",
+        "config": {
+           "method": "times",
+           "number": 2
+        }
+    }
+}

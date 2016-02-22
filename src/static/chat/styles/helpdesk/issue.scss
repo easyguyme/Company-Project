@@ -1,0 +1,83 @@
+$example-color:           #aff;
+$issue-default-color: #787878;
+$issue-status-open-color: #f0645a;
+$issue-status-assigned-color: #f8ab1f;
+$issue-status-resolved-color: #96cc56;
+$issue-status-closed-color: $issue-default-color;
+$issue-table-border-color: #ededed;
+
+.helpdeskissuerecord {
+  padding: 10px 12px;
+  position: relative;
+
+  .btn-create-issue {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    padding: 5px 12px;
+  }
+
+  .helpdesk-tabs-title {
+    margin-left: 8px;
+  }
+
+  .issue {
+    color: $example-color;
+  }
+
+  .issues-header {
+    margin-bottom: 20px;
+
+    .btn-listheader {
+      padding: 4px 12px;
+    }
+  }
+
+  .issues-wrapper {
+    .issues-table {
+      font-size: 14px;
+
+      .table {
+        margin-bottom: 0;
+      }
+
+      .issues-headers {
+        padding: 10px 15px;
+      }
+
+      .issues-cells {
+        padding: 9px 15px;
+      }
+
+      tbody > tr:last-child {
+        border-bottom: 1px solid $issue-table-border-color;
+      }
+
+      .issues-time-cell {
+        color: $issue-default-color;
+      }
+
+      .issue-status-open {
+        color: $issue-status-open-color;
+      }
+
+      .issue-status-assigned {
+        color: $issue-status-assigned-color;
+      }
+
+      .issue-status-resolved {
+        color: $issue-status-resolved-color;
+      }
+
+      .issue-status-closed {
+        color: $issue-status-closed-color;
+      }
+    }
+  }
+
+  .broadcast-pagination {
+    margin-top: 16px;
+    padding-bottom: 0;
+  }
+
+}

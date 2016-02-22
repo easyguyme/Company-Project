@@ -1,0 +1,53 @@
+{
+    "items": [
+        {
+            "id": "55f6a448475df4e34d8b4582",
+            "qrcode": {
+                "_id": "55f6a447475df4e34d8b4581",
+                "url": "http://vincenthou.qiniudn.com/55f6a447475df4e34d8b4581.png"
+            },
+            "coupon": {
+                "id": "55f6a424475df413308b456a",
+                "title": "test",
+                "picUrl": "http://vincenthou.qiniudn.com/f407045b043d816952482e8a.jpg",
+                "startTime": "2015-09-14 18:37:08",
+                "endTime": "2015-09-17 18:37:09",
+                "status": "unused"
+            },
+            "createdAt": "2015-09-14 18:41:12"
+        },
+        {
+            "id": "55f6a44a475df413308b456d",
+            "qrcode": {
+                "_id": "55f6a449475df413308b456c",
+                "url": "http://vincenthou.qiniudn.com/55f6a449475df413308b456c.png"
+            },
+            "coupon": {
+                "id": "55f6a424475df413308b456a",
+                "title": "test",
+                "picUrl": "http://vincenthou.qiniudn.com/f407045b043d816952482e8a.jpg",
+                "startTime": "2015-09-14 18:37:08",
+                "endTime": "2015-09-17 18:37:09",
+                "status": "unused"
+            },
+            "createdAt": "2015-09-14 18:41:14"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/product/membership-discount/55a74649475df458558b4567?tmoffset=-8&status=unused&page=1&per-page=10"
+        },
+        "next": {
+            "href": "http://wm.com/api/product/membership-discount/55a74649475df458558b4567?tmoffset=-8&status=unused&page=2&per-page=10"
+        },
+        "last": {
+            "href": "http://wm.com/api/product/membership-discount/55a74649475df458558b4567?tmoffset=-8&status=unused&page=4&per-page=10"
+        }
+    },
+    "_meta": {
+        "totalCount": 31,
+        "pageCount": 4,
+        "currentPage": 0,
+        "perPage": 10
+    }
+}

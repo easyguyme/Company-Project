@@ -1,0 +1,24 @@
+.c-tabs {
+  &__navs {
+    @include c-box;
+
+    background-color: $tabs-default-bg-color;
+    height: 1.19rem;
+    line-height: 1.19rem;
+
+    &__item {
+      @include c-box-flex(1);
+      @include text-overflow;
+
+      color: $tabs-default-color;
+      font-size: .41rem;
+      text-align: center;
+      padding: 0 .31rem;
+
+      &--checked {
+        color: $tabs-checked-color;
+        border-bottom: .06rem solid $tabs-checked-border-color;
+      }
+    }
+  }
+}

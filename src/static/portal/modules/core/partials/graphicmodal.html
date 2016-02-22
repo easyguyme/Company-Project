@@ -1,0 +1,33 @@
+<div class="modal-header clearfix">
+  <div class="pull-left">
+    <h4 class="create-graphics-title">{{'content_graphics_graphic_material' | translate}} <small class="">{{'content_graphics_nodata_tips' | translate}}</small></h4>
+  </div>
+  <div class="pull-right">
+  <a ng-click="cancel()" class="close popup-close" aria-hidden="true"></a>
+  </div>
+</div>
+<div class="modal-body modal-channel clearfix">
+  <div class="graphic-filter clearfix">
+    <div class="select-wrapper">
+      <div wm-select on-change="selectType" ng-model="currentType" text-field="text" value-field="value" items="types" default-text="{{'content_graphics_all' | translate}}"></div>
+    </div>
+    <div class="search-wrapper">
+      <wm-search ng-model="searchKey" click-func="search()" placeholder="{{'content_graphics_search' | translate}}"></wm-search>
+    </div>
+  </div>
+  <div class="modal-waterfall-wrap">
+    <div class="graphic-no-data" translate="content_graphics_no_data" ng-show="graphicList.length == 0"></div>
+    <div wm-waterfall="waterfallOptions" class="waterfall">
+      <div ng-repeat="graphic in graphicList track by $index" class="waterfall-item">
+        <div class="news-wrap cp" ng-click="select(graphic, $index)">
+          <div class="news-shelter" ng-show="$index == selectedIndex"></div>
+          <div wm-wechat-graphic graphic="graphic"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-graphic-footer footer-position">
+  <button class="btn btn-success modal-btn-position" translate="ok" ng-click="submit()"></button>
+</div>

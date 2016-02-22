@@ -1,0 +1,12 @@
+.c-title-panel {
+  font-size: .4rem;
+
+  &__body {
+    padding: .4rem 0;
+  }
+
+  &__title {
+    line-height: 1rem;
+    border-bottom: 1px solid $pannel-head-border-color;
+  }
+}

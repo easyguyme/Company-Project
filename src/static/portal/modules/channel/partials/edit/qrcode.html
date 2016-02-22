@@ -1,0 +1,57 @@
+<div wm-breadcrumb="qrcode.breadcrumb"></div>
+<div class="clearfix">
+  <div class="panel-body container-fluid col-md-6 pannel-qrcode">
+    <form name="qrcodeForm" ng-submit="qrcode.save()">
+      <div class="form-group channel-qrcode-name">
+        <label class="detial-name-label">{{'channel_wechat_qrcode_name' | translate}}</label>
+        <input id="qrcodeName" type="text" class="form-control detial-name error-color" ng-model="qrcode.detail.name" maxlength="20" required form-tip="{{'channel_qrcode_name_tip' | translate}}"/>
+        <div ng-show="qrcode.nameError" class="error-tip error-name" translate="required_field_tip"></div>
+      </div>
+      <!-- Add auto message. -->
+      <div class="form-group">
+        <div class="channel-qrcode-reply" ng-class="{'true': 'is-show'}[qrcode.isShow]" ng-click="qrcode.showReplyMessage()">
+          <a>{{'channel_wechat_set_reply_message' | translate}}
+            <i class="channel-qrcode-triangle"></i>
+          </a>
+        </div>
+        <div remain-character="qrcode.remainCharacter" wm-wechat-message ng-model="qrcode.detail.content" ng-show="qrcode.isShow"></div>
+      </div>
+      <!-- Add follower tags. -->
+      <div class="form-group">
+        <div wm-checkbox ng-model="qrcode.isAutoScanFollower"></div>
+        <label>{{'channel_auto_scan_qrcode_follower' | translate}}</label>
+      </div>
+
+      <div class="form-group member-attr-wrapper channel-wrapper clearfix" ng-show="qrcode.isAutoScanFollower">
+        <label class="member-attr-label" translate="channel_tags_name" required></label>
+        <div class="autodropdown-wrapper" ng-mouseleave="qrcode.hideAutoDropdown()">
+          <div class="autodropdown-body" ng-click="qrcode.showAutoDropdown()">
+            <ul class="autodropdown-tags">
+              <li ng-repeat="tag in qrcode.checkedTags track by $index" class="autodropdown-tag">
+                <span ng-bind="tag"></span>
+                <span class="close-btn cp" ng-click="qrcode.removeTag($index, $event)"></span>
+              </li>
+              <li class="autodropdown-keycode-wrapper">
+                <input onkeydown="if(event.keyCode==13){return false;}" id="tagsValue"
+                ng-keyup="qrcode.operateTag($event)" class="form-control autodropdown-input" ng-model="qrcode.tagValue" maxlength="30"/>
+              </li>
+            </ul>
+          </div>
+          <span class="required-form-tip autodropdown-body-tip" ng-show="qrcode.required" translate="channel_qrcode_form_required"></span>
+          <span class="required-form-tip autodropdown-body-length-tip" ng-show="qrcode.requiredLength" translate="channel_qrcode_form_required_length"></span>
+
+          <ul class="autodropdown-items" ng-if="qrcode.tagsStore.length > 0 && qrcode.isShowTagsDropdown">
+            <li ng-repeat="item in qrcode.tagsStore | filter:tagValue track by $index" ng-click="qrcode.checkTag(item)" class="autodropdown-item" ng-mouseover="qrcode.hoverDropItem($index)">
+              <span ng-bind="item"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mass-operation-wrapper">
+        <input type="submit" class="btn btn-success mr20 user-btn" value="{{'channel_wechat_mass_submit' | translate}}" />
+        <span class="btn btn-default user-btn" ng-click="qrcode.cancel()">{{'channel_wechat_mass_cancel' | translate}}</span>
+      </div>
+    </form>
+  </div>
+</div>

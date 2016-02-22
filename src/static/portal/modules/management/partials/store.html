@@ -1,0 +1,87 @@
+<div ng-controller="wm.ctrl.management.store as channel">
+  <div class="panel panel-default panel-main-content">
+    <div wm-breadcrumb="store.breadcrumb">
+      <button ng-if="channel.list.length > 0" class="btn btn-success pull-right" ng-click="channel.create()">{{'management_add_store' | translate}}</button>
+    </div>
+    <div class="mt30 new-wrapper" ng-if="channel.list.length == 0">
+      <div class="menber-create-icon center-block cp" ng-click="channel.create()"></div>
+      <div class="new-broadcast" >{{'management_click_add_store' | translate}}</div>
+    </div>
+    <div class="store-select-wrap" ng-if="channel.list.length > 0">
+      <div wm-checkbox ng-model="channel.tableData.checkAll" ng-click="channel.checkAllItems(channel.tableData.checkAll)"></div>{{'management_select_all' | translate}}
+      <div style="position:relative;display:inline-block">
+        <div ng-if="!channel.toWechat && channel.cacheCheckRows.length == 0 && !channel.tableData.checkAll" class="synchronize-dropdown" style="color:#d2d2d2">{{'management_synchronize_store' | translate}}<b class="caret"></b></div>
+        <div ng-if="!channel.toWechat && (channel.cacheCheckRows.length > 0 || channel.tableData.checkAll)" ng-click="channel.showModal()" class="synchronize-dropdown cp">{{'management_synchronize_store' | translate}}<b class="caret"></b></div>
+        <div class="tag-modal" style="left:29px;width:500px" ng-show="channel.showChannelModal">
+          <h3 class="tag-title">{{"management_select_wechat" | translate}}</h3>
+          <div class="tag-content store-channel-content">
+            <div class="mb20"><img class="mr5" src="/images/core/popup_tip.png">{{'management_synchronize_channel_select_tip' | translate}}</div>
+            <div class="clearfix mb30">
+              <div class="col-md-6 col-xs-6 pr0 mb10" ng-repeat="channel in channel.wechatChannels track by $index">
+                <div wm-checkbox ng-model="channel.checked"></div>
+                <span class="channel-type-wrap" ng-style="{'background-color': channel.typeBackground}"><img src="/images/customer/wechat_icon.png">{{channel.typeName | translate}}</span>
+                <span class="channel-name text-el">{{channel.name}}</span>
+              </div>
+            </div>
+            <div class="confirm-select">
+              <span class="btn btn-success btn-operate-tag btn-tag-ok" translate="ok" ng-click="channel.sychronizeStore()"></span>
+              <span class="btn btn-operate-tag btn-default" translate="cancel" ng-click="channel.cancelModal()"></span>
+            </div>
+          </div>
+        </div>
+        <div ng-if="channel.toWechat" class="synchronize-dropdown synchronizing-dropdown"><span class="store-synchronize-icon"></span><span class="syn-text">{{'management_synchronizing' | translate}}...</span></div>
+      </div>
+    </div>
+    <div class="panel-body pannel-store-wrap" ng-if="channel.list.length > 0">
+      <wm-table ng-model="channel.tableData" class="colored-table"></wm-table>
+      <div class="broadcast-pagination">
+        <div wm-pagination current-page="channel.currentPage" page-size="channel.pageSize" total-items="channel.totalItems" on-change-size="channel.changeSize" on-change-page="channel.changePage"></div>
+      </div>
+    </div>
+  </div>
+  <div wm-multi-qrcode index="channel.storeIndex" qrcode-list="channel.qrcodeList" is-show="channel.isShowQrcodeDropdown" self-style="channel.position" edit-handler="channel.editQrcode" qrcode-title="scan_qrcode_view_graphic"></div>
+  <div class="modal-no-color ng-scope" ng-show="channel.showChannelModal" ng-click="channel.hideTagModal()">
+  </div>
+</div>
+
+<script type="text/ng-template" id="createQrcode.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{title | translate}}</h4>
+  </div>
+  <form name="accountCreateForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <ol class="steps qrcode-steps" ng-show="!edit">
+        <li class="step" ng-class="{active:step.active,complete:step.complete}" ng-repeat="step in steps track by $index">
+          <span class="step-number" style="background-position:{{-16*step.active}}px {{-16*$index}}px"></span> {{step.name | translate}}
+        </li>
+      </ol>
+
+      <div ng-show="steps[0].active && !edit">
+        <p class="form-tip">{{'management_store_add_qrcode_description' | translate}}
+        </p>
+        <div class="qrcode-channel-wrapper">
+          <div class="clearfix mb10" ng-repeat="channels in allChannels track by $index" ng-if="!!channels">
+            <div class="mb10"><wm-checkbox ng-model="channels.checked"></wm-checkbox><span translate="{{channels.type}}_account"></span></div>
+            <div class="col-md-6 col-xs-6" ng-repeat="channel in channels.channels track by $index">
+              <div class="col-md-2 col-xs-2 qrcode-radio"><wm-radio ng-model="channelIds[channels.type]" value="{{channel.id}}"></wm-radio></div>
+              <div class="qrcode-channel-box col-md-10 col-xs-10">
+                <img ng-src="{{channel.avatar}}">
+                <span class="channel-name text-el" wm-tooltip="{{channel.name}}">{{channel.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="qrcode-message-wrapper" ng-show="steps[1].active">
+        <label>{{'management_add_qrcode_message' | translate}}</label>
+        <div wm-wechat-message ng-model="message"></div>
+      </div>
+
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'submit' | translate}}" />
+    </div>
+  </form>
+</script>

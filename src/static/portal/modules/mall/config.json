@@ -1,0 +1,25 @@
+{
+  "name": "mall",
+  "states": [
+    "mall-goods",
+    "mall-offline",
+    "mall-redemption",
+    "mall-edit-goods-{id}",
+    "mall-view-goods-{id}",
+    "mall-create-goods"
+  ],
+  "resources": {
+    "goods": "/api/mall/goods",
+    "updateGoods": "/api/mall/goods/update",
+    "exchanges": "/api/mall/goods-exchange-logs",
+    "createGoods": "/api/mall/goods/create",
+    "goodsList": "/api/mall/goods/index",
+    "updateStatus": "/api/mall/goods/update-goods-status",
+    "deleteGoods": "/api/mall/goods",
+    "goodsNames": "/api/mall/goods/name",
+    "redeemItems": "/api/mall/goods/offline-exchange",
+    "exportGoodsExchangeRecord": "/api/mall/goods-exchange-log/export",
+    "shippingAddress": "/api/mall/goods-exchange-log/address",
+    "goodsExchange": "/api/mall/goods-exchange-log/ship"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "name": "marketing",
+  "title": "nav_marketing",
+  "link": {
+    "enterFunction": "/marketing/coupon",
+    "coupon": "/marketing/create/coupon",
+    "game": "/game/list"
+  },
+  "havePartial": true,
+  "illustrations": [
+    "management_extension_marketing_illustration1",
+    "management_extension_marketing_illustration2"
+  ],
+  "introductions": [
+    "management_extension_marketing_introduction1",
+    "management_extension_marketing_introduction2",
+    "management_extension_marketing_introduction3"
+  ],
+  "functions": [
+    {
+      "title": "management_extension_marketing_function1",
+      "image": ["/images/marketing/introduction/fuction_couponlist.png"]
+    },
+    {
+      "title": "management_extension_marketing_function2",
+      "image": ["/images/marketing/introduction/fuction_couponcollectionlist.png"]
+    },
+    {
+      "title": "management_extension_marketing_function3",
+      "image": ["/images/marketing/introduction/fuction_couponverificationlist.png"]
+    },
+    {
+      "title": "game_list",
+      "image": ["/images/marketing/introduction/fuction_gameslist.png"]
+    },
+    {
+      "title": "game_list_setting",
+      "image": ["/images/marketing/introduction/fuction_gamessetting.png"]
+    },
+    {
+      "title": "game_list_detail",
+      "image": ["/images/marketing/introduction/fuction_gamesdetial.png"]
+    },
+    {
+      "title": "interaction_extension_function_game_statictics",
+      "image": ["/images/marketing/introduction/fuction_gamestatistics.png"]
+    }
+  ],
+  "images": [
+    "/images/marketing/introduction/fuction_coupon.png",
+    "/images/marketing/introduction/fuction_games.png"
+  ],
+  "firstDot": "/images/management/paragraphbreak.png",
+  "stepOne": [
+    "marketing_extension_todo_stepone1",
+    "marketing_extension_todo_stepone2"
+  ],
+  "stepTwo": [
+    "marketing_extension_todo_stepone3",
+    "interaction_extension_game_stepone2",
+    "marketing_extension_todo_stepone5"
+  ]
+}

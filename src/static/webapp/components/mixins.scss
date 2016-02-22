@@ -1,0 +1,28 @@
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap/mixins';
+
+@mixin background-image ($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+}
+
+@mixin text-el {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin c-box() {
+  display: -moz-box;
+  display: -webkit-box;
+  display: -ms-box;
+  display: -o-box;
+  display: box;
+}
+
+@mixin c-box-flex($count) {
+  -webkit-box-flex: $count;
+  -moz-box-flex: $count;
+  -ms-box-flex: $count;
+  -o-box-flex: $count;
+  box-flex: $count;
+}

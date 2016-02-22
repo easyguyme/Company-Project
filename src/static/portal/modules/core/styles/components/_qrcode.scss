@@ -1,0 +1,225 @@
+$white : #fff;
+$qrcode-border-color : #d2d2d2;
+$qrcode-header-bgcolor : #555;
+$qrcode-footer-bgcolor: #f7f7f7;
+$step-border: #eee;
+$qrcode-footer-edit-bg: #efefef;
+$qrcode-color-gray8: #888;
+
+@mixin operation-icon($operation-name, $size) {
+  @include square($size);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/images/core/icon_#{$operation-name}_default.png');
+  display: inline-block;
+
+  &:hover,
+  &:active {
+    background-image: url('/images/core/icon_#{$operation-name}_hover.png');
+  }
+}
+
+.qrcode-modal {
+  width: 230px;
+  position: absolute;
+  border: 1px solid $qrcode-border-color;
+  background: $white;
+  border-radius: 4px;
+  margin-top: 3px;
+  z-index: 1011;
+
+  .qrcode-panel-header {
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: $qrcode-header-bgcolor;
+    border-radius: 4px;
+    background-color: $white;
+
+    .qrcode-title {
+      margin-bottom: 0;
+      line-height: 20px;
+      height: 20px;
+      font-weight: normal;
+    }
+
+    .btn-download {
+      @include size(35px, 20px);
+      vertical-align: top;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('/images/content/download_default.png');
+
+      &:hover {
+        background-image: url('/images/content/download_hover.png');
+      }
+
+      &:focus,
+      &:active {
+        background-image: url('/images/content/download_click.png');
+      }
+    }
+
+    .btn-qrcode-close {
+      @include size(20px, 20px);
+      text-shadow: none;
+      outline: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('/images/management/icon_popup_close_default.png');
+
+      &:hover {
+        background-image: url('/images/management/icon_popup_close_hover.png');
+      }
+
+      &:focus,
+      &:active {
+        background-image: url('/images/management/icon_popup_close_click.png');
+      }
+    }
+  }
+
+  .qrcode-content {
+    padding: 15px;
+    height: 230px;
+    background: $qrcode-footer-bgcolor;
+    overflow: auto;
+
+    .qrcode-icon-box {
+      @include border-top-radius(2px);
+      @include border-bottom-radius(2px);
+      @include size(200px, 200px);
+      background-color: $white;
+
+      .qrcode-icon-canvas {
+        @include size(170px, 170px);
+      }
+    }
+  }
+}
+
+.multi-large-width {
+
+  .qrcode-wrapper,
+  .qrcode-img {
+    width: 160px;
+  }
+
+  .weibo-qrcode-img {
+    width: 150px;
+    margin-top: 5px;
+  }
+}
+
+.multi-small-width {
+  width: 300px;
+
+  .qrcode-img {
+    width: 160px;
+  }
+
+  .qrcode-wrapper {
+    width: 160px;
+    margin: auto;
+  }
+}
+
+.multi-qrcode-wrapper {
+  border: 1px solid $qrcode-border-color;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1011;
+  background-color: $white;
+
+  .head {
+    height: 40px;
+    padding: 10px 15px;
+    border-bottom: 1px solid $step-border;
+
+    .qrcode-title {
+      line-height: 20px;
+      color: $qrcode-header-bgcolor;
+    }
+
+    .close-btn {
+      @include size(20px, 20px);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('/images/management/icon_popup_close_default.png');
+
+      &:hover {
+        background-image: url('/images/management/icon_popup_close_hover.png');
+      }
+
+      &:focus,
+      &:active {
+        background-image: url('/images/management/icon_popup_close_click.png');
+      }
+    }
+  }
+
+  .content {
+    padding: 20px;
+
+    .qrcode-type {
+      padding-left: 8px;
+    }
+
+    .icon-img {
+      vertical-align: top;
+      width: 20px;
+    }
+
+    .qrcode-name {
+      @include text-overflow();
+      max-width: 100px;
+      display: inline-block;
+    }
+  }
+
+  .download-icon {
+    @include size(25px, 14px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/images/content/download_hover.png');
+    display: inline-block;
+  }
+
+  .multi-footer {
+    height: 40px;
+    background-color: $qrcode-footer-edit-bg;
+    text-align: center;
+    padding-top: 5px;
+
+    .edit-icon {
+      @include operation-icon(edit, 30px);
+    }
+
+    .edit-icon-disabled {
+      background-image: url('/images/core/icon_edit_disable.png') !important;
+      cursor: default;
+    }
+
+    .delete-icon {
+      @include operation-icon(delete, 30px);
+      margin-left: 20px;
+    }
+  }
+
+  .qrcode-channel {
+    text-align: center;
+
+    > span {
+      color: $qrcode-color-gray8;
+    }
+  }
+}
+
+.channel-qrcode-icon {
+  @include operation-icon(qrcode, 30px);
+}
+
+.channel-newqrcode-icon {
+  @include operation-icon(newqrcode, 30px);
+}

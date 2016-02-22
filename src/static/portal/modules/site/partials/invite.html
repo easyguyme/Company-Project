@@ -1,0 +1,52 @@
+<div class="login-page" ng-hide="invite.display">
+  <div class="activate-content">
+    <div class="reminder-wrapper">
+      <div class="activate-reminder"><p>Hi, {{invite.email}}!</p></div>
+      <div class="activate-reminder"><p>{{'site_reminder' | translate}}</p></div>
+    </div>
+    <form class="green-form activate-form" ng-submit="invite.submit()">
+      <div class="form-group avatar mb35">
+        <div class="avatar-wrapper">
+          <div class="edit-avatar" ng-style="{'background-image':'url(' + invite.avatar + ')'}"></div>
+          <div id="activate-upload" wm-file-upload process-bar='false' class="file-upload-wrap avatar-upload-btn" ng-model="invite.avatar">
+            <div class="edit-icon"></div>
+          </div>
+        </div>
+        <div class="form-avatar-tip">{{'management_icon_tip' | translate}}</div>
+      </div>
+      <div class="form-group mb20 clearfix">
+        <div class="rel">
+          <input type="text" id="name" maxlength="15" class="form-control" placeholder="{{'site_enter_nickname' | translate}}" ng-model="invite.name" required form-tip="{{'management_input_string'|translate}}" below-msg></input>
+        </div>
+      </div>
+      <div class="form-group mb20 clearfix">
+        <div class="rel">
+          <input type="password" maxlength="20" class="form-control rel" placeholder="{{'site_enter_password' | translate}}" ng-model="invite.password" required form-tip="{{'management_password_tip' | translate}}" below-msg wm-validate="invite.checkPwd"></input>
+        </div>
+      </div>
+      <div class="form-group mb50 clearfix">
+        <div class="rel">
+          <input type="password" maxlength="20" class="form-control rel" placeholder="{{'site_enter_new_pwd' | translate}}" ng-model="invite.repassword" required form-tip="{{'management_password_tip' | translate}}" below-msg wm-validate="invite.checkNewPwd"></input>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success center-block" style="min-width: 158px;" type="submit">{{'site_submit' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="invalid" ng-hide="!invite.display">
+  <div class="invalid-page">
+    <div class="invalid-wrapper">
+      <div class="fail-link">
+        <span class="glyphicon glyphicon-ban-circle glyphicon-position"></span>
+        <span class="fail-word">{{invite.invalid_title | translate}}</span>
+      </div>
+      <div class="tip-msg">
+        <p>{{invite.message | translate}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+

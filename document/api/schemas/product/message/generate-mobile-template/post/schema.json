@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    }
+  }
+}

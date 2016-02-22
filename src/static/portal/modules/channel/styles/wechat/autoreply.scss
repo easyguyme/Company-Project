@@ -1,0 +1,291 @@
+$error-red: #b42d14;
+$text-green: #37c3aa;
+$icon-orange: #ff722e;
+$color-1c: #1c1c1c;
+$color-a: #aaa;
+$color-d: #ddd;
+$color-78: #787878;
+$color-ed: #ededed;
+$color-8b: #8b8b8b;
+
+.h80 {
+  height: 80px;
+  width: 525px;
+}
+
+.h100 {
+  height: 100px;
+}
+
+.w410 {
+  width: 410px;
+}
+
+.keyword-block {
+  margin-bottom: 20px;
+  margin-left: 10px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.error-color {
+  border-color: $error-red;
+}
+
+.keyword-rule-text {
+  width: 525px;
+  font-size: 14px;
+  color: $color-1c;
+  padding-left: 10px;
+}
+
+.keyword-key-text {
+  font-size: 14px;
+  color: $color-1c;
+  padding-left: 10px;
+}
+
+.keyword-dropdown {
+  margin-left: 220px;
+}
+
+.keyword-down {
+  float: right;
+  margin-top: 7px;
+}
+
+.keyword-dropdown-menu {
+  border-radius: 8px;
+}
+
+.fl {
+  float: left;
+}
+
+.keyword-btn-default {
+  width: 70px;
+  height: 30px;
+  border-radius: 2px;
+  line-height: 14px;
+  margin-left: 12px;
+}
+
+.keyword-wechat-message {
+  margin-bottom: 50px;
+
+  div {
+    margin-left: 0;
+
+    div {
+      div {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.keyword-key-dropdown {
+  float: right;
+  width: 100px;
+
+  .select-btn {
+    height: 30px;
+    padding-top: 2px;
+    border-color: $color-d;
+  }
+}
+
+.keyword-text-name {
+  color: $color-78;
+  display: block;
+  font-weight: normal;
+}
+
+.error-tip {
+  color: $error-red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.keyword-wechat-message-prompt {
+  margin-top: -20px;
+  margin-bottom: 50px;
+  font-size: 12px;
+  color: $color-a;
+}
+
+.keyword-btn {
+  margin-top: 20px;
+  width: 100%;
+  height: 35px;
+  border-radius: 8px;
+
+  &:active,
+  &:focus {
+    outline: 0 auto -webkit-focus-ring-color;
+  }
+
+  .btn-success {
+    width: 70px;
+    height: 30px;
+  }
+}
+
+.keyword-checkbox-prompt {
+  margin-left: 15px;
+}
+
+.keyword-slash {
+  margin-left: 8px;
+  margin-right: 12px;
+}
+
+.fr {
+  float: right;
+}
+
+.keywordlist-new-btn {
+  margin-top: -47px;
+}
+
+.keyword-table-wrap {
+
+  .reply-col > span {
+    @include text-overflow;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .colored-table {
+    thead {
+      tr th {
+        padding-bottom: 5px;
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          border-bottom: 1px solid $color-ed;
+          padding-top: 10px;
+          padding-bottom: 0;
+        }
+
+        .reply-col {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
+
+.keyword-table-wrap-keyword {
+  .colored-table {
+    thead {
+      tr {
+        th:nth-child(3) {
+          width: 345px;
+        }
+
+        th:nth-child(6) {
+          width: 180px;
+        }
+      }
+    }
+  }
+}
+
+.keyword-table-wrap-defaultrule {
+  .colored-table {
+    thead {
+      tr {
+        th:nth-child(2) {
+          width: 345px;
+        }
+      }
+    }
+  }
+}
+
+.keywordlist-zero {
+  text-align: center;
+  margin-top: 30px;
+
+  .keywordlist-zero-img {
+    background-image: url('/images/management/btn_create_user_default.png');
+    width: 26px;
+    height: 26px;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url('/images/management/btn_create_user_hover.png');
+    }
+
+    &:active {
+      background-image: url('/images/management/btn_create_user_click.png');
+    }
+  }
+
+  .keywordlist-zero-text {
+    font-size: 14px;
+    color: $color-8b;
+  }
+
+  .text-hover {
+    color: $text-green;
+  }
+}
+
+.keywordlist-pagination-block {
+  margin-bottom: 0;
+
+  .keywordlist-pagination {
+    float: right;
+    margin-right: 35px;
+  }
+}
+
+.graphic-icon:hover {
+  background-color: $icon-orange;
+}
+
+.keyword-replybox {
+  .wechat-message-wrap {
+    max-width: 525px;
+  }
+}
+
+.keyword-add {
+  .col-md-12 {
+    padding-left: 0;
+  }
+}
+
+.keyword-rule-text-wrap {
+  width: 525px;
+}
+
+.keyword-key-text-wrap {
+  height: 30px;
+  width: 420px;
+  float: left;
+  margin-right: 5px;
+}
+
+.autoreply-list {
+  thead {
+    .operation-col {
+      width: 115px;
+    }
+  }
+}
+
+.required-star::before {
+  content: '*';
+  color: $error-red;
+  left: 0;
+  position: relative;
+}

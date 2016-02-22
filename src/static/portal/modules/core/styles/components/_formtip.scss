@@ -1,0 +1,155 @@
+$warnging-tip-color: #b42d14;
+$green-tip-color: #198c78;
+$normal-tip-color: #aaa;
+$required-star-color: #999;
+
+.form-group {
+  position: relative;
+}
+
+.invalid-msg {
+
+  $form-tip-bg-color: $black-background-color;
+  $form-tip-border-color: #ccc;
+
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -15px;
+  // border: 1px solid $form-tip-border-color;
+  padding: 5px;
+  z-index: 10;
+  background-color: $form-tip-bg-color;
+  color: $white-background-color;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+
+  i {
+    margin-right: 5px;
+  }
+
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   display: block;
+  //   top: 8px;
+  //   left: -10px;
+  //   border-top: 5px solid transparent;
+  //   border-bottom: 5px solid transparent;
+  //   border-right: 10px solid $form-tip-border-color;
+  // }
+
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 9px;
+    left: -8px;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-right: 8px solid $form-tip-bg-color;
+  }
+
+  &.below {
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+  }
+
+  // &.below:before {
+  //   top: -15px;
+  //   left: 10px;
+  //   border-left: 5px solid transparent;
+  //   border-right: 5px solid transparent;
+  //   border-bottom: 10px solid $form-tip-border-color;
+  // }
+
+  &.below:after {
+    top: -12px;
+    left: 11px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid $form-tip-bg-color;
+  }
+}
+
+.required-field:before {
+  content: '*';
+  color: $warnging-tip-color;
+  left: -5px;
+  position: relative;
+}
+
+.highlight {
+  .form-tip {
+    color: $warnging-tip-color !important;
+  }
+}
+
+.required-tip {
+  &:before {
+    content: '*';
+    color: $required-star-color;
+    position: absolute;
+    left: -20px;
+    font-size: 14px;
+    top: 50%;
+    margin-top: -8px;
+  }
+
+  &.highlight {
+    &:before {
+      color: $warnging-tip-color !important;
+    }
+
+    ::-webkit-input-placeholder {
+      color: $warnging-tip-color !important;
+    }
+
+    :-moz-placeholder { // Firefox 18-
+      color: $warnging-tip-color !important;
+    }
+
+    ::-moz-placeholder {  // Firefox 19+
+      color: $warnging-tip-color !important;
+    }
+
+    :-ms-input-placeholder {
+      color: $warnging-tip-color !important;
+    }
+  }
+}
+
+.form-control-error {
+  border-color: $warnging-tip-color !important;
+  box-shadow: none !important;
+}
+
+.form-tip {
+  display: block;
+  color: $normal-tip-color;
+  font-size: 12px;
+}
+
+.ng-valid {
+  +.form-tip {
+    display: none;
+
+    &.normal {
+      display: block;
+    }
+  }
+}
+
+.green-form {
+  .form-tip {
+    color: $green-tip-color;
+    margin-top: 3px;
+    float: right;
+  }
+
+  .required-tip:before {
+    color: $white-background-color;
+  }
+}

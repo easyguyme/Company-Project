@@ -1,0 +1,206 @@
+<div wm-breadcrumb="activity.breadcrumb"></div>
+<form id="activity-form" role="form" name="activityForm" ng-submit="activity.submit()" novalidate >
+  <input type="hidden" ng-model="activity.activity._id" />
+  <!-- 活动名称 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_name" class="red-start"></span>
+    </div>
+    <div class="activity-item-body">
+      <input class="form-control" required type="text" form-tip="{{'activity_name_tip'|translate}}" ng-model="activity.activity.name" maxlength="60" wm-validate="activity.checkName" name="activityName"/>
+    </div>
+  </div>
+  <!-- 活动主视觉图片 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_mainImg" class="red-start"></span>&nbsp;&nbsp;
+      <label ng-show="activityForm.mainImgUrl.$error.required && submitted">{{'activity_image_validate_tip'|translate}}</label>
+      <input ng-model="activity.activity.mainImgUrl" name="mainImgUrl" binded="false" required class="img-validate" />
+    </div>
+    <div class="activity-item-body">
+      <image ng-src="{{activity.activity.mainImgUrl}}" class="img-main"></image>
+      <div id="imgMainUpload" wm-file-upload class="file-upload-wrap" ng-model="activity.activity.mainImgUrl">
+        <span class="btn btn-success">上傳圖片</span>
+      </div>
+    </div>
+  </div>
+  <!-- 鸣谢惠顾几率 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_probability" class="red-start"></span>
+    </div>
+    <div class="activity-item-body">
+      <input class="form-control input-probability" required type="text" form-tip="{{'activity_probability_tip'|translate}}" ng-model="activity.activity.probability" wm-validate="activity.checkInt100('probability', activity.activity.probability)" name="activityProbability" id="probability"/>
+      <span class="span-probability"> % </span>
+    </div>
+  </div>
+  <!-- 奖项列表 -->
+  <div class="statistics-chart-item prizes-item">
+    <div class="statistics-item-title">
+      <span class="item-name" translate="activity_prizes_list"></span>
+      <span class="btn btn-success" ng-click="activity.addPrize()">{{'activity_prizes_add_btn'|translate}}</span>
+    </div>
+    <div class="statistics-item-body">
+      <table class="table table-striped prize-table">
+        <tbody>
+          <tr ng-repeat="prize in activity.prizes">
+            <td>
+              <div class="prize-left">
+                <!-- id -->
+                <!-- <input type="hidden" ng-model="prize._id"/> -->
+                <!-- 奖项图片 -->
+                <div class="div-prize-image">
+                  <image ng-src="{{prize.prizeImgUrl}}" class="img-prize"></image>
+                  <div ng-show="prize.prizeImgUrl == ''">
+                    <input type="hidden" ng-model="prize.prizeImgUrl" name="prizeImgUrl" class="img-validate" id="{{'prizeImgUrl'+ $index}}"/>
+                  </div>
+                  <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="prize.prizeImgUrl">
+                    <span class="btn btn-success img-picker-btn">上傳圖片</span>
+                  </div>
+                </div>
+              </div>
+              <div class="prize-right">
+                <div class="prize-remove">
+                  <span type="button" class="btn btn-warning" ng-click="activity.deletePrize($index, prize._id, $event)">
+                    {{'activity_prizes_remove_btn'|translate}}
+                  </span>
+                </div>
+                <!-- 奖项类型 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div">
+                  <span class="fields-item-label pl0 prize-label" translate="activity_prize_type"></span>
+                  <div class="col-md-8 col-xs-8 pl0 div-radio">
+                    <span wm-radio name="type" ng-model="prize.type" value="littlePrize"></span>
+                    {{'activity_prize_little'|translate}} &nbsp;&nbsp;
+                    <span wm-radio name="type" ng-model="prize.type" value="topPrize"></span>
+                    {{'activity_prize_top'|translate}}
+                  </div>
+                </div>
+                <!-- 是否为积分 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_point"></label>
+                  <div class="col-md-8 col-xs-8 div-radio">
+                    <span wm-radio name="point" ng-model="prize.isPoint" value="Y"></span>
+                    {{'activity_prize_point_yes'|translate}} &nbsp;&nbsp;
+                    <span wm-radio name="point" ng-model="prize.isPoint" value="N"></span>
+                    {{'activity_prize_point_no'|translate}}
+                  </div>
+                </div>
+                <!-- 积分点数 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div" ng-if="prize.isPoint === 'Y'">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_point_quantity"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input class="form-control" required type="text" form-tip="{{'activity_point_quantity_tip'|translate}}" ng-model="prize.points" pattern="^[1-9]\d*$" wm-validate="activity.checkPositiveInt('points'+ $index, prize.points)" name="points" id="{{'points'+ $index}}"/>
+                  </div>
+                </div>
+                <!-- 奖项名称 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_name"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input class="form-control" required type="text" form-tip="{{'activity_prize_name_tip'|translate}}" ng-model="prize.name" maxlength="30" wm-validate="prize.checkName" name="prizeName"/>
+                  </div>
+                </div>
+                <!-- 奖项数量 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_quantity"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input class="form-control" required type="text" form-tip="{{'activity_prize_quantity_tip'|translate}}" ng-model="prize.quantity" pattern="^[1-9]\d*$" wm-validate="activity.checkPositiveInt('quantity'+ $index, prize.quantity)" name="prizeQuantity" id="{{'quantity'+ $index}}"/>
+                  </div>
+                </div>
+                <!-- 大奖开放时间 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div" ng-if="prize.type === 'topPrize'">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_startdate"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input wm-datetime-picker picker-id="startDatePicker{{$index}}" min-date-picker-id="endDatePicker{{$index}}" ng-model="prize.startDate" required-field="true" name="prizeStartDate"/>
+                  </div>
+                </div>
+                <!-- 大奖结束时间 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div" ng-if="prize.type === 'topPrize'">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_enddate"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input wm-datetime-picker picker-id="endDatePicker{{$index}}" max-date-picker-id="startDatePicker{{$index}}" ng-model="prize.endDate" required-field="true" name="prizeEndDate"/>
+                  </div>
+                </div>
+                <!-- 大奖开放时间 只读 -->
+                <div class="form-group col-md-7 col-xs-12 prize-div" ng-if="prize.type === 'littlePrize'">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_startdate"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input class="form-control" type="text" readonly placeholder="{{'activity_prize_topPrize_tip'|translate}}"/>
+                  </div>
+                </div>
+                <!-- 大奖结束时间 只读-->
+                <div class="form-group col-md-7 col-xs-12 prize-div" ng-if="prize.type === 'littlePrize'">
+                  <label class="fields-item-label pl0 prize-label" translate="activity_prize_enddate"></label>
+                  <div class="col-md-8 col-xs-8 pl0">
+                    <input class="form-control" type="text" readonly placeholder="{{'activity_prize_topPrize_tip'|translate}}"/>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr ng-show="activity.prizes.length === 0">
+            <td>{{'activity_prizes_none_tip'|translate}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 活动办法 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_rule" class="red-start"></span>
+    </div>
+    <div class="activity-item-body">
+      <div class="ueditor" ng-model="activity.activity.rule" name="activityRule" required></div>
+    </div>
+  </div>
+  <!-- 上架时间 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_startdate" class="red-start"></span>
+    </div>
+    <div class="activity-item-body">
+      <div class="div-shelf">
+        <input wm-datetime-picker picker-id="activityStartDatePicker" min-date-picker-id="activityEndDatePicker" ng-model="activity.activity.startDate" more-than-today="{{activity.thanToday}}" required-field="true" name="startDate"/>
+      </div>
+    </div>
+  </div>
+  <!-- 下架时间 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <span translate="activity_enddate" class="red-start"></span>
+    </div>
+    <div class="activity-item-body">
+      <div class="div-shelf">
+        <input wm-datetime-picker picker-id="activityEndDatePicker" max-date-picker-id="activityStartDatePicker" ng-model="activity.activity.endDate" required-field="true" name="endDate"/>
+      </div>
+    </div>
+  </div>
+  <!-- 活动状态 -->
+  <div class="statistics-chart-item activity-item">
+    <div class="statistics-item-title">
+      <div translate="activity_status" class="red-start"></div>
+    </div>
+    <div class="activity-item-body">
+      <div>
+        <span wm-radio name="status" ng-model="activity.activity.status" value="Y"></span>
+        {{'activity_status_onshelf'|translate}} &nbsp;&nbsp;
+        <span wm-radio name="status" ng-model="activity.activity.status" value="N"></span>
+        {{'activity_status_offshelf'|translate}}
+      </div>
+    </div>
+  </div>
+  <!-- 送出存储 -->
+  <div class="activity-basic-container">
+    <div class="statistics-chart-item activity-item">
+      <div class="activity-item-body">
+        <input type="submit" class="btn btn-success mr20 user-btn" value="{{'activity_save_btn'|translate}}" id="submitForm"/>&nbsp;&nbsp;
+        <a ng-href="/uhkklp/activity"><span class="btn btn-default active">{{'activity_back_btn'|translate}}</span></a>
+      </div>
+    </div>
+  </div>
+
+</form>
+<!-- wmRadio -->
+<!-- wmFileUpload -->
+<!-- wmDatetimePicker -->
+<!-- Ueditor -->

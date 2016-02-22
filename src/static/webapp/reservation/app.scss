@@ -1,0 +1,9 @@
+//Base files
+@import '../components/mixins';
+@import '../components/theme';
+
+//Components below
+@import '../components/header/header';
+
+//Pages below
+@import 'list/index';

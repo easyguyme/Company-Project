@@ -1,0 +1,30 @@
+{
+    "items": [
+        {
+            "id": "556e94968fd1256189000004",
+            "channelId": "556e94968fd1256189000004",
+            "keycode": "hello",
+            "msgType": "TEXT",
+            "message": "hi",
+            "interactTime": "2015-08-05 17:05:41",
+        },
+        {
+            "id": "556e94968fd1256189000004",
+            "channelId": "556e94968fd1256189000004",
+            "message": "hi",
+            "msgType": "TEXT",
+            "interactTime": "2015-08-05 17:05:41",
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://dev.cp.augmarketing.cn/api/microsite/articles?accesstoken=3ca28e36-c949-5378-4edb-15aff6a5223d&orderBy=%7B%22createdAt%22%3A%22desc%22%7D&channels=%5B%2254b5c1f8db4c0eea6e8b4569%22%5D&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

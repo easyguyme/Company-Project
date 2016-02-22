@@ -1,0 +1,21 @@
+<div ng-controller="wm.ctrl.microsite.page.config.title as title">
+    <form id="form-title" ng-submit="cpts.sendData(title.data)">
+      <div class="form-group">
+        <label for="title" translate="content_component_config_title"></label>
+        <input class="form-control" type="text" id="title" ng-model="title.data.name" form-tip="{{'content_component_config_title_tip'|translate}}" maxlength="16" required>
+      </div>
+      <div class="form-group">
+        <label for="title" translate="content_component_config_title_link"></label>
+        <div wm-link-select ng-model="title.data.link"></div>
+      </div>
+      <label translate="content_component_config_title_style"></label>
+      <ul class="radio-group">
+        <li class="radio-block" ng-repeat="style in title.titleStyles">
+            <wm-radio ng-model="title.data.style" value="{{style.value}}"></wm-radio>
+            <span translate="{{style.label}}"></span>
+            <div class="title-style {{style.value}}-style" translate="content_component_config_title"></div>
+        </li>
+      </ul>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

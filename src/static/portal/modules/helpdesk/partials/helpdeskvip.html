@@ -1,0 +1,41 @@
+<div class="panel panel-default panel-main-content panel-helpdesk-content">
+  <div wm-breadcrumb="helpdeskvip.breadcrumb"></div>
+  <div class="panel-body panel-account-container">
+    <div class="tag-list row">
+      <div class="tag-title fs12">{{'helpdesk_tags'|translate}}：</div>
+      <div class="col-md-11">
+        <span class="tag-name" ng-repeat="tag in helpdeskvip.tags" ng-class="{'selected': tag.isSelected}" ng-click="helpdeskvip.selectTag(tag)">{{tag.name}}</span>
+      </div>
+    </div>
+    <div class="tag-helpdesk clearfix">
+      <div class="tag-helpdesk-head clearfix">
+        <div class="pull-left">
+          <span class="tag-selected-name">{{helpdeskvip.selectedTag.name}}</span>
+          <span class="tag-member-count fs12">{{'helpdesk_members'|translate}}：{{helpdeskvip.memberCount}}</span>
+        </div>
+        <div class="pull-right">
+          <a class="assign-helpdesk" ng-click="helpdeskvip.assignHelpdesk()">
+            <span>{{'helpdesk_assign_helpdesk_staff'|translate}}</span>
+          </a>
+        </div>
+      </div>
+      <div class="tag-helpdesk-body colored-table">
+        <wm-table ng-model="helpdeskvip.list"></wm-table>
+        <table ng-show="helpdeskvip.list.data.length === 0" class="no-assigned-helpdesk"><tr><td><br/></td></tr></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="assignHelpdesk.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'helpdesk_assign_helpdesk_staff'|translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor clearfix">
+    <wm-bidirection-select all-choices="allHelpdesks" all-choices-title="helpdesk_all_staff" selected-choices="selectedHelpdesks" selected-choices-title="helpdesk_selected_staff" order-by="badge" text-field="badge" sub-text-field="email" filter-placeholder="helpdesk_search_staff_badge_account" filter-fields="badge,email"></wm-bidirection-select>
+  </div>
+  <div class="modal-footer modal-bgcolor center-text assign-helpdesk-footer">
+    <input type="submit" class="btn btn-success" ng-click="submit()" value="{{'ok'|translate}}">
+  </div>
+</script>

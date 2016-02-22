@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "sku": {
+      "type": "string",
+      "required": false,
+      "description": "the number of product"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "the name(or title) of the product"
+    },
+    "pictures": {
+      "type": "array",
+      "required": false,
+      "description": ""
+    },
+    "category": {
+      "type": "array",
+      "required": true,
+      "description": "the category of the product"
+    }
+  }
+}

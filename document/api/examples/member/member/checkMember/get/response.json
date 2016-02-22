@@ -1,0 +1,54 @@
+{
+    "id": "555411b8475df410738b4567",
+    "card": {
+        "id": "552503f9475df423548b4575",
+        "name": "默认会员卡",
+        "poster": "/images/mobile/membercard.png",
+        "fontColor": "#fff",
+        "privilege": "xxx",
+        "condition": {
+            "minScore": 0,
+            "maxScore": 100
+        },
+        "usageGuide": "使用时向工作人员出示本会员卡即可，最终解释权归本品牌所有",
+        "isEnabled": true,
+        "isDefault": true,
+        "provideCount": 1,
+        "createdAt": "2015-04-08 18:33:29",
+        "updatedAt": "2015-04-08 18:33:29"
+    },
+    "createdAt": "2015-05-14 11:08:40",
+    "socialAccount": {
+        "id": "54d9c155e4b0abe717853ee1",
+        "name": "熊猫Baby",
+        "type": "SERVICE_AUTH_ACCOUNT"
+    },
+    "socialMember": null,
+    "properties": [
+        {
+            "id": "552503f9475df423548b4573",
+            "type": "date",
+            "name": "birthday",
+            "value": 1431532800000
+        }
+    ],
+    "accountId": "552502ed475df423548b4567",
+    "cardProvideTime": "2015-05-21 09:35:11",
+    "cardExpired": 0,
+    "avatar": "/images/management/image_hover_default_avatar.png",
+    "location": {
+        "country": "中国",
+        "province": "吉林",
+        "city": "松原"
+    },
+    "tags": [],
+    "score": 921,
+    "remarks": null,
+    "cardNumber": "10000001",
+    "unionId": null,
+    "totalScore": 0,
+    "openIds": null,
+    "cardExpiredAt": null,
+    "birth": 513,
+    "openId": null
+}

@@ -1,0 +1,191 @@
+<div class="ulkklp-edit-recipe">
+    <div wm-breadcrumb="westpromotion.breadcrumb">
+    </div>
+    <form id="orderForm" name="orderForm" method="post" accept-charset="utf-8" ng-submit="submit()" novalidate>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'activity_activity_name' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+            <select style="display: block; height: 30px;" name="activityName" id="activityName" class="left select" title="活動名稱" ng-change="getProduct()" required ng-model="formData.activityName" ng-options="s for s in activities">
+                <option value=""></option>
+            </select>
+            <div class="ng-invalid" ng-show="submitted">
+                <div>
+                    <span>{{'activityName_required' | translate}}</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_name' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="name" id="name" class="cookitem-input" type="text" ng-model="formData.name" required form-tip="{{'registrationForm_name_tip' | translate}}" ng-maxlength="30" maxlength="30" ng-minlength="2" />
+                <div class="ng-invalid" ng-show="(orderForm.name.$touched || orderForm.name.$dirty) && orderForm.name.$invalid || submitted">
+                    <div>
+                        <span ng-show="orderForm.name.$error.maxlength">{{'name_maxlength' | translate}}</span>
+                    </div>
+                    <div>
+                        <span ng-show="orderForm.name.$error.minlength">{{'message_name_minlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <span class="cookitem-lbl-required">{{'registration_mobile' | translate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="btn btn-primary btn-sm" type="button" value="{{'registration_validation' | translate}}" ng-click="validateNumber()" ng-disabled="isEnable" ng-show='isShowValidateBtn' />
+            </div>
+            <div class="cookitem-content">
+                <input name="mobile" id="mobile" class="cookitem-input" type="text" ng-model="formData.mobile" required />
+            </div>
+            <div style="margin-left:10px;color:#b42d14;font-size: 12px;" ng-show="showError">
+                <div>
+                    <span>{{'mobile_format' | translate}}</span>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'order_restaurantName' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="restaurantName" id="restaurantName" class="cookitem-input" type="text" ng-model="formData.restaurantName" required />
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_city' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <select style="display: block; height: 30px;" name="city" id="city" class="left select" title="餐廳城市" ng-model="formData.city">
+                  <option value=""></option>
+                  <option value="基隆市">基隆市</option>
+                  <option value="台北市">台北市</option>
+                  <option value="新北市">新北市</option>
+                  <option value="桃園市">桃園市</option>
+                  <option value="新竹市">新竹市</option>
+                  <option value="新竹縣">新竹縣</option>
+                  <option value="苗栗縣">苗栗縣</option>
+                  <option value="台中市">台中市</option>
+                  <option value="彰化縣">彰化縣</option>
+                  <option value="雲林縣">雲林縣</option>
+                  <option value="嘉義市">嘉義市</option>
+                  <option value="嘉義縣">嘉義縣</option>
+                  <option value="台南市">台南市</option>
+                  <option value="高雄市">高雄市</option>
+                  <option value="屏東縣">屏東縣</option>
+                  <option value="南投縣">南投縣</option>
+                  <option value="宜蘭縣">宜蘭縣</option>
+                  <option value="花蓮縣">花蓮縣</option>
+                  <option value="台東縣">台東縣</option>
+                  <option value="澎湖縣">澎湖縣</option>
+                  <option value="金門縣">金門縣</option>
+                  <option value="連江縣">連江縣</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'order_restaurant_address' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="address" id="address" class="cookitem-input" type="text" ng-model="formData.address" required />
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'order_productor' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="productor" id="productor" class="cookitem-input" type="text" ng-model="formData.productor" form-tip="{{'form_name_tip' | translate}}" maxlength="30" ng-maxlength="30" />
+                <div class="ng-invalid" ng-show="(orderForm.productor.$touched || orderForm.productor.$dirty) && orderForm.productor.$invalid || submitted">
+                    <div>
+                        <span ng-show="orderForm.productor.$error.maxlength">{{'name_maxlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'order_product' | translate}}</label><br/>
+            </div>
+
+            <div class="management-fans-tag dark-gray row" ng-if="westpromotion.products.length > 0">
+              <span class="col-md-1"></span>
+              <div class="col-md-11 row clear-container-padding clear-container-margin">
+                <div class="operate-tags-items col-md-2 clear-container-padding">
+                  <span class="check-all-items">
+                    <wm-checkbox ng-model="westpromotion.tagAll" ng-click="westpromotion.selectAllTag()" class="follower-checkbox-style"></wm-checkbox>{{'westpromotion_all' | translate}}
+                  </span>
+                </div>
+                <br/>
+                <div class="follower-tags-items col-md-10 clear-container-padding">
+                  <ul class="row clear-container-margin member-tags-item">
+                    <li class="col-md-6 col-sm-6 col-xs-4 clear-container-padding text-el" wm-tooltip="{{product.name}}" ng-repeat="product in westpromotion.products">
+                      <img class="img-prev" style="width:70px;height:30px;cursor: pointer;" ng-click="pictureClick(product)" ng-src="{{product.image}}"/>
+                      <br/>
+                      <wm-checkbox ng-model="product.check" ng-click="westpromotion.selectTag(product)" class="follower-checkbox-style"></wm-checkbox>{{product.name}}&nbsp;&nbsp;&nbsp;{{product.description}}
+                      <br/><br/>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_lineName' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="lineName" id="lineName" class="cookitem-input" type="text" ng-model="formData.lineName" ng-maxlength="30" maxlength="30" />
+                <div class="ng-invalid" ng-show="(registrationForm.lineName.$touched || registrationForm.lineName.$dirty) && registrationForm.lineName.$invalid || submitted">
+                    <div>
+                        <span ng-show="registrationForm.lineName.$error.maxlength">{{'name_maxlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+          <div class="cookitem-title">
+              <label for="">{{'registration_orderTime' | translate}}</label><br/>
+          </div>
+          <div class="cookitem-content" ng-class="{'time-invalid': registrationForm.orderTime.$invalid}">
+            <input type="hidden" name="orderTime" ng-model="formData.orderTime" binded="false">
+            <input style="width: 30%;" name="orderTime" ng-model="formData.orderTime" wm-datetime-picker picker-id="orderTime">
+          </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_restaurantId' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="restaurantId" id="restaurantId" class="cookitem-input" type="text" ng-model="formData.restaurantId" ng-maxlength="30" maxlength="30" />
+                <div class="ng-invalid" ng-show="(registrationForm.restaurantId.$touched || registrationForm.restaurantId.$dirty) && registrationForm.restaurantId.$invalid || submitted">
+                    <div>
+                        <span ng-show="registrationForm.restaurantId.$error.maxlength">{{'name_maxlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-content">
+                <input class="btn btn-primary" type="submit" value="{{'recipe_edit_send' | translate}}" ng-disabled="isClickable"/>&nbsp;&nbsp;&nbsp;
+                <a ng-href="/uhkklp/westpromotion?active={{active}}" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+            </div>
+        </div>
+    </form>
+</div>

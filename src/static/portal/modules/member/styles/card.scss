@@ -1,0 +1,217 @@
+$wm-card-title-color: #eee;
+$wm-card-title-text-color: #787878;
+$wm-card-title-detail-text-color: #1c1c1c;
+$wm-card-table-border-color: #ededed;
+$wm-card-table-color: #37c3aa;
+$wm-card-extend-color: #19be9b;
+$wm-card-error-color: #b42d14;
+
+.card-title-div {
+  background-color: $wm-card-title-color;
+  height: 40px;
+
+  .card-title-text {
+    color: $wm-card-title-text-color;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 40px;
+    margin-left: 10px;
+  }
+
+  .card-title-btn {
+    height: 30px;
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    width: auto;
+  }
+}
+
+.card-table-wrap {
+  box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+  margin: 0 35px 0 10px;
+
+  .colored-table {
+
+    td {
+      border-bottom: 1px solid $wm-card-table-border-color;
+    }
+  }
+}
+
+.card-detail {
+  .card-detail-body {
+    .card-detail-left {
+      float: left;
+      margin-left: 10px;
+      width: 525px;
+
+      .card-detail-name {
+        color: $wm-card-title-text-color;
+        float: left;
+        font-weight: normal;
+        width: 140px;
+      }
+
+      .card-detail-text {
+        word-break: break-all;
+        color: $wm-card-title-detail-text-color;
+        float: left;
+        font-weight: normal;
+        margin-bottom: 20px;
+        margin-left: 15px;
+        width: 370px;
+
+        iframe,
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .card-detail-right {
+      border-radius: 2px;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .24);
+      float: left;
+      height: 170px;
+      margin-left: 65px;
+      width: 290px;
+
+      .card-detail-right-img {
+        background-size: cover;
+        border-radius: 2px;
+        float: left;
+        height: 170px;
+        width: 290px;
+      }
+
+      .card-detail-right-text {
+        float: right;
+        font-weight: normal;
+        line-height: 15px;
+        margin-bottom: 0;
+        margin-right: 15px;
+        margin-top: -155px;
+        max-width: 200px;
+      }
+
+      .card-detail-right-id {
+        float: left;
+        font-weight: normal;
+        line-height: 13px;
+        margin-bottom: 0;
+        margin-left: 20px;
+        margin-top: -28px;
+        max-width: 200px;
+      }
+    }
+  }
+}
+
+.cardextend-dialog {
+
+  .modal-dialog {
+    width: 450px;
+
+    .modal-content {
+      border-radius: 4px;
+    }
+  }
+}
+
+.cardextend-title {
+  height: 38px;
+
+  .cardextend-title-close {
+    background: url('/images/management/icon_popup_close_default.png') no-repeat;
+    height: 18px;
+    margin-right: 30px;
+    opacity: 1;
+    width: 18px;
+
+    &:hover {
+      background: url('/images/management/icon_popup_close_hover.png') no-repeat;
+    }
+
+    &:active {
+      background: url('/images/management/icon_popup_close_click.png') no-repeat;
+    }
+  }
+
+  .cardextend-title-text {
+    color: $wm-card-extend-color;
+    line-height: 18px;
+    margin-left: 30px;
+    margin-top: 22px;
+  }
+}
+
+.cardextend-body {
+  background-color: $wm-card-title-color;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 40px 30px 50px;
+
+  .cardextend-body-name {
+    color: $wm-card-title-text-color;
+    font-weight: normal;
+    size: 14px;
+    width: 388px;
+  }
+
+  .cardextend-body-text {
+    color: $wm-card-title-detail-text-color;
+    font-weight: normal;
+    margin-bottom: 25px;
+    width: 360px;
+  }
+
+  .cardextend-body-radio-text {
+    color: $wm-card-title-detail-text-color;
+    font-weight: normal;
+  }
+
+  .cardextend-body-date,
+  .cardextend-body-btn {
+    margin-top: 25px;
+  }
+}
+
+.error-tip {
+  color: $wm-card-error-color !important;
+  display: block;
+  font-size: 12px;
+}
+
+.card-inline-input {
+  display: inline-block;
+  width: 150px;
+}
+
+.points-to-symbol {
+  display: inline-block;
+  line-height: 30px;
+  padding: 0 5px;
+}
+
+.card-upgrade-wrapper {
+  width: 1000px;
+}
+
+.card-points-wrapper {
+  padding: 30px 25px;
+
+  .tbody-wrapper {
+    height: 200px;
+
+    tbody {
+      tr {
+        td {
+          height: 20px;
+          line-height: 20px;
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+}

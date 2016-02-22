@@ -1,0 +1,205 @@
+<div class="exchanges-wrapper clearfix">
+  <div wm-breadcrumb="redemption.breadcrumb"></div>
+
+  <!-- Global search -->
+  <section class="table-search-wrapper">
+    <div wm-list-header head-class="listheader-search-condition">
+      <wm-search ng-model="redemption.searchKey" class="search-wrapper-input" click-func="redemption.search()" placeholder="{{'product_goods_exchange_record_search_key' | translate}}"></wm-search>
+      <span class="btn-operate-condition" ng-click="redemption.showConditions()">
+        {{'customer_follower_screening_conditions' | translate}}<span class="condition-mark-wrapper" ng-class="{true:'condition-up', false:'condition-down'}[!!redemption.isShow]"></span>
+      </span>
+    </div>
+
+    <div class="search-wrapper-condition">
+      <!-- Select condition -->
+
+      <!-- the range of redeemed time -->
+      <section class="row condition-item-wrapper clear-container-margin" ng-show="redemption.isShow">
+        <label class="condition-item-label condition-item-title col-md-2 clearpadding" translate="product_goods_redeemed_time"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <div class="col-md-3 pull-left datepicker-container clearpadding">
+            <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" min-date-picker-id="endDatePicker" ng-model="redemption.startTime" less-than-today="true" first-unbind-handler="true" icon="calendar"></div>
+          </div>
+          <div class="pull-left datepicker-between-text">&minus;</div>
+          <div class="col-md-3 pull-left datepicker-container clearpadding">
+            <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" ng-model="redemption.endTime" less-than-today="true" first-unbind-handler="true" icon="calendar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row condition-item-wrapper clear-container-margin" ng-if="redemption.isShow">
+        <label class="condition-item-label condition-item-title col-md-2 clearpadding" translate="product_goods_exchanger_items_redeemed_label"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+
+          <!-- slider directive -->
+          <section class="redeemed-slider-container">
+            <div wm-slider ng-model="redemption.sliderOptions.usedScores"
+              min="redemption.sliderOptions.min"
+              max="redemption.sliderOptions.max"
+              step="redemption.sliderOptions.step"
+              range="redemption.sliderOptions.range"
+              ticks="redemption.sliderOptions.ticks"
+              has-handler-num="true"
+              on-change="redemption.changeSlide()"
+              ticks-labels="redemption.sliderOptions.ticksLabels"></div>
+          </section>
+          <section class="row redeemed-input-container clear-container-margin manual-input-wrapper">
+            <label class="condition-item-label pull-left clearpadding" translate="product_goods_manual_input"></label>
+            <div class="col-md-10 col-sm-10 col-xs-12 clearfix">
+              <div id="usedScores" ng-style="{height: '30px'}">
+                <div class="col-md-2 col-sm-3 col-xs-4 pull-left clearpadding">
+                  <input id="usedScoreMin" class="form-control" ng-model="redemption.usedScoreMin" wm-input-reg data-reg="^\d*$" />
+                </div>
+                <div class="pull-left datepicker-between-text">&minus;</div>
+                <div class="col-md-2 col-sm-3 col-xs-4 pull-left clearpadding">
+                  <input id="usedScoreMax" class="form-control" ng-model="redemption.usedScoreMax" data-reg="^\d*$" wm-input-reg />
+                </div>
+                <span class="form-tip normal pull-left redeemed-points-tip" translate="product_exchange_used_score_tip"></span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- Exchange channels -->
+      <section class="row condition-item-wrapper clear-container-margin goods-dark-gray" ng-show="redemption.isShow">
+        <label class="condition-item-label condition-item-title col-md-2 clearpadding" translate="product_promotion_campaign_channel"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <div wm-channels ng-model="redemption.accountIds" channels="redemption.accounts"></div>
+        </div>
+      </section>
+
+      <section class="row condition-item-wrapper clear-container-margin goods-dark-gray" ng-show="redemption.isShow">
+        <label class="condition-item-title condition-item-label col-md-2 clearpadding" translate="product_goods_shipping_status"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <i class="exchange-checkbox-wrap">
+            <wm-checkbox ng-model="redemption.isDelivered" ng-click="redemption.selectAllStatus()"></wm-checkbox>{{'customer_follower_all' | translate}}
+          </i>
+          <i class="exchange-checkbox-wrap">
+            <wm-checkbox ng-model="redemption.ship" ng-click="redemption.selectStatus()"></wm-checkbox>{{'product_goods_shipped' | translate}}
+          </i>
+          <i class="exchange-checkbox-wrap">
+            <wm-checkbox ng-model="redemption.noShip" ng-click="redemption.selectStatus()"></wm-checkbox>{{'product_goods_not_shipped' | translate}}
+          </i>
+        </div>
+      </section>
+
+      <section class="row condition-item-wrapper clear-container-margin goods-dark-gray" ng-show="redemption.isShow">
+        <label class="condition-item-title condition-item-label col-md-2 clearpadding" translate="product_goods_shipping_method"></label>
+        <div class="condition-item-content col-md-10 clearpadding">
+          <i class="exchange-checkbox-wrap">
+            <wm-checkbox ng-model="redemption.receiveMode" ng-click="redemption.selectAllMethod()"></wm-checkbox>{{'customer_follower_all' | translate}}
+          </i>
+          <i class="exchange-checkbox-wrap">
+            <wm-checkbox ng-model="redemption.express" ng-click="redemption.selectMethod()"></wm-checkbox>{{'product_goods_courier_service' | translate}}
+          </i>
+          <i class="exchange-checkbox-wrap">
+            <wm-checkbox ng-model="redemption.self" ng-click="redemption.selectMethod()"></wm-checkbox>{{'product_goods_local_pickup' | translate}}
+          </i>
+        </div>
+      </section>
+
+      <!-- The buttom of submit and clear -->
+      <section class="operate-condition-wrapper" ng-show="redemption.isShow">
+        <span class="btn btn-success btn-search" ng-click="redemption.search()" translate="product_goods_sure"></span><span type="submit" class="btn btn-default btn-clear" ng-click="redemption.clear()" translate="customer_follower_clear"></span>
+      </section>
+    </div>
+
+    <!-- Show conditions -->
+    <div class="checked-conditions-wrapper" ng-show="(!redemption.isShow && redemption.hasSelectedCondition) || (!redemption.isShow && redemption.params.accounts && redemption.params.accounts.length) || (!redemption.isShow && redemption.params.isDelivered != null) || (!redemption.isShow && redemption.params.receiveMode)">
+      <label class="checked-conditions-label" translate="customer_follower_selected_condition">Selected Condition</label>
+      <ul class="checked-conditions-content clearfix">
+        <li class="conditions-content-item pull-left" ng-if="redemption.params.startTime || redemption.params.endTime">
+          <div class="content-item-wrapper">{{'product_goods_redeemed_time' | translate}}: {{(redemption.params.startTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(redemption.params.endTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</div>
+          <span class="btn-remove-condition" ng-click="redemption.removeCondition('time')"></span>
+        </li>
+
+        <li class="conditions-content-item pull-left" ng-if="redemption.params.usedScoreMin || redemption.params.usedScoreMax">
+          <div class="content-item-wrapper">{{'product_goods_exchanger_items_redeemed_label' | translate}}: {{redemption.params.usedScoreMin || '-'}} {{'content_article_to' | translate}} {{redemption.params.usedScoreMax || '-'}}</div>
+          <span class="btn-remove-condition" ng-click="redemption.removeCondition('score')"></span>
+        </li>
+
+        <li class="conditions-content-item pull-left" ng-if="redemption.params.isDelivered != null">
+          <div class="content-item-wrapper">{{'product_goods_shipping_status' | translate}}: {{redemption.params.ship | translate}}&nbsp;{{redemption.params.noShip | translate}}</div>
+          <span class="btn-remove-condition" ng-click="redemption.removeCondition('status')"></span>
+        </li>
+
+        <li class="conditions-content-item pull-left" ng-if="redemption.params.receiveMode">
+          <div class="content-item-wrapper">{{'product_goods_shipping_method' | translate}}: {{redemption.params.express | translate}}&nbsp;{{redemption.params.self | translate}}</div>
+          <span class="btn-remove-condition" ng-click="redemption.removeCondition('method')"></span>
+        </li>
+      </ul>
+
+      <!-- Exchange channels -->
+      <div ng-if="redemption.params.accounts && redemption.params.accounts.length > 0" class="channel-position-style">
+        <section class="checked-conditions-content clearfix">
+          <div class="conditions-content-item pull-left tags-style">
+            {{'customer_follower_social_account' | translate}}:
+            <label class="label-style content-item-wrapper" ng-repeat="account in redemption.accounts" ng-if="redemption.isSelectedAccount(account.id)">
+              <div class="channels-icon-wrapper">
+                <img ng-src="/images/customer/{{account.icon}}.png" />
+              </div>
+              <div class="font-social-style label-style" translate="{{account.name}}"></div>
+            </label>
+            <label class="btn-remove-condition label-btn" ng-click="redemption.clearAccounts()"></label>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- The table -->
+  <div class="panel panel-default panel-main-content promotion-manage-pannel">
+    <div wm-list-header content="{{'product_promotion_total_records'|translate:'{ recordsCount: redemption.totalItems }'}}" icon="{'url': '/images/product/promotion_default.png'}">
+      <span class="btn-export pull-right" ng-style="{margin: '9px 10px'}" ng-click="redemption.export()" ng-class="{'export-disabled':!redemption.enableExport}" translate="export"></span>
+    </div>
+
+    <section class="table-wrapper exchanges-table-wrapper">
+      <wm-table ng-model="redemption.list" is-select-all="false" class="colored-table"></wm-table>
+    </section>
+  </div>
+
+  <!-- The pagination -->
+  <section class="broadcast-pagination pagination-wrapper" ng-if="redemption.pageCount > 0">
+    <div wm-pagination current-page="redemption.currentPage" page-size="redemption.pageSize" total-items="redemption.totalItems" on-change-size="redemption.changeSize" on-change-page="redemption.changePage"></div>
+  </section>
+</div>
+
+<script type="text/ng-template" id="recordDetail.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="record.hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'product_goods_record_detail' | translate}}</h4>
+  </div>
+
+  <ul class="modal-body modal-bgcolor clearfix goods-record-modal-body" ng-class="{'record-chinese-length': record.language != 'en_us'}">
+
+    <li class="col-md-12 pd0 mb10" ng-repeat="param in record.paramArray track by $index">
+      <label class="col-md-4 pd0 record-title">{{record.params[param] | translate}}:</label>
+      <label class="col-md-8 pd0 record-text">{{record.data[param]}}</label>
+    </li>
+
+    <li class="col-md-12 pd0 mb10">
+      <label class="col-md-4 pd0 record-title">{{'product_goods_redeemed_channel' | translate}}:</label>
+      <label class="col-md-8 pd0 record-text">
+        <img ng-src="{{record.data.channel.icon}}" />
+        {{record.data.channel.text}}
+      </label>
+    </li>
+
+    <li class="col-md-12 pd0 mb10 btn-wrap" ng-if="!record.data.isDelivered">
+      <span class="btn btn-success" translate="product_goods_shipping_soon" ng-click="record.send()"></span>
+    </li>
+
+    <li class="send-status">
+      <label ng-if="record.data.isDelivered">
+        <img src="/images/product/shipped_orders_detail.png" />
+        {{'product_goods_shipped' | translate}}
+      </label>
+
+      <label ng-if="!record.data.isDelivered">
+        <img ng-src="/images/product/unfilled_order_detail.png" />
+        {{'product_goods_not_shipped' | translate}}
+      </label>
+    </li>
+  </ul>
+</script>

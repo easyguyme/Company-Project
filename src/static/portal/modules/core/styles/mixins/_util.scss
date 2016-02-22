@@ -1,0 +1,21 @@
+@mixin background-image ($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+}
+
+@mixin icon($width, $height, $url) {
+  display: inline-block;
+  vertical-align: middle;
+  @include size($width, $height);
+  @include background-image($url);
+}
+
+@mixin wm-text-vmiddle($wm-size) {
+  line-height: $wm-size;
+  height: $wm-size;
+}
+
+@mixin wm-all-border-radius($size) {
+  @include border-top-radius($size);
+  @include border-bottom-radius($size);
+}

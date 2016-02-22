@@ -1,0 +1,29 @@
+{
+    "id": "55374623d6f97f7d7e8b4569",
+    "productId": "55374623d6f97f7d7e8b4567",
+    "pictures": [
+        "http://vincenthou.qiniudn.com/82ef08e377852edfbcd2d6a3.jpg",
+        "http://vincenthou.qiniudn.com/82ef08e377852edfbcd2d6a3.jpg",
+        "http://vincenthou.qiniudn.com/82ef08e377852edfbcd2d6a3.jpg"
+    ],
+    "score": 10,
+    "total": 10,
+    "usedCount": 10,
+    "status": "on",
+    "onSaleTime": "2015-5-1 10:00:00",
+    "url": "http://www.***.com",
+    "order": 100,
+    "receiveModes":['self']
+    "addresses": [
+        {
+            "address":"自提地址名称",
+            "location" {
+                "province":"省"
+                "city":"市"
+                "district":"县/区"
+                "detail":"详细地址（不包括省市地区）"
+            },
+            "phone":"14245157867"
+        }
+    ]
+}

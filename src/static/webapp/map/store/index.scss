@@ -1,0 +1,122 @@
+$white-color: #fff;
+
+.store-map-components {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  height: 100%;
+
+  .fields-item-label {
+    font-size: 14px;
+    font-weight: normal;
+  }
+}
+
+.components-header-title {
+  $components-header-title-color: #19be9b;
+  color: $components-header-title-color;
+  margin: 0;
+}
+
+.components-content {
+  $components-content-bgcolor: #f7f7f7;
+  background-color: $components-content-bgcolor;
+
+  .locate-wrapper {
+    margin-bottom: 15px;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .map-location-wrapper {
+      .col-md-4 {
+        padding-left: 0;
+        padding-right: 5px;
+      }
+
+      .col-sm-4 {
+        padding-left: 0;
+        padding-right: 5px;
+      }
+
+      .col-xs-4 {
+        padding-left: 0;
+        padding-right: 5px;
+      }
+
+      .location-select-items {
+        max-height: 280px;
+        overflow-y: auto;
+      }
+    }
+
+    .detail-wrapper-text {
+      display: inline-block;
+    }
+  }
+}
+
+
+.result-wrapper {
+  $result-wrapper-height: 340px;
+  $result-wrapper-header-height: 40px;
+  $result-wrapper-border-color: #e5e5e5;
+
+  background-color: $white-color;
+  border: 1px solid $result-wrapper-border-color;
+  border-radius: 2px;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, .075);
+  height: $result-wrapper-height;
+
+  .result-wrapper-header {
+    height: $result-wrapper-header-height;
+    padding: 5px;
+
+    .btn-highlighted-store {
+      padding-left: 22px;
+      background-image: url('/images/management/calloutnewstores.png');
+      background-repeat: no-repeat;
+      background-size: 8px 12px;
+      background-position: 12px center;
+    }
+  }
+
+  .result-wrapper-content {
+    height: $result-wrapper-height - $result-wrapper-header-height - 2;
+  }
+}
+
+.operate-wrapper {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.map-container {
+  height: 100%;
+  width: 70%;
+}
+
+.stores-container {
+  background-color: $white-color;
+  height: 100%;
+  width: 30%;
+}
+
+.stores-container-header {
+  $stores-container-header: #e2e2e2;
+  background-color: $stores-container-header;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 15px;
+}
+
+.stores-container-content {
+  background-color: $white-color;
+  position: relative;
+}
+
+.btn-map-operate {
+  padding: 4px 12px;
+  vertical-align: top;
+}

@@ -1,0 +1,42 @@
+.c-loading {
+  background-color: rgba($loading-bg-color, .168627);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+
+  .c-loading-icon {
+    margin: .5rem auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    box-shadow: 0 -10px 0 1px $loading-icon-color,
+                10px 0 $loading-icon-color,
+                0 10px $loading-icon-color,
+                -10px 0 $loading-icon-color,
+
+                -7px -7px 0 .5px $loading-icon-color,
+                7px -7px 0 1.5px $loading-icon-color,
+                7px 7px $loading-icon-color,
+                -7px 7px $loading-icon-color;
+    -webkit-transform: rotate(360deg);
+    -webkit-animation: spin 1s linear infinite;
+    transform: rotate(360deg);
+    animation: spin 1s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+  }
+
+  @keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+  }
+}

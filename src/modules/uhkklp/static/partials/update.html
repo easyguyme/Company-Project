@@ -1,0 +1,30 @@
+<div wm-breadcrumb="update.breadcrumb"></div>
+<form class="activity-form" name="versioninfoForm" ng-submit="submit()" novalidate>
+
+        <div class="statistics-chart-item activity-item">
+            <div class="statistics-item-title">
+                <span translate="{{'version_ios' | translate}}" class="required-field"></span>
+            </div>
+            <div class="activity-item-body">
+                <input name="iosVersion" style="width:250px" type="text" ng-model="postData.ios" class="form-control" type="text" placeholder="{{iosVersion}}" maxlength="20" required>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="statistics-chart-item activity-item">
+            <div class="statistics-item-title">
+                <span translate="{{'version_android' | translate}}" class="required-field"></span>
+            </div>
+            <div class="activity-item-body">
+                <input name="androidVersion" style="width:250px" type="text" ng-model="postData.android" class="form-control" type="text" placeholder="{{androidVersion}}" maxlength="20" required>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group model-wrap">
+            <button class="btn btn-primary">{{'mt_bt_send' | translate}}</button>
+        </div>
+
+</form>

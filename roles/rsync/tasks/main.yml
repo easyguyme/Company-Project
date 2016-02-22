@@ -1,0 +1,28 @@
+---
+
+- name: Synchronization of file to server
+  synchronize: src=../../../src dest=/srv/{{ repo.name }}
+
+- name: Assigned folder permissions
+  shell: chown -R nginx:nginx /srv/{{ repo.name }}
+
+- name: Replace config file
+  template: src=config.php dest=/srv/{{ repo.name }}/src/common/config/config.php
+
+- name: Replace chatConfig.coffee file
+  template: src=chatConfig.coffee dest=/srv/{{ repo.name }}/src/static/chat/config.coffee
+
+- name: Replace portalConfig.coffee file
+  template: src=portalConfig.coffee dest=/srv/{{ repo.name }}/src/static/portal/coffee/config.coffee
+
+- name: Replace qiniu sdk config file
+  template: src=conf.php dest=/srv/{{ repo.name }}/src/vendor/qiniu/php-sdk/qiniu/conf.php
+
+- name: Replace logo image file
+  copy: src=../files/logo.png dest=/srv/{{ repo.name }}/src/static/images/site/logo.png
+
+- name: Replace sign in logo image file
+  copy: src=../files/signin_logo.png dest=/srv/{{ repo.name }}/src/static/images/site/signin_logo.png
+
+- include: site.yml
+  when: nginx.sites is defined

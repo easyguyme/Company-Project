@@ -1,0 +1,88 @@
+$wm-article-title-color: #1c1c1c;
+$wm-article-content-color: #555555;
+$wm-article-tag-color: #a1a1a1;
+.m-article {
+  .m-article-wrapper {
+    position: relative;
+    padding: 0.31rem 0.5rem;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .m-pic-box {
+    @include size(2.0rem, 2.0rem);
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+  }
+  .m-content-detail {
+    width: 67%;
+    padding: 0 0.19rem;
+    font-size: 0.44rem;
+    .m-article-title {
+      color: $wm-article-title-color;
+      margin-bottom: 0.40rem;
+    }
+    .m-content {
+      width: 100%;
+      color: $wm-article-content-color;
+      word-wrap:break-word;
+    }
+    .m-custom-field {
+      color: $wm-article-tag-color;
+      margin-bottom: 0.23rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .m-content-view {
+    position: absolute;
+    right: 0.19rem;
+    height: 90%;
+    width: 0.4rem;
+    background-image: url('/images/content/conf/webmaterial_article_viewdetails.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0.25rem;
+  }
+  .m-load-more {
+    display: none;
+    font-size: 0.44rem;
+    color: $wm-article-tag-color;
+    line-height: 1rem;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .m-loading {
+    display: none;
+    margin: 0.5rem auto;
+    width: 3px; height:3px;
+    border-radius: 100%;                      /* 圆角 */
+    box-shadow: 0 -10px 0 1px #333,           /* 上, 1px 扩展 */
+                10px 0px #333,                /* 右 */
+                0 10px #333,                  /* 下 */
+                -10px 0 #333,                 /* 左 */
+
+                -7px -7px 0 .5px #333,        /* 左上, 0.5px扩展 */
+                7px -7px 0 1.5px #333,        /* 右上, 1.5px扩展 */
+                7px 7px #333,                 /* 右下 */
+                -7px 7px #333;                /* 左下 */
+  }
+  .m-spin {
+      -webkit-transform: rotate(360deg);
+      -webkit-animation: spin 1s linear infinite;
+  }
+  @-webkit-keyframes spin {
+      from {-webkit-transform: rotate(0deg);}
+        to {-webkit-transform: rotate(360deg);}
+  }
+  .m-spin {
+      transform: rotate(360deg);
+      animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+      from {transform: rotate(0deg);}
+        to {transform: rotate(360deg);}
+  }
+}

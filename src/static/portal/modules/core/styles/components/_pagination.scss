@@ -1,0 +1,90 @@
+//pagination variables
+$wm-pagination-color:                      #787878;
+$wm-pagination-color1:                     #c2c2c2;
+
+.wm-pagination {
+  color: $pagination-color;
+
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .pagesize {
+    margin: 0 10px;
+    width: 70px;
+
+    .select-btn {
+      padding: 0 10px;
+    }
+  }
+
+  %pagination-previous-next {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    display: inline-block;
+    margin-top: 4px;
+    vertical-align: middle;
+  }
+
+  .pagination-previous-one {
+    @extend %pagination-previous-next;
+    border-right: 7px solid $wm-pagination-color;
+  }
+
+  .pagination-previous-two {
+    @extend %pagination-previous-next;
+    border-right: 7px solid $wm-pagination-color1;
+  }
+
+  .pagination-next-one {
+    @extend %pagination-previous-next;
+    border-left: 7px solid $wm-pagination-color;
+  }
+
+  .pagination-next-two {
+    @extend %pagination-previous-next;
+    border-left: 7px solid $wm-pagination-color1;
+  }
+
+  .pagination-wrap {
+    .pagination {
+      margin: 0;
+
+      > li {
+        > a {
+          border-radius: initial;
+          margin-left: 10px;
+          padding: 3px 10px;
+        }
+
+        > span {
+          border-radius: initial;
+          margin-left: 10px;
+          padding: 3px 10px;
+        }
+      }
+    }
+
+    .current-page {
+      background-color: inherit;
+      border: 0;
+      color: inherit;
+      padding: 0 10px !important;
+
+      .current-page-content {
+        @include size(45px, 27px);
+        display: inline-block;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.no-data {
+  margin-top: 50px;
+  float: left;
+  text-align: center;
+  width: 100%;
+  color: $wm-pagination-color;
+}

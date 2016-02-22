@@ -1,0 +1,28 @@
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "channelType": "WECHAT / ALIPAY",
+        "quncrmAccountId": "群脉账号",
+        "tradeType": "支付类型 JSAPI(公众号支付)，NATIVE(扫码支付)",
+        "sellerId":"微信商户ID / 卖家支付宝账户号",
+        "buyerId":"买家微信openId / 买家支付宝账户号",
+        "spbillCreateIp": "买家终端IP",
+        "subject": "订单标题",
+        "detail": "订单详情",
+        "outTradeNo": "商户订单号",
+        "tradeNo": "微信订单号 / 支付宝订单号",
+        "totalFee": "订单金额",
+        "createTime": "订单创建时间",
+        "timeExpire": "订单过期时间",
+        "extendsion": {
+            "wechatAppId": "微信公众号ID",
+            "prepayId": "微信预支付交易会话标识",
+            "codeUrl": "二维码链接, tradeType为NATIVE是有返回，可将该参数值生成二维码展示出来进行扫码支付"
+        },
+        "tradeStatus": "订单状态",
+        "tradeStateDesc": "交易状态描述",
+        "failureCode": "微信/支付宝 错误代码",
+        "failureMsg": "微信/支付宝 错误代码描述"
+    }
+}

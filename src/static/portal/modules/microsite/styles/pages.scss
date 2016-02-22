@@ -1,0 +1,315 @@
+$white: #fff;
+$black: #000;
+$gallery: #eee;
+$gallery1: #ededed;
+$gray: #555;
+$gray1: #8a8a8a;
+$malibu: #6ab3f7;
+$tab-title-color: #787878;
+
+.edit-basic {
+  position: relative;
+
+  .edit-icon {
+    @include background-image('/images/core/icon_edit_default.png');
+    position: absolute;
+    right: 0;
+    top: 20%;
+
+    &:hover {
+      @include background-image('/images/core/icon_edit_hover.png');
+      cursor: pointer;
+    }
+  }
+}
+
+.grid-background {
+  background-image: url('/images/content/grid_background.png');
+  padding: 20px;
+}
+
+.card {
+  background-color: $white;
+  border: 1px solid $gallery;
+  height: 610px;
+
+  .title {
+    background-color: $gallery;
+    color: $gray;
+    margin-left: 0;
+    padding: 15px 20px;
+  }
+}
+
+.components {
+  overflow: hidden;
+  padding: 20px;
+}
+
+.components,
+.mobile-content {
+
+  .component,
+  .tab-component {
+    border: 1px solid $gallery;
+    cursor: move;
+    float: left;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    padding-top: 14px;
+    text-align: center;
+    width: 60px;
+
+    .icon {
+      @include background-image('/images/content/components_default.png');
+      height: 24px;
+      margin: 0 auto;
+      width: 24px;
+
+      &.cover {
+        @include background-image('/images/content/covers.png');
+      }
+    }
+
+    .name {
+      color: $gray;
+      font-size: 12px;
+      margin-bottom: 15px;
+      margin-top: 5px;
+    }
+
+    &:hover,
+    &.active,
+    &.ui-draggable-dragging {
+      background-color: $white;
+      border-color: $wm-green;
+
+      .name {
+        color: $wm-green;
+      }
+
+      .icon {
+        @include background-image('/images/content/components_hover.png');
+      }
+    }
+
+    &:hover {
+      .cover {
+        @include background-image('/images/content/covers.png');
+        background-position-x: -24px !important;
+      }
+    }
+
+    &.active {
+      .cover {
+        @include background-image('/images/content/covers.png');
+        background-position-x: -48px !important;
+      }
+    }
+  }
+}
+
+.mobile-bg {
+  @include background-image('/images/content/mobile.png');
+  height: 615px;
+  position: relative;
+  width: 310px;
+}
+
+.mobile-wrap {
+  left: 16px;
+  position: absolute;
+  top: 62px;
+  width: 278px;
+  outline: $gallery solid 1px;
+
+  .page-title {
+    color: $white;
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .mobile-content {
+    height: 482px;
+    overflow-y: auto;
+
+    .placeholder {
+      background-color: $gallery;
+      border: 1px dashed $malibu;
+      height: 40px;
+      width: 100%;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.card-body {
+  max-height: 535px;
+  min-height: 560px;
+  overflow-y: auto;
+  padding: 20px;
+  padding-bottom: 100px;
+}
+
+.content-pages-items {
+  padding: 10px 20px 0;
+
+  .colored-table {
+
+    thead tr th:nth-child(5) {
+      width: 160px;
+    }
+
+    tbody tr + tr {
+      border-top: 1px solid $gallery1;
+    }
+  }
+}
+
+.content-pages-operation {
+  margin-bottom: 10px;
+}
+
+@for $index from 1 through 3 {
+  .content-pages-items .colored-table tbody tr td:nth-child(#{$index}) {
+    @include text-overflow;
+  }
+}
+
+.cpt-body {
+  background-color: $white;
+  border: 1px dashed transparent;
+  position: relative;
+
+  &.ui-sortable-helper,
+  &:hover {
+    background: $white;
+    border: 1px dashed $malibu;
+
+    >.cpt-delete {
+      display: block;
+    }
+  }
+
+  .cpt-mask {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 5;
+  }
+
+  .cpt-delete {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 7;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.m-tab {
+  background-color: rgba(106, 179, 247, .02);
+
+  .m-tab-titles {
+    background-color: rgba(106, 179, 247, .1);
+    color: $tab-title-color;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+
+    .m-tab-title {
+      border-bottom: 2px solid rgba(106, 179, 247, .1);
+      cursor: pointer;
+
+      &.selected {
+        border-color: $malibu;
+        color: $malibu;
+      }
+    }
+  }
+
+  .mobile-content {
+    height: auto;
+    min-height: 100px;
+    width: 100%;
+  }
+
+  .tab-content {
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+}
+
+.step-btns {
+  margin: 35px auto 0;
+  text-align: center;
+  width: 170px;
+}
+
+.full-frame {
+  height: 100%;
+  width: 100%;
+}
+
+.page-preview-dialog .modal-dialog {
+  margin-bottom: 0;
+  margin-top: 10px;
+  width: 312px;
+
+  .modal-content {
+    background: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .mobile-wrap {
+    height: 478px;
+  }
+
+  .close {
+    background: $black;
+    border-radius: 50%;
+    color: $gray1;
+    font-size: 28px;
+    font-weight: normal;
+    height: 25px;
+    line-height: 25px;
+    opacity: 1;
+    outline: none;
+    position: absolute;
+    right: -10px;
+    text-align: center;
+    text-shadow: none;
+    width: 25px;
+  }
+}
+
+.edui-default
+.edui-colorpicker-topbar
+.edui-colorpicker-nocolor {
+  height: auto;
+}
+
+.mobile-wrap
+.mobile-content.cover {
+  overflow: hidden;
+}
+
+.cpt-empty-body {
+  color: $gray1;
+  line-height: 125px;
+  margin-bottom: -30px;
+  text-align: center;
+}

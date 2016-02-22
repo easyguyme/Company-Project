@@ -1,0 +1,45 @@
+.m-tab {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  .m-tab-item {
+    float: left;
+    width: 50%;
+    .m-tab-title {
+      margin: 0;
+      text-align: center;
+      font-size: 0.56rem;
+      height: 1.375rem;
+      line-height: 1.375rem;
+      font-weight: normal;
+      box-sizing: border-box;
+      color: #a9a9a9;
+      border-bottom: 0.13rem solid transparent;
+    }
+    .m-tab-body {
+      visibility: hidden;
+      min-height: 1rem;
+      width: 200%;
+      padding-bottom: 0.5rem;
+
+      .m-album-swipe-wrap {
+        visibility: hidden;
+      }
+    }
+    &.active .m-tab-body {
+      visibility: visible;
+      z-index: 10;
+
+      .m-album-items {
+        z-index: 100;
+      }
+
+      .m-album-swipe-wrap {
+        visibility: visible;
+      }
+    }
+    &:last-child .m-tab-body{
+      margin-left: -100%;
+    }
+  }
+}

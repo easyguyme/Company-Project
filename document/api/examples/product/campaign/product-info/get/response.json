@@ -1,0 +1,44 @@
+[
+    {
+        "id": "556d4446475df4fd7e8b4567",
+        "sku": "1433224193579818",
+        "name": "托尔斯泰",
+        "pictures": [
+            {
+                "name": "webwxgeticon",
+                "url": "http://vincenthou.qiniudn.com/d3e3534cccf39954127a769b.jpg",
+                "size": "0.02"
+            }
+        ],
+        "category": {
+            "id": "55508421475df4fe518b4567",
+            "name": "1",
+            "properties": []
+        },
+        "intro": "<p>11</p>",
+        "isAssigned": true,
+        "codeNum": 5,
+        "isSelected": false
+    },
+    {
+        "id": "556d4446475df4fd7e8b4567",
+        "sku": "1433224193579818",
+        "name": "托尔斯泰",
+        "pictures": [
+            {
+                "name": "webwxgeticon",
+                "url": "http://vincenthou.qiniudn.com/d3e3534cccf39954127a769b.jpg",
+                "size": "0.02"
+            }
+        ],
+        "category": {
+            "id": "55508421475df4fe518b4567",
+            "name": "1",
+            "properties": []
+        },
+        "intro": "<p>11</p>",
+        "isAssigned": true,
+        "codeNum": 5,
+        "isSelected": false
+    }
+]

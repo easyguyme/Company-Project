@@ -1,0 +1,32 @@
+.steps {
+  overflow: hidden;
+  list-style: none;
+  .step {
+    float: left;
+    text-align: center;
+    // cursor: pointer;
+    width: 33.3%;
+    color: #aaa;
+    .step-number {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      @include background-image("/images/content/step.png");
+      margin-right: 10px;
+      vertical-align: sub;
+    }
+    &.active {
+      color: $wm-green;
+      .step-number {
+        background-position-x: -16px;
+      }
+    }
+    &.finished {
+      .step-number {
+        @include background-image("/images/content/complete.png");
+        background-position: 0;
+      }
+      color: #a9a9a9;
+    }
+  }
+}

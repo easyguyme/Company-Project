@@ -1,0 +1,147 @@
+$spread-methods-description-color: #aaa;
+$spread-methods-shadow-color: #e3e3e3;
+$spread-methods-bg-color: #f9f9f9;
+$square-methods-hover-bg-color: #fafafa;
+
+$spread-modes: menu, url, qrcode;
+
+.spread-wrapper {
+
+  .has-methods-wrapper {
+    background-color: $spread-methods-bg-color;
+  }
+
+  &.create-coupon {
+
+    .coupon-type {
+      height: auto;
+      padding: 20px 30px;
+    }
+
+    .btn-wrapper {
+      padding-bottom: 30px;
+    }
+  }
+
+  &.menu-modal-ext {
+    padding: 0;
+
+    .menu-modal-ext-radio {
+      margin-top: 52px;
+    }
+
+    .menu-modal-ext-content {
+      height: 120px;
+      background-position: 10px center;
+      box-shadow: 0 0 2px rgba($spread-methods-shadow-color, 1);
+      padding: 18px 10px 10px 70px;
+
+      .menu-modal-ext-item {
+        padding-left: 0;
+        color: $spread-methods-description-color;
+      }
+    }
+
+    @each $mode in $spread-modes {
+      .menu-modal-ext-#{$mode} {
+        background-image: url('/images/core/spread_#{$mode}_default.png');
+
+        &:hover {
+          background-image: url('/images/core/spread_#{$mode}_hover.png');
+        }
+      }
+    }
+  }
+
+  .no-methods-wrapper {
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+.spread-methods-dialog {
+  .spread-url-body {
+    padding: 15px 20px 40px;
+
+    .promotion-panel-body {
+      background-color: transparent;
+      padding: 0;
+
+      .channels-info-wrapper {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .spread-qrcode-body {
+    padding: 20px 20px 30px;
+
+    .check-title {
+      margin: 0;
+    }
+
+    .qrcode-channel-wrapper {
+      background-color: transparent;
+      border: 0;
+      padding: 10px;
+      margin-bottom: 0;
+
+      .qrcode-radio {
+        width: auto;
+        padding-right: 10px;
+      }
+
+      .qrcode-channel-box {
+        font-size: 0;
+        line-height: 60px;
+        background-color: $white-background-color;
+
+        img {
+          margin-top: 0;
+          float: none;
+        }
+      }
+
+      .channel-name {
+        margin-left: 10px;
+        font-size: 14px;
+        line-height: 30px;
+        vertical-align: middle;
+      }
+
+      &.qrcode-size-wrapper {
+        .qrcode-channel-box {
+          img {
+            @include square(20px);
+
+            border-radius: 0;
+          }
+        }
+
+        .channel-name {
+          width: 40px;
+        }
+
+        .channel-description {
+          color: $spread-methods-description-color;
+          width: calc(100% - 70px);
+          display: inline-block;
+          font-size: 12px;
+          line-height: 20px;
+          vertical-align: middle;
+        }
+
+        .check-all-box {
+          .channel-name {
+            width: 60%;
+          }
+        }
+
+      }
+    }
+  }
+
+  .spread-menu-body {
+    padding: 10px 20px 30px;
+  }
+}

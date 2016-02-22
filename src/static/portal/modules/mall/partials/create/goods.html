@@ -1,0 +1,16 @@
+<div class="clearfix" wm-breadcrumb="goods.breadcrumb">
+  <button class="btn btn-success user-btn pull-right" translate="product_promotion_associated_goods" ng-click="goods.selectProduct()"></button>
+</div>
+
+<div class="product-to-goods-wrapper">
+  <div wm-fixed-table ng-model="goods.list"></div>
+
+  <div class="product-to-goods-line"></div>
+
+  <div class="mass-operation-wrapper">
+    <input type="submit" class="btn btn-success mr20 user-btn" value="{{'ok' | translate}}" ng-click="goods.submit()"/>
+    <span class="btn btn-default user-btn ng-binding" translate="cancel" ng-click="goods.cancel()"></span>
+    <span class="form-tip goods-operation-helpinfo">{{'product_goods_operation_helpinfo' | translate}}</span>
+  </div>
+
+</div>

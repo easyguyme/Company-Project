@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "pictures": {
+      "type": "array",
+      "required": false,
+      "description": "图片"
+    },
+    "score": {
+      "type": "int",
+      "required": false,
+      "description": "积分"
+    },
+    "total": {
+      "type": "int",
+      "required": false,
+      "description": "数量"
+    },
+    "status": {
+      "type": "string",
+      "required": false,
+      "description": "商品上下架状态on或者off"
+    },
+    "onSaleTime": {
+      "type": "timestamp",
+      "required": false,
+      "description": "商品上下架状态"
+    },
+    "receiveModes": {
+      "type": "array",
+      "required": true,
+      "description": ""
+    },
+    "addresses": {
+      "type": "array",
+      "required": true,
+      "description": "default value is empty array"
+    }
+  }
+}

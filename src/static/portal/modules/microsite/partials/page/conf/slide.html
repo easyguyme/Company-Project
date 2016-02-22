@@ -1,0 +1,39 @@
+<div ng-controller="wm.ctrl.microsite.page.config.slide as slide">
+  <form id="form-slide" ng-submit="slide.checkData()">
+    <div class="form-group form-slide-title">
+      <label translate="content_component_config_slide"></label>
+      <label translate="content_component_config_slide_tip"  class="slides-tip"></label>
+    </div>
+    <div class="conf-item conf-item-border-dashed" ng-repeat="picture in slide.data.info">
+      <div class="conf-item-info">
+        <i class="conf-delete-icon cp glyphicon glyphicon-trash" ng-click="slide.removeSlide($event, $index)" ng-class="{'active':slide.deleteIndex === $index}" ng-hide="slide.data.info.length <= 2"></i>
+        <div class="form-group form-group-slide">
+          <label class="sub-title" for="slide-picname-{{$index}}" translate="content_component_config_slide_picname"></label>
+          <input class="form-control" type="text" id="slide-picname-{{$index}}" maxlength="16" ng-model="picture.name" />
+          <span class="form-tip normal" translate="content_component_config_slide_pictip"></span>
+        </div>
+        <div class="form-group clearfix form-group-slide">
+          <label class="sub-title" for="slide-redirect-{{$index}}">{{'content_component_config_slide_pic'|translate}}</label>
+          <div class="file-upload-input">
+            <input id="pic{{$index}}" class="form-control" name="slide-redirect-{{$index}}" ng-model="picture.pic" readonly="readonly" form-tip="{{'content_component_config_slide_picinfo' | translate}}" required />
+            <div id="{{'upload-' + $index}}" wm-file-upload class="file-upload-wrap slide-file-upload" ng-model="picture.pic">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="sub-title" translate="content_component_config_slide_redirect"></label>
+          <div wm-link-select horizontal="true" ng-model="picture.linkUrl"></div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group slide-add-btn">
+      <span class="btn slide-addition" ng-click="slide.addSlide()" ng-disabled="slide.data.info.length >= 6">{{"content_component_config_slide_addpic"|translate}}</span>
+    </div>
+    <div class="form-group">
+      <label for="slide-carousel" translate="content_component_config_slide_carousel"></label>
+      <div wm-select ng-model="slide.data.setting" items="slide.settings" text-field="text" value-field="value"></div>
+    </div>
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName" />
+  </form>
+</div>

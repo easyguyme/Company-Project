@@ -1,0 +1,332 @@
+$menu-bg-color : #eaeaea;
+$menu-border-color: #dcdcdc;
+$helpdesk-head-bgcolor: #eee;
+$helpdesk-head-fontcolor:  #999;
+$helpdesk-content-bgcolor: #f2f2f2;
+$helpdesk-content-noempty-bgcolor: #fff;
+$helpdesk-content-noempty-hover-border: #bbb;
+$helpdesk-empty-instruction-color: #aaa;
+$helpdesk-header-fontcolor: #666;
+$helpdesk-title-fontcolor: #8e8e8e;
+$helpdesk-single-line-fontcolor: #b5b5b5;
+
+.helpdeskselfservice {
+  //the helpdesk-acconut-title is copied from helpdeskvip page, in order to keep consistent style
+  .helpdesk-account-title {
+    height: 40px;
+    padding: 5px 10px;
+    background-color: $helpdesk-head-bgcolor;
+    font-size: 16px;
+
+    .account-title {
+      color: $helpdesk-head-fontcolor;
+      line-height: 30px;
+      margin-right: 10px;
+    }
+  }
+
+  .main-content {
+    margin: 0 20px;
+
+    .menu-title {
+      line-height: 1;
+      color: $helpdesk-title-fontcolor;
+    }
+
+    .border-container {
+      border: 1px solid $menu-border-color; //the display of menu-content is table-row, so need to set border here
+    }
+
+    .menu-content {
+      overflow: hidden;
+      width: 100%;
+      background-color: $helpdesk-content-bgcolor;
+
+      .empty-instruction { // when current level contains nothing, show this instruction
+        margin: 0 20px 20px 30px;
+        color: $helpdesk-empty-instruction-color;
+
+        p {
+          margin-top: 20px;
+          margin-bottom: 0;
+        }
+      }
+
+      .menu-body {
+        height: 500px;
+        overflow-y: auto;
+
+      }
+
+      .menu-body-noempty {
+        height: 500px;
+        overflow-y: auto;
+      }
+
+      .menu-add-reply {
+        background: url('/images/channel/add_normal.png') no-repeat 0;
+        display: inline-block;
+        padding-left: 30px;
+        height: 20px;
+        line-height: 20px;
+        margin-top: 20px;
+        color: $wm-green;
+        cursor: pointer;
+
+        &:hover {
+          background: url('/images/channel/add_hover.png') no-repeat 0;
+        }
+      }
+    }
+
+    .menu-column {
+      float: left;
+      width: 33.33333333%;
+      padding: 0;
+      margin-bottom: -10000px; // mock the equal height
+      padding-bottom: 10000px; // mock the equal height
+
+      &:nth-child(2) {
+        border-left: 1px solid $menu-border-color;
+        border-right: 1px solid $menu-border-color;
+      }
+    }
+
+    .white-column {
+      background-color: $helpdesk-content-noempty-bgcolor !important;
+    }
+
+    .menu-header {
+      min-height: 40px;
+      padding: 10px 75px 10px 25px;
+      background-color: $menu-bg-color;
+      border-bottom: 1px solid $menu-border-color;
+      color: $helpdesk-header-fontcolor;
+
+      span {
+        padding: 0;
+      }
+    }
+
+    .menu-cell {
+      border-bottom: 1px solid $menu-border-color;
+      cursor: pointer;
+      padding: 17px 75px 17px 25px;
+      min-height: 50px;
+      color: $helpdesk-header-fontcolor;
+      position: relative;
+
+      &:first-child {
+        border-bottom-width: 1px !important; // for first column
+      }
+
+      &:last-child {
+        border-bottom-width: 0; // for the 'add keyword' button
+      }
+
+      &.active {
+        border-left: 5px solid $wm-green !important;
+        padding-left: 20px;
+        color: $wm-green;
+
+        .icon-service {
+          background-image: url('/images/helpdesk/artificialcustomerservice_selected.png');
+        }
+
+        pre {
+          color: $wm-green;
+        }
+      }
+
+      &:hover {
+        border-left: 5px solid $helpdesk-content-noempty-hover-border;
+        padding-left: 20px;
+
+        .icon-delete {
+          display: block !important;
+        }
+
+        .icon-edit {
+          display: block !important;
+        }
+      }
+
+      div {
+        padding: 0;
+        margin-bottom: -5px;
+      }
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      pre {
+        display: inline-block;
+        font-size: inherit;
+        color: inherit;
+        background-color: inherit;
+        border-width: 0;
+        margin: 0;
+        padding: 0;
+        line-height: inherit;
+        white-space: pre-wrap;
+      }
+    }
+
+    .single-line {
+      pre {
+        color: $helpdesk-single-line-fontcolor;
+      }
+    }
+
+    .publish-container {
+      background-color: $panel-body-background-color;
+      border: 1px solid $menu-border-color;
+      border-top: 0;
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      margin-left: 0;
+
+      .menu-unpublish {
+        color: $menu-publish-color;
+      }
+
+      .publish-hint {
+        text-align: center;
+      }
+    }
+
+    .button-container {
+      margin-top: 30px;
+      text-align: center;
+
+      button {
+        @include size(90px, 35px);
+        font-size: 16px;
+        display: inline;
+      }
+    }
+  }
+
+  .icon-back {
+    @include size(16px, 19px);
+    margin-right: 10px;
+    display: inline-block;
+    background-image: url('/images/helpdesk/back.png');
+    background-repeat: no-repeat;
+  }
+
+  .icon-service {
+    @include size(16px, 19px);
+    margin-right: 10px;
+    display: inline-block;
+    background-image: url('/images/helpdesk/artificialcustomerservice_default.png');
+    background-repeat: no-repeat;
+  }
+
+  .operation {
+    @include square(30px);
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    margin: auto;
+  }
+
+  .icon-delete {
+    right: 10px;
+    background-image: url('/images/core/icon_delete_default.png');
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('/images/core/icon_delete_hover.png');
+    }
+  }
+
+  .icon-edit {
+    right: 45px;
+    background-image: url('/images/core/icon_edit_default.png');
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('/images/core/icon_edit_hover.png');
+    }
+  }
+}
+
+$insert-reply-textarea-bordercolor: #ccc;
+$insert-reply-hint-fontcolor: #a0a0a0;
+
+.insert-reply {
+
+  .input-label {
+    color: $helpdesk-header-fontcolor;
+    font-weight: 400;
+  }
+
+  .input-hint {
+    font-size: 12px;
+    color: $insert-reply-hint-fontcolor;
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    height: 250px;
+    border: 1px solid $insert-reply-textarea-bordercolor;
+    padding: 15px 20px;
+  }
+
+  .bottom-group {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    button {
+      @include size(90px, 35px);
+      font-size: 16px;
+      display: inline;
+    }
+  }
+}
+
+.insert-keyword {
+  .input-label {
+    color: $helpdesk-header-fontcolor;
+    font-weight: 400;
+  }
+
+  .type-group {
+    margin-top: 20px;
+
+    &:nth-child(2) {
+      margin-top: 0;
+    }
+
+    span {
+      margin-left: 10px;
+    }
+  }
+
+  .reply-content {
+    margin-top: 10px;
+    resize: none;
+    height: 150px;
+  }
+
+  .bottom-group {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    button {
+      @include size(90px, 35px);
+      font-size: 16px;
+      display: inline;
+    }
+  }
+}

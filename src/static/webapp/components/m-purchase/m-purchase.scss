@@ -1,0 +1,50 @@
+.c-purchase {
+  .c-purchase-item {
+    width: 100%;
+    color: $theme-default-label-color;
+    font-size: .41rem;
+    border-bottom: 1px solid $theme-default-boder-color;
+    padding: .3rem 0 0 .5rem;
+
+    .c-purchase-item-stats {
+      width: 68%;
+      height: 1rem;
+      display: inline-block;
+    }
+
+    .c-purchase-item-stats-icon {
+      width: .65rem;
+      height: .65rem;
+      border-radius: .32rem;
+      display: inline-block;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: .35rem;
+    }
+
+    .c-purchase-item-stats-label {
+      display: inline-block;
+      width: 85%;
+      margin: -1.2rem 0 0 -.12rem;
+
+      .stats-label-top {
+        border-radius: 5px;
+        height: .31rem;
+      }
+
+      .stats-label-bottom {
+        border-radius: 3px;
+        height: .19rem;
+      }
+    }
+
+    .c-purchase-item-data {
+      width: 32%;
+      display: inline-block;
+
+      .c-purchase-item-data-avg {
+        font-size: .35rem;
+      }
+    }
+  }
+}

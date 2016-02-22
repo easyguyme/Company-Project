@@ -1,0 +1,103 @@
+<div wm-breadcrumb="incentive.breadcrumb"></div>
+<div class="container-fluid">
+  <div class="send-score-wrapper">
+    <form class="col-sm-6 pd0" ng-submit="incentive.save()">
+      <!-- Name -->
+      <div class="form-group clearfix">
+        <label class="col-md-12 pd0">{{'member_excitation_condition' | translate}}</label>
+        <span ng-if="incentive.detail.isDefault">{{incentive.detail.fullname | translate}}</span>
+        <input id="name" ng-if="!incentive.detail.isDefault" class="form-control" type="text" ng-model="incentive.detail.name" required form-tip="{{'member_incentive_name_tip' | translate}}" maxlength="30" wm-validate="incentive.checkName" />
+      </div>
+
+      <!-- Code -->
+      <div class="form-group clearfix" ng-if="!incentive.detail.isDefault">
+        <label class="col-md-12 pd0">{{'member_excitation_code' | translate}}</label>
+        <div class="col-sm-5 pd0">
+          <input id="code" ng-if="!incentive.isDefault" class="form-control" type="text" ng-model="incentive.detail.code" required form-tip="{{'member_incentive_code_tip' | translate}}" maxlength="10" wm-validate="incentive.checkCode" />
+        </div>
+        <a class="generate-link" href="#" ng-click="incentive.generateCode()">{{'product_generate_automatically' | translate}}</a>
+      </div>
+
+      <div class="form-group clearfix">
+        <label class="col-md-12 pd0 required-field">{{'member_excitation_type' | translate}}</label>
+        <div class="mb10">
+          <wm-radio ng-model="incentive.detail.rewardType" value="score" ng-if="incentive.couponAvailable" ng-click="incentive.changeRewardType('score')"></wm-radio>
+          {{'member_points_reward' | translate}}
+        </div>
+        <div ng-if="incentive.detail.rewardType == 'score'" class="clearfix setting-score-wrap">
+          <div class="point-tip" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'">{{'customer_score_perfect_information_tip' | translate}}</div>
+          <div class="point-tip pull-left" ng-if="incentive.detail.isDefault && incentive.detail.name == 'birthday'">{{'customer_score_birthday_tip' | translate}}</div>
+          <div class="pull-left score-point-type rule-select-height" ng-if="incentive.detail.isDefault && incentive.detail.name == 'birthday'">
+            <div wm-select on-change="" ng-model="incentive.detail.triggerTime" text-field="text" value-field="value" items="incentive.triggerTimeItems"></div>
+          </div>
+          <div class="point-tip pull-left" ng-if="incentive.detail.isDefault && incentive.detail.name == 'birthday'">{{'customer_score_get_birthday_score'|translate}}</div>
+          <div class="point-tip col-md-12 mb10" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'">
+            <ul class="rule-properties-name clearfix" ng-class="{'address-wrap-error': incentive.required.length > 0}">
+              <li class="col-md-3 text-el" ng-repeat="property in incentive.properties" wm-tooltip="{{property.name | translate}}">
+                <wm-checkbox ng-model="property.check" class="follower-checkbox-style" ng-click="incentive.hidePropertyError()"></wm-checkbox>{{property.name | translate}}
+              </li>
+            </ul>
+            <span id="rulePropertiesRequired" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information' " class="form-tip error-tip col-md-12 clearpadding clear-margin">{{incentive.required|translate}}</span>
+          </div>
+
+          <div class="point-tip pull-left" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'">{{'customer_score_get_profile_score'|translate}}</div>
+          <div class="pull-left point-fill"><input ng-model="incentive.detail.score" class="form-control" type="text" required without-star wm-validate="incentive.checkPoint" form-tip="{{'customert_point_input_string'|translate}}" /></div><span class="point-label">{{'customer_points' | translate}}</span>
+        </div>
+        <div ng-if="incentive.couponAvailable">
+          <wm-radio ng-model="incentive.detail.rewardType" value="coupon"></wm-radio>
+          {{'member_coupon_reward' | translate}}
+        </div>
+        <div ng-if="incentive.detail.rewardType == 'coupon' && incentive.couponAvailable" class="clearfix setting-coupon-wrap">
+
+          <div class="point-tip" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'">{{'customer_score_perfect_information_tip' | translate}}</div>
+          <div class="point-tip pull-left" ng-if="incentive.detail.isDefault && incentive.detail.name == 'birthday'">{{'customer_score_birthday_tip' | translate}}</div>
+          <div class="pull-left score-point-type rule-select-height" ng-if="incentive.detail.isDefault && incentive.detail.name == 'birthday'">
+            <div wm-select on-change="" ng-model="incentive.detail.triggerTime" text-field="text" value-field="value" items="incentive.triggerTimeItems"></div>
+          </div>
+          <div class="point-tip pull-left" ng-if="incentive.detail.isDefault && incentive.detail.name == 'birthday'">{{'customer_score_get_birthday_score'|translate}}</div>
+          <div class="point-tip col-md-12 mb10" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'">
+            <ul class="rule-properties-name clearfix" ng-class="{'address-wrap-error': incentive.required.length > 0}">
+              <li class="col-md-3 text-el" ng-repeat="property in incentive.properties" wm-tooltip="{{property.name | translate}}">
+                <wm-checkbox ng-model="property.check" class="follower-checkbox-style" ng-click="incentive.hidePropertyError()"></wm-checkbox>{{property.name | translate}}
+              </li>
+            </ul>
+            <span id="rulePropertiesRequired" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'" class="form-tip error-tip col-md-12 clearpadding clear-margin">{{incentive.required|translate}}</span>
+          </div>
+
+          <div class="point-tip pull-left" ng-if="incentive.detail.isDefault && incentive.detail.name == 'perfect_information'">{{'customer_score_get_profile_score'|translate}}</div>
+
+          <div class="pull-left rule-select-height" ng-class="{'rule-select-coupon-error': incentive.showCouponError}">
+            <div wm-select ng-model="incentive.detail.couponId" items="incentive.coupons" text-field="title" value-field="id" default-text="{{incentive.defaultText}}" class="coupon-select" on-change="incentive.hideCouponError" ng-click="incentive.hideCouponError()"></div>
+            <a href="/marketing/create/coupon" ng-if="incentive.coupons == null || incentive.coupons.length == 0">{{'member_add_coupon' | translate}}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group clearfix" ng-if="!incentive.detail.isDefault">
+        <label class="col-md-12 pd0 required-field">{{'member_excitation_code' | translate}}</label>
+        <div class="mb10"><div wm-radio ng-model="incentive.detail.limit.type" value="unlimited" ng-click="incentive.changeLimitType('unlimited')"></div>{{'member_incentive_no_limit' | translate}}</div>
+        <div class="mb10"><div wm-radio ng-model="incentive.detail.limit.type" value="day" ng-click="incentive.changeLimitType('day')"></div>{{'member_incentive_limit' | translate}}</div>
+        <div class="setting-score-wrap" ng-if="incentive.detail.limit.type=='day'">
+          <div class="pull-left point-fill"><input ng-model="incentive.detail.limit.value" class="form-control" type="text" required without-star wm-validate="incentive.checkTimes" form-tip="{{'customert_point_input_string'|translate}}" /></div><span class="point-label">{{'member_incentive_times_unit' | translate}}</span>
+        </div>
+
+      </div>
+
+      <div class="form-group clearfix ueditor-wrapper">
+        <label class="col-md-12 pd0">{{'customer_rule_desc'|translate}}</label>
+        <div class="col-md-12 pd0">
+          <div class="ueditor" name="rule" ng-model="incentive.detail.description"></div>
+        </div>
+      </div>
+      <div class="form-group">
+        <wm-checkbox ng-model="incentive.detail.isEnabled"></wm-checkbox>
+        <span class="keyword-checkbox-prompt">{{'customer_card_ok_restart'|translate}}</span>
+      </div>
+      <div class="mass-operation-wrapper">
+        <input type="submit" class="btn btn-success mr20 user-btn" value="{{'channel_wechat_mass_submit' | translate}}" />
+        <button class="btn btn-default user-btn" ng-click="incentive.cancel()">{{'channel_wechat_mass_cancel' | translate}}</button>
+      </div>
+    </form>
+
+  </div>
+</div>

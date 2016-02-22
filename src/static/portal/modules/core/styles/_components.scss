@@ -1,0 +1,110 @@
+@import 'components/nav';
+@import 'components/footer';
+@import 'components/select';
+@import 'components/switch';
+@import 'components/tabs';
+@import 'components/pagination';
+@import 'components/search';
+@import 'components/notification';
+@import 'components/dropdown';
+@import 'components/formtip';
+@import 'components/fileupload';
+@import 'components/table';
+@import 'components/checkbox';
+@import 'components/button';
+@import 'components/tag';
+@import 'components/datetimepicker';
+@import 'components/helpinfo';
+@import 'components/breadcrumb';
+@import 'components/panel';
+@import 'components/autocomplete';
+@import 'components/scrollbar';
+@import 'components/copy';
+@import 'components/tooltip';
+@import 'components/steps';
+@import 'components/micrositecolorpicker';
+@import 'components/qrcode';
+@import 'components/statistics';
+@import 'components/micrositemap';
+@import 'components/piclist';
+@import 'components/selecttable';
+@import 'components/pictureshow';
+@import 'components/pictureview';
+@import 'components/copyinput';
+@import 'components/slider';
+@import 'components/message';
+@import 'components/export';
+@import 'components/page';
+@import 'components/label';
+@import 'components/input';
+@import 'components/colorpicker';
+@import 'components/percentbar';
+@import 'components/channel';
+@import 'components/tabbtn';
+@import 'components/ueditortoolbars';
+@import 'components/taginput';
+@import 'components/spreadmethods';
+@import 'components/infotip';
+@import 'components/modal';
+
+.main-content-wrap {
+  margin-top: $banner-height;
+}
+
+.viewport {
+  width: 100%;
+  padding: 0;
+
+  &.embeded {
+    width: auto;
+    padding: $viewport-padding;
+    padding-bottom: 70px;
+    position: relative;
+  }
+}
+
+.mask-loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  z-index: 9999;
+  display: none;
+
+  .loading-icon {
+    @include animation(rotate 1s linear infinite);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    margin: -20px 0 0 -20px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $white-background-text-color $white-background-text-color $white-background-color $white-background-color;
+    opacity: .9;
+    border-radius: 20px;
+  }
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

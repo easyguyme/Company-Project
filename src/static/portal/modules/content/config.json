@@ -1,0 +1,24 @@
+{
+  "name": "content",
+  "states": [
+    "content-graphics",
+    "content-viewGraphic-{id}",
+    "content-edit-graphics",
+    "content-edit-graphics-{id}",
+    "content-questionnaire",
+    "content-statistics-questionnaire-{id}",
+    "content-edit-questionnaire",
+    "content-edit-questionnaire-{id}",
+    "content-view-questionnaire-{id}"
+  ],
+  "resources": {
+    "graphic": "/api/content/graphic",
+    "graphics": "/api/content/graphics",
+    "questionnaire": "/api/content/questionnaire",
+    "questionnaires": "/api/content/questionnaires",
+    "questionnaireStatistic": "/api/content/stats-questionnaire",
+    "questions": "/api/content/questionnaire/question-names",
+    "questionStatistic": "/api/content/stats-questionnaire/answers",
+    "questionAnswers": "/api/content/stats-questionnaire/question-answers"
+  }
+}

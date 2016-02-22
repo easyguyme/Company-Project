@@ -1,0 +1,27 @@
+$nav-title-font-size:    14px;
+$nav-title-color:        #1c1c1c;
+$nav-name-font-size:     14px;
+$nav-name-color:         #1c1c1c;
+
+.nav-title-layout {
+  color: $nav-title-color;
+  font-size: $nav-title-font-size;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.nav-name {
+  color: $nav-name-color;
+  font-size: $nav-name-font-size;
+}
+
+.nav-link {
+  margin-bottom: 0;
+}
+
+.nav-addbutton-layout {
+  margin-bottom: 20px;
+  margin-top: 8px;
+  min-height: 20px;
+  text-align: left;
+}

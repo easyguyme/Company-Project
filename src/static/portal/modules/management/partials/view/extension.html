@@ -1,0 +1,42 @@
+<div wm-breadcrumb="extension.breadcrumb"></div>
+<div class="extension-wrapper container-fluid">
+  <!-- description -->
+  <div class="extension-detail-wrapper col-md-12">
+    <div class="extension-title clearfix">
+      <div class="pull-left">
+        <img class="extension-icon-mr" ng-src="/images/{{extension.detail.name}}/introduction/icon_default.png">
+        <span class="fs18 extension-gray2">{{extension.detail.title | translate}}</span>
+      </div>
+      <div class="pull-right mt7">
+        <a ng-href="{{extension.detail.link.enterFunction}}"><button ng-if="extension.detail.active" class="btn btn-success fs16 extension-btn">{{'management_extension_enter_function' | translate}}</button></a>
+        <button ng-if="!extension.detail.active" class="btn btn-success fs16 extension-btn" ng-click="extension.activateModule()">{{'management_extension_active' | translate}}</button>
+      </div>
+    </div>
+    <div class="extension-detail">
+      <ul>
+        <li ng-repeat="introduction in extension.detail.introductions">
+          <div class="pull-left"><img ng-src="/images/{{extension.detail.name}}/introduction/paragraphbreak_default.png"></div>
+          <p>{{introduction | translate}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="extension-function-wrapper col-md-12">
+    <div ng-include="extension.modIntroPageUrl" ng-if="extension.hasModIntroPage"></div>
+    <!-- function -->
+    <div class="extension-function-title">
+      <img class="extension-icon-mr" ng-src="/images//{{extension.detail.name}}/introduction/icon_functional.png">
+      <span class="extension-gray2 fs16">{{'management_extension_function_characteristic' | translate}}</span>
+    </div>
+    <div class="extension-function-body">
+      <ul>
+        <li ng-repeat="function in extension.detail.functions">
+          <img ng-src="/images/{{extension.detail.name}}/introduction/paragraphbreak_default.png">{{function.title | translate}}
+          <div class="extension-function-img">
+            <img class="function-img" ng-src="{{image}}" ng-repeat="image in function.image">
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,121 @@
+<div wm-breadcrumb="westpromotion.breadcrumb"></div>
+<div wm-tabs="westpromotion.changeTab()" tabs="westpromotion.tabs" ng-model="westpromotion.curTab">
+</div>
+
+<form class="uhkklp-west ulkklp-recipe" id="activityForm" name="activityForm" novalidate ng-show="westpromotion.showSetting">
+  <div class="tab-view-wrap">
+    <div class="uhkklp-search-wrap clearfix search-div">
+      <wm-search ng-model="westpromotion.activityKeyword" click-func="westpromotion.searchKeyActivity()" placeholder="{{'activity_search_placeholder' | translate}}"></wm-search>
+      <div class="add-button">
+        <a class="btn btn-success user-btn pull-right" href="/uhkklp/edit/campaign/westpromotion?id&active={{westpromotion.curTab.value}}" style="margin-bottom: 4px;">{{'activity_activity_add' | translate}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="mt-panel" ng-show="true" style="margin-top:-25px;">
+    <img class="mt-panel-img" src="/images/nav/message_default.png">{{'total_count' | translate : '{count: totalPageCountActivity}'}}
+  </div>
+  <div class="cny-draw-body" ng-show="totalPageCountActivity>0">
+    <div class="winner-list" style="padding: 19px;">
+      <div class="operations-wrapper" ng-show="westpromotion.cacheActivityCheckRows.length > 0" style="position: absolute;left: 150px;margin-top: 6px;">
+        <span class="operation-box" style="border: 1px solid #ccc;color: #787878;cursor: pointer;    padding: 2px 10px;" ng-class="{'operation-enable': westpromotion.cacheActivityCheckRows.length > 0, 'operation-disable': westpromotion.cacheActivityCheckRows.length == 0}" translate="recipe_list_delete" ng-click="westpromotion.deleteActivity($event)"></span>
+      </div>
+      <div wm-table is-select-all="true" class="colored-table" ng-model="westpromotion.activityList"></div>
+      <div class="clearfix">
+        <div class="broadcast-pagination">
+          <div wm-pagination current-page="currentPageActivityActivity" page-size="pageSizeActivity" total-items="totalPageCountActivity" on-change-size="changeSizeActivity" on-change-page="changePageActivity">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--enrolls-->
+<form class="ulkklp-recipe" id="enrollsForm" name="enrollsForm" novalidate ng-show="westpromotion.showEnrolls">
+  <div class="tab-view-wrap">
+    <div class="uhkklp-search-wrap clearfix search-div">
+      <wm-search ng-model="westpromotion.registrationKeyword" click-func="westpromotion.searchKeyRegistration()" placeholder="{{'registration_search_placeholder' | translate}}"></wm-search>
+      <div class="add-button">
+        <a class="btn btn-success user-btn pull-right" href="/uhkklp/edit/westpromotion?id&active={{westpromotion.curTab.value}}" style="margin-bottom: 4px;">{{'registration_add' | translate}}</a>
+        <span class="btn-export member-button-import import-btn" ng-click="westpromotion.exportRegisList()" translate="registration_export"></span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-panel" ng-show="true" style="margin-top:-25px;">
+    <img class="mt-panel-img" src="/images/nav/message_default.png">{{'total_count' | translate : '{count: totalPageCountRegis}'}}
+  </div>
+  <div class="cny-draw-body" ng-show="totalPageCountRegis>0">
+    <div class="winner-list" style="padding: 19px;">
+      <div class="operations-wrapper" ng-show="westpromotion.cacheRegisCheckRows.length > 0" style="position: absolute;left: 150px;margin-top: 6px;">
+        <span class="operation-box" style="border: 1px solid #ccc;color: #787878;cursor: pointer;    padding: 2px 10px;" ng-class="{'operation-enable': westpromotion.cacheRegisCheckRows.length > 0, 'operation-disable': westpromotion.cacheRegisCheckRows.length == 0}" translate="recipe_list_delete" ng-click="westpromotion.deleteRegis($event)"></span>
+      </div>
+      <div wm-table is-select-all="true" class="colored-table" ng-model="westpromotion.registrationList"></div>
+      <div class="clearfix">
+        <div class="broadcast-pagination">
+          <div wm-pagination current-page="currentPageRegis" page-size="pageSizeRegis" total-items="totalPageCountRegis" on-change-size="changeSizeRegis" on-change-page="changePageRegis">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--order-->
+<form class="ulkklp-recipe" id="orderForm" name="orderForm" novalidate ng-show="westpromotion.showOrder">
+  <div class="tab-view-wrap">
+    <div class="uhkklp-search-wrap clearfix search-div">
+      <wm-search ng-model="westpromotion.orderKeyword" click-func="westpromotion.searchKeyOrder()" placeholder="{{'order_search_placeholder' | translate}}"></wm-search>
+      <div class="add-button">
+        <a class="btn btn-success user-btn pull-right" href="/uhkklp/edit/order/westpromotion?id&active={{westpromotion.curTab.value}}" style="margin-bottom: 4px;">{{'order_add' | translate}}</a>
+        <span class="btn-export member-button-import import-btn" ng-click="westpromotion.exportOrderList()" translate="order_export"></span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-panel" ng-show="true" style="margin-top:-25px;">
+    <img class="mt-panel-img" src="/images/nav/message_default.png">{{'total_count' | translate : '{count: totalPageCountOrder}'}}
+  </div>
+  <div class="cny-draw-body" ng-show="totalPageCountOrder>0">
+    <div class="winner-list" style="padding: 19px;">
+      <div class="operations-wrapper" ng-show="westpromotion.cacheOrderCheckRows.length > 0" style="position: absolute;left: 150px;margin-top: 6px;">
+        <span class="operation-box" style="border: 1px solid #ccc;color: #787878;cursor: pointer;    padding: 2px 10px;" ng-class="{'operation-enable': westpromotion.cacheOrderCheckRows.length > 0, 'operation-disable': westpromotion.cacheOrderCheckRows.length == 0}" translate="recipe_list_delete" ng-click="westpromotion.deleteOrder($event)"></span>
+      </div>
+      <div wm-table is-select-all="true" class="colored-table" ng-model="westpromotion.orderList"></div>
+      <div class="clearfix">
+        <div class="broadcast-pagination">
+          <div wm-pagination current-page="currentPageOrder" page-size="pageSizeOrder" total-items="totalPageCountOrder" on-change-size="changeSizeOrder" on-change-page="changePageOrder">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!--goods-->
+<form class="ulkklp-recipe" id="goodsForm" name="goodsForm" novalidate ng-show="westpromotion.showGoods">
+  <div class="tab-view-wrap">
+    <div class="uhkklp-search-wrap clearfix search-div">
+      <wm-search ng-model="westpromotion.goodsKeyword" click-func="westpromotion.searchKeyGoods()" placeholder="{{'goods_search_placeholder' | translate}}"></wm-search>
+      <div class="add-button">
+        <a class="btn btn-success user-btn pull-right" href="/uhkklp/edit/goods/westpromotion?id&active={{westpromotion.curTab.value}}" style="margin-bottom: 4px;">{{'goods_add' | translate}}</a>
+        <span class="btn-export member-button-import import-btn" ng-click="westpromotion.exportGoodsList()" translate="goods_export"></span>
+      </div>
+    </div>
+  </div>
+  <div class="mt-panel" ng-show="true" style="margin-top:-25px;">
+    <img class="mt-panel-img" src="/images/nav/message_default.png">{{'total_count' | translate : '{count: totalPageCountGoods}'}}
+  </div>
+  <div class="cny-draw-body" ng-show="totalPageCountGoods>0">
+    <div class="winner-list" style="padding: 19px;">
+      <div class="operations-wrapper" ng-show="westpromotion.cacheGoodsCheckRows.length > 0" style="position: absolute;left: 150px;margin-top: 6px;">
+        <span class="operation-box" style="border: 1px solid #ccc;color: #787878;cursor: pointer;    padding: 2px 10px;" ng-class="{'operation-enable': westpromotion.cacheGoodsCheckRows.length > 0, 'operation-disable': westpromotion.cacheGoodsCheckRows.length == 0}" translate="recipe_list_delete" ng-click="westpromotion.deleteGoods($event)"></span>
+      </div>
+      <div wm-table is-select-all="true" class="colored-table" ng-model="westpromotion.goodsList"></div>
+      <div class="clearfix">
+        <div class="broadcast-pagination">
+          <div wm-pagination current-page="currentPageGoods" page-size="pageSizeGoods" total-items="totalPageCountGoods" on-change-size="changeSizeGoods" on-change-page="changePageGoods">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,42 @@
+<div class="extension-continue-title" ng-if="extension.detail.active">
+  <img class="extension-icon-mr" src="/images/management/alert.png"/>
+  <span class="extension-gray2 fs16">{{'management_extension_continue' | translate}}</span>
+</div>
+<div ng-if="extension.detail.active">
+  <div class="extension-continue-member row mlr0 extension-gray1">
+    <div class="col-md-5 extension-continue">
+      <div class="mb115">
+        <div><img class="extension-step" src="/images/management/stepone.png"/><a ng-href="{{extension.detail.link.createCard}}" class="fs18">{{'management_extension_create_card' | translate}}</a></div>
+        <div class="clearfix">
+          <div class="extension-first-line"></div><div class="first-title"><img ng-src="{{extension.detail.firstDot}}"/>{{extension.detail.stepOne[0] | translate}}</div>
+        </div>
+        <div class="clearfix" ng-repeat="stepOne in extension.detail.stepOne" ng-if="$index != 0">
+          <div class="extension-other-line"></div><div class="other-title"><img ng-src="{{extension.detail.firstDot}}"/>{{stepOne | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 pd0">
+      <img class="col-md-12 pd0" ng-src="{{extension.detail.images[0]}}"/>
+    </div>
+  </div>
+  <div class="row mlr0 extension-gray1">
+    <div class="col-md-6 extension-continue">
+      <div class="mb115">
+        <div class="fs16"><img class="extension-step" src="/images/management/steptwo.png"/>{{'management_extension_member_menu_add' | translate}}{{'management_extension_wechat_menu' | translate}}</div>
+        <div class="clearfix">
+          <div class="extension-first-line"></div><div class="first-title"><img ng-src="{{extension.detail.firstDot}}"/>{{'management_extension_member_menu' | translate}}</div>
+        </div>
+        <div class="clearfix">
+          <div class="extension-split-line"></div><div class="split-title"><img ng-src="{{extension.detail.firstDot}}"/>{{'management_extension_user_view' | translate}}</div>
+        </div>
+        <div class="clearfix" ng-repeat="stepTwo in extension.detail.stepTwo">
+          <div class="extension-second-line"></div><div class="other-title"><img ng-src="{{extension.detail.secondDot}}"/>{{stepTwo | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 pd0">
+      <img class="col-md-12 pd0" ng-src="{{extension.detail.images[1]}}"/>
+      <img class="col-md-12 pd0 ml-14" ng-src="{{extension.detail.images[2]}}"/>
+    </div>
+  </div>
+</div>

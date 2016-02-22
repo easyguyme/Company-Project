@@ -1,0 +1,52 @@
+<div class="redeem-statistics-wrapper" ng-controller="wm.ctrl.product.promotion.redeemStatistics as redeemStatistics">
+  <section class="statistics-header-wrapper row clear-margin">
+    <div class="col-md-4 col-xs-12 header-promotion row">
+      <label class="col-md-4 col-xs-4 fields-item-label fields-color-label clear-padding" translate="product_statistics_by_promotion"></label>
+      <div class="col-md-8 col-xs-6 promotion-items">
+        <div wm-select on-change="redeemStatistics.changePromotion" ng-model="redeemStatistics.promotion" text-field="text" value-field="value" items="redeemStatistics.promotions"></div>
+      </div>
+    </div>
+
+    <div class="col-md-8 col-xs-12 header-datetime row">
+      <label class="col-md-4 col-xs-4 fields-item-label fields-color-label clear-padding" translate="analytic_date"></label>
+      <div class="col-md-8 col-xs-6 datetime-wrapper clearfix">
+        <div class="pull-left datetime-picker-item" wm-datetime-picker format-type="YYYY-MM-DD" picker-id="beginPicker" min-date-picker-id="endPicker" pick-date="true" pick-time="false" ng-model="redeemStatistics.startDate" time-handler="redeemStatistics.selectDate()" less-than-yesterday="true" first-unbind-handler="true"></div>
+        <label class="font-label pull-left field-cross-bar">-</label>
+        <div class="pull-left datetime-picker-item" wm-datetime-picker format-type="YYYY-MM-DD" picker-id="endPicker" max-date-picker-id="beginPicker" pick-date="true" pick-time="false" ng-model="redeemStatistics.endDate" time-handler="redeemStatistics.selectDate()" less-than-yesterday="true" first-unbind-handler="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <ul class="statistics-chart-wrapper">
+    <li class="statistics-chart-item">
+      <div class="statistics-item-title">
+        <span translate="product_statistics_participants"></span>
+        <span class="btn-export pull-right" ng-click="redeemStatistics.exportParticipants()" ng-class="{'export-disabled':!redeemStatistics.enableExportParticipants}" translate="export"></span>
+      </div>
+      <div class="statistics-item-content" ng-style="{'height': redeemStatistics.participantsHeight+'px'}">
+        <div id="participants" wm-line-chart options="redeemStatistics.participantsOptions" width="{{redeemStatistics.tabsWidth}}px" height="{{redeemStatistics.participantsHeight}}px" resizeable="true"></div>
+      </div>
+    </li>
+
+    <li class="statistics-chart-item">
+      <div class="statistics-item-title">
+        <span translate="product_statistics_redemption_count"></span>
+        <span class="btn-export pull-right" ng-click="redeemStatistics.exportTotal()" ng-class="{'export-disabled':!redeemStatistics.enableExportTotal}" translate="export"></span>
+      </div>
+      <div class="statistics-item-content" ng-style="{'height': redeemStatistics.totalHeight+'px'}">
+        <div id="total" wm-line-chart options="redeemStatistics.totalOptions" width="{{redeemStatistics.tabsWidth}}px" height="{{redeemStatistics.totalHeight}}px" resizeable="true"></div>
+      </div>
+    </li>
+
+    <li class="statistics-chart-item">
+      <div class="statistics-item-title">
+        <span translate="product_statistics_prize_redemption_volume"></span>
+        <span class="btn-export pull-right" ng-click="redeemStatistics.exportPrizes()" ng-class="{'export-disabled':!redeemStatistics.enableExportPrizes}" translate="export"></span>
+      </div>
+      <div class="statistics-item-content" ng-style="{'height': redeemStatistics.prizesHeight+'px'}">
+        <div id="prizes" wm-line-chart options="redeemStatistics.prizesOptions" width="{{redeemStatistics.tabsWidth}}px" height="{{redeemStatistics.prizesHeight}}px" resizeable="true"></div>
+      </div>
+    </li>
+  </ul>
+
+</div>

@@ -1,0 +1,22 @@
+.data-select-table {
+
+  tbody {
+
+    tr {
+      $tr-border-color: #ddd;
+
+      border-bottom: 1px solid $tr-border-color;
+    }
+  }
+
+  .mark-text {
+    $mark-text-bg-color: rgba(165,208,104,0.75);
+    background-color: $mark-text-bg-color;
+    border-radius: 3px;
+    color: $white-background-color;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 12px;
+  }
+}
+

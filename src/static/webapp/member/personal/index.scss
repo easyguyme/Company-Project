@@ -1,0 +1,259 @@
+.mb-personal-item {
+  margin-bottom: 10px;
+  color: $wm-mobile-default-color;
+}
+
+.text-el {
+  @include text-overflow();
+}
+
+.member-center-error-msg {
+  color: #b42d14;
+  font-size: $wm-score-calendar-font-size;
+}
+
+.mb0 {
+  margin-bottom: 0px;
+}
+.mt25 {
+  margin-top: 25px;
+}
+
+.mb25 {
+  margin-bottom: 25px;
+}
+
+.mb-personal-phone {
+  margin-top: 32px;
+  margin-bottom: 20px;
+  color: $wm-mobile-default-color;
+  font-size: $wm-input-componet-font-size;
+}
+
+.personal-birthday-tip {
+  display: inline-block;
+  font-size: $wm-input-componet-tip-size;
+  color: #a3a3a3;
+  line-height: 21px;
+  padding-left: 10px
+}
+
+.personal-phone-label {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.personal-phone-label{
+    margin-right: 18px;
+}
+
+.personal-item-phone {
+  display: inline-block;
+}
+
+.mb-popup-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba($wm-modal-dialog-background-color, 0.5);
+  box-sizing: border-box;
+
+  .mb-popup-pane {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: $wm-white-background-color;
+  }
+}
+
+.mb-radio-select {
+  display: none;
+  font-size: $wm-input-componet-font-size;
+  line-height: $wm-bottom-componet-height;
+  text-align: center;
+
+  .radio-pane-header {
+    height: $wm-bottom-componet-height;
+    color: $wm-mobile-btn-bg-color;
+  }
+
+  .radio-pane-content {
+    .radio-pane-cannel {
+      height: $wm-bottom-componet-height;
+      color: $wm-modal-dialog-text-color;
+    }
+
+    .radio-content-options {
+      color: $wm-mobile-default-color;
+      border-bottom: 5px rgba($wm-mobile-default-border-color, 0.8) solid;
+      border-top: 5px rgba($wm-mobile-default-border-color, 0.8) solid;
+    }
+    .radio-content-options-height {
+      max-height: 200px;
+      overflow: auto;
+    }
+    .radio-content-item {
+      height: $wm-bottom-componet-height;
+      border-bottom: 1px $wm-mobile-default-border-color solid;
+      text-align: center;
+      vertical-align: top;
+      padding: 0px 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &:last-child {
+        border-bottom: none;
+      }
+      .icon-radio {
+        display: inline-block;
+        @include size(16px, $wm-bottom-componet-height);
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position-y: ($wm-bottom-componet-height - 16px) / 2;
+        float: left;
+      }
+      .icon-checked {
+        background-image: url(../../../images/mobile/checked.png);
+      }
+    }
+  }
+}
+
+.mb-checkbox-select {
+  display: none;
+  line-height: $wm-bottom-componet-height;
+  text-align: center;
+
+  .checkbox-pane-header {
+    height: $wm-bottom-componet-height;
+    font-size: $wm-input-componet-font-size;
+    .checkbox-operation-cannel {
+      float: left;
+      padding: 0px 20px;
+    }
+    .checkbox-operation-submit {
+      color: $wm-mobile-btn-bg-color;
+      float: right;
+      padding: 0px 20px;
+    }
+  }
+
+  .checkbox-pane-content {
+    font-size: $wm-input-componet-font-size;
+    .checkbox-content-options {
+      color: $wm-mobile-default-color;
+      border-top: 5px rgba($wm-mobile-default-border-color, 0.8) solid;
+    }
+    .checkbox-content-options-height {
+      max-height: 200px;
+      overflow: auto;
+    }
+    .checkbox-content-item {
+      height: $wm-bottom-componet-height;
+      border-bottom: 1px $wm-mobile-default-border-color solid;
+      text-align: center;
+      vertical-align: top;
+      padding: 0px 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      &:last-child {
+        border-bottom: none;
+      }
+      .icon-checkbox {
+        display: inline-block;
+        @include size(16px, $wm-bottom-componet-height);
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position-y: ($wm-bottom-componet-height - 16px) / 2;
+        float: left;
+      }
+      .icon-checked {
+        background-image: url(../../../images/mobile/checked.png);
+      }
+    }
+  }
+}
+
+
+.mb-calendar-select {
+  display: none;
+  line-height: $wm-bottom-componet-height;
+  color: $wm-modal-dialog-text-color;
+  font-family: 'Segoe UI', 'SimHei';
+
+  .mb-calendar-pane {
+    box-sizing: border-box;
+  }
+
+  .calendar-pane-header {
+    margin: 0px 11px;
+    height: $wm-bottom-componet-height;
+    border-bottom: 1px $wm-mobile-default-border-color solid;
+    .calendar-operation-cannel {
+      float: left;
+      padding: 0px 10px;
+      font-size: $wm-input-componet-font-size;
+    }
+    .calendar-operation-submit {
+      color: $wm-mobile-btn-bg-color;
+      float: right;
+      padding: 0px 10px;
+      font-size: $wm-input-componet-font-size;
+    }
+  }
+
+  .calendar-pane-content {
+    padding: 0px 11px;
+    height: 185px;
+    overflow: hidden;
+    text-align: center;
+    cursor: move;
+    font-size: $wm-calendar-componet-font-size;
+    .content-options-years {
+      vertical-align: top;
+      display: inline-block;
+      width: 40%;
+    }
+    .content-options-months {
+      vertical-align: top;
+      display: inline-block;
+      width: 30%;
+    }
+    .content-options-days {
+      vertical-align: top;
+      display: inline-block;
+      width: 30%;
+    }
+    ul {
+      li {
+        height: $wm-calendar-item-height;
+        line-height: $wm-calendar-item-height;
+
+        &.wm-calendar-active {
+          color: $wm-calendar-active-text-color;
+        }
+      }
+    }
+
+  }
+
+  .content-options-selected-top {
+    border-bottom: 1px $wm-mobile-default-border-color solid;
+    height: 1px;
+    box-sizing: border-box;
+    position: absolute;
+    top: $wm-bottom-componet-height +$wm-calendar-item-height * 2 + 1px;
+    width: 100%;
+  }
+  .content-options-selected-bottom {
+    border-bottom: 1px $wm-mobile-default-border-color solid;
+    height: 1px;
+    box-sizing: border-box;
+    position: absolute;
+    top: $wm-bottom-componet-height +$wm-calendar-item-height * 3 + 1px;
+    width: 100%;
+  }
+}

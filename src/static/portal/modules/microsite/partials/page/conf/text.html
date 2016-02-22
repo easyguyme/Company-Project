@@ -1,0 +1,29 @@
+<div ng-controller="wm.ctrl.microsite.page.config.text as text">
+    <form id="form-text" ng-submit="cpts.sendData(text.data)">
+      <div class="fields-item-content form-group">
+        <label translate="content_component_config_text_information"></label>
+        <div class="ueditor table-editor" config="text.config" ng-model="text.data.text"></div>
+        <input class="form-control hidden" ng-model="text.data.text" required/>
+      </div>
+      <label translate="content_component_config_text_setting"></label>
+      <ul class="radio-group content-component-config-text-ul">
+        <li class="radio-block" ng-repeat="style in text.txtStyles">
+          <div class="radio-style">
+            <wm-radio ng-model="text.data.setting" value="{{style.value}}" ng-click="text.selectStyle(style.value)"></wm-radio>
+            <span translate="{{style.label}}"></span>
+          </div>
+          <div class="text-style {{style.value}}-style clearfix" ng-if="style.value == 'full'" ng-class="{'style-selected': text.isSelectedFull, 'text-style full-style': true}">
+            <div class="content-component-config-text-divone mt20"></div>
+            <div class="content-component-config-text-divtwo  mt12"></div>
+            <div class="content-component-config-text-divthree mt12"></div>
+          </div>
+          <div class="text-style {{style.value}}-style clearfix" ng-if="style.value == 'part'" ng-class="{'style-selected': !text.isSelectedFull, 'text-style full-style': true}">
+            <div class="content-component-config-text-divone mt20"></div>
+            <div class="content-component-config-text-divtwo mt12"></div>
+            <div class="content-component-config-text-divfour mt12"></div>
+          </div>
+        </li>
+      </ul>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

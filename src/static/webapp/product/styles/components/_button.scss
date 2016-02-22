@@ -1,0 +1,34 @@
+.mb-btn {
+  background-color: $yellow-bg-color;
+  border-radius: 0.2rem;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.6rem;
+  height: 3.75rem;
+  line-height: 3.75rem;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+.mb-btn-disable {
+  background-color: rgba($yellow-bg-color, 0.6);
+  cursor: none;
+  pointer-events: none;
+}
+
+.mb-link {
+  color: $yellow-bg-color;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
+.mb-btn-timer {
+  $timer-bg-color: #a8a8a8;
+
+  background-color: $timer-bg-color;
+  pointer-events: none;
+}

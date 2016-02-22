@@ -1,0 +1,299 @@
+<div class="ulkklp-edit-recipe">
+
+    <div wm-breadcrumb="recipe.breadcrumb"></div>
+
+        <form id="editForm" name="editForm" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="" ng-submit="submitInfo(editForm.$error.required, editForm.shareUrl.$error.url || UrlFormat, editForm.video.$error.url || VideoFormat)" novalidate>
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl-required">{{'recipe_edit_cookbook_name' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input name="name" id="name" class="cookitem-input" type="text" ng-model="formData.title" required form-tip="{{'recipe_edit_name_tip' | translate}}" maxlength="20" />
+                </div>
+            </div>
+
+            <br/>
+
+            <div id="cookitem" class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl-required">{{'recipe_edit_cookbook_content' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <img class="img-prev" id="img-prev" alt="640 X 544" ng-src="{{formData.image}}" name="image" ng-model="formData.image" ng-class="{'valid-border': (formData.image == '' || formData.image == null) && isSubmitted}"/>
+                    <div>
+                        <span class="error-tip" ng-show="(formData.image == '' || formData.image == null) && isSubmitted">{{'recipe_edit_cookbook_img_required' | translate}}</span>
+                    </div>
+                    <br/>
+                    <div id="imgUpload" wm-file-upload class="file-upload-wrap upload-img" ng-model="formData.image">
+                        <span class="btn btn-success">{{'recipe_edit_upload_img' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_ingredient' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <div class="ingredient">
+                        <table class="table table-striped table-bordered table-hover table-condensed ingredient">
+                            <thead>
+                                <tr>
+                                    <th class="cookitem-td">{{'recipe_edit_ingredient_name' | translate}}</th>
+                                    <th class="cookitem-td">{{'recipe_edit_ingredient_quantity' | translate}}</th>
+                                    <th class="cookitem-td">{{'recipe_edit_ingredient_unit' | translate}}</th>
+                                    <th class="cookitem-td">{{'recipe_edit_ingredient_url' | translate}}</th>
+                                    <th class="cookitem-td"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in ingredient">
+                                <td class="cookitem-td"><input type="text" ng-model="item.name" /></td>
+                                <td class="cookitem-td"><input type="text" ng-model="item.quantity"/></td>
+                                <td class="cookitem-td"><input type="text" ng-model="item.unit" /></td>
+                                <td class="cookitem-td"><input type="text" ng-model="item.url" /></td>
+                                <td class="cookitem-td"><a class="cookItemlink" href="#" ng-click="deleteIngredientItem($event, item.id)">{{'recipe_edit_ingredient_delete' | translate}}</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a class="btn btn-success" ng-click="newIngredientItem()">{{'recipe_edit_ingredient_add' | translate}}</a>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl-required">{{'recipe_edit_cookbook_text' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <textarea class="cookitem-textarea" ng-model="formData.content" required name="content"></textarea>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label>{{'recipe_edit_cookbook_creativeExperience' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <textarea class="cookitem-textarea" ng-model="formData.creativeExperience" name="creativeExperience"></textarea>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label>{{'recipe_edit_cookbook_deliciousSecret' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <textarea class="cookitem-textarea" ng-model="formData.deliciousSecret" name="deliciousSecret"></textarea>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl-required">{{'recipe_edit_start_time' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input wm-datetime-picker picker-id="ontime" min-date-picker-id="offtime" ng-model="formData.startDate" required-field="true" name="ontime" class="cookItem-input1" more-than-today="{{isCreating}}" required/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl-required">{{'recipe_edit_end_time' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input ng-model="formData.endDate" wm-datetime-picker picker-id="offtime" name="offtime"  class="cookItem-input1" required-field="true" max-date-picker-id="ontime" ng-class="{'valid-border': isSubmitted && isSameTime}" ng-click="focusEndTime()" more-than-today="{{isCreating}}" required/>
+                    <span class="error-tip" ng-show="isSubmitted && isSameTime">{{'recipe_edit_invalid_end_time' | translate}}</span>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_share_description' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input name="shareDescription" id="shareDescription" class="cookitem-input" type="text" ng-model="formData.shareDescription"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_share_url' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input name="shareUrl" id="shareUrl" class="cookitem-input" type="URL" ng-model="formData.shareUrl" ng-class="{'valid-border': isCheckedUrl && (editForm.shareUrl.$error.url || UrlFormat)}" ng-focus="focusUrl()" ng-blur="blurUrl()"/>
+                    <span class="error-tip" ng-show="isCheckedUrl && (editForm.shareUrl.$error.url || UrlFormat)">{{'recipe_edit_share_url_tip' | translate}}</span>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_sample' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <div class="samples">
+                        <table class="table table-striped table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th class="cookitem-td">{{'recipe_edit_sample_name' | translate}}</th>
+                                    <th class="cookitem-td">{{'recipe_edit_sample_quantity' | translate}}</th>
+                                    <th class="cookitem-td"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in samples">
+                                <td class="cookitem-td">
+                                    <select ng-options="sample.name for sample in sampleDate" ng-model="sample" ng-change="change(item, sample)">
+                                        <option value="" ng-show="hide">{{item.name}}</option>
+                                    </select>
+                                </td>
+                                <td class="cookitem-td"><input type="text" class="read-input" ng-model="item.quantity" readonly="true"/></td>
+                                <td class="cookitem-td"><a class="cookItemlink" href="#" ng-click="deleteSample($event, item.id)">{{'recipe_edit_sample_delete' | translate}}</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="isSampleOpen" id="isSampleOpen1" ng-model="formData.isSampleOpen" value="Y"/>
+                            {{'recipe_edit_sample_open' | translate}}
+                        </label><br/>
+                        <label>
+                            <input type="radio" name="isSampleOpen" id="isSampleOpen2" ng-model="formData.isSampleOpen" value="N"/>
+                            {{'recipe_edit_sample_close' | translate}}
+                        </label>
+                    </div>
+                    <a class="btn btn-success" ng-click="newSample()">{{'recipe_edit_sample_add' | translate}}</a>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_state' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model="formData.active" value="Y" checked />
+                        {{'recipe_edit_active_y' | translate}}
+                    </label><br/>
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" ng-model="formData.active" value="N" />
+                        {{'recipe_edit_active_n' | translate}}
+                    </label>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_video' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input name="video" id="video" class="cookitem-input" type="URL" ng-model="formData.video" ng-class="{'valid-border': isCheckedVideo && (editForm.video.$error.url || VideoFormat)}" ng-focus="focusVideo()" ng-blur="checkTag()"/>
+                    <span class="error-tip" ng-show="isCheckedVideo && (editForm.video.$error.url || VideoFormat)">{{'recipe_edit_video_tip' | translate}}</span>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_restaurrant_name' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input name="restaurantName" id="restaurantName" class="cookitem-input" type="text" ng-model="formData.restaurantName" form-tip="{{'recipe_edit_restaurrant_name_tip' | translate}}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_edit_cook_name' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <input name="cookName" id="cookName" class="cookitem-input" type="text" ng-model="formData.cookName"  form-tip="{{'recipe_edit_cook_name_tip' | translate}}"/>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'uhkklp_west_promotion' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <div class="activity-setting">
+                        <table class="table table-striped table-bordered table-hover table-condensed">
+                            <thead>
+                                <tr>
+                                    <th class="cookitem-td">{{'registration_id' | translate}}</th>
+                                    <th class="cookitem-td">{{'activity_activity_name' | translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="cookitem-td">
+                                    <select class="selectActivitySetting" ng-options="activeSetting.id for activeSetting in activeSettings" ng-model="currentActivitySetting" ng-change="setActiveSetting(currentActivitySetting)">
+                                        <option ng-show="false" value="">{{currentActivitySetting.id}}</option>
+                                    </select>
+                                </td>
+                                <td class="cookitem-td">
+                                    <input type="text" ng-model="formData.activitySettingName" readonly="true"  class="read-input"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl">{{'recipe_list_tag' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <label ng-show="recipe.tags.length <= 0" class="form-tip">{{'recipe_edit_empty_tags' | translate}}</label>
+                    <ul class="row member-attr-tags-items" ng-show="recipe.tags.length > 0">
+                        <li class="col-md-2 text-el" ng-repeat="tag in recipe.tags" >
+                            <wm-checkbox ng-model="tag.check" class="follower-checkbox-style"></wm-checkbox>{{tag.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <br/>
+
+            <div class="cookitem">
+                <div class="cookitem-content">
+                    <input class="btn btn-primary" type="submit" value="{{'recipe_edit_send' | translate}}" ng-disabled="isClickable"/>&nbsp;&nbsp;&nbsp;
+                    <a ng-href="/uhkklp/recipe?active={{active}}" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+                </div>
+            </div>
+
+            <br/>
+        </form>
+</div>

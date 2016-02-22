@@ -1,0 +1,23 @@
+<div wm-breadcrumb="breadcrumb"></div>
+<div wm-tabs="changeTab()" tabs="tabs" ng-model="curTab"></div>
+
+<div class="mt-panel" ng-show="list.data.length > 0 && !list.hasLoading">
+  <img class="mt-panel-img" src="/images/nav/video_default.png">{{'mt_video_count' | translate : '{count: totalCount}'}}
+  <a class="btn btn-success user-btn pull-right" style="margin-right: 5px; margin-top: 5px;" href="/uhkklp/edit/video">{{'mt_bt_create_video' | translate}}</a>
+</div>
+
+<div ng-class="{'mt_show_tb_Wrap': list.data.length > 0}" id="mtVideoTbWrap" class="uhkklp-push-tab tab-view-wrap mt-message-tab-view-wrap">
+
+  <div ng-show="{{list.data.length > 0}}" wm-table class="colored-table" ng-model="list"></div>
+
+  <div class="keywordlist-zero" ng-show="list.data.length == 0 && !list.hasLoading">
+    <a href="/uhkklp/edit/video"><div class="keywordlist-zero-img center-block"></div></a>
+    <span class="keywordlist-zero-text">{{'mt_bt_create_video' | translate}}</span>
+  </div>
+
+  <div class="clearfix">
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="page" page-size="pageSize" total-items="totalCount" on-change-size="changeSize" on-change-page="changePage"></div>
+    </div>
+  </div>
+</div>

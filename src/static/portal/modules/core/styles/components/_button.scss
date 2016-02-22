@@ -1,0 +1,126 @@
+$btn-types: add;
+$btn-size: 26px;
+$default-btn-hover-color: #555;
+$default-btn-active-shadow-color: #cacaca;
+$white-color: #fff;
+@each $type in $btn-types {
+  .btn-#{$type} {
+    @include background-image("/images/site/btn_#{$type}_normal.png");
+    display: inline-block;
+    cursor: pointer;
+    height: $btn-size;
+    width: $btn-size;
+
+    &:hover {
+      @include background-image("/images/site/btn_#{$type}_hover.png");
+    }
+  }
+}
+
+.btn-add-wrap {
+  text-align: center;
+  margin-top: 50px;
+  color: $base-text-color;
+}
+
+.btn {
+  border-radius: 2px;
+
+  &:focus,
+  &:active:focus {
+    outline: none;
+  }
+}
+
+.btn-default {
+  border: 1px solid $btn-default-border;
+  background-color: $btn-default-bg;
+
+  &:hover {
+    background-color: $btn-default-border;
+    color: $default-btn-hover-color;
+    border: 1px solid $btn-default-border;
+  }
+
+  &:active {
+    @include box-shadow(inset 0 0 5px $default-btn-active-shadow-color);
+    background-color: $btn-default-border;
+    border: 1px solid $btn-default-border;
+  }
+}
+
+.btn-success {
+  &:hover {
+    background-color: $white-background-text-hover-color;
+  }
+
+  &:active {
+    @include box-shadow(inset 0 0 5px $white-background-text-active-color);
+    background-color: $white-background-text-active-color;
+  }
+}
+
+.btn-add-radius {
+  @include background-image('/images/customer/addtag_normal.png');
+  background-position: 0;
+  font-weight: 700;
+  padding: 2px 30px;
+  color: $white-background-text-color;
+
+  &:hover {
+    @include background-image('/images/customer/addtag_hover.png');
+    color: $white-background-text-hover-color;
+  }
+
+  &:active {
+    @include box-shadow(0 0 0);
+  }
+}
+
+.btn-helpdesk-login {
+  margin-top: 30px;
+  display: inline-block !important;
+  color: $white-color !important;
+  padding: 6px 12px !important;
+}
+
+.btn-export {
+  background: url('/images/customer/export_normal.png') no-repeat left center;
+  padding: 0 0 0 25px;
+  color: $gray-background-text-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $gray-background-text-hover-color;
+    background-image: url('/images/customer/export_hover.png');
+  }
+
+  &.export-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .65;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+  }
+}
+
+.btn-import {
+  background: url('/images/customer/import_normal.png') no-repeat left center;
+  padding: 0 0 0 25px;
+  color: $gray-background-text-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $gray-background-text-hover-color;
+    background-image: url('/images/customer/import_hover.png');
+  }
+
+  &.export-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .65;
+    filter: alpha(opacity=65);
+    box-shadow: none;
+  }
+}
+

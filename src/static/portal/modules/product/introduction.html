@@ -1,0 +1,22 @@
+<div class="extension-continue-title" ng-if="extension.detail.active">
+  <img class="extension-icon-mr" src="/images/management/alert.png"/>
+  <span class="extension-gray2 fs16">{{'management_extension_continue' | translate}}</span>
+</div>
+<div ng-if="extension.detail.active">
+  <div class="extension-continue-member row mlr0 extension-gray1" ng-repeat="step in extension.detail.continues">
+    <div class="col-md-5 extension-continue">
+      <div ng-class="{'mb115': $index != 0}">
+        <div><img class="extension-step" ng-src="{{step.stepicon}}"/><a ng-href="{{step.link}}" class="fs18">{{step.title | translate}}</a></div>
+        <div class="clearfix">
+          <div class="extension-first-line"></div><div class="first-title"><img ng-src="{{extension.detail.firstDot}}"/>{{step.steps[0] | translate}}</div>
+        </div>
+        <div class="clearfix" ng-repeat="item in step.steps" ng-if="$index != 0">
+          <div class="extension-other-line"></div><div class="other-title"><img ng-src="{{extension.detail.firstDot}}"/>{{item | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 pd0">
+      <img class="col-md-12 pd0" ng-src="{{extension.detail.images[$index]}}"/>
+    </div>
+  </div>
+</div>

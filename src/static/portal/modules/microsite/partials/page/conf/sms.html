@@ -1,0 +1,18 @@
+<div ng-controller="wm.ctrl.microsite.page.config.sms as sms">
+    <form id="form-sms" ng-submit="cpts.sendData(sms.data)">
+      <div class="form-group">
+        <label class="fwbold" translate="content_component_config_sms_title"></label>
+      </div>
+      <div class="form-group">
+        <label for="tel" translate="content_component_config_sms_tel"></label>
+        <span class= "tel-front" without-star>+86</span>
+        <input class="form-control tel-back" type="text" id="tel" ng-model="sms.data.tel" form-tip="{{'content_component_config_sms_type_tip'|translate}}" wm-validate="sms.validateTel" required/>
+      </div>
+      <div class="form-group">
+        <label for="smsText" translate="content_component_config_sms_define_title"></label>
+        <input class="form-control" type="text" id="smsText" ng-model="sms.data.smsText" maxlength="10"/>
+        <span class="form-tip normal" translate="content_component_config_sms_length_tip"></span>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

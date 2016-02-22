@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": false,
+      "description": "用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须"
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "description": "验证码的类型 'bind', 'signup','updateCompanyInfo'或'exchange'"
+    },
+    "mobile": {
+      "type": "string",
+      "required": true,
+      "description": "手机号"
+    },
+    "codeId": {
+      "type": "string",
+      "required": true,
+      "description": "图片验证码Id"
+    },
+    "code": {
+      "type": "string",
+      "required": true,
+      "description": "图片验证码"
+    },
+    "openId": {
+      "type": "string",
+      "required": false,
+      "description": "type为'bind'时必须"
+    },
+    "channelId": {
+      "type": "string",
+      "required": false,
+      "description": "type为'bind'时必须"
+    }
+  }
+}

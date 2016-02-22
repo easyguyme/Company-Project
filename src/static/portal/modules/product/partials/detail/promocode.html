@@ -1,0 +1,18 @@
+<div class="below-tab-wrapper clearfix" ng-controller="wm.ctrl.product.detail.promocode as promocode">
+
+  <div wm-list-header icon="{'url':'/images/product/promotion_default.png'}" content="{{'product_promotion_total_records'|translate:'{ recordsCount: promocode.totalItems }'}}">
+  <button class="btn btn-success btn-listheader" translate="product_detail_import_code" ng-click="promocode.openModal()"></button>
+  </div>
+
+  <div class="promocode-wrapper mt20">
+    <wm-fixed-table ng-model="promocode.list"></wm-fixed-table>
+  </div>
+
+
+  <div ng-show="!!product.list.hasLoading" class="modal-backdrop fade product-list-loading"></div>
+
+  <div id="upload-loading" class="mask-loading product-upload-loading">
+    <div class="loading-icon"></div>
+  </div>
+
+</div>

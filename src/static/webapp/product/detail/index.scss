@@ -1,0 +1,131 @@
+.detail-bg {
+  position: relative;
+  overflow-x: hidden;
+
+  .pic-container {
+    @include size(100%, 25.5rem);
+    position: relative;
+
+    .swiper-pagination {
+      bottom: 1.75rem;
+      left: .75rem;
+      width: auto;
+
+      .swiper-pagination-bullet {
+        @include square(.65rem);
+        display: inline-block;
+        border-radius: 100%;
+        background-color: rgba($item-shadow-bg, .5);
+      }
+
+      .swiper-pagination-bullet-active {
+        background-color: $dot-bg-color;
+      }
+    }
+  }
+
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.pic-wrapper {
+  box-shadow: 2px 2px .4rem $item-shadow-color;
+  margin-bottom: .5rem;
+  background-color: $white;
+}
+
+.detail-main {
+  padding: .75rem 1rem .25rem;
+}
+
+.detail-exchange-shadow {
+  @include size(100%, 5.25rem);
+  background-color: rgba($exchange-shadow-bg-color, .6);
+  position: fixed;
+  bottom: 0;
+  padding: .75rem 1rem;
+  color: $white;
+}
+
+.detail-my-point {
+  margin-right: .75rem;
+  float: left;
+  line-height: 3.75rem;
+}
+
+.detail-pointtip-fs {
+  font-size: 1.4rem;
+}
+
+.detail-point-fs {
+  font-size: 2.4rem;
+}
+
+.detail-point-not-enough {
+  color: $gray-tip;
+  float: right;
+  line-height: 3.75rem;
+}
+
+.product-detail-title {
+  color: $yellow-bg-color;
+}
+
+.product-detail {
+  padding: 1rem;
+
+  img {
+    max-width: 100% !important;
+  }
+}
+
+.address-detail {
+  padding: 1rem;
+  border-bottom: 1px solid $item-border-color;
+  line-height: 1;
+
+  .address-name {
+    font-size: 1.2rem;
+    color: $item-name-color;
+  }
+
+  .address-location {
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-top: .2rem;
+    color: $tab-color;
+    white-space: normal;
+  }
+}
+
+.btn-default {
+  box-shadow: -.1rem .1rem .2rem $btn-shadow-color;
+  border: 1px solid $yellow-bg-color;
+}
+
+.btn-exchange {
+  @include size(10.5rem, 3.75rem);
+  float: right;
+}
+
+.no-detail {
+  color: $item-status-color;
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.4rem;
+}
+
+.goods-score {
+  padding-left: 1.5rem;
+  background-image: url('/images/mobile/integral.png');
+  background-repeat: no-repeat;
+  background-size: .7rem .8rem;
+  background-position: .1rem .4rem;
+}
+
+.hide {
+  display: none;
+}

@@ -1,0 +1,60 @@
+.c-ev-list {
+  &__item {
+    @include clearfix();
+    @include c-box;
+
+    width: 100%;
+    color: $theme-gray-text;
+
+    &__name {
+      @include text-overflow();
+      width: 2.5rem;
+      line-height: .625rem;
+      font-size: .41rem;
+    }
+
+    &__commstars {
+      @include c-box-flex(1);
+
+      background-color: $commstars-default-bg;
+      font-size: 0;
+
+      &__item {
+        @include square(.625rem);
+
+        background-size: .625rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: inline-block;
+
+        &--checked {
+          background-image: url('/images/mobile/components/score_selected.png');
+        }
+
+        &--unchecked {
+          background-image: url('/images/mobile/components/score_normal.png');
+        }
+
+        + .c-ev-list__item__commstars__item {
+          margin-left: .625rem;
+        }
+
+        &--color {
+          background-image: url('/images/mobile/components/appraisement_star.png');
+
+          &--checked {
+            background-color: $commstars-checked-default-bg;
+          }
+
+          &--unchecked {
+            background-color: $commstars-unchecked-default-bg;
+          }
+        }
+      }
+    }
+
+    + .c-ev-list__item {
+      margin-top: .47rem;
+    }
+  }
+}

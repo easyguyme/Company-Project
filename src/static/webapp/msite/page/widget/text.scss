@@ -1,0 +1,59 @@
+.m-text {
+  $m-text-color: #555;
+
+  .m-text-wrapper {
+    color: $m-text-color;
+    display: block;
+    padding: .5rem;
+    text-decoration: none;
+    word-break: break-all;
+
+    p {
+      margin: 0;
+    }
+
+    .m-text-content {
+      word-break: break-word;
+    }
+  }
+
+  .m-text-size {
+    font-size: .5rem;
+  }
+
+  .m-text-content-abbr {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-height: .75rem;
+    max-height: 2.25rem;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .m-text-content-more {
+    display: block;
+    height: auto;
+    -webkit-line-clamp: initial;
+    max-height: none;
+  }
+
+  .m-text-content-less {
+    -webkit-line-clamp: 3;
+    max-height: 2.25rem;
+  }
+
+  .m-text-more {
+    background-image: url('/images/microsite/text_more.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: .5rem;
+    cursor: pointer;
+    height: .5rem;
+    padding-top: .5rem;
+  }
+
+  .m-text-less {
+    background-image: url('/images/microsite/text_less.png');
+  }
+}

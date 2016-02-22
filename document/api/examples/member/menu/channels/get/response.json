@@ -1,0 +1,35 @@
+[
+    {
+        "id": "55ba03f6e9c2fbf3348b4567",
+        "channelId": "54d9c155e4b0abe717853ee1",
+        "origin": "wechat",
+        "name": "熊猫Baby",
+        "type": "SERVICE_AUTH_ACCOUNT",
+        "status": "enable",
+        "isTest": true,
+        "openId": "oC9Aes9vuisNRmC4ZNdIXY1lb_rk",
+        "memberId": "55a20fd4e9c2fb1b1a8b4567"
+    },
+    {
+        "id": "55ba03f6e9c2fbf3348b4567",
+        "channelId": "54d9c155e4b0abe717853ee1",
+        "origin": "wechat",
+        "name": "熊猫Baby",
+        "type": "SERVICE_AUTH_ACCOUNT",
+        "status": "enable",
+        "isTest": true,
+        "openId": "55a21063e9c2fb1a1a8b4567",
+        "memberId": "55a20fd4e9c2fb1b1a8b4567"
+    },
+    {
+        "id": "55ba03f6e9c2fbf3348b4567",
+        "channelId": "54d9c155e4b0abe717853ee1",
+        "origin": "wechat",
+        "name": "熊猫Baby",
+        "type": "SERVICE_AUTH_ACCOUNT",
+        "status": "enable",
+        "isTest": true,
+        "openId": "55a21063e9c2fb1a1a8b4567",
+        "memberId": "55a20fd4e9c2fb1b1a8b4567"
+    }
+]

@@ -1,0 +1,35 @@
+<div wm-breadcrumb="webpage.breadcrumb"></div>
+<ul class="container-fluid edit-basic">
+  <li class="row">
+    <label class="col-sm-2" translate="title"></label>
+    <p class="col-sm-10">{{webpage.page.title}}</p>
+  </li>
+  <li class="row">
+    <label class="col-sm-2" translate="description"></label>
+    <p class="col-sm-10">{{webpage.page.description}}</p>
+  </li>
+  <li class="operate-icon edit-icon" ng-click="webpage.edit()"></li>
+</ul>
+<div ng-include="'/build/modules/microsite/partials/page/step/components.html'"></div>
+
+<script type="text/ng-template" id="editWebpage.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'content_page_information'|translate}}</h4>
+  </div>
+  <form name="editPageForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <div class="form-group">
+        <span class="dark-gray" for="title">{{'content_page_title'|translate}}</span>
+        <input class="form-control webpage-input" type="text" id="title" ng-model="title" form-tip="{{'content_page_title_tip'|translate}}" maxlength="10" required without-star/>
+      </div>
+      <div class="form-group">
+        <span class="dark-gray page-title" for="description">{{'content_page_description'|translate}}</span>
+        <textarea class="form-control webpage-textarea" id="description" ng-model="description" form-tip="{{'content_page_description_tip'|translate}}" maxlength="50" required without-star></textarea>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>

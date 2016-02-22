@@ -1,0 +1,26 @@
+<div class="container-fluid issue">
+  <div class="helpdesk-issue clear-float">
+    <div class="waterfall-news-list outer-height" ng-class="{'closed-issue-list': issueStatus.status == 'closed'}" ng-repeat="issueStatus in issueStatuses">
+      <div class="issue-header header-height" ng-class="{'closed-liner': issueStatus.status == 'closed'}">
+        <span translate="{{issueStatus.title}}"></span> ·
+        <span class="issues-count"></span>
+      </div>
+
+      <chat-issue-infinite-drop issue-status="{{issueStatus.status}}">
+      </chat-issue-infinite-drop>
+    </div>
+  </div>
+
+  <div ui-view class="issue-animation"></div>
+
+  <div class="preview-attachment" ng-if="isShowAttachment">
+    <div class="modal-backdrop fade in" style="z-index:1040" ng-click="hideWrapper()"></div>
+    <div class="preview-wrapper">
+      <div class="preview-img-module">
+        <img class="preview-img absolute-center" ng-if="showAttachment.format=='Img'" ng-src="{{showAttachment.url}}" ng-click="showInWindow(showAttachment.url)" />
+        <span class="format-type absolute-center" ng-if="showAttachment.format!='Img'" ng-class="'format-'+showAttachment.format">{{showAttachment.thumbnailName}}</span>
+      </div>
+    </div>
+    <span class="attachment-download-icon" ng-click="downloadAttachment(showAttachment)"></span>
+  </div>
+</div>

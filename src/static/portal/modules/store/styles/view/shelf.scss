@@ -1,0 +1,124 @@
+.storeGoods-detail-wrapper {
+  .clear-margin {
+    margin: 0;
+  }
+
+  label {
+    color: $wm-dark-gray;
+    font-weight: normal;
+  }
+
+.goods-basic-name {
+    $basic-name-color: #1c1c1c;
+    color: $basic-name-color;
+    margin-bottom: 15px;
+    margin-top: 0;
+  }
+
+  .goods-item-title {
+    padding-left: 15px;
+  }
+
+  .goods-item-pictures {
+    min-width: 330px;
+  }
+
+  .goods-property-wrapper {
+    $border-color: #ddd;
+
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+
+    padding: 10px 0 0 0;
+
+    label {
+      margin-bottom: 0;
+    }
+
+    .goods-property-item {
+      margin-bottom: 10px;
+    }
+  }
+
+  .goods-intro-wrapper {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .goods-status-header {
+    $header-bg-color: #eee;
+
+    background-color: $header-bg-color;
+    padding: 5px 20px;
+
+    .goods-status-label {
+      display: inline-block;
+      line-height: 20px;
+      color: #787878;
+    }
+
+    .goods-status-box {
+      border-radius: 2px;
+      color: $white-background-color;
+      display: inline-block;
+      line-height: 13px;
+      margin-left: 25px;
+      margin-top: 3px;
+      padding: 1px 4px;
+      vertical-align: top;
+    }
+
+    .on-shelves {
+      background-color: $white-background-text-color;
+    }
+
+    .off-shelves {
+      $off-shelves-bg-color: #d0d0d0;
+
+      background-color: $off-shelves-bg-color;
+    }
+  }
+
+  .goods-status-body {
+    $body-bg-color: #f5f5f5;
+
+    background-color: $body-bg-color;
+    padding: 20px 10px 20px 20px;
+
+    label {
+      margin-bottom: 0;
+    }
+
+    .goods-on-or-off-label {
+      width: auto;
+      margin-right: 25px;
+    }
+
+    .goods-on-or-off-time {
+      $on-or-off-time-text-color: #333;
+
+      color: $on-or-off-time-text-color;
+      width: 125px;
+    }
+
+    .goods-scheduled-box {
+      $scheduled-background-color: #e8b400;
+
+      border-radius: 2px;
+      color: $white-background-color;
+      display: inline-block;
+      line-height: 13px;
+      margin-top: 3px;
+      padding: 1px 4px;
+      vertical-align: top;
+      background-color: $scheduled-background-color;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+

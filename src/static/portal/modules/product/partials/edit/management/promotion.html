@@ -1,0 +1,190 @@
+<div wm-breadcrumb="promotion.breadcrumb"></div>
+
+<section class="container-fluid">
+  <form role="form" class="edit-promotion-form" ng-submit="promotion.submit()">
+
+    <div class="row clear-container-margin">
+      <div class="form-group col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <label class="fields-item-label required-field product-detail-name" translate="product_promotion_activity_goods" style="display: block;"></label>
+        <span class="btn btn-success" translate="product_promotion_associated_goods" ng-click="promotion.associatedGoods()" ng-if="!promotion.chosenProduct"></span>
+        <span ng-if="promotion.showErr" class="error-tip">{{'product_promotion_associated_goods_tip' | translate}}</span>
+        <div ng-if="promotion.chosenProduct">
+          <span class="mr10">{{promotion.chosenProduct.name}}</span>
+          <span ng-if="!promotion.id" class="edit-goods-wrapper cp" ng-click="promotion.associatedGoods()" translate="edit"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clear-container-margin">
+      <div class="form-group col-md-7 col-sm-8 col-xs-12 clear-container-padding">
+        <label class="fields-item-label required-field product-detail-name" translate="promotion_code" style="display: block;"></label>
+        <div class="mb20">
+          <div class="col-md-3 col-xs-3 promotion-code-type">
+            <div wm-radio ng-model="promotion.codeType" value="generate" ng-click="promotion.changeCodeType()"></div>{{'product_promotion_generate_batch' | translate}}
+          </div>
+          <div class="col-md-7 col-xs-7">
+            <input wm-validate="promotion.checkCount('codeCount', promotion.count)" id="codeCount" type="text" class="form-control" ng-model="promotion.count" placeholder="{{'product_promotion_code_count_tip' | translate}}" maxlength="6"/>
+          </div>
+          <button type="button" ng-disabled="promotion.fakeHistory.length > 0 || promotion.codeType == 'import'" class="btn btn-success generate-btn ng-scope" translate="product_code_generate" ng-click="promotion.generate()"></button>
+        </div>
+        <div class="clearfix">
+          <div class="col-md-3 col-xs-3 promotion-code-type">
+            <div wm-radio ng-model="promotion.codeType" value="import" ng-click="promotion.changeCodeType()"></div>{{'product_promotion_import_code' | translate}}
+          </div>
+          <div class="file-upload-input col-md-8 col-xs-8">
+            <div ng-if="promotion.codeType != 'import' || !!promotion.uploading || !promotion.chosenProduct || promotion.fakeHistory.length > 0" class="col-md-12 file-disable-wrapper"></div>
+            <input class="form-control" name="code-file" id="import-file" ng-model="promotion.file" readonly="readonly" placeholder="{{'product_no_file' | translate}}"/>
+            <div id="upload" ng-file-select ng-file-change="promotion.upload($files)" class="file-upload-wrap" multiple="true" ng-class="{'disable-file-upload':promotion.codeType != 'import' || !!promotion.uploading || !promotion.chosenProduct || promotion.fakeHistory.length > 0}" ng-model="promotion.file">
+              <span></span>
+            </div>
+        </div>
+        <span ng-if="promotion.uploading" style="margin-left:5px" class="store-synchronize-icon"></span>
+        </div>
+        <div ng-if="promotion.showCodesErr"><span class="error-tip" translate="product_promocodes_error_tip"></span></div>
+      </div>
+    </div>
+
+    <div class="row clear-container-margin" ng-if="promotion.list.data.length > 0">
+      <wm-table class="colored-table" ng-model="promotion.list"></wm-table>
+    </div>
+
+    <div class="row clear-container-margin">
+      <div class="form-group col-md-6 col-sm-8 col-xs-10 mt20 clear-container-padding product-detail-name">
+        <wm-checkbox ng-model="promotion.enableAssociation" ng-click="promotion.showGift()"></wm-checkbox>{{'product_promotion_association_enable' | translate}}
+      </div>
+    </div>
+
+    <div style="margin-left:20px" class="row clear-container-margin" ng-if="promotion.enableAssociation">
+      <div class="form-group clear-container-padding">
+        <ul>
+          <li class="repeat-radio-item" ng-repeat="type in promotion.giftTypes track by $index">
+            <div wm-radio ng-model="promotion.code.gift.type" value="{{type.value}}" ng-click="promotion.changeGiftType(type.value)"></div>
+            <label class="fields-item-label associated-gift-item" translate="{{type.name}}"></label>
+          </li>
+        </ul>
+
+        <section class="gift-rule-box score-rule-box" ng-if="promotion.code.gift.type == 'score'">
+          <div class="gift-rule-header clearfix">
+            <span class="wrapper-hearder-content basic-score-title col-md-1" translate="product_promotion_code_score"></span>
+            <div class="col-md-3"><input id="giftRewardScore" wm-validate="promotion.checkPositiveInt('giftRewardScore', promotion.code.gift.config.number)" class="form-control basic-score-content" ng-model="promotion.code.gift.config.number" ></div>
+            <span class="wrapper-hearder-content basic-score-unit col-md-1" translate="product_promotion_basic_score_unit"></span>
+
+            <div class="col-md-7 wrapper-hearder-content">
+              <span class="form-tip normal">{{'number_range_tip' | translate:{'number': 0} }}</span>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="gift-rule-box coupon-rule-box" ng-if="promotion.code.gift.type == 'coupon'">
+        </section>
+
+        <section class="gift-rule-box present-rule-box" ng-if="promotion.code.gift.type == 'present'">
+        </section>
+
+        <section class="gift-rule-box lottery-rule-box" ng-if="promotion.code.gift.type == 'lottery'">
+          <div class="row clear-container-margin">
+            <div class="form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+              <label class="fields-item-label product-detail-name" translate="product_promotion_lotto_send_type" style="display: block;"></label>
+
+              <ul class="clear-margin">
+                <li class="repeat-radio-item" ng-repeat="type in promotion.sendLottoTypes track by $index">
+                  <div wm-radio ng-model="promotion.code.gift.config.method" value="{{type.value}}" ng-click="promotion.changeSendLottoTypes()"></div>
+                  <label class="fields-item-label associated-gift-item" translate="{{type.name}}"></label>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+              <label class="fields-item-label product-detail-name" translate="product_promotion_lotto_gift_fill_info" style="display: block;"></label>
+
+              <ul class="clear-margin">
+                <li class="repeat-gift-item lotto-gift-wrapper row clear-container-margin" ng-repeat="prize in promotion.lottoPrizes track by $index">
+                  <div class="gift-info-wrapper col-md-11 col-sm-11 col-xs-11">
+                    <div class="col-md-7 col-sm-12 col-xs-12 clear-container-padding">
+                      <label class="fields-item-label col-md-3 col-sm-4 col-xs-12" translate="product_promotion_gift_name"></label>
+                      <div class="col-md-9 col-sm-8 col-xs-12 clear-container-padding">
+                        <input id="prizeName{{$index}}" class="form-control gift-info-name" placeholder="{{'character_length_tip' | translate:{'name': 'Gift name', 'minNumber': 4, 'maxNumber': 30} }}" maxlength="30" ng-model="prize.name" wm-validate='promotion.checkPrizeName("prizeName"+$index, prize.name)'>
+                      </div>
+                    </div>
+                    <div class="col-md-5 col-sm-12 col-xs-12 clear-container-padding">
+                      <label class="fields-item-label col-md-4 col-sm-5 col-xs-12">{{promotion.sendLottoTypesGiftInfo[promotion.code.gift.config.method].numberTitle | translate}}</label>
+                      <div class="col-md-8 col-sm-7 col-xs-12 clear-container-padding">
+                        <div class="col-md-10 col-sm-9 col-xs-9 clear-container-padding">
+                          <input id="prizeNumber{{$index}}" class="form-control gift-info-number" ng-model="prize.number" ng-if="promotion.code.gift.config.method == 'scale'" wm-validate='promotion.checkPrizeNumber("prizeNumber"+$index, prize.number)' placeholder="{{'product_promotion_winning_odds_placeholder' | translate}}">
+                          <input id="prizeNumber{{$index}}" class="form-control gift-info-number" ng-model="prize.number" ng-if="promotion.code.gift.config.method == 'number'" wm-validate='promotion.checkPositiveInt("prizeNumber"+$index, prize.number)' placeholder="{{'number_range_tip' | translate:{'number': 0} }}">
+                        </div>
+                        <label class="fields-item-label col-md-2 col-sm-3 col-xs-3" style="padding-right: 0;padding-left: 5px;">{{promotion.sendLottoTypesGiftInfo[promotion.code.gift.config.method].numberUnit | translate}}</label>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="gift-operate-wrapper col-md-1 col-sm-1 col-xs-1">
+                    <span class="gift-operate-del absolute-center" ng-class="{'gift-operate-disable': promotion.lottoPrizes.length == 1}" ng-click="promotion.removeLottoPrizes($index, $event)"></span>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding clear-margin">
+              <span class="btn-add-radius btn" translate="product_promotion_add_gift" ng-click="promotion.addLottoPrizes()"></span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <div class="operation-item mt30">
+      <div class="form-group">
+        <button class="btn btn-success user-btn mr20" translate="ok"></button>
+        <span class="btn btn-default user-btn" translate="cancel" ng-click="promotion.cancel()"></span>
+      </div>
+    </div>
+
+  </form>
+</section>
+<div ng-if="!!promotion.uploading" class="modal-backdrop fade in" style="z-index:1040;opacity:0"></div>
+
+<script type="text/ng-template" id="associatedGoods.html">
+  <header class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title" translate="product_promotion_associated_goods"></h4>
+  </header>
+
+  <section class="modal-body modal-bgcolor clearfix">
+
+    <div class="form-group search-container">
+      <wm-search ng-model="searchKey" style="display:inline-block" class="search-box" click-func="search()" placeholder="{{'product_promotion_goods_search_key' | translate}}"></wm-search>
+      <div class="promotion-manage-filter" ng-click="showFilter()">
+        <span class="mr10" translate="customer_follower_screening_conditions"></span>
+        <span ng-class="{isshow:isShow, ishide:!isShow}"></span>
+      </div>
+    </div>
+    <div class="promotion-category-wrapper" ng-show="isShow">
+      <div class="col-md-2 col-xs-2">{{'product_production_promotion_category' | translate}}</div>
+      <div class="col-md-2 col-xs-2">
+        <div ng-click="checkAllCat(checkAll)" wm-checkbox ng-model="checkAll"></div>{{'core_all_select' | translate}}
+      </div>
+      <ul class="col-md-8 col-xs-8 pd0">
+        <li class="col-md-3 text-el mb10" ng-repeat="category in categories track by $index"><div wm-checkbox ng-model="category.check" ng-click="checkItem(category.check)"></div>{{category.name}}</li>
+      </ul>
+      <div class="promotion-cat-operation"><button ng-click="search()" class="btn btn-success mr20">{{'customer_follower_search' | translate}}</button><button ng-click="clear()"class="btn btn-default">{{'customer_follower_clear' | translate}}</button></div>
+    </div>
+    <div class="form-group clearfix">
+      <wm-select-table ng-model="list" class="associated-table"></wm-select-table>
+      <div class="table-no-data" ng-if="list.data.length == 0" translate="no_data"></div>
+      <div class="associated-goods-pagination" ng-if="list.data.length > 0">
+        <wm-pagination current-page="currentPage" page-size="pageSize" total-items="totalItems" on-change-page="changePage" hide-page-size="true"></wm-pagination>
+      </div>
+    </div>
+
+    <div class="form-group center-text" style="margin-bottom: 45px;">
+      <button class="btn btn-success" translate="management_submit" ng-click="submit()"></button>
+    </div>
+
+  </section>
+
+</script>

@@ -1,0 +1,59 @@
+{
+    "items": [
+        {
+            "id": "55efb2e8971374151a8b4567",
+            "couponId ": "55efb2e8971374151a8b4567",
+            "type": "coupon",
+            "title": '优惠卷名称',
+            "status": 'recieved',
+            "member": {
+                "id": "55efb2e8971374151a8b4567",
+                "name": "会员名称"
+                "phone": "13345267867"
+            },
+            store {
+                "id "  :  "55efb2e8971374151a8b4567",
+                "name" :  "门店名称"
+            },
+            "total" : 10,
+            "operationTime ": "2015-08-26 10:28:54",
+            "createdAt": "2015-08-26 10:28:54",
+        },
+        {
+            "id": "55efb2e8971374151a8b4567",
+            "couponId ": "55efb2e8971374151a8b4567",
+            "type": "coupon",
+            "title": '优惠卷名称',
+            "status": 'recieved',
+            "member": {
+                "id": "55efb2e8971374151a8b4567",
+                "name": "会员名称"
+                "phone": "13345267867"
+            },
+            store {
+                "id "  :  "55efb2e8971374151a8b4567",
+                "name" :  "门店名称"
+            },
+            "total" : 10,
+            "operationTime ": "2015-08-26 10:28:54",
+            "createdAt": "2015-08-26 10:28:54",
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/product/coupon-logs?page=1&status=recieved&searchKey=mike&per-page=2"
+        },
+        "next": {
+            "href": "http://wm.com/api/product/coupon-logs?page=2&status=recieved&searchKey=mike&per-page=2"
+        },
+        "last": {
+            "href": "http://wm.com/api/product/coupon-logs?page=2&status=recieved&searchKey=mike&per-page=2"
+        }
+    },
+    "_meta": {
+        "totalCount": 2,
+        "pageCount": 2,
+        "currentPage": 0,
+        "perPage": 2
+    }
+}

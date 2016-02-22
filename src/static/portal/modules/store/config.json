@@ -1,0 +1,32 @@
+{
+  "name": "store",
+  "states": [
+    "store-order-{id}",
+    "store-info-{id}",
+    "store-staff-{id}",
+    "store-shelf-{id}",
+    "store-edit-shelf-{id}",
+    "store-view-shelf-{id}",
+    "store-create-shelf-{id}",
+    "store-view-order-{id}"
+  ],
+  "resources": {
+    "orders": "/api/store/orders",
+    "order": "/api/store/order",
+    "stores": "/api/channel/offlinestore/store",
+    "storeInfo": "/api/store/store",
+    "staffs": "/api/store/staffs",
+    "staff": "/api/store/staff",
+    "channelInfo": "/api/common/channel/get-channel-info",
+    "createStoreGoods": "/api/store/goods/create",
+    "deleteStoreGoods": "/api/store/goods/delete",
+    "getGoods": "/api/store/goods/view",
+    "updateStoreGoods" : "/api/store/goods/update",
+    "storeGoodsList": "/api/store/goods/index",
+    "storeProduct": "/api/product/product",
+    "storeGoods": "/api/store/goods/view",
+    "updateStoreSale": "/api/store/goods/sale",
+    "storeOrderView": "/api/store/order/view",
+    "storeOrder": "/api/store/order"
+  }
+}

@@ -1,0 +1,41 @@
+<div class="member-wechat-interact clearfix" ng-controller="wm.ctrl.member.profile.interaction as interaction">
+
+  <!-- Select Channels -->
+  <div class="member-profile-select">
+    <div wm-select items="interaction.channelItems" type="iconText" text-field="channelName" value-field="value" ng-model="interaction.channelId" on-change="interaction.changeChannel"></div>
+  </div>
+
+  <div class="member-switch-tab">
+    <!-- Tab with button style-->
+    <ul class="tab-list">
+      <li class="tab-btn" ng-repeat="tab in interaction.tabs track by $index" ng-class="{'active': tab.active}" ng-click="interaction.changeTab($index)" translate="{{tab.name}}"></li>
+    </ul>
+
+    <!-- Statistic overview-->
+    <ul class="member-overview-wrapper clearfix" ng-if="interaction.totalCount > 0">
+      <li class="pull-left" ng-repeat="overview in interaction.overview">
+        <span translate="{{overview.text}}"></span>：<span class="overview-value">{{overview.value}}&nbsp;</span><i ng-hide="overview.notail" translate="times"></i>
+      </li>
+      <li class="pull-left" ng-show="interaction.curTab == 1">
+        <span ng-click="interaction.getMessageDetail()" class="member-message-log" translate="member_message_record"></span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Menu Table -->
+  <div ng-show="interaction.tabs[0].active && interaction.totalCount > 0" wm-table ng-model="interaction.menuList" class="colored-table"></div>
+
+  <!-- Message Table -->
+  <div ng-show="interaction.tabs[1].active && interaction.totalCount > 0" wm-table ng-model="interaction.messageList" class="colored-table message-table"></div>
+
+  <!-- Pagination -->
+  <div class="broadcast-pagination pagination-no-padding" ng-show="interaction.totalCount > 0">
+    <div wm-pagination current-page="interaction.currentPage" page-size="interaction.pageSize" total-items="interaction.totalCount" on-change-size="interaction.changeSize" on-change-page="interaction.changePage" extra-size="5"></div>
+  </div>
+
+  <div ng-if="interaction.totalCount == 0" class="member-no-record">
+    <span ng-show="interaction.tabs[0].active">{{'member_no_menu_record' | translate}}</span>
+    <span ng-show="interaction.tabs[1].active">{{'member_no_keyword_record' | translate}}</span>
+  </div>
+</div>
+

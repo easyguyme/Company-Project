@@ -1,0 +1,265 @@
+<div wm-breadcrumb="token.breadcrumb"></div>
+<div wm-tabs="token.changTab()" tabs="token.tabs" ng-model="token.curTab"></div>
+<div wm-tab-panes tabs="token.tabs" full-path="/build/modules/management/partials/token/"></div>
+
+<script type="text/ng-template" id="addWebHook.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{webHook.id?'management_edit_web_hook':'management_add_web_hook'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor clearfix">
+    <form role="form" class="members-form token-label" ng-submit="submit()">
+
+      <div class="form-group">
+        <label class="dark-gray" translate="management_web_hook_url" required></label>
+        <input id="webHookUrl" type="url" class="form-control" wm-url ng-model="webHook.url" required>
+      </div>
+
+      <div class="form-group">
+        <label class="dark-gray" translate="management_binded_channel"></label>
+
+        <ul class="col-md-12 col-xs-12 pd0" ng-if="channels.length > 0">
+          <li class="col-md-6 col-xs-6 setting-channel-split" ng-repeat="channel in channels track by $index">
+            <div class="col-md-2 col-xs-2 setting-channel-check">
+              <wm-checkbox ng-model="channel.checked"></wm-checkbox>
+            </div>
+            <div class="setting-channel-info pd0 col-md-10 col-xs-10 clearfix">
+              <div class="setting-channel-avatar-wrap" ng-class="{'account-avatar-green':channel.type=='wechat', 'account-avatar-yellow':channel.type=='weibo'}"><img class="setting-channel-avatar" ng-src="{{channel.avatar}}"/><img class="sign-icon" ng-src="/images/core/{{channel.type}}-icon.png"></div>
+              <div class="pull-right setting-channel-info-width">
+                <div class="setting-channel-name" wm-tooltip="{{channel.name}}">{{channel.name}}</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="center-text"><button class="btn btn-success btn-position ng-scope user-btn" translate="ok"></button></div>
+    </form>
+  </div>
+</script>
+
+<!-- Add members attribute -->
+<script type="text/ng-template" id="addTokens.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{token.id?'management_edit_private_token':'management_add_private_token'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor clearfix">
+    <form role="form" class="members-form token-label" ng-submit="submit()">
+      <div class="form-group ">
+        <label class="dark-gray" translate="management_application_icon" required></label>
+        <div class="model-token">
+          <div class="modal-avatar-wrapper-token clearfix">
+            <div class="thumbnail img-wrapper">
+              <div class="menber-avatar-icon"><img ng-src="{{token.icon|qiniu:80}}"/></div>
+                <div id="user-profile-avatar" wm-file-upload process-bar='true' class="file-upload-wrap file-style" ng-model="token.icon" max-size="2048">
+                  <div class="img-btn-style file-upload-wrap" translate="management_upload_icon"></div>
+                </div>
+              </div>
+          </div>
+          <div class="token-pic-tip">
+            <span class="form-tip normal" translate="management_token_icon_tip"></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+
+        <label class="dark-gray" translate="management_private_token_name" required></label>
+        <input id="memberPropertyName" class="form-control" maxlength="50" ng-model="token.name" required>
+        <span class="form-tip normal" maxlength="20" translate="management_token_name_tip">
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label class="dark-gray" translate="management_application_description"></label>
+        <textarea name="rule" ng-model="token.content" class="form-control score-txt-nosize ng-pristine ng-valid" rows="10"></textarea>
+        <span class="form-tip normal" maxlength="120" translate="management_token_description_tip"></span>
+      </div>
+      <div class="center-text"><button class="btn btn-success btn-position ng-scope user-btn" translate="ok">确定</button></div>
+    </form>
+  </div>
+</script>
+
+<!-- detial token -->
+<script type="text/ng-template" id="detialToken.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_application_detial'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor clearfix detial-pannel">
+    <div class="members-form token-label">
+      <label class="dark-gray word-color" translate="management_application_icon"></label>
+      <div class="model-token">
+        <div class="modal-avatar-wrapper-token clearfix">
+          <div class="thumbnail img-wrapper">
+            <img class="menber-avatar-icon " ng-src="{{token.icon | qiniu:80}}">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group token-group">
+      <label class="dark-gray" translate="management_application_name"></label>
+      <p>{{token.name}}</p>
+    </div>
+
+    <div class="form-group token-group">
+      <label class="dark-gray" translate="management_application_description"></label>
+      <p>{{token.content}}</p>
+    </div>
+
+
+    <div class="form-group token-group">
+      <hr></hr>
+    </div>
+
+    <div class="form-group token-group">
+      <label class="dark-gray" translate="management_create_time"></label>
+      <p ng-bind="token.createdAt|date:'yyyy-MM-dd HH:mm:ss'"></p>
+    </div>
+    <div class="form-group token-group">
+      <label class="dark-gray" translate="management_private_token_content"></label>
+      <p class="token-private-key">{{token.privateKey}}</p>
+    </div>
+  </div>
+</script>
+
+<!-- Add wechat test account -->
+<script type="text/ng-template" id="addTestAccount.html">
+  <div ng-show="isAdd">
+    <div class="modal-header">
+      <button type="button" class="close popup-close graphic-btn-close cp" ng-click="close()"></button>
+      <h4 class="modal-title create-graphics-title">{{'management_add_wechat_test_account'|translate}}</h4>
+    </div>
+
+    <div class="modal-body modal-bgcolor clearfix">
+      <form role="form" class="members-form token-label" ng-submit="submit()">
+        <div class="form-group">
+          <label class="dark-gray" translate="management_wechat_test_account_name" required></label>
+          <input class="form-control" maxlength="50" ng-model="name" required>
+          <span class="form-tip normal" maxlength="20" translate="management_token_name_tip">
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label class="dark-gray" translate="management_wechat_test_account_app_id" required></label>
+          <input name="rule" ng-model="appId" class="form-control" required></input>
+        </div>
+
+        <div class="form-group">
+          <label class="dark-gray" translate="management_wechat_test_account_app_secret" required></label>
+          <input name="rule" ng-model="appSecret" class="form-control" required></input>
+        </div>
+
+        <div class="form-group">
+          <label class="dark-gray" translate="management_wechat_test_account_original_id" required></label>
+          <input name="rule" ng-model="originalId" class="form-control" required></input>
+        </div>
+
+        <div class="center-text"><button class="btn btn-success btn-position ng-scope user-btn" translate="ok"></button></div>
+      </form>
+    </div>
+  </div>
+
+  <div ng-show="!isAdd">
+    <div class="modal-header">
+      <button type="button" class="close popup-close graphic-btn-close cp" ng-click="close()"></button>
+      <h4 class="modal-title create-graphics-title">{{'management_wechat_test_account_access_title'|translate}}</h4>
+    </div>
+    <div class="modal-body modal-bgcolor clearfix">
+      <div class="step-one clearfix">
+        <img src="/images/management/stepone.png" class="step-icon pull-left">
+        <div class="step-content">
+          <div class="step-one-title">{{'management_channel_weibo_access_enter'|translate}}{{'management_wechat_test_account_developer_center'|translate}}{{'management_channel_weibo_access_stepone'|translate}}</div>
+          <img class="screenshot" src="/images/management/testwechat_screenshot1.png"/>
+        </div>
+      </div>
+      <div class="step-two clearfix">
+        <img src="/images/management/steptwo.png" class="step-icon pull-left">
+        <div class="step-content">
+          <div class="step-two-title">{{'management_wechat_test_account_access_steptwo'|translate}}</div>
+          <div class="step-two-content">
+            <label>URL:</label>
+            <input type="text" class="form-control" value="{{serviceUrl}}" readonly="readonly"/>
+            <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="serviceUrl"></i>
+          </div>
+          <div class="step-two-content">
+            <label>Token:</label>
+            <input type="text" class="form-control" value="{{token}}" readonly="readonly"/>
+            <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="token"></i>
+          </div>
+        </div>
+      </div>
+      <div class="center-text">
+        <button class="btn btn-success" translate="ok" ng-click="close()"></button>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- View wechat test account -->
+<script type="text/ng-template" id="viewTestAccount.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_wechat_test_account_detail_info'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <label class="dark-gray" translate="management_wechat_test_account_name"></label>
+      </div>
+      <div class="col-xs-12">
+        <span>{{name}}</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <label class="dark-gray" translate="management_wechat_test_account_app_id"></label>
+      </div>
+      <div class="col-xs-12">
+        <span>{{appId}}</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <label class="dark-gray" translate="management_wechat_test_account_app_secret"></label>
+      </div>
+      <div class="col-xs-12">
+        <span>{{appSecret}}</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <label class="dark-gray" translate="management_wechat_test_account_original_id"></label>
+      </div>
+      <div class="col-xs-12">
+        <span>{{channelAccount}}</span>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-xs-12">
+        <label class="dark-gray" translate="management_wechat_test_account_configuration_info"></label>
+      </div>
+      <div class="col-xs-12">
+        <div class="config-row">
+          <label>URL:</label>
+          <input type="text" class="form-control" value="{{serviceUrl}}" readonly="readonly"/>
+          <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="serviceUrl"></i>
+        </div>
+        <div class="config-row">
+          <label>Token:</label>
+          <input type="text" class="form-control" value="{{token}}" readonly="readonly"/>
+          <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="token"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>

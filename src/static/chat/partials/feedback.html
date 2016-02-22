@@ -1,0 +1,52 @@
+<div class="feedback container">
+  <form ng-submit="submit()">
+    <div class="form-group" ng-repeat="field in fields">
+      <label class="dark-gray" translate="{{field.label}}"></label>
+      <input ng-if="field.type != 'email'" id="{{field.name}}" class="form-control" type="{{field.type}}" value="{{field.value}}" ng-disabled="field.readonly" required />
+      <input ng-if="field.type == 'email'" class="form-control" ng-disabled="field.readonly" ng-model="issue.email" wm-validate="validateEmail" required />
+    </div>
+
+    <div class="form-group">
+      <label class="dark-gray">{{'feedback_customer_cellphone_number'|translate}}</label>
+      <input class="form-control" type="text" ng-model="issue.phone" wm-validate="validateTel" required/>
+    </div>
+
+    <div class="message">
+      {{'feedback_notice_message'|translate}}
+    </div>
+
+    <div class="form-group">
+      <label class="dark-gray">{{'issue_add_page_title'|translate}}</label>
+      <input class="form-control" type="text" ng-model="issue.title" required />
+    </div>
+
+    <div class="form-group">
+      <label class="dark-gray">{{'issue_add_page_description'|translate}}</label>
+      <textarea class="form-control" ng-model="issue.description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label class="attachment-upload-title dark-gray">{{"issue_add_page_attachment" | translate}}</label>
+        <span class="form-tip">{{"feedback_issue_attachment_type" | translate}}</span>
+        <div class="issue-attachment-list">
+          <div class="show-attachment-pic" ng-repeat="attachment in issue.attachments track by $index">
+            <span class="attachment-delete-icon" ng-click="cancelAttachment($index, $event)"></span>
+            <span class="attachment-pic">
+              <img ng-src="{{attachment.url | qiniu:44}}" wm-tooltip="{{attachment.name}}" />
+            </span>
+          </div>
+
+          <div class="issue-add-attachment-operation">
+            <div class="add-attachment">
+              <span id="upload" class="file-upload-wrap" wm-file-upload max-size="1024" pic-info="true" callback="addAttachments">
+                <span class="issue-add-icon"></span>
+              </span>
+              <span class="issue-add-tip"></span>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="form-group feedback-footer">
+      <button class="btn btn-success" ng-disabled="isDisabled" type="submit">{{"send"|translate}}</button>
+    </div>
+  </form>
+</div>

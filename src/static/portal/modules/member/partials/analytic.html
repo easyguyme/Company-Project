@@ -1,0 +1,55 @@
+<div class="panel panel-default panel-main-content ng-scope analytic-panel">
+  <!-- <div class="panel-heading" translate="member_analytic"></div> -->
+  <div wm-breadcrumb="analytic.breadcrumb"></div>
+  <!-- <div wm-list-header content="member_analytic" head-class="qrcode-header-wrapper"></div> -->
+  <div class="panel-body">
+    <div class="clearfix row">
+      <div class="col-md-6">
+        <div class="statistics-chart-item inline-chart-item">
+          <div class="statistics-item-title">
+            <span translate="member_signup_summary"></span>
+            <span class="btn-export pull-right" ng-click="analytic.exportSignup()" translate="export" ng-class="{'export-disabled':analytic.signup}"></span>
+          </div>
+          <div class="stat-timepicker">
+            <label translate="time"></label>
+            <span wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM" min-date-picker-id="endDatePicker" time-handler="analytic.selectDate('signup')" less-than-today="true" ng-model="analytic.beginMonth" icon="calendar"></span>
+            <label translate="analytic_to"></label>
+            <span wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM" max-date-picker-id="beginDatePicker" time-handler="analytic.selectDate('signup')" less-than-today="true" ng-model="analytic.endMonth" icon="calendar"></span>
+          </div>
+          <div wm-bar-chart class="statistics-item-content" options="analytic.signupOptions" width="100%" height="300px" resizeable="true"></div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="statistics-chart-item inline-chart-item">
+          <div class="statistics-item-title">
+            <span translate="member_acct_tracking"></span>
+            <span class="btn-export pull-right" ng-click="analytic.exportAcct()" translate="export" ng-class="{'export-disabled':analytic.acct}"></span>
+          </div>
+          <div class="stat-timepicker stat-quarterpicker">
+            <label translate="time"></label>
+            <div wm-quarter-picker ng-model="analytic.quarterDate" change-handler="analytic.selectQuarter()"></div>
+          </div>
+          <div class="clearfix">
+            <div class="col-md-6 clearpadding">
+              <div wm-pie-chart class="statistics-item-content" options="analytic.acctOptions" width="120%" height="300px"></div>
+            </div>
+            <div class="col-md-6 clearpadding">
+              <div wm-donut-chart class="statistics-item-content" options="analytic.activeOptions" width="120%" height="300px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="statistics-chart-item">
+      <div class="statistics-item-title">
+        <span translate="member_ship_engagement"></span>
+        <span class="btn-export pull-right" ng-click="analytic.exportEngagement()" translate="export" ng-class="{'export-disabled':analytic.engagement}"></span>
+      </div>
+      <div class="stat-timepicker">
+        <label translate="time"></label>
+        <div wm-datetime-picker format-type="YYYY" time-handler="analytic.selectDate('ship')" less-than-today="true" ng-model="analytic.shipYear" icon="calendar"></div>
+      </div>
+      <div wm-bar-chart class="statistics-item-content" options="analytic.shipOptions" width="100%" height="300px"></div>
+    </div>
+  </div>
+</div>

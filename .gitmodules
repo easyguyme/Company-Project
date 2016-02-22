@@ -1,0 +1,39 @@
+[submodule "src/modules/game"]
+	path = src/modules/game
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-game.git
+	ignore = dirty
+	branch = develop
+[submodule "src/modules/uhkklp"]
+	path = src/modules/uhkklp
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-uhkklp.git
+	ignore = dirty
+	branch = develop
+[submodule "src/modules/recruiting"]
+	path = src/modules/recruiting
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-recruiting.git
+	ignore = dirty
+	branch = develop
+[submodule "src/modules/venue"]
+	path = src/modules/venue
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-venue.git
+	ignore = dirty
+	branch = develop
+[submodule "src/modules/reservation"]
+	path = src/modules/reservation
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-reservation.git
+	ignore = dirty
+	branch = develop
+[submodule "src/modules/demo"]
+	path = src/modules/demo
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-demo.git
+	ignore = dirty
+[submodule "src/modules/hopeland"]
+	path = src/modules/hopeland
+	url = git@git.augmentum.com.cn:hopeland/omnisocials-module-hopeland.git
+	ignore = dirty
+	branch = develop
+[submodule "src/modules/ufstrust"]
+	path = src/modules/ufstrust
+	url = git@git.augmentum.com.cn:scrm/omnisocials-module-ufstrust.git
+	ignore = dirty
+        branch = develop

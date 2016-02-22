@@ -1,0 +1,62 @@
+[
+    {
+        "id": "55360e26d6f97f07048b4570",
+        "name": "限时抽奖1",
+        "startTime": "2015-04-19 16:00:00",
+        "endTime": "2015-05-19 16:00:00",
+        "participantCount": 10,
+        "limitTimes": 1,
+        "promotion": {
+            "type": "promotion_code",
+            "gift": {
+                "type": "lottery",
+                "config": {
+                    "method": "scale",
+                    "prize": [
+                        {
+                            "name": "大白兔",
+                            "number": 20
+                        }
+                    ]
+                }
+            },
+            "campaigns": "first",
+            "tags": [],
+            "channels": [],
+            "data": []
+        },
+        "promotionCodeCount": 0,
+        "isActivated": false,
+        "isExpired": false
+    },
+    {
+        "id": "55360eded6f97f07048b4571",
+        "name": "限时抽奖",
+        "startTime": "2015-04-19 16:00:00",
+        "endTime": "2015-05-19 16:00:00",
+        "participantCount": 10,
+        "limitTimes": 1,
+        "promotion": {
+            "type": "promotion_code",
+            "data": [
+                {
+                    "productId": "5530c501d6f97f6e038b4569",
+                    "productName": "test"
+                }
+            ],
+            "gift": {
+                "type": "score",
+                "config": {
+                    "method": "times",
+                    "number": 2
+                }
+            },
+            "campaigns": "first",
+            "tags": [],
+            "channels": []
+        },
+        "promotionCodeCount": 0,
+        "isActivated": true,
+        "isExpired": false
+    }
+]

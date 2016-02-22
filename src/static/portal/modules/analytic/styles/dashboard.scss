@@ -1,0 +1,40 @@
+$richtext-date: #a1a1a1;
+
+.wechat-icon {
+  background-image: url('/images/analytic/wechat_icon.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-right: 8px;
+  width: 19px;
+}
+
+.weibo-icon {
+  background-image: url('/images/analytic/weibo_icon.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-right: 8px;
+  width: 19px;
+}
+
+.tab-icon-wrap {
+  background-color: $richtext-date;
+  border-radius: 2px;
+  display: inline-block;
+  height: 15px;
+  width: 20px;
+
+  .tab-icon {
+    background-position: 4px 2px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 12px;
+    width: 16px;
+  }
+}
+
+.tab:hover .tab-icon-wrap,
+.tab.active .tab-icon-wrap {
+  background-color: $white-background-text-color;
+}

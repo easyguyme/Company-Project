@@ -1,0 +1,39 @@
+$copyright-color:                     #d5d5d5;
+
+.footer {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $black-background-color;
+  height: 0;
+  line-height: $footer-height;
+  text-align: center;
+
+  .copyright {
+    color: $copyright-color;
+  }
+
+  .top-btn {
+    $size: 23px;
+    $state-image: 'default.png';
+    $bg-image: '/images/site/btn_scroll_top_';
+    @include background-image($bg-image + $state-image);
+    position: fixed;
+    width: $size;
+    height: $size;
+    bottom: 8px;
+    right: 40px;
+    cursor: pointer;
+
+    &:hover {
+      $state-image: 'hover.png';
+      @include background-image($bg-image + $state-image);
+    }
+  }
+
+  &.visible {
+    display: block;
+  }
+}

@@ -1,0 +1,78 @@
+.c-form-group {
+  @include clearfix;
+  position: relative;
+  padding-left: 1.1rem;
+
+  &__icon {
+    @include size(1.1rem, 100%);
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: .54rem;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__content {
+    @include square(100%);
+    border-bottom: 1px solid $form-default-border-color;
+    position: relative;
+    padding: .31rem 0;
+
+    .c-input {
+      height: 100%;
+
+      &--date,
+      &--time,
+      &--datetime {
+        color: transparent;
+        position: absolute;
+        background-color: transparent;
+        z-index: 2;
+        top: 0;
+      }
+    }
+  }
+
+  &__expand {
+    @include size(.23rem, 100%);
+
+    background-image: url('/images/mobile/components/detail.png');
+    background-size: .23rem .42rem;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  + .c-form-tip {
+    padding-left: 1.1rem;
+    font-size: .28rem;
+
+    &--error {
+      color: $form-error-tip-color;
+    }
+  }
+
+  .datepicker-hour {
+    .dtpicker-comp5 {
+      width: 25%;
+    }
+
+    .dtpicker-comp5:last-child {
+      display: none;
+    }
+
+    .dtpicker-buttonCont .dtpicker-button {
+      background-color: $theme-default-color;
+    }
+
+    .dtpicker-header .dtpicker-value {
+      color: $theme-default-color;
+    }
+  }
+}

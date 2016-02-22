@@ -1,0 +1,78 @@
+.c-popselect-options {
+  @include square(100%);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &__mask {
+    @include square(100%);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba($options-mask-bg-color, .5);
+  }
+
+  &__container {
+    @include size(100%, auto);
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: $options-container-bg;
+    font-size: .41rem;
+
+    &__header {
+      @include clearfix;
+
+      background-color: $options-items-bg;
+      height: 1rem;
+      line-height: 1rem;
+      text-align: center;
+
+      &__cancel {
+        @include size(1.2rem, 100%);
+
+        float: left;
+        color: $options-cancel-text-color;
+      }
+
+      &__title {
+        @include text-overflow;
+      }
+
+      &__sure {
+        @include size(1.5rem, 100%);
+
+        float: right;
+        color: $options-sure-text-color;
+      }
+    }
+
+    &__options {
+      max-height: 5rem;
+      margin-top: .16rem;
+      overflow-y: auto;
+
+      &__item {
+        @include text-overflow;
+
+        border-bottom: 1px solid $options-container-bg;
+        background-color: $options-items-bg;
+        color: $options-content-color;
+        padding: 0 .85rem;
+        height: 1rem;
+        line-height: 1rem;
+        text-align: center;
+
+        &--checked {
+          background-repeat: no-repeat;
+          background-size: .45rem;
+          background-position: .2rem center;
+          background-image: url('/images/mobile/components/checked.png');
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,222 @@
+.goods-detail-wrapper {
+  .clear-margin {
+    margin: 0;
+  }
+
+  label {
+    color: $wm-dark-gray;
+    font-weight: normal;
+  }
+
+  .goods-basic-name {
+    $basic-name-color: #1c1c1c;
+    color: $basic-name-color;
+    margin-bottom: 15px;
+    margin-top: 0;
+  }
+
+  .goods-item-title {
+    padding-left: 15px;
+  }
+
+  .goods-item-pictures {
+    min-width: 330px;
+  }
+
+  .goods-property-wrapper {
+    $border-color: #ddd;
+
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+
+    padding: 10px 0 0;
+
+    label {
+      margin-bottom: 0;
+    }
+
+    .goods-property-item {
+      margin-bottom: 10px;
+    }
+  }
+
+  .goods-intro-wrapper {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .goods-url-title {
+    display: block;
+  }
+
+  .goods-mall-header {
+    $header-bg-color: #eee;
+
+    background-color: $header-bg-color;
+    padding: 5px 10px 5px 15px;
+
+    .goods-mall-label {
+      display: inline-block;
+      line-height: 20px;
+    }
+
+    .goods-status-box {
+      border-radius: 2px;
+      color: $white-background-color;
+      display: inline-block;
+      line-height: 13px;
+      margin-left: 10px;
+      margin-top: 3px;
+      padding: 1px 4px;
+      vertical-align: top;
+    }
+
+    .on-shelves {
+      background-color: $white-background-text-color;
+    }
+
+    .off-shelves {
+      $off-shelves-bg-color: #d0d0d0;
+
+      background-color: $off-shelves-bg-color;
+    }
+  }
+
+  .goods-mall-body {
+    $body-bg-color: #f5f5f5;
+
+    background-color: $body-bg-color;
+    padding: 25px 10px 25px 15px;
+
+    .goods-on-or-off-label {
+      margin-right: 0;
+    }
+
+    .goods-on-or-off-time {
+      width: 125px;
+    }
+
+    .goods-scheduled-box {
+      $scheduled-background-color: #e8b400;
+
+      border-radius: 2px;
+      color: $white-background-color;
+      display: inline-block;
+      line-height: 13px;
+      margin-top: 3px;
+      padding: 1px 4px;
+      vertical-align: top;
+      background-color: $scheduled-background-color;
+    }
+
+    .label-content {
+      $on-or-off-time-text-color: #333;
+
+      color: $on-or-off-time-text-color;
+      padding-left: 0;
+    }
+
+    label {
+      margin-bottom: 0;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .redeemed-all {
+      $redeemed-all-bg-color: #dd5c5c;
+
+      color: $white-background-color;
+      background-color: $redeemed-all-bg-color;
+      border-radius: 2px;
+      display: inline-block;
+      height: 15px;
+      margin-left: 10px;
+      margin-top: 1px;
+      padding: 0 4px;
+      vertical-align: top;
+    }
+  }
+}
+
+.missing-wrapper {
+  @include size(100%, 100%);
+  position: relative;
+
+  .prompt-icon {
+    @include size(444px, 449px);
+    left: 50%;
+    margin: auto auto auto -222px;
+    position: relative;
+  }
+
+  .prompt-icon-bg {
+    @include size(444px, 449px);
+    background-image: url('/images/site/background.png');
+    background-size: 100%;
+    margin-top: 45px;
+  }
+}
+
+.product-pannel {
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.product-colon {
+
+  &:after {
+    content: ':';
+    padding: 0 3px 0 5px;
+  }
+}
+
+.product-item-icon {
+  width: 6%;
+  float: left;
+}
+
+.goods-urls-wrapper {
+
+  .redemption-channels-item {
+
+    .channels-info-wrapper {
+      margin-bottom: 5px;
+    }
+
+    + .redemption-channels-item {
+      margin-top: 15px;
+    }
+  }
+}
+
+.product-upload-loading {
+  display: none;
+  background-color: rgba(0, 0, 0, .168627);
+}
+
+.product-list-loading {
+  z-index: 1040;
+  opacity: 0;
+}
+
+.product-float-qrcode {
+  background-size: 150px;
+  background-repeat: no-repeat;
+  background-position: center 15px;
+  padding: 175px 15px 15px;
+  width: 180px;
+  background-color: $panel-body-background-color;
+  color: $wm-dark-gray;
+  text-align: center;
+  position: absolute;
+  top: 200px;
+  right: 150px;
+}
+
+.product-pay-info-wrapper {
+  padding-left: 5px;
+}

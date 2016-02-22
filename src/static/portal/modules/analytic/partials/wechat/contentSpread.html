@@ -1,0 +1,116 @@
+<div ng-controller="wm.ctrl.analytic.wechat.contentSpread as contentSpread">
+
+  <div class="content-wechat-tab">
+    <span class="cp mr30" ng-class="{'content-wechat-tab-text-active' : contentSpread.broadcastFlag}" ng-click="contentSpread.broadcastActive(true)">{{'analytic_graphic_broadcast'|translate}}</span>
+    <span class="cp" ng-class="{'content-wechat-tab-text-active' : !contentSpread.broadcastFlag}"  ng-click="contentSpread.broadcastActive(false)">{{'analytic_graphic_statistics'|translate}}</span>
+  </div>
+
+  <div ng-if="!contentSpread.broadcastFlag">
+
+    <div wm-yesterday-statistics statistics-title="yesterday_key_index" overview="contentSpread.overviewList"></div>
+
+    <div class="content-weibo-date clearfix row mlr0">
+      <div class="col-md-offset-6 col-md-3 col-sm-6 col-xs-12">
+        <div class="row">
+          <span class="content-weibo-text plr0 text-center col-md-2 col-sm-1 col-xs-1"></span>
+          <div class="col-md-10 col-sm-11 col-xs-11 plr0">
+            <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="startPicker" pick-date="true" pick-time="false" less-than-yesterday="true" ng-model="contentSpread.startDate" time-handler="contentSpread.changeDate()" min-date-picker-id="endPicker" first-unbind-handler="true"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="row">
+          <span class="content-weibo-text plr0 text-center col-md-2 col-sm-1 col-xs-1">{{'analytic_to'|translate}}</span>
+          <div class="col-md-10 col-sm-11 col-xs-11 plr0">
+            <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="endPicker" pick-date="true" pick-time="false" less-than-yesterday="true" ng-model="contentSpread.endDate" time-handler="contentSpread.changeDate()" max-date-picker-id="startPicker" first-unbind-handler="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div wm-tabs="contentSpread.changeTab()" data-inner="true" tabs="contentSpread.tabs" ng-model="contentSpread.curTab"></div>
+    <div class="content-weibo-wrap mb30 warp-to-tabs">
+      <div class="content-weibo-body-content">
+        <div class="content-weibo-select-wrap clearfix" ng-if="contentSpread.curTab.value == 'SHARE'">
+          <span class="content-weibo-select-text">{{'analytic_share_forward'|translate}}</span>
+          <div wm-select class="content-weibo-select" ng-model="contentSpread.way" text-field="text" value-field="value" items="contentSpread.ways" on-change="contentSpread.changeSelect"></div>
+        </div>
+        <div wm-line-chart options="contentSpread.lineChartOptions" width="100%" height="270px"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clearfix" ng-if="contentSpread.broadcastFlag">
+    <div class="content-weibo-date clearfix row mlr0" style="margin-top:0">
+      <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="row">
+          <span class="content-weibo-text text-center pull-left col-sm-1 col-xs-2 plr0 content-order-label">{{'analytic_sort'|translate}}</span>
+          <div class="choose-rich-text-type pull-left mr10"><div wm-select on-change="contentSpread.changeRichType" ng-model="contentSpread.richType" text-field="text" value-field="value" items="contentSpread.richTypes"></div></div>
+          <div class="choose-rich-text-type pull-left"><div wm-select on-change="contentSpread.changeSortType" ng-model="contentSpread.sortType" text-field="text" value-field="value" items="contentSpread.sortTypes"></div></div>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="row">
+          <span class="content-weibo-text plr0 text-center col-md-2 col-sm-1 col-xs-1"></span>
+          <div class="col-md-10 col-sm-11 col-xs-11 plr0">
+            <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="massiveStartPicker" pick-date="true" pick-time="false" ng-model="contentSpread.massiveStartDate" time-handler="contentSpread.selectDate()" min-date-picker-id="massiveEndPicker" first-unbind-handler="true"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="row">
+          <span class="content-weibo-text plr0 text-center col-md-2 col-sm-1 col-xs-1">{{'analytic_to'|translate}}</span>
+          <div class="col-md-10 col-sm-11 col-xs-11 plr0">
+            <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="massiveEndPicker" pick-date="true" pick-time="false" less-than-yesterday="true" ng-model="contentSpread.massiveEndDate" time-handler="contentSpread.selectDate()" max-date-picker-id="massiveStartPicker" first-unbind-handler="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div ng-repeat="richText in contentSpread.richTexts track by $index" wm-rich-text-statistics rich-text="richText" view-detail="contentSpread.viewDetail"></div>
+    <div class="content-spread-nodata" ng-if="contentSpread.totalItems == 0" translate="analytic_no_richtext"></div>
+
+    <div class="broadcast-pagination" ng-if="contentSpread.totalItems > 0">
+      <div wm-pagination current-page="contentSpread.currentPage" page-size="contentSpread.pageSize" total-items="contentSpread.totalItems" on-change-size="contentSpread.changeSize" on-change-page="contentSpread.changePage"></div>
+    </div>
+
+    <script type="text/ng-template" id="richTextDetail.html">
+      <div class="modal-header pd30">
+        <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+        <h4 class="modal-title create-user-title">{{'analytic_graphic_details' | translate}}</h4>
+      </div>
+      <div class="modal-body modal-bgcolor">
+        <div class="richtext-detail-title">
+          <span class="richtext-title">{{richText.title}}</span>
+          <span class="richtext-title richtext-date">{{richText.sentDate}}</span>
+        </div>
+        <div class="content-weibo-wrap mb30">
+          <div class="content-weibo-body-title content-weibo-text">{{'analytic_overall_data' | translate}}</div>
+          <div class="content-weibo-body-content clearfix">
+            <div class="col-md-2 col-xs-2 pd0 overall-bar">
+              <ul class="graphic-statistic-number">
+                <li>{{"sent_count_chart" | translate}}<div class="graphic-statistic-bg"><i class="icon-down"></i></div></li>
+                <li>{{"int_page_read_count_chart" | translate}}<div class="graphic-statistic-bg"><i class="icon-down"></i></div></li>
+                <li>{{"ori_page_read_count_chart" | translate}}<div class="graphic-statistic-bg"><i class="icon-down"></i></div></li>
+                <li>{{"share_and_favor_count" | translate}}</li>
+              </ul>
+            </div>
+            <div class="col-md-10 col-xs-10 pd0" id="overallDataChart">
+              <div wm-h-bar-chart options="hbarChartOptions" width="620px" height="200px"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div wm-tabs="changeRichTab()" tabs="richTabs" inner="innerStyle" ng-model="curTab"></div>
+          <div class="content-weibo-body-content wechat-body-border">
+            <div wm-line-chart options="richTextOptions" width="766px" height="250px"></div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+  </div>
+
+</div>

@@ -1,0 +1,140 @@
+<div wm-breadcrumb="interaction.breadcrumb"></div>
+<div wm-tabs="interaction.changTab()" tabs="interaction.tabs" ng-model="interaction.curTab"></div>
+
+<div class="panel panel-default interact-main-content">
+  <!-- <div class="panel-heading wm-panel-title clearfix fs14">
+    <div class="interaction-search pull-left">
+      <wm-search ng-model="interaction.searchKey" class="search-style" click-func="interaction.search()" placeholder="{{'channel_search_message' | translate}}"></wm-search>
+    </div>
+    <div class="checkbox">
+        <span wm-checkbox class="hide-keyword-checkbox" ng-model="ignoreKeywordHit"></span> {{'channel_hiding_trigger_message' | translate}}
+    </div>
+  </div> -->
+  <div wm-list-header head-class="wm-panel-title">
+    <div class="interaction-search pull-left">
+      <wm-search ng-model="interaction.searchKey" class="search-style" click-func="interaction.search()" placeholder="{{'channel_search_message' | translate}}"></wm-search>
+    </div>
+    <div class="checkbox">
+        <span wm-checkbox class="hide-keyword-checkbox" ng-model="interaction.ignoreKeywordHit"></span> {{'channel_hiding_trigger_message' | translate}}
+    </div>
+  </div>
+  <div class="panel-body wm-panel-body">
+    <div class="channel-interaction-nodata hide" ng-class="{show: interaction.interactMessages.length == 0}">{{interaction.noData | translate}}</div>
+    <div class="container-fluid interact-message-item clearfix" ng-repeat="interactMsg in interaction.interactMessages track by $index">
+      <div class="row">
+        <div class="container-fluid col-md-11 interact-message-info clearfix">
+          <div class="row">
+            <div class="col-md-1 message-sender-avatar" ng-style="{'background-image':'url(' + interactMsg.sender.headerImgUrl + ')'}"></div>
+            <div class="col-md-11 message-sender-info fs14">
+              <div class="message-illustrate">
+                <div class="sender-name text-el" ng-bind="interactMsg.sender.nickname"></div>
+                <div class="send-time fs12" ng-bind="interactMsg.message.createTime"></div>
+              </div>
+              <div class="message-content" ng-bind-html="interactMsg.message.content" ng-if="interactMsg.message.msgType == 'TEXT'"></div>
+              <div class="message-content" ng-if="interactMsg.message.msgType != 'TEXT'">{{interactMsg.message.content | translate}}</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-1 interact-message-reply cp" ng-click="interaction.replyMessage($index)">
+          <div class="message-reply-icon"></div>
+          <div class="message-reply-text" translate="channel_reply_message"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="broadcast-pagination interaction-foot-pagination" ng-if="interaction.pageCount > 0">
+      <div wm-pagination current-page="interaction.currentPage" page-size="interaction.pageSize" total-items="interaction.totalItems" on-change-size="interaction.changeSize" on-change-page="interaction.changePage"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-dialog message-reply-dialog interaction-reply-history" ng-show="interaction.isCollapsed">
+  <div class="modal-header reply-dialog-header">
+    <button type="button" class="close popup-close replay-dialog-close replay-dialog" ng-click="interaction.closeReplyPanel()"></button>
+    <h4 class="modal-title create-user-title reply-message-title fs16" translate="channel_reply_message"></h4>
+  </div>
+  <form name="userCreateForm" ng-submit="interaction.sendMessage()">
+    <div class="modal-body modal-bgcolor create-user-body replay-message-body">
+      <div class="form-group">
+        <div wm-wechat-message ng-model="interaction.message" disabled-field="true" ng-if="!interaction.replyMsg.sender.subscribed" remain-character="interaction.remainCharacter"></div>
+        <div wm-wechat-message ng-model="interaction.message" ng-if="interaction.replyMsg.sender.subscribed" remain-character="interaction.remainCharacter"></div>
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-success" value="{{'send' | translate}}" disabled ng-if="!interaction.replyMsg.sender.subscribed"/>
+        <input type="submit" class="btn btn-success" value="{{'send' | translate}}" ng-if="interaction.replyMsg.sender.subscribed"/>
+      </div>
+    </div>
+  </form>
+  <div class="history-message-wrapper">
+    <div class="modal-bgcolor history-message-body">
+      <div class="history-message-quantity fs12">
+        <sapn>{{interaction.history.quantity}}</span>
+        <span translate="channel_history_quantity"></span>
+      </div>
+      <div class="clearfix history-message-item" ng-repeat="historyMsg in interaction.historyMessages track by $index">
+        <div class="container-fluid interact-message-info clearfix history-message-info">
+          <div class="row" ng-class="{'history-is-reply': historyMsg.direction != 'RECEIVE'}">
+            <img class="message-sender-avatar" ng-src="{{historyMsg.headerImgUrl}}" />
+            <div class="col-md-10 message-sender-info fs14">
+              <div class="message-illustrate">
+                <div class="send-time fs12">{{historyMsg.message.createTime | formatdate}}</div>
+              </div>
+              <div class="message-content" ng-bind-html="historyMsg.message.content" ng-if="historyMsg.message.msgType == 'TEXT'"></div>
+              <!--articles begin-->
+              <div class="news-view" ng-show="historyMsg.message.articles.length == 1" ng-if="historyMsg.message.msgType == 'NEWS' || historyMsg.message.msgType == 'MPNEWS'">
+                <div class="waterfall-news-detail">
+                  <h4 class="waterfall-news-detail-title">{{historyMsg.message.articles[0].title}}</h4>
+                  <div class="clearfix waterfall-news-header waterfall-news-header-single">
+                      <span class="pull-left">{{historyMsg.message.createTime | formatdate}}</span>
+                  </div>
+                  <div class="waterfall-news-detail-row">
+                    <div class="waterfall-news-detail-img-container image-container">
+                      <a href="{{historyMsg.message.articles[0].contentUrl}}" target="_blank" class="a-images-style cp"><img wm-center-img ng-src="{{historyMsg.message.articles[0].url}}" /></a>
+                    </div>
+                  </div>
+                  <div class="waterfall-news-detail-content">{{historyMsg.message.articles[0].description}}</div>
+                  <div class="article-look-wrapper clearfix">
+                    <a class="article-look-view" target="_blank" href="{{historyMsg.message.articles[0].contentUrl}}" translate="channel_history_view_all"></a>
+                    <a class="article-look-view" target="_blank" href="{{historyMsg.message.articles[0].contentUrl}}"><img class="article-look-arrow" ng-src="/images/content/conf/webmaterial_article_viewdetails.png" /></a>
+                  </div>
+                </div>
+              </div>
+              <div class="news-view" ng-show="historyMsg.message.articles.length > 1" ng-if="historyMsg.message.msgType == 'NEWS' || historyMsg.message.msgType == 'MPNEWS'">
+                <div class="waterfall-news-list">
+                  <h4 class="waterfall-news-detail-title">{{historyMsg.message.articles[0].title}}</h4>
+                  <div class="clearfix waterfall-news-header waterfall-news-header-multiple">
+                    <span class="pull-left">{{historyMsg.message.createTime | formatdate}}</span>
+                  </div>
+                  <div class="waterfall-news-normal waterfall-top">
+                    <div class="waterfall-news-list-inner">
+                      <div class="waterfall-news-list-inner-img-container image-container">
+                        <a href="{{historyMsg.message.articles[0].contentUrl}}" target="_blank" class="a-images-style cp"><img wm-center-img ng-src="{{historyMsg.message.articles[0].url}}" /></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="waterfall-news-normal" ng-repeat="article in historyMsg.message.articles" ng-show="$index != 0">
+                    <div class="waterfall-news-list-item clearfix">
+                      <div class="waterfall-news-list-item-text">{{article.title}}</div>
+                      <div class="waterfall-news-list-item-image">
+                        <div class="waterfall-news-list-img-container image-container">
+                          <img wm-center-img ng-src="{{article.url}}" />
+                          <a href="{{article.contentUrl}}" target="_blank" class="a-images-style cp"><img wm-center-img ng-src="{{article.url}}" /></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--articles end-->
+              <div class="message-content" ng-if="historyMsg.message.msgType != 'TEXT' && historyMsg.message.msgType != 'NEWS' && historyMsg.message.msgType != 'MPNEWS'">{{historyMsg.message.content | translate}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer modal-bgcolor create-user-footer replay-message-footer">
+    <div class="history-message-pagination" ng-show="interaction.paginationShow" ng-click="interaction.loadMore()" translate="channel_load_more"></div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+{
+    "item": [
+        {
+            "id": "55f623b8e4b094f7431306ee",
+            "accountId": "55cc4fa3e4b03b1960e99bb7",
+            "userId": "55ed5f34e4b061c1aeb869dd",
+            "msgType": "TEXT",
+            "direction": "RECEIVE",
+            "keycode": "测试",
+            "matchedRuleId": "55e6aa0ae4b06c2692378a61",
+            "createTime": 1442194360652,
+            "message": {
+                "fromUser": "ovPiJwR3IvaQmNkT0ZQqTWL9bpQQ",
+                "toUser": "gh_e29b4b82a4a9",
+                "msgType": "TEXT",
+                "content": "测试",
+                "createTime": 1442194360652,
+                "messageId": "6194177610884544454"
+            },
+            "sender": {
+                "id": "55ed5f34e4b061c1aeb869dd",
+                "accountId": "55cc4fa3e4b03b1960e99bb7",
+                "subscribed": true,
+                "originId": "ovPiJwR3IvaQmNkT0ZQqTWL9bpQQ",
+                "nickname": "嗯哼",
+                "gender": "MALE",
+                "language": "zh_CN",
+                "city": "南阳",
+                "province": "河南",
+                "country": "中国",
+                "headerImgUrl": "http://wx.qlogo.cn/mmopen/Q3auHgzwzM7eMuaQaRiaa3mHtv2054NWg7cyosbu9FWqUPRiamnesYuWRqhIFEb8t8JDuWVjOLrOGHuueLO97Gf003TomlNmAtfEic7uNV6ibM0/0",
+                "subscribeTime": 1441619763003,
+                "unionId": null,
+                "tags": [
+                    "123",
+                    "1234567890",
+                    "TEST1"
+                ],
+                "userCounts": null,
+                "profiles": {
+                    "massSendUsageCount": null,
+                    "subscribeSource": null,
+                    "firstSubscribeSource": null,
+                    "firstSubscribeTime": null,
+                    "messages": {
+                        "messageCount": null,
+                        "hitKeywordCount": null,
+                        "lastMessageTime": null
+                    },
+                    "events": {
+                        "eventCount": null,
+                        "lastEventTime": null
+                    },
+                    "menus": {
+                        "hitCount": null,
+                        "lastHitTime": null,
+                        "items": []
+                    }
+                },
+                "createTime": 1441619764613,
+                "unsubscribeTime": null,
+                "authorized": false
+            }
+        },
+        {
+            "id": "55f6236de4b094f7431306ea",
+            "accountId": "55cc4fa3e4b03b1960e99bb7",
+            "userId": "55ed5f34e4b061c1aeb869dd",
+            "msgType": "TEXT",
+            "direction": "RECEIVE",
+            "matchedRuleId": "55cc4fa4e4b03b1960e99bbb",
+            "createTime": 1442194285182,
+            "message": {
+                "fromUser": "ovPiJwR3IvaQmNkT0ZQqTWL9bpQQ",
+                "toUser": "gh_e29b4b82a4a9",
+                "msgType": "TEXT",
+                "content": "测一测",
+                "createTime": 1442194285182,
+                "messageId": "6194177288761997238"
+            },
+            "sender": {
+                "id": "55ed5f34e4b061c1aeb869dd",
+                "accountId": "55cc4fa3e4b03b1960e99bb7",
+                "subscribed": true,
+                "originId": "ovPiJwR3IvaQmNkT0ZQqTWL9bpQQ",
+                "nickname": "嗯哼",
+                "gender": "MALE",
+                "language": "zh_CN",
+                "city": "南阳",
+                "province": "河南",
+                "country": "中国",
+                "headerImgUrl": "http://wx.qlogo.cn/mmopen/Q3auHgzwzM7eMuaQaRiaa3mHtv2054NWg7cyosbu9FWqUPRiamnesYuWRqhIFEb8t8JDuWVjOLrOGHuueLO97Gf003TomlNmAtfEic7uNV6ibM0/0",
+                "subscribeTime": 1441619763003,
+                "unionId": null,
+                "tags": [
+                    "123",
+                    "1234567890",
+                    "TEST1"
+                ],
+                "userCounts": null,
+                "profiles": {
+                    "massSendUsageCount": null,
+                    "subscribeSource": null,
+                    "firstSubscribeSource": null,
+                    "firstSubscribeTime": null,
+                    "messages": {
+                        "messageCount": null,
+                        "hitKeywordCount": null,
+                        "lastMessageTime": null
+                    },
+                    "events": {
+                        "eventCount": null,
+                        "lastEventTime": null
+                    },
+                    "menus": {
+                        "hitCount": null,
+                        "lastHitTime": null,
+                        "items": []
+                    }
+                },
+                "createTime": 1441619764613,
+                "unsubscribeTime": null,
+                "authorized": false
+            }
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://dev.cp.augmarketing.cn/api/microsite/articles?accesstoken=3ca28e36-c949-5378-4edb-15aff6a5223d&orderBy=%7B%22createdAt%22%3A%22desc%22%7D&channels=%5B%2254b5c1f8db4c0eea6e8b4569%22%5D&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

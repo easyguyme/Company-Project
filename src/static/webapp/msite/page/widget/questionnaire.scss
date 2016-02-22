@@ -1,0 +1,169 @@
+$m-questionnaire-border-color: #eee;
+$m-questionnaire-white: #fff;
+$m-questionnaire-success-bgcolor: #ebebeb;
+$m-questionnaire-font-color: #555;
+$m-questionnaire-tip-font-color: #b8b8b8;
+$m-questionnaire-font-color-gray: #aaa;
+$m-questionnaire-red: #b42d14;
+
+.m-questionnaire-items {
+  border: .04rem solid $m-questionnaire-border-color;
+  border-radius: .2rem;
+  margin: .32rem;
+}
+
+.m-questionnaire-item {
+  margin-top: .5rem;
+  border-bottom: .04rem solid $m-questionnaire-border-color;
+  list-style: none;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  .m-questionnaire-question {
+    margin: 0 .32rem;
+    font-size: .5rem;
+    word-break: break-all;
+  }
+
+  .m-questionnaire-answer {
+    font-size: .44rem;
+    margin: 0 .32rem;
+    padding: .32rem 0;
+    border-bottom: .04rem solid $m-questionnaire-border-color;
+    position: relative;
+    word-break: break-all;
+
+    &:active {
+      background-color: $m-questionnaire-border-color;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .real-click {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .real-radio,
+    .real-checkbox {
+      left: -999rem;
+      position: absolute;
+    }
+
+    .m-questionnaire-radio {
+      width: .48rem;
+      height: .48rem;
+      display: inline-block;
+      background-size: .4rem;
+      background-repeat: no-repeat;
+      background-position-y: .06rem;
+      float: left;
+    }
+  }
+
+  .m-questionnaire-textarea {
+    resize: none;
+    margin: .32rem;
+    padding: .1rem;
+    height: 1.56rem;
+    border-radius: .1rem;
+    border: .04rem solid $m-questionnaire-border-color;
+    font-size: .44rem;
+    width: 90%;
+  }
+}
+
+.m-questionnaire-btn {
+  margin: .32rem;
+  height: .94rem;
+  border-radius: .1rem;
+  text-align: center;
+  line-height: .94rem;
+  font-size: .5rem;
+  color: $m-questionnaire-white;
+  border: .04rem solid;
+  cursor: pointer;
+}
+
+.m-questionnaire-success {
+  background-color: $m-questionnaire-success-bgcolor;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  .success-area {
+    background-color: $m-questionnaire-white;
+    height: 80%;
+    position: relative;
+    top: 10%;
+
+    .success-center-area {
+      position: absolute;
+      text-align: center;
+      width: 100%;
+
+      .success-icon {
+        height: 2rem;
+        background-image: url('/images/microsite/icon_success.png');
+        background-repeat: no-repeat;
+        background-size: 1.6rem;
+        background-position-x: 50%;
+      }
+
+      .success-font {
+        font-size: .5rem;
+        color: $m-questionnaire-font-color;
+      }
+    }
+  }
+}
+
+.init-tip {
+  font-size: .6rem;
+  margin-left: .32rem;
+  color: $m-questionnaire-tip-font-color;
+}
+
+.m-questionnaire-blank {
+  height: .1rem;
+}
+
+.tip-font {
+  font-size: .5rem;
+  text-align: center;
+  display: block;
+  margin: .32rem .32rem 0;
+  padding-bottom: .3rem;
+  border-bottom: .04rem solid $m-questionnaire-border-color;
+  color: $m-questionnaire-font-color-gray;
+}
+
+.error-tip,
+.error-response-tip {
+  font-size: .44rem;
+  color: $m-questionnaire-red;
+  margin-left: .32rem;
+}
+
+.description-font {
+  margin: .32rem .5rem;
+  display: block;
+  font-size: .5rem;
+  word-break: break-all;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.disabled-btn {
+  background-color: $m-questionnaire-tip-font-color;
+}

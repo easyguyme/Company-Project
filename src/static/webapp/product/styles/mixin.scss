@@ -1,0 +1,15 @@
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
+
+@mixin background-image ($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+}
+
+@mixin half-layout ($width, $margin) {
+  width: $width;
+  float: left;
+
+  &:first-child {
+    margin-right: $margin;
+  }
+}

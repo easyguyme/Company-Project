@@ -1,0 +1,26 @@
+.c-location {
+
+  &__items {
+    @include clearfix;
+    font-size: 0;
+
+    + .c-location__items {
+      margin-top: .3rem;
+    }
+
+    &__province {
+      display: inline-block;
+      width: 49%;
+      margin-right: 2%;
+    }
+
+    &__city {
+      display: inline-block;
+      width: 49%;
+    }
+
+    &__county {
+      display: block;
+    }
+  }
+}

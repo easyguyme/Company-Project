@@ -1,0 +1,20 @@
+.c-nav-tab {
+  color: $theme-default-label-color;
+  font-size: .41rem;
+  line-height: 1.3rem;
+  width: 100%;
+  border-bottom: 2px solid $theme-default-boder-color;
+
+  &__item {
+    float: left;
+    text-align: center;
+
+    &.active {
+      color: $nav-tab-font-color;
+    }
+
+    &:nth-child(n + 2) {
+      border-left: 1px solid $theme-default-boder-color;
+    }
+  }
+}

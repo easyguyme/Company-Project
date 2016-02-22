@@ -1,0 +1,25 @@
+$input-placeholder-color: #d8d8d8;
+
+.form-control {
+  &:-moz-placeholder { // Mozilla Firefox 4 to 18
+    color: $input-placeholder-color;
+  }
+
+  &::-moz-placeholder { // Mozilla Firefox 19+
+    color: $input-placeholder-color;
+  }
+
+  &:-ms-input-placeholder { // Internet Explorer 10+
+    color: $input-placeholder-color;
+  }
+
+  &::-webkit-input-placeholder { // WebKit browsers
+    color: $input-placeholder-color;
+  }
+}
+
+.readonly-style {
+  cursor: not-allowed;
+  background-color: #eee;
+  opacity: 1;
+}

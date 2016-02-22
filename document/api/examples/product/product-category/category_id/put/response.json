@@ -1,0 +1,25 @@
+{
+    "id": "54b5c1f8db4c0eea6e8b4569",
+    "name": "test",
+    "properties": [
+        {
+            "id": 66,
+            "order": 4,
+            "name": "适合",
+            "type": "radio",
+            "options": ["合适，不合适"],
+            "defaultValue": "合适",
+            "isRequired": true,
+        }，
+        {
+            "id": 67,
+            "order": 5,
+            "name": "颜色",
+            "type": "input",
+            "options": "",
+            "defaultValue": "白色",
+            "isRequired": false,
+        }
+    ]
+    "createdAt": "2015-01-19 15:41:16",
+}

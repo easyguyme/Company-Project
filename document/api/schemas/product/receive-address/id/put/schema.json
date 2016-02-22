@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": "string",
+      "required": true,
+      "description": "address name"
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "description": "phone number"
+    },
+    "location": {
+      "type": "object",
+      "required": true,
+      "description": "the detail address"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+$coupon-white: #fff;
+$coupon-black: #000;
+$coupon-border-color: #d9d9d9;
+$coupon-border-dashed-color: #959595;
+$coupon-time-font-color: #bbb;
+$coupon-btn-color: #f9910a;
+$coupon-red: #b42d14;
+
+.coupon-img-wrapper {
+  max-height: 20rem;
+  background-color: $coupon-white;
+  text-align: center;
+  font-size: 0;
+
+  .coupon-img {
+    max-height: 20rem;
+    max-width: 100%;
+  }
+}
+
+.coupon-wrapper-top,
+.coupon-wrapper-bottom {
+  background-color: $coupon-white;
+  border-top: .1rem solid $coupon-border-color;
+  border-bottom: .1rem solid $coupon-border-color;
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+  font-size: 1.5rem;
+}
+
+.coupon-wrapper-top {
+  border-top: 0;
+}
+
+.coupon-wrapper-bottom {
+  padding-right: 0;
+}
+
+.coupon-title,
+.coupon-link {
+  padding: 1rem 0;
+}
+
+.coupon-title {
+  border-bottom: .1rem dashed $coupon-border-dashed-color;
+}
+
+.coupon-time {
+  padding: .6rem 0;
+  color: $coupon-time-font-color;
+  font-size: 1.3rem;
+}
+
+.coupon-link {
+  background-image: url('/images/mobile/detail.png');
+  background-size: .8rem;
+  background-repeat: no-repeat;
+  background-position: 97% center;
+  display: block;
+  color: $coupon-black;
+  text-decoration: none;
+}
+
+.link-line {
+  border-bottom: .1rem solid $coupon-border-color;
+}
+
+.coupon-btn {
+  height: 4rem;
+  line-height: 4rem;
+  display: block;
+  background-color: $coupon-btn-color;
+  color: $coupon-white;
+  text-align: center;
+  font-size: 1.5em;
+  border-radius: 2px;
+  border: 0;
+  outline: none;
+  margin: 1rem;
+}
+
+.success-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .8);
+
+  .success-options {
+    background-color: $coupon-white;
+    width: 80%;
+    position: absolute;
+    margin: auto;
+    top: 50%;
+    margin-top: -8rem;
+    left: 0;
+    right: 0;
+    border-radius: .8rem;
+    font-size: 1.5rem;
+
+    .success-tip {
+
+      .tip-one {
+        text-align: center;
+        line-height: 4.5rem;
+      }
+
+      .tip-two {
+        text-align: center;
+        line-height: 2rem;
+        font-size: 1.3rem;
+        padding: 0 1rem 1rem;
+      }
+    }
+
+    .success-option {
+      border-top: .1rem solid $coupon-border-color;
+      text-align: center;
+      line-height: 4rem;
+      color: $coupon-btn-color;
+    }
+  }
+}
+
+.coupon-error-tip {
+  margin-left: 1rem;
+  color: $coupon-red;
+  font-size: 1.2rem;
+  display: none;
+}
+
+.empty-wrap {
+  height: 2rem;
+}

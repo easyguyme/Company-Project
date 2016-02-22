@@ -1,0 +1,139 @@
+$progress-bg-color: #efefef;
+$progress-bar-bg-color: #3ec5ae;
+$message-default-color: #787878;
+$message-title-color: #3d3d3d;
+$box-shadow-color: #b8b8b8;
+
+.export-wrapper {
+  background-color: $white-background-color;
+  bottom: 41px;
+  position: fixed;
+  right: 0;
+  text-align: right;
+  z-index: 999;
+
+  .message {
+    @include size(335px, auto);
+    @include box-shadow(-1px -1px 5px rgba($box-shadow-color, .75));
+
+    display: none;
+    min-height: 80px;
+    margin: 0 auto;
+    font-size: 14px;
+    position: relative;
+    margin-top: 10px;
+
+    i,
+    span {
+      overflow: hidden;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    .text {
+      width: 100%;
+      line-height: 20px;
+      color: $message-default-color;
+    }
+
+    .close-btn {
+      @include square(12px);
+
+      background-image: url('/images/management/icon_popup_close_default.png');
+      background-repeat: no-repeat;
+      background-size: 12px 12px;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+
+      &:hover {
+        background-image: url('/images/management/icon_popup_close_hover.png');
+      }
+
+      &:active {
+        background-image: url('/images/management/icon_popup_close_click.png');
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .message-preparing {
+
+    .progress {
+      background-color: $progress-bg-color;
+      height: 5px;
+      margin-bottom: 0;
+      box-shadow: none;
+    }
+
+    .progress-bar {
+      background-color: $progress-bar-bg-color;
+      border-radius: 2px;
+    }
+
+    .message-content {
+      padding-top: 12px;
+      padding-left: 30px;
+      text-align: left;
+
+      .content-title {
+        font-size: 16px;
+        line-height: 22px;
+        color: $message-title-color;
+      }
+    }
+
+  }
+
+  .message-download {
+    text-align: center;
+
+    .message-content {
+      padding-top: 20px;
+      padding-bottom: 5px;
+
+      .content-download {
+        background-image: url('/images/channel/success.png');
+        background-repeat: no-repeat;
+        background-size: 12px 12px;
+        background-position: 10px 4px;
+
+        padding: 0 10px 0 30px;
+        width: auto;
+      }
+    }
+
+    .btn-download {
+      padding: 4px 12px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .message-loading {
+    cursor: pointer;
+    width: 80px;
+
+    .synchronize-loading {
+      @include square(60px);
+
+      border-radius: 50%;
+      border-width: 5px;
+      left: 10px;
+      margin: 0;
+      top: 10px;
+    }
+
+    .message-count {
+      @include size(60px, 20px);
+
+      color: $white-background-text-color;
+      margin-top: 30px;
+      margin-left: 10px;
+      text-align: center;
+    }
+  }
+}

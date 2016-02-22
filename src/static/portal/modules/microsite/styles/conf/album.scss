@@ -1,0 +1,43 @@
+$album-textarea-font-size:     14px;
+$album-info-tip-font-size:     12px;
+$album-info-tip-color:         #999;
+$album-upload-pic-bgcolor:     #fff;
+
+.album-addbutton-layout {
+  margin-bottom: 20px;
+  margin-top: 8px;
+  min-height: 20px;
+  text-align: left;
+}
+
+.album-info {
+  margin-bottom: 0;
+}
+
+.album-info-tip {
+  color: $album-info-tip-color;
+  display: inline-block;
+  font-size: $album-info-tip-font-size;
+  margin-left: 5px;
+}
+
+.album-upload-picture[readonly] {
+  background-color: $album-upload-pic-bgcolor;
+}
+
+.file-upload-input .album-upload-picture-button {
+  right: 6px;
+}
+
+.album-description {
+  margin-bottom: 0;
+
+  .album-upload-textarea {
+    display: block;
+    font-size: $album-textarea-font-size;
+    height: 150px;
+    outline: none;
+    padding: 5px;
+    resize: none;
+  }
+}

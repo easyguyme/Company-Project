@@ -1,0 +1,49 @@
+<div class="ulkklp-edit-sample">
+    <div wm-breadcrumb="recipe.breadcrumb"></div>
+	<form id="sampleForm" name="sampleForm" method="post" accept-charset="utf-8" enctype="multipart/form-data" class="" ng-submit="submitInfo(sampleForm.$error.required)" novalidate>
+		<div class="item">
+		    <div class="item-title">
+		        <label class="item-lbl-required">{{'sample_list_sample_name' | translate}}</label><br/>
+		    </div>
+		    <div class="item-content">
+		        <input name="name" id="name" class="item-input" title="{{'recipe_list_sample_name' | translate}}" type="text" ng-model="formData.name" required form-tip="{{'recipe_edit_sample_name_tip' | translate}}" maxlength="20"/>
+		    </div>
+		</div>
+		<br/>
+
+		<div class="item">
+		    <div class="item-title">
+		        <label class="item-lbl-required">{{'recipe_edit_sample_quantity' | translate}}</label><br/>
+		    </div>
+		    <div class="item-content">
+		     	<input name="quantity" id="quantity" class="item-input" title="{{'recipe_edit_sample_quantity' | translate}}" type="text" ng-model="formData.quantity" required form-tip="{{'recipe_edit_sample_name_tip' | translate}}" maxlength="20"/>
+		    </div>
+		</div>
+		<br/>
+
+		<div class="item">
+            <div class="item-title">
+                <label class="item-lbl-required">{{'recipe_edit_upload_img' | translate}}</label><br/>
+            </div>
+            <div class="item-content">
+                <img class="img-prev" id="img-prev" alt="640 X 544" ng-src="{{formData.imgUrl}}" name="imgUrl" ng-model="formData.imgUrl" ng-class="{'valid-border': (formData.imgUrl == '' || formData.imgUrl == null) && isSubmitted}"/>
+                <div>
+                    <span class="error-tip" ng-show="(formData.imgUrl == '' || formData.imgUrl == null) && isSubmitted">{{'recipe_edit_cookbook_img_required' | translate}}</span>
+                </div>
+                <br/>
+                <div id="imgUpload" wm-file-upload class="file-upload-wrap upload-img" ng-model="formData.imgUrl">
+                    <span class="btn btn-success">{{'recipe_edit_upload_img' | translate}}</span>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+	    <div class="item">
+	        <div class="item-content">
+	            <input class="btn btn-primary" type="submit" value="{{'recipe_edit_send' | translate}}" ng-disabled="isClickable"/>&nbsp;&nbsp;&nbsp;
+	            <a ng-href="/uhkklp/recipe?active=3" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+	        </div>
+	    </div>
+		<br/>
+	</form>
+</div>

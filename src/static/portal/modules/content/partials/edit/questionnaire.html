@@ -1,0 +1,110 @@
+<div wm-breadcrumb="questionnaire.breadcrumb"></div>
+<form id="questionnaire-form" role="form" ng-submit="questionnaire.submit()">
+  <div class="questionnaire-wrapper clearfix">
+    <!-- questionnaire name -->
+    <div class="form-group question-property-bottom col-md-6 col-xs-12">
+      <label class="fields-item-label mb10 pl0" translate="content_questionnaire_name"></label>
+      <div class="question-name-input pl0">
+        <input class="form-control" required type="text" form-tip="{{'content_questionnaire_name_tip' | translate}}" ng-model="questionnaire.questionnaires.name" maxlength="30" wm-validate="questionnaire.checkName" />
+      </div>
+    </div>
+    <!-- questionnaire name -->
+
+    <!-- questionnaire start-end time -->
+    <div class="form-group question-property-bottom col-md-7 col-xs-12">
+      <label class="fields-item-label mb10 pl0 required-field" translate="content_questionnaire_start_end_time"></label>
+      <div class="col-md-12 col-xs-12 pl0 datetime-wrapper">
+        <div class="question-float-left clearpadding">
+          <div class="datetime-picker" wm-datetime-picker required-field="true" picker-id="beginDatePicker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" min-date-picker-id="endDatePicker" more-than-today="{{questionnaire.isCreating}}" ng-model="questionnaire.questionnaires.startTime" is-disabled="{{questionnaire.isDisabledStartPicker}}" config="questionnaire.startPickerConfig" icon="calendar"></div>
+        </div>
+        <div class="datetime-delimeter">&minus;</div>
+        <div class="question-float-left clearpadding">
+          <div class="datetime-picker" wm-datetime-picker required-field="true" picker-id="endDatePicker" format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" more-than-today="{{questionnaire.isCreating}}" ng-model="questionnaire.questionnaires.endTime" is-disabled="{{questionnaire.isDisabledEndPicker}}" config="questionnaire.endPickerConfig" icon="calendar"></div>
+        </div>
+      </div>
+    </div>
+    <!-- questionnaire start-end time -->
+
+    <!-- questionnaire description -->
+    <div class="question-property-bottom col-md-6 col-xs-12">
+      <label class="fields-item-label mb10 pl0" translate="content_article_description"></label>
+      <div class="col-md-12 col-xs-12 pl0">
+        <div class="ueditor" name="intro" ng-model="questionnaire.questionnaires.description" ready="questionnaire.getUeditor" ng-click="questionnaire.removeErrorTip()"></div>
+      </div>
+      <span class="form-tip question-description">{{'content_questionnaire_intro_tip' | translate}}</span>
+    </div>
+    <!-- questionnaire description -->
+
+    <!-- question setting title -->
+    <div class="col-md-12 col-xs-12 question-setting clearpadding">
+      <div class="question-setting-label" translate="content_question_setting" ng-click="questionnaire.showQuestions()"></div>
+      <div ng-class="{true:'is-show', false:'is-hide'}[questionnaire.isShow]" ng-click="questionnaire.showQuestions()"></div>
+    </div>
+    <!-- question setting title -->
+
+    <!-- question setting -->
+    <div class="col-md-12 col-xs-12 question-item-setting" ng-show="questionnaire.isShow">
+      <div class="question-item-repeat" ng-repeat="question in questionnaire.questionnaires.questions track by $index">
+        <span class="question-item-title">{{'content_question' | translate: {'questionIndex': $index + 1} }}</span>
+        <i class="question-operate-del glyphicon glyphicon-trash" ng-click="questionnaire.removeQuestion($index, $event)"></i>
+        <div class="question-item-category clearfix" ng-click="questionnaire.removeOptionError($index)">
+          <div class="col-md-7 col-xs-12 pd0">
+            <label class="question-item-category-title" translate="content_question_category"></label>
+            <ul class="question-category-wrap pd0 clearfix" >
+              <li class="pl0 question-category-item" ng-repeat="type in questionnaire.questionTypes track by $index">
+                <wm-radio ng-model="question.type" value="{{type.value}}" ng-click="questionnaire.clearQuestion($parent.$index)"></wm-radio>
+                <label class="fields-item-label" translate="{{type.name}}"></label>
+              </li>
+            </ul>
+            <!-- question content -->
+            <div class="question-answer-area" ng-if="question.type == 'answer'">
+              <textarea class="form-control question-textarea question-answer-choice question-answer{{$index}}" ng-model="question.title" maxlength="50" placeholder="{{'content_question_answer_tip' | translate}}" wm-validate="questionnaire.checkQuestionAsk" required without-star></textarea>
+              <input class="hidden" type="text" ng-model="question.id"/>
+            </div>
+            <div class="question-choice-area" ng-if="question.type == 'choice'">
+              <input class="form-control question-choice-title question-answer-choice question-choice{{$index}}" type="text" placeholder="{{'content_question_choice_tip' | translate}}" ng-model="question.title" maxlength="30" wm-validate="questionnaire.checkQuestion" required without-star/>
+              <input class="hidden" type="text" ng-model="question.id"/>
+              <div class="question-choice-item-wrapper clearfix" ng-repeat="option in question.options track by $index">
+                <div class="pd0 question-choice-select" wm-select id="icon" ng-model="option.icon" items="questionnaire.columns" text-field="icon" value-field="value" type="icon" default-text=""></div>
+                <div class="question-option-title">
+                  <input type="text" ng-model="option.content" class="form-control question-option-length" maxlength="30" placeholder="{{'content_question_choice' | translate}}" required without-star/>
+                </div>
+                <i class="question-operate-del option-delete glyphicon glyphicon-trash" ng-click="questionnaire.removeQuestionOption($parent.$index, $index, $event)"></i>
+              </div>
+              <div class="question-add-option-wrapper form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding clear-margin">
+                <span class="btn-add-radius btn" translate="content_question_add_option" ng-click="questionnaire.addQuestionOption($index)"></span>
+              </div>
+              <div class="question-open-checkbox">
+                <wm-checkbox ng-model="question.isOpenCheck"></wm-checkbox>
+                <span>{{'content_open_checkbox'|translate}}</span>
+              </div>
+            </div>
+            <!-- question content -->
+          </div>
+        </div>
+        <span class="question-option-error" translate="content_question_option_error"></span>
+      </div>
+      <div class="question-add-button form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding clear-margin">
+        <span class="btn-add-radius btn" translate="content_add_question" ng-click="questionnaire.addQuestion()"></span>
+      </div>
+    </div>
+    <!-- question setting -->
+
+    <!-- questionnaire status -->
+    <div class="question-status-wrapper form-group col-md-6 col-xs-12 clearfix">
+      <label class="fields-item-label col-md-12 col-xs-12 clearpadding required-field" translate="content_publish_state"></label>
+      <ul class="pd0 clearfix" >
+        <li class="pl0 question-status-radio" ng-repeat="status in questionnaire.questionStatus track by $index">
+          <div wm-radio ng-model="questionnaire.questionState" value="{{status.value}}"></div>
+          <label class="fields-item-label associated-gift-item" translate="{{status.name}}"></label>
+        </li>
+      </ul>
+    </div>
+    <!-- questionnaire status -->
+
+    <div class="form-group col-md-12 col-xs-12 mt20 button-group">
+      <input type="submit" class="btn btn-success mr20 user-btn" value="{{'ok' | translate}}" />
+      <input type="button" class="btn btn-default user-btn" ng-click="questionnaire.cancel()" value="{{'channel_wechat_mass_cancel' | translate}}" />
+    </div>
+  </div>
+</form>

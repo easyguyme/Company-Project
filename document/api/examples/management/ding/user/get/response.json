@@ -1,0 +1,37 @@
+{
+    "items": [
+        {
+            "id": "563ad0a8d6f97f253e8b4568",
+            "corpId": "dinge531cb7e7e12933b",
+            "dingId": "01446945196569",
+            "name": "vincenthou",
+            "avatar": null,
+            "mobile": null,
+            "email": null,
+            "openId": null,
+            "enableActions": []
+        },
+        {
+            "id": "563ad0a8d6f97f253e8b4567",
+            "corpId": "dinge531cb7e7e12933b",
+            "dingId": "manager7746",
+            "name": "Rex",
+            "avatar": null,
+            "mobile": null,
+            "email": null,
+            "openId": null,
+            "enableActions": []
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/management/ding/user?page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 2,
+        "pageCount": 1,
+        "currentPage": 0,
+        "perPage": 20
+    }
+}

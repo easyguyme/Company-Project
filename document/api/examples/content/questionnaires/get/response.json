@@ -1,0 +1,27 @@
+{
+    "items": [
+        {
+            "id": "55d6cb8be9c2fb022c8b4579",
+            "name": "name",
+            "startTime": "2015-04-14 16:28:32",
+            "endTime": "2015-04-14 16:28:36",
+            "creator": {
+                "id": "54c58ea2e9c2fb51048b4569",
+                "name": "name"
+            },
+            "isPublished": false,
+            "createdAt": "2015-08-21 14:56:11"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/content/questionnaires?fields=id%2Cname%2CstartTime%2CendTime%2Ccreator%2CcreatedAt%2CisPublished&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

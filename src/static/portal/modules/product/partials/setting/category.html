@@ -1,0 +1,73 @@
+<div ng-controller="wm.ctrl.product.setting.category as setting">
+  <div class="panel panel-default">
+    <button class="btn btn-success pull-right btn-setting" ng-click="setting.createCategory()" translate="product_add_category"></button>
+    <!--Category list-->
+    <div class="panel-body clearpadding product-setting">
+      <!-- Goods and service types -->
+      <div wm-horizontal-list="setting.changeTab" tabs="setting.tabs"></div>
+      <p ng-if="!setting.categories.length" translate="no_data" class="fixed-table-nodata"></p>
+      <div class="wm-table-wrap" ng-repeat="category in setting.categories track by $index">
+        <div class="product-category row" ng-class="{true: 'product-category-input', false: 'product-category-label'}[category.isEditCategory]">
+          <div class="col-md-6" ng-hide="category.isEditCategory">
+            <span class="product-category-names" ng-bind="category.name" ng-click="setting.editCategory($index)" wm-tooltip="{{'product_double_click'|translate}}"></span>
+            <span class="product-category-properties">({{category.propertiesLength}})</span>
+          </div>
+          <div class="product-input col-md-7 row" ng-show="category.isEditCategory">
+            <form role="form" class="promotion-category-form" ng-submit="setting.submit($index, category.id)">
+              <div class="col-md-8">
+                <input id="{{category.id?category.id:'categoryName'}}" placeholder="{{'product_category_name_placeholder'|translate}}" class="form-control create-category-input" ng-model="category.name" wm-max-character-size="20" />
+              </div>
+              <div class="form-group product-create-operation col-md-4 row clearpadding">
+                <button class="btn btn-success col-md-4 ml20" translate="ok"></button>
+                <span class="btn btn-default col-md-4 ml20" ng-click="setting.cancel($index, category.id)" translate="cancel"></span>
+              </div>
+            </form>
+          </div>
+          <!--product category operation-->
+          <div class="product-operation" ng-if="category.id">
+            <span class="delete-operation-wrapper" wm-tooltip="{{'product_category_cannot_delete_tip'|translate}}" ng-show="!category.isDeleteCategory">
+              <span class="btn delete-icon mr15" translate="product_delete_category" ng-click="setting.deleteCategory($index, $event)" ng-disabled="true"></span>
+            </span>
+            <span class="btn delete-icon mr15" translate="product_delete_category" ng-click="setting.deleteCategory($index, $event)" ng-show="category.isDeleteCategory"></span>
+            <span class="btn add-icon" translate="product_new_category_property" ng-click="setting.editProperty($index)" ng-disabled="category.data.length >= 20"></span>
+          </div>
+        </div>
+        <wm-table ng-model="category" class="colored-table"></wm-table>
+        <button class="btn btn-success product-category-sort" translate="product_save_order" ng-click="setting.sort($index)" ng-show="category.id && category.data[0].id"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add category attribute -->
+<script type="text/ng-template" id="addCategoryAttribute.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-user-title">{{isCreateProperty?'product_new_category_property':'product_edit_category_property'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor clearfix">
+    <form role="form" class="members-form" ng-submit="submit()">
+      <div class="member-form-tip">
+        <span class="tip-icon"></span>
+        <span class="tip form-tip" translate="product_category_form_tip"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="normal-label" translate="product_attribute_split"></label>:
+        <span>{{categoryName}}</span>
+      </div>
+
+      <div class="form-group">
+        <label class="normal-label" translate="customer_members_attribute_names"></label>
+        <input id="categoryPropertyName" wm-max-character-size="20" class="form-control" ng-model="property.name" form-tip="{{'product_attribute_name_tip'|translate}}" required />
+      </div>
+
+      <div class="center-text">
+        <button class="btn btn-success btn-position ng-scope user-btn" translate="ok"></button>
+      </div>
+
+    </form>
+  </div>
+</script>

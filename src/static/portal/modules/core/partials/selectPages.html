@@ -1,0 +1,31 @@
+<!-- station link modal -->
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+  <h4 class="station-title">{{'wechat_menu_select_link' | translate}}</h4>
+</div>
+<div class="modal-body modal-bgcolor">
+  <div class="tab-items">
+    <div wm-tabs="changeTab()" data-inner="true" tabs="tabs" ng-model="tabActive"></div>
+  </div>
+  <div wm-select class="channel-select" ng-model="channel" text-field="text" value-field="value" items="channels" default-text="wechat_menu_default_channel" ng-show="tabs[1].active" on-change="changeChannel"></div>
+  <div class="search-block" ng-show="tabs[2].active">
+    <input class="form-control search-input" type="text" ng-model="searchContent" placeholder="{{'wechat_menu_station_search_tip' | translate}}" wm-enter="searchLink()" />
+    <input type="submit" class="btn btn-success search-btn" value="{{'wechat_menu_search' | translate}}" ng-click="searchLink()"/>
+  </div>
+  <div class="body-block">
+    <ul class="body-items">
+      <li class="body-item" ng-repeat="page in pages track by $index" ng-click="selectPage($index)" ng-class="{'body-item-selected' : pageFlag == $index}">
+        <span class="{{page.type}}-icon"></span>
+        <span class="page-text">{{page.title}}</span>
+        <span class="selected-flag"></span>
+      </li>
+    </ul>
+    <span class="no-result" ng-class="{'search-init': showSearchInit}" ng-if="pages.length <= 0">
+      <span class="result-tip search-init-tip" ng-if="showSearchInit">{{'wechat_menu_station_search_init_tip' | translate}}</span>
+      <span class="result-tip" ng-if="tabs[0].active && pages.length <= 0">{{'wechat_menu_station_no_page' | translate}}</span>
+      <span class="result-tip" ng-if="tabs[1].active && pages.length <= 0">{{'wechat_menu_station_no_article' | translate}}</span>
+      <span class="result-tip" ng-if="!showSearchInit && tabs[2].active && pages.length <= 0">{{'wechat_menu_station_no_search' | translate}}</span>
+    </span>
+  </div>
+  <input type="submit" class="btn btn-success link-success" value="{{'submit' | translate}}" ng-click="ok()" />
+</div>

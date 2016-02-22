@@ -1,0 +1,5 @@
+<!-- type is textarea -->
+<div class="member-attr-item member-attr-textarea clearfix">
+  <textarea id="{{property.id}}" class="form-control" rows="5" ng-model="property.value" required ng-if="property.isRequired"></textarea>
+  <textarea id="{{property.id}}" class="form-control" rows="5" ng-model="property.value" ng-if="!property.isRequired"></textarea>
+</div>

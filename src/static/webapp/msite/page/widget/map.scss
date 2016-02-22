@@ -1,0 +1,20 @@
+.m-map-container {
+  padding: 0.31rem 0.5rem;
+}
+
+.m-hidden {
+  display: none;
+}
+.m-info-header {
+  color: #1c1c1c;
+  font-size: 0.47rem;
+  padding: 0;
+
+  .m-info-address {
+    margin-bottom: 0.31rem;
+  }
+
+  .m-info-name {
+    @extend .m-info-address;
+  }
+}

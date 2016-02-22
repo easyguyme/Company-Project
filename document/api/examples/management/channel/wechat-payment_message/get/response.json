@@ -1,0 +1,30 @@
+{
+    "quncrmAccountId": "群脉账号ID",
+    "channelType": "渠道类型",
+    "appId": "微信公众号appid",
+    "sellerId": "微信商户ID",
+    "apiKey": "API安全密钥",
+    "weixinPayment": "ENABLE",
+    "alipayPayment": "DISABLE",
+    "p12Credential": {
+        "id": "证书文件ID",
+        "name": "文件名",
+        "type": "证书类型(P12_CREDENTIAL)"
+    },
+    "pemCredential": {
+        "id": "证书文件ID",
+        "name": "文件名",
+        "type": "证书类型(PEM_CREDENTIAL)"
+    },
+    "pemCredentialKey": {
+        "id": "证书文件ID",
+        "name": "文件名",
+        "type": "证书类型(PEM_CREDENTIAL_KEY)"
+    },
+    "caCredential": {
+        "id": "证书文件ID",
+        "name": "文件名",
+        "type": "证书类型(CA_CREDENTIAL)"
+    },
+    "authDirectory": "http://wxpay.weixin.qq.com/pub/jsapi"
+}

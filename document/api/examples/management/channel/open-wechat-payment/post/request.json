@@ -1,0 +1,9 @@
+{
+    "appId":"2014102700014769",
+    "sellerId":"10010000",
+    "apiKey":"20141027014769",
+    "p12Credential":"apiclient_cert.p12",
+    "pemCredential":"apiclient_cert.pem",
+    "pemCredentialKey":"apiclient_key.pem",
+    "caCredential":"rootca.pem"
+}

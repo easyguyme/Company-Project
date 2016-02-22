@@ -1,0 +1,109 @@
+{
+  "messages" : [
+    {
+      "id": "5473ffe7db7c7c2f0bee5c71",
+      "accountId": "5473ffe7db7c7c2f0bee5c71",
+      "user": {
+        "id": "5473ffe7db7c7c2f0bee5c71",
+        "name": "hank.liu",
+        "avatar": "/images/management/image_hover_default_avatar.png"
+      },
+      "direction": "SEND",
+      "hitKeycode": "hello",
+      "createTime": 1404285894043,
+      "message": {
+        "msgType": "TEXT",
+        "content": "hello world",
+        "createTime": 1404285894043
+      }
+    },
+    {
+      "id": "5473ffe7db7c7c2f0bee5c71",
+      "accountId": "5473ffe7db7c7c2f0bee5c71",
+      "user": {
+        "id": "5473ffe7db7c7c2f0bee5c71",
+        "name": "rex.chen",
+        "avatar": "/images/management/image_hover_default_avatar.png"
+      },
+      "direction": "SEND",
+      "hitKeycode": "不宅人",
+      "createTime": 1404285894043,
+      "message": {
+        "msgType": "TEXT",
+        "content": "不宅人更新了！好开心啊",
+        "createTime": 1404285894043
+      }
+    },
+    {
+      "id": "5473ffe7db7c7c2f0bee5c71",
+      "accountId": "5473ffe7db7c7c2f0bee5c71",
+      "user": {
+        "id": "5473ffe7db7c7c2f0bee5c71",
+        "name": "sara.zhang",
+        "avatar": "/images/management/image_hover_default_avatar.png"
+      },
+      "direction": "SEND",
+      "createTime": 1404285894043,
+      "message": {
+        "msgType": "TEXT",
+        "content": "我们已经收到不宅人的大礼包，可以背上去徒步了，太开心了，太感谢你们了，我太喜欢了，不管是颜色还是款式，都是我喜欢的呢，以后一定会多多关注你们的，当然，如果大礼包的礼物能够再多点就好了。",
+        "createTime": 1404285894043
+      }
+    },
+    {
+      "id": "5473ffe7db7c7c2f0bee5c71",
+      "accountId": "5473ffe7db7c7c2f0bee5c71",
+      "user": {
+        "id": "5473ffe7db7c7c2f0bee5c71",
+        "name": "rex.chen",
+        "avatar": "/images/management/image_hover_default_avatar.png"
+      },
+      "direction": "SEND",
+      "hitKeycode": "不宅人",
+      "createTime": 1404285894043,
+      "message": {
+        "msgType": "TEXT",
+        "content": "不宅人更新了！好开心啊",
+        "createTime": 1404285894043
+      }
+    },
+    {
+      "id": "5473ffe7db7c7c2f0bee5c71",
+      "accountId": "5473ffe7db7c7c2f0bee5c71",
+      "user": {
+        "id": "5473ffe7db7c7c2f0bee5c71",
+        "name": "rex.chen",
+        "avatar": "/images/management/image_hover_default_avatar.png"
+      },
+      "direction": "SEND",
+      "hitKeycode": "不宅人",
+      "createTime": 1404285894043,
+      "message": {
+        "msgType": "TEXT",
+        "content": "不宅人更新了！好开心啊",
+        "createTime": 1404285894043
+      }
+    },
+    {
+      "id": "5473ffe7db7c7c2f0bee5c71",
+      "accountId": "5473ffe7db7c7c2f0bee5c71",
+      "user": {
+        "id": "5473ffe7db7c7c2f0bee5c71",
+        "name": "rex.chen",
+        "avatar": "/images/management/image_hover_default_avatar.png"
+      },
+      "direction": "SEND",
+      "hitKeycode": "不宅人",
+      "createTime": 1404285894043,
+      "message": {
+        "msgType": "TEXT",
+        "content": "不宅人更新了！好开心啊",
+        "createTime": 1404285894043
+      }
+    }
+
+  ],
+  "currentPage": 1,
+  "totalItems" : 6,
+  "pageSize" : 20
+}

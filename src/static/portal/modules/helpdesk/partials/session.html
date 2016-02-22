@@ -1,0 +1,124 @@
+<div wm-breadcrumb="session.breadcrumb"></div>
+<div wm-tabs="session.changTab()" tabs="session.tabs" ng-model="session.curTab"></div>
+
+<div class="panel panel-default panel-main-content container-fluid panel-helpdesk-session">
+  <div class="panel-heading helpdesk-session-title row">
+    <div class="session-before-date col-md-4 col-sm-6 col-xs-12 row">
+      <label class="col-md-4 session-title-label" translate="helpdesk_call_in_time"></label>
+      <div class="col-md-8">
+        <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" min-date-picker-id="endDatePicker" time-handler="session.selectDate()" less-than-today="true" ng-model="session.beginDate"></div>
+      </div>
+    </div>
+    <div class="session-end-date col-md-4 col-sm-6 col-xs-12 row">
+      <label class="col-md-4 session-title-label session-title-spacing" translate="helpdesk_to"></label>
+      <div class="col-md-8">
+        <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" max-date-picker-id="beginDatePicker" time-handler="session.selectDate()" less-than-today="true" ng-model="session.endDate"></div>
+      </div>
+    </div>
+    <div class="session-quick-date col-md-4 col-sm-6 col-xs-12 row">
+      <div class="col-md-8 session-quick-time">
+        <div wm-select on-change="session.changeTime" ng-model="session.time" text-field="text" value-field="value" items="session.timeOptions"></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body container-fluid panel-session-container" ng-if="session.curTab.value == 0">
+    <wm-table ng-model="session.list" class="helpdesk-session-items"></wm-table>
+    <div class="broadcast-pagination interaction-foot-pagination" ng-if="session.pageCount > 0">
+      <div wm-pagination current-page="session.currentPage" page-size="session.pageSize" total-items="session.totalItems" on-change-size="session.changeSize" on-change-page="session.changePage"></div>
+    </div>
+  </div>
+
+  <div class="panel-body container-fluid panel-session-container" ng-if="session.curTab.value == 1">
+
+    <div class="panel panel-default panel-main-content score-pannel">
+      <div class="panel-heading panel-title-block">
+        <span translate="helpdesk_session_overview"></span>
+      </div>
+      <div class="panel-body row score-reward-body">
+        <div class="col-md-4" ng-repeat="item in session.overview track by $index">
+          <div class="score-total-title" translate="{{item.text}}"></div>
+          <div class="total-number">{{item.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default panel-main-content score-pannel">
+      <div class="panel-heading panel-title-block">
+        <span translate="helpdesk_session_trend"></span>
+      </div>
+      <div class="panel-body row score-reward-body session-statistics-body">
+        <div wm-line-chart options="session.lineChartOptions" width="100%" height="350px"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal-dialog message-reply-dialog session-detail-dialog col-md-5" ng-show="session.isCollapsed">
+  <div class="modal-header reply-dialog-header session-dialog-header">
+    <button type="button" class="close popup-close replay-dialog-close" ng-click="session.closeDetailPanel()"></button>
+    <h4 class="modal-title create-user-title reply-message-title fs16" translate="helpdesk_session_detail"></h4>
+  </div>
+  <div class="modal-body modal-bgcolor replay-message-body session-detail-body clearfix">
+
+    <div class="form-group">
+      <div class="container-fluid interact-message-item session-detail-item clearfix" ng-repeat="detail in session.sessionDetailDatas track by $index" ng-class="{true: 'reveived-row', false: 'send-row'}[detail.isReply]">
+
+        <div class="row" ng-if="!detail.isReply">
+          <div class="container-fluid col-md-12 interact-message-info session-detail-info clearfix">
+            <div class="row">
+              <div class="col-md-1 message-sender-avatar" ng-style="{'background-image':session.viewSession.client.avatar}"></div>
+              <div class="col-md-11 message-sender-info session-sender-info fs14">
+                <div class="message-illustrate">
+                  <div class="sender-name customer-nickname fs14 text-el" ng-bind="session.viewSession.client.nick"></div>
+                  <div class="send-time fs12" ng-bind="detail.sentTime|date:'yyyy-MM-dd HH:mm:ss'"></div>
+                </div>
+
+                <div ng-switch="detail.content.msgType" ng-if="detail.content">
+                  <section class="message-content" ng-switch-when="TEXT" ng-bind-html="detail.content.body"></section>
+
+                  <section class="message-content" ng-switch-when="NEWS">
+                    <div wm-wechat-graphic graphic="detail.content.body" linkable="true"></div>
+                  </section>
+
+                  <section class="message-content" ng-switch-default translate="channel_unsupport_message_type"></section>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" ng-if="detail.isReply">
+          <div class="container-fluid col-md-12 interact-message-info session-detail-info clearfix">
+            <div class="row">
+              <div class="col-md-1 message-sender-avatar" ng-style="{'background-image':session.viewSession.desk.avatar}"></div>
+              <div class="col-md-11 message-sender-info session-sender-info fs14">
+                <div class="message-illustrate">
+                  <div class="sender-name customer-nickname fs14 text-el" ng-bind="session.viewSession.desk.badge"></div>
+                  <div class="send-time fs12" ng-bind="detail.sentTime|date:'yyyy-MM-dd HH:mm:ss'"></div>
+                </div>
+
+                <div ng-switch="detail.content.msgType" ng-if="detail.content">
+                  <section class="message-content" ng-switch-when="TEXT" ng-bind-html="detail.content.body"></section>
+
+                  <section class="message-content" ng-switch-when="NEWS">
+                    <div wm-wechat-graphic graphic="detail.content.body" linkable="true"></div>
+                  </section>
+
+                  <section class="message-content" ng-switch-default translate="channel_unsupport_message_type"></section>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="broadcast-pagination interaction-foot-pagination" ng-if="session.detailPageCount > 0">
+      <div wm-pagination current-page="session.detailCurrentPage" page-size="session.detailPageSize" total-items="session.detailTotalItems" on-change-size="session.detailChangeSize" on-change-page="session.detailChangePage" hide-page-size="true"></div>
+    </div>
+  </div>
+</div>

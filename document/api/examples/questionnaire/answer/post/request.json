@@ -1,0 +1,15 @@
+{
+    "questionnaireId": "54d9c165e450abe717853671",
+    "user": {
+        "channelId": "54d9c155e4b0abe717853ee1",
+        "openId": "oC9Aes9vuisNRmC4ZNdIXY1lb_rk",
+        "origin": "wechat"
+    },
+    "answers": [
+        {
+            "questionId": "54d9c155e4b0abe717853671",
+            "type": "radio",
+            "value": "Yes"
+        }
+    ]
+}

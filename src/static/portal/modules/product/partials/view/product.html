@@ -1,0 +1,43 @@
+
+<div wm-breadcrumb="product.breadcrumb"></div>
+<div class="product-pay-info-wrapper">
+  <div ng-show="product.showTab" wm-tabs="product.changeTab()" tabs="product.tabs" ng-model="product.curTab"></div>
+  <div wm-tab-panes tabs="product.tabs" full-path="/build/modules/product/partials/detail/"></div>
+</div>
+
+<div ng-show="!!product.list.hasLoading" class="modal-backdrop fade product-list-loading"></div>
+
+<div id="upload-loading" class="mask-loading product-upload-loading">
+    <div class="loading-icon"></div>
+</div>
+
+<script type="text/ng-template" id="promocode.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'product_detail_import_code' | translate}}</h4>
+  </div>
+  <form name="promocodeForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <p class="product-detail-name" translate="product_promotion_code"></p>
+      <div class="form-group clearfix">
+        <div class="mb10"><div wm-radio ng-model="codeType" value="generate" ng-click="changeCodeType()"></div>{{'product_promotion_generate_batch' | translate}}</div>
+        <div style="margin-left:7px;" class="col-md-11 col-xs-11">
+          <input wm-validate="checkCount('codeCount', promotion.count)" id="codeCount" type="text" class="form-control" ng-model="count" placeholder="{{'product_promotion_code_count_tip' | translate}}" maxlength="6" ng-disabled="codeType != 'generate'"/>
+        </div>
+      </div>
+      <div class="form-group clearfix">
+        <div class="mb10"><div wm-radio ng-model="codeType" value="import" ng-click="promotion.changeCodeType()"></div>{{'product_promotion_import_code' | translate}}</div>
+        <div style="margin-left:7px" class="file-upload-input col-md-11 col-xs-11">
+          <div ng-if="codeType != 'import' || !!uploading" class="col-md-12 file-disable-wrapper"></div>
+          <input class="form-control" name="code-file" id="import-file" ng-model="file" readonly="readonly" placeholder="{{'product_no_file' | translate}}"/>
+          <div id="upload" ng-file-select ng-file-change="upload($files)" class="file-upload-wrap" multiple="true" ng-class="{'disable-file-upload':codeType != 'import' || !!uploading}" ng-model="file">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input ng-disabled="uploading || (codeType == 'import' && file == '') || (codeType == 'generate' && !count) || wrongStatus" type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>

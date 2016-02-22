@@ -1,0 +1,51 @@
+$cover1-slides-tip-color:     #a0a0a0;
+$cover1-slides-tip-font-size: 12px;
+$cover1-nav-title-color:      #1c1c1c;
+$cover1-nav-title-font-size:  14px;
+$cover1-nav-name-color:       #1c1c1c;
+$cover1-nav-name-font-size:   14px;
+
+.cover1-slide-title {
+  margin-bottom: 0;
+}
+
+.cover1-title-tip {
+  display: inline-block;
+  color: $cover1-slides-tip-color;
+  font-size: $cover1-slides-tip-font-size;
+  margin-left: 5px;
+}
+
+.cover1-form-group {
+  margin-bottom: 7px;
+}
+
+.cover1-slide-addbutton-layout {
+  text-align: left;
+  min-height: 20px;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+.cover1-nav-title-layout {
+  font-size: $cover1-nav-title-font-size;
+  color: $cover1-nav-title-color;
+  margin-top: 0;
+}
+
+.cover1-nav-name {
+  color: $cover1-nav-name-color;
+  font-size: $cover1-nav-name-font-size;
+}
+
+.cover1-goto-link {
+  margin-bottom: 0;
+}
+
+.cover1-upload-picture[readonly] {
+  background-color: #fff;
+}
+
+.cover1-upload-picture-button {
+  right: 6px !important;
+}

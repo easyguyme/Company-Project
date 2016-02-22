@@ -1,0 +1,201 @@
+<div class="create-coupon">
+  <div wm-breadcrumb="coupon.breadcrumb"></div>
+  <section class="coupon-type" ng-show="coupon.isShowCoupons">
+    <label class="coupon-title">{{'product_select_coupon' | translate}}</label>
+    <div class="clearfix">
+      <div class="coupon-item cp pull-left" ng-repeat="item in coupon.coupons track by $index" ng-click="coupon.chooseCoupon($index)" ng-style="{'background-image': 'url(\'/images/product/' + item.type + '_icon.png\')'}">
+        <div class="coupon-name mb10" translate="{{item.name}}"></div>
+        <div class="coupon-description" translate="{{item.description}}"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="coupon-body clearfix" ng-show="!coupon.isShowCoupons">
+    <div class="col-xs-6 col-md-3 coupon-select clearpadding">
+      <div class="coupon-select-title">{{coupon.currentCoupon.name | translate}}</div>
+      <div class="waterfall-news-normal" ng-repeat="info in coupon.infos track by $index" ng-class="{'waterfall-active': info.active, 'mb0': $index == 2}">
+        <div class="coupon-info-item clearfix">
+          <div class="item-text" translate="{{info.title}}">
+          </div>
+          <div class="coupon-info-item-cover">
+            <i class="icon-edit cp" ng-click="coupon.select($index)"></i>
+          </div>
+        </div>
+        <div class="bottom-wavy" ng-show="{{$index == 0}}" ng-class="{'top-71': info.active}"></div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-7">
+      <form id="createCoupon">
+        <div class="coupon-edit" ng-class="{'heigth-550':coupon.couponType == 'cash'}">
+          <section class="couption-info" ng-show="coupon.infos[0].active">
+            <div class="form-group clearfix" ng-if="coupon.couponType == 'discount'">
+              <label class="col-md-12" for="discountAmount">{{'product_coupon_discount_rate' | translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left tip-width">
+                  <input class="form-control" name="discountAmount" ng-model="coupon.discountAmount" wm-input-reg data-reg="^(([0-9]))(\.\d{0,2})?$"/>
+                </div>
+                <span class="point-label">{{'discount_off' | translate}}</span>
+              </div>
+            </div>
+
+            <div class="form-group clearfix" ng-if="coupon.couponType == 'cash'">
+              <label class="col-md-12" for="reductionAmount">{{'product_coupon_amount_deduction' | translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left tip-width">
+                  <input class="form-control" name="reductionAmount" ng-model="coupon.reductionAmount" required wm-input-reg data-reg="^(([1-9]\d*)|0)(\.\d{0,2})?$"/>
+                </div>
+                <span class="point-label">{{'yuan' | translate}}</span>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-md-12" for="title">{{coupon.currentCoupon.itemTitle | translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left tip-width">
+                  <input class="form-control" name="title" maxlength="30" ng-model="coupon.title" below-msg required form-tip="{{'product_coupon_discount_title_tip' | translate}}" ng-if="coupon.couponType == 'discount'"/>
+                  <input class="form-control" name="title" maxlength="30" ng-model="coupon.title" below-msg required form-tip="{{'product_coupon_cash_title_tip' | translate}}" ng-if="coupon.couponType == 'cash'"/>
+                  <input class="form-control" name="title" maxlength="30" ng-model="coupon.title" below-msg required form-tip="{{'product_coupon_gift_title_tip' | translate}}" ng-if="coupon.couponType == 'gift'"/>
+                  <input class="form-control" name="title" maxlength="30" ng-model="coupon.title" below-msg required form-tip="{{'product_coupon_coupon_title_tip' | translate}}" ng-if="coupon.couponType == 'coupon'"/>
+                </div>
+                <span class="point-label color-gray9">{{coupon.title.length || 0}}/30</span>
+              </div>
+            </div>
+
+            <div class="form-group clearfix graphics col-md-7 clearpadding">
+              <label class="col-md-12" for="picUrl">{{coupon.currentCoupon.picTitle | translate}}</label>
+              <div class="col-md-12">
+                <input class="form-control readonly-style" name="picUrl" ng-model="coupon.picUrl" onkeydown="return false;" below-msg required form-tip="{{'product_coupon_image_tip'|translate}}"/>
+                <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="coupon.picUrl" max-size="50">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group clearfix" ng-if="coupon.couponType == 'cash'">
+              <label class="col-md-12" for="discountCondition">{{'product_coupon_threshold'|translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left tip-width">
+                  <input class="form-control" name="discountCondition" ng-model="coupon.discountCondition" wm-input-reg data-reg="^(([1-9]\d*)|0)(\.\d{0,2})?$"/>
+                </div>
+                <span class="point-label">{{'yuan' | translate}}</span>
+              </div>
+              <div class="col-md-12 form-tip" translate="product_coupon_threshold_tip"></div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label class="required-field">{{'product_coupon_validity' | translate}}</label>
+              <div class="clearfix coupon-timepicker mb10">
+                <wm-radio ng-model="coupon.expiryType" value="absolute"></wm-radio>
+                <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" min-date-picker-id="endDatePicker" more-than-today="true" ng-model="coupon.startDate" icon="calendar" is-disabled="{{coupon.expiryType =='relative'}}"></div>
+                <span class="span-center">-</span>
+                <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" max-date-picker-id="beginDatePicker" more-than-today="true" ng-model="coupon.endDate" icon="calendar" is-disabled="{{coupon.expiryType =='relative'}}"></div>
+              </div>
+
+              <div class="clearfix coupon-selects">
+                <wm-radio ng-model="coupon.expiryType" value="relative"></wm-radio>
+                <span class="span-center">{{'product_coupon_effect_from' | translate}}</span>
+                <div wm-select ng-model="coupon.effectTime" text-field="text" value-field="value" items="coupon.effectTimes" is-disabled="{{coupon.expiryType =='absolute'}}"></div>
+                <span class="span-center">{{'product_coupon_effect_when' | translate}}</span>
+                <div wm-select ng-model="coupon.activeTime" text-field="text" value-field="value" items="coupon.activeTimes" is-disabled="{{coupon.expiryType =='absolute'}}"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="couption-setting" ng-show="coupon.infos[1].active">
+            <label class="col-md-12">{{'product_coupon_setting'|translate}}</label>
+            <div class="form-group clearfix">
+              <label class="col-md-12" for="total">{{'product_coupon_inventory'|translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left point-fill">
+                  <input class="form-control" name="total" ng-model="coupon.total" required wm-input-reg data-reg="(^[1-9]\d*$)" maxlength="10"/>
+                </div>
+                <span class="point-label">{{'pieces'|translate}}</span>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-md-12" for="limit">{{'product_coupon_limit'|translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left point-fill">
+                  <input class="form-control" name="limit" ng-model="coupon.limit" below-msg wm-input-reg data-reg="(^[1-9]\d*$)" maxlength="10"/>
+                </div>
+                <span class="point-label">{{'piece'|translate}}</span>
+              </div>
+              <div class="col-md-12 form-tip" translate="product_coupon_limit_tip"></div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-md-12" for="tip">{{'product_coupon_operation_tip'|translate}}</label>
+              <div class="col-md-12">
+                <div class="pull-left tip-width">
+                  <input class="form-control" name="tip" maxlength="16" ng-model="coupon.tip" below-msg required form-tip="{{'product_coupon_operation_tip_tip'|translate}}"/>
+                </div>
+                <span class="point-label color-gray9">{{coupon.tip.length || 0}}/16</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="couption-detail" ng-show="coupon.infos[2].active">
+            <div class="form-group clearfix" ng-if="coupon.couponType == 'gift' || coupon.couponType == 'coupon'">
+              <label class="col-md-12">{{'product_coupon_offer_details'|translate}}</label>
+              <div class="col-md-12">
+                <textarea class="form-control" ng-model="coupon.description" rows="4" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-md-12">{{'product_coupon_terms'|translate}}</label>
+              <div class="col-md-12">
+                <textarea class="form-control" ng-model="coupon.usageNote" rows="4" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-group clearfix">
+              <label class="col-md-12" for="phone">{{'product_coupon_service_call'|translate}}</label>
+              <div class="col-md-5">
+                <input class="form-control" name="phone" ng-model="coupon.phone" ng-if="coupon.couponType == 'cash' || coupon.couponType == 'gift'"/>
+                <input class="form-control" name="phone" ng-model="coupon.phone" required ng-if="coupon.couponType == 'coupon' || coupon.couponType == 'discount'" form-tip="{{'product_coupon_service_call_tip'|translate}}"/>
+              </div>
+              <div class="col-md-12 form-tip" translate="product_coupon_service_call_tip" ng-if="coupon.couponType == 'cash' || coupon.couponType == 'gift'"></div>
+            </div>
+          </section>
+
+          <section class="couption-store" ng-show="coupon.infos[3].active">
+            <div class="form-group">
+              <label class="col-md-12 required-field">{{'product_coupon_store' | translate}}</label>
+              <div class="couption-store-content clearfix">
+                <wm-radio ng-model="coupon.storeType" value="specify"></wm-radio><span>{{'product_coupon_specify_store' | translate}}</span>
+                <div class="store-infos">
+                  <div wm-fixed-table ng-if="coupon.storeList.data.length > 0" class="mb10" ng-model="coupon.storeList"></div>
+                  <button class="btn btn-success" translate="product_coupon_select_store" ng-click="coupon.selectStore()" ng-disabled="coupon.storeType=='all'"></button>
+                </div>
+                <wm-radio ng-model="coupon.storeType" value="all"></wm-radio><span>{{'product_coupon_all_store' | translate}}</span>
+            </div>
+          </section>
+          <i class="back-triangle"></i>
+          <i class="front-triangle"></i>
+        </div>
+        <div class="coupon-submit">
+          <button class="btn btn-success" type="submit" translate="ok" ng-click="coupon.save()"></button>
+        </div>
+      </form>
+    </div>
+
+  </section>
+</div>
+
+<!-- Select store -->
+<script type="text/ng-template" id="selectStore.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'product_coupon_select_store'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor">
+    <div wm-fixed-table is-select-all="true" ng-if="storeList.data.length > 0" class="mb10" ng-model="storeList"></div>
+    <div class="center-text">
+      <button class="btn btn-success" translate="ok" ng-click="submit()"></button>
+    </div>
+  </div>
+
+</script>

@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "outTradeNo": {
+      "type": "string",
+      "required": true,
+      "description": "商户订单号"
+    },
+    "refundFee": {
+      "type": "string",
+      "required": true,
+      "description": "退款金额"
+    }
+  }
+}

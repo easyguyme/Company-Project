@@ -1,0 +1,91 @@
+<div wm-breadcrumb="token.breadcrumb"></div>
+<form name="tplForm" class="clearfix" ng-submit="token.submit()">
+  <section class="form-group col-md-12">
+    <span class="product-detail-name" translate="management_template_name"></span>
+    <div>{{token.data.name | translate}}</div>
+  </section>
+
+  <section class="form-group col-md-12">
+    <div wm-checkbox ng-model="token.data.useWebhook"></div>{{'management_token_use_webhook' | translate}}
+  </section>
+
+  <section ng-if="!token.data.useWebhook">
+    <section class="form-group col-md-12" ng-if="token.data.weChat">
+      <div class="mb10">
+        <div class="tpl-icon tpl-mpnews-icon" translate="management_mpnews"></div>
+        <img class="cp" ng-src="/images/management/triangle_{{token.mpnews}}.png" ng-click="token.showContent('mpnews')" />
+        <span class="tpl-icon btn-tpl-helper" translate="helper" ng-show="token.isShowHelper.wechat" ng-click="token.showHelper('wechat')"></span>
+      </div>
+      <div class="tpl-wrapper" ng-show="token.mpnews == 'up'">
+        <span class="product-detail-name" translate="management_tpl_id"></span>
+        <div class="npnews-wrapper">
+          <input class="form-control tpl-id-input" ng-model="token.data.weChat.templateId" />
+          <div class="form-tip tpl-tip">{{'management_tpl_mpnews_tip1' | translate}}
+            <a href="https://mp.weixin.qq.com">{{'management_tpl_mpnews_tip2' | translate}}</a>
+            {{'management_tpl_mpnews_tip3' | translate}}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-group col-md-12" ng-if="token.data.email">
+      <div class="mb10 clearfix">
+        <div class="tpl-icon tpl-email-icon" translate="management_tpl_email"></div>
+        <img class="cp" ng-src="/images/management/triangle_{{token.e_mail}}.png" ng-click="token.showContent('e_mail')" />
+        <span class="tpl-icon btn-tpl-helper" translate="helper" ng-show="token.isShowHelper.email" ng-click="token.showHelper('email')"></span>
+      </div>
+      <div class="tpl-wrapper" ng-show="token.e_mail == 'up'">
+        <div class="form-group">
+          <span class="product-detail-name" translate="management_tpl_title"></span>
+          <div><input class="form-control tpl-id-input" ng-model="token.data.email.title"/></div>
+        </div>
+        <div class="form-group">
+          <span class="product-detail-name" translate="management_tpl_content"></span>
+          <div class="tpl-email-wrap">
+            <div class="ueditor" name="email" ng-model="token.data.email.content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-group col-md-12" ng-if="token.data.mobile">
+      <div class="mb10 clearfix">
+        <div class="tpl-icon tpl-mpnews-icon" translate="content_component_sms" ng-click="token.showHelp()"></div>
+        <img class="cp" ng-src="/images/management/triangle_{{token.sms}}.png" ng-click="token.showContent('sms')" />
+        <span class="tpl-icon btn-tpl-helper" translate="helper" ng-show="token.isShowHelper.sms" ng-click="token.showHelper('sms')"></span>
+      </div>
+      <div class="tpl-wrapper" ng-show="token.sms == 'up'">
+        <span class="product-detail-name" translate="management_tpl_sms_content"></span>
+        <textarea class="form-control tpl-sms-wrap" rows="6" ng-model="token.data.mobile.message" wm-maxlength="140"></textarea>
+        <div class="form-tip tpl-tip" translate="management_sms_tip"></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="form-group col-md-12 col-xs-12 mt20 mb20">
+    <input type="submit" class="btn btn-success mr20 user-btn" value="{{'ok' | translate}}" />
+    <span class="btn btn-default user-btn ng-binding" translate="cancel" ng-click="token.cancel()"></span>
+  </section>
+
+</form>
+
+<script type="text/ng-template" id="messageHelp.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title" translate="helper"></h4>
+  </div>
+
+  <div class="modal-body message-help-body">
+    <h4 class="create-graphics-title modal-content-title" translate="management_tpl_help_supported"></h4>
+    <div class="helper-tip message-desc-tip" translate="management_tpl_description" ng-if="name != 'staff'"></div>
+    <ul class="message-prams-wrapper">
+      <li class="form-group message-prams-item" ng-repeat="param in messageParams track by $index">
+        <label class="dark-gray">{{$index + 1}}.{{param.title | translate}}: </label>
+        <label class="dark-gray">{{fix[type].prefix}}{{param.content}}{{fix[type].suffix}}{{$last ? '。' : '；'}}</label>
+      </li>
+    </ul>
+
+  </div>
+</script>
+
+

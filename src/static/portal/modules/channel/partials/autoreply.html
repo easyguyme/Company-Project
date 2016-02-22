@@ -1,0 +1,68 @@
+<div class="keyword-list clearfix" ng-show="autoreply.showDefaultRuleList">
+  <div wm-breadcrumb="autoreply.breadcrumb"></div>
+  <div wm-tabs="autoreply.changeTab()" tabs="autoreply.tabs" ng-model="autoreply.curTab"></div>
+  <button form="keyword" class="btn btn-success keywordlist-new-btn fr" type="button" ng-show="autoreply.tabs[0].active&&autoreply.showTable" ng-click="autoreply.addNewKeyword()">{{'channel_wechat_add_keyword'|translate}}</button>
+  <div class="keyword-table-wrap wm-table-wrap keyword-table-wrap-keyword" ng-show="autoreply.tabs[0].active&&autoreply.showTable">
+    <wm-table ng-model="autoreply.list" class="colored-table autoreply-list"></wm-table>
+  </div>
+  <div ng-show="autoreply.tabs[0].active&&autoreply.showTable" class="keywordlist-pagination-block clearfix">
+    <div wm-pagination class="keywordlist-pagination" current-page="autoreply.currentPage" page-size="autoreply.pageSize" total-items="autoreply.totalItems" on-change-size="autoreply.changePageSize" on-change-page="autoreply.changePage"></div>
+  </div>
+
+  <div class="keywordlist-zero" ng-show="autoreply.tabs[0].active&&autoreply.showAddNew">
+    <div class="keywordlist-zero-img center-block" ng-click="autoreply.addNewKeyword()"></div>
+    <span class="keywordlist-zero-text">{{'channel_wechat_click_add_keyword'|translate}}</span>
+  </div>
+</div>
+
+<div class="keyword-table-wrap wm-table-wrap keyword-table-wrap-defaultrule" ng-show="autoreply.tabs[1].active&&autoreply.showDefaultRuleList">
+  <wm-table ng-model="autoreply.defaultrule" class="colored-table"></wm-table>
+</div>
+
+<div class="keyword-add" ng-show="autoreply.tabs[1].active&&!autoreply.showDefaultRuleList">
+  <div wm-breadcrumb="autoreply.breadcrumb"></div>
+
+  <form id="defaultrule" ng-submit="autoreply.updateWechatDefaultRule()">
+    <div class="keyword-block">
+      <label class="keyword-text-name fs14">
+        {{'channel_wechat_rule_name'|translate}}
+      </label>
+      <input class="form-control keyword-rule-text" value="{{autoreply.defaultRuleName | translate}}" readonly="readonly" />
+    </div>
+
+    <div class="keyword-block keyword-wechat-message form-group">
+      <label class="keyword-text-name required-field" translate="channel_wechat_reply"></label>
+      <div wm-wechat-message ng-model="autoreply.defaultRuleReplyMessage" class="keyword-replybox" remain-character="autoreply.remainCharacter" required-flag="true"></div>
+    </div>
+
+    <div class="keyword-block">
+      <div>
+        <wm-checkbox ng-model="autoreply.defaultRuleStatus" class="fl"></wm-checkbox>
+        <span class="keyword-checkbox-prompt">{{'channel_wechat_enable'|translate}}</span>
+      </div>
+      <div class="keyword-btn">
+        <button form="defaultrule" class="btn btn-success fl" type="submit">{{'channel_wechat_mass_submit'|translate}}</button>
+        <span class="btn btn-default keyword-btn-default" type="button" ng-click="autoreply.backToDefaultRuleList()" >{{'channel_wechat_mass_cancel'|translate}}</span>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- statistics modal -->
+<script type="text/ng-template" id="statistics.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="menu-modal-title">{{'channel_wechat_mass_statistics' | translate}}</h4>
+  </div>
+  <div class="menu-modal-body modal-body">
+    <div class="clearfix">
+      <div class="col-xs-3 pull-left datepicker-container">
+        <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" min-date-picker-id="endDatePicker" time-handler="selectDate()" ng-model="beginDate" less-than-yesterday="true" first-unbind-handler="true"></div>
+      </div>
+      <div class="pull-left datepicker-between-text">&minus;</div>
+      <div class="col-xs-3 pull-left datepicker-container">
+        <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" max-date-picker-id="beginDatePicker" time-handler="selectDate()" ng-model="endDate" less-than-yesterday="true" first-unbind-handler="true"></div>
+      </div>
+    </div>
+    <div class="menu-chart" wm-line-chart options="chartData" width="850px" height="350px"></div>
+  </div>
+</script>

@@ -1,0 +1,65 @@
+<div wm-breadcrumb="sms.breadcrumb"></div>
+<div class="uhkklp edit-msg-wrap">
+  <form name="smsForm" ng-submit="submit()" novalidate>
+    <div class="form-group">
+      <label for="modelContent">{{'sms_model' | translate}}
+      </label>
+      <div class="model-wrap">
+        <textarea class="sms-sample-text form-control" name="modelContent" ng-model="formData.modelContent"
+        ng-class="{'mt-required': smsForm.modelContent.$invalid && smsForm.modelContent.touched}" form-tip="{{'sms_template_tip' | translate}}" maxlength="200" required></textarea>
+        <label style="color: #999;">{{'sms_tip' | translate : '{wordCount: wordCount, variableCount: variableCount, smsCount: smsCount}'}}</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="content">{{'import_model' | translate}}
+      </label>
+      <div class="model-wrap">
+        <input required type="button" class="btn btn-success user-btn" value="{{'sms_import'|translate}}" id="smsImport" ng-click="import()" />
+        <div ng-if="isImport">
+          <div class="device-list-title">{{'sms_number_list' | translate}}</div>
+          <ul class="device-list">
+            <li ng-repeat="item in importResult track by $index">{{item.mobile}}</li>
+          </ul>
+          <label class="sms-tip" ng-show="isImport">{{'sms_total_tip' | translate : '{totalCount: totalCount}'}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">{{'sms_send_time' | translate}}</label>
+      <div class="model-wrap" ng-class="{'time-invalid': smsForm.sendTimeHidden.$touched&&smsForm.sendTimeHidden.$invalid}">
+        <input type="hidden" name="sendTimeHidden" ng-model="formData.sendTime" required binded="false">
+        <input style="width: 30%;" name="sendTime" ng-model="formData.sendTime" wm-datetime-picker more-than-today="true" format-type="YYYY-MM-DD HH:mm" picker-id="sendTime" required-field="true">
+      </div>
+    </div>
+    <div class="form-group model-wrap">
+      <button class="btn btn-primary" ng-disabled="isClickable">{{'mt_bt_send' | translate}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/uhkklp/sms?active={{active}}" class="btn btn-default active">{{'mt_bt_return_back' | translate}}</a>
+    </div>
+  </form>
+</div>
+
+<div class="uhkklp edit-msg-wrap">
+  <form name="testForm" ng-submit="send()" novalidate>
+    <div class="form-group">
+      <label for="testContent">{{'test_content' | translate}}
+      </label>
+      <div class="model-wrap">
+        <textarea class="sms-sample-text form-control" name="testContent" ng-model="testContent"
+        ng-class="{'mt-required': testForm.testContent.$invalid && testForm.testContent.touched}" maxlength="200" required></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="testNumber">{{'test_number' | translate}}
+      </label>
+      <div class="model-wrap">
+        <input type="number" class="sms-sample-text form-control" name="testNumber" ng-model="testNumber"
+        ng-class="{'mt-required': testForm.testNumber.$invalid && testForm.testNumber.touched}" maxlength="12" required />
+      </div>
+    </div>
+    <div class="form-group model-wrap">
+      <button id="smsSend" class="btn btn-primary" ng-disabled="isClickable">{{'sms_send' | translate}}</button>
+    </div>
+  </form>
+</div>
+
+

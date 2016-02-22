@@ -1,0 +1,30 @@
+$info-tip-bg-color: #e2e2e2;
+$info-tip-content-color: #999;
+
+.info-tip {
+  @include clearfix();
+  background-color: $info-tip-bg-color;
+
+  display: inline-block;
+  padding: 4px 15px;
+  margin-bottom: 15px;
+  width: auto;
+
+  .info-tip-icon {
+    @include size(12px, 14px);
+
+    background-image: url('/images/core/popup_tip.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px 12px;
+    display: block;
+    float: left;
+  }
+
+  .info-tip-content {
+    color: $info-tip-content-color;
+    display: block;
+    padding-left: 22px;
+    font-size: 12px;
+  }
+}

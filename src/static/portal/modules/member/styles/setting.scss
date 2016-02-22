@@ -1,0 +1,132 @@
+$table-border: #ededed;
+
+.members-form {
+  padding: 0 10px 40px;
+}
+
+.members-dialog {
+  .modal-dialog {
+    width: 462px;
+    margin-top: 100px;
+  }
+}
+
+.member-setting .form-control {
+  width: 50%;
+}
+
+.member-form-tip {
+  display: inline-block;
+  background-color: $gray-background-color;
+  padding: 4px;
+  padding-left: 15px;
+  width: 265px;
+  margin-bottom: 10px;
+
+  .tip-icon {
+    @include icon(12px, 12px, '/images/core/popup_tip.png');
+    display: inline-block;
+  }
+
+  .tip {
+    margin-left: 10px;
+    display: inline-block;
+  }
+}
+
+.btn-position {
+  margin-top: 15px;
+}
+
+.btn-setting {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+.setting-label {
+  display: block;
+}
+
+.panel .panel-heading .btn-position {
+  margin-top: -6px;
+}
+
+.members-attribute-text {
+  width: 100px;
+  display: block;
+}
+
+.add-option-wrap {
+  padding: 0 20px;
+  max-height: 210px;
+  overflow-y: auto;
+
+  .option-input {
+    width: 83%;
+  }
+
+  .operate-icon {
+    margin-left: 10px;
+  }
+}
+
+.member-setting-wrap {
+
+  .wm-table-wrap {
+    margin: 0 10px 20px;
+  }
+
+  table {
+    tr {
+      border-bottom: 1px solid $table-border;
+    }
+  }
+}
+
+.table-instrument-wrapper {
+  margin: 0 10px;
+
+  .broadcast-pagination {
+    margin-top: 0;
+  }
+}
+
+.setting-add-btn {
+  position: relative;
+  top: -5px;
+  padding: 4px 12px;
+}
+
+.setting-score-wrap {
+  margin: 0 0 20px 25px;
+  width: 100%;
+}
+
+.setting-coupon-wrap {
+  margin: 10px 0 0 25px;
+  display: inline-block;
+  line-height: 30px;
+  width: 100%;
+
+  .coupon-select {
+    display: inline-block;
+    width: 180px;
+    margin-right: 20px;
+    float: left;
+  }
+
+  .rule-select-coupon-error {
+    .select-left {
+      color: $error-red;
+    }
+
+    .select-btn {
+      border-color: $error-red;
+    }
+  }
+}
+
+.rule-select-height {
+  height: 30px;
+}

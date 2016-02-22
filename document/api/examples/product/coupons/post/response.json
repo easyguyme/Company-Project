@@ -1,0 +1,40 @@
+{
+    "id": "55f0ee86d6f97f6e708b4569",
+    "type": "cash",
+    "title": "代金卷",
+    "total": 10,
+    "limit": 1,
+    "time": {
+        "type": "relative",
+        "beginTime": "day",
+        "endTime": 30
+    },
+    "url": "http://vincenthou.qiniudn.com",
+    "picUrl": "http://vincenthou.qiniudn.com/601513a18f9da8dcde0a52c0.jpg",
+    "tip": "操作提示",
+    "description": "优惠详情",
+    "usageNote": "使用须知",
+    "phone": "12458654215",
+    "storeType": "specify",
+    "stores": [
+        {
+            "id": "55c454d7d6f97f0b048b4569",
+            "name": "北京门店1",
+            "branchName": "门店测试",
+            "address": "天津市河东区上杭路街道55号",
+            "phone": "1233455666",
+        }
+    ],
+    "qrcodes": [
+        {
+            "id": "55f264f8d6f97f19478b4570",
+            "origin": "wechat",
+            "channelName": "熊猫Baby",
+            "channelId": "54d9c155e4b0abe717853ee1",
+            "url": "http://vincenthou.qiniudn.com/55f264f8d6f97f19478b4570.png"
+        }
+    ],
+    "discountAmount": 8.5,
+    "discountCondition": 100,
+    "reductionAmount": 100
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "标签名"
+    },
+    "newName": {
+      "type": "string",
+      "required": true,
+      "description": "新标签名"
+    }
+  }
+}

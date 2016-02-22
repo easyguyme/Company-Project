@@ -1,0 +1,32 @@
+{
+    "items": [
+        {
+            "id": "55363362d6f97f06048b4572",
+            "productId": "5530c520d6f97f47658b456a",
+            "used": 0,
+            "all": 1000,
+            "rest": 0,
+            "isAssociated": true,
+            "productName": "test",
+            "sku": "XXXXXXXXXXXX",
+            "gift": {
+                "type": "score",
+                "config": {
+                    "method": "times",
+                    "number": 2
+                }
+            }
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/product/associations?tmoffset=-8&accesstoken=87782eb2-7799-eeb2-cb35-5025648b370e&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 0,
+        "perPage": 20
+    }
+}

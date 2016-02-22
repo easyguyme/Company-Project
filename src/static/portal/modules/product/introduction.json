@@ -1,0 +1,46 @@
+{
+  "name": "product",
+  "title": "management_extension_product_title",
+  "link": {
+    "enterFunction": "/product/goods"
+  },
+  "havePartial": true,
+  "functions": [
+    {
+      "title": "management_extension_product_function1",
+      "image": ["/images/product/introduction/gongnengtexing_shangpin.png"]
+    },
+    {
+      "title": "management_extension_product_function2",
+      "image": ["/images/product/introduction/gongnengtexing_huodong.png"]
+    },
+    {
+      "title": "management_extension_product_function3",
+      "image": ["/images/product/introduction/gongnengtexing_tongji.png"]
+    },
+    {
+      "title": "management_extension_product_function4",
+      "image": ["/images/product/introduction/gongnengtexing_dingdan.png"]
+    }
+  ],
+  "introductions": ["management_extension_product_introduction1", "management_extension_product_introduction2", "management_extension_product_introduction3"],
+  "illustrations": ["management_extension_product_illustration1", "management_extension_product_illustration2"],
+  "firstDot": "/images/management/paragraphbreak.png",
+  "images": ["/images/product/introduction/chuangjianshangpinku.png", "/images/product/introduction/guanlianshangpin.png"],
+  "continues": [
+    {
+      "stepicon": "/images/management/stepone.png",
+      "link": "/product/edit/product",
+      "title":"management_extension_product_create_goods",
+      "steps": ["management_extension_product_stepone1", "management_extension_product_stepone2", "management_extension_product_stepone3", "management_extension_product_stepone4", "management_extension_product_stepone5"]
+    },
+    {
+      "stepicon": "/images/management/steptwo.png",
+      "link": "/product/edit/promotion",
+      "title":"management_extension_product_create_promotion",
+      "steps": ["management_extension_product_stepone21", "management_extension_product_stepone22", "management_extension_product_stepone23", "management_extension_product_stepone24"]
+    }
+  ]
+}
+
+

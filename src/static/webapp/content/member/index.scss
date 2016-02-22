@@ -1,0 +1,85 @@
+.content-member {
+  font-size: .41rem;
+
+  .member-property {
+    .c-kv-list {
+      &__item__key {
+        width: 1.5rem;
+      }
+    }
+  }
+
+  .c-kv-list {
+    &__item__key {
+      width: 2.8rem;
+    }
+  }
+
+  .member-info {
+    padding: .5rem 0 .1rem .8rem;
+
+    .member-property {
+      border-bottom: 1px dashed $default-boder-color;
+      padding-bottom: .2rem;
+      margin-right: .5rem;
+    }
+
+    .member-content {
+      padding-top: .3rem;
+    }
+  }
+
+  .member-header {
+    @include background-image('/images/mobile/membercard.png');
+    background-size: cover;
+    padding: .7rem 0 .4rem .9rem;
+  }
+
+  .member-header-item {
+    display: inline-block;
+    color: $content-write;
+    vertical-align: top;
+    padding: .3rem 0 0 .4rem;
+  }
+
+  .member-name {
+    margin-bottom: .1rem;
+    font-weight: bolder;
+  }
+
+  .member-card {
+    font-size: .38rem;
+
+    .member-card-name {
+      @include background-image ('/images/customer/vipcard.png');
+      background-size: .5rem;
+      padding: 0 .1rem 0 .6rem;
+    }
+  }
+
+  .member-purchase {
+    color: $content-font-color;
+    padding-top: .5rem;
+  }
+
+  .member-purchase-head {
+    padding-bottom: .5rem;
+    border-bottom: 1px solid $default-boder-color;
+  }
+}
+
+.postion-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.member-extend-properties {
+  color: $color-green;
+  text-decoration: underline;
+}

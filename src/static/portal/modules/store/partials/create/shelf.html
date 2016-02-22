@@ -1,0 +1,16 @@
+<div wm-breadcrumb="shelf.breadcrumb">
+  <button class="btn btn-success user-btn pull-right" translate="product_promotion_associated_goods" ng-click="shelf.selectProduct()"></button>
+</div>
+
+<div class="product-to-goods-wrapper">
+  <div wm-fixed-table ng-model="shelf.list"></div>
+
+  <div class="product-to-goods-line"></div>
+
+  <div class="mass-operation-wrapper">
+    <input type="submit" class="btn btn-success mr20 user-btn" value="{{'ok' | translate}}" ng-click="shelf.submit()"/>
+    <span class="btn btn-default user-btn ng-binding" translate="cancel" ng-click="shelf.cancel()"></span>
+    <span class="form-tip goods-operation-helpinfo">{{'product_goods_operation_helpinfo' | translate}}</span>
+  </div>
+
+</div>

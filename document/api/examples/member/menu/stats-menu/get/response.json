@@ -1,0 +1,30 @@
+{
+    "items": [
+            {
+                "refDate": 1439395200000,
+                "hitCount": 9
+            },
+            {
+                "refDate": 1439481600000,
+                "hitCount": 24
+            },
+            {
+                "refDate": 1439913600000,
+                "hitCount": 1
+            },
+            {
+                "refDate": 1440086400000,
+                "hitCount": 8
+            },
+            {
+                "refDate": 1439395200000,
+                "hitCount": 8
+            }
+    ],
+    "_meta": {
+        "totalCount": 2,
+        "pageCount": 1,
+        "currentPage": "1",
+        "perPage": "10"
+    }
+}

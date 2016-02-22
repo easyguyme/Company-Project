@@ -1,0 +1,166 @@
+$red-color: #b42d14;
+
+.uhkklp-activity-wrap {
+  tr {
+    th:nth-child(1) {
+      width: 18%;
+    }
+
+    th:nth-child(2) {
+      width: 20%;
+    }
+
+    th:nth-child(3) {
+      width: 20%;
+    }
+
+    th:nth-child(4) {
+      width: 18%;
+    }
+  }
+
+  table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  span .more-operations {
+    overflow: visible;
+  }
+}
+
+#activity-form {
+  .activity-item {
+    margin: 15px;
+    // width: 800px;
+    width: auto;
+
+    .statistics-item-title .red-start:before {
+      content: '*';
+      color: $red-color;
+    }
+  }
+
+  .activity-item-body {
+    padding: 10px;
+
+    .form-control {
+      width: 400px;
+    }
+
+    .img-main {
+      width: 320px;
+      height: 118px;
+      margin-bottom: 10px;
+    }
+
+    .input-probability {
+      width: 150px;
+    }
+
+    .span-probability {
+      position: relative;
+      bottom: 40px;
+      left: 155px;
+      float: left;
+    }
+
+    .div-shelf .date-time-picker-div {
+      width: auto;
+    }
+  }
+
+  .activity-basic-container {
+    height: 115px;
+  }
+
+  .statistics-item-title .item-name {
+    margin-right: 5px;
+  }
+
+  .prizes-item {
+    margin: 15px;
+    // width: 800px;
+    width: auto;
+
+    .prize-table {
+      margin: 10px;
+      width: 98%;
+
+      .prize-left {
+        float: left;
+        width: 150px;
+        height: auto;
+      }
+    }
+  }
+
+  .div-prize-image .img-prize {
+    width: 70px;
+    height: 100px;
+    margin: 5px 5px 10px;
+  }
+
+  .prize-right {
+    float: left;
+    // width: 600px;
+    width: 80%;
+    height: auto;
+
+    .prize-remove {
+      float: right;
+    }
+
+    .prize-label {
+      line-height: 35px;
+      // position: relative;
+      // min-height: 1px;
+      // padding-left: 15px;
+      // padding-right: 15px;
+      width: 142px;
+      float: left;
+    }
+
+    .prize-div {
+      margin-bottom: 2px;
+    }
+  }
+
+  .div-radio {
+    line-height: 35px;
+    padding: 0;
+    // position: relative;
+    // left: -26px;
+  }
+
+  .required-tip:before {
+    content: none;
+  }
+
+  .statistics-item-title label {
+    font-weight: normal;
+    color: $red-color;
+  }
+
+  .img-validate {
+    visibility: hidden;
+  }
+
+}
+
+.activity-download-wrapper {
+  padding: 0 15px;
+
+  .statistics-item-title a {
+    margin-left: 10px;
+  }
+
+  .back-panel {
+    padding: 10px;
+  }
+
+  .activity-download-clearfix {
+    margin-bottom: 65px;
+  }
+}

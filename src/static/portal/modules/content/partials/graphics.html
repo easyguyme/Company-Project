@@ -1,0 +1,43 @@
+<div class="panel panel-default panel-graphics-content">
+  <div class="panel-container-fluid">
+    <div wm-breadcrumb="graphics.breadcrumb"></div>
+    <div class="graphic-title">
+      <div wm-tabs="graphics.changeTab()" tabs="graphics.tabs" ng-model="graphics.curTab">
+      </div>
+      <button ng-show="!graphics.isShowCreateIcon" class="btn btn-success btn-position btn-add-icon" ng-click="graphics.openGraphic()" translate="content_graphics_add_new_graphic"></button>
+    </div>
+
+    <div class="graphics-position" ng-if="graphics.isShowCreateIcon">
+      <div class="add-icon cp" ng-click="graphics.createGraphic()"></div>
+      <div class="keyword-posiotion" translate="content_graphics_click_add_graphic"></div>
+    </div>
+
+    <div class="waterfall-wrap">
+      <div wm-waterfall="graphics.waterfallOptions">
+        <div class="waterfall-item waterfall-width" ng-repeat="graphic in graphics.graphics | filter:statusFilter track by $index">
+          <div wm-wechat-graphic graphic="graphic" display-options="true" class="graphics-show" ng-model="graphic" graphic-edit="graphics.editGraphic" graphic-delete="graphics.deleteGraphic"></div>
+        </div>
+      </div>
+    </div>
+    <!-- <div ng-class="{isload: isload}" class="load-icon loading-icon"></div> -->
+
+    <script type="text/ng-template" id="createGraphic.html">
+      <div class="modal-header">
+        <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+        <h4 class="modal-title create-graphics-title">{{'content_graphics_select_graphic_type' | translate}}</h4>
+      </div>
+      <div class="modal-body modal-bgcolor create-graphic-body">
+        <div class="icon-position">
+          <div class="single-panel graphics-font cp" ng-click="editSingleGraphic()">
+            <div class="single-icon"></div>
+            <div translate="content_graphics_single_graphic"></div>
+          </div>
+          <div class="multiple-panel graphics-font cp" ng-click="editMutilpleGraphic()">
+            <div class="multiple-icon"></div>
+            <div translate="content_graphics_multiple_graphic"></div>
+          </div>
+        </div>
+      </div>
+    </script>
+  </div>
+</div>

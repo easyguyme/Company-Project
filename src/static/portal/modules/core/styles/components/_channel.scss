@@ -1,0 +1,13 @@
+.wm-channels-wrapper {
+  color: $upload-avatar-background-color;
+  width: 100%;
+
+  .channel-list {
+    width: calc(100% - 70px);
+  }
+
+  .channel-item {
+    margin-right: 20px;
+    line-height: 30px;
+  }
+}

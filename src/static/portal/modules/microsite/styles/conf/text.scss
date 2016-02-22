@@ -1,0 +1,68 @@
+.config-wrap {
+  $text-div-color: #eee;
+  $text-style-color: #ccc;
+  $text-selected-color: #67bdf9;
+
+  .text-style {
+    border: 1px solid $text-style-color;
+    height: 94px;
+    width: 94%;
+  }
+
+  .full-style {
+    margin-right: 6%;
+  }
+
+  .part-style {
+    margin-left: 6%;
+  }
+
+  .style-selected {
+    border: 1px solid $text-selected-color;
+  }
+
+  %background-size-color {
+    background: $text-div-color;
+    height: 10px;
+    margin-left: 15%;
+    width: 70%;
+  }
+
+  .mt12 {
+    margin-top: 12px;
+  }
+
+  .content-component-config-text-divone {
+    @extend %background-size-color;
+  }
+
+  .content-component-config-text-divtwo {
+    @extend %background-size-color;
+  }
+
+  .content-component-config-text-divthree {
+    @extend %background-size-color;
+  }
+
+  .content-component-config-text-divfour {
+    @include background-image('/images/content/conf/img_arrow.png');
+    height: 20px;
+    margin-left: 38%;
+  }
+
+  .content-component-config-text-ul {
+    margin-top: 0;
+
+    label {
+      margin-bottom: 3px;
+    }
+
+    .part-label-position {
+      margin-left: 5%;
+    }
+  }
+
+  .radio-style {
+    height: 40px;
+  }
+}

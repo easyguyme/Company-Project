@@ -1,0 +1,22 @@
+<div wm-tabs="changeTab()" tabs="tabs" ng-model="curTab"></div>
+
+<div class="mt-panel" ng-show="list.data.length > 0 && !list.hasLoading">
+  <img class="mt-panel-img" src="/images/nav/products_default.png">{{'mt_product_count' | translate : '{count: totalCount}'}}
+  <a class="btn btn-success user-btn pull-right" style="margin-right: 5px; margin-top: 5px;" href="/uhkklp/edit/products">{{'mt_bt_create_product' | translate}}</a>
+</div>
+
+<div ng-class="{'mt_show_tb_Wrap': list.data.length > 0}" class="uhkklp-push-tab tab-view-wrap mt-message-tab-view-wrap">
+
+  <div ng-show="{{list.data.length > 0}}" wm-table class="colored-table" ng-model="list"></div>
+
+  <div class="keywordlist-zero" ng-show="list.data.length == 0 && !list.hasLoading">
+    <a href="/uhkklp/edit/products"><div class="keywordlist-zero-img center-block"></div></a>
+    <span class="keywordlist-zero-text">{{'mt_bt_create_product' | translate}}</span>
+  </div>
+
+  <div class="clearfix">
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="page" page-size="pageSize" total-items="totalCount" on-change-size="changeSize" on-change-page="changePage"></div>
+    </div>
+  </div>
+</div>

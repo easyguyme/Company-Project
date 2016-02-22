@@ -1,0 +1,34 @@
+{
+    "id": "55f7d1e1e9c2fb3f048b4567",
+    "type": "coupon",
+    "title": "coupon",
+    "total": 4,
+    "limit": 2,
+    "time": {
+        "type": "relative",
+        "beginTime": 0,
+        "endTime": 2
+    },
+    "url": "",
+    "picUrl": "http://vincenthou.qiniudn.com/d056cc4e45a4181bb2a6c19e.jpg",
+    "tip": "011111111111",
+    "description": "优惠详情",
+    "usageNote": "使用须知",
+    "phone": "13126565656",
+    "storeType": "specify",
+    "stores": [
+        {
+            "id": "55a75101e9c2fbbe1a8b4567",
+            "name": "lydiali",
+            "branchName": "",
+            "address": "新疆维吾尔族自治区乌鲁木齐市乌鲁木齐县dfsdf",
+            "phone": "13127972391"
+        }
+    ],
+    "qrcodes": [],
+    "discountAmount": null,
+    "discountCondition": null,
+    "reductionAmount": null,
+    "isReceived": false,
+    'message':"xxx"
+}

@@ -1,0 +1,94 @@
+<div class="panel panel-default panel-main-content wiki-content">
+  <div wm-breadcrumb="wiki.breadcrumb">
+    <button class="btn btn-success btn-listheader" ng-click="wiki.create()" translate="helpdesk_wiki_new"></button>
+  </div>
+
+  <div class="panel-body">
+    <div class="wiki-classify">
+      <span class="category-title media-body">{{'helpdesk_wiki_category' | translate}}：</span>
+      <div class=" row category-content">
+        <div class="col-md-1 wiki-all" ng-class="{'hide-all': wiki.isEditCategory}">
+          <span ng-class="{'font-green-color': wiki.currentCategoryId=='', 'hide-all': wiki.isEditCategory}" ng-click="wiki.showCategoryFaqs(-1)">{{'helpdesk_wiki_all' | translate}}</span>
+        </div>
+        <div class="col-md-9 wiki-list clear-container-padding" ng-class="{'increase-width': wiki.isEditCategory}">
+          <ul ng-if="!wiki.isEditCategory">
+            <li class="wiki-other" ng-repeat="category in wiki.categories track by $index">
+              <span ng-class="{'font-green-color': wiki.currentCategoryId==category.id}" ng-click="wiki.showCategoryFaqs($index)">{{category.name}}</span>
+            </li>
+          </ul>
+          <ul ng-if="wiki.isEditCategory">
+            <li class="wiki-other wiki-other-edit" ng-repeat="category in wiki.categories">
+              <span class="wiki-delete-title">{{category.name}}</span>
+              <span class="wiki-delete-icon" ng-click="wiki.deleteCategory($index, $event)" ng-hide="category.isDefault"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="category-management col-md-2 clear-container-padding">
+          <span ng-click="wiki.editCategory()">
+            <span ng-if="!wiki.isEditCategory">{{'helpdesk_wiki_management_category' | translate}}</span>
+            <span ng-if="wiki.isEditCategory">{{'helpdesk_wiki_cancel_management' | translate}}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wiki-link">
+      <span class="link-title">{{'helpdesk_wiki_category_page' | translate}}</span>
+      <div class="link-content">
+        <span>{{wiki.pageLink}}</span>
+        <i wm-copy class="icon-copy" clipboard-text="wiki.pageLink" tip="{{'helpdesk_setting_hover_tip' | translate}}" tooltip-max-width="160"></i>
+      </div>
+    </div>
+
+    <div class="wikis-table-wrap">
+      <wm-table ng-model="wiki.FAQList" class="colored-table"></wm-table>
+    </div>
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="wiki.currentPage" page-size="wiki.pageSize" total-items="wiki.totalCount" on-change-size="wiki.changeSize" on-change-page="wiki.changePage"></div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/ng-template" id="wikiDetail.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-wiki-title">{{ detailTitle | translate}}</h4>
+  </div>
+  <form name="faqCreateForm" ng-submit="operate()">
+    <div class="modal-body modal-bgcolor create-wiki-body clearfix">
+      <div class="form-group">
+        <label class="dark-gray">{{'helpdesk_wiki_select_category' | translate}}</label>
+        <ul class="row category-list">
+          <li class="col-md-3 col-sm-4 col-xs-5 clear-container-padding wiki-other" ng-repeat="category in faq.optionalCategories track by $index">
+              <wm-radio ng-model="$parent.faq.data.selectedCategory" value="{{category.id}}"></wm-radio>
+              <span>{{category.name}}</span>
+          </li>
+        </ul>
+        <div class="add-category" ng-show="!faq.isAddCategory" ng-click="faq.isAddCategory=true">
+          <span>{{'helpdesk_wiki_faq' | translate}}</span></div>
+        <div class="row" ng-show="faq.isAddCategory">
+          <div class="col-md-8">
+            <input name="addedCategory" type="text" maxlength="5" id="addedCategory" class="form-control col-md-6" ng-model="addedCategory"/>
+            <span class="form-tip normal">{{'helpdesk_wiki_category_tip' | translate}}</span>
+          </div>
+          <div class="col-md-4 row clear-container-padding btn-new-category">
+            <span class="btn btn-success col-md-4 clear-container-padding" ng-disabled="!addedCategory" ng-click="addCategory(addedCategory)">{{'ok' | translate}}</span>
+            <span class="btn btn-default col-md-4 clear-container-padding" ng-click="faq.isAddCategory=false">{{'cancel' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group faq-input">
+        <label class="dark-gray" for="question">{{'helpdesk_wiki_question' | translate}}</label>
+        <input name="question" type="text" maxlength="30" id="question" class="form-control" ng-model="faq.data.question" form-tip="{{'helpdesk_session_website_name_tip' | translate}}" required/>
+      </div>
+      <div class="form-group faq-input">
+        <label class="dark-gray" for="answer">{{'helpdesk_wiki_answer' | translate}}</label>
+        <textarea name="answer" type="text" maxlength="250" id="answer" class="form-control" ng-model="faq.data.answer" form-tip="{{'helpdesk_setting_character_tip' | translate}}" required/>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'ok' | translate}}"/>
+    </div>
+  </form>
+</script>

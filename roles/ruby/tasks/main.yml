@@ -1,0 +1,7 @@
+---
+
+- name: Ruby install | Install ruby
+  apt: pkg=ruby1.9.1 state=present
+
+- name: Ruby install | Install sass
+  gem: name=sass repository=https://ruby.taobao.org/ state=present

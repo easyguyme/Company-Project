@@ -1,0 +1,44 @@
+.c-btn {
+  border-radius: .125rem;
+  border: 0;
+  display: inline-block;
+  font-size: .4rem;
+  line-height: 1rem;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  text-decoration: none;
+
+  &--solid {
+    background-color: $btn-bg-color;
+    color: $btn-bg-text-color;
+  }
+
+  &--hollow {
+    background-color: $btn-bg-text-color;
+    border: 1px solid $btn-bg-color;
+    color: $btn-bg-color;
+  }
+
+  &--link {
+    background-color: transparent;
+    color: $btn-bg-color;
+    text-decoration: underline;
+  }
+
+  &--disabled {
+    opacity: .5;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &--fixed {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,127 @@
+.chat-messages {
+  $creator-color: #b4b4b4;
+  $message-body-color: #555;
+  $message-body-bg: #eee;
+  $simple-message-bg: #fff;
+  $message-title-color: #38c4a9;
+
+  margin: 15px;//Prevent the vertical scrollbar
+  margin-top: 20px; //design required
+
+  .system-message {
+    display: inline-block;
+    font-size: 12px;
+    color: $message-body-color;
+  }
+
+  .message-avatar {
+    vertical-align: top;
+    height: 50px;
+    width: 50px;
+    border-radius: 4px;
+
+    &.bottom {
+      vertical-align: bottom;
+    }
+  }
+
+  .message-creator {
+    margin: 0;
+    padding: 5px 0;
+    font-size: 12px;
+    color: $creator-color;
+  }
+
+  .chat-message {
+    padding: 10px;
+  }
+
+  .message-title {
+    position: relative;
+  }
+
+  .message-body {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: rgba(94, 173, 224, .2);
+    padding: 10px;
+    margin: 0 15px;
+    border-radius: 8px;
+    color: $message-body-color;
+    max-width: 80%;
+    word-wrap: break-word;
+
+    .news-view {
+      min-width: 270px;
+    }
+  }
+
+  .system-bubble {
+    background-color: $message-body-bg;
+  }
+
+  .align-right-message {
+    .message-creator,
+    .message-title {
+      text-align: right;
+    }
+
+    .message-body {
+      text-align: left;
+      background-color: $message-body-bg;
+    }
+  }
+
+  // Simple message UI
+  &.simple {
+    .message-title {
+      color: $message-title-color;
+    }
+
+    .message-body {
+      background-color: $simple-message-bg;
+    }
+
+    .align-right-message {
+      text-align: right;
+
+      .message-title,
+      .message-body {
+        float: none;
+      }
+    }
+  }
+
+  %icon-base {
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    position: relative;
+  }
+
+  %left-position {
+    left: 19px;
+  }
+
+  %right-position {
+    right: 19px;
+  }
+
+  .icon-system-bubble {
+    @extend %icon-base;
+    @extend %left-position;
+    background-image: url('/images/core/speechbubble_system.png');
+  }
+
+  .icon-user-bubble {
+    @extend %icon-base;
+    @extend %left-position;
+    background-image: url('/images/core/speechbubble_user.png');
+  }
+
+  .icon-helpdesk-bubble {
+    @extend %icon-base;
+    @extend %right-position;
+    background-image: url('/images/core/speechbubble_customerservice.png');
+  }
+}

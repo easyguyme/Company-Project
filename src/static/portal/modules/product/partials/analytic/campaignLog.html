@@ -1,0 +1,20 @@
+<div ng-controller="wm.ctrl.product.analytic.promotion.campaignLog as campaignLog">
+  <div class="panel panel-default panel-center-content">
+    <div class="panel-center-title panel-follower-header clearfix">
+      <div class="total-follower-style">
+        <div class="follower clearfix">
+          <div class="total-follower-icon-style"></div>
+          <div class="total-follower">
+            <span>{{'product_promotion_total_records'|translate:'{ recordsCount: campaignLog.totalRecords }'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <wm-table ng-model="campaignLog.list"></wm-table>
+  </div>
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="campaignLog.currentPage" page-size="campaignLog.pageSize" total-items="campaignLog.totalItems" on-change-size="campaignLog.changeSize" on-change-page="campaignLog.changePage"></div>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+$title-text-color: #171717;
+$title-line-border-color: #dadada;
+$title-background-color: #fff;
+$list-body-background-color: #f0f0f0;
+$list-body-line-border-color: #c3c3c3;
+$list-body-color: #5d5d5d;
+$list-body-text-color: #747474;
+
+.rights-div {
+  margin-left: 13px;
+  margin-right: 13px;
+  margin-top: 23px;
+  padding-bottom: 20px;
+
+  .rights-title {
+
+    .rights-title-text {
+      font-size: $wm-score-number-font-size;
+      color: $title-text-color;
+      margin-left: 17px;
+    }
+
+    .rights-title-line {
+      margin-top: 12px;
+      margin-bottom: 15px;
+      border-top: 1px solid $title-line-border-color;
+    }
+
+    .memberpoints-smallsize {
+      background: url('/images/mobile/memberpoints_smallsize.png');
+    }
+
+    .distributiontime {
+      background: url('/images/mobile/distributiontime.png');
+    }
+
+    .rights-title-block {
+      margin-left: 15px;
+      margin-bottom: 17px;
+      background-repeat: no-repeat;
+      background-size: 14px;
+      background-position-y: 4px;
+      padding-left: 20px;
+
+      .rights-title-block-text {
+        font-size: $wm-score-detail-unit-font-size;
+      }
+
+      .rights-title-block-number {
+        font-size: $wm-buttom-componet-font-size;
+        margin-left: 14px;
+        font-family: 'Segoe UI', 'Semibold';
+      }
+
+      .rights-title-block-date {
+        font-size: $wm-score-detail-unit-font-size;
+        margin-left: 14px;
+        font-family: 'Segoe UI', 'Regular';
+      }
+    }
+  }
+
+  .rights-body {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 38px;
+
+    .rights-list-title {
+      height: 49px;
+      background-color: $title-background-color;
+      border: 1px solid $title-line-border-color;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      background-size: 18px 19px;
+      background-repeat: no-repeat;
+      background-position: 15px;
+
+      .rights-list-title-text {
+        font-size: $wm-buttom-componet-font-size;
+        color: $title-text-color;
+        line-height: 50px;
+        margin-left: 41px;
+      }
+    }
+
+    .memberpoints {
+      background-image: url('/images/mobile/memberpoints.png');
+    }
+
+    .memberprivilege {
+      background-image: url('/images/mobile/memberprivilege.png');
+    }
+
+    .personalinformation {
+      background-image: url('/images/mobile/personalinformation.png');
+    }
+
+    .memberpointsautozeroed {
+      background-image: url('/images/mobile/memberpointsautozeroed.png');
+    }
+
+    .rights-list-body {
+      border: 1px solid $title-line-border-color;
+      border-top: 0;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      background-color: $list-body-background-color;
+      padding: 12px 13px 17px 17px;
+      margin-bottom: 34px;
+      box-shadow: inset 8px 8px 8px rgba(228, 228, 228, .75), inset -8px -8px 8px rgba(228, 228, 228, .75);
+
+      .rights-list-body-title {
+        font-size: $wm-input-componet-font-size;
+        color: $list-body-color;
+        margin-bottom: 10px;
+      }
+
+      .rights-list-body-text {
+        font-size: $wm-input-componet-font-size;
+        color: $list-body-text-color;
+
+        p {
+          margin-bottom: 0;
+          margin-top: 0;
+          word-break: break-all;
+        }
+
+        img {
+          max-width: 100%;
+        }
+      }
+
+      .rights-list-body-line {
+        border-top: 1px solid $list-body-line-border-color;
+        margin-top: 15px;
+        margin-bottom: 12px;
+      }
+
+      .mt50 {
+        margin-top: 25px;
+      }
+    }
+  }
+}

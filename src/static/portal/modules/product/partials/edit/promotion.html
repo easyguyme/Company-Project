@@ -1,0 +1,296 @@
+<div wm-breadcrumb="promotion.breadcrumb"></div>
+
+<section class="container-fluid">
+  <form role="form" class="edit-promotion-form" ng-submit="promotion.submit()">
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <label class="fields-item-label fields-color-label required-field" translate="product_promotion_activity_name"></label>
+        <input id="campaignName" class="form-control fields-item-content store-name-item" ng-model="promotion.campaign.name" form-tip="{{'character_length_tip' | translate:{'name': 'Promotion name', 'minNumber': 4, 'maxNumber': 30} }}" wm-validate="promotion.checkName" maxlength="30" required without-star />
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <label class="fields-item-label fields-color-label required-field" translate="product_promotion_activity_time"></label>
+        <div class="clearfix">
+          <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD HH:mm:00" pick-date="true" pick-time="true" min-date-picker-id="endDatePicker" more-than-today="{{promotion.isCreating}}" ng-model="promotion.campaign.startTime" class="activity-short-item pull-left" required-field="true" is-disabled="{{promotion.isDisabledStartPicker}}" config="promotion.startPickerConfig"></div>
+          <label class="font-label pull-left field-cross-bar">-</label>
+          <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD HH:mm:00" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" more-than-today="{{promotion.isCreating}}" ng-model="promotion.campaign.endTime" class="activity-short-item pull-left" required-field="true" is-disabled="{{promotion.isDisabledEndPicker}}" config="promotion.endPickerConfig"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <label class="fields-item-label fields-color-label" translate="product_promotion_activity_member_number"></label>
+        <div class="clearfix">
+          <div class="activity-short-item pull-left">
+            <input id="participantCount" class="form-control" ng-model="promotion.campaign.participantCount" wm-validate="promotion.checkPositiveInt('participantCount', promotion.campaign.participantCount)" form-tip="{{'number_range_tip' | translate:{'number': 0} }}" />
+            <span class="form-tip normal">{{'number_range_tip' | translate:{'number': 0} }}</span>
+          </div>
+          <label class="field-unit-label pull-fell" translate="product_promotion_activity_member_number_unit"></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <label class="fields-item-label fields-color-label" translate="product_promotion_activity_limit_times"></label>
+        <div class="limit-times-wrapper clearfix">
+          <div>
+            <input id="limitTimes" class="form-control limit-times-input" ng-model="promotion.campaign.limitTimes" wm-validate="promotion.checkPositiveInt('limitTimes', promotion.campaign.limitTimes)" form-tip="{{'product_promotion_activity_limit_times_tip' | translate}}" />
+            <span class="form-tip normal" translate="product_promotion_activity_limit_times_tip"></span>
+          </div>
+          <label class="field-unit-label limit-times-label" translate="product_promotion_activity_limit_times_unit"></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <label class="fields-item-label fields-color-label required-field like-block" translate="product_promotion_activity_goods"></label>
+        <span class="btn btn-success" translate="product_promotion_associated_goods" ng-click="promotion.associatedGoods()" id="campaignProducts" ng-if="promotion.chosenGoods.length == 0"></span>
+        <span class="form-tip error-tip-color" translate="product_promotion_associated_goods_tip" ng-show="promotion.chosenGoods.length == 0 && promotion.isSHowChosenGoodsTip"></span>
+        <div id="promotionProduct" ng-if="promotion.chosenGoods.length != 0">
+          <span class="display-goods-wrapper" ng-repeat="goods in promotion.chosenGoods track by $index">{{goods.name}}</span>
+          <span class="edit-goods-wrapper cp" ng-click="promotion.associatedGoods()" translate="edit"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="clear-container-padding">
+        <label class="fields-item-label fields-color-label like-block" translate="product_promotion_associated_gift"></label>
+        <ul id="promotionGiftType" class="promotion-content-color">
+          <li class="repeat-radio-item" ng-repeat="type in promotion.giftTypes track by $index">
+            <div wm-radio ng-model="promotion.campaign.gift.type" value="{{type.value}}" ng-click="promotion.changeGiftTypes()"></div>
+            <label class="fields-item-label associated-gift-item" translate="{{type.name}}"></label>
+          </li>
+        </ul>
+
+        <section class="gift-rule-box score-rule-box" ng-if="promotion.campaign.gift.type == 'score'">
+          <ul id="giftScoreType" class="clear-margin promotion-content-color">
+            <li class="row clear-margin gift-rule-item" ng-repeat="type in promotion.sendScoreTypes track by $index">
+                <div class="col-md-4 col-sm-5 col-xs-6 clear-container-padding basic-score-content">
+                  <div class="basic-score-number">
+                    <input id="{{type.id}}" class="form-control" ng-model="type.number" ng-if="promotion.sendScoreType == type.value" wm-validate="promotion.checkPositiveInt(type.id, type.number)" placeholder="{{type.holder | translate}}" />
+                  </div>
+                  <label class="fields-item-label associated-gift-item basic-score-unit" translate="{{type.unit}}"></label>
+                </div>
+                <div class="col-md-5 col-sm-4 col-xs-12 clear-container-padding basic-score-tip">
+                  <input class="form-control hide" value="1" form-tip="{{type.tip | translate}}" required without-star />
+                </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="gift-rule-box coupon-rule-box" ng-if="promotion.campaign.gift.type == 'coupon'">
+        </section>
+
+        <section class="gift-rule-box present-rule-box" ng-if="promotion.campaign.gift.type == 'present'">
+        </section>
+
+        <section class="gift-rule-box lottery-rule-box" ng-if="promotion.campaign.gift.type == 'lottery'">
+          <div class="form-group row clear-container-margin clear-margin">
+            <div class="col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+              <label class="fields-item-label fields-color-label like-block" translate="product_promotion_lotto_send_type"></label>
+
+              <ul id="giftLotteryType" class="promotion-content-color">
+                <li class="repeat-radio-item" ng-repeat="type in promotion.sendLottoTypes track by $index">
+                  <div wm-radio ng-model="promotion.sendLottoType" value="{{type.value}}" ng-click="promotion.changeSendLottoTypes()"></div>
+                  <label class="fields-item-label associated-gift-item" translate="{{type.name}}"></label>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+              <label class="fields-item-label fields-color-label like-block" translate="product_promotion_lotto_gift_fill_info"></label>
+
+              <ul class="clear-margin promotion-content-color">
+                <li class="repeat-gift-item lotto-gift-wrapper row clear-container-margin" ng-repeat="prize in promotion.lottoPrizes track by $index">
+                  <div class="gift-info-wrapper col-md-11 col-sm-11 col-xs-11">
+                    <div class="col-md-6 col-sm-12 col-xs-12 clear-container-padding">
+                      <label class="fields-item-label col-md-3 col-sm-4 col-xs-12" translate="product_promotion_gift_name"></label>
+                      <div class="col-md-9 col-sm-8 col-xs-12 clear-container-padding">
+                        <input id="prizeName{{$index}}" class="form-control gift-info-name" placeholder="{{'character_length_tip' | translate:{'name': 'Prize name', 'minNumber': 4, 'maxNumber': 30} }}" maxlength="30" ng-model="prize.name" wm-validate="promotion.checkPrizeName('prizeName'+$index, prize.name)" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12 clear-container-padding">
+                      <label class="fields-item-label col-md-4 col-sm-5 col-xs-12">{{promotion.sendLottoTypesGiftInfo[promotion.sendLottoType].numberTitle | translate}}</label>
+                      <div class="col-md-8 col-sm-7 col-xs-12 clear-container-padding">
+                        <div class="col-md-10 col-sm-9 col-xs-9 clear-container-padding">
+                          <input id="prizeNumber{{$index}}" class="form-control gift-info-number" ng-model="prize.number" ng-if="promotion.sendLottoType == 'scale'" wm-validate="promotion.checkPrizeNumber('prizeNumber'+$index, prize.number)" placeholder="{{'product_promotion_winning_odds_placeholder' | translate}}" />
+                          <input id="prizeNumber{{$index}}" class="form-control gift-info-number" ng-model="prize.number" ng-if="promotion.sendLottoType == 'number'" wm-validate="promotion.checkPositiveInt('prizeNumber'+$index, prize.number)" placeholder="{{'number_range_tip' | translate:{'number': 0} }}" />
+                        </div>
+                        <label class="fields-item-label col-md-2 col-sm-3 col-xs-3" ng-style="{'padding-right':'0px','padding-left':'5px'}">{{promotion.sendLottoTypesGiftInfo[promotion.sendLottoType].numberUnit | translate}}</label>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="gift-operate-wrapper col-md-1 col-sm-1 col-xs-1">
+                    <span class="gift-operate-del absolute-center" ng-class="{'gift-operate-disable': promotion.lottoPrizes.length == 1}" ng-click="promotion.removeLottoPrizes($index, $event)"></span>
+                  </div>
+                </li>
+              </ul>
+
+            </div>
+
+            <div class="form-group col-md-12 col-sm-12 col-xs-12 clear-container-padding clear-margin">
+              <span class="btn-add-radius btn" translate="product_promotion_add_gift" ng-click="promotion.addLottoPrizes()"></span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div id="promotionCampaigns" class="col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+        <label class="fields-item-label fields-color-label" translate="product_promotion_activity_involved_situation"></label>
+        <section class="row clear-container-margin involved-situation-wrapper">
+          <div class="col-md-12 row clear-container-padding clear-container-margin promotion-content-color">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <div wm-radio ng-model="promotion.products" class="follower-checkbox-style" value="unlimited"></div>{{'channel_wechat_mass_unlimited' | translate}}
+            </div>
+
+            <div class="col-md-10 clear-container-padding">
+              <ul class="row clear-container-margin">
+                <li class="col-md-3 col-sm-5 col-xs-6 clear-container-padding text-el" ng-repeat="situation in promotion.scoreSituations track by $index">
+                  <div wm-radio ng-model="promotion.products" class="follower-checkbox-style" value="{{situation.value}}"></div>{{situation.name | translate}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="productExperice" class="row clear-container-margin gift-activities-wrapper" ng-if="promotion.products == 'campaigns'">
+          <div class="col-md-12 clear-container-padding gift-activities-items promotion-content-color">
+            <!-- <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="fields-item-label" style="margin-bottom: 0;">
+                <div wm-checkbox ng-model="promotion.goodsAll" ng-click="promotion.checkAllItem('goods', 'id')" class="follower-checkbox-style"></div>{{'customer_follower_all' | translate}}
+              </label>
+            </div> -->
+
+            <div class="col-md-12 clear-container-padding">
+              <ul class="row clear-margin">
+                <li class="col-md-2 col-sm-2 col-xs-2 clear-container-padding text-el" ng-repeat="item in promotion.goodsTemplet track by $index" wm-tooltip="{{item.name}}">
+                  <div wm-checkbox ng-model="item.check" ng-click="promotion.checkItem('goods', item, 'id')" class="follower-checkbox-style"></div>{{item.name}}
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </section>
+        <span class="form-tip error-tip-color" translate="product_not_exchange_experience" ng-show="!promotion.goods.length && promotion.isRedeemExperienceTip"></span>
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+        <label class="fields-item-label fields-color-label" translate="product_promotion_activity_tags"></label>
+        <section class="row clear-container-margin member-tag-wrapper">
+          <div class="col-md-12 row clear-container-padding clear-container-margin promotion-content-color">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <div wm-checkbox ng-model="promotion.tagsAll" ng-click="promotion.checkAllItem('tags')" class="follower-checkbox-style"></div>{{'customer_follower_all' | translate}}
+            </div>
+
+            <div class="col-md-10 clear-container-padding">
+              <ul class="row clear-margin">
+                <li class="col-md-2 col-sm-3 col-xs-4 clear-container-padding text-el" ng-repeat="item in promotion.tagsTemplet track by $index">
+                  <div wm-checkbox ng-model="item.check" ng-click="promotion.checkItem('tags', item)" class="follower-checkbox-style"></div>{{item.name}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="form-group row clear-container-margin promoction-channels-wrapper">
+      <div class="col-md-12 col-sm-12 col-xs-12 clear-container-padding">
+        <label class="fields-item-label fields-color-label" translate="product_promotion_campaign_channel"></label>
+        <section class="row clear-container-margin channels-wrapper">
+          <div class="col-md-12 row clear-container-padding clear-container-margin promotion-content-color">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <div wm-checkbox ng-model="promotion.channelsAll" ng-click="promotion.checkAllItem('channels', 'id')" class="follower-checkbox-style"></div>{{'channel_wechat_mass_unlimited' | translate}}
+            </div>
+
+            <div class="col-md-10 clear-container-padding">
+              <ul class="row clear-container-margin" ng-style="{'margin-bottom': '0px'}">
+                <li class="account-item pull-left" ng-repeat="account in promotion.channelsTemplet track by $index">
+                  <wm-checkbox ng-model="account.check" ng-click="promotion.checkItem('channels', account, 'id')" class="follower-checkbox-style"></wm-checkbox>
+                  <div class="channels-icon-wrapper">
+                    <img ng-src="/images/customer/{{account.icon}}.png" wm-tooltip="{{ account.tip | translate}}" class="img" /></div>
+                  <div class="font-social-style" translate="{{account.name}}"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- Add member tags. -->
+    <div class="form-group row clear-container-margin">
+      <div wm-checkbox ng-model="promotion.isAutoAddTags"></div>
+      <label class="member-attr-label">{{'product_auto_add_tags' | translate}}</label>
+    </div>
+    <div class="form-group member-attr-wrapper channel-wrapper product-wrapper clearfix" ng-show="promotion.isAutoAddTags">
+      <label class="member-attr-label" translate="member_tags_name"></label>
+      <div class="row"><div class=
+        "col-md-6" wm-auto-complete localdata="promotion.autoCompleteItems" add-new-tags="true" ng-model="promotion.userTags" id="promotion-tag" max-length="30" tag-place-holder="{{'common_auto_select' | translate}}"></div></div>
+    </div>
+
+    <div class="form-group row clear-container-margin">
+      <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+        <div wm-checkbox ng-model="promotion.campaign.isActivated"></div><span translate="product_promotion_activity_confirm_enable"></span>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn btn-success" translate="submit"></button>
+      <span class="btn btn-default" translate="cancel" ng-click="promotion.cancel()"></span>
+    </div>
+
+  </form>
+</section>
+
+<script type="text/ng-template" id="associatedGoods.html">
+  <header class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title" translate="product_promotion_associated_goods"></h4>
+  </header>
+
+  <section class="modal-body modal-bgcolor clearfix">
+
+    <div class="form-group" ng-if="chosenGoods.length > 0">
+      <label class="dark-gray chosen-title-label">{{'product_promotion_selected_goods' | translate}} : </label>
+      <ul class="chosen-wrapper">
+        <li class="chosen-result-item" ng-repeat="goods in chosenGoods track by $index">
+          {{goods.name}}
+          <span class="btn-remove-item cp" ng-click="removeGoods($index)"></span>
+        </li>
+      </ul>
+      <span class="chosen-wrapper" ng-if="chosenGoods.length == 0">-</span>
+    </div>
+
+    <div class="form-group search-container">
+      <wm-search ng-model="searchKey" class="search-box" click-func="search()" placeholder="{{'product_promotion_goods_search_key' | translate}}"></wm-search>
+    </div>
+
+    <div class="form-group clearfix">
+      <wm-select-table ng-model="list" class="associated-table"></wm-select-table>
+      <div class="table-no-data" ng-if="list.data.length == 0">{{noData | translate}}</div>
+      <div class="associated-goods-pagination" ng-if="list.data.length > 0">
+        <wm-pagination current-page="currentPage" page-size="pageSize" total-items="totalItems" on-change-page="changePage" hide-page-size="true"></wm-pagination>
+      </div>
+    </div>
+
+    <div class="form-group center-text" style="margin-bottom: 45px;">
+      <button class="btn btn-success" translate="management_submit" ng-click="submit()"></button>
+    </div>
+
+  </section>
+
+</script>

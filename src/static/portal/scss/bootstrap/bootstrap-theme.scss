@@ -1,0 +1,57 @@
+$brand-primary:                 $white-background-text-color;
+$brand-success:                 $white-background-text-color;
+$brand-info:                    #54afee;
+$brand-warning:                 #f9ab20;
+$brand-danger:                  #ff7d73;
+
+$btn-primary-border:            transparent;
+$btn-success-border:            transparent;
+$btn-info-border:               transparent;
+$btn-warning-border:            transparent;
+$btn-danger-border:             transparent;
+
+$nav-link-hover-bg:             darken($black-background-color, 10%);
+$dropdown-link-hover-bg:        $black-background-color;
+$nav-link-hover-bg:             $black-background-color;
+$border-radius-base:             0;
+
+$btn-default-color:              $base-text-color;
+$btn-default-bg:                 $white-background-color;
+$btn-default-border:             #dbdbdb;
+
+$btn-success-bg:                 $white-background-text-color;
+
+$pagination-color:               #787878;
+$pagination-border:              #d2d2d2;
+$pagination-hover-color:         $white-background-color;
+$pagination-hover-bg:            $white-background-text-hover-color;
+$pagination-hover-border:        $white-background-text-hover-color;
+$pagination-disabled-color:      #c2c2c2;
+$pagination-disabled-border:     #e4e4e4;
+
+$breadcrumb-color:               #787878;
+$breadcrumb-active-color:        $breadcrumb-color;
+$breadcrumb-bg:                  #eee;
+
+$table-cell-padding:             15px;
+$list-group-link-hover-color:    #fff;
+$list-group-hover-bg:            $brand-primary;
+
+$panel-default-text:             #999;
+$heading-bg-color:               #f5f5f5;
+$panel-default-border:           #fff;
+$heading-border:                 $panel-default-border;
+
+$modal-header-border-color:      #eee;
+
+$modal-title-line-height:        18px;
+
+//Disable the responsive design
+$screen-sm:                      10px;
+//Disable the responsive design
+
+@font-face {
+  font-family: 'segoe-ui';
+  src: url('../fonts/segoe-ui.eot');
+  src: local('segoe-ui'), url('../fonts/segoe-ui.woff') format('woff'), url('../fonts/segoe-ui.ttf') format('truetype');
+}

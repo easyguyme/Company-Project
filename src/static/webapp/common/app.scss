@@ -1,0 +1,243 @@
+@import 'bootstrap-sass-official/assets/stylesheets/bootstrap/mixins';
+
+$error-panel-color: #c3c3c3;
+$error-tip-text-color: #575656;
+$white: #fff;
+$attention-green: #3ec3aa;
+$attention-black: #2f2f2f;
+$wb-attention-text: #565656;
+$wb-attention-shadow: #858585;
+$error-border-color: #eee;
+$error-font-color: #1c1c1c;
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+}
+
+// error page
+.wx-error {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  .wx-error-panel {
+    @include size(172.5px, 45px);
+
+    background-color: $error-panel-color;
+    border: 1px solid $error-panel-color;
+    border-radius: 2px;
+    float: right;
+    color: $white;
+    margin: 20px 34px;
+    text-align: left;
+
+    .wx-error-click {
+      @include size(21.5px, 28px);
+
+      background-image: url('/images/mobile/click.png');
+      background-size: 100%;
+      display: inline-block;
+      margin: 8.5px 14px;
+    }
+
+    .wx-error-text {
+      line-height: 28px;
+      position: absolute;
+    }
+
+    .wx-error-word {
+      line-height: 65px;
+      position: absolute;
+    }
+  }
+
+  .wx-error-arrow {
+    @include size(25.5px, 33.5px);
+    background-image: url('/images/mobile/arrow.png');
+    background-size: 100%;
+    float: right;
+    position: absolute;
+    right: 21px;
+  }
+
+  .wx-error-tip {
+    @include size(300px, 230px);
+
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &.wx-error-tip-missing {
+      height: 120px;
+    }
+
+    &.wx-error-tip-forbidden {
+      height: 150px;
+    }
+  }
+
+  .wx-error-tip-icon {
+    @include size(133px, 181px);
+
+    margin: auto;
+    background-image: url('/images/mobile/planet.png');
+    background-size: 100%;
+  }
+
+  .wx-error-icon-forbidden {
+    @include size(138px, 61.5px);
+
+    background-image: url('/images/mobile/403.png');
+  }
+
+  .wx-error-icon-missing {
+    @include size(138px, 61.5px);
+
+    background-image: url('/images/mobile/404.png');
+  }
+
+  .wx-error-tip-msg {
+    font-size: 24px;
+    margin-top: 25px;
+    color: $error-tip-text-color;
+  }
+
+  .wx-remind-tip {
+    @include size(100%, 30px);
+
+    font-size: 24px;
+    color: $error-tip-text-color;
+    text-align: center;
+  }
+}
+
+.attention-title {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.attention-tip {
+  font-size: 1rem;
+  color: $attention-green;
+}
+
+.attention-qrcode {
+  width: 50%;
+  display: block;
+  margin: 2rem auto 1rem;
+}
+
+.attention-qrcode-tip {
+  color: $attention-black;
+  font-weight: bold;
+}
+
+.wb-error {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+
+  .wb-attention-header {
+    width: 100%;
+  }
+
+  .wb-attention-target {
+    margin-top: -3.2rem;
+    margin-bottom: 4.4rem;
+
+    .attention-images {
+      @include square(6.4rem);
+      @include box-shadow(0 0 2px rgba($wb-attention-shadow, .8));
+
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      background-color: rgba($white, .8);
+      margin-bottom: .5rem;
+
+      .attention-avatar {
+        @include square(5.85rem);
+
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: .275rem;
+        left: .275rem;
+      }
+
+      .attention-verified {
+        @include size(1.5rem, 1.5rem);
+        @include box-shadow(0 0 .25rem rgba($wb-attention-shadow, .8));
+
+        background-image: url('/images/mobile/wbattention/v.png');
+        background-size: 1.4rem;
+        background-position: center;
+        border-radius: 50%;
+
+        position: absolute;
+        top: 4.9rem;
+        left: 4.5rem;
+        display: none;
+
+        &.show {
+          display: block;
+        }
+      }
+    }
+
+    .attention-name {
+      font-size: 1.3rem;
+      color: $attention-black;
+    }
+  }
+
+  .wb-attention-illustration1,
+  .wb-attention-illustration2 {
+    font-size: 1.1rem;
+    color: $wb-attention-text;
+  }
+}
+
+.dd-error {
+  background-image: url('/images/site/invalid_account_background.png');
+  background-size: cover;
+
+  .dd-error-wrap {
+    border: 1px solid $error-border-color;
+    height: 110px !important;
+    width: 80%;
+    background-color: $white;
+    border-radius: 5px;
+    position: absolute;
+    padding-top: 30px;
+
+    .dd-error-icon-forbidden {
+      height: 40px;
+      width: 30px;
+      margin: auto;
+      background-image: url('/images/site/forbidden_icon.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+
+    .wx-error-tip-msg {
+      margin-top: 15px;
+    }
+
+    .dd-error-msg1 {
+      font-size: 17px;
+      color: $error-font-color;
+    }
+
+    .dd-error-msg2 {
+      font-size: 15px;
+    }
+  }
+}

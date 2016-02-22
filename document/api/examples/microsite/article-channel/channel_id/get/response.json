@@ -1,0 +1,16 @@
+{
+    "id": "54bccaf4db4c0e0b448b4569",
+    "name": "test",
+    "fields": [
+        {
+            "id": "ffdsafvasvasdvsadvsv",
+            "name": "aaa",
+            "type": "input"
+        },
+        {
+            "id": "fadsfadsfasvsadvasdv"
+            "name": "bbb",
+            "type": "date"
+        }
+    ]
+}

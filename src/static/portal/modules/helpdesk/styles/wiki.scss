@@ -1,0 +1,206 @@
+$helpdesk-head-bgcolor: #eee;
+$wiki-font-basic-color: #7d7d7d;
+$wiki-link-basic-color: #37c3aa;
+$wiki-basic-background: #ebebeb;
+$wiki-title-all: #464646;
+$wiki-title: #bcbcbc;
+
+.wiki-content {
+  margin-bottom: 0;
+
+  .panel-body {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
+.panel {
+  .helpdesk-wiki-title {
+    height: 40px;
+    padding: 5px 10px;
+    background-color: $helpdesk-head-bgcolor;
+
+    .wiki-title {
+      color: $wiki-font-basic-color;
+      line-height: 30px;
+      float: left;
+    }
+
+    .btn-success {
+      height: 30px;
+      margin-top: -1px;
+    }
+  }
+
+  .panel-body {
+    .wiki-classify {
+      display: flex;
+
+      .category-title {
+        color: $wiki-title;
+        width: 85px;
+        padding-top: 0;
+        font-size: 12px;
+      }
+
+      .category-content {
+        width: 100%;
+
+        .wiki-all {
+          color: $wiki-title-all;
+          cursor: pointer;
+          padding: 0 0 0 20px;
+        }
+
+        .wiki-other {
+          color: $wiki-font-basic-color;
+          margin-bottom: 15px;
+          padding: 0 10px;
+          float: left;
+          display: block;
+          margin-right: 10px;
+          cursor: pointer;
+        }
+
+        .category-management {
+          color: $wiki-link-basic-color;
+          text-align: right;
+          cursor: pointer;
+          padding-right: 15px;
+          padding-top: 0;
+        }
+
+        .font-green-color {
+          color: $wiki-link-basic-color;
+        }
+
+        .hide-all {
+          display: none;
+        }
+
+        .increase-width {
+          width: 83%;
+          margin-right: 3px;
+        }
+      }
+
+      .wiki-other-edit {
+        background-color: $wiki-basic-background;
+        border-radius: 2px;
+
+        .wiki-delete-title {
+          float: left;
+        }
+
+        .wiki-delete-icon {
+          background: url('/images/core/close_default.png') no-repeat 0;
+          cursor: pointer;
+          width: 13px;
+          height: 13px;
+          margin-top: -10px;
+          position: absolute;
+        }
+
+        .wiki-delete-icon:hover {
+          background: url('/images/core/close_hover.png') no-repeat 0;
+        }
+      }
+    }
+
+    .wiki-link {
+      margin-bottom: 20px;
+
+      .link-title {
+        color: $wiki-font-basic-color;
+        float: left;
+        margin-right: 30px;
+      }
+
+      .link-content {
+        color: $wiki-link-basic-color;
+
+        span {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+.wikis-table-wrap {
+  .colored-table {
+    thead {
+      tr {
+        th:nth-child(1) {
+          width: 30%;
+        }
+
+        th:nth-child(2) {
+          width: 50%;
+        }
+
+        th:nth-child(3) {
+          width: 20%;
+        }
+      }
+    }
+
+    tbody {
+      td {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.wiki-dialog {
+  .modal-dialog {
+    width: 462px;
+    margin-top: 100px;
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .create-wiki-title {
+      color: $wiki-link-basic-color;
+    }
+
+    .create-wiki-body {
+      padding-left: 24px;
+
+      .add-category {
+        color: $wiki-link-basic-color;
+        background: url('/images/channel/add_normal.png') no-repeat 0;
+        display: inline-block;
+        padding-left: 30px;
+        line-height: 24px;
+        cursor: pointer;
+      }
+
+      .category-list {
+        margin-left: 0;
+      }
+
+      .btn-new-category {
+        span {
+          height: 30px;
+          margin-left: 9px;
+        }
+      }
+
+      .faq-input {
+        width: 92%;
+      }
+
+      .faq-input-tip {
+        display: block;
+        color: $wiki-font-basic-color;
+        font-size: 12px;
+      }
+    }
+  }
+}

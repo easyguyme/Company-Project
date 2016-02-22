@@ -1,0 +1,207 @@
+$graphics-edit-border-color: #e6e6e6;
+
+@mixin left-triangles($right, $top, $bottom, $color) {
+  content: '';
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-right: $right solid $color;
+  border-bottom: $bottom solid transparent;
+  border-top: $top solid transparent;
+  position: absolute;
+}
+
+@mixin graphic-icons($name) {
+  display: block;
+  background: url(/images/core/icon_#{$name}_default.png);
+
+  &:hover {
+    background: url(/images/core/icon_#{$name}_hover.png);
+  }
+}
+
+@mixin graphic-icons-center($width, $height) {
+  position: absolute;
+  width: $width;
+  height: $height;
+  top: 50%;
+  left: 50%;
+  margin-left: -$width/2;
+  margin-top: -$height/2;
+}
+
+@mixin graphic-cover($color) {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: $color;
+}
+
+.graphics {
+  color: $wm-dark-gray;
+  font-size: 14px;
+
+  .main-title {
+    position: relative;
+    color: $menu-icon-normal-color;
+    font-size: 16px;
+    padding: 5px 20px;
+    background: $menu-bg-color;
+
+    >a {
+      color: $menu-icon-normal-color;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    >span {
+      margin-right: 10px;
+    }
+  }
+
+  .main-content {
+    padding: 0;
+
+    textarea {
+      resize: none;
+      height: 68px;
+    }
+
+    .graphics-edit {
+      border-radius: 4px;
+      border: 1px solid $graphics-edit-border-color;
+      padding: 30px 15px 70px;
+      position: relative;
+
+      .front-triangle {
+        @include left-triangles(14px, 11px, 11px, $white-background-color);
+        top: 58px;
+        left: -13px;
+      }
+
+      .back-triangle {
+        @include left-triangles(15px, 12px, 12px, $graphics-edit-border-color);
+        top: 57px;
+        left: -15px;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+  }
+
+  .graphics-btns {
+    margin-top: 50px;
+    margin-left: 15px;
+  }
+
+  .graphics-multiple-btns {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .file-upload-wrap {
+    width: 48px;
+    height: 26px;
+    top: 2px;
+    right: 17px;
+    border-radius: 2px;
+    position: absolute;
+    background-image: url('/images/content/image.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $brand-primary;
+
+    span {
+      display: block;
+      width: 48px;
+      height: 26px;
+    }
+  }
+
+  .upload-progress {
+    display: none;
+  }
+}
+
+.multiple-graphic-edit {
+  .waterfall-news-list-inner {
+    position: relative;
+
+    &:hover .waterfall-news-list-inner-cover {
+      @include graphic-cover(rgba(255, 255, 255, .8));
+      display: block;
+      position: absolute;
+
+      .icon-edit {
+        @include graphic-icons(edit);
+        @include graphic-icons-center(30px, 30px);
+      }
+    }
+  }
+
+  .waterfall-news-list-item {
+    position: relative;
+
+    &:hover .waterfall-news-list-item-cover {
+      @include graphic-cover(rgba(255, 255, 255, .8));
+      display: block;
+      position: absolute;
+
+      .waterfall-news-list-item-icons {
+        @include graphic-icons-center(70px, 30px);
+      }
+
+      .icon-edit {
+        @include graphic-icons(edit);
+        width: 30px;
+        height: 30px;
+      }
+
+      .icon-delete {
+        @include graphic-icons(delete);
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+}
+
+.panel-graphics-content .news-view {
+  margin-bottom: 15px;
+}
+
+.news-view {
+  .waterfall-news-list-inner-cover,
+  .waterfall-news-list-item-cover {
+    display: none;
+  }
+
+  .waterfall-news-list-inner.active,
+  .waterfall-news-list-item.active {
+    border: 1px solid $brand-primary;
+  }
+
+  .waterfall-news-add-item {
+    color: $menu-select-color;
+    line-height: 64px;
+    padding-left: 50px;
+    background: url('/images/channel/add_normal.png') no-repeat 20px;
+  }
+
+  .waterfall-news-list-item:hover .waterfall-news-add-item {
+    border-color: $white;
+    color: $menu-icon-hover-color;
+    background-image: url('/images/channel/add_hover.png');
+  }
+
+}
+
+.waterfall-center {
+  margin: 0 auto;
+}

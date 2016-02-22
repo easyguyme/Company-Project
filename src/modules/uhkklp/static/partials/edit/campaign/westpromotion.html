@@ -1,0 +1,269 @@
+<div class="ulkklp-edit-recipe">
+    <div wm-breadcrumb="westpromotion.breadcrumb"></div>
+
+    <form id="activityForm" name="activityForm" ng-submit="westpromotion.save()" novalidate>
+      <div class="cookitem" style="margin: 0px;">
+          <div class="cookitem-title">
+              <label class="cookitem-lbl-required">{{'activity_activity_name' | translate}}</label><br/>
+          </div>
+          <div class="cookitem-content">
+              <input name="name" id="name" class="cookitem-input" type="text" ng-model="westpromotion.name" required form-tip="{{'activity_activity_name_tip' | translate}}" maxlength="30" />
+          </div>
+      </div>
+      <br/>
+      <div class="cookitem" style="margin: 0px;">
+          <div class="cookitem-title">
+              <label class="cookitem-lbl-required">{{'uhkklp_activity_color' | translate}}</label><br/>
+          </div>
+          <div class="cookitem-content">
+          <select style="display: block; height: 30px;width:39%;" name="activityColor" id="activityColor" class="left select" title="主題顏色" ng-change="reset()" ng-model="westpromotion.activityColor" required>
+              <option value=""></option>
+              <option value="1">Hellmann’S藍色</option>
+              <option value="2">Lipton黃色</option>
+              <option value="3">Knorr綠色</option>
+              <option value="4">首頁棗紅</option>
+              <option value="5">首頁橘色</option>
+              <option value="6">首頁粉色</option>
+              <option value="7">首頁黃色</option>
+          </select>
+          <div class="ng-invalid" ng-show="submitted">
+              <div>
+                  <span>{{'activityColor_required' | translate}}</span>
+              </div>
+          </div>
+          </div>
+      </div>
+      <br/>
+      <!--enroll setting-->
+      <div class="statistics-chart-item">
+        <div class="statistics-item-title">
+          <span class="red-start" translate="setting_title"></span>
+        </div>
+        <div class="cny-item-body">
+          <div class="indent">
+            <div class="title-div">
+              <span class="red-start" translate="activity_duration"></span>
+            </div>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker picker-id="startDatePicker" more-than-today="true" min-date-picker-id="endDatePicker" ng-model="westpromotion.startDate" required-field="true" />
+            </div>
+            <span class="cut-off"> ~ </span>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker picker-id="endDatePicker" more-than-today="true" max-date-picker-id="startDatePicker" min-date-picker-id="startDatePickerOrder" ng-model="westpromotion.endDate" required-field="true" />
+            </div>
+            <br/><br/>
+            <div class="management-fans-tag dark-gray row" ng-if="westpromotion.tags.length > 0">
+              <span class="col-md-3" translate="westpromotion_tag"></span>
+              <div class="col-md-9 row clear-container-padding clear-container-margin">
+                <div class="operate-tags-items col-md-2 clear-container-padding">
+                  <span class="check-all-items">
+                    <wm-checkbox ng-model="westpromotion.tagAll" ng-click="westpromotion.selectAllTag()" class="follower-checkbox-style"></wm-checkbox>{{'westpromotion_all' | translate}}
+                  </span>
+                </div>
+                <div class="follower-tags-items col-md-10 clear-container-padding">
+                  <ul class="row clear-container-margin member-tags-item">
+                    <li class="col-md-3 col-sm-3 col-xs-4 clear-container-padding text-el" wm-tooltip="{{tag.name}}" ng-repeat="tag in westpromotion.tags">
+                      <wm-checkbox ng-model="tag.check" ng-click="westpromotion.selectTag(tag)" class="follower-checkbox-style"></wm-checkbox>{{tag.name}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <div class="form-group">
+              <label for="activityDescription">{{'activity_description' | translate}}
+              </label>
+              <div class="model-wrap">
+                <textarea class="sms-sample-text form-control" name="activityDescription" ng-model="westpromotion.activityDescription"
+                ng-class="{'mt-required': activityForm.activityDescription.$invalid && activityForm.activityDescription.touched}" required></textarea>
+              </div>
+            </div>
+            <br/>
+            <div class="form-group">
+              <label for="registrationRule">{{'registration_rule' | translate}}
+              </label>
+              <div class="model-wrap">
+                <textarea class="sms-sample-text form-control" name="registrationRule" ng-model="westpromotion.registrationRule"
+                ng-class="{'mt-required': activityForm.registrationRule.$invalid && activityForm.registrationRule.touched}" required></textarea>
+              </div>
+            </div>
+            <br/>
+            <div class="cookitem" style="margin:0px;">
+                <div class="cookitem-title" style="background-color: white;padding: 0px;">
+                  <label class="cookitem-lbl-required" style="color: #333;">{{'registration_registrationNumber' | translate}}
+                  </label>
+                </div>
+                <div class="cookitem-content">
+                    <div class="samples">
+                        <table class="table table-striped table-bordered table-hover table-condensed">
+                            <thead>
+
+                            </thead>
+                            <tbody>
+                              <tr ng-repeat="item in westpromotion.registrationOptions">
+                                  <td class="cookitem-td"><input type="text" class="read-input" ng-model="item.content" ng-readonly="item.readOnly"/></td>
+                                  <td>
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="confirmRegistrationNo(item.content, item.id)" ng-show="item.showConfirm">{{'confirm_regis' | translate}}
+                                    </button>
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-success btn-xs" ng-click="deleteRegistrationNo(item.id)">{{'recipe_edit_sample_delete' | translate}}
+                                    </button>
+                                  </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-left:10px;color:#b42d14;font-size: 12px;" ng-show="showEmptyError">
+                        <div>
+                            <span>{{'option_required' | translate}}</span>
+                        </div>
+                    </div>
+                    <a class="btn btn-success btn-xs" ng-click="addRegistrationNo()">{{'registration_number_add' | translate}}</a>
+                </div>
+            </div>
+            <br/>
+            <div id="cookitem" class="cookitem" style="margin: 0px;">
+                <div class="cookitem-title">
+                    <label class="cookitem-lbl-required">{{'activity_pic' | translate}}</label><br/>
+                </div>
+                <div class="cookitem-content">
+                    <img class="img-prev" id="img-prev" alt="640 X 922" ng-src="{{westpromotion.image}}" name="image" ng-model="westpromotion.image" ng-class="{'valid-border': (westpromotion.image == '' || westpromotion.image == null)&&westpromotion.isSub}"/>
+                    <div>
+                        <span class="error-tip" ng-show="(westpromotion.image == '' || westpromotion.image == null)&&westpromotion.isSub">{{'goods_required' | translate}}</span>
+                    </div>
+                    <br/>
+                    <div id="imgUpload" wm-file-upload class="file-upload-wrap upload-img" ng-model="westpromotion.image">
+                        <span class="btn btn-success">{{'goods_upload_img' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--order setting-->
+      <div class="statistics-chart-item">
+        <div class="statistics-item-title">
+          <span class="red-start" translate="order_title"></span>
+        </div>
+        <div class="cny-item-body">
+          <div class="indent">
+            <div class="title-div">
+              <span class="red-start" translate="activity_duration"></span>
+            </div>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker picker-id="startDatePickerOrder" max-date-picker-id="endDatePicker" more-than-today="true" min-date-picker-id="endDatePickerOrder" ng-model="westpromotion.startDateOrder" required-field="true" />
+            </div>
+            <span class="cut-off"> ~ </span>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker picker-id="endDatePickerOrder" more-than-today="true" max-date-picker-id="startDatePickerOrder" ng-model="westpromotion.endDateOrder" required-field="true" />
+            </div>
+            <br/><br/>
+            <div class="management-fans-tag dark-gray row" ng-if="westpromotion.tagsOrder.length > 0">
+              <span class="col-md-3" translate="westpromotion_tag"></span>
+              <div class="col-md-9 row clear-container-padding clear-container-margin">
+                <div class="operate-tags-items col-md-2 clear-container-padding">
+                  <span class="check-all-items">
+                    <wm-checkbox ng-model="westpromotion.tagAllOrder" ng-click="westpromotion.selectAllTagOrder()" class="follower-checkbox-style"></wm-checkbox>{{'westpromotion_all' | translate}}
+                  </span>
+                </div>
+                <div class="follower-tags-items col-md-10 clear-container-padding">
+                  <ul class="row clear-container-margin member-tags-item">
+                    <li class="col-md-3 col-sm-3 col-xs-4 clear-container-padding text-el" wm-tooltip="{{tagOrder.name}}" ng-repeat="tagOrder in westpromotion.tagsOrder">
+                      <wm-checkbox ng-model="tagOrder.check" ng-click="westpromotion.selectTagOrder(tagOrder)" class="follower-checkbox-style"></wm-checkbox>{{tagOrder.name}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="orderDescription">{{'order_description' | translate}}
+          </label>
+          <div class="model-wrap">
+            <textarea class="sms-sample-text form-control" name="orderDescription" ng-model="westpromotion.orderDescription"
+            ng-class="{'mt-required': activityForm.orderDescription.$invalid && activityForm.orderDescription.touched}" required></textarea>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="orderRule">{{'order_rule' | translate}}
+          </label>
+          <div class="model-wrap">
+            <textarea class="sms-sample-text form-control" name="orderRule" ng-model="westpromotion.orderRule"
+            ng-class="{'mt-required': activityForm.orderRule.$invalid && activityForm.orderRule.touched}"  required></textarea>
+          </div>
+        </div>
+        <br/>
+        <div class="cookitem" style="margin:0px;">
+            <div class="cookitem-title" style="background-color: white;padding: 0px;">
+              <label class="cookitem-lbl-required" style="color: #333;">{{'promotion_order' | translate}}
+              </label>
+            </div>
+            <div class="cookitem-content">
+                <div class="samples">
+                  <table class="table table-striped table-bordered table-hover table-condensed">
+                      <thead>
+                          <tr>
+                              <th class="cookitem-td">{{'goods_name' | translate}}</th>
+                              <th class="cookitem-td">{{'goods_description' | translate}}</th>
+                              <th class="cookitem-td">{{'goods_href' | translate}}</th>
+                              <th class="cookitem-td">{{'goods_picture' | translate}}</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="item in westpromotion.promotionOrders">
+                            <td class="cookitem-td"><label class="read-input">{{item.name}}</label></td>
+                            <td class="cookitem-td"><label class="read-input">{{item.description}}</label></td>
+                            <td class="cookitem-td"><label class="read-input">{{item.href}}</label></td>
+                            <td class="cookitem-td"><img ng-src="{{item.image}}" /></td>
+                            <td>
+                              <button type="button" class="btn btn-success btn-sm" ng-click="deleteOrderOption(item)">{{'recipe_edit_sample_delete' | translate}}
+                              </button>
+                            </td>
+                        </tr>
+                      </tbody>
+                  </table>
+                </div>
+                <div style="margin-left:10px;color:#b42d14;font-size: 12px;" ng-show="showEmptyError">
+                    <div>
+                        <span>{{'option_required' | translate}}</span>
+                    </div>
+                </div>
+                <select ng-options="item.name for item in allPictures" ng-model="pic">
+                  <option value="">優惠訂單</option>
+                </select>&nbsp;&nbsp;
+                <a class="btn btn-success btn-xs" ng-click="addOrderOption(pic)">{{'order_promotion_add' | translate}}</a>
+            </div>
+        </div>
+        <br/>
+        <div id="cookitem" class="cookitem" style="margin: 0px;">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'activity_pic' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <img class="img-prev" id="img-prev" alt="640 X 922" ng-src="{{westpromotion.orderImage}}" name="orderImage" ng-model="westpromotion.orderImage" ng-class="{'valid-border': (westpromotion.orderImage == '' || westpromotion.orderImage == null)&&westpromotion.isSub}"/>
+                <div>
+                    <span class="error-tip" ng-show="(westpromotion.orderImage == '' || westpromotion.orderImage == null)&&westpromotion.isSub">{{'goods_required' | translate}}</span>
+                </div>
+                <br/>
+                <div id="imgUpload" wm-file-upload class="file-upload-wrap upload-img" ng-model="westpromotion.orderImage">
+                    <span class="btn btn-success">{{'goods_upload_img' | translate}}</span>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="activity-basic-container">
+        <div class="statistics-chart-item cny-item">
+          <div class="activity-item-body">
+            <input type="submit" class="btn btn-success mr20 user-btn" value="{{'cny_save' | translate}}"/>&nbsp;&nbsp;
+            <a ng-href="/uhkklp/westpromotion?active={{active}}" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+          </div>
+        </div>
+      </div>
+    </form>
+</div>
+
+

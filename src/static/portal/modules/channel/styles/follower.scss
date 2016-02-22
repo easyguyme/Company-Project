@@ -1,0 +1,1110 @@
+//custom variables
+$wm-dark-gray1:                     #ccc;
+$wm-dark-gray2:                     #555;
+$wm-dark-gray3:                     #d9d9d9;
+$wm-dark-gray4:                     #eee;
+$wm-dark-gray5:                     #ebebeb;
+$wm-dark-gray6:                     #dcdcdc;
+$wm-color-green:                    #19af8c;
+$wm-color-green1:                   #19be9b;
+$wm-dark-gray7:                     #50a0e6;
+$wm-dark-gray8:                     #f7f7f7;
+$wm-dark-gray9:                     #e5e5e5;
+$wm-dark-gray10:                    #9678cd;
+$wm-color-gray:                     #999;
+$wm-color-bg:                       #ddd;
+$wm-color-white:                    #fff;
+$wm-color-bg2:                      #9b78cd;
+$tag-modal-border-color:            #d2d2d2;
+$wm-color-bg4:                      #1c1c1c;
+$tag-modal-border-color:            $tag-modal-border-color;
+
+$wm-screen-md-min:                  992px;
+$weibo-icon-bgcolor:                #f5bd17;
+
+ //common css
+
+.followers-wrapper {
+  margin-bottom: 0;
+}
+
+.label-tag-style {
+  font-weight: normal;
+}
+
+.label-condition-title {
+  display: inline-block;
+  font-weight: bold;
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 0;
+  vertical-align: top;
+  max-width: 180px;
+}
+
+.label-fans-condition {
+  padding-right: 0;
+}
+
+.label-condition-item {
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 0;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.btn-style-ok {
+  margin-right: 177px;
+  margin-top: 33px;
+}
+
+.lable-tag-style {
+  color: $wm-dark-gray;
+  font-weight: normal;
+  margin-left: 25px;
+}
+
+.md37 {
+  margin-left: 37px;
+}
+
+.panel-follower-content {
+  @include box-shadow(none);
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+
+  .form-style {
+    @include size(100%, 40px);
+    background-color: $wm-dark-gray4;
+    text-align: left;
+  }
+}
+
+.follower-header-wrapper {
+  margin-bottom: 80px;
+}
+
+.panel-default>.panel-fans-title {
+  background-color: $white-background-color;
+  border: 0;
+}
+
+.panel-fans-title {
+  border: 0;
+  margin-bottom: 22px;
+  padding: 0 !important;
+  position: relative;
+
+  .search-style {
+    float: left;
+    margin-top: 8px;
+  }
+}
+
+.radio-inline .icon-color {
+  background-color: $wm-dark-gray10;
+}
+
+.follower-accounts-item {
+  height: 35px;
+  line-height: 35px;
+  min-width: 200px;
+  padding-left: 0;
+
+  +.follower-accounts-item {
+    margin-left: 0;
+  }
+}
+
+.form-inline .form-group {
+  display: inline-block;
+  margin-top: -3px;
+  vertical-align: middle;
+}
+
+.panel-heading {
+
+  .mt15 {
+    margin-left: 15px;
+  }
+
+  .form-style .form-group {
+
+    .padding-form-style {
+      @include size(240px, 28px);
+      border-color: $wm-dark-gray3;
+      border-radius: 2px;
+      margin-left: 10px;
+      margin-top: 8px;
+    }
+
+    .search-btn {
+      margin-left: -25px;
+      top: 6px;
+
+      &:hover {
+        background-color: $wm-color-bg;
+      }
+    }
+
+    .select-form-style {
+      @include size(auto, 28px);
+      background-color: $white-background-color;
+      border-color: $wm-dark-gray3;
+      border-radius: 2px;
+      margin-left: 22px;
+      margin-top: 10px;
+      padding: 0 10px;
+      text-align: center;
+
+      &:active {
+        border-color: $wm-color-bg;
+        box-shadow: none;
+      }
+
+      &:focus {
+        border-color: $wm-color-bg;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .btn-export {
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
+  }
+}
+
+.management-fans-tag .follower-checkbox-style {
+  margin-right: 8px;
+}
+
+.management-fans-item {
+  margin-left: 20px;
+  padding-right: 0;
+
+  .md75 {
+    margin-left: 75px;
+  }
+
+  .follower-radio-style {
+    margin-bottom: 0;
+    margin-right: 7px;
+  }
+
+  .dark-gray {
+    color: $wm-dark-gray2;
+    size: 14px;
+    width: 100%;
+  }
+
+  .management-fans-tag {
+
+    .operate-tags-items {
+      height: 35px;
+      line-height: 35px;
+      padding-right: 20px;
+      vertical-align: top;
+      width: auto;
+
+      .check-all-items {
+        font-weight: normal;
+        margin-bottom: 0;
+      }
+    }
+
+    .tags {
+      display: inline-block;
+      width: 800px;
+    }
+
+    .ml15 {
+      margin-left: 15px;
+    }
+
+    .check-item-style .ml63 {
+      margin-left: 63px;
+    }
+
+    .display-label-style {
+      float: left;
+    }
+
+    .ml20 {
+      margin-left: 50px;
+    }
+
+    .ml30 {
+      margin-left: -2px;
+    }
+  }
+
+  .md20 {
+    margin-top: 20px;
+  }
+}
+
+.follower-tag-item {
+  min-width: 96px;
+}
+
+.management-fans-attribute {
+  width: 100%;
+
+  .ml43 {
+    margin-right: -43px;
+  }
+
+  .attribute-style {
+    display: initial;
+    margin-left: 5px;
+  }
+
+  .dark-gray {
+    color: $wm-dark-gray2;
+    padding-top: 20px;
+    size: 14px;
+    width: 100%;
+  }
+
+  .follower-fans-attribute {
+    padding-top: 0;
+  }
+
+  .dark {
+    font-weight: normal;
+  }
+
+  .ml20 {
+    margin-left: 20px;
+  }
+}
+
+.select-sex-style {
+  @include size(120px, 28px);
+  padding-left: 0;
+  padding-right: 0;
+
+  .select-btn {
+    padding: 1px 10px;
+  }
+}
+
+.follower-location-item {
+  display: inline-block;
+  line-height: 20px;
+  margin-left: -6px;
+
+  .select-btn {
+    height: 28px;
+    padding: 1px 10px;
+    vertical-align: top;
+  }
+
+  .row {
+    margin: 0;
+
+    .col-md-4 {
+      padding-left: 6px;
+      padding-right: 0;
+    }
+  }
+}
+
+.management-fans-btn-group {
+  float: right;
+  margin-top: 16px;
+}
+
+.clear-btn-style {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.md35 {
+  margin-top: 35px;
+}
+
+.md15 {
+  margin-left: 5px;
+  margin-top: 15px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.management-fans-item-all {
+
+  .modal-header {
+
+    .tag-btn {
+      margin-top: 6px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .dark-gray {
+    color: $wm-dark-gray2;
+    margin-left: 20px;
+    margin-top: 5px;
+
+    .mr0p {
+      margin-top: -5px;
+    }
+
+    .tag-position-style {
+      padding-left: 2px;
+      padding-right: 20px;
+      position: relative;
+
+      &:hover {
+        border: 1px solid $wm-dark-gray8;
+        cursor: pointer;
+        overflow: visible;
+        padding-right: 20px;
+      }
+    }
+
+    .fans-attribute-style {
+      padding-left: 2px;
+      padding-right: 20px;
+      position: relative;
+
+      &:hover {
+        border: 1px solid $wm-dark-gray8;
+        cursor: pointer;
+        overflow: visible;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  .social-tag-style {
+    float: left;
+  }
+
+  .display-button {
+    float: left;
+    margin-left: 0;
+    max-width: 900px;
+
+    .wd {
+      margin-top: 10px;
+      width: 490px;
+    }
+
+    .position-btn-style {
+      margin-right: 0;
+      margin-top: 5px;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .position {
+    margin-left: 65px;
+    margin-top: -18px;
+  }
+
+  .btn-fans-close {
+    margin-top: 3px;
+    outline: -webkit-focus-ring-color auto 0;
+  }
+
+  .management-fans-tag {
+    color: $wm-dark-gray2;
+    line-height: 35px;
+    margin-bottom: 0;
+    vertical-align: top;
+
+    .modal-header {
+      @include size(295px, 25px);
+      border: 1px solid $wm-dark-gray8;
+      cursor: pointer;
+      float: left;
+      overflow: hidden;
+      padding: 3px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .tag-btn-style {
+        @include size(18px, 18px);
+        background: url('/images/customer/icon_popup_close_default.png') no-repeat;
+        cursor: pointer;
+        margin-left: 230px;
+        margin-right: 1px;
+        margin-top: 3px;
+        opacity: 1;
+        position: fixed;
+      }
+    }
+  }
+
+  .follower-tag-items {
+    margin-top: 0;
+  }
+
+  .show-tags {
+    float: left;
+  }
+
+  .label-style {
+    font-size: 14px;
+    font-weight: normal;
+    margin-left: 5px;
+  }
+
+  .management-shrink-condition {
+    display: inline-block;
+  }
+}
+
+.check {
+  display: inline;
+}
+
+.select-style {
+  @include size(120px, 28px);
+
+  .select-btn {
+    padding: 1px 10px;
+  }
+}
+
+.select-attention-time {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nickname-style {
+  color: $wm-dark-gray1;
+
+  &:focus {
+    color: $wm-dark-gray2;
+  }
+}
+
+.panel-center-content {
+  @include size(100%, 40px);
+  background-color: $wm-dark-gray4;
+  border: 0;
+  border-radius: 0;
+  margin-top: 30px;
+
+  .pannel-color {
+    background-color: $wm-dark-gray8;
+  }
+
+  .panel-center-title {
+    border: 0;
+    height: 45px;
+    margin-left: -5px;
+    margin-top: -28px;
+    padding: 0 0 0 10px;
+  }
+
+  .panel-follower-header {
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0;
+
+    .btn-export {
+      line-height: 30px;
+    }
+  }
+
+  .total-follower-icon-style {
+    @include size(16px, 40px);
+    background-image: url('/images/customer/fans_numbers_icon.png');
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 16px 15px;
+    float: left;
+    margin-left: 10px;
+  }
+
+  .total-follower-style {
+    float: left;
+
+    .follower {
+      line-height: 40px;
+      text-align: center;
+    }
+  }
+
+  .total-follower {
+    display: inline-flex;
+    float: left;
+    margin-left: 10px;
+  }
+}
+
+.panel-tags-default {
+  @include size(auto, auto);
+  background-color: $wm-dark-gray5;
+  border: 1px $wm-dark-gray6;
+  border-radius: 4px;
+  float: left;
+  line-height: 35px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-top: 0;
+  min-height: 36px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  label {
+    margin-bottom: 0;
+  }
+
+  .label-style {
+    margin-left: 15px;
+  }
+
+  .close-btn {
+    background: url('/images/customer/icon_close_default.png') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    height: 9px;
+    margin-left: 10px;
+    width: 11px;
+
+    &:hover {
+      background: url('/images/customer/icon_close_hover.png') no-repeat;
+      background-size: contain;
+    }
+
+    &:active {
+      background: url('/images/customer/icon_close_click.png') no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.position-label-style {
+  font-weight: normal;
+}
+
+.panel-icon-default {
+  @include size(58px, 15px);
+  border-radius: 2px;
+  color: $wm-color-white;
+  display: inline;
+  font-size: 12px;
+
+  .social-display {
+    display: inline-block;
+  }
+
+  .position-label-icon {
+    @include size(13px, 10px);
+    background: url('/images/customer/wechat_icon.png') no-repeat;
+    display: inline-block;
+    margin-left: 3px;
+    margin-top: -7px;
+  }
+
+  .position-label-font {
+    font-weight: normal;
+  }
+}
+
+.service-account {
+  background-image: url('/images/customer/wechat_service.png');
+  background-repeat: no-repeat;
+  background-size: 24px 20px;
+  background-position: 0 center;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 0;
+  margin-bottom: 0;
+  height: 20px;
+  width: 24px;
+  vertical-align: middle;
+}
+
+.label-style {
+  .panel {
+    background-color: $wm-dark-gray5;
+  }
+}
+
+.subscription-account {
+  background-image: url('/images/customer/wechat_subscription.png');
+  background-repeat: no-repeat;
+  background-size: 24px 20px;
+  background-position: 0 center;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 0;
+  margin-bottom: 0;
+  height: 20px;
+  width: 24px;
+  vertical-align: middle;
+}
+
+.font-social-style {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.position-style .select .select-dropdown {
+  background: $white-background-color;
+  border: 1px solid $wm-dark-gray4;
+  border-radius: 2px;
+  color: $wm-color-gray;
+  margin-top: -1px;
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
+.timemd {
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.isshow {
+  @include size(10px, 10px);
+  background: url('/images/customer/filtrate_icon_up.png') no-repeat;
+  display: inline-block;
+  margin-top: 1px;
+}
+
+.ishide {
+  @include size(10px, 10px);
+  background: url('/images/customer/filtrate_icon_down.png') no-repeat;
+  display: inline-block;
+  margin-top: 1px;
+}
+
+
+//Tag dropdown
+.tag-dropdown-wrap {
+  float: right;
+  width: 90%;
+
+  .all-tag-style {
+    margin-right: 10px;
+  }
+
+  .tag-dropdown {
+    @include background-image('/images/customer/tags_dropdown_icon.png');
+    background-position: 8px;
+    border: 1px solid $tag-modal-border-color;
+    border-radius: 2px;
+    color: $wm-dark-gray;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+    padding-left: 28px;
+
+    .caret {
+      color: $tag-modal-border-color;
+      margin-left: 20px;
+    }
+  }
+
+  .broadcast-dropdown {
+    @include background-image('/images/channel/qunfa_icon.png');
+    width: auto;
+  }
+}
+
+.assist-table-wrapper {
+  margin-top: 18px;
+}
+
+// dropdown tag model
+.tag-modal {
+  @include size(388px, auto);
+  background: $white-background-color;
+  border: 1px solid $tag-modal-border-color;
+  border-radius: 4px;
+  margin-top: 3px;
+  position: absolute;
+  z-index: 1011;
+
+  .ov-tag {
+    margin-top: -10px;
+
+    .tag-name-text {
+      width: 100%;
+    }
+  }
+
+  .tag-title {
+    background-color: $white-background-color;
+    border-radius: 4px;
+    color: $wm-dark-gray2;
+    font-size: 14px;
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+
+  .tag-content {
+    background: $wm-dark-gray8;
+    height: 281px;
+
+    ul {
+      &.tags-wrapper {
+        margin: 20px;
+
+        .tags-item {
+          margin-bottom: 10px;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .btn-add-radius {
+      margin-left: 20px;
+    }
+
+    .confirm-select {
+      padding-bottom: 25px;
+      text-align: center;
+
+      .btn-list-style {
+        border-radius: 2px;
+        height: 30px;
+        margin-right: 10px;
+        width: 60px;
+      }
+    }
+
+    .btn-operate-tag {
+      padding: 4px 12px;
+
+      + .btn-operate-tag {
+        margin-left: 5px;
+      }
+    }
+
+    .btn-tag-ok {
+      background-color: $white-background-text-color;
+      border: 1px solid $white-background-text-color;
+      color: $white-background-color;
+
+      &:active {
+        background-color: $white-background-text-active-color;
+        border: 1px solid $white-background-text-active-color;
+        color: $white-background-color;
+
+        &:focus {
+          outline: none;
+          outline-offset: 0;
+        }
+      }
+
+      &:focus {
+        background-color: $white-background-text-hover-color;
+        border: 1px solid $white-background-text-hover-color;
+        color: $white-background-color;
+        outline: none;
+        outline-offset: 0;
+      }
+
+      &:hover {
+        background-color: $white-background-text-hover-color;
+        border: 1px solid $white-background-text-hover-color;
+        color: $white-background-color;
+        outline: none;
+        outline-offset: 0;
+      }
+    }
+  }
+
+  .tag-content-label {
+    background: $wm-dark-gray8;
+    height: 281px;
+    overflow: auto;
+  }
+}
+
+//table style
+.table-wrap {
+  margin-top: 18px;
+}
+
+//fans detail
+
+.fz18 {
+  font-size: 18px;
+}
+
+.fz14 {
+  font-size: 14px;
+}
+
+.follower-fans-detail-body {
+  margin-left: 10px;
+
+  .follower-fans-detail-body-img {
+    border-radius: 2px;
+    height: 100px;
+    margin-right: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100px;
+  }
+
+  .follower-fans-detail-body-content {
+    height: 100px;
+    padding-bottom: 8px;
+    padding-left: 0;
+    padding-top: 6px;
+
+    .follower-fans-detail-body-content-name {
+      color: $wm-color-bg4;
+      line-height: 18px;
+
+      .follower-fans-detail-body-content-sex {
+        height: 15px;
+        margin-bottom: 1px;
+        margin-left: 10px;
+        width: 15px;
+      }
+    }
+
+    .follower-fans-detail-body-content-region {
+      color: $wm-dark-gray;
+      line-height: 14px;
+      margin-top: 30px;
+
+      .follower-fans-detail-body-content-region-country {
+        color: $wm-color-bg4;
+        margin-left: 15px;
+      }
+
+      .follower-fans-detail-body-content-region-district {
+        color: $wm-color-bg4;
+        margin-left: 5px;
+      }
+    }
+
+    .follower-fans-detail-body-content-signature {
+      color: $wm-dark-gray;
+      line-height: 14px;
+      margin-top: 12px;
+
+      .follower-fans-detail-body-content-signature-content {
+        color: $wm-color-bg4;
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.follower-fans-detail-footer {
+  color: $wm-dark-gray;
+  margin-left: 10px;
+  margin-top: 50px;
+
+  .follower-fans-detail-footer-name {
+    margin-right: -10px;
+  }
+
+  .follower-fans-detail-footer-tag {
+    background-color: $wm-dark-gray4;
+    border-radius: 2px;
+    color: $wm-color-bg4;
+    display: inline-block;
+    height: 20px;
+    margin-left: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.modal-no-color {
+  background-color: rgba(33, 27, 26, 0);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1010;
+}
+
+.follower-fans-crumb {
+  cursor: pointer;
+}
+
+.follower-span {
+  margin: 0 2px 0 0;
+}
+
+.follower-filter-condition {
+
+  >label {
+    padding-right: 10px;
+    vertical-align: top;
+    width: auto;
+  }
+
+  >div {
+    margin-top: 3px;
+  }
+}
+
+.follower-filter-conditions {
+
+  .select .select-dropdown li {
+    padding: 2px 10px;
+  }
+
+  .location .select-left {
+    width: calc(100% - 15px);
+  }
+
+  .follower-filter-time {
+    padding-right: 10px;
+    width: auto;
+  }
+
+  .follower-filter-gender {
+    padding-right: 10px;
+    width: auto;
+  }
+
+  .follower-filter-location {
+    min-width: 336px;
+  }
+}
+
+.follower-selected-conditions {
+  margin-right: 10px;
+  width: auto;
+}
+
+.follower-table-wrap {
+
+  .table>thead>tr {
+
+    th:nth-child(2) {
+      width: 226px;
+    }
+
+    th:nth-child(4) {
+      width: 200px;
+    }
+
+    th:nth-child(5) {
+      width: 80px;
+    }
+
+    th:nth-child(6) {
+      width: 200px;
+    }
+  }
+}
+
+.channels-icon-wrapper {
+  display: inline-block;
+  line-height: 12px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.follower-broadcast-wrapper {
+  z-index: 1001;
+
+  .follower-replay-close {
+    outline: -webkit-focus-ring-color auto 0;
+    margin-top: 2px;
+  }
+
+  .follower-broadcast-timepicker {
+    width: 70%;
+  }
+}
+
+.broadcast-manual-select {
+  color: $wm-color-gray;
+  font-size: 12px;
+}
+
+.broadcast-type-distance {
+  margin-right: 30px;
+}
+
+.follower-broadcast-message {
+  .wechat-message-wrap {
+    max-width: 600px;
+    margin: 0;
+  }
+}
+
+.follower-tags-items {
+  margin-bottom: 0;
+
+  .follower-tag-item {
+    line-height: 20px;
+    margin: 7.5px 0;
+  }
+}
+
+.follower-label {
+  display: inline;
+}
+
+
+.follower-modal-backdrop {
+  z-index: 1000;
+  opacity: 0;
+}
+
+.property-name-width {
+  width: 35%;
+}
+
+.follower-detail-body {
+  padding: 20px 30px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.follower-sex-img {
+  width: 14px;
+  margin-left: 10px;
+}
+
+.follower-filter-label {
+  font-weight: normal;
+  line-height: 30px;
+  margin-right: 10px;
+  vertical-align: top;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.follower-attribute-distance {
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+.follower-location-wrapper {
+  width: 50%;
+}
+
+.follower-head-img {
+  position: absolute;
+  border-radius: 2px;
+  right: 0;
+  width: 60px;
+}
+
+.follower-pick-width {
+  width: 450px;
+}

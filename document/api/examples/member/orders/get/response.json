@@ -1,0 +1,73 @@
+{
+    "items": [
+        {
+            "id": "55f91cd37c33067561ed0260",
+            "storeId": "55250ea2d6f97fe4038b4568",
+            "expectedPrice": "0.12",
+            "totalPrice": "0.00",
+            "staff": {
+                "id": "55c1b54ad6f97f26528b4567",
+                "name": ""
+            },
+            "consumer": {
+                "id": "55ee86018fd1254278000001",
+                "name": "apcavav",
+                "phone": "1302778087",
+                "avatar": ""
+            },
+            "storeGoods": [
+                {
+                    "id": "55b59665d6f97f050f8b4567",
+                    "name": "乐事薯aa",
+                    "sku": "1433846341601811",
+                    "price": "0.12",
+                    "count": 1,
+                    "totalPrice": "0.12",
+                    "pictures": [
+                        "http://vincenthou.qiniudn.com/8e664c055899162b6bffaacd.jpg"
+                    ]
+                }
+            ],
+            "status": "pending",
+            "payWay": "Alipay",
+            "orderNumber": "201509164",
+            "remark": "100 元优惠券",
+            "operateTime": "0001-01-01 08:00:00",
+            "createdAt": "2015-09-16 15:40:03",
+            "store": {
+                "id": "55250ea2d6f97fe4038b4568",
+                "name": "香菜",
+                "branchName": null,
+                "type": null,
+                "subtype": null,
+                "telephone": "020-12345678",
+                "location": {
+                    "province": "",
+                    "city": "",
+                    "district": "",
+                    "detail": "广东省广州市海珠区 "
+                },
+                "position": {
+                    "latitude": 23.1008300781,
+                    "longitude": 113.325248718
+                },
+                "image": null,
+                "businessHours": null,
+                "description": null,
+                "wechat": {
+                    "channelId": "54d9c155e4b0abe717853ee1",
+                    "qrcodeId": "55250ec4e4b0e4b771cd10a6",
+                    "qrcode": "https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEF8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL2xrZ3AzWXptZ3BuN0dMUXowbVRQAAIExA4lVQMEAAAAAA=="
+                },
+                "weibo": null,
+                "alipay": null
+            }
+        }
+    ],
+    "_meta": {
+        "totalCount": 2,
+        "pageCount": 2,
+        "currentPage": 1,
+        "perPage": 1
+    }
+}

@@ -1,0 +1,9 @@
+{
+    {
+        "id": "8325d438-65a0-686c-59f0-9cd5205c7f7",
+        "name": "合适",
+        "options": ["合适", "不合适"],
+        "defaultValue": "合适",
+        "isRequired": true,
+    }
+}

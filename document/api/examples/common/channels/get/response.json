@@ -1,0 +1,66 @@
+{
+    "wechat": [
+        {
+            "id": "54d9c155e4b0abe717853ee1",
+            "appId": "wx2df5d7e4ce8a04ca",
+            "name": "熊猫Baby",
+            "channelAccount": "gh_b7f586690646",
+            "headImageUrl": "http://wx.qlogo.cn/mmopen/GPyw0pGicibl5Eda4GmSSbTguhjg9LZjumHmVjybjiaQXnE9XrXEts6ny9Uv4Fk6hOScWRDibq1fI0WOkSaAjaecNTict3n6EjJaC/0",
+            "channel": "WEIXIN",
+            "status": "ENABLE",
+            "createTime": 1423556949585,
+            "appSecret": "d348e89e0db5536d5c1dade129e9a5f8",
+            "token": "XF3E2FF34DFD4457FASAF34565FDA3562",
+            "encodingAESKey": "1QW34RDFB567UI34DGT60OWSMFJKE432WASXLPO0I7R",
+            "accountType": "SERVICE_AUTH_ACCOUNT",
+            "customerServiceSettings": {
+                "status": "ENABLE",
+                "accessToken": "b7133549-1486-2e7f-cd4a-a9d7f1d985cc",
+                "sessionExpiresIn": 600000
+            },
+            "serviceUrl": "http://dev.wx.quncrm.com/wechat/wx2df5d7e4ce8a04ca",
+            "menuStatus": "UNPUBLISH"
+        }
+    ],
+    "weibo": [
+        {
+            "id": "54f51cefe4b0c5896e262375",
+            "appId": "2131440262",
+            "name": "我只是来潜水的",
+            "channelAccount": "2131440262",
+            "headImageUrl": "http://tp3.sinaimg.cn/2131440262/50/5658132246/1",
+            "channel": "WEIBO",
+            "status": "ENABLE",
+            "createTime": 1425349871347,
+            "customerServiceSettings": {
+                "status": "DISABLE",
+                "accessToken": "72af7a50-ea30-6664-6e52-b3a0a0af7d79",
+                "sessionExpiresIn": 600000
+            },
+            "weiboToken": "2.00kySP1C0aiipk40e3b36ee93_TBRE",
+            "weiboTokenExpireTime": 1438282799000,
+            "fansServiceToken": "2.00kySP1C0aiipk40e3b36ee93_TBRE",
+            "accessStatus": "SUCCESS",
+            "serviceUrl": "http://dev.wx.quncrm.com/weibo/2131440262",
+            "menuStatus": "UNPUBLISH",
+            "weiboAccessStatus": "SUCCESS",
+            "appkey": "481734740"
+        }
+    ],
+    "alipay": [
+        {
+            "id": "554972b8e4b050b441eb7625",
+            "appId": "2014102700014769",
+            "name": "徒步去旅行",
+            "channelAccount": "2014102700014769",
+            "headImageUrl": "http://wx.qlogo.cn/mmopen/GPyw0pGicibl5Eda4GmSSbTguhjg9LZjumHmVjybjiaQXnE9XrXEts6ny9Uv4Fk6hOScWRDibq1fI0WOkSaAjaecNTict3n6EjJaC/0",
+            "channel": "ALIPAY",
+            "status": "ENABLE",
+            "createTime": 1430876856005,
+            "accessStatus": "SUCCESS",
+            "serviceUrl": "http://dev.wx.quncrm.com/alipay/2014102700014769",
+            "publicKey": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDVdgJxIGauzmzMgTSoWpuEeaTTFtubbZng79qhoRGViGX6aSiwWbkdrzAAeCDIyRB6TLLnf/6Lil9iKjgqPY2ljuqZZX2wkNsABMTqDfORfTe4agZ9vuMSq9IXrtqDWM2WK0t0Xr9AQw6l424AFA2hS3nJKf5W32wjL/P6sVO16wIDAQAB",
+            "weiboAccessStatus": "SUCCESS"
+        }
+    ]
+}

@@ -1,0 +1,208 @@
+$store-breadcrumb-backcolor: #eee;
+$store-font-color1: #1c1c1c;
+$store-font-color2: #787878;
+$store-font-color3: #464646;
+$store-border-color: #efefef;
+$store-shadow-color: #e7e7e7;
+$store-hover-color: #37c3aa;
+$store-color-gray: #ccc;
+
+
+.store-info {
+
+  .store-wrapper {
+    color: $store-font-color1;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .store-items {
+    margin-bottom: 30px;
+
+    .cover-image {
+      @include size(270px, 165px);
+      border-radius: 2px;
+      margin-right: 25px;
+      float: left;
+    }
+
+    .item-wrapper {
+      display: inline-block;
+      float: left;
+      width: calc(100% - 310px);
+    }
+
+    .store-header {
+      border-bottom: 1px dashed $store-color-gray;
+      font-size: 12px;
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .store-name {
+      margin-bottom: 8px;
+
+      .name {
+        font-size: 18px;
+      }
+
+      .qrcode {
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        display: inline-block;
+        float: right;
+        padding-left: 20px;
+        margin-right: 25px;
+        cursor: pointer;
+      }
+
+      .qrcode-alipay-icon {
+        background-image: url('/images/store/alipay_qrcode_normal.png');
+
+        &:hover {
+          background-image: url('/images/store/alipay_qrcode_hover.png');
+          color: $store-hover-color;
+        }
+      }
+
+      .qrcode-weibo-icon {
+        background-image: url('/images/store/weibo_qrcode_normal.png');
+
+        &:hover {
+          background-image: url('/images/store/weibo_qrcode_hover.png');
+          color: $store-hover-color;
+        }
+      }
+
+      .qrcode-wechat-icon {
+        background-image: url('/images/store/wechat_qrcode_normal.png');
+
+        &:hover {
+          background-image: url('/images/store/wechat_qrcode_hover.png');
+          color: $store-hover-color;
+        }
+      }
+    }
+
+    .store-position {
+      background-position: 0 center;
+      background-image: url('/images/store/location.png');
+      background-repeat: no-repeat;
+      padding-left: 20px;
+
+      .detail {
+        margin-left: 30px;
+      }
+    }
+
+    .position-map {
+      @include size(372px, 242px);
+      padding: 5px;
+      top: 130px;
+      position: absolute;
+
+      .back-triangle {
+        @include left-triangles(6px, 7px, 7px, $breadcrumb-bg);
+        left: -7px;
+        top: 5px;
+      }
+
+      .front-triangle {
+        @include left-triangles(7px, 6px, 6px, $front-triangle-color);
+        left: -7px;
+        top: 6px;
+      }
+    }
+
+    .store-item {
+      margin-bottom: 10px;
+
+      .item-name {
+        color: $store-font-color2;
+        display: inline-block;
+        font-size: 12px;
+        width: 85px;
+      }
+
+      .item-text {
+        font-size: 14px;
+      }
+
+      .store-tag {
+        background-color: $store-breadcrumb-backcolor;
+        padding: 3px;
+        margin-right: 12px;
+      }
+    }
+
+    .item-introduction {
+      .item-name {
+        float: left;
+      }
+
+      .item-text {
+        padding-left: 4px;
+        float: left;
+        width: calc(100% - 90px);
+      }
+    }
+  }
+
+  .store-content-wrapper {
+    background-repeat: no-repeat;
+    background-position: 15px 10px;
+    border: 1px solid $store-border-color;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px $store-shadow-color;
+    padding: 10px 20px 15px 40px;
+    margin-right: 20px;
+
+    &:nth-child(2) {
+      background-image: url('/images/store/commodity_normal.png');
+      margin-bottom: 15px;
+    }
+
+    &:nth-child(3) {
+      background-image: url('/images/store/salesclerk_normal.png');
+    }
+
+    .content-header {
+      margin-bottom: 10px;
+
+      .name {
+        color: $store-font-color3;
+        font-size: 14px;
+      }
+
+      .detail {
+        float: right;
+      }
+    }
+
+    .content-body {
+      .body-item {
+        float: left;
+        width: 170px;
+
+        .name {
+          font-size: 14px;
+          color: $store-font-color2;
+        }
+
+        .text {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .detail {
+    font-size: 12px;
+    text-decoration: underline;
+    color: $store-hover-color;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

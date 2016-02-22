@@ -1,0 +1,6 @@
+@import 'styles/mixin';            //Define global variables here
+@import 'styles/theme';            //Define global variables here
+@import 'styles/components/index'; //Add common components here
+
+//Pages below
+@import 'add/index';

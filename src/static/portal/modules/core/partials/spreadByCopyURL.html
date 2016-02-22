@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="close()"></button>
+  <h4 class="modal-title create-graphics-title" translate="spread_url_title"></h4>
+</div>
+<div class="modal-body promotion-detail-wrapper spread-url-body">
+  <section class="info-tip">
+    <span class="info-tip-icon"></span>
+    <span class="info-tip-content" translate="{{ description }}"></span>
+  </section>
+
+  <section class="promotion-panel-body">
+    <ul class="clear-margin">
+      <li class="redemption-channels-item" ng-repeat="account in channels track by $index">
+      <div class="channels-info-wrapper">
+        <div class="channels-icon-wrapper">
+          <img ng-src="/images/customer/{{ account.icon }}.png"/>
+        </div>
+        <div class="channels-content-wrapper" translate="{{ account.name }}"></div>
+      </div>
+
+      <div class="form-group promotion-links-wrapper">
+        <div class="product-detail-item links-item-content" wm-copy-input text="{{ account.oauthLink }}"></div>
+      </div>
+      </li>
+    </ul>
+  </section>
+</div>

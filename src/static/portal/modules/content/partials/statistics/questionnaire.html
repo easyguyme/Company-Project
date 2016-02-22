@@ -1,0 +1,27 @@
+<div class="content-questionnaire">
+  <div wm-breadcrumb="questionnaire.breadcrumb"></div>
+  <div class="panel panel-default statistis-content">
+    <div class="statistics-chart-item">
+      <div class="statistics-item-title">{{'content_questionnaire_participants' | translate}}</div>
+      <div class="statistics-chart-target">
+        <label class="chart-targets-label" translate="time"></label>
+        <div class="chart-targets-data" wm-datetime-picker picker-id="questionnaireBeginDatePicker" format-type="YYYY-MM-DD" min-date-picker-id="questionnaireEndDatePicker" time-handler="questionnaire.selectQuestionnaireDate()" less-than-yesterday="true" ng-model="questionnaire.questionnaireStartDate" icon="calendar"></div>
+        <label class="chart-targets-label chart-targets-to" translate="analytic_to"></label>
+        <div class="chart-targets-data" wm-datetime-picker picker-id="questionnaireEndDatePicker" format-type="YYYY-MM-DD" max-date-picker-id="questionnaireBeginDatePicker" time-handler="questionnaire.selectQuestionnaireDate()" less-than-yesterday="true" ng-model="questionnaire.questionnaireEndDate" icon="calendar"></div>
+      </div>
+      <div wm-line-chart class="statistics-item-content" options="questionnaire.questionnaireLineChartOptions" width="100%" height="400px"></div>
+    </div>
+    <div class="statistics-chart-item">
+      <div class="statistics-item-title">{{'content_qusetionnaire_votes' | translate}}</div>
+      <div class="statistics-chart-target">
+        <label class="chart-targets-label" translate="question"></label>
+        <div class="chart-targets-items" wm-select on-change="questionnaire.changeTarget" ng-model="questionnaire.target" text-field="title" value-field="id" items="questionnaire.targetOptions"></div>
+        <label class="chart-targets-label" translate="time"></label>
+        <div class="chart-targets-data" wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" min-date-picker-id="endDatePicker" time-handler="questionnaire.selectDate()" less-than-yesterday="true" ng-model="questionnaire.startDate" icon="calendar"></div>
+        <label class="chart-targets-label chart-targets-to" translate="analytic_to"></label>
+        <div class="chart-targets-data" wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" max-date-picker-id="beginDatePicker" time-handler="questionnaire.selectDate()" less-than-yesterday="true" ng-model="questionnaire.endDate" icon="calendar"></div>
+      </div>
+      <div wm-bar-chart class="statistics-item-content" options="questionnaire.questionnaireBarChartOptions" width="100%" height="400px"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+$gallery1: #ededed;
+
+.panel-questionnaire-content {
+  margin-bottom: 0;
+}
+
+.content-questionnaire {
+  .statistis-content {
+    padding: 0 30px 20px 20px;
+  }
+
+  .statistics-chart-item {
+    margin-bottom: 15px;
+
+    .statistics-chart-target {
+      margin: 20px 20px 0;
+      text-align: right;
+    }
+
+    .chart-targets-label {
+      font-weight: normal;
+      height: 31px;
+      line-height: 31px;
+      margin: 0 15px;
+      vertical-align: top;
+    }
+
+    .chart-targets-to {
+      margin: 0 13px;
+    }
+
+    .chart-targets-items {
+      margin-right: 15px;
+      max-width: 300px;
+
+      .select-btn {
+        padding: 2px 10px;
+      }
+
+      .select-dropdown li {
+        padding: 2px 10px;
+      }
+    }
+
+    .chart-targets-data {
+      display: inline-block;
+      max-width: 150px;
+    }
+  }
+}
+
+.colored-table {
+  tbody tr + tr {
+    border-top: 1px solid $gallery1;
+  }
+}
+
+.width-175 {
+  width: 175px;
+}
+
+.width-90 {
+  width: 90px;
+}

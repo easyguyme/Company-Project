@@ -1,0 +1,135 @@
+$tab-border-color: #d9e0ea;
+$tab-font-color: #a8b6c7;
+$tab-active-border-color: #38c4a9;
+$graphic-footer-bg-color: #f1f1f1;
+
+.tabs {
+  height: 24px;
+  width: 100%;
+  display: block;
+  padding: 0;
+  border-bottom: 1px solid $tab-border-color;
+
+  &.full {
+    border: 0;
+
+    .tab {
+      color: $base-text-color;
+      text-align: center;
+      height: 30px;
+      line-height: 26px;
+      margin-right: 0;
+      border: 1px solid $pic-box-border-color;
+    }
+
+    .tab:hover,
+    .tab.active {
+      border-color: $wm-green;
+      background-color: $wm-green;
+      box-shadow: 0 0 5px $tab-shadow-color inset;
+      color: $white-background-color;
+    }
+  }
+}
+
+.tab {
+  float: left;
+  margin-top: 0;
+  margin-bottom: -1px;
+  color: $tab-font-color;
+  cursor: pointer;
+  border: 0;
+  display: block;
+  line-height: 14px;
+  padding: 2px 1px;
+  word-spacing: 5px;
+  height: 24px;
+  margin-right: 44px;
+  font-size: 14px;
+}
+
+.cn-env .tab {
+  font-family: 'Microsoft YaHei';
+}
+
+.tab:hover,
+.tab.active {
+  background-color: $white-background-color;
+  color: $wm-green;
+  height: 24px;
+  line-height: 14px;
+  margin-top: 0;
+  border-bottom: 3px solid $tab-active-border-color;
+}
+
+.tab-panes {
+  background-color: $white-background-color;
+  clear: both;
+  margin-bottom: 0;
+
+  &.hide-nav {
+    .tab-pane {
+      border: 0;
+    }
+
+    .form-wrapper {
+      margin-left: 0;
+    }
+  }
+}
+
+.tab-pane {
+  display: none;
+  padding: 0;
+
+  &.active {
+    display: block;
+  }
+}
+
+.tab-pane .form-wrapper,
+.tab-pane .tab-wrapper {
+  position: relative;
+  font-size: 16px;
+  padding-bottom: 12px;
+}
+
+.graphics-footer-position {
+  @include size(100%, 38px);
+  background-color: $graphic-footer-bg-color;
+
+  .edit-icon-style {
+    @include size(30px, 30px);
+    float: left;
+    margin-left: 78px;
+    margin-top: 5px;
+    background: url('/images/core/icon_edit_default.png') no-repeat;
+
+    &:hover {
+      background: url('/images/core/icon_edit_hover.png') no-repeat;
+    }
+  }
+
+  .delete-icon-style {
+    @include size(30px, 30px);
+    float: left;
+    margin-right: 78px;
+    margin-top: 5px;
+    margin-left: 31px;
+    background: url('/images/core/icon_delete_default.png') no-repeat;
+
+    &:hover {
+      background: url('/images/core/icon_delete_hover.png') no-repeat;
+    }
+
+    &:active {
+      background: url('/images/core/icon_delete_selected.png') no-repeat;
+    }
+  }
+}
+
+a.a-images-style {
+  @include square(100%);
+  display: inline-block;
+}
+

@@ -1,0 +1,25 @@
+<!-- Display score history property -->
+<div class="mb30 clearfix" ng-controller="wm.ctrl.member.profile.point as point">
+
+  <div ng-if="point.totalItems > 0">
+    <div class="member-table-title">
+      <span class="title-space">
+        {{'member_current_score' | translate}}：<span class="title-keyword">{{point.score}}</span> {{'customer_points' | translate}}
+      </span>
+      <span>
+        {{'memeber_point_total_score' | translate}}：<span class="title-keyword">{{point.totalScoreAfterZeroed}}</span> {{'customer_points' | translate}}
+      </span>
+    </div>
+
+    <wm-table ng-model="point.list" class="colored-table member-point-table-wrapper"></wm-table>
+
+    <div class="member-point-pagination">
+      <div wm-pagination current-page="point.currentPage" page-size="point.pageSize" total-items="point.totalItems" on-change-size="point.changeSize" on-change-page="point.changePage" extra-size="5"></div>
+    </div>
+  </div>
+
+  <div ng-if="point.totalItems == 0" class="member-no-record">
+    {{'member_no_point_record' | translate}}
+  </div>
+
+</div>

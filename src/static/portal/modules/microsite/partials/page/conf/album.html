@@ -1,0 +1,41 @@
+<div ng-controller="wm.ctrl.microsite.page.config.album as album">
+  <form id="form-album" ng-submit="cpts.sendData(album.data)">
+    <div class="form-group">
+      <label for="title" translate="content_component_config_album_title"></label>
+      <input class="form-control" type="text" id="title" ng-model="album.data.title" form-tip="{{'content_component_config_album_title_tip'|translate}}" below-msg required maxlength="16" />
+    </div>
+    <div class="form-group album-info">
+      <label translate="content_component_config_album_info"></label>
+      <span class="album-info-tip" translate="content_component_config_album_info_tip"></span>
+    </div>
+    <div ng-model="album.data.album">
+      <div class="conf-item conf-item-border-dashed" ng-repeat="data in album.data.album track by $index">
+        <div class="conf-item-info">
+          <i class="conf-delete-icon glyphicon glyphicon-trash cp" ng-click="album.deletePicture($event, $index)" ng-class="{'active':album.deleteIndex === $index}" ng-hide="album.data.album.length <= 3"></i>
+          <div class="form-group clearfix">
+            <label for="url-{{$index}}" translate="content_component_config_album_picture"></label>
+            <div class="file-upload-input">
+              <input class="form-control album-upload-picture" id="picture{{$index}}" ng-model="data.url" readonly="readonly" below-msg required form-tip="{{'content_component_config_slide_picinfo'|translate}}"/>
+              <div id="upload" wm-file-upload class="file-upload-wrap album-upload-picture-button" ng-model="data.url">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group album-description">
+            <textarea class="form-control album-upload-textarea" id="description{{$index}}" ng-model="data.description" placeholder="{{'content_component_config_album_description'|translate}}" maxlength="200">
+            </textarea>
+            <span class="form-tip normal" translate="content_component_config_album_description_tip"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="album-addbutton-layout">
+      <div class="btn-add-radius btn" ng-click="album.addAlbum()" translate="content_component_config_album_add" ng-disabled="album.data.album.length > 19"></div>
+    </div>
+    <div class="form-group">
+      <label for="column" translate="content_component_config_album_column"></label>
+      <div wm-select id="column" on-change="album.changeSelect" ng-model="album.data.column" items="album.columns" text-field="name" value-field="name"></div>
+    </div>
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName" />
+  </form>
+</div>

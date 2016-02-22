@@ -1,0 +1,26 @@
+{
+  "name": "analytic",
+  "states": [
+    "analytic-growth",
+    "analytic-property",
+    "analytic-content",
+    "analytic-store"
+  ],
+  "resources": {
+    "massMessageList": "/api/analytic/mass-messages",
+    "propertys": "/api/common/propertys",
+    "followersGrowth": "/api/analytic/followers",
+    "followersGrowthStatistic": "/api/analytic/follower/statistic",
+    "followersGrowthStatistics": "/api/analytic/follower/statistics",
+    "followersGrowthYesterday": "/api/analytic/follower/yesterday",
+    "yesterday": "/api/analytic/mass-message/yesterday",
+    "statuss": "/api/analytic/statuss",
+    "statusDaily": "/api/analytic/status/daily",
+    "location": "/api/common/property/location",
+    "followersProperty": "/api/analytic/follower/property",
+    "followersLocation": "/api/analytic/follower/location",
+    "interval": "/api/analytic/mass-message/interval",
+    "storeStatistic": "/api/channel/offlinestore/store/statistic",
+    "storeChart": "/api/channel/offlinestore/store/analysis"
+  }
+}

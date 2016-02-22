@@ -1,0 +1,74 @@
+.input-tag {
+  display: inline-block;
+
+  .input-tag-wrap {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    border: 1px solid $card-hearder-background-color;
+    border-radius: 2px;
+    background-color: $white-background-color;
+    color: $upload-avatar-background-color;
+    display: inline-block;
+    padding: 6px 12px 0;
+    line-height: 18px;
+    font-size: 14px;
+    width: 350px;
+
+    .input-tag-placeholder {
+      color: $line-color;
+      position: absolute;
+      width: inherit;
+      padding-right: 20px;
+    }
+
+    .input-tag-box {
+      border: none;
+      padding: 0;
+      width: 145px;
+      margin-bottom: 6px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .input-tag-item {
+      background-color: $line-color;
+      padding: 0 8px;
+      margin-right: 8px;
+      margin-bottom: 4px;
+      line-height: 19px;
+      display: inline-block;
+      border-radius: 1px;
+      position: relative;
+
+      &:hover {
+        .item-delete {
+          display: block;
+        }
+      }
+
+      .item-delete {
+        background-image: url('/images/core/close_default.png');
+        background-repeat: no-repeat;
+        width: 13px;
+        height: 13px;
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        display: none;
+        cursor: pointer;
+
+        &:hover {
+          background-image: url('/images/core/close_hover.png');
+        }
+      }
+    }
+  }
+
+  .input-tag-error-tip {
+    color: $error-red;
+    position: absolute;
+    display: none;
+  }
+}

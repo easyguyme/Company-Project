@@ -1,0 +1,142 @@
+<div class="helpdeskselfservice">
+  <div wm-breadcrumb="helpdeskselfservice.breadcrumb"></div>
+  <div class="main-content clearfix">
+    <!-- the title with star-->
+    <p class="required-field menu-title">
+      {{'helpdesk_self_service_autoreply' | translate}}
+    </p>
+    <!-- the three columns-->
+    <div class="border-container">
+      <div class="menu-content clearfix">
+        <!-- first level -->
+        <div class="menu-column clearfix" ng-class="{'white-column': helpdeskselfservice.firstLevel.length > 0}">
+          <div class="menu-header"><span class="reply">{{'helpdesk_self_service_reply' | translate}}</span></div>
+          <!--the gray empty column body-->
+          <div class="menu-body clearfix" ng-show="helpdeskselfservice.firstLevel.length === 0">
+            <div class="empty-instruction">
+              <p>{{'helpdesk_self_service_empty_instruction' | translate}}</p>
+              <span class="menu-add-reply" ng-click="helpdeskselfservice.insertReply()">{{'helpdesk_self_service_add_reply' | translate}}</span>
+            </div>
+          </div>
+          <!--the white content body-->
+          <div class="menu-body-noempty clearfix" ng-show="helpdeskselfservice.firstLevel.length > 0">
+            <div class="menu-cell clearfix" ng-repeat="cell in helpdeskselfservice.firstLevel track by $index" ng-class="{'active': helpdeskselfservice.activeFirst == $index}">
+              <div class="col-md-12">
+                <pre>{{cell.content}}</pre>
+              </div>
+              <i class="operation icon-edit" wm-tooltip="{{'edit' | translate}}" ng-click="helpdeskselfservice.editReply(cell)" ng-show="helpdeskselfservice.activeFirst == $index"></i>
+              <i class="operation icon-delete" wm-tooltip="{{'delete' | translate}}" ng-click="helpdeskselfservice.deleteReply($event)" ng-show="helpdeskselfservice.activeFirst == $index"></i>
+            </div>
+          </div>
+        </div>
+        <!-- second level -->
+        <div class="menu-column clearfix" ng-class="{'white-column' : helpdeskselfservice.secondLevel.length > 0}">
+          <div class="menu-header clearfix">
+            <span class="keyword col-md-4" ng-show="helpdeskselfservice.secondLevel.length > 0">{{'helpdesk_self_service_keyword' | translate}}</span>
+            <span class="reply col-md-8" ng-show="helpdeskselfservice.secondLevel.length > 0">{{'helpdesk_self_service_reply' | translate}}</span>
+          </div>
+          <!--the gray empty column body-->
+          <div class="menu-body clearfix" ng-show="helpdeskselfservice.secondLevel.length === 0">
+            <div class="empty-instruction" ng-show="helpdeskselfservice.activeFirst >= 0"><span class="menu-add-reply" ng-click="helpdeskselfservice.insertKeyword(2)">{{'helpdesk_self_service_add_keyword' | translate}}</span></div>
+          </div>
+          <!--the white content body-->
+          <div class="menu-body-noempty clearfix" ng-show="helpdeskselfservice.secondLevel.length > 0">
+            <div class="menu-cell clearfix" ng-repeat="cell in helpdeskselfservice.secondLevel track by $index" ng-class="{'active': helpdeskselfservice.activeSecond == $index , 'single-line': cell.type == 'connect' || cell.type == 'back'}" ng-click="helpdeskselfservice.selectSecond($index)">
+              <p class="col-md-4">{{cell.keyword}}</p>
+              <div class="col-md-8">
+                <i class="icon-service" ng-show="cell.type == 'connect'"></i><i class="icon-back" ng-show="cell.type == 'back'"></i><pre><span ng-show="cell.type === 'reply'">{{cell.content}}</span><span ng-show="cell.type === 'connect'">{{'helpdesk_self_service_connect' | translate}}</span><span ng-show="cell.type === 'back'">{{'helpdesk_self_service_back' | translate}}</span></pre>
+              </div>
+              <i class="operation icon-edit" wm-tooltip="{{'edit' | translate}}" ng-click="helpdeskselfservice.editKeyword(2, cell, $index)" ng-show="helpdeskselfservice.activeSecond == $index"></i>
+              <i class="operation icon-delete" wm-tooltip="{{'delete' | translate}}" ng-click="helpdeskselfservice.deleteKeyword(2, $index, $event)" ng-show="helpdeskselfservice.activeSecond == $index"></i>
+            </div>
+            <div class="empty-instruction"><span class="menu-add-reply" ng-click="helpdeskselfservice.insertKeyword(2)">{{'helpdesk_self_service_add_keyword' | translate}}</span></div>
+          </div>
+        </div>
+        <!-- third level -->
+        <div class="menu-column clearfix" ng-class="{'white-column': helpdeskselfservice.chosenThird.length > 0}">
+          <div class="menu-header clearfix">
+            <span class="keyword col-md-4" ng-show="helpdeskselfservice.chosenThird.length > 0">{{'helpdesk_self_service_keyword' | translate}}</span>
+            <span class="reply col-md-8" ng-show="helpdeskselfservice.chosenThird.length > 0">{{'helpdesk_self_service_reply' | translate}}</span>
+          </div>
+          <!--the gray empty column body-->
+          <div class="menu-body clearfix" ng-show="helpdeskselfservice.thirdLevels.length === 0">
+            <div class="empty-instruction" ng-show="helpdeskselfservice.activeSecond >= 0 && helpdeskselfservice.showThirdAdd"><span class="menu-add-reply" ng-click="helpdeskselfservice.insertKeyword(3)">{{'helpdesk_self_service_add_keyword' | translate}}</span></div>
+          </div>
+          <!--the white content body-->
+          <div class="menu-body-noempty clearfix" ng-show="helpdeskselfservice.thirdLevels.length > 0">
+            <div class="menu-cell clearfix" ng-repeat="cell in helpdeskselfservice.chosenThird track by $index" ng-class="{'active': helpdeskselfservice.activeThird == $index, 'single-line': cell.type == 'connect' || cell.type == 'back'}" ng-click="helpdeskselfservice.selectThird($index)">
+              <p class="col-md-4">{{cell.keyword}}</p>
+              <div class="col-md-8">
+                <i class="icon-service" ng-show="cell.type == 'connect'"></i><i class="icon-back" ng-show="cell.type == 'back'"></i><pre><span ng-show="cell.type === 'reply'">{{cell.content}}</span><span ng-show="cell.type === 'connect'">{{'helpdesk_self_service_connect' | translate}}</span><span ng-show="cell.type === 'back'">{{'helpdesk_self_service_back' | translate}}</span></pre>
+              </div>
+              <i class="operation icon-edit" wm-tooltip="{{'helpdesk_self_service_edit_keyword' | translate}}" ng-click="helpdeskselfservice.editKeyword(3, cell, $index)" ng-show="helpdeskselfservice.activeThird == $index"></i>
+              <i class="operation icon-delete" wm-tooltip="{{'helpdesk_self_service_delete_keyword_tooltip' | translate}}" ng-click="helpdeskselfservice.deleteKeyword(3, $index, $event)" ng-show="helpdeskselfservice.activeThird == $index"></i>
+            </div>
+            <div class="empty-instruction" ng-show="helpdeskselfservice.showThirdAdd"><span class="menu-add-reply" ng-click="helpdeskselfservice.insertKeyword(3)">{{'helpdesk_self_service_add_keyword' | translate}}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="publish-container row" ng-show="!helpdeskselfservice.isPublished">
+      <div class="menu-unpublish col-xs-2">
+        {{"helpdesk_selfservice_unpublish" | translate}}
+      </div>
+      <div class="publish-hint col-xs-10">
+        {{"helpdesk_selfservice_publish_hint" | translate}}
+      </div>
+    </div>
+    <div class="button-container">
+      <button type="button" name="button" class="btn btn-primary" ng-click="helpdeskselfservice.publish()">{{'action_issue_comment_publish' | translate}}</button>
+    </div>
+  </div>
+</div>
+<script type="text/ng-template" id="addReply.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="menu-modal-title" ng-show="!isEdit">{{'helpdesk_self_service_add_reply' | translate}}</h4>
+    <h4 class="menu-modal-title" ng-show="isEdit">{{'helpdesk_self_service_edit_reply' | translate}}</h4>
+  </div>
+  <div class="menu-modal-body modal-body insert-reply">
+    <form ng-submit="ok($event)">
+      <div class="form-group">
+        <label class="required-field input-label" for="reply">{{'helpdesk_self_service_reply' | translate}}</label>
+        <p class="input-hint">{{'helpdesk_self_service_reply_hint' | translate}}</p>
+        <textarea class="form-control" name="reply" ng-model="cell.content" required></textarea>
+      </div>
+      <div class="bottom-group">
+        <button type="submit" name="button" class="btn btn-primary" >{{'helpdesk_setting_submit' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</script>
+<script type="text/ng-template" id="addKeyword.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="menu-modal-title" ng-show="!isEdit">{{'helpdesk_self_service_add_keyword' | translate}}</h4>
+    <h4 class="menu-modal-title" ng-show="isEdit">{{'helpdesk_self_service_edit_keyword' | translate}}</h4>
+  </div>
+  <div class="menu-modal-body modal-body insert-keyword">
+    <form ng-submit="ok($event)">
+      <div class="form-group">
+        <label class="required-field input-label" for="keyword">{{'helpdesk_self_service_keyword' | translate}}</label>
+        <input class="form-control" type="text" name="keyword" value="" ng-model="cell.keyword" wm-validate="checkRepeatKeyword" required>
+      </div>
+      <div class="form-group">
+        <label class="required-field input-label" for="action-type">{{'helpdesk_self_service_action' | translate}}</label>
+        <div class="type-group">
+          <wm-radio ng-model="cell.type" value="reply" class="type-radio"></wm-radio><span>{{'helpdesk_self_service_reply' | translate}}</span>
+        </div>
+        <textarea class="form-control reply-content" name="reply" ng-model="cell.content" ng-if="cell.type === 'reply'" required></textarea>
+        <div class="type-group">
+          <wm-radio ng-model="cell.type" value="connect" class="type-radio"></wm-radio><span>{{'helpdesk_self_service_connect' | translate}}</span>
+        </div>
+        <div class="type-group" ng-show="cell.level == 3">
+          <wm-radio ng-model="cell.type" value="back" class="type-radio"></wm-radio><span>{{'helpdesk_self_service_back' | translate}}</span>
+        </div>
+      </div>
+      <div class="bottom-group">
+        <button type="submit" name="button" class="btn btn-primary">{{'helpdesk_setting_submit' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</script>

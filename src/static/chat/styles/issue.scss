@@ -1,0 +1,346 @@
+#index {
+  overflow-x: hidden;
+}
+
+.issue-animation {
+  .in {
+    animation: slideInRight .5s ease;
+    -webkit-animation: slideInRight .5s ease;
+  }
+
+  .out {
+    animation: slideOutRight .5s ease;
+    -webkit-animation: slideOutRight .5s ease;
+  }
+}
+
+.chat-screem-height {
+  height: 100%;
+}
+
+.issue-mask-confirm {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 9;
+}
+
+.issue-selected-link {
+  color: $add-issue-a-color !important;
+  text-decoration: none !important;
+}
+
+.issue-mask-loading {
+  background: transparent;
+  z-index: 9999;
+
+  .issue-loading-icon {
+    -webkit-animation: rotate 1s linear infinite;
+    -o-animation: rotate 1s linear infinite;
+    animation: rotate 1s linear infinite;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    border-width: 5px;
+    border-style: solid;
+    border-color: $a-hover-color $a-hover-color $white-color $white-color;
+    opacity: .9;
+    border-radius: 20px;
+  }
+}
+
+@mixin issue-norepeat-icon ($width, $height, $url) {
+  width: $width;
+  height: $height;
+  background-image: url($url);
+  background-repeat: no-repeat;
+}
+
+@mixin width-height ($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin font-size-color ($size, $color) {
+  color: $color;
+  font-size: $size;
+}
+
+%issue-right-slide-page {
+  height: calc(100% - 55px);
+  position: absolute;
+  top: 52px;
+  right: 0;
+  width: 600px;
+  z-index: 10;
+
+  .right-slide-page-content {
+    background-color: $right-slide-backgroud-color;
+    padding: 30px 30px 20px 20px;
+    height: calc(100% - 95px);
+    overflow-y: auto;
+  }
+}
+
+.issue-support-ticket-a {
+  color: $issue-support-ticket-a-color !important;
+  padding: 15px 0 !important;
+  margin-right: 24px;
+
+  .issue-support-ticket-icon {
+    @include issue-norepeat-icon(16px, 16px, '/images/helpdesk/issue/task_normal.png');
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    color: $issue-support-ticket-a-hover-color !important;
+
+    .issue-support-ticket-icon {
+      background-image: url('/images/helpdesk/issue/task_hover.png');
+    }
+  }
+}
+
+.issue {
+  position: relative;
+  height: 100%;
+  padding-top: 91px;
+  padding-bottom: 40px;
+
+  .clear-float {
+    overflow: hidden;
+  }
+
+  .vertical-align-middle {
+    vertical-align: middle;
+  }
+
+  .gray-text {
+    color: $gray-text-color;
+  }
+
+  .title-resolved {
+    text-decoration: line-through;
+  }
+
+  .title-closed {
+    text-decoration: line-through;
+  }
+
+  a {
+    color: $gray-text-color;
+
+    &:hover {
+      color: $a-hover-color;
+      text-decoration: none;
+    }
+  }
+
+
+  .issue-bottom-btn {
+    width: 94%;
+    margin: auto 3%;
+   }
+
+  .circle-avatar {
+    @include width-height(24px, 24px);
+    border-radius: 50%;
+    margin: 18px auto;
+  }
+
+  .issue-header {
+    @include font-size-color(16px, $issue-header-color);
+    border-bottom: 1px solid rgba(173, 173, 173, .3);
+    padding: 11.5px 14px;
+
+    .issue-title {
+      @include font-size-color(16px, $right-slide-title-color);
+      line-height: 18px;
+      float: left;
+    }
+
+    .close {
+      @include issue-norepeat-icon(18px, 18px, '/images/management/icon_popup_close_default.png');
+      float: right;
+      opacity: 1;
+      outline: none;
+    }
+  }
+
+  .issue-label {
+    font-weight: 300;
+    color: $comment-text-color;
+  }
+
+  .closed-liner {
+    border-bottom: 1px solid $white-color !important;
+  }
+
+  .issue-create-btn {
+    width: 94%;
+    margin: 0 3%;
+  }
+
+  .issue-footer {
+    border-top: 1px solid $issue-footer-background-color;
+    padding: 7.5px 14px;
+    background-color: $footer-backgroud-color;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    textarea {
+      @include width-height(80%, 38px);
+      float: left;
+      padding-left: 10px;
+      resize: none;
+    }
+  }
+
+  .comment-btn {
+    float: left;
+    height: 38px;
+    margin-left: 10px;
+  }
+
+  .helpdesk-issue {
+    height: 100%;
+
+    .waterfall-news-list {
+      @include width-height(20%, 100%);
+      float: left;
+      margin-left: 5px;
+      margin-right: 5px;
+      border-radius: 5px;
+
+      .infinite-drop {
+        position: relative;
+        overflow-y: auto;
+        height: calc(100% - 47px);
+
+        .media-body {
+          position: relative;
+          z-index: 10;
+        }
+      }
+
+      .issue-body {
+        height: 100%;
+        overflow-y: auto;
+
+        .media {
+          margin: 0 17px;
+          width: calc(100% - 34px);
+        }
+
+        .media-left {
+          display: inline-block;
+        }
+
+        .media-body {
+          @include font-size-color(14px, $issue-list-color);
+          display: inline-block;
+          max-width: calc(100% - 39px);
+          padding: 22px 0 14px;
+          word-wrap: break-word;
+        }
+      }
+
+      .attachment-icon {
+        @include issue-norepeat-icon(20px, 20px, '/images/helpdesk/issue/attachment_icon.png');
+        margin-top: 8px;
+        background-repeat: no-repeat;
+      }
+
+      .liner {
+        margin-top: 0;
+        margin-bottom: 0;
+        border: 0;
+        border-top: 1px solid $liner-color;
+      }
+
+      .issue-body-open {
+        height: calc(100% - 43px) !important;
+
+        ~ .add-issue {
+          position: absolute;
+          width: 100%;
+          bottom: 0;
+        }
+      }
+
+      .add-issue-icon {
+        @include issue-norepeat-icon(16px, 16px, '/images/helpdesk/issue/add_normal.png');
+        margin-right: 6px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+
+    .add-issue {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      padding-left: 14px;
+
+      a {
+        @include font-size-color(14px, $add-issue-a-color);
+        position: relative;
+        z-index: 10;
+      }
+
+      a:hover {
+        opacity: .6;
+
+        .add-issue-icon {
+          background-image: url('/images/helpdesk/issue/add_hover.png');
+        }
+      }
+    }
+
+    .closed-issue-list {
+      background-color: $closed-issue-list-color;
+
+      .media-body {
+        color: $closed-issue-list-text-color !important;
+      }
+
+      .liner {
+        border-top: 1px solid $white-color;
+      }
+    }
+  }
+
+  .attachment-upload-title {
+    color: $detail-page-gray-text-color;
+  }
+
+  .attachment-format-pic {
+    @include width-height(45px, 45px);
+    border: 2px solid $border-color;
+  }
+
+  .format-type {
+    @include width-height(44px, 44px);
+    @include font-size-color(12px, $white-color);
+    display: block;
+    text-align: center;
+    line-height: 46px;
+  }
+
+
+  .format-doc {background-color: $background-doc-color;}
+
+  .format-excel {background-color: $background-tr-color;}
+
+  .format-rar {background-color: $background-rar-color;}
+
+  .format-psd {background-color: $background-psd-color;}
+
+  .format-others {background-color: $background-rar-color;}
+}

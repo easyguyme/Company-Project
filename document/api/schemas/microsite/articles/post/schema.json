@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "the name(or title) of the article"
+    },
+    "url": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "picUrl": {
+      "type": "string",
+      "required": false,
+      "description": "the url of the cover picture"
+    },
+    "content": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "fields": {
+      "type": "array",
+      "required": false,
+      "description": "The optional fields"
+    },
+    "channel": {
+      "type": "string",
+      "required": false,
+      "description": "The channel id, empty for default channel"
+    }
+  }
+}

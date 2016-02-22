@@ -1,0 +1,15 @@
+@import 'styles/mixin';            //Define global variables here
+@import 'styles/theme';            //Define global variables here
+@import 'styles/components/index'; //Add common components here
+@import 'styles/components/tab';
+
+@import '../shared';
+
+//Pages below
+@import 'activate/index';
+@import 'center/index';
+@import 'personal/index';
+@import 'rights/index';
+@import 'score/index';
+@import 'coupon/index';
+@import 'styles/components/membercenterpanel';

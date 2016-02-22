@@ -1,0 +1,37 @@
+<div wm-breadcrumb="qrcode.breadcrumb"></div>
+<div class="panel panel-main-content">
+  <div class="panel-body qrcode-statistics">
+    <div class="panel-section">
+      <div class="panel-section-header">
+        <div class="panel-section-title">{{'channel_wechat_qrcode_yday_main_target_summary'|translate}}</div>
+        <div class="panel-section-operations"></div>
+      </div>
+      <div class="panel-section-content clearfix">
+        <div class="sub-section" ng-repeat="item in qrcode.keyIndicator track by $index">
+          <div class="sub-section-type">{{item.text | translate}}</div>
+          <div class="sub-section-number">{{item.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-section">
+      <div class="panel-section-header">
+        <div class="panel-section-title">
+          <span translate="channel_wechat_qrcode_spread_trend_chart"></span>
+          <span class="btn-export pull-right" ng-click="qrcode.exportQrcodeInfo()" translate="export" ng-class="{'export-disabled':!qrcode.exportQrcode}"></span>
+        </div>
+        <div class="panel-section-operations"></div>
+      </div>
+      <div class="panel-section-content">
+        <div class="start-end-time clearfix">
+          <label class="fl start-end-time-label">{{'channel_wechat_qrcode_start_end_time'|translate}}</label>
+          <div class="start-time fl" wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" min-date-picker-id="endDatePicker" time-handler="qrcode.selectDate()" less-than-yesterday="true" ng-model="qrcode.startDate" first-unbind-handler="true"></div>
+          <span class="fl start-end-time-separator">-</span>
+          <div class="end-time fl" wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" max-date-picker-id="beginDatePicker" time-handler="qrcode.selectDate()" less-than-yesterday="true" ng-model="qrcode.endDate" first-unbind-handler="true"></div>
+        </div>
+
+        <div wm-line-chart options="qrcode.lineChartOptions" width="100%" height="400px"></div>
+      </div>
+    </div>
+  </div>
+</div>

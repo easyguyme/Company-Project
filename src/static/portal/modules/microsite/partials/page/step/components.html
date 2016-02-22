@@ -1,0 +1,103 @@
+<div ng-controller="wm.ctrl.microsite.page.components as cpts">
+    <div class="container-fluid">
+      <div class="row grid-background">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="title">
+              {{'content_component_library'|translate}}
+              <div class="pull-right color-picker-wrap">
+                <div wm-page-color-picker="cpts.color" pick-handler="cpts.pickColor" ng-style="{opacity: cpts.isCover3?0.7:1}" is-disabled="cpts.isCover3"></div>
+              </div>
+            </div>
+            <!-- Normal components -->
+            <ul class="components" ng-if="!cpts.isCover">
+              <li class="component" wm-draggable="name" name="{{name}}" ng-class="{'drag-once':name==='questionnaire'}" draggable-target=".mobile-content" ng-repeat="name in cpts.cptNames">
+                <div class="icon" ng-style="{'background-position':('0 ' + (-24*$index) + 'px')}"></div>
+                <h3 class="name" translate="{{'content_component_' + name}}"></h3>
+              </li>
+            </ul>
+            <!-- Layout components -->
+            <ul class="components" ng-if="!cpts.isCover">
+              <li ng-class="{true: 'component', false: 'tab-component'}[name!=='tab']" wm-draggable="name" draggable-target=".mobile-content" ng-repeat="name in cpts.layoutCptNames">
+                <div class="icon" ng-style="{'background-position':('0 ' + (-384-24*$index) + 'px')}"></div>
+                <h3 class="name" translate="{{'content_component_' + name}}"></h3>
+              </li>
+            </ul>
+            <!-- Covers -->
+            <ul class="components" ng-if="cpts.isCover">
+              <li class="component" ng-repeat="index in [0,1,2]" ng-click="cpts.selectCover(index)" ng-style="{cursor:pointer}" ng-class="{'active':cpts.coverIndex==index+1}" ng-hide="index===1">
+                <div class="icon cover" ng-style="{'background-position':('0 ' + (-24*$index) + 'px')}"></div>
+                <h3 class="name" translate="{{'content_component_cover' + (index + 1)}}"></h3>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mobile-bg">
+            <div class="mobile-wrap real-mobile">
+              <!-- Normal components -->
+              <div class="mobile-content" ng-if="!cpts.isCover" wm-droppable="cpts.pageCpts" update="cpts.orderCpts(from, to)" create="cpts.addCpt(object, to)">
+                  <div class="cpt-body" name="{{cpt.name}}" ng-repeat="(cptIdx, cpt) in cpts.pageCpts track by $index">
+                    <i class="glyphicon glyphicon-trash cpt-delete" ng-click="cpts.deleteCptConfirm($event, cptIdx, cpt)" ng-class="{'active': cpt.deletable}"></i>
+                    <div ng-if="cpt.name!=='tab'">
+                      <div class="cpt-mask" ng-click="cpts.editCpt(cpt)"></div>
+                      <iframe id="{{cpt.id}}" class="full-frame" ng-src="{{cpt.url}}" frameborder="0" ng-show="cpt.url"></iframe>
+                    </div>
+                    <div ng-if="cpt.name==='tab'" class="m-tab">
+                      <div class="clearfix m-tab-titles" ng-click="cpts.editCpt(cpt)" ng-style="{'background-color': cpts.tabColor.border.unactive}">
+                        <div class="pull-left m-tab-title" ng-class="{'selected':tab.active}" ng-repeat="(tabIndex, tab) in cpt.jsonConfig.tabs" ng-style="{'width': 100/cpt.jsonConfig.tabs.length + '%', 'color': cpts.tabColor.text[tab.active?'active':'unactive'], 'border-color': cpts.tabColor.border[tab.active?'active':'unactive']}">
+                          <div ng-click="cpts.changeTab(tabIndex, cpt.jsonConfig.tabs)">{{tab.name || ('content_component_config_tab'+tabIndex| translate)}}</div>
+                        </div>
+                      </div>
+                      <div class="clearfix" ng-repeat="(tabIndex, tab) in cpt.jsonConfig.tabs">
+                        <div class="mobile-content tab-content" wm-inner-droppable="tab.cpts" tab-id="{{cpt.id}}" tab-index="{{tabIndex}}" update="cpts.orderCpts(from, to, tabId, tabIndex)" create="cpts.addCpt(object, to, tabId, tabIndex)" options="cpts.tabOptions" ng-if="tab.active">
+                          <div class="cpt-body" name="{{tabCpt.name}}" ng-if="tab.cpts" ng-repeat="(tabCptIndex, tabCpt) in tab.cpts">
+                            <i class="glyphicon glyphicon-trash cpt-delete" ng-click="cpts.deleteCptConfirm($event, tabCptIndex, tabCpt, cpt.id, tabIndex)" ng-class="{'active': tabCpt.deletable}"></i>
+                            <div class="cpt-mask" ng-click="cpts.editCpt(tabCpt)"></div>
+                            <iframe id="{{tabCpt.id}}" class="full-frame" ng-src="{{tabCpt.url}}" frameborder="0" ng-show="tabCpt.url"></iframe>
+                          </div>
+                          <div class="cpt-empty-body" ng-if="!tab.cpts||!tab.cpts.length">
+                            {{'content_component_tab_click_to_add'|translate}}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <!-- Covers -->
+              <div class="mobile-content cover" ng-if="cpts.isCover">
+                <iframe id="{{cpts.oldCoverId}}" class="full-frame" ng-src="{{cpts.selectedComponent.url}}" frameborder="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="title" translate="content_component_setting"></div>
+            <div class="card-body" ng-show="cpts.confPath">
+              <div class="config-wrap" ng-include="cpts.confPath"></div>
+            </div>
+            <!-- templatePath: /build/modules/microsite/partials/page/conf/xxx.html -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="step-btns clearfix">
+      <div ng-if="1==cpts.curStep">
+        <input type="button" class="pull-left btn btn-default" value="{{'prev'|translate}}" ng-click="cpts.changeStep(0)"/>
+        <input type="button" class="pull-right btn btn-primary" value="{{'next'|translate}}" ng-click="cpts.changeStep(2)"/>
+      </div>
+      <div ng-if="!cpts.curStep">
+        <input type="button" class="pull-left btn btn-default" value="{{'preview'|translate}}" ng-click="cpts.preview()"/>
+        <input type="button" class="btn btn-primary" value="{{'ok'|translate}}" ng-click="cpts.finish()"/>
+      </div>
+    </div>
+    <script type="text/ng-template" id="pagePreview.html">
+      <div class="mobile-bg preview-mobile">
+        <button type="button" class="close" ng-click="hideModal()">&times;</button>
+        <div class="mobile-wrap" ng-show="{{iframeShow}}">
+          <iframe class="full-frame frame-height" ng-src="{{url}}" frameborder="0"></iframe>
+        </div>
+      </div>
+    </script>
+</div>

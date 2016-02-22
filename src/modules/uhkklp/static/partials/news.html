@@ -1,0 +1,9 @@
+<div class="uhkklp-news">
+    <div wm-tabs="news.changeTab()" tabs="news.tabs" ng-model="news.curTab"></div>
+
+    <a class="btn btn-success btn-setting user-btn" href="/uhkklp/edit/news" ng-click="news.createHandler()" translate="activity_btn_add"></a>
+
+    <div class="tab-view-wrap">
+        <div wm-table class="colored-table" ng-model="news.list" id="newsTbWrap"></div>
+    </div>
+</div>

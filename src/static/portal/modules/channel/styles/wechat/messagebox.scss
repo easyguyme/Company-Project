@@ -1,0 +1,379 @@
+$border-color: #e6e6e6;
+$background-color-white: #fff;
+$message-border-color: #ccc;
+$message-background-color: #f5f5f5;
+$text-tip-color: #aaa;
+$text-tip-error-color: #b42d14;
+$waterfall-text-color: #1c1c1c;
+$waterfall-background-color: #050402;
+$waterfall-header-color: #a5a5a5;
+$waterfall-item-color: #ddd;
+$waterfall-detail-color: #000;
+$graphic-color : #777;
+
+.wechat-message-wrap {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 100%;
+
+  .message-input {
+    border: solid 1px $message-border-color;
+    margin-bottom: 5px;
+
+    .message-preview {
+      cursor: pointer;
+      line-height: 30px;
+      margin-right: 10px;
+      text-decoration: underline;
+    }
+
+    .type-select {
+      background-color: $message-background-color;
+      height: 30px;
+
+      i {
+        margin: 7px 15px;
+      }
+
+      .messageicon {
+        display: inline-block;
+        height: 16px;
+        width: 14px;
+        cursor: pointer;
+      }
+
+      $message-types: text, graphic;
+
+      @each $type in $message-types {
+        .messageicon-#{$type} {
+          background: url("/images/channel/icon_#{$type}_default.png") no-repeat;
+
+          &:hover {
+            background: url("/images/channel/icon_#{$type}_hover.png") no-repeat;
+          }
+
+          &.selected {
+            background: url("/images/channel/icon_#{$type}_selected.png") no-repeat;
+          }
+
+          &.selected:hover {
+            background: url("/images/channel/icon_#{$type}_hover.png") no-repeat;
+          }
+        }
+      }
+    }
+
+    .content {
+      background-color: $background-color-white;
+      min-height: 170px;
+
+      .message {
+        margin: 0;
+        width: 95%;
+        @media screen and (min-width: 910px) {
+          width: 100%;
+        }
+      }
+
+      .message-text {
+        height: 170px;
+        resize: none;
+      }
+
+      .form-control-message {
+        padding: 10px;
+        border: 0;
+
+        &:focus,
+        &:active,
+        &:hover {
+          outline: -webkit-focus-ring-color auto 0;
+        }
+      }
+
+      .message-graphic {
+        .graphic-operations {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+
+  .text-tip {
+    color: $text-tip-color;
+    font-size: 12px;
+  }
+
+  .error-tip {
+    color: $text-tip-error-color;
+    font-size: 12px;
+  }
+
+  &.message-wrap-disabled {
+    opacity: .5;
+
+    .type-select {
+      $message-types: text, graphic;
+
+      .messageicon {
+        cursor: auto;
+      }
+
+      @each $type in $message-types {
+        .messageicon-#{$type} {
+          background: url("/images/channel/icon_#{$type}_default.png") no-repeat;
+
+          &:hover {
+            background: url("/images/channel/icon_#{$type}_default.png") no-repeat;
+          }
+
+          &.selected {
+            background: url("/images/channel/icon_#{$type}_default.png") no-repeat;
+          }
+
+          &.selected:hover {
+            background: url("/images/channel/icon_#{$type}_default.png") no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
+
+.graphic-filter {
+  margin-bottom: 10px;
+  padding-left: 20px;
+
+  .select-wrapper {
+    float: left;
+    margin-right: 15px;
+    width: 10%;
+  }
+
+  .search-wrapper {
+    float: left;
+  }
+}
+
+.waterfall-items {
+  margin: 70px 20px 20px;
+}
+
+.waterfall-news-normal {
+  border: 1px solid $background-color-white;
+
+  &.waterfall-top {
+    border-radius: 4px 4px 0 0;
+  }
+
+  &.waterfall-active {
+    border-color: $brand-primary !important;
+
+    +.waterfall-news-normal {
+      border-top: 0;
+    }
+  }
+}
+
+.waterfall-news-item {
+  //-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+  //box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+  cursor: pointer;
+  margin-bottom: 10px;
+  position: relative;
+
+  .waterfall-news-marker {
+    display: none;
+  }
+
+  .waterfall-news-marker-ok {
+    display: none;
+  }
+
+  &.news-show {
+    width: 280px;
+  }
+
+  &.active {
+    .waterfall-news-marker-ok {
+      display: block;
+      font-size: 70px;
+      left: 50%;
+      margin-left: -30px;
+      margin-top: -30px;
+      position: absolute;
+      top: 50%;
+      z-index: 3;
+    }
+
+    .waterfall-news-marker {
+      background: $waterfall-item-color;
+      border-radius: 2px;
+      display: block;
+      height: 100%;
+      left: 0;
+      opacity: .5;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 2;
+    }
+  }
+}
+
+.waterfall-news-detail {
+  background: $background-color-white;
+  border: 1px solid $waterfall-item-color;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+.waterfall-news-list {
+  background: $background-color-white;
+  border: 1px solid $waterfall-item-color;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+.waterfall-news-detail-content {
+  padding: 0 10px 30px;
+  word-wrap: break-word;
+}
+
+.waterfall-news-detail-row {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  word-wrap: break-word;
+}
+
+.waterfall-news-detail-title {
+  color: $waterfall-detail-color;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  word-break: break-all;
+}
+
+.waterfall-news-list-inner {
+  margin: 8px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.waterfall-news-list-cover {
+  background-color: $waterfall-background-color;
+  // background: rgba(0,0,0,0.6)!important;
+  bottom: 0;
+  color: $background-color-white;
+  font-size: 14px;
+  left: 0;
+  max-height: 30px;
+  overflow: hidden;
+  padding: 4px 10px;
+  position: absolute;
+  width: 100%;
+}
+
+.waterfall-news-list-item {
+  border-top: 1px solid $border-color;
+  height: 60px;
+}
+
+.waterfall-news-list-end {
+  border-top: 1px solid $border-color;
+  height: 40px;
+  padding: 10px;
+}
+
+.waterfall-news-list-item-text {
+  @include text-overflow;
+  color: $waterfall-text-color;
+  float: left;
+  font-size: 14px;
+  line-height: 60px;
+  overflow: hidden;
+  padding-left: 8px;
+  width: calc(100% - 75px);
+}
+
+.waterfall-news-list-item-image {
+  float: right;
+  padding: 5px;
+  padding-right: 8px;
+  width: 60px;
+}
+
+.waterfall-news-title {
+  margin-top: 0;
+  padding: 15px 8px 0;
+}
+
+.waterfall-dialog.modal-dialog {
+  width: 1040px;
+}
+
+.image-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.waterfall-news-detail-img-container {
+  height: 140px;
+}
+
+.waterfall-news-list-inner-img-container {
+  height: 165px;
+}
+
+.waterfall-news-list-img-container {
+  height: 50px;
+}
+
+.news-wrap {
+  float: left;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  position: relative;
+  width: 270px;
+}
+
+.news-view {
+  max-width: 270px;
+}
+
+.graphic-modal {
+  .modal-dialog {
+    margin: 0 auto;
+    margin-top: 55px;
+    width: 1000px;
+
+    .graphic-no-data {
+      color: $graphic-color;
+      font-size: 16px;
+      margin-top: 40px;
+      text-align: center;
+    }
+  }
+}
+
+.news-shelter {
+  background-color: rgba(10, 10, 10, .2);
+  background-image: url('/images/core/selected.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $background-color-white;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 998;
+}
+
+.waterfall-news-header {
+  color: $waterfall-header-color;
+  margin: 10px;
+
+  &.waterfall-news-header-single {
+    border-bottom: solid 1px $border-color;
+    margin-bottom: 0;
+  }
+}

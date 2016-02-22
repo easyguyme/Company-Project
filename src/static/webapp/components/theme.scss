@@ -1,0 +1,105 @@
+$theme-default-color: #ac9456;
+$theme-background-text-color: #fff;
+$theme-gray-text: #787878;
+$theme-background-color: #eee;
+$theme-black-text: #1e1e1e;
+$theme-default-border-color: #dfdbdb;
+$theme-default-content-color: #1e1e1e;
+$theme-default-label-color: #6c6c6c;
+$theme-default-boder-color: #d2d2d2;
+$theme-space-padding: .31rem;
+
+// header
+$brand-default-bg: $theme-default-color;
+$brand-default-color: #fff;
+
+// default panel
+$panel-default-bg: #fff;
+$panel-shadow-color: #bcbcbc;
+
+// button
+$btn-bg-color: $theme-default-color;
+$btn-bg-text-color: $theme-background-text-color;
+
+// title-pannel
+$pannel-shadow-color: #bcbcbc;
+$pannel-head-border-color: $theme-background-color;
+
+// textarea
+$textarea-default-bg: #fff;
+$textarea-placeholder-color: #bebdbd;
+$textarea-text-color: $theme-default-content-color;
+
+// input
+$input-default-bg: #fff;
+$input-placeholder-color: $theme-gray-text;
+$input-text-color: $theme-default-content-color;
+
+// form
+$form-default-border-color: $theme-default-border-color;
+$form-error-tip-color: #b42d14;
+
+// pays
+$pays-border-color: $theme-background-color;
+$pays-title-color: $theme-default-content-color;
+$pays-supplement-color: $theme-gray-text;
+$pays-icon-bg: #efecec;
+$pays-icon-border-color: $theme-default-border-color;
+
+// pop select
+$select-border-color: $theme-default-color;
+$options-sure-text-color: $theme-default-color;
+$options-cancel-text-color: $theme-gray-text;
+$options-mask-bg-color: #211b1a;
+$options-container-bg: #d8d8d8;
+$options-items-bg: #fff;
+$options-content-color: #333;
+
+// commstars
+$commstars-default-bg: #fff;
+$commstars-checked-default-bg: $theme-default-color;
+$commstars-unchecked-default-bg: #bfbfbf;
+
+// coupons
+$coupons-default-bg: #fff;
+$coupons-delimiter-color: $theme-default-color;
+$coupons-price-text-color: $theme-default-color;
+$coupons-title-text-color: $theme-default-content-color;
+$coupons-condition-text-color: $theme-default-label-color;
+$coupons-dot-color: $theme-default-color;
+$coupons-disabled-color: #bdbcbc;
+$coupons-nodata-text-color: $theme-default-label-color;
+$coupons-box-shadow-color: #bdbcbc;
+
+// order detail
+$detail-provider-line-color: #bfbfbf;
+
+// loading
+$loading-bg-color: #000;
+$loading-icon-color: #333;
+
+
+// tabs
+$tabs-default-bg-color: #fff;
+$tabs-default-color: $theme-default-label-color;
+$tabs-checked-color: $theme-default-color;
+$tabs-checked-border-color: $theme-default-color;
+
+// nav tab
+$nav-tab-font-color: #3ec3aa;
+
+// tags
+$tag-background-color: #ddd;
+
+// modal
+$modal-boder-color: #e5e5e5;
+$modal-body-background-color: #f7f7f7;
+$modal-body-font-color: #555;
+$modal-title-color: #19be9b;
+
+// select-specifications
+$specifications-modal-bg-color: #8f8c8c;
+$specifications-line-color: #d5d5d5;
+$specifications-tag-bg-color: $theme-background-color;
+$specifications-disable-color: #aaa;
+$specifications-disable-border-color: #ccc;

@@ -1,0 +1,13 @@
+<div wm-tabs="activity.changeTab()" tabs="activity.tabs" ng-model="activity.curTab"></div>
+
+<a class="btn btn-success btn-setting user-btn" href="#" ng-click="activity.createHandler()" translate="activity_btn_add"></a>
+
+<div class="tab-view-wrap uhkklp-activity-wrap">
+  <div wm-table class="colored-table" ng-model="activity.list"></div>
+
+  <div class="clearfix">
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="activity.currentPage" page-size="activity.pageSize" total-items="activity.totalCount" on-change-size="activity.changeSize" on-change-page="activity.changePage"></div>
+    </div>
+  </div>
+</div>

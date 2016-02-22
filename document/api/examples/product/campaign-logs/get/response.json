@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "id": "555449c7475df4950c8b4569",
+            "code": "23333332",
+            "member": {
+                "id": "555411b8475df410738b4567",
+                "cardNumber": "10000001",
+                "name": "xxx",
+                "type": "score",
+                "scoreAdded": "-11",
+                "score": 10,
+                "prize": "sss"
+            },
+            "usedFrom": {
+                "id": "54d9c155e4b0abe717853ee1",
+                "name": "熊猫Baby",
+                "type": "weibo"
+            },
+            "usedTime": "2015-05-14 08:07:51"
+        },
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/product/campaign-logs?accesstoken=62882071-8b3c-ad1b-3f85-0831f2246b87&memberId=555411b8475df410738b4567&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 4,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

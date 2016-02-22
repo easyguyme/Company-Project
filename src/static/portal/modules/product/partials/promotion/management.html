@@ -1,0 +1,14 @@
+<div class="panel panel-default panel-main-content promotion-manage-pannel" ng-controller="wm.ctrl.product.promotion.management as management">
+  <div class="panel-heading helpdesk-account-title">
+    <div class="account-title fs16 col-md-10 pd0">{{'product_association_list' | translate}}</div>
+    <div class="col-md-2 pd0">
+      <button class="btn btn-success pull-right" ng-click="management.create()">{{'product_new_association' | translate}}</button>
+    </div>
+  </div>
+  <div class="panel-body promo-code-wrap">
+    <wm-table ng-model="management.list" class="remove-border-top"></wm-table>
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="management.currentPage" page-size="management.pageSize" total-items="management.totalItems" on-change-size="management.changeSize" on-change-page="management.changePage"></div>
+    </div>
+  </div>
+</div>

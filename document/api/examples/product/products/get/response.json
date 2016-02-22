@@ -1,0 +1,45 @@
+{
+    "items": [
+        {
+            "id": "54b62e4edb4c0eae048b4574",
+            "sku":"5555555555"
+            "name": "test",
+            "pictures":[
+                {
+                    "name": "图片名称",
+                    "url":  "http://ww4.sinaimg.cn/bmiddle/6106a4f0gw1eo94gprrhaj20dw0agdhe.jpg",
+                    "size": "10"
+                },
+                {
+                    "name": "图片名称",
+                    "url":  "http://ww4.sinaimg.cn/bmiddle/6106a4f0gw1eo94gprrhaj20dw0agdhe.jpg",
+                    "size": "10"
+                }
+            ],
+            "category": {
+                "_id": "54b62e4edb4c0eae048b4574",
+                "name": "类型的名称",
+                "properties": [
+                    {
+                        "id": "111",
+                        "name": "属性的名称",
+                        "value": " "
+                    }
+                ]
+            },
+            "createdAt": "2015-01-14 16:52:30",
+            "isStoreGoods": false //只有在传了storeId的时候会返回此字段
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://dev.cp.augmarketing.cn/api/product/proucct?accesstoken=3ca28e36-c949-5378-4edb-15aff6a5223d&orderBy=%7B%22createdAt%22%3A%22desc%22%7D&category=%5B%2254b5c1f8db4c0eea6e8b4569%22%5D&page=1&per-page=10"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

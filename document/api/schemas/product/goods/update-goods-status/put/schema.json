@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "operation": {
+      "type": "string",
+      "required": true,
+      "description": "describe the operation"
+    },
+    "id": {
+      "type": "json array",
+      "required": true,
+      "description": "ID:orderID"
+    },
+    "orderBy": {
+      "type": "json",
+      "required": true,
+      "description": ""
+    },
+    "onSaleTime": {
+      "type": "string",
+      "required": false,
+      "description": "if the operation is on, the value must be passed"
+    }
+  }
+}

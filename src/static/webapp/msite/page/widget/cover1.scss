@@ -1,0 +1,45 @@
+$cover-nav-name-color:         #fff;
+$cober-nav-name-font-size:     0.37rem;
+$cober-nav-item-opacitys:      0.8 1 0.75 0.95 0.7 0.9;
+
+@mixin transparent_style($value) {
+    filter: alpha(opacity=$value*100);
+    -moz-opacity: $value;
+    -khtml-opacity: $value;
+    opacity: $value;
+}
+
+.m-cover1 {
+  %m-cover1-nav-item {
+    float: left;
+    width: 33.3%;
+  }
+  .m-cover1-nav-info {
+    margin: 0.78rem auto;
+  }
+  @for $index from 1 to 7 {
+    .m-cover1-nav-item#{$index} {
+      @extend %m-cover1-nav-item;
+      @include transparent_style(nth($cober-nav-item-opacitys, $index));
+      height: 3.1rem;
+    }
+  }
+  .m-cover1-nav-icon {
+    width: 0.93rem;
+    height: 0.93rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.31rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .m-cover1-nav-text {
+    color: $cover-nav-name-color;
+    font-size: $cober-nav-name-font-size;
+    text-align: center;
+  }
+  .m-cover1-nav-placeholder {
+    display: block;
+    text-decoration: none;
+  }
+}

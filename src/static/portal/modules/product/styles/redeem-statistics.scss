@@ -1,0 +1,38 @@
+.redeem-statistics-wrapper {
+  padding: 0 15px;
+}
+
+.statistics-header-wrapper {
+  padding: 20px 0;
+
+  .clear-padding {
+    padding: 0;
+  }
+
+  .fields-item-label {
+    line-height: 30px;
+    margin: 0;
+    width: auto;
+
+    @media (max-width: 992px) {
+      min-width: 85px;
+    }
+  }
+
+  .promotion-items {
+    padding-right: 0;
+  }
+
+  .datetime-wrapper {
+    padding-right: 0;
+
+    .field-cross-bar {
+      padding: 0 5px;
+    }
+
+    .datetime-picker-item {
+      width: calc(50% - 7.5px);
+    }
+  }
+
+}

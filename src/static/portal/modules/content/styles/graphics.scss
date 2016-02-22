@@ -1,0 +1,301 @@
+//custom variables
+$wm-color-gray11:                   #38c4a9;
+$wm-dark-gray12:                    #f5f5f5;
+$wm-dark-gray13:                    #404b49;
+$wm-dark-gray14:                    #333;
+$wm-dark-gray15:                    #ddd;
+$wm-dark-gray16:                    #d9e0ea;
+$wm-color-green:                    #19be9b;
+
+//common css
+
+%graphics-font-base {
+  color: $wm-dark-gray;
+  size: 14px;
+
+  &:hover {
+    size: 14px;
+    color: $wm-color-gray11;
+  }
+}
+
+.graphics-font {
+  @extend %graphics-font-base;
+}
+
+
+.panel-default>.panel-graphics-head {
+  color: $wm-dark-gray14;
+  background-color: $wm-dark-gray15;
+}
+
+.panel-graphics-content {
+  min-height: 500px;
+  border: 0;
+  background-color: $white-background-color;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+
+  .panel-body {
+    padding-left: 0;
+  }
+
+  .graphic-title {
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .dark-gray {
+    width: 92%;
+    color: $wm-dark-gray;
+    size: 14px;
+  }
+
+  .font-position {
+    float: left !important;
+    margin-top: 5px;
+  }
+
+  .btn-position {
+    float: left !important;
+  }
+
+  .panel-heading {
+    height: 46px;
+  }
+
+  .btn-add-icon {
+    position: absolute;
+    top: -30px;
+    right: 20px;
+  }
+}
+
+.panel-container-fluid {
+  background-color: $white-background-color;
+  padding-bottom: 0;
+}
+
+.graphics-position {
+  text-align: -webkit-center;
+  text-align: -moz-center;
+  text-align: -o-center;
+
+  .add-icon {
+    @include size(25px, 25px);
+    background: url('/images/content/btn_add_normal.png') no-repeat;
+
+    &:hover {
+      @include size(25px, 25px);
+      background: url('/images/content/btn_add_hover.png') no-repeat;
+    }
+  }
+
+  .keyword-posiotion {
+    margin-top: 10px;
+  }
+}
+
+.graphic-btn-close {
+  outline: -webkit-focus-ring-color auto 0;
+}
+
+.icon-position {
+  text-align: center;
+
+  .single-panel {
+    @extend %graphics-font-base;
+    @include size(130px, 100px);
+    float: left !important;
+    margin-left: 60px;
+    margin-top: 35px;
+    margin-bottom: 70px;
+    border-radius: 4px;
+    background-color: $white-background-color;
+
+    &:hover>.single-icon {
+      background: url('/images/content/dantuwen_hover.png') no-repeat;
+      }
+
+    &:active>.single-icon {
+      background: url('/images/content/dantuwen_click.png') no-repeat;
+    }
+
+    .single-icon {
+      @include size(35px, 50px);
+      margin: 12px auto 0;
+      background: url('/images/content/dantuwen_normal.png') no-repeat;
+    }
+  }
+
+  .multiple-panel {
+    @extend %graphics-font-base;
+    @include size(130px, 100px);
+    float: left !important;
+    background-color: $white-background-color;
+    margin-left: 50px;
+    margin-right: 60px;
+    margin-top: 36px;
+    border-radius: 4px;
+
+    &:hover>.multiple-icon {
+      background: url('/images/content/duotuwen_hover.png') no-repeat;
+    }
+
+    &:active>.multiple-icon {
+      background: url('/images/content/duotuwen_click.png') no-repeat;
+    }
+
+    .multiple-icon {
+      @include size(35px, 50px);
+      margin: 12px auto 0;
+      background: url('/images/content/duotuwen_normal.png') no-repeat;
+    }
+  }
+}
+
+.create-graphics-title {
+  @extend %graphics-font-base;
+  color: $wm-color-green;
+}
+
+.create-graphic-body {
+  @include size(460px, 213px);
+  border-radius: 4px;
+}
+
+.graphics-dialog {
+  .modal-dialog {
+    width: 462px;
+    vertical-align: center;
+    margin-top: 193px;
+    border-radius: 4px;
+  }
+
+  .content {
+    margin-top: 20px;
+    margin-left: 2px;
+    min-width: 535px;
+    min-height: 220px;
+
+    .message {
+      margin: 10px;
+      width: calc(100% - 20px);
+    }
+
+    .message-text {
+      height: 150px;
+      resize: none;
+    }
+
+    .message-graphic {
+      .graphic-operations {
+        margin-top: 15px;
+      }
+    }
+
+    .graphics-show {
+      float: left !important;
+    }
+  }
+}
+
+.left-position {
+  background-color: $wm-dark-gray12;
+  min-height: 690px;
+}
+
+.micro-position {
+  @include size(150px, 170px);
+  background-color: $white-background-color;
+
+  .word-position {
+    margin-top: 20px;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    text-align: -o-center;
+  }
+}
+
+.micro-title {
+  border-bottom: 1px solid $wm-dark-gray16;
+  font-size: 25px;
+}
+
+.isactive {
+  font-weight: bold;
+}
+
+.waterfall-width {
+  width: 272px;
+}
+
+// .isload {
+//   @include size(30px, 30px);
+//   background: url('/images/content/content/dantuwen_hover.png') no-repeat;
+//   margin-left: 250px;
+// }
+
+.load-icon {
+  &.isload {
+    @include size(30px, 30px);
+    background: url('/images/content/content/dantuwen_hover.png') no-repeat;
+    margin-left: 250px;
+    margin-top: 20px;
+    text-align: center;
+    height: 50px;
+  }
+}
+
+.title-detail {
+  height: auto;
+  border: 1px;
+}
+
+.micro-content {
+  padding-top: 0;
+
+  img {
+    vertical-align: middle;
+    max-height: 350px;
+    max-width: 100%;
+    margin-top: 10px;
+  }
+
+  .data {
+    display: inline-block;
+  }
+
+  .description {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
+  .content {
+    display: inline-block;
+    margin-top: 20px;
+    min-width: 100%;
+    height: auto;
+  }
+}
+
+.report {
+  float: right !important;
+  color: $wm-color-green;
+}
+
+.mark-position {
+  margin-top: 0;
+  padding-bottom: 25px;
+}
+
+.waterfall-wrap {
+  margin-left: 6px;
+  margin-top: 25px;
+}
+
+.micro-img {
+  text-align: center;
+}

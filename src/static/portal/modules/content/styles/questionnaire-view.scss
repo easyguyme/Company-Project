@@ -1,0 +1,130 @@
+$questionnaire-title-color: #787878;
+$questionnaire-white: #fff;
+$questionnaire-published-bgcolor: #37c3aa;
+$questionnaire-unpublished-bgcolor: #d0d0d0;
+$questionnaire-questions-title-bgcolor: #eee;
+$questionnaire-questions-content-bgcolor: #f5f5f5;
+
+.questionnaire-info {
+  margin-bottom: 0;
+}
+
+.questionnaire-title {
+  color: $questionnaire-title-color;
+  font-weight: 400;
+}
+
+.questionnaire-published,
+.questionnaire-unpublished {
+  color: $questionnaire-white;
+  border-radius: 2px;
+  display: inline-block;
+  line-height: 14px;
+  margin-top: 3px;
+  padding: 1px 4px;
+  vertical-align: top;
+  background-color: $questionnaire-published-bgcolor;
+}
+
+.questionnaire-published {
+  background-color: $questionnaire-published-bgcolor;
+}
+
+.questionnaire-unpublished {
+  background-color: $questionnaire-unpublished-bgcolor;
+}
+
+.questions-area {
+  width: 500px;
+  background-color: $questionnaire-questions-content-bgcolor;
+  padding: 20px;
+  color: $questionnaire-title-color;
+
+  .user-count {
+    margin: 10px 0 20px;
+  }
+
+  .question-area {
+    margin-bottom: 20px;
+
+    .view-answer {
+      color: $questionnaire-published-bgcolor;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: 10px;
+    }
+
+    .question-title {
+      margin-bottom: 5px;
+    }
+
+    .question-option {
+      display: block;
+      margin-left: 10px;
+      margin-bottom: 5px;
+
+      .questionnaire-select {
+        background-repeat: no-repeat;
+        width: 18px;
+        height: 16px;
+        display: inline-block;
+        background-size: 14px;
+        float: left;
+        background-position-y: 2px;
+      }
+
+      .option-content {
+        word-break: break-all;
+        font-weight: normal;
+        display: inline;
+      }
+
+      .image-content {
+        width: 40%;
+        display: inline-block;
+        float: left;
+      }
+
+      div {
+        width: 55%;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.answer-dialog {
+
+  .modal-title-font {
+    color: $questionnaire-published-bgcolor;
+  }
+
+  .modal-body {
+    padding: 15px;
+    height: 500px;
+    overflow-y: auto;
+
+    .modal-question-name {
+      font-weight: bold;
+      margin-bottom: 26px;
+    }
+
+    .answers {
+      margin-bottom: 15px;
+      word-break: break-all;
+
+      .user-name {
+        font-weight: bold;
+
+        &:after {
+          content: ':';
+          padding: 0 6px;
+        }
+      }
+
+      .answer {
+        color: $questionnaire-title-color;
+      }
+    }
+  }
+}

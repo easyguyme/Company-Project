@@ -1,0 +1,9 @@
+{
+    "id":"552e070b438b4574uuid"
+    "order": 1,
+    "name": "产地",
+    "type": "input",
+    "options": "",
+    "defaultValue": "上海",
+    "isRequired": true,
+}

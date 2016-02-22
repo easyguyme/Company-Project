@@ -1,0 +1,26 @@
+{
+  "name": "microsite",
+  "states": [
+    "microsite-webpage",
+    "microsite-article-edit-webpage",
+    "microsite-article-edit-webpage-{id}",
+    "microsite-article-view-webpage-{id}",
+    "microsite-page-create-webpage",
+    "microsite-page-edit-webpage-{id}",
+    "microsite-page-view-webpage-{id}"
+  ],
+  "resources": {
+    "article": "/api/microsite/article",
+    "articles": "/api/microsite/articles",
+    "articleChannel": "/api/microsite/article-channel",
+    "articleChannels": "/api/microsite/article-channels",
+    "pageComponent": "/api/microsite/page-component",
+    "pageComponents": "/api/microsite/page-components",
+    "pageComponentOrder": "/api/microsite/page-component/order",
+    "pageColor": "/api/microsite/page/color",
+    "pagePublish": "/api/microsite/page/publish",
+    "page": "/api/microsite/page",
+    "pages": "/api/microsite/pages",
+    "questionnairesUnExpired": "/api/content/questionnaire/unexpired-questionnaire"
+  }
+}

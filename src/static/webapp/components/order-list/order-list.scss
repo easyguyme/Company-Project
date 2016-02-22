@@ -1,0 +1,75 @@
+%right-top {
+  position: absolute;
+  right: $theme-space-padding;
+  top: $theme-space-padding;
+  color: $theme-default-color;
+  line-height: .7rem;
+}
+
+.c-order-list {
+  margin-bottom: $theme-space-padding;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__head {
+    border-bottom: 1px solid $theme-background-color;
+    padding: $theme-space-padding 0;
+    font-size: .4rem;
+    position: relative;
+
+    &__status {
+      @extend %right-top;
+    }
+  }
+
+  &__body {
+    @include c-box;
+    border-bottom: 1px solid $theme-background-color;
+    padding: $theme-space-padding 0;
+    position: relative;
+
+    &__img {
+      @include square(2.5rem);
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin-right: $theme-space-padding;
+    }
+
+    &__content {
+      @include c-box-flex(1);
+      font-size: .4rem;
+
+      &__title {
+        @include text-overflow();
+        color: $theme-black-text;
+        line-height: .7rem;
+        width: 100%;
+        padding-right: 2rem;
+      }
+
+      &__price {
+        @extend %right-top;
+      }
+
+      &__illustration {
+        font-size: $theme-space-padding;
+        width: 85%;
+        color: $textarea-placeholder-color;
+        margin-top: .1rem;
+        margin-bottom: .35rem;
+      }
+    }
+  }
+
+  &__footer {
+    padding: $theme-space-padding 0;
+    text-align: right;
+
+    .c-btn {
+      width: 2.5rem;
+      margin-left: $theme-space-padding;
+    }
+  }
+}

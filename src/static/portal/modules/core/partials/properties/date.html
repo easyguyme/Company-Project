@@ -1,0 +1,5 @@
+<!-- type is date -->
+<div class="member-attr-item item-hook  member-attr-date clearfix" id="{{property.id}}">
+  <div wm-datetime-picker format-type="YYYY-MM-DD" pick-date="true" less-than-today="{{property.name=='birthday'}}" pick-time="false" ng-model="property.value" required-field="true" ng-if="property.isRequired"></div>
+  <div wm-datetime-picker format-type="YYYY-MM-DD" pick-date="true" less-than-today="{{property.name=='birthday'}}" pick-time="false" ng-model="property.value" ng-if="!property.isRequired"></div>
+</div>

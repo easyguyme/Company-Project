@@ -1,0 +1,5 @@
+*.log
+.sass-cache
+node_modules
+_dynamic-variables.scss
+loader.scss

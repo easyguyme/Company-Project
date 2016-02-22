@@ -1,0 +1,35 @@
+<div wm-breadcrumb="token.breadcrumb"></div>
+
+<div class="product-detail-wrapper clearfix">
+  <div class="col-md-12 col-xs-12 form-group">
+    <label class="product-detail-name col-md-2 col-xs-3 product-item-name" translate="management_template_name"></label>
+    <label class="product-detail-item col-md-10 col-xs-9">{{token.data.name | translate}}</label>
+  </div>
+  <div class="col-md-12 col-xs-12 form-group">
+    <label class="product-detail-name col-md-2 col-xs-3 product-item-name" translate="management_edit_time"></label>
+    <label class="product-detail-item col-md-10 col-xs-9">{{token.data.updatedAt}}</label>
+  </div>
+  <div class="form-group col-md-12 col-xs-12" ng-if="token.data.weChat">
+    <label class="product-detail-name col-md-2 col-xs-3 product-item-name" translate="management_tpl_id"></label>
+    <div class="col-md-7 col-xs-8">{{token.data.weChat.templateId || '-'}}</div>
+  </div>
+  <div class="col-md-12 col-xs-12 form-group" ng-if="token.data.email">
+    <label class="product-detail-name col-md-2 col-xs-3 product-item-name" translate="management_tpl_email"></label>
+    <div class="col-md-7 col-xs-8">
+      <div class="tpl-pannel" ng-show="token.data.email.content">
+        <div class="tpl-pannel-head">{{'management_tpl_title' | translate}}：　{{token.data.email.title}}</div>
+        <div class="tpl-pannel-body" ng-bind-html="token.data.email.content"></div>
+      </div>
+      <label class="product-detail-name col-md-10 col-xs-9 product-item-name" ng-show="!token.data.email.content">-</label>
+    </div>
+  </div>
+  <div class="col-md-12 col-xs-12 form-group product-intro-wrapper" ng-if="token.data.mobile">
+    <label class="product-detail-name col-md-2 col-xs-3 product-item-name" translate="content_component_sms"></label>
+    <div class="col-md-7 col-xs-8">
+      <div class="tpl-pannel" ng-show="token.data.mobile.message">
+        <div class="tpl-pannel-body">{{token.data.mobile.message}}</div>
+      </div>
+    </div>
+    <label class="product-detail-name col-md-10 col-xs-9 product-item-name" ng-show="!token.data.mobile.message">-</label>
+  </div>
+</div>

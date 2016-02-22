@@ -1,0 +1,69 @@
+<div wm-list-header head-class="listheader-search-condition">
+  <wm-search ng-model="ding.searchKey" class="search-wrapper-input" click-func="ding.search()" placeholder="{{'management_ding_search_key'|translate}}"></wm-search>
+  <div class="text-align-right">{{'total'|translate}}{{'management_ding_user_count_tip'|translate:'{ count: ding.list.data.length }'}}</div>
+  <a href="#" class="btn btn-success pull-right" style="margin-right:20px" translate="fetch_user" ng-click="ding.fetch()"></a>
+</div>
+<div class="tag-dropdown-wrap assist-table-wrapper">
+  <div ng-show="ding.userSeleted" class="tag-dropdown" ng-click="ding.openAuthModal()">{{'set_auth'|translate}}<b class="caret"></b></div>
+</div>
+<div class="table-wrap">
+  <wm-table ng-model="ding.list" is-select-all="true"></wm-table>
+</div>
+
+<div wm-pagination current-page="ding.currentPage" page-size="ding.pageSize" total-items="ding.list.data.length" on-change-size="ding.changeSize" on-change-page="ding.changePage"></div>
+
+<!-- Modal used to select authority -->
+<div class="tag-modal" ng-show="ding.showModal" ng-style="ding.modalStyle">
+  <h3 class="tag-title">{{"set_auth"|translate}}</h3>
+  <div class="tag-content normal-modal-content">
+    <section class="form-group">
+      <label class="normal-label" translate="selected_object"></label>
+      <ul ng-if="ding.selectedUsers.length==1" class="list-inline">
+        <li ng-repeat="user in ding.selectedUsers">{{user.name}}</li>
+      </ul>
+      <div ng-if="ding.selectedUsers.length>1">{{'management_ding_user_count_tip'|translate:'{ count: ding.selectedUsers.length }'}}</div>
+    </section>
+
+    <section class="form-group">
+      <label class="normal-label" translate="select_opened_auth"></label>
+      <ul class="list-inline">
+        <li>
+          <div wm-checkbox ng-model="ding.selectedNone" ng-click="ding.selectNone()"></div>
+          <span translate="has_no_auth"></span>
+        </li>
+        <li ng-repeat="auth in ding.auths track by $index">
+          <div wm-checkbox ng-model="auth.checked" ng-click="ding.selectAuth()"></div>
+          <span translate="{{auth.name}}"></span>
+        </li>
+      </ul>
+    </section>
+
+    <div class="confirm-select">
+      <span class="btn btn-success" translate="ok" ng-click="ding.ensureAuth()"></span>
+      <span class="btn btn-default" translate="cancel" ng-click="ding.showModal = false"></span>
+    </div>
+  </div>
+</div>
+<div class="modal-no-color" ng-show="ding.showModal" ng-click="ding.showModal=false">
+  </div>
+
+<script type="text/ng-template" id="department.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()"></button>
+    <h4 class="modal-title" translate="management_ding_department_title"></h4>
+  </div>
+
+  <div class="modal-body">
+    <ul class="list-inline">
+      <li ng-repeat="department in departments track by $index">
+        <div wm-radio ng-model="$parent.selected" value="{{department.id}}"></div>
+        <span>{{department.name}}</span>
+      </li>
+    </ul>
+    <div class="center-text" ng-if="!departments.length" translate="no_data"></div>
+  </div>
+
+  <div class="modal-footer center-text">
+    <input type="submit" ng-click="submit()" ng-disabled="disableBtn" class="btn btn-success user-btn" value="{{'ok'|translate}}" />
+  </div>
+</script>

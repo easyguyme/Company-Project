@@ -1,0 +1,115 @@
+<div>
+  <div wm-breadcrumb="shelf.breadcrumb"></div>
+
+  <section class="container-fluid">
+    <form role="form" class="edit-goods-form" ng-submit="shelf.submit()">
+
+      <section class="form-group row clear-container-margin">
+        <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+          <label class="fields-item-label fields-color-label" translate="store_number"></label>
+          <span class="disable-item-content">{{shelf.goods.sku}}</span>
+        </div>
+      </section>
+
+      <section class="form-group row clear-container-margin">
+        <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+          <label class="fields-item-label fields-color-label" translate="store_promotion_goods_name"></label>
+          <span class="disable-item-content">{{shelf.goods.productName}}</span>
+        </div>
+      </section>
+
+      <section class="form-group row clear-container-margin">
+        <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+          <label class="fields-item-label fields-color-label required-field" translate="images"></label>
+          <div>
+            <div class="display-ib" wm-picture-show index="0" pictures="shelf.goods.pictures" ng-if="shelf.goods.pictures.length != 0"></div>
+            <div id="goodsPictures" class="display-ib operate-pictures-wrapper" ng-class="{'default-pictures-wrapper':shelf.goods.pictures.length > 0 && shelf.goods.pictures.length < 5, 'max-pictures-wrapper': shelf.goods.pictures.length == 5}">
+              <div class="edit-goods-wrapper cp" translate="product_goods_select_images" ng-click="shelf.choosePictures()"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-group row clear-container-margin">
+        <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+          <label class="fields-item-label fields-color-label required-field">{{'price' | translate}}(￥)</label>
+          <div class="clearfix">
+            <div class="activity-short-item pull-left">
+              <input class="form-control" type="text" ng-model="shelf.goods.price" required without-star wm-validate="shelf.checkPrice"/>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="form-group row clear-container-margin">
+        <div class="col-md-6 col-sm-8 col-xs-10 clear-container-padding">
+          <label class="fields-item-label fields-color-label required-field" translate="product_goods_hit_shelves_time"></label>
+          <section class="score-rule-box shelves-types-wrapper">
+            <ul id="goodsShelves" class="clear-margin">
+              <li class="row clear-margin gift-rule-item" ng-repeat="type in shelf.goodsShelvesTypes track by $index">
+                  <div class="col-md-3 col-sm-4 col-xs-5 clear-container-padding basic-score-type">
+                    <div wm-radio ng-model="shelf.shelvesType" value="{{type.value}}" ng-click="shelf.changeShelvesType()"></div>
+                    <label class="fields-item-label associated-gift-item" translate="{{type.name}}"></label>
+                  </div>
+                  <div class="col-md-9 col-sm-8 col-xs-7 clear-container-padding basic-score-content edit-date" ng-if="type.value == 'schedule'">
+                    <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" more-than-today="true" pick-time="true" ng-model="type.time" required-field="true" ng-if="shelf.shelvesType == 'schedule'"></div>
+                    <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" pick-date="true" more-than-today="true" pick-time="true" ng-model="type.time" ng-if="shelf.shelvesType != 'schedule'" ng-class="{disabled: shelf.isDisabled}"></div>
+                  </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="operation-item shelf-edit">
+        <div class="form-group">
+          <button class="btn btn-success" translate="core_ok"></button>
+          <span class="btn btn-default" translate="cancel" ng-click="shelf.cancel()"></span>
+        </div>
+      </section>
+
+    </form>
+  </section>
+
+  <script type="text/ng-template" id="choosePictures.html">
+    <header class="modal-header">
+      <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+      <h4 class="modal-title choose-pictures-title">{{'product_goods_select_images' | translate}}<small class="choose-pictures-tip">{{'product_goods_select_images_tip' | translate}}</small></h4>
+    </header>
+
+    <section class="modal-body modal-bgcolor clearfix">
+
+      <div class="form-group choose-pictures-wrapper">
+        <div class="pictures-no-data absolute-center" translate="product_goods_images_no_data" ng-show="pictures.length == 0"></div>
+        <div class="waterfall clearfix">
+          <div ng-repeat="picture in pictures track by $index" class="waterfall-item pull-left">
+            <div class="picture-wrapper" ng-click="choose($index)" ng-class="{'wrapper-checked cp' : picture.checked, 'cp': chosenPictures.length < 5}">
+              <div class="picture-box">
+                <img wm-center-img class="picture-source" ng-src="{{picture.url}}">
+              </div>
+              <div class="picture-name text-el">{{picture.name}}</div>
+              <div class="checked-picture-flag" ng-show="picture.checked" translate="product_goods_images_selected"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group show-pictures-wrapper">
+        <label class="chosen-picture-label" translate="product_goods_images_selected"></label>
+        <ul class="selected-picture-wrapper clearfix">
+          <li class="selected-picture-item pull-left" ng-repeat="item in showPictures track by $index" ng-class="{'has-picture-item cp': $index < chosenPictures.length}">
+            <div class="selected-picture-source-box">
+              <img wm-center-img class="selected-picture-source" ng-src="{{chosenPictures[$index]}}" ng-if="$index < chosenPictures.length">
+            </div>
+            <div class="delete-picture-wrapper" ng-click="removeCheckedPic($index)"></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-group center-text" style="margin-bottom: 45px;">
+        <button class="btn btn-success" translate="management_submit" ng-click="submit()"></button>
+      </div>
+    </section>
+  </script>
+</div>

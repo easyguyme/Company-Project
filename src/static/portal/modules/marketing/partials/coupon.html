@@ -1,0 +1,102 @@
+<div wm-breadcrumb="coupon.breadcrumb"></div>
+<div wm-tabs="coupon.changTab()" tabs="coupon.tabs" ng-model="coupon.curTab"></div>
+<div wm-tab-panes tabs="coupon.tabs" full-path="/build/modules/marketing/partials/"></div>
+
+<script type="text/ng-template" id="editCoupon.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="coupon.hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{coupon.title | translate}}</h4>
+  </div>
+  <form name="userUpdateForm" ng-submit="coupon.save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <!-- Edit Sku-->
+      <div ng-if="coupon.colDef=='total'">
+        <div class="form-group">
+          <label class="normal-label product-detail-name">{{'product_coupon_current_sku' | translate}}</label> {{coupon.total}}
+        </div>
+
+        <div class="form-group clearfix">
+          <div class="score-point-type pull-left">
+            <div wm-select ng-model="coupon.type" text-field="text" value-field="value" items="coupon.skuItems"></div>
+          </div>
+          <div class="point-fill pull-left">
+            <input without-star id="points" ng-model="coupon.sku" class="form-control" type="text" wm-validate="coupon.checkSku" maxlength="10" wm-input-reg data-reg="(^[1-9]\d*$)" required />
+          </div>
+          <span class="point-label">{{'product_coupon_fen' | translate}}</span>
+        </div>
+      </div>
+
+      <!-- Edit Validation Date-->
+      <div ng-if="coupon.colDef=='validation'">
+        <div class="form-group clearfix">
+          <label class="normal-label product-detail-name required-field col-md-12">{{'product_coupon_validation' | translate}}</label>
+
+          <!-- Datetime Picker -->
+          <div ng-if="coupon.date=='absolute'">
+            <div class="pull-left coupon-date pd0">
+              <div id="startTime" wm-datetime-picker format-type="YYYY-MM-DD" picker-id="startPicker" pick-date="true" pick-time="false" more-than-today="{{!coupon.isDisableStartPicker}}" required-field="true" ng-model="coupon.beginTime" min-date-picker-id="endPicker" is-disabled="{{coupon.isDisableStartPicker}}" config="coupon.startPickerConfig"></div>
+            </div>
+            <div class="pull-left coupon-horizon-line">−</div>
+            <div class="pull-left coupon-date pd0">
+              <div id="endTime" wm-datetime-picker format-type="YYYY-MM-DD" picker-id="endPicker" pick-date="true" pick-time="false" more-than-today="{{!coupon.isDisableEndPicker}}" ng-model="coupon.endTime" max-date-picker-id="startPicker" required-field="true" is-disabled="{{coupon.isDisableEndPicker}}" config="coupon.endPickerConfig"></div>
+            </div>
+          </div>
+
+          <!-- Receive Rule -->
+          <div ng-if="coupon.date=='relative'">
+            <div class="pull-left coupon-rule-text">{{'product_coupon_claimed_1' | translate}}</div>
+            <div class="coupon-rule-type pull-left">
+              <div wm-select ng-model="coupon.beginTime" text-field="text" value-field="value" items="coupon.triggerTimeItems"></div>
+            </div>
+            <div class="pull-left coupon-rule-text">{{'product_coupon_claimed_2' | translate}}</div>
+            <div class="coupon-rule-type pull-left">
+              <div wm-select ng-model="coupon.endTime" text-field="text" value-field="value" items="coupon.dayItems"></div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>
+
+<script type="text/ng-template" id="couponStatistics.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="coupon.hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'product_coupon_statistics' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor modal-dialog-padding clearfix">
+    <!-- Key indicator -->
+    <div class="panel panel-default panel-main-content score-pannel">
+      <div class="panel-heading panel-title-block">
+        <span>{{'product_coupon_overview' | translate}}</span>
+      </div>
+      <div class="panel-body row score-reward-body">
+        <div class="col-sm-6 col-md-6" ng-repeat="item in coupon.overview track by $index">
+          <div class="score-total-title text-el">{{item.text | translate}}</div>
+          <div class="total-number">{{item.value}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Select Date-->
+    <div class="col-md-6 pd0">
+      <div class="pull-left coupon-date pd0">
+        <div id="startTime" wm-datetime-picker format-type="YYYY-MM-DD" picker-id="startPicker" pick-date="true" pick-time="false" less-than-yesterday="true" required-field="true" time-handler="coupon.selectDate()" ng-model="coupon.beginTime" min-date-picker-id="endPicker" first-unbind-handler="true"></div>
+      </div>
+      <div class="pull-left coupon-horizon-line">−</div>
+      <div class="pull-left coupon-date pd0">
+        <div id="endTime" wm-datetime-picker format-type="YYYY-MM-DD" picker-id="endPicker" pick-date="true" pick-time="false" less-than-yesterday="true" ng-model="coupon.endTime" time-handler="coupon.selectDate()" max-date-picker-id="startPicker" required-field="true" first-unbind-handler="true"></div>
+      </div>
+    </div>
+
+    <!-- Line chart-->
+    <div class="col-md-12 pd0 coupon-chart-wrapper">
+      <div wm-line-chart options="coupon.lineChartOptions" width="768px" height="350px"></div>
+    </div>
+
+  </div>
+</script>
+
+

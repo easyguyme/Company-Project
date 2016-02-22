@@ -1,0 +1,60 @@
+.m-tel {
+  $style-color: #fff;
+  $size-color: #1c1c1c;
+
+  .m-tel-height {
+    height: 1.43rem;
+    padding: .19rem .50rem;
+  }
+
+  .m-a-style {
+    text-decoration: none;
+  }
+
+  %m-tel-style-box {
+    border-radius: .10rem;
+    font-size: .50rem;
+    text-align: center;
+  }
+
+  .m-tel-style-one-box {
+    @extend %m-tel-style-box;
+    color: $style-color;
+    height: 1.38rem;
+    line-height: 1.38rem;
+  }
+
+  .m-tel-style-two-box {
+    @extend %m-tel-style-box;
+    background-color: $style-color;
+    border-style: solid;
+    border-width: 1px;
+    color: $size-color;
+    height: 1.35rem;
+    line-height: 1.35rem;
+  }
+
+  %m-tel-style-word-img {
+    background-position-y: center;
+    background-size: .63rem .53rem;
+    line-height: 1.38rem;
+    vertical-align: middle;
+  }
+
+  .m-tel-style-one-word {
+    @extend %m-tel-style-word-img;
+    @include background-image('/images/microsite/phoneicon.png');
+    padding-left: .94rem;
+  }
+
+  .m-tel-style-two-word {
+    @include size(.63rem, .53rem);
+    margin-left: .66rem;
+    vertical-align: middle;
+  }
+
+  .m-tel-style-two-word-left {
+    padding-left: .28rem;
+  }
+
+}

@@ -1,0 +1,13 @@
+{
+    "id":"554972b8e4b050b441eb7625",
+    "appId":"2014102700014769",
+    "name":"徒步去旅行",
+    "channelAccount":"2014102700014769",
+    "headImageUrl":"http://wx.qlogo.cn/mmopen/GPyw0pGicibl5Eda4GmSSbTguhjg9LZjumHmVjybjiaQXnE9XrXEts6ny9Uv4Fk6hOScWRDibq1fI0WOkSaAjaecNTict3n6EjJaC/0",
+    "channel":"ALIPAY",
+    "status":"ENABLE",
+    "createTime":1430876856005,
+    "accessStatus":"NON_CONNECT",// 三种状态(SUCCESS， NON_CONNECT, FAILED)
+    "serviceUrl":"http://dev.wx.quncrm.com/alipay/2014102700014769",
+    "publicKey":"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDVdgJxIGauzmzMgTSoWpuEeaTTFtubbZng79qhoRGViGX6aSiwWbkdrzAAeCDIyRB6TLLnf/6Lil9iKjgqPY2ljuqZZX2wkNsABMTqDfORfTe4agZ9vuMSq9IXrtqDWM2WK0t0Xr9AQw6l424AFA2hS3nJKf5W32wjL/P6sVO16wIDAQAB"
+}

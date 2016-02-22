@@ -1,0 +1,12 @@
+<div ng-controller="wm.ctrl.microsite.page.config.tab as tab">
+    <form id="form-tab" ng-submit="cpts.sendData(tab.data)">
+      <div class="form-group">
+        <label for="tab" translate="content_component_config_tab"></label>
+        <div ng-repeat="tab in tab.data.tabs" class="content-component-config-tab">
+            <input class="form-control content-component-config-tab-input" type="text" id="tab" placeholder="{{'content_component_config_tab0'|translate}}" ng-model="tab.name" maxlength="6" form-tip="{{'content_component_config_tab_tip'|translate}}" ng-if = "tab.active==true" required>
+            <input class="form-control content-component-config-tab-input" type="text" id="tab" placeholder="{{'content_component_config_tab1'|translate}}" ng-model="tab.name" maxlength="6" form-tip="{{'content_component_config_tab_tip'|translate}}" ng-if = "tab.active==false" required>
+        </div>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

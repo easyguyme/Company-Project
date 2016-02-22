@@ -1,0 +1,37 @@
+.pic-close-btn {
+  @include size(14px, 13px);
+  background-image: url('/images/management/icon_popup_close_default.png');
+  display: inline-block;
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  z-index: 9999;
+
+  &:hover {
+    background-image: url('/images/management/icon_popup_close_hover.png');
+  }
+}
+
+.show-single-pic-wrapper {
+  width: 300px;
+  height: 450px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 1050;
+  margin-top: -225px;
+  margin-left: -150px;
+  background-color: #fafafa;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(#aaa, 0.75);
+  .relative-center {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}

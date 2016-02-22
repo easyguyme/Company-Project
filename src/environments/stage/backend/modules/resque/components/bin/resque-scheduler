@@ -1,0 +1,122 @@
+#!/usr/bin/env php
+<?php
+use backend\modules\resque\components\RResqueAutoloader;
+use backend\modules\resque\components\lib\Resque\Resque_Worker;
+use backend\modules\resque\components\lib\Resque\Resque_Redis;
+use backend\modules\resque\components\lib\ResqueScheduler\ResqueScheduler_Worker;
+use backend\modules\resque\components\ResqueUtil;
+
+defined('YII_DEBUG') or define('YII_DEBUG', false);
+defined('YII_ENV') or define('YII_ENV', 'stage');
+
+// change the following paths if necessary
+require(__DIR__ . '/../../../../../vendor/autoload.php');
+require(__DIR__ . '/../../../../../vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../../../../../common/config/bootstrap.php');
+require(__DIR__ . '/../../../../config/bootstrap.php');
+
+$config = yii\helpers\ArrayHelper::merge(
+    require(__DIR__ . '/../../../../config/main.php'),
+    require(__DIR__ . '/../../../../config/main-local.php'),
+    require(__DIR__ . '/../../../../../common/config/main.php'),
+    require(__DIR__ . '/../../../../../common/config/main-local.php')
+);
+
+# Init the resque timezone
+$timeZone = 'UTC';
+if (!empty($config['timeZone'])) {
+    $timeZone = $config['timeZone'];
+}
+date_default_timezone_set($timeZone);
+
+new yii\web\Application($config);
+# Turn off our amazing library autoload
+spl_autoload_unregister(array('Yii','autoload'));
+
+    // Find and initialize Composer
+    $files = array(
+        dirname(__FILE__) . '/../RResqueAutoloader.php',
+    );
+
+    foreach ($files as $file) {
+        if (file_exists($file)) {
+            require_once $file;
+            break;
+        }
+    }
+
+
+    RResqueAutoloader::register();
+
+# Give back the power to Yii
+spl_autoload_register(array('Yii','autoload'));
+
+$QUEUE = getenv('QUEUE');
+if(empty($QUEUE)) {
+    die("Set QUEUE env var containing the list of queues to work.\n");
+}
+
+$REDIS_BACKEND = getenv('REDIS_BACKEND');
+$REDIS_BACKEND_DB = getenv('REDIS_BACKEND_DB');
+$REDIS_AUTH = getenv('REDIS_AUTH');
+if(!empty($REDIS_BACKEND)) {
+    $REDIS_BACKEND_DB = (!empty($REDIS_BACKEND_DB)) ? $REDIS_BACKEND_DB : 0;
+    Resque::setBackend($REDIS_BACKEND, $REDIS_BACKEND_DB, $REDIS_AUTH);
+}
+
+// Set log level for resque-scheduler
+$logLevel = 0;
+$LOGGING = getenv('LOGGING');
+$VERBOSE = getenv('VERBOSE');
+$VVERBOSE = getenv('VVERBOSE');
+if(!empty($LOGGING) || !empty($VERBOSE)) {
+    $logLevel = Resque_Worker::LOG_NORMAL;
+} else if(!empty($VVERBOSE)) {
+    $logLevel = Resque_Worker::LOG_VERBOSE;
+}
+
+$logger = null;
+// $LOG_HANDLER = getenv('LOGHANDLER');
+// $LOG_HANDLER_TARGET = getenv('LOGHANDLERTARGET');
+
+// if (class_exists('MonologInit_MonologInit')) {
+//     if (!empty($LOG_HANDLER) && !empty($LOG_HANDLER_TARGET)) {
+//         $logger = new MonologInit_MonologInit($LOG_HANDLER, $LOG_HANDLER_TARGET);
+//     } else {
+//         fwrite(STDOUT, '*** loghandler or logtarget is not set.'."\n");
+//     }
+// } else {
+//     fwrite(STDOUT, '*** MonologInit_MonologInit logger cannot be found, continue without loghandler.'."\n");
+// }
+
+// Check for jobs every $interval seconds
+$interval = 5;
+$INTERVAL = getenv('INTERVAL');
+if(!empty($INTERVAL)) {
+    $interval = $INTERVAL;
+}
+
+$PREFIX = getenv('PREFIX');
+if(!empty($PREFIX)) {
+    fwrite(STDOUT, '*** Prefix set to '.$PREFIX."\n");
+    Resque_Redis::prefix($PREFIX);
+}
+
+$worker = new ResqueScheduler_Worker();
+if (!empty($logger)) {
+    $worker->registerLogger($logger);
+} else {
+    fwrite(STDOUT, "*** Starting scheduler worker\n");
+}
+$worker->logLevel = $logLevel;
+
+ResqueUtil::log(['info' => 'scheduler', 'set log level']);
+
+$PIDFILE = getenv('PIDFILE');
+if ($PIDFILE) {
+    file_put_contents($PIDFILE, getmypid()) or
+        die('Could not write PID information to ' . $PIDFILE);
+}
+
+ResqueUtil::log(['info' => 'scheduler', 'start resque']);
+$worker->work($interval);

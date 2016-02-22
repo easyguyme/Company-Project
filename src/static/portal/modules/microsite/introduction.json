@@ -1,0 +1,24 @@
+{
+  "name": "microsite",
+  "title": "management_extension_microsite_title",
+  "havePartial": false,
+  "link": {
+    "enterFunction": "/microsite/webpage"
+  },
+  "introductions": ["management_extension_microsite_introduction1"],
+  "functions": [
+    {
+      "title": "management_extension_microsite_function1",
+      "image": ["/images/microsite/introduction/combinationofrichcontrols.png"]
+    },
+    {
+      "title": "management_extension_microsite_function2",
+      "image": ["/images/microsite/introduction/thetitlecomponentstyles.png", "/images/microsite/introduction/articlecomponentstyles.png", "/images/microsite/introduction/textcomponentstyles.png"]
+    },
+    {
+      "title": "management_extension_microsite_function3",
+      "image": ["/images/microsite/introduction/coverpageone.png", "/images/microsite/introduction/coverpagetwo.png", "/images/microsite/introduction/coverpagethree.png"]
+    }
+  ],
+  "illustrations": ["management_extension_microsite_illustration1", "management_extension_microsite_illustration2"]
+}

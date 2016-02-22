@@ -1,0 +1,25 @@
+<div ng-controller="wm.ctrl.microsite.page.config.questionnaire as questionnaire">
+  <form id="form-questionnaire" ng-submit="cpts.sendData(questionnaire.data)">
+
+    <div class="form-group">
+      <label class="fwbold" translate="content_questionnaire"></label>
+      <div wm-select ng-model="questionnaire.data.questionnaireId" items="questionnaire.columns" text-field="name" value-field="value" default-text="content_questionnaire_select"></div>
+      <label class="questionnaire-tip" ng-if="questionnaire.language == 'zh_cn'">可在<a href="/content/questionnaire">问卷调查</a>菜单项中创建</label>
+      <label class="questionnaire-tip" ng-if="questionnaire.language == 'zh_tr'">可在<a href="/content/questionnaire">問卷調查</a>菜單項中創建</label>
+      <label class="questionnaire-tip" ng-if="questionnaire.language == 'en_us'">You can create thru the menu item <a href="/content/questionnaire">Questionnaires</a></label>
+    </div>
+
+    <div class="form-group">
+      <label class="fwbold" translate="content_questionnaire_submission"></label>
+      <ul class="questionnaire-radio-items">
+        <li class="radio-item" ng-repeat="style in questionnaire.styles track by $index">
+            <wm-radio class="radio-btn" ng-model="questionnaire.data.style" value="{{style.value}}"></wm-radio>
+            <span translate="{{style.label}}"></span>
+            <div class="radio-content radio-content-{{style.value}}" translate="management_submit"></div>
+        </li>
+      </ul>
+    </div>
+
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+  </form>
+</div>

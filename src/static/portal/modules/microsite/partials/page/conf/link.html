@@ -1,0 +1,23 @@
+<div ng-controller="wm.ctrl.microsite.page.config.link as link">
+    <form id="form-link" ng-submit="cpts.sendData(link.data)">
+      <div class="form-group">
+        <label class="fwbold" translate="content_component_config_link_info"></label>
+      </div>
+      <div class="form-group">
+        <label for="name" translate="content_component_config_link_name"></label>
+        <input class="form-control" type="text" id="name" ng-model="link.data.name" form-tip="{{'content_component_config_link_tip'|translate}}" required maxlength="16" />
+      </div>
+      <div class="form-group">
+        <label class="required-field" for="link" translate="content_component_config_link_address"></label>
+        <div wm-link-select id="linkUrl" ng-model="link.data.linkUrl" no-empty="true"></div>
+      </div>
+      <label translate="content_component_config_display_setting"></label>
+      <ul class="radio-group">
+        <li class="link-radio radio-block" ng-repeat="displayStyle in link.displayStyles">
+            <wm-radio ng-model="link.data.display" value="{{displayStyle.value}}"></wm-radio>
+            <span translate="{{displayStyle.label}}"></span>
+        </li>
+      </ul>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName" />
+    </form>
+</div>

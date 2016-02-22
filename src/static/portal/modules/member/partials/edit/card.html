@@ -1,0 +1,131 @@
+<div class="card-edit-wrapper">
+  <div wm-breadcrumb="card.breadcrumb"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- form -->
+      <div class="col-md-6">
+        <form id="cardForm" name="cardForm" role="form" class="card-edit-form" ng-submit="card.submit($event)">
+          <div class="form-group">
+            <label class="title-color font-label" for="cardName" translate="customer_card_name2"></label>
+            <input id="cardName" type="text" class="form-control edit-card-input-control input-name" ng-class="{'name': card.focusStyle, 'card-name-show' : card.cardNameShow}" minlength="4" maxlength="10" ng-model="card.membershipCardList.name" wm-validate="card.checkName" form-tip="{{'customer_card_membership_name_tip' | translate}}" required/>
+          </div>
+
+          <div class="form-group edit-card-form-group clearfix">
+            <label class="col-md-12 title-color font-label align-left" for="poster" translate="customer_card_poster"></label>
+            <div class="col-md-12">
+              <input class="form-control edit-card-input-control" name="poster" ng-model="card.membershipCardList.poster" readonly="readonly" below-msg required/>
+              <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="card.membershipCardList.poster" max-size="50">
+                <span></span>
+              </div>
+              <input class="form-control hidden" name="poster" ng-model="card.membershipCardList.poster" wm-validate="card.checkPoster" form-tip="{{'customer_card_poster_tip'|translate}}" below-msg required/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="title-color font-label edit-font-color" for="fontColor" translate="customer_card_font_color"></label>
+            <wm-color-picker ng-model="card.membershipCardList.fontColor"></wm-color-picker>
+          </div>
+
+          <div class="form-group card-line-height">
+            <label class="title-color font-label" for="privilege" translate="customer_card_privilege"></label>
+            <div>
+              <div class="ueditor" name="content" ng-model="card.membershipCardList.privilege"></div>
+              <input class="form-control hidden" ng-model="card.membershipCardList.privilege" required/>
+            </div>
+          </div>
+
+          <div class="form-group card-line-height">
+            <label class="title-color font-label" for="usageGuide" translate="customer_card_instruction"></label>
+            <div>
+              <div class="ueditor" name="content" ng-model="card.membershipCardList.usageGuide"></div>
+              <input class="form-control hidden" ng-model="card.membershipCardList.usageGuide" required/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="automatic-reset">
+              <wm-checkbox ng-model="card.isAutomaticReset"></wm-checkbox>
+              <span>{{'customer_card_auto_zeroing'|translate}}</span>
+            </div>
+
+            <div class="automatic-reset-detail" ng-show="card.isAutomaticReset" ng-if="card.language != 'en_us'">
+              <span>{{'customer_card_auto_zeroing_tip_one'|translate}}</span>
+              <span class="select-date-box">
+                <wm-select items="card.months" ng-model="card.cardAutomaticZeroMonth" text-field="text" value-field="value" direction="up" on-change="card.changeAutomaticZeroMonth"></wm-select>
+              </span>
+              <span>{{'unit_month'|translate}}</span>
+              <span class="select-date-box">
+                <wm-select items="card.days" ng-model="card.cardAutomaticZeroDay" text-field="text" value-field="value" direction="up"></wm-select>
+              </span>
+              <span>{{'customer_card_auto_zeroing_tip_two'|translate}}</span>
+            </div>
+
+            <div class="automatic-reset-detail" ng-show="card.isAutomaticReset" ng-if="card.language == 'en_us'">
+              <span>{{'customer_card_auto_zeroing_tip_two'|translate}}</span>
+              <span class="select-date-box">
+                <wm-select items="card.months" ng-model="card.cardAutomaticZeroMonth" text-field="text" value-field="value" direction="up" on-change="card.changeAutomaticZeroMonth"></wm-select>
+              </span>
+              <span>({{'unit_month'|translate}})</span>
+              <span class="slash-line">/</span>
+              <span class="select-date-box">
+                <wm-select items="card.days" ng-model="card.cardAutomaticZeroDay" text-field="text" value-field="value" direction="up"></wm-select>
+              </span>
+              <span>({{'unit_day'|translate}})</span>
+              <span>{{'customer_card_auto_zeroing_tip_one'|translate}}</span>
+            </div>
+
+            <div class="form-group card-upgrade-wrapper">
+              <div ng-click="card.hideTip()" wm-checkbox ng-model="card.membershipCardList.isAutoUpgrade"></div>
+              {{'member_upgrade_card' | translate}}
+              <div ng-show="card.membershipCardList.isAutoUpgrade">
+                <label class="required-field normal-label" translate="member_card_upgrade_rule"></label>
+                <div>
+                  <span>{{'member_caculate_points' | translate}}</span>
+                  <input id="minScore" type="text" class="form-control card-inline-input" ng-model="card.membershipCardList.condition.minScore" maxlength="9" wm-input-reg data-reg="(^[1-9]\d*$)|(^0$)" ng-focus="card.showTip()" />
+                  <div class="points-to-symbol">-</div>
+                  <input id="maxScore" type="text" class="form-control card-inline-input" ng-model="card.membershipCardList.condition.maxScore" maxlength="9" wm-input-reg data-reg="(^[1-9]\d*$)|(^0$)" ng-focus="card.showTip()"/>
+                  <span>{{'member_caculate_points_upgrade_card' | translate}}</span>
+                </div>
+                <div class="highlight">
+                  <input type="text" id="conditionScore" class="form-control hidden input-score"/>
+                  <span class="form-tip"></span>
+                </div>
+                <p ng-show="card.isShowTip" class="form-tip">{{'member_card_upgrade_tip1' | translate}}
+                  <a href="#" ng-click="card.openPointsDialog()">{{'member_card_points' | translate}}</a>
+                  {{'member_card_upgrade_tip2' | translate}}
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div>
+            <button type="submit" class="btn btn-success" translate="ok"></button>
+            <a class="btn btn-default clear-btn-style md10" href="/member/card" translate="cancel"></a>
+          </div>
+        </form>
+      </div>
+      <!-- Icon -->
+      <div class="col-md-6">
+        <div class="edit-poster-wrapper">
+          <label class="font-label card-title" translate="customer_card_my_membership_card"></label>
+          <div class="edit-poster-icon-bg clearfix">
+            <div class="edit-poster-icon" ng-style="{'background-image':'url(' + card.membershipCardList.poster + ')'}"></div>
+            <label class="edit-card-id" ng-style="{'color':card.membershipCardList.fontColor}">1035256565656</label>
+            <label class="edit-card-name fs14 text-el" ng-style="{'color':card.membershipCardList.fontColor}" ng-bind="card.membershipCardList.name"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="points.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'member_card_points' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor card-points-wrapper">
+    <div wm-fixed-table ng-model="list"></div>
+  </div>
+</script>

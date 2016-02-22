@@ -1,0 +1,211 @@
+$current-conversation-background:            #f0f2f5;
+$customer-message-background:                #dcedf8;
+$conversation-list-hover-background:         #38c4a9;
+$conversation-list-border:                   #eee;
+$message-content-color:                      #555;
+
+.helpdeskmessagerecord {
+  .message-wrapper {
+    padding: 12px 10px;
+  }
+
+  .helpdesk-tabs-title {
+    margin-top: 12px;
+  }
+
+  .wiki-search {
+    position: relative;
+
+    %icon-base {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .search-icon {
+      @extend %icon-base;
+      background-image: url('/images/core/search.png');
+      left: 12px;
+      top: 12px;
+    }
+
+    .clear-icon {
+      @extend %icon-base;
+      background-image: url('/images/core/clear.png');
+      top: 12px;
+      right: 12px;
+      display: none;
+    }
+
+    .show-clear {
+      display: inline-block;
+    }
+
+    .search-input {
+      padding-left: 38px;
+      height: 32px;
+    }
+  }
+
+  .select-conversation {
+    margin-top: 12px;
+    position: relative;
+
+    %conversation-base {
+      height: 34px;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+
+    .current-conversation {
+      @extend %conversation-base;
+      background-color: $current-conversation-background;
+      overflow-x: visible;
+      white-space: nowrap;
+    }
+
+    .conversation-dropdown {
+      position: absolute;
+      max-height: 175px;
+      overflow-y: auto;
+      z-index: 5;
+    }
+
+    .history-conversation {
+      @extend %conversation-base;
+      border: 1px solid $conversation-list-border;
+      border-top-width: 0;
+      border-bottom-width: 0;
+      height: 34px;
+      overflow-x: visible;
+      white-space: nowrap;
+      background-color: $white-color;
+
+      &:last-child {
+        border-bottom-width: 1px;
+      }
+
+      &:hover {
+        background-color: $conversation-list-hover-background;
+
+        span {
+          color: $white-color;
+        }
+      }
+
+      .conversation-client {
+        width: 100px;
+      }
+    }
+
+    %conversation-info-base {
+      font-size: 14px;
+      font-family: 'Microsoft YaHei', Arial;
+      line-height: 34px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .conversation-start-time {
+      @extend %conversation-info-base;
+      width: 150px;
+    }
+
+    .conversation-helpdesk {
+      @extend %conversation-info-base;
+      width: 110px;
+    }
+
+    .wechat-service-icon {
+      background-image: url('/images/core/wechat_service.png');
+    }
+
+    .wechat-subscription-icon {
+      background-image: url('/images/core/wechat_subscription.png');
+    }
+
+    .weibo-icon-no-conflict {
+      background-image: url('/images/core/weibo-icon.png');
+    }
+
+    .website-icon {
+      background-image: url('/images/core/pc.png');
+    }
+
+    .alipay-icon {
+      background-image: url('/images/core/alipay-icon.png');
+    }
+
+    .conversation-client {
+      @extend %conversation-info-base;
+      padding-left: 22px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      width: 93px;
+    }
+
+    .conversation-dropdown-icon {
+      @extend %conversation-info-base;
+    }
+
+    %arrow-base {
+      width: 8px;
+      height: 4px;
+      background-repeat: no-repeat;
+      background-size: 8px 4px;
+    }
+
+    .arrow-down {
+      @extend %arrow-base;
+      background-image: url('/images/core/helpdesk_history_conversation_down.png');
+    }
+
+    .arrow-up {
+      @extend %arrow-base;
+      background-image: url('/images/core/helpdesk_history_conversation_up.png');
+    }
+  }
+
+  .history-messages {
+    .customer-background {
+      background-color: $customer-message-background;
+    }
+
+    .conversation-message {
+      padding: 0 10px;
+      min-height: 50px;
+    }
+
+    .message-character {
+      color: $issue-list-color;
+      line-height: 1;
+      padding-top: 6px;
+
+      .nick-name {
+        margin-right: 20px;
+      }
+    }
+
+    .message-content {
+      color: $message-content-color;
+      line-height: 1;
+      margin-top: 8px;
+      padding-bottom: 6px;
+
+      .text-message {
+        word-break: break-all;
+      }
+    }
+  }
+
+  .message-empty {
+    .no-message {
+      line-height: 1;
+      color: $message-content-color;
+      margin-top: 100px;
+      text-align: center;
+    }
+  }
+}

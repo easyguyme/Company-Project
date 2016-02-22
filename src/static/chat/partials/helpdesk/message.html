@@ -1,0 +1,52 @@
+<div class="helpdeskmessagerecord" ng-controller="wm.ctrl.helpdesk.tabs.message as message">
+  <div class="message-wrapper" ng-show="message.hasHistoryMessage">
+    <h2 class="helpdesk-tabs-title" translate="helpdesk_message_record"></h2>
+
+    <div class="wiki-search hide">
+      <span class="search-icon"></span>
+      <span class="clear-icon" ng-class="{'show-clear': message.keyword}"></span>
+      <input type="text" class="form-control search-input" placeholder="{{'helpdesk_search_placeholder' | translate}}" ng-model="message.keyword"/>
+    </div>
+    <div class="select-conversation">
+      <div class="current-conversation" ng-click="message.showDropdown = !message.showDropdown">
+        <span class="conversation-start-time">{{message.currentConversation.startTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+        <span class="conversation-helpdesk text-el">{{"helpdesk" | translate}} {{message.currentConversation.helpdesk.nick}}</span>
+        <span class="conversation-client text-el"
+        ng-class="{'wechat-service-icon':message.currentConversation.client.type == 'service_auth_account' || message.currentConversation.client.type == 'service_account',
+        'wechat-subscription-icon': message.currentConversation.client.type == 'subscription_auth_account' || message.currentConversation.client.type == 'subscription_account',
+        'weibo-icon-no-conflict':message.currentConversation.client.type == 'weibo',
+        'website-icon':message.currentConversation.client.type == 'website',
+        'alipay-icon':message.currentConversation.client.type == 'alipay'}">{{message.currentConversation.client.name}}</span>
+        <span class="conversation-dropdown-icon" ng-class="{'arrow-down': !message.showDropdown, 'arrow-up': message.showDropdown}"></span>
+      </div>
+      <div class="conversation-dropdown" ng-show="message.showDropdown">
+        <div class="history-conversation" ng-repeat="conversation in message.historyConversations" ng-click="message.selectConversation($index)">
+          <span class="conversation-start-time">{{conversation.startTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+          <span class="conversation-helpdesk text-el" wm-tooltip="{{'helpdesk' | translate}} {{conversation.helpdesk.nick}}">{{"helpdesk" | translate}} {{conversation.helpdesk.nick}}</span>
+          <span class="conversation-client text-el"
+          ng-class="{'wechat-service-icon':conversation.client.type == 'service_auth_account' || conversation.client.type == 'service_account',
+          'wechat-subscription-icon': conversation.client.type == 'subscription_auth_account' || conversation.client.type == 'subscription_account',
+          'weibo-icon-no-conflict':conversation.client.type == 'weibo',
+          'website-icon':conversation.client.type == 'website',
+          'alipay-icon':conversation.client.type == 'alipay'}" wm-tooltip="{{conversation.client.name}}">{{conversation.client.name}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="history-messages">
+      <div class="conversation-message" ng-class="{'customer-background': !message.isHelpdesk}" ng-repeat="message in message.currentMessages">
+        <div class="message-character">
+          <span class="nick-name">{{message.nick}}</span><span class="message-time">{{message.startTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+        </div>
+        <div class="message-content">
+          <div class="text-message" ng-if="message.content.msgType == 'TEXT'" ng-bind-html="message.content.body"></div>
+          <div class="" ng-if="message.content.msgType == 'NEWS'">
+            <div class="message-graphic" wm-wechat-graphic graphic="message.content.body" linkable="true"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="message-empty" ng-show="!message.hasHistoryMessage">
+    <div class="no-message">{{"helpdesk_no_message" | translate}}</div>
+  </div>
+</div>

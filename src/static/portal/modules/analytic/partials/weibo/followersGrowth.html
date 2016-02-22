@@ -1,0 +1,27 @@
+<div class="followers-growth-container" ng-controller="wm.ctrl.analytic.weibo.followersGrowth as followersGrowth">
+  <div wm-yesterday-statistics statistics-title="yesterday_key_index" overview="followersGrowth.overviewList"></div>
+
+  <div class="content-weibo-date clearfix row mlr0">
+    <div class="col-md-offset-6 col-md-3 col-sm-6 col-xs-12">
+      <div class="row">
+        <span class="content-weibo-text plr0 text-center col-md-2 col-sm-1 col-xs-1"></span>
+        <div class="col-md-10 col-sm-11 col-xs-11 plr0">
+          <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="beginPicker" min-date-picker-id="endPicker" pick-date="true" pick-time="false" ng-model="followersGrowth.startDate" time-handler="followersGrowth.selectDate()" less-than-yesterday="true" first-unbind-handler="true"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="row">
+        <span class="content-weibo-text plr0 text-center col-md-2 col-sm-1 col-xs-1">{{'analytic_to'|translate}}</span>
+        <div class="col-md-10 col-sm-11 col-xs-11 plr0">
+          <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="endPicker" max-date-picker-id="beginPicker" pick-date="true" pick-time="false" ng-model="followersGrowth.endDate" time-handler="followersGrowth.selectDate()" less-than-yesterday="true" first-unbind-handler="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="followers-growth-tabs" wm-tabs="followersGrowth.changeTab()" data-inner="true" tabs="followersGrowth.tabs" ng-model="followersGrowth.curTab"></div>
+  <div class="follower-growth-chart">
+    <div wm-line-chart options="followersGrowth.lineChartOptions" width="100%" height="400px"></div>
+  </div>
+</div>

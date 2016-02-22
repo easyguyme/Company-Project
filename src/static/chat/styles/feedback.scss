@@ -1,0 +1,66 @@
+$feedback-message-text-color: #3c3c3c;
+$feedback-gray-color: #787878;
+
+.feedback {
+  &.container {
+    width: auto;
+    margin: 10px;
+
+    .message {
+      margin-bottom: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 16px;
+      color: $feedback-message-text-color;
+    }
+
+    .dark-gray {
+      color: $feedback-gray-color;
+      font-weight: 400 !important;
+    }
+
+    .upload-btn {
+      width: 45px;
+      height: 45px;
+    }
+
+    .issue-attachment-list {
+      overflow: hidden;
+    }
+
+    .feedback-footer {
+      text-align: center;
+      margin-top: 14px;
+    }
+  }
+}
+
+.feedback-success {
+  &.container {
+    width: auto;
+    margin: 10px;
+    text-align: center;
+    height: 90%;
+  }
+
+  .content {
+    margin-top: 150px;
+
+    .complete-icon {
+      transform: scale(.66);
+      display: block;
+      margin: auto;
+    }
+
+    label {
+      font-size: 18px;
+      color: $feedback-gray-color;
+      font-weight: 400;
+    }
+  }
+
+  .text {
+    margin-top: 41px;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,18 @@
+.mb-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  @include background-image("/images/mobile/campaign_btn.png");
+  background-size: 17.5rem;
+  color: #fc5d59;
+  padding: 1rem 0;
+  width: 17.5rem;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.mb-btn-disabled {
+  cursor: none;
+  pointer-events: none;
+}

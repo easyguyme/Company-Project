@@ -1,0 +1,28 @@
+{
+  "name": "site",
+  "plain": true,
+  "states": [
+    "site-login",
+    "site-logout",
+    "site-forbidden",
+    "site-invite-{code}",
+    "site-user",
+    "site-update",
+    "site-resetpassword",
+    "site-resetpasswordresult",
+    "site-missing",
+    "site-error",
+    "site-comming",
+    "site-redirect"
+  ],
+  "resources": {
+    "site": "site",
+    "login": "/api/site/login",
+    "logout": "/api/site/logout",
+    "invite": "/api/site/invite",
+    "updateInfo": "/api/site/update-info",
+    "user": "/api/management/user",
+    "resetPasswordEmail": "/api/site/send-reset-password-email",
+    "resetPassword": "/api/site/resetpassword"
+  }
+}

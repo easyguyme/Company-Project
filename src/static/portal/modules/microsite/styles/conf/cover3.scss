@@ -1,0 +1,18 @@
+$component-field-label-tip-color: #a0a0a0;
+
+.component-ib {
+  display: inline-block;
+}
+
+.config-wrap {
+  .component-cover3-hearder {
+    margin-bottom: 0px;
+  }
+
+  .component-hearder-tip {
+    color: $component-field-label-tip-color;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+}

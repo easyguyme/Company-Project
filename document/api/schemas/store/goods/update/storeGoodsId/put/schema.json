@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "status": {
+      "type": "string",
+      "required": true,
+      "description": "状态"
+    },
+    "price": {
+      "type": "float",
+      "required": true,
+      "description": "商品价格"
+    },
+    "pictures": {
+      "type": "array",
+      "required": false,
+      "description": "图片"
+    },
+    "onSaleTime": {
+      "type": "string",
+      "required": false,
+      "description": "上架时间"
+    }
+  }
+}

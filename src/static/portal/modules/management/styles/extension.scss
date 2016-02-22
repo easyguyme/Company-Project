@@ -1,0 +1,411 @@
+$extension-pane-background-hover-color: #fafafa;
+$extension-pane-border-color: #ededed;
+$extension-pane-title-color: #1c1c1c;
+$extension-pane-active-color: #a0a0a0;
+$extension-gray1-color: #787878;
+$extension-gray2-color: #1c1c1c;
+$extension-hilight-color: #37c3aa;
+$extension-detail-wrapper-color: #f5f5f5;
+$extension-title-color: #ddd;
+$wm-extension-line-color:#eee;
+
+.full-width {
+  width: 100%;
+}
+
+.mt7 {
+  margin-top: 7px;
+}
+
+.mb115 {
+  margin-bottom: 115px;
+}
+
+.ml-14 {
+  margin-left: -14px;
+}
+
+.extension-right-image {
+  margin-top: -40px;
+}
+
+.extension-icon-mr {
+  margin-bottom: 2px;
+  margin-right: 12px;
+}
+
+.extension-gray1 {
+  color: $extension-gray1-color;
+}
+
+.extension-gray2 {
+  color: $extension-gray2-color;
+}
+
+.extension-step {
+  margin-bottom: 5px;
+  margin-right: 14px;
+}
+
+.extension-wrapper {
+  padding: 0 20px;
+}
+
+.extension-detail-wrapper {
+  border: 1px solid $extension-detail-wrapper-color;
+  box-shadow: 0 2px rgba(168, 168, 168, .4);
+  padding: 12px 20px 13px;
+}
+
+.extension-title {
+  border-bottom: 1px solid $extension-title-color;
+  padding-bottom: 12px;
+}
+
+.extension-btn {
+  height: 35px;
+  min-width: 104px;
+}
+
+.extension-detail {
+  padding-top: 15px;
+
+  p {
+    margin-left: 12px;
+  }
+
+  ul {
+    color: $extension-gray1-color;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 12px;
+
+      img {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.extension-continue {
+  padding-left: 30px;
+  padding-right: 0;
+
+  ul {
+    color: $extension-gray1-color;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 12px;
+
+      img {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.extension-function-body {
+  padding-left: 30px;
+  padding-right: 0;
+
+  ul {
+    color: $extension-gray1-color;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 12px;
+
+      img {
+        margin-bottom: 3px;
+        margin-right: 10px;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+
+        .extension-function-img {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.extension-function-wrapper {
+  padding: 35px 0 0 60px;
+}
+
+.extension-continue-helpdesk {
+  margin-left: 30px;
+  padding-top: 30px;
+}
+
+.extension-channel-title {
+  margin-bottom: 20px;
+}
+
+.helpdesk-function-img-wrapper {
+  color: $extension-gray1-color;
+
+  li {
+    float: left;
+    margin-bottom: 50px;
+
+    .mb15 {
+      margin-bottom: 15px;
+    }
+
+    .paragragh-split {
+      margin-bottom: 2px;
+      margin-right: 3px;
+    }
+  }
+
+  .odd-style {
+    width: 70%;
+  }
+
+  .even-style {
+    margin-left: 7%;
+    width: 17%;
+  }
+}
+
+.helpdesk-function-img {
+  width: 100%;
+}
+
+.extension-continue-member {
+  padding-top: 20px;
+}
+
+.extension-todo-spacing {
+  padding-bottom: 50px;
+}
+
+.extension-function-title {
+  margin-bottom: 30px;
+}
+
+.extension-function-img {
+  margin-bottom: 55px;
+  margin-top: 15px;
+}
+
+.function-img {
+  max-width: 100%;
+}
+
+@mixin wm-extension-line($width, $height, $left:7px, $top:-4px) {
+  @include size($width, $height);
+  border-bottom: 1px solid $wm-extension-line-color;
+  border-left: 1px solid $wm-extension-line-color;
+  margin-left: $left;
+  margin-top: $top;
+  float: left;
+}
+
+.extension-first-line {
+  @include wm-extension-line(35px, 40px);
+}
+
+.extension-other-line {
+  @include wm-extension-line(35px, 30px);
+}
+
+.extension-split-line {
+  @include wm-extension-line(35px, 100px);
+}
+
+.extension-second-line {
+  @include wm-extension-line(30px, 30px, 43px);
+}
+
+.extension-middle-line {
+  @include wm-extension-line(35px, 60px);
+}
+
+.extension-long-line {
+  @include wm-extension-line(35px, 165px);
+}
+
+.extension-link-line {
+  position: absolute;
+  border-left: 1px solid $wm-extension-line-color;
+  height: calc(100% - 37px);
+  left: 37px;
+  top: 40px;
+  display: block;
+}
+
+.first-title {
+  margin-top: 25px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.other-title {
+  margin-top: 15px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.split-title {
+  margin-top: 84px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.middle-title {
+  margin-top: 45px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.long-title {
+  margin-top: 150px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+.extension-hilight {
+  color: $extension-hilight-color;
+  font-size: 18px;
+}
+
+.advantage-wrapper {
+  color: $extension-gray1-color;
+  margin-bottom: 50px;
+
+  li {
+    float: left;
+    margin-bottom: 12px;
+    margin-right: 30px;
+
+    img {
+      margin-bottom: 2px;
+      margin-right: 4px;
+    }
+  }
+}
+
+// extension list page
+.extension-modules-item {
+  @include border-top-radius(4px);
+  @include border-bottom-radius(4px);
+  @include box-shadow(1px 1px 2px rgba($pagination-disabled-color, .4));
+  background-color: $white-background-color;
+  border: 1px $extension-pane-border-color solid;
+  height: 160px;
+  margin: 0 0 25px;
+  max-width: 500px;
+  position: relative;
+
+  @each $ext in $extension-modules {
+    .modules-#{$ext}-avatar {
+      background-image: url('/images/#{$ext}/introduction/icon_default.png');
+    }
+
+    .#{$ext}-explain-dot {
+      background-image: url('/images/#{$ext}/introduction/paragraphbreak_default.png');
+    }
+  }
+
+  .extension-modules-icon {
+    margin-top: 38px;
+    max-width: 95px;
+  }
+
+  .extension-modules-info {
+    margin-top: 18px;
+  }
+
+  .modules-item-avatar {
+    @include size(50px, 50px);
+    @include border-top-radius(50%);
+    @include border-bottom-radius(50%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .explains-item-dot {
+    @include size(5px, 18px);
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: $extension-pane-background-hover-color;
+    @each $ext in $extension-modules {
+      .modules-#{$ext}-avatar {
+        background-image: url('/images/#{$ext}/introduction/icon_hover.png');
+      }
+
+      .#{$ext}-explain-dot {
+        background-image: url('/images/#{$ext}/introduction/paragraphbreak_hover.png');
+      }
+    }
+  }
+
+  .modules-item-title {
+    color: $extension-pane-title-color;
+    margin-bottom: 12px;
+  }
+
+  .modules-explains-item {
+    line-height: 18px;
+
+    .explains-item-content {
+      color: $upload-avatar-background-color;
+      word-break: break-word;
+    }
+  }
+
+  .modules-item-explains {
+    ul {
+      margin-bottom: 0;
+
+      li {
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .extension-modules-active {
+    background-color: $extension-pane-border-color;
+    border-radius: 2px;
+    color: $extension-pane-active-color;
+    line-height: 20px;
+    padding: 2px 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.english-extension-modules {
+  .extension-modules-item {
+    height: 190px;
+  }
+}

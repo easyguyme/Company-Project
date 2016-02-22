@@ -1,0 +1,85 @@
+$wm-article-title-size: 1.6em;
+$wm-article-content-size: 1.4em;
+
+$wm-article-field-name-size: 1.5em;
+$wm-article-field-content-size: 1.4em;
+
+$wm-content-font-color:                           #747474;
+$wm-article-title-font-color:                      #fff;
+$wm-article-title-bg-color:                         #00a3e7;
+$wm-scrollbar-thumb-color:                      #38c4a9;
+$wm-scrollbar-track-color:                         #c8c9ca;
+
+// Scrollbar Styles
+::-webkit-scrollbar {
+  background-color: transparent;
+  height: 7px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $wm-scrollbar-thumb-color;
+  border-radius: 4px;
+  min-height: 6px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: $wm-scrollbar-track-color;
+  border-radius: 4px;
+}
+
+.text-el {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.article-title-box {
+  background-color: $wm-article-title-bg-color;
+  box-sizing: border-box;
+  color: $wm-article-title-font-color;
+  font-size: $wm-article-title-size;
+  height: 40px;
+  line-height: 30px;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.article-picture-box {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.article-content-box {
+  padding: 0 10px 10px;
+
+  .article-content-name {
+    font-size: $wm-article-title-size;
+    line-height: 20px;
+    padding: 5px 0;
+  }
+
+  .article-content-value {
+    font-size: $wm-article-content-size;
+    line-height: 18px;
+  }
+}
+
+.article-field-box {
+  padding: 0 10px 10px;
+
+  .article-field-name {
+    font-size: $wm-article-field-name-size;
+    line-height: 20px;
+    padding: 5px 0;
+  }
+
+  .article-field-value {
+    color: $wm-content-font-color;
+    font-size: $wm-article-field-content-size;
+    line-height: 18px;
+  }
+}

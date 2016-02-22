@@ -1,0 +1,143 @@
+$tip-color: #999;
+
+.staff-list-icon {
+  img {
+    @include square(24px);
+  }
+}
+
+.staff-list-pagination {
+  margin-top: 20px;
+  padding-bottom: 150px;
+}
+
+.staff-dialog {
+  .modal-dialog {
+    width: 450px;
+    margin-top: 50px;
+  }
+
+  .staff-title {
+    color: $gray-background-text-color;
+    margin: 6px;
+  }
+
+  .staff-modal-body {
+    padding: 15px 25px 40px;
+  }
+
+  .new-tip {
+    background-color: $gray-background-color;
+    padding: 4px 15px;
+    margin-bottom: 10px;
+
+    .new-tip-icon {
+      background: url('/images/core/popup_tip.png') no-repeat;
+      width: 12px;
+      height: 12px;
+      float: left;
+      margin-top: 3px;
+    }
+
+    .new-tip-text {
+      padding-left: 24px;
+      width: 367px;
+      display: block;
+      color: $tip-color;
+      font-size: 12px;
+    }
+  }
+
+  .new-block {
+    min-height: 80px;
+    margin: 0;
+
+    .new-lab {
+      color: $wm-dark-gray;
+    }
+
+    .channels-block {
+      padding: 20px 0;
+    }
+
+    .channel-block {
+      width: 50%;
+      margin: 0;
+      display: inline-block;
+
+      .channel-radio {
+        position: relative;
+        top: -30px;
+      }
+    }
+  }
+
+  .channel-main {
+    display: inline-block;
+    border: 1px solid $tip-color;
+    margin-left: 0;
+    height: 65px;
+    width: 78%;
+    padding: 5px 0;
+    border-radius: 4px;
+    background-color: $white-background-color;
+    box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+
+    .channel-header {
+      border-radius: 50%;
+      padding: 9px;
+    }
+
+    .channel-description {
+      padding: 8px 0;
+
+      .channel-flag {
+        padding: 0 5px;
+        border-radius: 2px;
+        color: $white-background-color;
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 97px;
+        display: inline-block;
+      }
+
+      .channel-name {
+        display: block;
+        padding-top: 2px;
+        color: $upload-avatar-background-color;
+        width: 95px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .update-block {
+    min-height: 25px;
+    margin: 0 0 20px;
+
+    .update-lab {
+      color: $wm-dark-gray;
+    }
+
+    .update-text {
+      display: block;
+    }
+
+    .update-channel {
+      width: 155px;
+      margin-left: 0;
+    }
+
+    .gender-space {
+      margin-right: 20px;
+    }
+  }
+
+  .btn-block {
+    text-align: center;
+  }
+}

@@ -1,0 +1,714 @@
+
+ // custom variables
+
+
+$wm-panel-heading-bgcolor: #ddd;
+$wm-panel-body-bgcolor: #f5f5f5;
+$wm-gray1: #fdfdfd;
+$wm-gray2: #ccc;
+$wm-gray3: #f1f1f1;
+$wm-white: #fff;
+$wm-black: #1c1c1c;
+$wm-gray: #f5f5f5;
+$wm-dark-gray: #787878;
+$wm-a-black: #aaa;
+$wm-zero: 0;
+$wm-green: #19be9b;
+$wm-green2: #19af8c;
+$wm-green3: #19a582;
+$wm-modal-bg: #211b1a;
+$wm-modal-bgcolor: #f7f7f7;
+$wm-input-border: #ddd;
+$wm-text-color: #555;
+$wm-nodata-color: #8b8b8b;
+$wm-item-border: #ededed;
+$wm-admin-icon-bg: #b4bb4b;
+$wm-operator-icon-bg: #6bd0d1;
+$wm-user-text-color: #b9b9b9;
+$wm-tip-color: #999;
+$wm-size-50: 50px;
+$wm-size-45: 45px;
+$wm-size-40: 40px;
+$wm-size-30: 30px;
+$wm-size-25: 25px;
+$wm-size-20: 20px;
+$wm-size-15: 15px;
+$wm-size-10: 10px;
+$wm-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px lighten($wm-green, 20%);
+
+@mixin wm-operation-icon($bg-color, $width, $height, $horizontal: right, $vertical: top, $horizontal-size: 5px, $vertical-size: 5px) {
+  position: absolute;
+  @include size($width, $height);
+  #{$vertical}: $vertical-size;
+  #{$horizontal}: $horizontal-size;
+  background-color: $bg-color;
+}
+
+ // common css
+
+.text-el {
+  @include text-overflow();
+}
+
+.margin-10p {
+  margin-top: 10px;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+.fb {
+  font-weight: bold;
+}
+
+%pull-right {
+  float: right;
+}
+
+%pull-left {
+  float: left;
+}
+
+.show {
+  display: block !important;
+}
+
+.form-control {
+  @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075)); // Redeclare so transitions work
+  @include wm-all-border-radius(2px);
+  border-color: $wm-input-border;
+  height: 30px;
+
+  &:focus {
+    @include box-shadow($wm-shadow);
+    border-color: darken($wm-green, 10%);
+  }
+}
+
+
+ // common css
+
+
+.user-btn {
+  height: 30px;
+  line-height: 14px;
+  min-width: 70px;
+}
+
+.width-60p {
+  width: 60%;
+}
+
+.width-40p {
+  width: 40%;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.width-26p {
+  @include size(40%, auto);
+}
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.display {
+  display: inline-block;
+}
+
+.model-position {
+  margin-top: 80px;
+}
+
+.pic-style {
+  position: absolute;
+  right: 2px;
+  top: 190px;
+  width: 32%;
+}
+
+.title {
+  margin-left: 15px;
+}
+
+.btn-pos {
+  margin-top: 40px;
+}
+
+.btn-style-ok {
+  margin-right: 177px;
+  margin-top: 33px;
+}
+
+.form-control-style {
+  background-color: $wm-white;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: $wm-black;
+  font-size: 14px;
+  margin-top: -5px;
+}
+
+.p-style {
+  p {
+    color: $wm-black;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .invalid-msg {
+    color: $wm-white;
+  }
+}
+
+.form-style {
+  color: $wm-a-black;
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+
+
+ // common css
+
+
+.user-dialog {
+  .modal-dialog {
+    margin: 0 auto;
+    margin-top: 150px;
+    width: 450px;
+  }
+}
+
+.modal-backdrop {
+  background-color: $wm-modal-bg;
+  bottom: $wm-zero;
+}
+
+.modal-header {
+  .popup-close {
+    background: url('/images/management/icon_popup_close_default.png') no-repeat;
+    height: 18px;
+    margin-right: 10px;
+    margin-top: 8px;
+    opacity: 1;
+    outline: none;
+    width: 18px;
+
+    &:hover {
+      background: url('/images/management/icon_popup_close_hover.png') no-repeat;
+    }
+
+    &:active {
+      background: url('/images/management/icon_popup_close_click.png') no-repeat;
+    }
+  }
+}
+
+.required-field:before {
+  left: 0;
+}
+
+.modal-body {
+  .form-group {
+    .dark-gray {
+      color: $wm-dark-gray;
+    }
+
+    .ml75 {
+      margin-left: 75px;
+    }
+  }
+}
+
+.create-user-body {
+  padding: 25px 30px 0;
+
+  .col-md-12 {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+}
+
+.modal-bgcolor {
+  background-color: $wm-modal-bgcolor;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.modal-footer {
+  border: $wm-zero;
+  margin-top: $wm-zero;
+  padding-top: $wm-zero;
+}
+
+.create-user-footer {
+  border-radius: 4px;
+  padding-bottom: $wm-size-50;
+  padding-top: 10px;
+}
+
+.modal-avatar-wrapper {
+  @extend %pull-right;
+  @include size(100px, 150px);
+
+  .img-wrapper {
+    img {
+      @include size(100px, 100px);
+      background-color: rgba(221, 221, 221, .25);
+      border: 0;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+  }
+}
+
+.modal-header-user {
+  @include size(450px, 60px);
+  .popup-close {
+    @include size(14px, 13px);
+    background-image: url('/images/management/icon_popup_close_default.png');
+    display: inline-block;
+    float: center;
+    margin-left: 285px;
+    opacity: 1;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  h4 {
+    color: $wm-green;
+    font-size: 18px;
+  }
+}
+
+.modal-body-user {
+  @include wm-all-border-radius(4px);
+  height: auto;
+  padding-bottom: 20px;
+
+  .form-group {
+    .hide-password {
+      position: absolute;
+      -moz-transform: scale(0);
+      -o-transform: scale(0);
+      -webkit-transform: scale(0);
+      transform: scale(0);
+      zoom: .001;
+    }
+
+    .dark-gray {
+      color: $wm-dark-gray;
+      font-size: 14px;
+      font-weight: normal;
+      width: 450px;
+    }
+  }
+}
+
+.modal-footer-user {
+  border: $wm-zero;
+  margin-top: -39px;
+  padding-top: $wm-zero;
+}
+
+.img-btn-style {
+  @include size(80px, 20px);
+  background-color: rgba($wm-text-color, .4);
+  color: $wm-white;
+  font-size: 14px;
+}
+
+.modal-avatar-wrapper-user {
+  @extend %pull-right;
+  height: 100px;
+  position: absolute;
+  right: 25px;
+
+  .file-upload-wrap {
+    @include size(80px, 16px);
+    border-width: 0;
+    margin-top: -17px;
+  }
+
+  .img-wrapper {
+    @include wm-all-border-radius(4px);
+    @include size(96px, 96px);
+    background: $wm-gray3;
+    border: 0 solid $wm-white;
+    padding: 8px;
+
+    img {
+      @include wm-all-border-radius(4px);
+      @include size(80px, 80px);
+      border: 0;
+    }
+
+    .menber-avatar-icon {
+      @include size(80px, 80px);
+      @include wm-all-border-radius(4px);
+      background-size: cover;
+    }
+  }
+}
+
+.panel-main-content {
+  border: 0;
+  box-shadow: 0 0 0;
+
+  .panel-title-block {
+    background-color: $wm-panel-heading-bgcolor;
+    border: $wm-zero;
+    color: $wm-dark-gray;
+    height: $wm-size-30;
+    line-height: 14px;
+    padding: 8px 15px;
+  }
+
+  .panel-container-fluid {
+    background-color: $wm-panel-body-bgcolor;
+    min-height: 500px;
+    padding: $wm-size-25 $wm-size-30;
+  }
+
+  .management-nodata {
+    color: $wm-nodata-color;
+    font-size: 14px;
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+.list-keywords {
+  .keyword-item {
+    font-size: 12px;
+
+    span {
+      color: $wm-nodata-color;
+      cursor: pointer;
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        background-color: $wm-panel-body-bgcolor;
+        color: $wm-text-color;
+      }
+    }
+
+    + .keyword-item {
+      padding-left: 35px;
+    }
+
+    &.active {
+      span {
+        background-color: $wm-panel-body-bgcolor;
+        color: $wm-text-color;
+      }
+    }
+  }
+}
+
+.management-menber-list {
+  @include clearfix();
+  margin: 20px 0 80px;
+}
+
+.management-menber-item {
+  @extend %pull-left;
+  @include size(100%, 125px);
+  @include border-top-radius(4px);
+  @include border-bottom-radius(4px);
+  @include box-shadow(1px 1px 2px rgba(194, 194, 194, .4));
+  background-color: $wm-gray1;
+  border: 1px solid $wm-item-border;
+  margin-bottom: 25px;
+  position: relative;
+
+  &:hover {
+    border: 1px solid rgba(55, 195, 170, .5);
+  }
+
+  &:active {
+    border: 1px solid rgba(55, 175, 150, .5);
+  }
+}
+
+.menber-item-identity {
+  @include clearfix();
+  padding-top: 15px;
+
+  .menber-identity-icon {
+    @extend %pull-left;
+    @include size(13px, 15px);
+    background-size: cover;
+    margin-left: $wm-size-10;
+  }
+
+  .member-admin {
+    background-image: url('/images/management/icon_administrator.png');
+  }
+
+  .member-operator {
+    background-image: url('/images/management/icon_operators.png');
+  }
+}
+
+.menber-identity-label {
+  @extend %pull-left;
+  @include border-top-radius(2px);
+  @include border-bottom-radius(2px);
+  margin-left: 17px;
+
+  .label-primary {
+    padding: 1px 6px;
+  }
+}
+
+.label-identity-management {
+  background-color: $wm-admin-icon-bg;
+}
+
+.label-identity-operation {
+  background-color: $wm-operator-icon-bg;
+}
+
+.menber-item-center {
+  @include clearfix();
+  padding-left: 12%;
+  position: absolute;
+}
+
+.menber-create {
+  @include size(160px, 26px);
+  @include clearfix();
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+}
+
+.menber-display {
+  @include size(100%, 50px);
+  top: 37px;
+}
+
+.member-verify {
+  top: $wm-size-45;
+}
+
+.menber-create-icon {
+  @include size(26px, 26px);
+  @include wm-all-border-radius(2px);
+  background-image: url('/images/management/btn_create_user_default.png');
+  background-size: cover;
+}
+
+.menber-display-icon {
+  @include size(50px, 50px);
+  @include wm-all-border-radius(2px);
+
+  img {
+    @include size(50px, 50px);
+  }
+}
+
+.menber-item-add {
+  &:hover {
+    .menber-create-describe {
+      color: $white-background-text-color;
+    }
+
+    .menber-create-icon {
+      background-image: url('/images/management/btn_create_user_hover.png');
+    }
+  }
+
+  &:active {
+    .menber-create-describe {
+      color: $white-background-text-active-color;
+    }
+
+    .menber-create-icon {
+      background-image: url('/images/management/btn_create_user_click.png');
+    }
+  }
+}
+
+.menber-create-describe {
+  @include size(auto, 100%);
+  color: $wm-user-text-color;
+  line-height: 26px;
+  padding-left: $wm-size-15;
+}
+
+.menber-display-describe {
+  @include size(70%, 100%);
+  padding-left: 10%;
+
+}
+
+.describe-verify-email {
+  @include wm-text-vmiddle(26px);
+  color: $wm-user-text-color;
+  font-size: 16px;
+}
+
+.describe-verify-explain {
+  @include wm-text-vmiddle(24px);
+  color: $wm-text-color;
+}
+
+.describe-menber-name {
+  @include wm-text-vmiddle(30px);
+}
+
+.describe-menber-email {
+  @include wm-text-vmiddle(20px);
+  color: $wm-user-text-color;
+}
+
+.menber-item-info {
+  .btn-delete-menber,
+  .btn-verify-email {
+    display: none;
+  }
+
+  &:hover {
+    .btn-delete-menber {
+      @include wm-operation-icon($wm-white, 24px, 24px, right, top, 15px, 10px);
+      @include border-top-radius(50%);
+      @include border-bottom-radius(50%);
+      background-image: url('/images/management/icon_delete_default.png');
+      display: inline-block;
+
+      &:hover {
+        background-image: url('/images/management/icon_delete_hover.png');
+      }
+
+      &:active {
+        background-image: url('/images/management/icon_delete_click.png');
+      }
+    }
+
+    .btn-verify-email {
+      @include wm-operation-icon($wm-white, 24px, 24px, right, top, 44px, 10px);
+      @include border-top-radius(50%);
+      @include border-bottom-radius(50%);
+      background-image: url('/images/management/icon_send_mail_default.png');
+      display: inline-block;
+
+      &:hover {
+        background-image: url('/images/management/icon_send_mail_hover.png');
+      }
+
+      &:active {
+        background-image: url('/images/management/icon_send_mail_click.png');
+      }
+    }
+  }
+}
+
+.role-item {
+  margin-right: 80px;
+
+  label {
+    margin-bottom: 2px;
+    margin-right: 10px;
+  }
+}
+
+// commen person css
+.md {
+  width: 100%;
+}
+
+.edit-display {
+  @include size(30px, 30px);
+  background-image: url('/images/management/icon_popup_edit_default.png');
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+
+  &:hover {
+    background-image: url('/images/management/icon_popup_edit_hover.png');
+  }
+}
+
+ // common password css
+.label-width {
+  max-width: 96%;
+}
+
+.btn-style {
+  @include size(70px, 30px);
+  @include box-shadow(inset 0 0 5px $wm-green3);
+  background-color: $wm-green;
+  border-color: $wm-input-border;
+  border-radius: 2px;
+  color: $wm-white;
+  font-size: 14px;
+  opacity: 75%;
+
+  &:hover {
+    background-color: $wm-green2;
+  }
+
+  &:active {
+    background-color: $wm-green3;
+  }
+}
+
+ // common updateData css
+.modal-title-resource {
+  margin: -20px 6px 6px 15px;
+}
+
+#user-profile-avatar {
+  .upload-mask-wrap {
+    height: 20px !important;
+    width: 80px !important;
+
+    .upload-mask {
+      height: 20px !important;
+      width: 200px !important;
+    }
+  }
+
+  .upload-shadow {
+    @include square(80px);
+    top: -64px;
+  }
+
+  .img-btn-style {
+    text-align: center;
+  }
+}
+
+.form-tip-img {
+  text-align: center;
+}
+
+.content-spread-nodata {
+  color: $wm-tip-color;
+  font-size: 14px;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.translations-radio {
+  margin-left: -10px;
+
+  .radio-inline {
+    margin-left: -10px;
+  }
+}

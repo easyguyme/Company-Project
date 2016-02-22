@@ -1,0 +1,161 @@
+$color-picker-white: #fff;
+$color-picker-grey: #f7f7f7;
+$color-picker-black: #000;
+$color-picker-5: #555;
+$color-picker-c: #ccc;
+$color-picker-e: #eee;
+$color-picker-d: #ddd;
+$color-picker-indicator-color: #737373;
+
+.color-picker {
+  z-index: 1000;
+  position: relative;
+}
+
+.color-swap {
+  width: 98px;
+  margin-top: 7px;
+  background-image: url('/images/core/xiguan_default.png');
+  background-size: 13px 12px;
+  background-repeat: no-repeat;
+  background-position: 90%;
+
+  &:hover,
+  &:focus {
+    background-image: url('/images/core/xiguan_hover.png');
+  }
+}
+
+#default {
+  position: absolute;
+  z-index: 9999;
+  left: -9999px;
+  top: 0;
+  background-color: $color-picker-e;
+  padding: 12px;
+  box-shadow: 0 0 2px $color-picker-d;
+  border-radius: 5px;
+}
+
+.picker-wrapper {
+  position: relative;
+  float: left;
+  cursor: cell;
+}
+
+.slide-wrapper {
+  position: relative;
+  float: left;
+  margin-left: 10px;
+  cursor: cell;
+}
+
+.picker {
+  width: 200px;
+  height: 200px;
+}
+
+.slide {
+  width: 30px;
+  height: 200px;
+}
+
+.cp-default {
+
+  .picker-indicator {
+    width: 8px;
+    height: 8px;
+    border: 2px solid $color-picker-5;
+    border-radius: 4px;
+    opacity: .5;
+    background-color: $color-picker-white;
+  }
+
+  .slide-indicator {
+    width: 100%;
+    height: 10px;
+    opacity: .6;
+    border: 4px solid $color-picker-c;
+    border-radius: 4px;
+    background-color: $color-picker-white;
+  }
+}
+
+.picker-indicator,
+.slide-indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+.page-color-container {
+
+  .color-panel {
+    padding: 10px;
+    width: 266px;
+
+    .color-picker-wrapper {
+      margin-bottom: 10px;
+
+      .picker-wrapper,
+      .slide-wrapper {
+        border: 1px solid $color-picker-indicator-color;
+
+        .slide-indicator,
+        .picker-indicator {
+          @include box-shadow(0 0 1px $color-picker-indicator-color);
+        }
+
+        .slide-indicator {
+          border-top: 1px solid $color-picker-indicator-color;
+          border-bottom: 1px solid $color-picker-indicator-color;
+          border-left: 0;
+          border-right: 0;
+          height: 5px;
+          opacity: .8;
+          border-radius: 0;
+        }
+
+        .picker-indicator {
+          border: 1px solid $color-picker-indicator-color;
+        }
+      }
+    }
+
+    .color-input-wrapper {
+      margin-bottom: 15px;
+      font-size: 0;
+
+      .color-display {
+        @include size(30px, 30px);
+        border-radius: 2px;
+        background-color: $white-background-color;
+        border: 1px solid $color-picker-indicator-color;
+        display: inline-block;
+        vertical-align: top;
+
+        margin-right: 5px;
+      }
+
+      .color-input {
+        display: inline-block;
+        font-size: 14px;
+        width: calc(100% - 35px);
+        vertical-align: top;
+
+        + .form-tip {
+          margin-left: 35px;
+        }
+      }
+    }
+
+    .color-operation-wrapper {
+      text-align: right;
+
+      .btn {
+        padding: 4px 12px;
+      }
+    }
+  }
+}

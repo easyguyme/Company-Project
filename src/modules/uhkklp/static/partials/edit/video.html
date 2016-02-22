@@ -1,0 +1,52 @@
+<div wm-breadcrumb="breadcrumb"></div>
+<div class="uhkklp edit-msg-wrap">
+  <form name="videoForm" ng-submit="submit()" novalidate>
+
+    <div class="form-group">
+      <label for="title">{{'mt_ad_title' | translate}}</label>
+      <div class="model-wrap">
+        <input name="title" style="width: 40%;" ng-model="video.title" class="form-control" type="text" id="title" placeholder="{{'mt_ph_video_title' | translate}}" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="url">{{'mt_ad_video_url' | translate}}</label>
+      <div class="model-wrap">
+        <input name="url" style="width: 40%;" ng-model="video.url" class="form-control" type="text" placeholder="{{'mt_ph_video_url' | translate}}" mtv-format="^((http|https):\/\/){0,1}(www\.){0,1}youtube\.com\/watch\?v=\S+$" format-type="url" required>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="">{{'mt_ad_video_position' | translate}}</label>
+      <input type="hidden" ng-model="video.position" binded="false" required>
+      <div class="model-wrap">
+        <div class="block-radio">
+          <input wm-radio ng-model="video.position" value="horizontal">{{'mt_rd_video_horizontal' | translate}}
+        </div>
+        <div class="block-radio">
+          <input wm-radio ng-model="video.position" value="vertical">{{'mt_rd_video_vertical' | translate}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imgUrl">{{'mt_lb_video_img' | translate}}</label>
+      <input type="hidden" name="imgUrl" ng-model="video.imgUrl" binded="false" required>
+      <div class="model-wrap">
+        <img style="margin-bottom: 0;" ng-class="{'error-border': !video.imgUrl && submitted}" class="imgPrev" alt="640 X 544" ng-src="{{video.imgUrl}}">
+        <font style="color: #b42d14;" class="form-tip-label" ng-show="!video.imgUrl && submitted">{{'mt_tp_choose_pc' | translate}}</font>
+        <div style="margin-top: 15px;">
+          <div style="display: inline-block;" wm-file-upload class="file-upload-wrap" ng-model="video.imgUrl">
+            <span class="btn btn-primary">{{'mt_bt_choose_pc' | translate}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group model-wrap">
+      <button class="btn btn-primary">{{'mt_bt_send' | translate}}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="/uhkklp/video" class="btn btn-default active">{{'mt_bt_return_back' | translate}}</a>
+    </div>
+
+  </form>
+</div>

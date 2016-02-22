@@ -1,0 +1,326 @@
+$wm-send-time-color: #aaa;
+$wm-panel-title-color: #efefef;
+$wm-nodata-text-color: #8b8b8b;
+$wm-message-content-color: #1c1c1c;
+$wm-dialog-bg-color: #f7f7f7;
+$wm-history-quantity-color: #6f6f6f;
+$history-message-body-color: #e2e2e2;
+
+@mixin wm-panel($title-height: 30px, $title-bgcolor: $wm-panel-title-color, $body-bgcolor: $white-background-color, $title-box-shadow: 0 0 0, $body-box-shadow: 0 0 0) {
+  @include box-shadow(0 0 0);
+  border: 0;
+
+  .wm-panel-title {
+    @include box-shadow(#{$title-box-shadow});
+    height: #{$title-height};
+    background-color: #{$title-bgcolor};
+    border: 0;
+    padding: 0;
+  }
+
+  .wm-panel-body {
+    @include box-shadow(#{$body-box-shadow});
+    background-color: #{$body-bgcolor};
+    border: 0;
+  }
+}
+
+.interact-main-content {
+  @include wm-panel(40px);
+  padding: 0 25px 0 10px;
+  margin-top: 30px;
+  margin-bottom: 0;
+
+  .wm-panel-title {
+
+    .checkbox {
+      color: $base-text-color;
+      margin: 0 30px 0 0;
+      float: right;
+      font-weight: normal;
+      line-height: 40px;
+
+      label {
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .wm-panel-body {
+    padding: 0;
+  }
+}
+
+.channel-interaction-nodata {
+  margin-top: 30px;
+  text-align: center;
+  color: $wm-nodata-text-color;
+}
+
+.interact-message-item {
+  border-bottom: 1px $gray-background-color solid;
+  padding: 20px 0 12px;
+  margin-left: 30px;
+  margin-right: 30px;
+
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .interact-message-reply {
+    padding-left: 0;
+    padding-right: 0;
+    color: $wm-send-time-color;
+
+    &:hover {
+      color: $white-background-text-hover-color;
+
+      .message-reply-icon {
+        background-image: url('/images/channel/btn_reply_hover.png');
+      }
+    }
+
+    &:active {
+      color: $white-background-text-active-color;
+
+      .message-reply-icon {
+        background-image: url('/images/channel/btn_reply_click.png');
+      }
+    }
+
+    .message-reply-icon {
+      @include size(24px, 15px);
+      margin: 12px auto 0;
+      background-size: cover;
+      background-image: url('/images/channel/btn_reply_default.png');
+    }
+
+    .message-reply-text {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+}
+
+.message-reply-dialog {
+  @include box-shadow(-1px 0 2px rgba(160, 160, 160, .2));
+  z-index: 1000;
+  width: 80%;
+  height: 100%; // no more footer
+  max-width: 400px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: $wm-dialog-bg-color;
+  border-left: 1px outset rgba(160, 160, 160, .2);
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  .form-group {
+
+    &:first-child {
+      margin-bottom: 20px;
+    }
+  }
+
+  .wechat-message-wrap {
+    width: 100%;
+    max-width: 500px;
+    margin-left: 0;
+    margin-right: 0;
+
+    .message-input {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.reply-dialog-header {
+  padding: 12px;
+  background-color: $white-background-color;
+  border-bottom: 1px outset rgba(238, 238, 238, .3);
+
+  .reply-message-title {
+    margin: 0;
+  }
+
+  .replay-dialog-close {
+    @include size(14px, 14px);
+    margin-top: 2px;
+    margin-right: 10px;
+  }
+
+  .replay-dialog {
+    outline: -webkit-focus-ring-color auto 0;
+  }
+}
+
+.replay-message-body {
+  padding: 30px 50px 15px 20px;
+}
+
+.hide-keyword-checkbox {
+  margin-bottom: -3px;
+}
+
+.interaction-foot-pagination {
+  margin-right: 30px;
+}
+
+.interaction-search {
+  margin: 4px 0 0 20px;
+}
+
+.history-message-wrapper {
+  padding: 25px 30px 0;
+  margin-top: -15px;
+
+  .history-message-body {
+    border-top: 1px $history-message-body-color solid;
+    padding: 15px 0;
+
+    .history-message-item {
+      border-bottom: 0;
+      padding: 10px 0;
+      margin-left: 0;
+    }
+
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .history-message-quantity {
+      color: $wm-history-quantity-color;
+      font-size: 12px;
+    }
+
+    .history-message-reply {
+      border-top: 1px $history-message-body-color solid;
+      border-bottom: 1px $history-message-body-color solid;
+      padding-left: 42px;
+      margin-top: 20px;
+
+      .history-message-item {
+        border-bottom: 0;
+        padding: 10px 0;
+        margin-left: 0;
+        margin-right: 30px;
+      }
+    }
+
+    .history-message-no-reply {
+      padding-left: 42px;
+      margin-top: 20px;
+    }
+
+    .message-sender-avatar {
+      @include size(40px, 40px);
+      padding-left: 0;
+      padding-right: 0;
+      background-size: cover;
+      float: left;
+    }
+
+    .history-message-info {
+      width: 360px;
+
+      .history-is-reply {
+        margin-left: 50px;
+      }
+
+      .message-sender-info {
+        padding-right: 0;
+        padding-left: 15px;
+
+        .article-look-wrapper {
+          border-top: 1px $history-message-body-color solid;
+          margin: 0 10px 5px;
+          padding: 5px 0 0;
+        }
+
+        .article-look-view {
+          color: $wm-message-content-color;
+          font-size: 12px;
+        }
+
+        .article-look-arrow {
+          float: right;
+          padding-top: 3px;
+        }
+      }
+    }
+
+    .history-reply-info {
+      width: 320px;
+
+      .message-sender-info {
+        padding-right: 0;
+        padding-left: 15px;
+      }
+    }
+  }
+}
+
+.history-message-pagination {
+  font-size: 14px;
+  color: $gray-background-text-color;
+  cursor: pointer;
+  text-align: center;
+}
+
+.interact-message-info {
+  padding-left: 0;
+
+  .message-sender-avatar {
+    @include size(40px, 40px);
+    padding-left: 0;
+    padding-right: 0;
+    background-size: cover;
+  }
+
+  .message-sender-info {
+    padding-left: 25px;
+    padding-right: 0;
+
+    .message-illustrate {
+      height: 15px;
+      margin-bottom: 10px;
+      line-height: 15px;
+
+      div {
+        float: left;
+      }
+
+      .sender-name {
+        width: 40%;
+        max-width: 100px;
+        color: $upload-avatar-background-color;
+      }
+
+      .send-time {
+        color: $wm-send-time-color;
+      }
+    }
+
+    .message-content {
+      line-height: 20px;
+      color: $wm-message-content-color;
+      word-wrap: break-word;
+
+      span {
+        color: $white-background-color;
+        background-color: $white-background-text-color;
+        line-height: 18px;
+        height: 18px;
+        display: inline-block;
+        padding: 1px;
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+---
+
+# - name: install node.js with nvm
+#   nvm: version={{ nodejs.version }} state=present alias={{ nodejs.alias | default(None) }}
+#   environment:
+#     NVM_NODEJS_ORG_MIRROR: http://npm.taobao.org/mirrors/node
+#   register: nvm_result
+
+# - name: change npm mirrors
+#   command: '{{ nvm_result.npm_path }} config set registry https://r.cnpmjs.org'
+
+# - name: install npm deps
+#   npm: executable={{ nvm_result.npm_path }} path={{ nodejs.npm.install_path }}
+#        production={{ nodejs.npm.production }} state=latest
+#   when: nodejs.npm is defined
+
+# - name: install grunt
+#   npm: executable={{ nvm_result.npm_path }}  name=grunt global=yes
+
+# - name: install grunt-cli
+#   npm: executable={{ nvm_result.npm_path }}  name=grunt-cli global=yes
+
+- name: run init
+  shell: php /srv/{{ repo.name }}/src/initProd
+
+- name: generate translations
+  shell: 'chdir=/srv/{{ repo.name }}/src/  /root/.nvm/v0.10.28/bin/node translate.js'
+
+- name: run grunt linkmodule
+  shell: 'chdir=/srv/{{ repo.name }}/src/  /root/.nvm/v0.10.28/bin/grunt linkmodule'
+  environment:
+    PATH: "/root/.nvm/v0.10.28/bin/:{{ ansible_env.PATH }}"
+    SOME: value
+
+- name: run grunt klp
+  shell: 'chdir=/srv/{{ repo.name }}/src/  /root/.nvm/v0.10.28/bin/grunt klp'
+  environment:
+    PATH: "/root/.nvm/v0.10.28/bin/:{{ ansible_env.PATH }}"
+    SOME: value
+
+- name: scan modules
+  shell: php /srv/{{ repo.name }}/src/yii module/scan
+
+- name: add account menus and mods
+  shell: php /srv/{{ repo.name }}/src/yii management/account/add-menus-and-mods
+
+- name: ensure mongo indexes
+  shell: php /srv/{{ repo.name }}/src/yii management/index
+
+- name: ensure cron resque job
+  shell: php /srv/{{ repo.name }}/src/yii management/job/init 1
+
+- name: Remove mods
+  shell: php /srv/{{ repo.name }}/src/yii management/account/remove-mods 559b7615fd604ab7768b4567 channel
+
+- name: Remove menus
+  shell: php /srv/{{ repo.name }}/src/yii management/account/remove-menus 559b7615fd604ab7768b4567 customer-follower,analytic-growth,analytic-property,analytic-content,analytic-store,management-channel,content-graphics,product-coupon
+
+- name: Remove HK mods
+  shell: php /srv/{{ repo.name }}/src/yii management/account/remove-mods 55e417cfd5e2ceb63c8b4567 channel
+  ignore_errors: yes
+
+- name: Remove HK menus
+  shell: php /srv/{{ repo.name }}/src/yii management/account/remove-menus 55e417cfd5e2ceb63c8b4567 customer-follower,analytic-growth,analytic-property,analytic-content,analytic-store,management-channel,content-graphics,product-coupon
+  ignore_errors: yes
+
+- name: Remove HK mods
+  shell: php /srv/{{ repo.name }}/src/yii management/account/remove-mods 55e56487fd604aac0f8b4567 channel
+  ignore_errors: yes
+
+- name: Remove HK menus
+  shell: php /srv/{{ repo.name }}/src/yii management/account/remove-menus 55e56487fd604aac0f8b4567 customer-follower,analytic-growth,analytic-property,analytic-content,analytic-store,management-channel,content-graphics,product-coupon
+  ignore_errors: yes

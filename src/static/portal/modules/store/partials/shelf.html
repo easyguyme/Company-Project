@@ -1,0 +1,155 @@
+<div>
+  <div wm-breadcrumb="shelf.breadcrumb"></div>
+  <div class="goods-filter shelf-wrapper clearfix" ng-class="{'shelf-padding-b': shelf.list.data.length == 1}">
+    <!-- Global search -->
+    <div wm-list-header head-class="listheader-search-condition">
+      <wm-search ng-model="shelf.searchKey" class="search-wrapper-input" click-func="shelf.search()" placeholder="{{'store_select_goods_search_key' | translate}}"></wm-search>
+      <span class="btn-operate-condition" ng-click="shelf.showConditions()">
+        {{'customer_follower_screening_conditions' | translate}}<span class="condition-mark-wrapper" ng-class="{true:'condition-up', false:'condition-down'}[!!shelf.isShow]"></span>
+      </span>
+
+      <input type="button" class="btn btn-success pull-right btn-listheader" ng-click="shelf.newGoods()" value="{{'store_goods_add_item' | translate}}" />
+    </div>
+
+    <div ng-show="shelf.isShow" class="clearfix search-wrapper-condition">
+      <!-- Select condition -->
+      <div class="management-fans-tag dark-gray row clear-margin condition-item-wrapper">
+        <label class="col-md-2 col-xs-12 condition-item-label condition-item-title" translate="product_goods_categories"></label>
+        <div class="col-md-10 col-xs-12 clear-container-padding">
+          <div class="operate-tags-items col-md-1 col-xs-12 clear-container-padding">
+            <label class="check-all-items condition-item-label">
+              <wm-checkbox ng-model="shelf.categoryAll" ng-click="shelf.selectAllCatogories(shelf.categoryAll)" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+            </label>
+          </div>
+          <div class="follower-tags-items col-md-11 col-xs-10 clear-container-padding">
+            <ul class="member-card-items category-position clearfix">
+              <li class="member-card-item pull-left" ng-repeat="category in shelf.categories">
+                <wm-checkbox ng-model="category.check" ng-click="shelf.selectCategory(category.check)" class="follower-checkbox-style"></wm-checkbox>{{category.name}}
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row clear-margin condition-item-wrapper">
+        <label class="col-md-2 col-xs-12 condition-item-label condition-item-title" translate="helpdesk_setting_status"></label>
+        <div class="col-md-1 col-xs-12 clear-container-padding status-wrapper">
+          <div wm-select items="shelf.selectStatus" text-field="text" value-field="value" ng-model="shelf.status" on-change="shelf.changeSelect" class="col-md-12 col-xs-3 clear-container-padding"></div>
+        </div>
+        <div class="col-md-9 col-xs-12" ng-hide="shelf.status === 'off'">
+          <label class="col-md-3 col-xs-12 condition-item-label onshelf-time-title" translate="store_shelf_date"></label>
+          <div class="col-md-9 col-xs-12 clearfix clear-container-padding datepicker-wrapper">
+            <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+              <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="beginPicker" min-date-picker-id="endPicker" ng-model="shelf.startDate" class="shelf-date-time-picker" icon="calendar"></div>
+            </div>
+            <div class="pull-left datepicker-between-text">&minus;</div>
+            <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+              <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="endPicker" max-date-picker-id="beginPicker" ng-model="shelf.endDate" class="shelf-date-time-picker" icon="calendar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row clear-margin condition-item-wrapper">
+        <label class="col-md-2 col-xs-12 condition-item-label condition-item-title" translate="store_price_range"></label>
+        <div class="col-md-10 col-xs-12 clear-container-padding">
+          <div id="priceWrap" class="row mlr0">
+            <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+              <input id="startPrice" class="form-control" type="text" ng-model="shelf.startPrice" wm-input-reg data-reg="^(([1-9]\d*)|0)(\.\d{0,2})?$" />
+            </div>
+            <div class="pull-left datepicker-between-text">&minus;</div>
+            <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+              <input id="endPrice" class="form-control" type="text" ng-model="shelf.endPrice" wm-input-reg data-reg="^(([1-9]\d*)|0)(\.\d{0,2})?$" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The buttom of submit and clear -->
+      <div class="management-fans-btn-group">
+        <span class="btn btn-success" ng-click="shelf.search()" translate="product_goods_sure"></span>
+        <span type="submit" class="btn btn-default clear-btn-style" ng-click="shelf.clear()" translate="customer_follower_clear"></span>
+      </div>
+    </div>
+
+    <!-- Show conditions -->
+    <div class="checked-conditions-wrapper" ng-if="!shelf.isShow && shelf.hasSelectedCondition">
+      <label class="checked-conditions-label" translate="customer_follower_selected_condition">Selected Condition</label>
+      <section class="checked-conditions-content clearfix">
+        <div class="conditions-content-item pull-left" ng-if="shelf.checkedCategories && shelf.checkedCategories.length > 0">
+          <div class="content-item-wrapper">{{'product_goods_categories' | translate}}: {{shelf.checkedCategories.join(' ')}}</div>
+          <span class="btn-remove-condition" ng-click="shelf.removeCondition('categories')"></span>
+        </div>
+
+        <div class="conditions-content-item pull-left" ng-if="shelf.status">
+          <div class="content-item-wrapper">{{'helpdesk_setting_status' | translate}}: {{shelf.selectedStatu.text | translate}}</div>
+          <span class="btn-remove-condition" ng-click="shelf.removeCondition('status')"></span>
+        </div>
+
+        <div class="conditions-content-item pull-left" ng-if="shelf.startDate || shelf.endDate">
+          <div class="content-item-wrapper">{{'store_shelf_date' | translate}}: {{(shelf.startDate|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(shelf.endDate|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</div>
+          <span class="btn-remove-condition" ng-click="shelf.removeCondition('date')"></span>
+        </div>
+
+        <div class="conditions-content-item pull-left" ng-if="shelf.startPrice || shelf.endPrice">
+          <div class="content-item-wrapper">{{'store_price_range' | translate}}: {{shelf.startPrice || '-'}} {{'content_article_to' | translate}} {{shelf.endPrice || '-'}}</div>
+          <span class="btn-remove-condition" ng-click="shelf.removeCondition('price')"></span>
+        </div>
+      </section>
+    </div>
+
+    <!-- The title of table. -->
+    <div class="panel panel-default panel-center-content">
+      <!-- <div class="panel-center-title panel-follower-header clearfix">
+        <div class="total-follower-style">
+          <div class="follower clearfix">
+            <div class="goods-total-icon"> </div>
+            <div class="total-follower">
+              <span translate="product_goods_total"></span>
+              <span class="member-span" ng-show="shelf.totalCount > 1">{{'product_goods_total_commodities' | translate:'{ count: shelf.totalCount }'}}</span>
+              <span class="member-span" ng-show="shelf.totalCount <= 1">{{'product_goods_total_commodity' | translate:'{ count: shelf.totalCount }'}}</span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div wm-list-header content="{{shelf.totalCount <= 1 ? 'product_goods_total_commodity' : 'product_goods_total_commodities' | translate:'{ count: shelf.totalCount }'}}" icon="{'url': '/images/product/product_goods_default.png'}"></div>
+    </div>
+
+    <!-- The table -->
+    <div class="table-wrap goods-table-wrapper shelf-wrap">
+      <div class="product-operations-wrapper">
+
+        <button ng-disabled="shelf.cacheCheckRows.length == 0" class="goods-operation-box" ng-class="{'goods-operation-enable': shelf.cacheCheckRows.length > 0, 'goods-operation-disable': shelf.cacheCheckRows.length == 0}" ng-click="shelf.showShelveModal()" translate="store_onshelves"></button>
+
+        <button ng-disabled="shelf.cacheCheckRows.length == 0" class="goods-operation-box" ng-class="{'goods-operation-enable': shelf.cacheCheckRows.length > 0, 'goods-operation-disable': shelf.cacheCheckRows.length == 0}" translate="store_offshelves" ng-click="shelf.offShelves($event)"></button>
+
+        <button ng-disabled="shelf.cacheCheckRows.length == 0" class="goods-operation-box" ng-class="{'goods-operation-enable': shelf.cacheCheckRows.length > 0, 'goods-operation-disable': shelf.cacheCheckRows.length == 0}" translate="delete" ng-click="shelf.deleteGoods($event)"></button>
+
+        <!-- ng-show="shelf.showOnShelvesModal" -->
+        <div class="tag-modal shelf-modal" ng-show="shelf.showOnShelvesModal">
+          <h3 class="tag-title">{{"store_select_goods_onshelves_title" | translate}}</h3>
+          <div class="tag-content store-channel-content">
+            <div>
+              <div class="mb10"><div wm-radio ng-model="shelf.shelveType" value="now" ng-click="shelf.changeShelveType()"></div>{{'product_goods_shelves_now' | translate}}</div>
+              <div class="mb10"><div wm-radio ng-model="shelf.shelveType" value="schedule" ng-click="shelf.changeShelveType()"></div>{{'product_goods_shelves_schedule' | translate}}</div>
+              <div wm-datetime-picker id="schedulePicker" format-type="YYYY-MM-DD HH:mm" pick-date="true" pick-time="true" ng-model="shelf.onSaleTime" more-than-today="true"></div>
+            </div>
+            <div class="confirm-select mt30">
+              <span class="btn btn-success btn-operate-tag btn-tag-ok" translate="ok" ng-click="shelf.onShelves()"></span>
+              <span class="btn btn-operate-tag btn-default" translate="cancel" ng-click="shelf.showOnShelvesModal = false"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div wm-table ng-model="shelf.list" is-select-all="true"></div>
+    </div>
+
+    <!-- The pagination -->
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="shelf.currentPage" page-size="shelf.pageSize" total-items="shelf.totalCount" on-change-size="shelf.changeSize" on-change-page="shelf.changePage"></div>
+    </div>
+
+    <div class="modal-no-color ng-scope" ng-show="shelf.showOnShelvesModal" ng-click="shelf.showOnShelvesModal = !shelf.showOnShelvesModal"></div>
+  </div>
+</div>

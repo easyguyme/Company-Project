@@ -1,0 +1,27 @@
+.c-popselect {
+  @include clearfix;
+  position: relative;
+  padding: .12rem .55rem .12rem .2rem;
+  border: 1px solid $select-border-color;
+
+  &__text {
+    @include text-overflow();
+
+    display: block;
+    font-size: .41rem;
+    line-height: .76rem;
+    height: .76rem;
+  }
+
+  &__icon {
+    @include size(.23rem, .42rem);
+
+    position: absolute;
+    top: .27rem;
+    right: .2rem;
+  }
+
+  &--disabled {
+    opacity: .5;
+  }
+}

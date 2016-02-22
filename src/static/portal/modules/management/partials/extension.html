@@ -1,0 +1,30 @@
+<div class="container-fluid extension-modules-container">
+  <div wm-breadcrumb="extension.breadcrumb"></div>
+  <div class="row">
+    <div class="col-md-6 col-sm-10 col-xs-12" ng-repeat="module in extension.extensionModules track by $index" ng-class="{'english-extension-modules': extension.language == 'en_us'}">
+      <div class="row clear-container-padding extension-modules-item cp" ng-click="extension.getDetail(module.name)">
+
+        <div class="col-md-3 col-sm-3 col-xs-3 clear-container-padding extension-modules-icon">
+          <div class="modules-item-avatar modules-{{module.name}}-avatar"></div>
+        </div>
+
+        <div class="col-md-9 col-sm-9 col-xs-9 clear-container-padding extension-modules-info">
+          <div class="modules-item-title fs16" translate="{{module.title}}"></div>
+          <div class="modules-item-explains">
+            <ul>
+              <li ng-repeat="illustration in module.illustrations track by $index">
+                <div class="row clear-container-margin modules-explains-item">
+                  <div class="col-md-1 col-sm-1 col-xs-1 clear-container-padding explains-item-dot {{module.name}}-explain-dot"></div>
+                  <div class="col-md-11 col-sm-11 col-xs-11 clear-container-padding explains-item-content fs14" translate="{{illustration}}"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="extension-modules-active" translate="management_extension_module_added" ng-show="module.active">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

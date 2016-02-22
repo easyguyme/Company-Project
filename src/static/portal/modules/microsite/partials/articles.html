@@ -1,0 +1,28 @@
+<div ng-controller="wm.ctrl.microsite.articles as articles">
+  <div class="articles-channel row">
+    <div class="col-md-1 articles-channel-title">{{"content_articles_channel" | translate}}</div>
+    <ul class="articles-channel-body col-md-9">
+      <li class="articles-channel-body-tag" ng-repeat="channel in articles.channels track by $index">
+        <span class="articles-channel-body-tag-text" ng-class="{'is-select-color':channel.id == articles.activedChannel.id, 'articles-channel-body-tag-text-edit':articles.channelEdit && !channel.isDefault, 'articles-channel-body-tag-text-edit-zero':articles.channelEdit && channel.isDefault, 'cp':!articles.channelEdit}" ng-click="articles.changeChannel($index)">{{channel.name}}</span>
+        <span class="articles-channel-body-tag-edit cp"ng-click="articles.editChannel($index)" ng-if="articles.channelEdit && !channel.isDefault"></span>
+        <span class="articles-channel-body-tag-delete cp" ng-click="articles.deleteChannel($index, $event)" ng-if="articles.channelEdit && !channel.isDefault"></span>
+      </li>
+      <li class="articles-channel-body-button cp" ng-if="!articles.channelEdit" ng-click="articles.newChannel()">
+        <span class="articles-channel-body-add"></span>
+      </li>
+    </ul>
+    <div class="articles-channel-edit cp col-md-2 pr35" ng-click="articles.editTags()">{{articles.channelManagement | translate}}</div>
+  </div>
+
+  <div class="content-articels-items">
+    <div class="content-articels-operation clearfix">
+      <button class="btn btn-success pull-right" translate="content_articles_create" ng-click="articles.createArticle()"></button>
+    </div>
+    <wm-table ng-model="articles.articlesList" class="colored-table"></wm-table>
+    <div class="broadcast-pagination interaction-foot-pagination" ng-if="articles.pageCount > 0">
+        <div wm-pagination current-page="articles.currentPage" page-size="articles.pageSize" total-items="articles.totalItems" on-change-size="articles.changeSize" on-change-page="articles.changePage"></div>
+      </div>
+  </div>
+
+  <div wm-qrcode-download is-url="true" url-link="articles.qrcodeUrl" qrcode-title="articles.downQrcodeName" is-show="articles.isShowQrcodeDropdown" location-top="articles.qrcodePaneTop" location-right="50"></div>
+</div>

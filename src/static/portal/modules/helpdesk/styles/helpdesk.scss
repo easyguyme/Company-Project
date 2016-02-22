@@ -1,0 +1,77 @@
+$helpdesk-head-bgcolor: #eee;
+$helpdesk-account-tip-color: #888;
+
+.helpdesk-main-content {
+  margin-bottom: 0;
+}
+
+.panel {
+
+  .panel-helpdesk-container {
+    padding: 0 15px;
+  }
+
+  .helpdesk-account-title {
+    height: 40px;
+    padding: 5px 10px;
+    background-color: $helpdesk-head-bgcolor;
+
+    .account-title {
+      color: $table-th-color;
+      line-height: 30px;
+    }
+
+    .btn-success {
+      height: 30px;
+      margin-top: -1px;
+    }
+  }
+}
+
+.panel-account-container {
+  width: 100%;
+
+  table {
+    th {
+      color: $table-th-color;
+    }
+
+    th:nth-child(1) {
+      width: 250px;
+    }
+
+    tbody {
+      tr {
+        td {
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+}
+
+.account-tip {
+  @include wm-all-border-radius(2px);
+  padding: 8px 15px;
+  background-color: $panel-hearder-background-color;
+  display: inline-block;
+  color: $helpdesk-account-tip-color;
+  font-size: 12px;
+  width: 100%;
+
+  img {
+    margin-right: 12px;
+    margin-bottom: 2px;
+  }
+}
+
+.create-user-body {
+  .mb0 {
+    margin-bottom: 0;
+  }
+}
+
+
+.helpdesk-img {
+  float: left;
+}

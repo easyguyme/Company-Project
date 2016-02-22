@@ -1,0 +1,98 @@
+<div wm-breadcrumb="coupon.breadcrumb"></div>
+<div class="coupon-view-wrapper clearfix">
+
+  <!-- mobile show -->
+  <div class="coupon-show-mobile col-md-4">
+    <iframe class="coupon-show-iframe" ng-src="{{coupon.url}}"></iframe>
+  </div>
+  <div class="coupon-backdrop">
+    <div class="coupon-mobile-title">{{'product_coupon_' + coupon.type | translate}}</div>
+  </div>
+  <!-- mobile show -->
+
+  <!-- information show -->
+  <div class="coupon-show-detail col-md-7">
+
+    <!-- title and time -->
+    <div class="coupon-group">
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_' + coupon.type + '_title' | translate}}</label>
+        <span>{{coupon.title}}</span>
+      </div>
+      <div class="coupon-item clearfix" ng-if="coupon.type == 'discount'">
+        <label>{{'product_coupon_discount_rate' | translate}}</label>
+        <span class="coupon-discount-title">{{coupon.discountAmount}}</span>
+        <span class="coupon-discount-title" ng-if="coupon.discountAmount != '-'">{{'discount_off' | translate}}</span>
+      </div>
+      <div class="coupon-item clearfix" ng-if="coupon.type == 'cash'">
+        <label>{{'product_coupon_amount_deduction' | translate}}</label>
+        <span class="coupon-discount-title">{{coupon.reductionAmount}}</span>
+        <span class="coupon-discount-title" ng-if="coupon.reductionAmount != '-'">{{'yuan' | translate}}</span>
+      </div>
+      <div class="coupon-item clearfix" ng-if="coupon.type == 'cash'">
+        <label>{{'product_coupon_threshold' | translate}}</label>
+        <span class="coupon-discount-title">{{coupon.discountCondition}}</span>
+        <span class="coupon-discount-title" ng-if="coupon.discountCondition != '-'">{{'yuan' | translate}}</span>
+      </div>
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_validity' | translate}}</label>
+        <span>{{coupon.validity}}</span>
+      </div>
+    </div>
+    <!-- title and time -->
+
+    <!-- settings of taking coupon -->
+    <div class="coupon-group">
+      <div class="detail-title">
+        <label class="detail-title-label">{{'product_taking_coupon_setting' | translate}}</label>
+      </div>
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_store_account' | translate}}</label>
+        <span>{{coupon.total}}</span>
+      </div>
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_taking_limit' | translate}}</label>
+        <span>{{coupon.limit}}</span>
+      </div>
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_operation_tip' | translate}}</label>
+        <span>{{coupon.tip}}</span>
+      </div>
+    </div>
+    <!-- settings of taking coupon -->
+
+    <!-- coupon detail -->
+    <div class="coupon-group">
+      <div class="detail-title">
+        <label class="detail-title-label">{{'product_coupon_' + coupon.type + '_detail' | translate}}</label>
+      </div>
+      <div class="coupon-item clearfix" ng-hide="coupon.type == 'discount' || coupon.type == 'cash'">
+        <label>{{'product_coupon_detail_title' | translate}}</label>
+        <span ng-bind-html="coupon.description"></span>
+      </div>
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_usage_note' | translate}}</label>
+        <span ng-bind-html="coupon.usageNote"></span>
+      </div>
+      <div class="coupon-item clearfix">
+        <label>{{'product_coupon_help_tel' | translate}}</label>
+        <span>{{coupon.phone}}</span>
+      </div>
+    </div>
+    <!-- coupon detail -->
+
+    <!-- using store -->
+    <div class="coupon-group">
+      <div class="detail-title">
+        <label class="detail-title-label">{{'product_coupon_using_store' | translate}}</label>
+      </div>
+      <div class="coupon-table" ng-show="!coupon.storeAll">
+        <wm-table class="colored-table" ng-model="coupon.list"></wm-table>
+      </div>
+      <div class="coupon-all-stores" ng-show="coupon.storeAll">{{'product_coupon_all_store' | translate}}</div>
+    </div>
+    <!-- using store -->
+
+  </div>
+  <!-- information show -->
+</div>

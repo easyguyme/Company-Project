@@ -1,0 +1,69 @@
+{
+    "id": "55b1ab3ad6f97f5e668b4569",
+    "card": {
+        "id": "5518bfadd6f97f41048b4573",
+        "name": "默认会员卡",
+        "poster": "/images/mobile/membercard.png",
+        "fontColor": "#fff",
+        "privilege": "<p>9折消费折扣</p><ul><li><p>全年消费享有正价商品9折优惠</p></li><li><p><br/></p></li></ul><p>生日礼及寿星折扣</p><ul><li><p>生日當月可憑會員卡到全省門市領取精美生日好禮,且享有壽星200元商品抵用券或8折生日優惠.</p></li><li><p>8折優惠適用於正價商品，不得與會員折扣合併使用，生日禮將不定期更換</p></li></ul>",
+        "condition": {
+            "minScore": 50,
+            "maxScore": 100
+        },
+        "usageGuide": "<p>使用时向工作人员出示本会员卡即可，最终解释权归本品牌所有</p>",
+        "isEnabled": true,
+        "isDefault": true,
+        "scoreResetDate": null,
+        "provideCount": 9,
+        "createdAt": "2015-03-30 11:14:53",
+        "updatedAt": "2015-05-20 16:40:35"
+    },
+    "createdAt": "2015-07-24 11:04:26",
+    "socialAccount": {
+        "id": "54d9c155e4b0abe717853ee1",
+        "origin": "wechat",
+        "name": "熊猫Baby",
+        "type": "SERVICE_AUTH_ACCOUNT"
+    },
+    "socialMember": "Aaron Wang Test",
+    "properties": [
+        {
+            "id": "5518bfacd6f97f41048b456e",
+            "name": "name",
+            "type": "input",
+            "value": "Aaron Wang Test"
+        },
+        {
+            "id": "5518bfacd6f97f41048b456f",
+            "name": "tel",
+            "type": "input",
+            "value": "13027785897"
+        },
+        {
+            "id": "5518bfacd6f97f41048b4570",
+            "name": "gender",
+            "type": "radio",
+            "value": "unknown"
+        }
+    ],
+    "accountId": "55189a7cd6f97f41048b4567",
+    "cardProvideTime": "2015-07-24 11:04:26",
+    "cardExpired": 0,
+    "avatar": "http://wx.qlogo.cn/mmopen/GsBuGiaXuVMgdGH27mIX3A5zYfwEeVJtM6NYyLeBnQUIUJqHvFpAALIcLuxJicY53w2SaNL99ibRl8WUTr6ibTTvdIWeYX8ibWccY/0",
+    "location": {
+        "city": "浦东新区",
+        "province": "上海",
+        "country": "中国"
+    },
+    "tags": [],
+    "score": 1,
+    "remarks": null,
+    "cardNumber": "10000082",
+    "unionId": "",
+    "totalScore": 1,
+    "cardExpiredAt": "",
+    "birth": null,
+    "openId": "oC9Aes_BczVT_wk_DaREmajROhd0",
+    "scoreProvideTime": "2015-07-24 11:04:26",
+    "qrcodeUrl": "http://qiniu.qlogo.cn/mmopen/GsBuGiaXuVMgdGH27mIX3..."
+}

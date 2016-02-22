@@ -1,0 +1,12 @@
+---
+- name: site | create nginx site conf
+  template: src=klpcms.conf dest=/etc/nginx/sites-available/{{ item.name }}.conf
+  with_items: nginx.sites
+  notify: Reload nginx
+
+- name: site | enable nginx site sonf
+  file: src=/etc/nginx/sites-available/{{ item.name }}.conf
+        dest=/etc/nginx/sites-enabled/{{ item.name }}.conf
+        state=link force=yes
+  with_items: nginx.sites
+  notify: Reload nginx

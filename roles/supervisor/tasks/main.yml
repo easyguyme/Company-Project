@@ -1,0 +1,4 @@
+---
+
+- include: processes.yml
+  when: worker.processes is defined and repo is defined

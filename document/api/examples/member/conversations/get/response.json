@@ -1,0 +1,80 @@
+{
+    "items": [
+        {
+            "id": "5673afd7a94c454d6af885eb",
+            "conversationId": "5670b8421837ba3cfbc2e99e",
+            "desk": {
+                "avatar": "/images/management/image_hover_default_avatar.png",
+                "badge": "T04405",
+                "email": "758302063@qq.com",
+                "name": "iris",
+                "id": "566e8287137473d6198b45d2"
+            },
+            "client": {
+                "tags": [
+                    "T0527",
+                    "叶良辰"
+                ],
+                "channelInfo": {
+                    "name": "群硕软件",
+                    "type": "WEIBO"
+                },
+                "accountId": "54bf3b4c13747372268b4567",
+                "channelId": "54feb1e7e4b0c154f48b7357",
+                "source": "weibo",
+                "openId": "ojmADuO45K-PutHOHWpdwrmrA3OU",
+                "avatar": "http://tp2.sinaimg.cn/2760433581/50/40017422707/1",
+                "nick": "魔杰_黑啤酒"
+            },
+            "startMessageId": 2,
+            "endMessageId": 12,
+            "lastChatTime": "2015-12-16 09:02:58",
+            "createdAt": "2015-12-16 09:02:58"
+        },
+        {
+            "id": "5670b840137473747e8b4574",
+            "conversationId": "5670b8411837ba3cfbc2e99d",
+            "desk": {
+                "avatar": "https://dn-quncrm.qbox.me/a9df572c16aa06e62031df8a.jpg",
+                "badge": "007",
+                "email": "zzwcjd@163.com",
+                "name": "王朗",
+                "id": {
+                    "$id": "566f6bfc13747330028b4567"
+                }
+            },
+            "client": {
+                "tags": [
+                    "八宝",
+                    "狐尔摩斯"
+                ],
+                "channelInfo": {
+                    "name": "群硕测试2",
+                    "type": "SERVICE_AUTH_ACCOUNT"
+                },
+                "accountId": "54bf3b4c13747372268b4567",
+                "channelId": "54fd0571e4b055a0030461fb",
+                "source": "wechat",
+                "openId": "ojmADuO45K-PutHOHWpdwrmrA3OU",
+                "avatar": "http://wx.qlogo.cn/mmopen/PiajxSqBRaEKlWxluAfFbwCmicicYL1QppiaAHu9M6wuwrnylP8IoJEXt6v5YZkeiawIt3pOJgVxria8dKpmXrOhfUNw/0",
+                "nick": "Irisun"
+            },
+            "startMessageId": 2,
+            "endMessageId": null,
+            "lastChatTime": "2015-12-16 09:02:56",
+            "createdAt": "2015-12-16 09:02:56"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/member/conversations?tmoffset=-8&time=1450422749049&memberId=5672518fd6f97fa7628b4567&page=1&per-page=5"
+        }
+    },
+    "_meta": {
+        "totalCount": 2,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 5
+    },
+    "lastChatDate": "2015-12-17"
+}

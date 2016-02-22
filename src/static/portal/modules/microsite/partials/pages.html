@@ -1,0 +1,14 @@
+<div ng-controller="wm.ctrl.microsite.pages as pages">
+  <!-- <div ng-init="template='/build/modules/site/partials/comming.html'" ng-include="template"></div> -->
+  <div class="content-pages-operation clearfix">
+    <a class="btn btn-success broadcast-new-btn pull-right" translate="content_page_create" href="/microsite/page/create/webpage"></a>
+  </div>
+  <div class="content-pages-items">
+    <wm-table ng-model="pages.pagesList" class="colored-table"></wm-table>
+    <div class="broadcast-pagination interaction-foot-pagination">
+      <div wm-pagination current-page="pages.currentPage" page-size="pages.pageSize" total-items="pages.totalItems" on-change-size="pages.changeSize" on-change-page="pages.changePage"></div>
+    </div>
+  </div>
+  <div wm-qrcode-download is-url="true" url-link="pages.qrcodeUrl" qrcode-title="pages.downQrcodeName" is-show="pages.isShowQrcodeDropdown" location-top="pages.qrcodePaneTop" location-right="50"></div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "卡名"
+    },
+    "poster": {
+      "type": "string",
+      "required": true,
+      "description": "背景图片"
+    },
+    "fontColor": {
+      "type": "string",
+      "required": false,
+      "description": "字体颜色"
+    },
+    "privilege": {
+      "type": "string",
+      "required": true,
+      "description": "特权"
+    },
+    "condition": {
+      "type": "string",
+      "required": false,
+      "description": "积分区间isAutoUpgrade为true时必填"
+    },
+    "usageGuide": {
+      "type": "string",
+      "required": true,
+      "description": "使用说明"
+    },
+    "isAutoUpgrade": {
+      "type": "string",
+      "required": false,
+      "description": "是否可以自动升级"
+    },
+    "scoreResetDate": {
+      "type": "string",
+      "required": true,
+      "description": "积分清0时间"
+    }
+  }
+}

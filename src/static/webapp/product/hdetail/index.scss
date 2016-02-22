@@ -1,0 +1,67 @@
+.shadow-wrapper {
+  background-color: $white;
+  box-shadow: 0 .1rem .5rem $item-shadow-color;
+}
+
+.goods-delivery {
+  margin: 1rem 0;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+
+  .inexpress {
+    color: $yellow-bg-color;
+  }
+}
+
+.record-detail-wrapper {
+
+  .record-detail-item {
+    border-bottom: 1px solid $item-border-color;
+    font-size: 1.2rem;
+    min-height: 4rem;
+    line-height: 4rem;
+    padding: 0 1rem;
+
+    .detail-item-title {
+      @include size(30%, 100%);
+
+      color: $gray-text-color;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .receive-address {
+      line-height: 1.6rem;
+      padding: 1.4rem 0;
+    }
+
+    .detail-item-content {
+      @include size(70%, 100%);
+
+      color: $item-name-color;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .item-score {
+    .detail-item-content {
+      $score-color: #f16358;
+      color: $score-color;
+    }
+  }
+}
+
+.record-explain-wrapper {
+  color: $yellow-bg-color;
+  font-size: 1.3rem;
+  height: 6rem;
+  line-height: 6rem;
+  padding-left: 1.5rem;
+}

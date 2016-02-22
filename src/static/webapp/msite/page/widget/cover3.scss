@@ -1,0 +1,178 @@
+$m-cover3-container-bgcolor: #131315;
+$m-cover3-nav-text-color: #fff;
+
+$m-cover3-nav-icons:                     fashionnews, touristattractions, gourmetcooking, weatherexpress, prettybaby, appreciationofarchitecture;
+
+@mixin m-size($width: 100%, $height: 100%) {
+  width: $width;
+  height: $height;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: ' '; // 1
+    display: table; // 2
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin m-set-bg($length: 1, $description: one) {
+  @for $index from 1 through $length {
+    &:nth-child(#{$index}) {
+      background-image: url('/images/microsite/cover/coverpagethree_#{$description}navigationdisplayform_picture#{$index}.png');
+    }
+  }
+}
+
+%absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+%horizontal-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.m-absolute-center {
+  @extend %absolute-center;
+}
+
+.m-horizontal-center {
+  @extend %horizontal-center;
+}
+
+.m-text-center {
+  text-align: center;
+}
+
+.m-cover3-container {
+  @include m-size;
+  background-color: $m-cover3-container-bgcolor;
+  padding: .31rem;
+  box-sizing: border-box;
+
+  .m-cover3-nav {
+    @include clearfix;
+    @include m-size;
+
+    .nav-overflow-box {
+      background-color: rgba(#1c1c1c, .75);
+      height: 100%;
+
+      .nav-info-box {
+        @extend %absolute-center;
+        @include m-size(3rem, 3.12rem);
+        font-size: .47rem;
+
+        .nav-info-icon {
+          @extend %horizontal-center;
+          @include m-size(1.13rem, 1.13rem);
+          margin-top: .31rem;
+          margin-bottom: .31rem;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        .nav-info-content {
+          text-align: center;
+          line-height: .5rem;
+        }
+      }
+    }
+
+    .nav-background-box {
+      color: $m-cover3-nav-text-color;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      margin-bottom: .31rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .m-nav-bglink {
+        @include m-size;
+        position: absolute;
+        top: 0;
+      }
+
+      @each $nav-icon in $m-cover3-nav-icons {
+        .nav-icon-#{$nav-icon} {
+          background-image: url('/images/microsite/cover/coverpagethree_#{$nav-icon}.png');
+        }
+      }
+
+    }
+
+    .nav-first-situation {
+      @include m-set-bg(1, one);
+      height: 100%;
+    }
+
+    .nav-second-situation {
+      @include m-set-bg(2, two);
+    }
+
+    .nav-third-situation {
+      @include m-set-bg(3, three);
+    }
+
+    .nav-fourth-situation {
+      @include m-set-bg(4, four);
+      float: left;
+
+      &:nth-child(3) {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(2n+1) {
+        margin-right: .31rem;
+      }
+    }
+
+    .nav-fifth-situation {
+      @include m-set-bg(5, six);
+      float: left;
+
+      &:nth-child(3) {
+        background-image: url('/images/microsite/cover/coverpagethree_fivenavigationdisplayform_picture3.png');
+      }
+
+      &:nth-child(4) {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(3n+1) {
+        margin-right: .31rem;
+      }
+    }
+
+    .nav-sixth-situation {
+      @include m-set-bg(6, six);
+      float: left;
+
+      &:nth-child(5) {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(2n+1) {
+        margin-right: .31rem;
+      }
+
+    }
+  }
+
+}
+

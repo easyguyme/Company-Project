@@ -1,0 +1,5 @@
+<!-- type is input and property name is 'tel'-->
+<div class="member-attr-item member-attr-tel clearfix">
+  <input id="{{property.id}}" type="tel" class="form-control member-attr" ng-model="property.value" required ng-if="property.isRequired" wm-validate="property.validateHandler || member.checkTelNum" />
+  <input id="{{property.id}}" type="tel" class="form-control member-attr" ng-model="property.value" ng-if="!property.isRequired" wm-validate="property.validateHandler || member.checkTelNum" />
+</div>

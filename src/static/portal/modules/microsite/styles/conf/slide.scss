@@ -1,0 +1,43 @@
+.config-wrap {
+  $slidesTipColor: #a0a0a0;
+  $addPicColor: #38c4a9;
+  $selectBarColor: #555555;
+
+  .form-slide-title {
+    margin-bottom: 0;
+  }
+  .form-group-slide {
+    margin-bottom: 7px;
+  }
+
+  .slides-tip {
+    color: $slidesTipColor;
+    font-size: 12px;
+  }
+
+  .slide-addition {
+    background-image: url("/images/content/addtag_normal.png");
+    background-repeat: no-repeat;
+    background-position: 0px center;
+    box-shadow: none;
+    color: $addPicColor;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    padding: 2px 0 2px 30px;
+
+    &:hover {
+      background-image: url("/images/content/addtag_hover.png");
+      background-repeat: no-repeat;
+    }
+  }
+
+  .slide-file-upload {
+    right: 5px;
+  }
+
+  .slide-cur-setting {
+    width: 200px;
+    color: $selectBarColor;
+  }
+}

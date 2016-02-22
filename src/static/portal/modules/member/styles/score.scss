@@ -1,0 +1,112 @@
+$score-border-color:        #ededed;
+$score-label-color:         #555;
+$score-border-right-color:       #eee;
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr20 {
+  margin-right: 20px;
+}
+
+.score-pannel {
+  border: 1px solid $score-border-color;
+  border-top: 0;
+  box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+
+}
+
+.score-reward-wrapper {
+  padding: 30px 20px;
+}
+
+.score-reward-body {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+
+  .col-md-4,
+  .col-md-6 {
+    border-right: 1px solid $score-border-right-color;
+    height: 100%;
+    padding: 20px;
+  }
+}
+
+.score-total-title {
+  font-size: 16px;
+}
+
+.total-number {
+  font-size: 35px;
+}
+
+.point-fill {
+  width: 200px;
+}
+
+.score-point-type {
+  margin-right: 10px;
+  width: 115px;
+}
+
+.point-tip {
+  line-height: 31px;
+  margin-right: 10px;
+  padding-left: 0;
+}
+
+.send-score-wrapper {
+  padding: 0 15px;
+
+  .generate-link {
+    padding-left: 10px;
+    line-height: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    color: $score-label-color;
+    font-weight: normal;
+  }
+
+  .ueditor-wrapper {
+    margin-bottom: 50px;
+  }
+}
+
+.score-send-target {
+
+  .form-control {
+    margin: 10px 0;
+  }
+}
+
+.point-label {
+  line-height: 31px;
+  margin-left: 10px;
+}
+
+.score-operation-wrapper {
+  margin-top: 50px;
+}
+
+.score-autocomplete {
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+
+.score-txt-nosize {
+  resize: 0;
+}
+
+.rule-properties-name {
+  color: $score-label-color;
+  font-weight: normal;
+  border: 1px solid $score-border-right-color;
+  margin: 0;
+}

@@ -1,0 +1,224 @@
+<div class="wechat-menu" wm-before-unload="menu.isPublish">
+  <!-- <div class="main-title">
+    <span>{{'wechat_menu_title'|translate}}</span><div class="help-info-wrapper"><i class="help-info" ng-class="{'active':menu.info}" ng-click="menu.info=true"></i>
+    <div class="help-main-info" ng-class="{'active':menu.info}">{{'wechat_menu_info'|translate}}<div class="info-close" ng-click="menu.info=false"></div></div></div>
+  </div> -->
+  <div wm-breadcrumb="menu.breadcrumb"></div>
+  <div class="main-content container-fluid">
+    <div class="clearfix">
+      <div class="pull-left col-xs-6 col-sm-4 menu-content-left">
+        <div class="menu-title">
+          <span>{{'wechat_menu_management'|translate}}</span>
+          <i class="icon icon-order" ng-click="menu.sort=true;menu.initSortedMenus()" ng-if="!menu.sort" wm-tooltip="{{'wechat_menu_click_to_order'|translate}}"></i>
+          <div class="order-btns" ng-if="menu.sort">
+            <button class="btn btn-primary btn-sm" ng-click="menu.sort=false;menu.saveSortedMenus()">{{'wechat_menu_save'|translate}}</button><button class="btn btn-default btn-sm" ng-click="menu.sort=false;menu.cancelSortedMenus()">{{'wechat_menu_back'|translate}}</button>
+          </div>
+        </div>
+        <!-- normal menus -->
+        <div class="menu-content" ng-if="!menu.sort">
+          <div class="menu-item-content" ng-repeat="menuItem in menu.menus">
+            <div class="menu-item" ng-class="{'active':menuItem.id===menu.selectedMenu.id}" ng-click="menu.activate(menuItem)">
+              <div class="menu-item-name">{{menuItem.name}}</div>
+              <i name="statistics-{{menuItem.id}}" class="icon icon-statistics" ng-click="menu.statistics(menuItem, $event)"></i>
+              <i class="icon icon-delete" ng-click="menu.delete($index, menu.menus, $event)"></i>
+            </div>
+            <div class="submenu-item" ng-repeat="submenuItem in menuItem.subMenus" ng-class="{'active':submenuItem.id===menu.selectedMenu.id}" ng-click="menu.activate(submenuItem)">
+              <div class="menu-item-name">{{submenuItem.name}}</div>
+              <i name="statistics-{{submenuItem.id}}" class="icon icon-statistics" ng-click="menu.statistics(submenuItem, $event)"></i>
+              <i class="icon icon-delete" ng-click="menu.delete($index, menuItem.subMenus, $event)"></i>
+            </div>
+            <div class="submenu-item menu-add-item" ng-click="menu.add(menuItem.id)" ng-hide="menuItem.subMenus.length >= 5" wm-tooltip="{{(menuItem.subMenus.length>0?'':'wechat_menu_sub_tip') | translate}}">
+              <span class="menu-add-content">{{'wechat_menu_add_submenu'|translate}}</span>
+            </div>
+          </div>
+          <div class="menu-item menu-add-item" ng-click="menu.add()" ng-hide="menu.menus.length >= 3">
+            <span class="menu-add-content">{{'wechat_menu_add'|translate}}</span>
+          </div>
+        </div>
+        <!-- sort menus -->
+        <div class="menu-content menu-sort" ng-if="menu.sort" wm-sortable="menu.sortMenuOptions">
+          <div class="main-menu-sort-item" ng-repeat="menuItem in menu.sortedMenus track by $index">
+            <div class="menu-sort-item">{{menuItem.name}}</div>
+            <div wm-sortable="menu.sortSubmenuOptions">
+              <div class="submenu-sort-item" ng-repeat="submenuItem in menuItem.subMenus track by $index">
+                <span>{{submenuItem.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pull-left col-xs-6 col-sm-8 menu-content-right">
+        <div class="menu-title">{{'wechat_menu_detail'|translate}}</div>
+        <div class="menu-edit container-fluid" ng-if="menu.selectedMenu && !menu.sort">
+          <div>
+            <div class="menu-name-label">{{'wechat_menu_name'|translate}}</div>
+            <input class="menu-value form-control" type="text" ng-model="menu.selectedMenu.name" ng-disabled="menu.status===menu.allStatus.show" maxlength="8" required without-star form-tip="{{'wechat_menu_name_tip'|translate}}" wm-max-character-size="8" ng-if="!menu.selectedMenu.parentId" />
+            <input class="menu-value form-control" type="text" ng-model="menu.selectedMenu.name" ng-disabled="menu.status===menu.allStatus.show" maxlength="16" required without-star form-tip="{{'wechat_submenu_name_tip'|translate}}" wm-max-character-size="16" ng-if="menu.selectedMenu.parentId" />
+          </div>
+          <div class="menu-action" ng-switch="menu.status">
+            <div ng-switch-when="show">
+              <div ng-show="!menu.selectedMenu.content && !menu.selectedMenu.type">
+                <div ng-show="menu.selectedMenu.subMenus.length <= 0">{{'wechat_menu_action_tip'|translate}}</div>
+                <div ng-show="menu.selectedMenu.subMenus.length > 0">{{'wechat_menu_action_show_tip'|translate}}</div>
+              </div>
+              <div class="menu-action-content" ng-show="menu.selectedMenu.type">
+                <div ng-switch="menu.selectedMenu.type">
+                  <div ng-switch-when="CLICK">
+                    <p class="menu-msg-tip">{{'wechat_menu_click_action_msg'|translate}}</p>
+                    <div wm-wechat-graphic graphic="menu.selectedMenu.content" ng-show="menu.selectedMenu.msgType==='NEWS'"></div>
+                    <textarea class="form-control" ng-model="menu.selectedMenu.content" ng-show="menu.selectedMenu.msgType==='TEXT'" disabled></textarea>
+                  </div>
+                  <div ng-switch-when="VIEW" class="menu-action-page">
+                    <p class="menu-msg-tip">{{'wechat_menu_click_action_page'|translate}}</p>
+                    <input ng-if="menu.link" class="form-control" type="url" ng-model="menu.selectedMenu.content" disabled />
+                    <input ng-if="!menu.link" class="form-control" ng-model="menu.inLink.title" disabled />
+                  </div>
+                  <div ng-switch-when="SPREAD" class="menu-action-page">
+                    <p class="menu-msg-tip">{{'wechat_menu_click_action_page'|translate}}</p>
+                    <input class="form-control" ng-model="menu.selectedMenu.contentName" disabled />
+                  </div>
+                  <div ng-switch-when="EXT">
+                    <p class="menu-msg-tip menu-msg-tip">{{'wechat_menu_click_action_ext'|translate}}</p>
+                    <div class="menu-ext">
+                      <img ng-src="{{'/images/' + menu.selectedMenu.ext.name + '/introduction/icon_default.png'}}" />
+                      <span class="menu-ext-title">{{menu.selectedMenu.ext.title|translate}}</span>
+                    </div>
+                  </div>
+                  <div ng-switch-when="WEBHOOK">
+                    <p class="menu-msg-tip">{{'wechat_menu_click_action_webhook'|translate}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-switch-when="edit">
+              <form>
+                <div ng-if="!menu.action">
+                  <div ng-if="menu.selectedMenu.subMenus.length > 0">
+                    <div class="menu-value">{{'wechat_menu_click_action'|translate}}</div>
+                    <div class="menu-msg-tip">{{'wechat_menu_action_show_tip'|translate}}</div>
+                  </div>
+                  <div ng-if="menu.selectedMenu.subMenus.length <= 0">
+                    <div class="menu-add-action menu-value" ng-click="menu.action=true">{{'wechat_menu_set_action'|translate}}</div>
+                    <div class="menu-msg-tip">{{'wechat_menu_action_tip'|translate}}</div>
+                  </div>
+                </div>
+                <div ng-if="menu.action">
+                  <div class="menu-value">{{'wechat_menu_click_action'|translate}}</div>
+                  <div class="menu-action-content">
+                    <div ng-if="!menu.selectedMenu.type">
+                      <div class="menu-action-center row clearfix">
+                        <div class="col-md-3 col-sm-6" ng-click="menu.selectType(type)" ng-repeat="type in menu.typeItems">
+                          <div class="menu-reply-item">
+                            <i class="menu-{{type.toLowerCase()}}-icon"></i>
+                            <div class="menu-reply-label">{{'wechat_menu_reply_' + type.toLowerCase() |translate}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <i class="icon icon-select-close" ng-click="menu.action=false"></i>
+                    </div>
+                    <div ng-switch="menu.selectedMenu.type">
+                      <div ng-switch-when="CLICK">
+                        <p class="menu-msg-tip">{{'wechat_menu_click_action_msg'|translate}}</p>
+                        <div wm-wechat-message ng-model="menu.selectedMenu.content" remain-character="menu.remainCharacter"></div>
+                      </div>
+                      <div ng-switch-when="VIEW" class="menu-action-page">
+                        <p class="menu-msg-tip">{{'wechat_menu_click_action_page'|translate}}</p>
+                        <div wm-select ng-model="menu.link" text-field="text" value-field="value" items="menu.links" default-text="wechat_menu_external_site_links" on-change="menu.changeLink"></div>
+                        <div ng-if="menu.link">
+                          <input wm-url class="form-control" type="text" ng-model="menu.selectedMenu.content" form-tip="{{'wechat_menu_link_tip'|translate}}" wm-validate="menu.checkUrl" required without-star />
+                        </div>
+                        <div ng-if="!menu.link" class="station-link-block">
+                          <input onkeydown="return false;" class="form-control station-link-input" type="text" ng-model="menu.inLink.title" form-tip="{{'wechat_menu_station_link_tip'|translate}}" ng-click="menu.showStationLink()" required without-star />
+                          <div class="station-link-icon" ng-click="menu.showStationLink()"></div>
+                        </div>
+                      </div>
+                      <div ng-switch-when="EXT">
+                        <p class="menu-msg-tip menu-msg-tip">{{'wechat_menu_click_action_ext'|translate}}</p>
+                        <div class="menu-ext">
+                          <img ng-src="{{'/images/' + menu.selectedMenu.ext.name + '/introduction/icon_default.png'}}" />
+                          <span class="menu-ext-title">{{menu.selectedMenu.ext.title|translate}}</span>
+                        </div>
+                      </div>
+                      <div ng-switch-when="WEBHOOK">
+                        <p class="menu-msg-tip">{{'wechat_menu_click_action_webhook'|translate}}</p>
+                      </div>
+                      <div ng-switch-when="SPREAD" class="menu-action-page">
+                        <p class="menu-msg-tip">{{'wechat_menu_click_action_page'|translate}}</p>
+                        <input class="form-control" ng-model="menu.selectedMenu.contentName" disabled />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <button class="btn btn-primary" ng-click="menu.saveMenus()" ng-if="menu.status===menu.allStatus.edit && !menu.selectedMenu.id" ng-disabled="!menu.selectedMenu.name">{{'wechat_menu_create'|translate}}</button>
+          <button class="btn btn-primary" ng-click="menu.editMenu()" ng-if="menu.status===menu.allStatus.show">{{'wechat_menu_edit'|translate}}</button>
+          <button class="btn btn-primary" ng-click="menu.saveMenus()" ng-if="menu.status===menu.allStatus.edit && menu.selectedMenu.id" ng-disabled="!menu.selectedMenu.name">{{'wechat_menu_save'|translate}}</button><button class="btn btn-default menu-cancel" ng-click="menu.cancelEdit()" ng-if="menu.status===menu.allStatus.edit && menu.selectedMenu.id">{{'wechat_menu_cancel'|translate}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix menu-publish-tip" ng-if="!menu.isPublish">
+      <div class="pull-left col-xs-2">{{'wechat_menu_not_publish'|translate}}</div>
+      <div class="pull-left col-xs-10">{{'wechat_menu_update_tip'|translate}}</div>
+    </div>
+    <div class="menu-main-btns">
+      <button class="btn btn-primary" ng-disabled="! menu.enablePublishButton" ng-click="menu.publishMenus()">{{'wechat_menu_publish'|translate}}</button>
+      <!-- <button class="btn btn-default">{{'wechat_menu_preview'|translate}}</button> -->
+    </div>
+  </div>
+  <div class="statistics-confirm" ng-show="menu.shwoStatistics">
+    <i class="back-triangle"></i>
+    <i class="front-triangle"></i>
+    <div class="confirm-title">{{'wechat_menu_total_click' | translate}} {{menu.count || 0}}</div>
+    <div class="confirm-buttons">
+      <span class="btn btn-primary" ng-click="menu.statisticsChat()">{{'wechat_menu_see_chart' | translate}}</span>
+    </div>
+  </div>
+</div>
+<!-- statistics modal -->
+<script type="text/ng-template" id="statistics.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="menu-modal-title">{{'wechat_menu_click_statistics' | translate}}</h4>
+  </div>
+  <div class="menu-modal-body modal-body">
+    <div class="clearfix">
+      <div class="col-xs-3 pull-left datepicker-container">
+        <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" min-date-picker-id="endDatePicker" time-handler="selectDate()" ng-model="beginDate" less-than-yesterday="true" first-unbind-handler="true"></div>
+      </div>
+      <div class="pull-left datepicker-between-text">&minus;</div>
+      <div class="col-xs-3 pull-left datepicker-container">
+        <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" max-date-picker-id="beginDatePicker" time-handler="selectDate()" ng-model="endDate" less-than-yesterday="true" first-unbind-handler="true"></div>
+      </div>
+    </div>
+    <div class="menu-chart" wm-line-chart options="chartData" width="850px" height="350px"></div>
+  </div>
+</script>
+<!-- extension modal -->
+<script type="text/ng-template" id="extensions.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="menu-modal-title">{{'wechat_menu_select_extension' | translate}}</h4>
+  </div>
+  <div class="menu-modal-body modal-body menu-modal-ext">
+    <div class="clearfix" ng-if="extInfos.length > 0">
+      <div ng-repeat="extInfo in extInfos" class="col-md-6 clearfix">
+        <div class="pull-left">
+          <wm-radio class="menu-modal-ext-radio" ng-model="selectedExt" value="{{extInfo.keycode}}" ng-click="selectExt(extInfo.keycode)"></wm-radio>
+        </div>
+        <div class="menu-modal-ext-content" ng-style="{'background-image':'url(' + (extInfo.icon?extInfo.icon:'/images/' + extInfo.name + '/introduction/icon_default.png') + ')'}">
+          <p class="menu-modal-ext-title">{{extInfo.title|translate}}</p>
+          <ul>
+            <li class="menu-modal-ext-item" ng-repeat="introduction in extInfo.introductions" ng-style="{'background-image':'url(' + (extInfo.dotIcon?extInfo.dotIcon:'/images/' + extInfo.name + '/introduction/paragraphbreak_default.png') + ')'}">{{introduction|translate}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="extension-tip clearfix" ng-if="extInfos.length == 0">{{'wechat_menu_select_extension_tip' | translate}}
+    </div>
+    <div class="menu-modal-ext-btns" ng-if="extInfos.length > 0">
+      <button class="btn btn-primary" ng-click="ok()">{{'ok'|translate}}</button>
+    </div>
+  </div>
+</script>

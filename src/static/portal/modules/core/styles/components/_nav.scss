@@ -1,0 +1,457 @@
+$gray5: #555;
+$white: #fff;
+$grayc: #ccc;
+$black: #000;
+$gray3: #343434;
+$gray-hover: #ececec;
+
+//main navigation
+.navbar {
+  background-color: $black-background-color;
+  border-radius: 0;
+  border-width: 0;
+  display: none;
+  margin-bottom: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1021;
+
+  &.visible {
+    display: block;
+  }
+
+  .navbar-brand img {
+    margin-top: -3px;
+  }
+
+  .navbar-header {
+    background: $black-hover;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 5px;
+    width: 220px;
+
+    .navbar-toggle {
+      background-color: $black;
+
+      .icon-bar {
+        background-color: $white;
+      }
+    }
+  }
+
+  .nav-item {
+    a {
+      padding: 15px 20px;
+    }
+  }
+
+  li > a {
+    color: $black-background-text-color;
+
+    &:hover {
+      color: $black-background-text-hover-color;
+    }
+
+    &.active {
+      color: $black-background-text-active-color;
+    }
+  }
+
+  .dropdown-toggle {
+    padding-left: 50px;
+  }
+
+  .avatar {
+    height: 30px;
+    width: 30px;
+  }
+
+  .user-name {
+    @include text-overflow();
+
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 85px;
+  }
+
+  .navbar-right {
+    a {
+      padding-left: 0;
+      padding-right: 0;
+
+      .avatar {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      &.dropdown-toggle {
+        padding: 10px 0;
+      }
+
+      .glyphicon {
+        margin: 0 15px;
+        top: 2px;
+      }
+
+      .nav-title {
+        padding-right: 20px;
+      }
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $black-background-color;
+
+    a {
+      color: $black-background-text-color;
+      padding: 10px 20px;
+
+      &:hover {
+        color: $black-background-text-hover-color;
+        background-color: $black-hover;
+      }
+    }
+
+    &.channels {
+      min-width: 140px;
+
+      a:hover {
+        color: $white;
+
+        .wechat-icon {
+          @include background-image('/images/site/icon_wechat_hover.png');
+        }
+
+        .weibo-icon {
+          @include background-image('/images/site/icon_weibo_hover.png');
+        }
+      }
+
+      .wechat-icon {
+        @include background-image('/images/site/icon_wechat_normal.png');
+        padding-bottom: 10px;
+        padding-left: 20px;
+      }
+
+      .weibo-icon {
+        @include background-image('/images/site/icon_weibo_normal.png');
+        padding-bottom: 10px;
+        padding-left: 20px;
+      }
+    }
+
+    &.user-setting {
+      margin-right: 65px;
+      min-width: 120px;
+    }
+  }
+}
+
+.nav-icon {
+  display: inline-block;
+  height: 20px;
+  vertical-align: middle;
+  width: 20px;
+}
+
+@each $icon in $nav-icons {
+  .#{$icon}-icon {
+    @include background-image('/images/nav/#{$icon}_default.png');
+  }
+}
+
+//vertical navigation
+
+.navbar-border-light-color {
+  border-color: $light-background-color !important;
+}
+
+.viewport-wrap {
+  width: calc(100% - 220px);
+}
+
+.navbar-vertical {
+  $gray-channeltitle-color: #555;
+  $wechat-border-color: #00d00d;
+  $weibo-border-color: #ffa82c;
+  $alipay-border-color: #1d9fdb;
+  $choose-channel-border-b-color: #d9e0ea;
+
+  background-color: $gray-background-color;
+  display: block;
+  list-style: none;
+  margin-bottom: -99999px;
+  padding: 0;
+  padding-bottom: 99999px;
+  width: 220px;
+
+  .channel-menu-box {
+    position: relative;
+    padding: 20px;
+    padding-left: 10px;
+  }
+
+  .channel-info {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+
+    &:hover {
+      background-color: $gray-hover;
+    }
+
+    .channel-avatar {
+      border-radius: 50%;
+      margin-top: 3px;
+      width: 30px;
+    }
+
+    .channel-name {
+      color: $gray5;
+      padding-left: 5px;
+    }
+
+    .tag {
+      border-radius: 2px;
+      color: $white;
+      font-size: 12px;
+      margin-left: 5px;
+      padding: 2px 5px;
+    }
+
+    .channel-tag {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .channel-tag-mg {
+      margin-left: -10px;
+      margin-right: -15px;
+    }
+  }
+
+  .store-info {
+    font-size: 12px;
+    color: $gray3;
+
+    .store-name {
+      color: $gray5;
+      font-size: 14px;
+
+      >span {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 95px);
+        word-break: break-all;
+      }
+
+      .store-cover {
+        @include size(60px, 40px);
+        margin-right: 5px;
+      }
+    }
+
+    .store-address {
+      background: url('/images/core/location.png') no-repeat;
+      padding-left: 20px;
+      margin-top: 15px;
+    }
+
+    .store-phone {
+      background: url('/images/core/phone.png') no-repeat;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+  }
+
+  .dropdown-channel-show {
+    .dropdown-channel {
+      -webkit-transform: translate(0, 0);
+      -moz-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+      -o-transform: translate(0, 0);
+      transform: translate(0, 0);
+    }
+  }
+
+  .dropdown-channel {
+    background: $white;
+    border-right: 1px outset rgba(160 , 160, 160, .2);
+    box-shadow: 0 0 14px $black-box-shadow-color;
+    height: 100%;
+    width: calc(100% + 32px);
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1011;
+    -webkit-transition: -webkit-transform 500ms ease;
+    -moz-transition: -moz-transform 500ms ease;
+    -ms-transition: -ms-transform 500ms ease;
+    -o-transition: -o-transform 500ms ease;
+    transition: transform 500ms ease;
+    -webkit-transform: translate(-100%, 0);
+    -moz-transform: translate(-100%, 0);
+    -ms-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
+
+    .choose-channel {
+      border-bottom: 1px solid $light-background-color;
+      color: $gray-channeltitle-color;
+      padding: 15px 20px;
+    }
+
+    ul {
+      padding: 0;
+      padding-bottom: 10px;
+      overflow-y: auto;
+      height: 580px;
+    }
+
+    li {
+      padding: 0;
+      position: relative;
+
+      &:hover {
+        background-color: $gray-background-color;
+      }
+    }
+  }
+
+  .channel-selected-icon {
+    height: 13px;
+    position: absolute;
+    right: 15px;
+    top: 34px;
+    width: 16px;
+  }
+
+  .dropdown-arrow-icon {
+    background-image: url('/images/core/choose_channel.png');
+    background-repeat: no-repeat;
+    height: 6px;
+    width: 5px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -3.5px;
+  }
+
+  .dropup-arrow-icon {
+    background: url('/images/core/dropdown.png');
+    display: inline-block;
+    height: 7px;
+    position: absolute;
+    right: 25px;
+    top: 23px;
+    transform: rotate(180deg);
+    width: 12px;
+  }
+
+  .channelmenu-icon {
+    border-radius: 50%;
+    height: 38px;
+    margin-left: 8px;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 38px;
+
+    &.channelmenu-wechat-icon {
+      border: 1px solid $wechat-border-color;
+    }
+
+    &.channelmenu-weibo-icon {
+      border: 1px solid $weibo-border-color;
+    }
+
+    &.channelmenu-alipay-icon {
+      border: 1px solid $alipay-border-color;
+    }
+
+    .channel-from {
+      bottom: -2px;
+      position: absolute;
+      right: -2px;
+    }
+  }
+
+  li {
+    padding: 0 10px;
+
+    a {
+      border-bottom: 1px solid $grayc;
+      color: $vertical-nav-text-color;
+      display: block;
+      padding: 20px 2px;
+      text-decoration: none;
+
+      &.bordered {
+        border-top: 1px solid $grayc;
+      }
+
+      @each $icon in $nav-icons {
+        &:hover .#{$icon}-icon {
+          background-image: url('/images/nav/#{$icon}_hover.png');
+        }
+      }
+    }
+
+    &.active {
+      background: $white-background-color;
+      margin-top: -1px;
+      padding-top: 1px;
+
+      a {
+        border-color: $white-background-color;
+        color: $white-background-text-active-color;
+
+        @each $icon in $nav-icons {
+          .#{$icon}-icon {
+            background-image: url('/images/nav/#{$icon}_selected.png');
+          }
+        }
+      }
+    }
+
+    &.centered {
+      text-align: center;
+    }
+
+    &:hover a {
+      color: $white-background-text-hover-color;
+    }
+  }
+
+  .nav-title {
+    margin-left: 6px;
+  }
+}
+
+.hide-vertical-nav {
+  .navbar-vertical {
+    display: none;
+  }
+
+  .viewport-wrap {
+    width: 100%;
+  }
+}
+
+.we-type-placeholder {
+  height: 10px;
+}
+
+.channel-base-wrap,
+.store-base-wrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1010;
+  cursor: default;
+}

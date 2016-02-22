@@ -1,0 +1,42 @@
+.c-lr-list {
+  font-size: .41rem;
+
+  &__item {
+    @include clearfix;
+    padding: .47rem 0;
+
+    &__left {
+      display: inline-block;
+      height: 100%;
+      float: left;
+
+      background-repeat: no-repeat;
+      background-position: left center;
+    }
+
+    &__label {
+      display: inline-block;
+      margin-left: .16rem;
+      float: left;
+      font-size: .28rem;
+      padding: .08rem .16rem;
+      border-radius: .03rem;
+    }
+
+    &__right {
+      display: inline-block;
+      height: 100%;
+      float: right;
+
+      background-repeat: no-repeat;
+      background-position: right center;
+    }
+
+    &__illustration {
+      font-size: $theme-space-padding;
+      width: 80%;
+      color: $textarea-placeholder-color;
+      margin-top: $theme-space-padding;
+    }
+  }
+}

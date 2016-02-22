@@ -1,0 +1,487 @@
+$padding-width: 15px;
+$label-color: #919191;
+$config-row-border-color: #ccc;
+$tokens-tips-color: #a0a0a0;
+$token-title-pannel-background-color: #f5f5f5;
+$token-title-pannel-color: #787878;
+$token-group-color: #514a4a;
+$token-title-word-color: #3a3838;
+$model-token-background-color: #f7f7f7;
+$word-color: #787878;
+$token-title-color: #38c4a9;
+$img-wrapper-background-color: #f1f1f1;
+$img-wrapper-border-color: #fff;
+$tpl-border-color: #dcdcdc;
+$pannel-bg-color: #f5f5f5;
+$pannel-head-bg-color: #ddd;
+$helper-tip-bg-color: #e2e2e2;
+
+$tpl-icons: mpnews, message, email;
+
+.wrapper-hearder-content {
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+}
+
+.header-title {
+  font-size: 16px;
+  color: $token-title-word-color;
+}
+
+.btn-wrapper-header {
+  padding: 4px 12px;
+}
+
+.private-token-info {
+  width: 200px;
+  background-position: 169px 0;
+}
+
+.token-wrapper {
+  margin-bottom: 40px;
+}
+
+.token-wrapper-body {
+  margin: 5px $padding-width 0;
+
+  table {
+
+    th {
+      &:first-child {
+        width: 30%;
+      }
+    }
+
+    tbody {
+      tr td {
+        padding: 10px 20px 0;
+      }
+    }
+  }
+}
+
+.tokens-table {
+  margin-bottom: 15px;
+
+  table {
+
+    th {
+
+      &:nth-child(2) {
+        width: 30%;
+      }
+    }
+
+    tbody {
+      tr td {
+        padding: 10px 20px;
+      }
+    }
+  }
+}
+
+.tokens-tips {
+  color: $tokens-tips-color;
+  display: inline-block;
+  margin-bottom: 0;
+  margin-left: $padding-width;
+
+  .tokens-prompt-label {
+    font-weight: normal;
+  }
+}
+
+.tokens-prompt-item {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.token-dialog {
+  .modal-dialog {
+    margin-top: 85px;
+    width: 462px;
+  }
+
+  .token-update-tip {
+    width: auto;
+
+    .form-tip {
+      background-image: url('/images/core/popup_tip.png');
+      background-repeat: no-repeat;
+      background-size: 12px 12px;
+      background-position: 0 1px;
+      line-height: 16px;
+      padding-left: 20px;
+      margin-left: 0;
+      vertical-align: middle;
+    }
+  }
+}
+
+.token-pagination {
+  margin: 20px $padding-width;
+  padding-bottom: 0;
+  float: right;
+
+  .no-data {
+    display: none;
+  }
+}
+
+.members-form {
+
+  .model-token {
+    @include size(100%, 115px);
+    background-color: $model-token-background-color;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding-bottom: 20px;
+    position: relative;
+
+    .modal-avatar-wrapper-token {
+      height: 100px;
+      position: absolute;
+
+      .file-upload-wrap {
+        width: 80px;
+        height: 16px;
+        border-width: 0;
+        margin-top: -17px;
+        position: relative;
+      }
+
+      .img-wrapper {
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        width: 96px;
+        height: 96px;
+        background: $img-wrapper-background-color;
+        border: 0 solid $img-wrapper-border-color;
+        padding: 8px;
+
+        .menber-avatar-icon {
+          width: 80px;
+          height: 80px;
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          border-bottom-left-radius: 4px;
+          background-size: cover;
+        }
+
+        img {
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          border-bottom-left-radius: 4px;
+          width: 80px;
+          height: 80px;
+          border: 0;
+        }
+      }
+    }
+  }
+
+  .token-label label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    color: $word-color;
+    font-weight: normal;
+  }
+
+  .token-pic-tip {
+    position: absolute;
+    right: 2px;
+    top: 95px;
+    width: 100%;
+  }
+
+  textarea {
+    &.form-control {
+      height: 140px;
+    }
+  }
+}
+
+.detial-pannel {
+
+  .members-form {
+    padding: 0 10px;
+  }
+
+  .token-group {
+    margin-left: 9px;
+    color: $token-group-color;
+    margin-bottom: 15px;
+
+    .dark-gray {
+      display: inline-block;
+      max-width: 100%;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+  }
+}
+
+.token-private-key {
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+.token-title {
+  margin-top: 5px;
+  color: $token-title-color;
+  cursor: pointer;
+}
+
+.token-title:before {
+  @include size(14px, 14px);
+  content: url('/images/management/add_default_14x14.png');
+  margin-right: 10px;
+  cursor: pointer;
+
+  &:hover {
+    @include size(14px, 14px);
+    content: url('/images/management/add_hover_14x14.png');
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &:active {
+    @include size(14px, 14px);
+    content: url('/images/management/add_click_14x14.png');
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
+
+.token-title-word {
+  margin: 30px 15px 0;
+  font-size: 16px;
+  color: $token-title-word-color;
+}
+
+.token-main-title {
+  padding: 0 20px;
+}
+
+.token-title-pannel {
+  background: $token-title-pannel-background-color;
+  color: $token-title-pannel-color;
+  font-size: 16px;
+  padding: 5px 20px;
+  line-height: 35px;
+  height: 35px;
+}
+
+.word-color {
+  color: $word-color;
+}
+
+.web-hook-wrapper {
+  margin-bottom: 0;
+
+  .new-wrapper {
+    margin-bottom: 0;
+  }
+}
+
+.wechat-account-dialog {
+
+  &.access-dialog {
+    .modal-dialog {
+      width: 650px;
+    }
+  }
+
+  .modal-dialog {
+    margin-top: 85px;
+    width: 462px;
+
+    .modal-body {
+      .step-one {
+        margin-bottom: 25px;
+
+        .step-one-title {
+          margin-bottom: 10px;
+        }
+
+        .screenshot {
+          width: 578px;
+          height: 306px;
+        }
+      }
+
+      .step-two {
+        margin-bottom: 25px;
+
+        .step-two-title {
+          margin-bottom: 10px;
+        }
+      }
+
+      .step-content {
+        margin-left: 20px;
+      }
+
+      .step-two-content,
+      .config-row {
+        margin-bottom: 10px;
+
+        > label {
+          color: $label-color;
+          font-weight: normal;
+          width: 60px;
+        }
+
+        > input {
+          display: inline-block;
+          width: calc(100% - 95px);
+        }
+      }
+
+      .config-row {
+        &:nth-child(1) {
+          border-top: 1px solid $config-row-border-color;
+          padding-top: 15px;
+        }
+      }
+    }
+  }
+}
+
+.developer-wrapper {
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.tpl-icon {
+  background-repeat: no-repeat;
+  height: 18px;
+  padding-left: 25px;
+  color: $white-background-text-color;
+  display: inline-block;
+}
+
+@each $icon in $tpl-icons {
+  .tpl-#{$icon}-icon {
+    background-image: url("/images/management/#{$icon}.png");
+  }
+}
+
+.tpl-wrapper {
+  padding: 20px 0;
+  border-top: 2px solid $tpl-border-color;
+
+  .help-main-info {
+    left: 25%;
+    top: -100px;
+  }
+
+  .tpl-id-input {
+    width: 30%;
+    display: inline-block;
+  }
+
+  .tpl-tip {
+    display: block;
+  }
+
+  .tpl-preview-content {
+    text-decoration: underline;
+  }
+}
+
+.tpl-email-wrap {
+  width: 60%;
+
+  .edui-editor-iframeholder {
+    min-height: 200px !important;
+  }
+}
+
+.tpl-sms-wrap {
+  width: 35%;
+  resize: none;
+}
+
+.npnews-wrapper {
+  position: relative;
+}
+
+.tpl-pannel {
+  background-color: $pannel-bg-color;
+
+  .tpl-pannel-head {
+    padding: 0 10px;
+    background-color: $pannel-head-bg-color;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  .tpl-pannel-body {
+    padding: 15px 10px;
+  }
+}
+
+.btn-tpl-helper {
+  float: right;
+  padding-left: 23px;
+  cursor: pointer;
+
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: 5px center;
+  background-image: url('/images/core/tpls_help.png');
+}
+
+.message-help-dialog {
+  .modal-dialog {
+    width: 555px;
+  }
+
+  .message-help-body {
+    padding: 25px 30px;
+    background-color: $model-token-background-color;
+
+    .modal-content-title {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .message-desc-tip {
+      margin-bottom: 15px;
+    }
+
+    .message-prams-wrapper {
+      margin-bottom: 35px;
+
+      .message-prams-item {
+        margin-bottom: 20px;
+
+        label {
+          font-weight: initial;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.helper-tip {
+  background-color: $helper-tip-bg-color;
+  padding: 4px 4px 4px 37px;
+
+  background-size: 12px 12px;
+  background-image: url('/images/core/popup_tip.png');
+  background-repeat: no-repeat;
+  background-position: 15px 8px;
+  line-height: 20px;
+}

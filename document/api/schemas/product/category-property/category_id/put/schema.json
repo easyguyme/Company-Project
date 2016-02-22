@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "propertyId": {
+      "type": "string",
+      "required": true,
+      "description": "the property id"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "the name(or title) of the category property"
+    },
+    "options": {
+      "type": "array",
+      "required": false,
+      "description": ""
+    },
+    "defaultValue": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "isRequired": {
+      "type": "boolean",
+      "required": false,
+      "description": "the default value is false"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+$red: #f00;
+
+#ueditor-wrapper {
+  .edui-editor {
+    .edui-for-authorize {
+      .edui-icon {
+        background-image: none !important;
+        width: auto !important;
+
+        &:hover {
+          background-image: none !important;
+        }
+
+        &:before {
+          content: '授权链接';
+          font-size: 12px;
+          line-height: 20px;
+          padding: 0 5px;
+        }
+      }
+
+      .edui-state-hover {
+        .edui-button-wrap {
+          background-color: transparent;
+          border: 1px solid transparent;
+        }
+      }
+
+
+      &:hover {
+        background-color: $white-background-color;
+        border-radius: 2px;
+      }
+    }
+
+    .edui-for-buttonlink {
+      .edui-icon {
+        background-image: none !important;
+        width: auto !important;
+
+        &:hover {
+          background-image: none !important;
+        }
+
+        &:before {
+          content: '按钮';
+          font-size: 12px;
+          line-height: 20px;
+          padding: 0 5px;
+        }
+      }
+
+      .edui-state-hover {
+        .edui-button-wrap {
+          background-color: transparent;
+          border: 1px solid transparent;
+        }
+      }
+
+      &:hover {
+        background-color: $white-background-color;
+        border-radius: 2px;
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+.c-pays {
+
+  &__item {
+    @include clearfix;
+    @include c-box;
+
+    border-bottom: 1px solid $pays-border-color;
+    padding: .31rem 0;
+    position: relative;
+
+    &__icon {
+      @include size(2.2rem, 1.1rem);
+
+      background-color: $pays-icon-bg;
+      border: 1px solid $pays-icon-border-color;
+      border-radius: .125rem;
+      position: relative;
+
+      margin-right: .31rem;
+
+      &__img {
+        height: .7rem;
+
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        &--nobg {
+          height: 1.1rem;
+        }
+      }
+
+      &--nobg {
+        @include square(1.1rem);
+
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+
+    &__info {
+      @include c-box-flex(1);
+
+      &__title {
+        color: $pays-title-color;
+        font-size: .41rem;
+        margin-bottom: .16rem;
+      }
+
+      &__supplement {
+        color: $pays-supplement-color;
+        font-size: .38rem;
+      }
+    }
+
+    &__radio {
+      display: inline-block;
+
+      position: absolute;
+      top: .66rem;
+      right: 0;
+    }
+
+    &--hide {
+      display: none;
+    }
+
+  }
+}

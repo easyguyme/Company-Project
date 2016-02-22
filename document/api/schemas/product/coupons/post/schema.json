@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "total": {
+      "type": "int",
+      "required": true,
+      "description": ""
+    },
+    "limit": {
+      "type": "int",
+      "required": true,
+      "description": ""
+    },
+    "tip": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "time": {
+      "type": "array",
+      "required": true,
+      "description": ""
+    },
+    "picUrl": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "url": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "usageNote": {
+      "type": "string",
+      "required": false,
+      "description": ""
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "storeType": {
+      "type": "string",
+      "required": true,
+      "description": "all or specify"
+    },
+    "stores": {
+      "type": "array",
+      "required": false,
+      "description": ""
+    },
+    "discountAmount": {
+      "type": "float",
+      "required": false,
+      "description": ""
+    },
+    "discountCondition": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    },
+    "reductionAmount": {
+      "type": "int",
+      "required": false,
+      "description": ""
+    }
+  }
+}

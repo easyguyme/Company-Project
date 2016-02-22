@@ -1,0 +1,112 @@
+<div class="clearfix">
+
+  <div wm-breadcrumb="staff.breadcrumb">
+    <button class="btn btn-success btn-listheader" ng-click="staff.newStaff()">{{'store_new_staff' | translate}}</button>
+  </div>
+
+  <div class="table-wrap">
+    <wm-table ng-model="staff.list" class="remove-border-top"></wm-table>
+
+    <div wm-multi-qrcode qrcode-list="staff.qrcode" is-show="staff.isShowQrcodeDropdown" channel="staff.qrcode[0].channel" self-style="staff.style" qrcode-title="store_download_staff_qrcode"></div>
+  </div>
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="staff.currentPage" page-size="staff.pageSize" total-items="staff.totalCount" on-change-size="staff.changePageSize" on-change-page="staff.changePage">
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="staff.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="staff-title" ng-if="newFlag">{{'store_new_staff_account' | translate}}</h4>
+    <h4 class="staff-title" ng-if="!newFlag">{{'store_edit_staff_account' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor staff-modal-body">
+    <div class="new-tip" ng-show="newFlag">
+      <span class="new-tip-icon"></span>
+      <span class="new-tip-text">{{'store_new_staff_tip'|translate}}</span>
+    </div>
+
+    <form id="newStaff" ng-submit="newStaff()" ng-show="newFlag">
+
+      <div class="form-group new-block">
+        <label class="new-lab">{{'tel'|translate}}</label>
+        <input type="tel" class="form-control" ng-model="mobile" wm-validate="checkTel" required />
+      </div>
+
+      <div class="form-group new-block">
+        <label class="new-lab">{{'management_badge'|translate}}</label>
+        <input type="text" maxlength="15" class="form-control" ng-model="empID" form-tip="{{'helpdesk_account_number_tip'|translate}}" required />
+      </div>
+
+      <div class="new-block">
+        <label class="new-lab required-field">{{'channel'|translate}}</label>
+        <span class="form-tip">{{'store_new_staff_channel_tip'|translate}}</span>
+        <ul class="channels-block">
+          <li ng-repeat="channel in channels track by $index" class="channel-block">
+            <wm-radio ng-model="channelId" value="{{channel.channelId}}" class="channel-radio" ng-click="changeChannel($index)"></wm-radio>
+            <div class="row channel-main">
+              <img class="col-md-4 channel-header" ng-src="{{channel.headImageUrl}}" />
+              <div class="col-md-8 channel-description">
+                <span class="channel-flag" ng-style="{{channel.typeBackground}}" translate="{{channel.type}}"></span>
+                <span class="channel-name" wm-tooltip="{{channel.channelName}}">{{channel.channelName}}</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="btn-block">
+        <input type="submit" class="btn btn-success" value="{{'management_submit' | translate}}" form="newStaff" />
+      </div>
+    </form>
+
+    <form id="updateStaff" ng-submit="updateStaff()" ng-show="!newFlag">
+
+      <div class="update-block">
+        <label class="update-lab required-field">{{'tel'|translate}}</label>
+        <span class="update-text">{{staff.phone}}</span>
+      </div>
+
+      <div class="update-block">
+        <label class="update-lab required-field">{{'management_badge'|translate}}</label>
+        <span class="update-text">{{staff.badge}}</span>
+      </div>
+
+      <div class="update-block ">
+        <label class="update-lab required-field">{{'channel'|translate}}</label>
+        <div class="row channel-main update-text update-channel">
+          <img class="col-md-4 channel-header" ng-src="{{staff.channel.headImageUrl}}" />
+          <div class="col-md-8 channel-description">
+            <span class="channel-flag" ng-style="staff.channel.typeBackground" translate="{{staff.channel.type}}"></span>
+            <span class="channel-name">{{staff.channel.channelName}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="update-block">
+        <label class="update-lab">{{'name'|translate}}</label>
+        <input type="text" maxlength="10" minlength="2" class="form-control" ng-model="staff.name" form-tip="{{'store_member_name_tip' | translate}}" wm-validate="checkName" />
+      </div>
+
+      <div class="update-block">
+        <label class="update-lab">{{'gender'|translate}}</label>
+        <div>
+          <wm-radio ng-model="staff.gender" value="male" class="channel-radio"></wm-radio>
+          <span class="gender-space">{{'male' | translate}}</span>
+          <wm-radio ng-model="staff.gender" value="female" class="channel-radio"></wm-radio>
+          <span>{{'female' | translate}}</span>
+        </div>
+      </div>
+
+      <div class="update-block">
+        <label class="update-lab">{{'birthday'|translate}}</label>
+        <div wm-datetime-picker format-type="YYYY-MM-DD" pick-date="true" pick-time="false" ng-model="staff.birthday" less-than-today="true"></div>
+      </div>
+
+      <div class="btn-block">
+        <input type="submit" class="btn btn-success" value="{{'management_submit' | translate}}" form="updateStaff" />
+      </div>
+    </form>
+  </div>
+  </script>

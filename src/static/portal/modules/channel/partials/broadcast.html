@@ -1,0 +1,158 @@
+<div class="broadcast-wrapper clearfix">
+  <div wm-breadcrumb="broadcast.breadcrumb"></div>
+  <div wm-tabs="broadcast.changTab()" tabs="broadcast.tabs" ng-model="broadcast.curTab"></div>
+
+  <div class="clearfix">
+    <div class="mt30 new-wrapper" ng-if="broadcast.list.length == 0">
+      <div class="menber-create-icon center-block cp" ng-click="broadcast.createMsg()"></div>
+      <div class="new-broadcast" >{{'channel_wechat_mass_click_new' | translate}}</div>
+    </div>
+    <button class="btn btn-success broadcast-new-btn pull-right" ng-if="broadcast.list.length > 0" ng-click="broadcast.createMsg()">{{'channel_wechat_mass_new' | translate}}</button>
+
+    <div class="broadcast-sended-list-wrapper clearfix" ng-if="broadcast.list.length > 0">
+      <div class="clearfix" ng-if="broadcast.curTab.value == 0">
+        <div class="broadcast-sort pull-right">
+          <div class="broadcast-arrow cp" ng-click="broadcast.orderByCreateTime()"></div>{{'channel_wechat_mass_sort' | translate}}
+        </div>
+      </div>
+      <div class="broadcast-sended-list">
+        <div class="row broadcast-row cp mlr0" ng-class="{'broadcast-row-active':$index == broadcast.index}" ng-repeat="item in broadcast.list track by $index" ng-click="broadcast.getDetail($index)">
+          <div class="col-md-8 col-sm-6 col-xs-6 pd0">
+            <span class="broadcast-text-label broadcast-text-bg" ng-if="item.msgType=='TEXT'">
+              <img src="/images/core/tag_text.png">
+              <span>{{'channel_wechat_mass_text' | translate}}</span>
+            </span>
+            <span class="broadcast-text-label broadcast-graphic-bg" ng-if="item.msgType=='NEWS'">
+              <img src="/images/core/tag_graphic.png">
+              <span>{{'channel_wechat_mass_graphic' | translate}}</span>
+            </span>
+            <span ng-if="item.msgType=='TEXT'" class="fs14 broadcast-title" ng-bind="item.content"></span>
+            <span ng-if="item.msgType=='NEWS'" class="fs14 broadcast-title" ng-bind="item.content.articles[0].title"></span>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-6 pd0">
+            <span class="broadcast-send-status broadcast-success" ng-if="broadcast.curTab.value == 0 && item.status != 'FAILED'">
+              <img src="/images/channel/success.png"/>
+              <span>{{'channel_wechat_mass_send_success' | translate}}</span>
+            </span>
+            <span class="broadcast-send-status broadcast-fail" ng-if="broadcast.curTab.value == 0 && item.status == 'FAILED'">
+              <img src="/images/channel/fail.png"/>
+              <span>{{'channel_wechat_mass_send_fail' | translate}}</span>
+            </span>
+            <span class="broadcast-schedule pull-right">
+              <span class="broadcast-timing" ng-if="broadcast.curTab.value == 1"></span>
+              <span class="broadcast-send-time" ng-if="broadcast.curTab.value == 1">{{item.scheduleTime | formatdate}}</span>
+              <span class="broadcast-send-time" ng-if="broadcast.curTab.value == 0">{{item.submitTime | formatdate}}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="broadcast-pagination clearfix">
+        <div wm-pagination hide-nodata="broadcast.hideNodata" current-page="broadcast.currentPage" page-size="broadcast.pageSize" total-items="broadcast.totalItems" on-change-size="broadcast.changeSize" on-change-page="broadcast.changePage"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-dialog broadcast-detail-dialog w45p container-fluid pd0" ng-if="broadcast.showDetail">
+  <div class="broadcast-detail-header">
+    <div class="broadcast-detail-title pull-left">{{'channel_wechat_mass_detail' | translate}}</div>
+    <div class="broadcast-detail-close pull-right cp" ng-click="broadcast.closeDialog()"></div>
+  </div>
+  <div class="broadcast-detail-body">
+    <div class="broadcast-detail-head row mlr0">
+      <div class="title pull-left col-md-8 pd0 text-el mb10" ng-if="broadcast.detail.msgType == 'TEXT'" ng-bind="broadcast.detail.content"></div>
+      <div class="title pull-left col-md-8 pd0 text-el" ng-if="broadcast.detail.msgType == 'NEWS'" ng-bind="broadcast.detail.content.articles[0].title"></div>
+      <div class="col-md-4 pd0">
+        <div class="pull-right">
+          <span class="icon edit cp" wm-tooltip="{{'edit' | translate}}" ng-if="broadcast.curTab.value == 1" ng-click="broadcast.editMsg(broadcast.detail.id)"></span>
+          <span class="icon delete cp" wm-tooltip="{{'delete' | translate}}" ng-click="broadcast.deleteMsg(broadcast.detail.id, $event)" ng-if="broadcast.detail.status != 'SUBMITED'" ></span>
+        </div>
+      </div>
+    </div>
+    <div class="broadcast-time fs12 row mlr0">
+      <div class="col-md-5 pd0">
+        <img src="/images/channel/timing_normal.png" ng-if="broadcast.curTab.value == 1"/>
+        <span class="broadcast-txt" ng-if="broadcast.curTab.value == 1 &&!!broadcast.detail.scheduleTime">{{broadcast.detail.scheduleTime | formatdate}}</span>
+        <span class="broadcast-txt" ng-if="broadcast.curTab.value == 0 &&!!broadcast.detail.submitTime">{{broadcast.detail.submitTime | formatdate}}</span>
+      </div>
+
+      <div ng-if="broadcast.curTab.value == 0" class="col-md-3 pd0">
+        <span class="broadcast-send-status broadcast-success" ng-if="broadcast.detail.status != 'FAILED'">
+          <img src="/images/channel/success.png"/>
+          <span>{{'channel_wechat_mass_send_success' | translate}}</span>
+        </span>
+        <span class="broadcast-send-status broadcast-fail" ng-if="broadcast.detail.status == 'FAILED'">
+          <img src="/images/channel/fail.png"/>
+          <span>{{'channel_wechat_mass_send_fail' | translate}}</span>
+        </span>
+      </div>
+
+    </div>
+    <div class="broadcast-target">
+      <div class="broadcast-txt mb10">{{'channel_wechat_send_target' | translate}}</div>
+      <div class="broadcast-tag-fans-icon" ng-if="!!broadcast.detail.allFans || !!broadcast.detail.sendCount"></div>
+      <div class="broadcast-tag-tags-icon" ng-if="!!broadcast.detail.tags || !!broadcast.detail.address || !!broadcast.detail.gender"></div>
+      <div class="broadcast-tag" ng-if="!!broadcast.detail.allFans">
+        <span class="display-tags">{{'channel_wechat_mass_all' | translate}}</span>
+      </div>
+      <div class="broadcast-tag" ng-if="!!broadcast.detail.sendCount">
+        <span class="mr5">{{broadcast.detail.sendCount}}{{'channel_follwers' | translate}}</span><span class="broadcast-manual-select">( {{'channel_manual_select' | translate}} )</span>
+      </div>
+       <div class="broadcast-tag" ng-if="!!broadcast.detail.tags">
+        <span class="display-tags">{{'channel_wechat_mass_tag' | translate}}： {{broadcast.detail.tags}}</span>
+      </div>
+      <div class="broadcast-tag" ng-if="!!broadcast.detail.address">
+        <span class="display-tags">{{'channel_wechat_mass_address' | translate}}： {{broadcast.detail.address}}</span>
+      </div>
+      <div class="broadcast-tag" ng-if="!!broadcast.detail.gender && broadcast.detail.gender == 'MALE'">
+        <span class="display-tags">{{'channel_wechat_mass_gender' | translate}}： {{'channel_wechat_mass_male' | translate}}</span>
+      </div>
+      <div class="broadcast-tag" ng-if="!!broadcast.detail.gender && broadcast.detail.gender == 'FEMALE'">
+        <span class="display-tags">{{'channel_wechat_mass_gender' | translate}}： {{'channel_wechat_mass_female' | translate}}</span>
+      </div>
+    </div>
+    <div class="broadcast-count row mlr0">
+      <div class="col-md-2 pd0">
+        <div class="broadcast-txt mb10">{{'channel_wechat_mass_total' | translate}}</div>
+        <div>{{broadcast.detail.totalCount}}{{'channel_broadcast_people' | translate}}</div>
+      </div>
+      <div class="col-md-3 pd0">
+        <div class="broadcast-txt mb10">{{'channel_wechat_mass_broadcast' | translate}}</div>
+        <div ng-if="broadcast.curTab.value == 1 || broadcast.detail.status == 'SUBMITED'">--</div>
+        <div ng-if="broadcast.curTab.value == 0 && broadcast.detail.status != 'SUBMITED'">{{broadcast.detail.totalCount - broadcast.detail.csTotalCount}}{{'channel_broadcast_people' | translate}}</div>
+      </div>
+      <div class="col-md-3 pd0">
+        <div class="broadcast-txt mb10">{{'channel_wechat_mass_helpdesk' | translate}}</div>
+        <div ng-if="broadcast.curTab.value == 1 || broadcast.detail.status == 'SUBMITED'">--</div>
+        <div ng-if="broadcast.curTab.value == 0 && broadcast.detail.status != 'SUBMITED'">{{broadcast.detail.csTotalCount}}{{'channel_broadcast_people' | translate}}</div>
+      </div>
+      <div class="col-md-2 pd0">
+        <div class="broadcast-txt mb10">{{'channel_wechat_mass_success_count' | translate}}</div>
+        <div ng-if="broadcast.curTab.value == 1 || broadcast.detail.status == 'SUBMITED'">--</div>
+        <div ng-if="broadcast.curTab.value == 0 && broadcast.detail.status != 'SUBMITED'">{{broadcast.detail.successCount}}{{'channel_broadcast_people' | translate}}</div>
+      </div>
+      <div class="col-md-2 pd0">
+        <div class="broadcast-txt mb10">{{'channel_wechat_mass_fail_count' | translate}}</div>
+        <div ng-if="broadcast.curTab.value == 1 || broadcast.detail.status == 'SUBMITED'">--</div>
+        <div ng-if="broadcast.curTab.value == 0 && broadcast.detail.status != 'SUBMITED'">{{broadcast.detail.failedCount}}{{'channel_broadcast_people' | translate}}</div>
+      </div>
+    </div>
+    <div class="broadcast-content">
+      <div class="content-title">
+        <span class="broadcast-txt mr15">{{'channel_wechat_mass_content' | translate}}</span>
+        <span class="broadcast-type pic" ng-if="broadcast.detail.msgType == 'NEWS'">
+          <img src="/images/core/tag_graphic.png">
+          <span class="fs12">{{'channel_wechat_mass_graphic' | translate}}</span>
+        </span>
+        <span class="broadcast-type txt" ng-if="broadcast.detail.msgType == 'TEXT'">
+          <img src="/images/core/tag_text.png">
+          <span class="fs12">{{'channel_wechat_mass_text' | translate}}</span>
+        </span>
+      </div>
+
+      <div wm-wechat-graphic graphic="broadcast.detail.content" ng-if="broadcast.detail.msgType == 'NEWS'"></div>
+
+      <div class="content-body-txt" ng-if="broadcast.detail.msgType == 'TEXT'" ng-bind="broadcast.detail.content"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+.mb-number {
+  $number-cpt-height: 2.25rem;
+  font-size: 0;
+
+  .mb-number-btn {
+    display: inline-block;
+    height: $number-cpt-height;
+    width: $number-cpt-height;
+    border: 1px solid $yellow-bg-color;
+    background-position: .7rem .7rem;
+    background-size: .8rem;
+  }
+
+  .mb-number-inc {
+    @include background-image('/images/mobile/add.png');
+  }
+
+  .mb-number-desc {
+    @include background-image('/images/mobile/reduction.png');
+  }
+
+  .mb-number-value {
+    display: inline-block;
+    vertical-align: top;
+    height: $number-cpt-height;
+    line-height: $number-cpt-height;
+    font-size: 1.2rem;
+    border: 1px solid $yellow-bg-color;
+    border-left: 0;
+    border-right: 0;
+    letter-spacing: 0;
+    width: 5rem;
+    outline: none;
+    text-align: center;
+    border-radius: 0;
+  }
+}

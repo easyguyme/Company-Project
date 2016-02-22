@@ -1,0 +1,32 @@
+<div class="keyword-add">
+  <div wm-breadcrumb="autoreply.breadcrumb"></div>
+  <form id="keyword" ng-submit="autoreply.addWechatKeyword()">
+
+    <div class="keyword-block form-group h80 auto-name">
+      <label class="keyword-text-name" translate="channel_wechat_rule_name"></label>
+      <input class="form-control keyword-rule-text" ng-model="autoreply.wechatKeyword.name" required/>
+    </div>
+
+    <div class="keyword-block form-group h80 auto-keycode">
+      <label class="keyword-text-name" translate="channel_wechat_keycode"></label>
+      <div class="keyword-key-dropdown" wm-select ng-model="autoreply.fuzzy" text-field="text" value-field="value" items="autoreply.items" ></div>
+      <input class="form-control keyword-key-text w410" ng-model="autoreply.keycode" required/>
+    </div>
+
+    <div class="keyword-block keyword-wechat-message form-group">
+      <label class="keyword-text-name required-field" translate="channel_wechat_reply"></label>
+      <div wm-wechat-message ng-model="autoreply.replyMessage" class="keyword-replybox" remain-character="autoreply.remainCharacter" required-flag="true"></div>
+    </div>
+
+  <div class="keyword-block">
+    <div>
+      <wm-checkbox ng-model="autoreply.status" class="fl"></wm-checkbox>
+      <span class="keyword-checkbox-prompt">{{'channel_wechat_enable'|translate}}</span>
+    </div>
+    <div class="keyword-btn">
+      <button form="keyword" class="btn btn-success fl" type="submit">{{'channel_wechat_mass_submit'|translate}}</button>
+      <button class="btn btn-default keyword-btn-default" type="button" ng-click="autoreply.backToList()" >{{'channel_wechat_mass_cancel'|translate}}</button>
+    </div>
+  </div>
+  </form>
+</div>

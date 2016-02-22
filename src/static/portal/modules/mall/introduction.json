@@ -1,0 +1,40 @@
+{
+  "name": "mall",
+  "title": "nav_mall",
+  "link": {
+    "enterFunction": "/mall/goods",
+    "layout": "/mall/goods",
+    "menu": "/channel/menu/"
+  },
+  "havePartial": true,
+  "illustrations": [
+    "management_extension_mall_illustration1",
+    "management_extension_mall_illustration2"
+  ],
+  "introductions": ["management_extension_mall_introduction1"],
+  "functions": [
+    {
+      "title": "management_extension_mall_function1",
+      "image": ["/images/mall/introduction/function_layout.png"]
+    },
+    {
+      "title": "management_extension_mall_function2",
+      "image": ["/images/mall/introduction/function_specifications_price.png"]
+    },
+    {
+      "title": "management_extension_mall_function3",
+      "image": ["/images/mall/introduction/function_promotion.png"]
+    }
+  ],
+  "images": [
+    "/images/mall/introduction/function_template.png",
+    "/images/mall/introduction/function_menus.png",
+    "/images/mall/introduction/function_redemption_store.png"
+  ],
+  "firstDot": "/images/management/paragraphbreak.png",
+  "secondDot": "/images/management/paragraphbreak_secondlevel.png",
+  "stepOne": [
+    "extension_reservation_stepone1",
+    "extension_reservation_stepone2"
+  ]
+}

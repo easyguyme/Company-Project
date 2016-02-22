@@ -1,0 +1,25 @@
+.c-kv-list {
+  &__item {
+    @include c-box;
+    font-size: .4rem;
+    line-height: .7rem;
+    width: 100%;
+    color: $theme-gray-text;
+
+    &__key {
+      @include text-overflow();
+      width: 2.5rem;
+    }
+
+    &__value {
+      @include c-box-flex(1);
+      word-break: break-word;
+
+      &__illustration {
+        font-size: $theme-space-padding;
+        color: $textarea-placeholder-color;
+        line-height: .5rem;
+      }
+    }
+  }
+}

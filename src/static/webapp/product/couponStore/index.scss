@@ -1,0 +1,29 @@
+$store-border-color: #d9d9d9;
+$store-white: #fff;
+$store-content-color: #bbb;
+
+.store-items {
+  border-bottom: .1rem solid $store-border-color;
+  background-color: $store-white;
+
+  .store-item {
+    padding: 1.5rem;
+    padding-left: 0;
+    margin-left: 1.5rem;
+    border-bottom: .1rem solid $store-border-color;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .store-title {
+      font-size: 1.5rem;
+    }
+
+    .store-content {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: $store-content-color;
+    }
+  }
+}

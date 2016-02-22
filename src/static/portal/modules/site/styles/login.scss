@@ -1,0 +1,158 @@
+$placeholder-color: #a0ede0;
+$placeholder-focus-color: #198c78;
+$placeholder-size: 16px;
+$btn-color: #fff;
+$btn-success-color: #9bcd55;
+$btn-success-hover-color: #b1d561;
+$input-background-color: #2aad95;
+$input-border-color: #1c9a83;
+
+.login-page {
+  background: url('/images/site/bg_signin.png');
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .login-content {
+    height: 392px;
+    left: 50%;
+    margin-left: -233px;
+    margin-top: -196px;
+    position: absolute;
+    top: 50%;
+    width: 466px;
+  }
+
+  .logo {
+    background: url('/images/site/signin_logo.png') no-repeat;
+    height: 110px;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    width: 195px;
+  }
+
+  .reset-password-result-content {
+    height: 236px;
+    left: 50%;
+    margin-left: -234px;
+    margin-top: -168px;
+    position: absolute;
+    top: 50%;
+    width: 469px;
+  }
+
+  .success-notification {
+    background: url('/images/site/reset_password.png') no-repeat;
+    height: 126px;
+    margin: 0 auto;
+    padding-left: 106px;
+    padding-top: 35px;
+    width: 469px;
+
+    .content {
+      color: $btn-color;
+
+      .main {
+        font-size: 20px;
+        line-height: 20px;
+        margin-bottom: 12px;
+      }
+
+      .sub {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .title {
+    color: $btn-color;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .login-form {
+    height: 192px;
+    width: 466px;
+  }
+
+  form {
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-control {
+      background-color: $input-background-color;
+      border-color: $input-border-color;
+      border-radius: 2px;
+      color: $btn-color;
+      font-size: 16px;
+      height: 45px;
+
+      &:-moz-placeholder { // Mozilla Firefox 4 to 18
+        color: $placeholder-color;
+        font-size: $placeholder-size;
+      }
+
+      &::-moz-placeholder { // Mozilla Firefox 19+
+        color: $placeholder-color;
+        font-size: $placeholder-size;
+      }
+
+      &:-ms-input-placeholder { // Internet Explorer 10+
+        color: $placeholder-color;
+        font-size: $placeholder-size;
+      }
+
+      &::-webkit-input-placeholder { // WebKit browsers
+        color: $placeholder-color;
+        font-size: $placeholder-size;
+      }
+
+      &:focus {
+        border-color: $btn-color;
+
+        &:-moz-placeholder { // Mozilla Firefox 4 to 18
+          color: $placeholder-focus-color;
+        }
+
+        &::-moz-placeholder { // Mozilla Firefox 19+
+          color: $placeholder-focus-color;
+        }
+
+        &:-ms-input-placeholder { // Internet Explorer 10+
+          color: $placeholder-focus-color;
+        }
+
+        &::-webkit-input-placeholder { // WebKit browsers
+          color: $placeholder-focus-color;
+        }
+      }
+    }
+
+    .btn {
+      border-radius: 2px;
+      color: $btn-color;
+      font-size: 18px;
+      height: 42px;
+    }
+
+    .btn-success {
+      background-color: $btn-success-color;
+      border: 0;
+
+      &:hover {
+        background-color: $btn-success-hover-color;
+      }
+    }
+
+    a {
+      color: $placeholder-focus-color;
+      line-height: 42px;
+      text-decoration: underline;
+    }
+  }
+}
+

@@ -1,0 +1,99 @@
+.uhkklp-news {
+  #newsTbWrap {
+    tr {
+      th:nth-child(1){
+        width: 24%;
+      }
+      th:nth-child(2){
+        width: 38%;
+      }
+      th:nth-child(3){
+        width: 18%;
+      }
+      th:nth-child(4){
+        width: 10%;
+      }
+      th:nth-child(5){
+        width: 12%;
+      }
+    }
+    td {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.uhkklp-news-edit {
+  .required-tip:before {
+    content: none;
+  }
+
+  #news-form {
+    .news-item {
+      margin: 10px;
+      width: auto;
+
+      .statistics-item-title .red-start:before {
+        content: '*';
+        color: #FF0000;
+      }
+    }
+
+    .news-item-body {
+      padding: 10px;
+    }
+
+    .news-basic-container {
+      height: 115px;
+    }
+
+    .statistics-item-title .item-name {
+      margin-right: 5px;
+    }
+  }
+
+  .newsEditSelect {
+    width: 100px;
+  }
+
+  .newsInput {
+    width: 60%;
+  }
+
+  .newsTextArea {
+    width: 60%;
+    height: 200px;
+  }
+
+  .thumbnailImg {
+    width: 92px;
+    height: 92px;
+    border:1px solid #acacac;
+    //margin-bottom: 10px;
+  }
+
+  .newsImg {
+    font-size: 25pt;
+    line-height: 272px;
+    display: block;
+    width: 320px;
+    height: 272px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #a3a3a3;
+    border: 1px solid #acacac;
+  }
+
+  .newsDatePicker {
+    width: 280px;
+  }
+
+  .newsEditTip {
+    font-size: 10px;
+    color: #acacac;
+    margin-left: 5px;
+  }
+
+}

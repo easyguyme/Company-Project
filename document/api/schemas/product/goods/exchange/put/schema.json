@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": true,
+      "description": "用户token（放在querystring中）"
+    },
+    "goodsId": {
+      "type": "string",
+      "required": true,
+      "description": "商品id"
+    },
+    "memberId": {
+      "type": "json array",
+      "required": true,
+      "description": "会员id"
+    },
+    "channelId": {
+      "type": "json",
+      "required": true,
+      "description": "渠道channelId"
+    },
+    "phone": {
+      "type": "string",
+      "required": false,
+      "description": "电话号码"
+    },
+    "captcha": {
+      "type": "string",
+      "required": false,
+      "description": "验证码"
+    },
+    "count": {
+      "type": "int",
+      "required": false,
+      "description": "兑换数量"
+    },
+    "address": {
+      "type": "string",
+      "required": true,
+      "description": "送货地址或自提地址名称"
+    },
+    "receiveMode": {
+      "type": "string",
+      "required": true,
+      "description": "配送方式"
+    }
+  }
+}

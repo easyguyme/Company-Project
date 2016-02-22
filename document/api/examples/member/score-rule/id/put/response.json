@@ -1,0 +1,16 @@
+{
+    "id": "55c18aecd6f97fb4178b456a",
+    "name": "birthday",
+    "type": "time",
+    "score": 1,
+    "triggerTime": "week",
+    "description": "<p>3<br/></p>",
+    "isEnabled": false,
+    "times": 0,
+    "memberCount": 0,
+    "couponId": null,
+    "properties": [],
+    "startTime": "",
+    "endTime": "",
+    "rewardType": "score"
+}

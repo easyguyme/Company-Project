@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="close()"></button>
+  <h4 class="modal-title create-graphics-title" translate="spread_qrcode_title"></h4>
+</div>
+<div class="modal-body spread-qrcode-body">
+  <form ng-submit="download()">
+    <section class="info-tip">
+      <span class="info-tip-icon"></span>
+      <span class="info-tip-content" translate="{{ description }}"></span>
+    </section>
+
+    <!-- Qrcode Channels -->
+    <h5 class="required-field check-title" translate="select_qrcode_channel"></h5>
+    <section class="qrcode-channel-wrapper">
+      <div class="clearfix">
+        <div class="row">
+          <div class="col-md-6 col-xs-6 check-all-box">
+            <div class="col-md-2 col-xs-2 qrcode-radio"><div wm-checkbox ng-model="channelAll" ng-click="selectAll('channel', channelAll)"></div></div>
+            <div class="qrcode-channel-box col-md-10 col-xs-10">
+              <span class="channel-name text-el" wm-tooltip="{{ 'all_channels' | translate }}" translate="all_channels"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix" ng-repeat="type in channelTypes track by $index" ng-if="(channels | filter:{'type': type}).length">
+        <div class="mb10"><span translate="spread_{{ type }}_channel"></span></div>
+        <div class="row">
+          <div class="col-md-6 col-xs-6" ng-repeat="channel in channels | filter:{'type': type} track by $index">
+            <div class="col-md-2 col-xs-2 qrcode-radio"><div wm-checkbox ng-model="channel.checked" ng-click="selectItem('channel', channel.checked)"></div></div>
+            <div class="qrcode-channel-box col-md-10 col-xs-10">
+              <img ng-src="{{ channel.avatar }}" />
+              <span class="channel-name text-el" wm-tooltip="{{ channel.name }}">{{ channel.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qrcode Sizes -->
+    <h5 class="required-field check-title" translate="select_qrcode_size"></h5>
+    <section class="qrcode-channel-wrapper qrcode-size-wrapper">
+      <div class="clearfix">
+        <div class="row">
+          <!-- check all qrcode sizes -->
+          <div class="col-md-6 col-xs-6 check-all-box">
+            <div class="col-md-2 col-xs-2 qrcode-radio"><div wm-checkbox ng-model="sizeAll" ng-click="selectAll('size', sizeAll)"></div></div>
+            <div class="qrcode-channel-box col-md-10 col-xs-10">
+              <span class="channel-name text-el" wm-tooltip="{{ 'all_sizes' | translate }}" translate="all_sizes"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xs-6" ng-repeat="size in sizes track by $index">
+            <div class="col-md-2 col-xs-2 qrcode-radio"><div wm-checkbox ng-model="size.checked" ng-click="selectItem('size', size.checked)"></div></div>
+            <div class="qrcode-channel-box col-md-10 col-xs-10">
+              <img ng-src="{{ size.avatar }}" />
+              <span class="channel-name text-el" wm-tooltip="{{ size.name }}">
+              <b class="fs16">{{ size.name.slice(0, -2) }}</b>{{ size.name.slice(-2) }}
+              </span>
+              <i class="channel-description" wm-tooltip="{{ size.description.key | translate:size.description.params}}" >{{ size.description.key | translate:size.description.params }}</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="center-text modal-footer">
+      <button class="btn btn-success" translate="download" ng-disabled="!((channels | filter:{checked: true}).length && (sizes | filter:{checked: true}).length)"></button>
+    </section>
+  </form>
+</div>

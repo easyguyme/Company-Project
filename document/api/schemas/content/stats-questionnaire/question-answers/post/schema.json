@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "questionnaireId": {
+      "type": "string",
+      "required": true,
+      "description": "问卷Id"
+    },
+    "questionId": {
+      "type": "string",
+      "required": true,
+      "description": "问题Id"
+    }
+  }
+}

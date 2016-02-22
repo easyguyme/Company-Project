@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    },
+    "data": {
+      "type": "array",
+      "required": true,
+      "description": ""
+    },
+    "exchangeScore": {
+      "type": "int",
+      "required": true,
+      "description": ""
+    },
+    "type": {
+      "type": "string",
+      "required": false,
+      "description": "the type of template"
+    }
+  }
+}

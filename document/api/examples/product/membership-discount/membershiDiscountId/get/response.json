@@ -1,0 +1,16 @@
+{
+    "id": "55f7d824e9c2fb810b8b456d",
+    "qrcode": {
+        "_id": "55f7d824e9c2fb810b8b456c",
+        "url": "http://vincenthou.qiniudn.com/55f7d824e9c2fb810b8b456c.png"
+    },
+    "coupon": {
+        "id": "55f7d1e1e9c2fb3f048b4567",
+        "title": "coupon",
+        "picUrl": "http://vincenthou.qiniudn.com/d056cc4e45a4181bb2a6c19e.jpg",
+        "startTime": "2015-09-15 00:00:00",
+        "endTime": "2015-09-17 00:00:00",
+        "status": "unused"
+    },
+    "createdAt": "2015-09-15 16:34:44"
+}

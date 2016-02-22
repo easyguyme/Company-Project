@@ -1,0 +1,29 @@
+$sensitive-label-color: #7d7d7d;
+$sensitive-border-color: #eee;
+
+.sensitive-body {
+  padding: 0 30px;
+}
+
+.sensitive-operation {
+  margin: 0 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid $sensitive-border-color;
+
+  .selected-label {
+    color: $sensitive-label-color;
+  }
+
+  .selected-name {
+    font-size: 16px;
+  }
+
+  + .bidirection-select {
+    margin-top: 10px;
+  }
+}
+
+.sensitive-operation-footer-tip {
+  margin-bottom: 5px;
+  color: $sensitive-label-color;
+}

@@ -1,0 +1,21 @@
+<div class="session-history client-history rel">
+  <ul class="chat-messages simple">
+    <li ng-repeat="message in messages track by $index" class="chat-message" ng-class="{'align-right-message':message.isMine}">
+      <div class="message-title">
+        <span class="message-creator" translate="{{message.nick}}"></span>
+        <span class="message-time" ng-bind="message.sentTime|date:'yyyy-MM-dd HH:mm:ss'"></span>
+      </div>
+      <p ng-if="message.content.msgType=='TEXT'" class="message-body" ng-bind-html="message.content.body"></p>
+      <div ng-if="message.content.msgType=='NEWS'" class="message-body ib">
+        <div wm-wechat-graphic graphic="message.content.body" linkable="true"></div>
+      </div>
+    </li>
+    <li><a id="bottom"></a></li>
+  </ul>
+</div>
+<div class="chat-form">
+  <textarea autofocus="autofocus" class="form-control chat-box" placeholder="{{helpdesk_chat_tip|translate}}" ng-keyup="checkKeyCode($event, message)" ng-model="message" requied></textarea>
+  <!-- <textarea class="message message-text form-control-message" ng-show="!isGraphic" ng-model="textMessage" ng-disabled="disabledField" ng-keyup="keyupHandler()($event, textMessage)" placeholder="{{placeholder}}" resizable="disabled" maxlength="{{maxLength || \'1200\'}}"></textarea> -->
+  <button class="btn btn-info pull-right" ng-click="sendMessage(message)" translate="send"></button>
+  <button class="btn btn-default pull-right" ng-click="closeSession()" translate="helpdesk_close_session"></button>
+</div>

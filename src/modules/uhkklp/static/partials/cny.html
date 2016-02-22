@@ -1,0 +1,181 @@
+<div wm-breadcrumb="cny.breadcrumb"></div>
+<div wm-tabs="cny.changeTab()" tabs="cny.tabs" ng-model="cny.curTab"></div>
+
+<!-- Campaign setting -->
+<form class="uhkklp-cny" id="cnyForm" name="cnyForm" ng-submit="cny.updateActivity()" novalidate ng-if="cny.showActivity">
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span class="red-start" translate="cny_title"></span>
+    </div>
+    <div class="cny-item-body">
+      <div class="indent">
+        <div class="title-div">
+          <span class="red-start" translate="cny_duration"></span>
+        </div>
+        <div class="cny-date-picker">
+          <input wm-datetime-picker picker-id="endDatePicker" max-date-picker-id="startDatePicker" ng-model="cny.endDate" required-field="true" />
+        </div>
+        <span class="cut-off"> ~ </span>
+        <div class="cny-date-picker">
+          <input wm-datetime-picker picker-id="startDatePicker" min-date-picker-id="endDatePicker" ng-model="cny.startDate" required-field="true" />
+        </div>
+
+        <br/><br/>
+        <div class="tw" ng-if="cny.twSetting">
+          <div class="div-need-points">
+            <div class="title-div">
+              <span class="red-start" translate="cny_odds"></span>
+            </div>
+            <input class="form-control need-points" ng-model="cny.needPoints" required type="text" form-tip="{{'klp_cny_points_tip'|translate}}" wm-validate="cny.checkPositiveInt('needPoints', cny.needPoints)" name="needPoints" id="needPoints" />
+          </div>
+
+          <div class="draw-date">
+            <div class="title-div">
+              <span class="red-start" translate="cny_draw_date"></span>
+            </div>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker ng-model="cny.drawDate[1]" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" required-field="true" />
+            </div>
+            <span class="cut-off"> &nbsp; </span>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker ng-model="cny.drawDate[0]" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" required-field="true" />
+            </div>
+            <br/><br/>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker ng-model="cny.drawDate[3]" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" required-field="true" />
+            </div>
+            <span class="cut-off"> &nbsp; </span>
+            <div class="cny-date-picker">
+              <input wm-datetime-picker ng-model="cny.drawDate[2]" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" required-field="true" />
+            </div>
+
+            <div class="top-prize-date">
+              <div class="title-div">
+                <span class="red-start" translate="cny_top_prize_draw_date"></span>
+              </div>
+              <div class="top-prize-date-picker">
+                <input wm-datetime-picker ng-model="cny.drawDate[4]" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" required-field="true" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hk" ng-if="cny.hkSetting">
+          <div class="div-need-points">
+            <div class="title-div">
+              <span class="red-start" translate="cny_odds"></span>
+            </div>
+            <input class="form-control need-points" ng-model="cny.needPoints" required type="text" form-tip="{{'klp_cny_points_tip'|translate}}" wm-validate="cny.checkPositiveInt('needPoints', cny.needPoints)" name="needPoints" id="needPoints" />
+          </div>
+          <div class="draw-date">
+            <div class="one-prize-date">
+              <div class="title-div">
+                <span class="red-start" translate="cny_draw_date"></span>
+              </div>
+              <div class="one-prize-date-picker">
+                <input wm-datetime-picker ng-model="cny.drawDate[0]" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" required-field="true" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="activity-basic-container">
+    <div class="statistics-chart-item cny-item">
+      <div class="activity-item-body">
+        <input type="submit" class="btn btn-success mr20 user-btn" value="{{'cny_save' | translate}}"/>&nbsp;&nbsp;
+        <span class="btn btn-default active" ng-click="cny.resetActivity()">&nbsp;{{'reset' | translate}}&nbsp;</span>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Lucky draw -->
+<form name="cnyDrawForm" ng-submit="cny.drawPrize()" novalidate class="uhkklp-cny" ng-if="cny.luckyDraw">
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span translate="cny_awards"></span> &nbsp;&nbsp;
+      <span class="btn btn-success" ng-click="cny.addPrize()" translate="cny_add_award"></span>
+    </div>
+    <div class="cny-item-body">
+      <div class="cny-prize-table">
+        <table class="table table-striped">
+          <tbody>
+            <tr ng-repeat="prize in cny.prizes">
+              <td>
+                <div class="prize-remove">
+                  <span type="button" class="btn btn-warning" ng-click="cny.deletePrize($index, $event)" translate="cny_remove_award"></span>
+                </div>
+                <div class="cny-prize-group">
+                  <label class="prize-title">
+                    <span class="red-start" translate="cny_award_name"></span>
+                  </label>
+                  <div class="prize-input-div">
+                    <input class="form-control" ng-model="prize.name" required type="text" />
+                  </div>
+                </div>
+                <div class="cny-prize-group">
+                  <label class="prize-title">
+                    <span class="red-start" translate="cny_award_quantity"></span>
+                  </label>
+                  <div class="prize-input-div">
+                    <input class="form-control" ng-model="prize.quantity" wm-validate="cny.checkPositiveInt('quantity' + $index, prize.quantity)" required type="text" id="{{'quantity'+ $index}}" />
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr ng-show="cny.prizes.length === 0">
+              <td><span class="red-text" translate="cny_award_tip"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="statistics-chart-item">
+    <div class="statistics-item-title">
+      <span translate="cny_lucky_draw_title"></span> &nbsp;&nbsp;
+      <input type="submit" class="btn btn-success" value="{{'cny_lucky_draw' | translate}}" id="cnyDrawBtn"/>
+    </div>
+    <div class="cny-draw-body">
+      <div class="winner-list">
+        <div wm-table class="colored-table" ng-model="cny.list"></div>
+        <div class="clearfix">
+          <div class="broadcast-pagination">
+            <div wm-pagination current-page="cny.currentPage" page-size="cny.pageSize" total-items="cny.totalCount" on-change-size="cny.changeSize" on-change-page="cny.changePage"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<!-- 弹出窗 -->
+<script type="text/ng-template" id="showSmsDetail.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title" translate="cny_sms_detail_title"></h4>
+  </div>
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="form-group">
+      <label class="dark-gray" translate="cny_sms_template"></label>
+      <textarea class="form-control" rows="4" readonly ng-model="smsDetail.smsTemplate"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="dark-gray" translate="cny_sms_detail"></label> <br/> &nbsp;&nbsp;
+      <span>{{'cny_sms_total' | translate}}: {{smsDetail.total}}，</span>&nbsp;
+      <span>{{'cny_sms_success' | translate}}: {{smsDetail.successful}}，</span>&nbsp;
+      <span>{{'cny_sms_failed' | translate}}: {{smsDetail.failed}}</span>&nbsp;
+      <span style="color:#38c4a9" ng-show="prepareSms" translate="cny_sms_send_tip"></span>&nbsp;
+      <span style="color:#38c4a9" ng-show="sendText" translate="cny_sms_sending_tip"></span>&nbsp;
+      <span style="color:#38c4a9;cursor:pointer" ng-show="exportBtn" ng-click="exportSmsDetail()" translate="cny_export_sms"></span>&nbsp;
+    </div>
+    <div class="center-text">
+      <span class="btn btn-success user-btn" ng-click="hideModal()">&nbsp;&nbsp;&nbsp;{{'ok' | translate}}&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</script>

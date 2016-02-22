@@ -1,0 +1,40 @@
+$percent-e: #eee;
+$percent-37c3aa: #37c3aa;
+$percent-78: #787878;
+
+.percent-wrap {
+  position: relative;
+}
+
+.percent-base {
+  padding: 0;
+  margin: 0;
+  height: 20px;
+  background-color: $percent-e;
+  float: left;
+}
+
+.percent-above {
+  height: 20px;
+  background-color: $percent-37c3aa;
+}
+
+.percent-tip {
+  padding-left: 10px;
+  color: $percent-78;
+}
+
+.with-text {
+  width: 60%;
+}
+
+.without-text {
+  width: 100%;
+}
+
+.percent-star-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+}

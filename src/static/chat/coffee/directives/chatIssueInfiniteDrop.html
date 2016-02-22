@@ -1,0 +1,29 @@
+<div class="infinite-drop">
+  <div class="issue-body">
+    <div class="issue-list-scroll">
+      <!-- track by $index: duplicates in a repeater are not allowed-->
+      <div class="media" ng-repeat="issue in issues track by $index">
+        <div class="media-left">
+          <img class="avatar circle-avatar" ng-src="{{issue.creator.avatar|qiniu}}"
+            src="/images/helpdesk/issue/default_avatar.png">
+        </div>
+        <div class="media-body" ng-class="'title-'+issueStatus">
+          <a ng-click="goIssueDetail($event, issue.id)" href="#">{{issue.title}}</a>
+          <div ng-if="issue.hasAttachment" class="attachment-icon"></div>
+        </div>
+        <hr class="liner"></hr>
+      </div>
+
+      <div class="issue-mask-loading">
+        <div class="issue-loading-icon"></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="add-issue" ng-show="issueStatus == openStatus">
+    <a ng-click="goAddIssue($event)" href="#">
+      <div class="add-issue-icon"></div>
+      {{"issue_add_page_btn_title"|translate}}
+    </a>
+  </div>
+</div>

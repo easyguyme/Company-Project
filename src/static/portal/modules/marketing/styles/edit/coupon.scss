@@ -1,0 +1,240 @@
+$coupon-bcolor: #f0eff4;
+
+.create-coupon {
+  .coupon-type {
+    @include size(100%, 400px);
+    background-color: $datepicker-even-bg;
+    margin-top: -20px;
+    padding: 20px 0 0 30px;
+
+    .coupon-title {
+      color: $word-color;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+
+    .coupon-item {
+      @include size(310px, 105px);
+      background-color: $white;
+      background-repeat: no-repeat;
+      background-position: 10px 20px;
+      background-size: 50px;
+      box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+      border: 0;
+      padding: 15px 15px 0 70px;
+      margin: 0 30px 20px 0;
+
+      .coupon-description {
+        color: $text-tip-color;
+      }
+    }
+  }
+
+  .coupon-body {
+    padding: 0 0 70px 20px;
+
+    .select {
+      .scroll {
+        height: 220px;
+      }
+    }
+
+    .coupon-select {
+      background-color: $coupon-bcolor;
+      height: 500px;
+      width: 320px;
+      margin-right: 10px;
+    }
+
+    .coupon-select-title {
+      background-image: url('/images/product/iphone_head.jpg');
+      color: $white;
+      height: 60px;
+      font-size: 18px;
+      text-align: center;
+      padding-top: 32px;
+    }
+
+    .bottom-wavy {
+      @include size(100%, 3px);
+      background-repeat: no-repeat;
+      background-color: $graphics-edit-border-color;
+      background-image: url('/images/product/qunmianxinxi_bg.png');
+      position: absolute;
+      top: 70px;
+    }
+
+    .top-71 {
+      top: 71px;
+    }
+
+    .waterfall-news-normal {
+      position: relative;
+      border-color: $graphics-edit-border-color;
+      margin-bottom: 12px;
+
+      &:nth-child(2) {
+        .coupon-info-item {
+          line-height: 70px;
+        }
+      }
+
+      &:nth-child(3) {
+        .coupon-info-item {
+          line-height: 68px;
+        }
+      }
+
+      &:nth-child(4),
+      &:nth-child(5) {
+        .coupon-info-item {
+          line-height: 40px;
+          background-repeat: no-repeat;
+          background-image: url('/images/product/arrow_icon.png');
+          background-position: 300px 12px;
+        }
+      }
+    }
+
+    .coupon-info-item {
+      box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+      color: $menu-icon-normal-color;
+      padding-left: 12px;
+      background-color: $white;
+      position: relative;
+
+      .coupon-info-item-cover {
+        display: none;
+      }
+
+      &:hover .coupon-info-item-cover {
+        @include graphic-cover(rgba(255, 255, 255, .8));
+        display: block;
+        position: absolute;
+
+        .icon-edit {
+          @include graphic-icons(edit);
+          @include graphic-icons-center(20px, 30px);
+          width: 30px;
+        }
+      }
+
+      &.active {
+        border: 1px solid $brand-primary;
+      }
+    }
+
+    .coupon-edit {
+      border-radius: 4px;
+      border: 1px solid $graphics-edit-border-color;
+      box-shadow: 0 1px 3px rgba(205, 205, 205, .5);
+      padding: 30px 15px;
+      position: relative;
+      height: 500px;
+
+      label {
+        color: $menu-icon-normal-color;
+        font-weight: normal;
+      }
+
+      .front-triangle {
+        @include left-triangles(14px, 11px, 11px, $white-background-color);
+        left: -13px;
+        top: 83px;
+      }
+
+      .back-triangle {
+        @include left-triangles(15px, 12px, 12px, $graphics-edit-border-color);
+        left: -15px;
+        top: 82px;
+      }
+
+      .coupon-timepicker {
+        .date-time-picker-div {
+          width: 160px;
+          display: inline-block;
+        }
+
+        .span-center {
+          padding: 0 10px;
+        }
+      }
+
+      .coupon-selects {
+        .select {
+          width: 100px;
+          margin: 0 8px;
+        }
+      }
+
+      .span-center {
+        line-height: 30px;
+        vertical-align: top;
+      }
+
+      .couption-info {
+        .wm-radio {
+          vertical-align: top;
+          margin-top: 8px;
+        }
+      }
+
+      .couption-store {
+        .couption-store-content {
+          padding-left: 15px;
+        }
+
+        .store-infos {
+          margin: 10px 0 20px 20px;
+        }
+
+        .tbody-wrapper {
+          max-height: 122px;
+        }
+      }
+    }
+
+    .coupon-submit {
+      margin: 40px 0 0 100px;
+
+      button {
+        width: 70px;
+      }
+    }
+
+    .heigth-550 {
+      height: 550px;
+    }
+  }
+}
+
+.product-select-store-dialog {
+  .modal-dialog {
+    width: 800px;
+  }
+
+  .modal-body {
+    padding: 30px 30px 50px;
+    height: 500px;
+
+    .tbody-wrapper {
+      max-height: 305px;
+    }
+  }
+}
+
+.tip-width {
+  width: 360px;
+
+  .form-tip {
+    width: 400px;
+  }
+}
+
+.mb0 {
+  margin-bottom: 0 !important;
+}
+
+.color-gray9 {
+  color: $wm-tip-color;
+}

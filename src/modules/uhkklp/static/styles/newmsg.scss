@@ -1,0 +1,195 @@
+$search-bg: #eee;
+
+.tab-view-wrap {
+  padding: 20px;
+  .operation-col {
+    text-align: center;
+  }
+}
+
+.mt_cookbook_namelist {
+    max-height: 120px;
+    overflow-y: auto;
+    padding-left: 9px;
+    background-color: #EEEEEE;
+}
+
+
+.mt-message-tab-view-wrap {
+  tr {
+    th:nth-child(2){
+      width: 25%;
+    }
+    th:nth-child(1){
+      width: 20%;
+    }
+  }
+}
+
+.mt-recipe-batch {
+  tr {
+    th:nth-child(2){
+      width: 21%;
+    }
+    th:nth-child(3){
+      width: 10%;
+    }
+  }
+}
+
+.mt_msg_nl {
+  max-height: 90px;
+  overflow-y: auto;
+  border: 1px solid;
+  border-color: #C7C5C5;
+  display: none;
+  li {
+    margin-left: 10px;
+    height: 20px;
+    line-height: 22px;
+  }
+}
+
+.uhkklp-push-tab table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uhkklp-search-wrap {
+  margin-bottom: 20px;
+  padding: 5px 10px 1px 10px;
+  background-color: $search-bg;
+}
+
+.mt-panel {
+  background-color: #eee;
+  // font-weight: 400;
+  font-size: 13px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+
+  .mt-panel-img {
+    width: 20px;
+    height: 20px;
+    background-position: 0;
+    float: left;
+    margin: 10px;
+  }
+}
+
+.uhkklp.edit-msg-wrap {
+  form {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .form-group {
+    border: 1px solid #eee;
+    label[for] {
+      display: block;
+      padding: 15px;
+      color: #787878;;
+      border-bottom: 1px solid #eee;
+      background-color: #f5f5f5;
+      .form-tip-label {
+        color: #b42d14;
+        font-size: 12px;
+        font-weight: 100;
+        display: inline-block;
+        vertical-align: text-top;
+        margin-left: 15px;
+      }
+    }
+    .invisible-input {
+      visibility: hidden;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .time-invalid .date-time-picker-div {
+      border-color: #b42d14 !important;
+    }
+    .mt-required {
+      border-color: #b42d14 !important;
+    }
+    .date-time-picker-div {
+      border-radius: 2px;
+    }
+    .not-required:before {
+      content: '';
+    }
+    .device-list-title {
+      margin-top: 15px;
+    }
+    ul.device-list {
+      padding-left: 10px;
+      list-style: none;
+      max-height: 86px;
+      width: 250px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border: 1px solid #C3C4C5;
+      li {
+        color: #777a7b;
+      }
+    }
+  }
+  .model-wrap {
+    padding: 15px;
+    .model-son {
+      padding-left: 20px;
+      padding-top: 15px;
+    }
+    .valid-wrap .form-tip {
+      color: #b42d14 !important;
+    }
+    .block-radio:not(:first-child) {
+      margin-top: 15px;
+    }
+    .inline-radio {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .imgPrev {
+      font-size: 25pt;
+      line-height: 272px;
+      display: block;
+      width: 320px;
+      height: 272px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #a3a3a3;
+      border: 1px solid #ccc;
+    }
+    .error-border {
+      border-color: #b42d14 !important;
+    }
+    .date-time-picker-div {
+      border: 1px solid #ddd;
+      input {
+        border-style: none;
+      }
+    }
+    .img-wrap {
+      border: 1px solid #c3bebe;
+      border-radius: 3px;
+      padding: 15px;
+      margin-bottom: 15px;
+      padding-top: 0;
+    }
+    .require-img {
+      span {
+        color: #b42d14 !important;
+      }
+    }
+  }
+  .form-grup-primary {
+    border: 1px solid #5999d0;
+    label[for] {
+      border-bottom: 1px solid #5999d0;
+    }
+  }
+}

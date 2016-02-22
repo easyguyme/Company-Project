@@ -1,0 +1,34 @@
+{
+    "clientCount": 8,
+    "conversationCount": 9,
+    "clientMessageCount": 3,
+    "statistics": {
+        "categories": [
+            "2015-01-21",
+            "2015-01-23"
+        ],
+        "series": [
+            {
+                "name": "helpdesk_users_count",
+                "data": [
+                    4,
+                    4
+                ]
+            },
+            {
+                "name": "helpdesk_sessions_count",
+                "date": [
+                    4,
+                    5
+                ]
+            },
+            {
+                "name": "helpdesk_sent_message_count",
+                "date": [
+                    2,
+                    2
+                ]
+            }
+        ]
+    }
+}

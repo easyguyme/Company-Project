@@ -1,0 +1,13 @@
+@mixin wm-font-size($index) {
+  @if ($index >= $wm-min-font-size) {
+    .fs#{$index} {
+      font-size: #{$index}px;
+    }
+  }
+}
+
+@mixin wm-loop-font-size($min, $max) {
+  @for $i from $min through $max {
+    @include wm-font-size($i);
+  }
+}

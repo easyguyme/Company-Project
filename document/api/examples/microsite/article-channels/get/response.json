@@ -1,0 +1,14 @@
+{
+    "id": "54bccaf4db4c0e0b448b4569",
+    "name": "test",
+    "fields": [
+        {
+            "name": "aaa",
+            "type": "input"
+        },
+        {
+            "name": "bbb",
+            "type": "date"
+        }
+    ]
+}

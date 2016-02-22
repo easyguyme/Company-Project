@@ -1,0 +1,52 @@
+<div class="tag-edit-title">
+  <button type="button" class="tag-edit-title-close close" ng-click="hideEditTag()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+  <h4 class="tag-edit-title-text" ng-if="!isEdit">{{'content_articles_new_channel' | translate}}</h4>
+  <h4 class="tag-edit-title-text" ng-if="isEdit">{{'content_articles_edit_channel' | translate}}</h4>
+</div>
+<form id="tag-edit-form" ng-submit="addTag()">
+  <div class="tag-edit-body">
+    <div class="form-group">
+      <label class="dark-gray">{{'content_articles_channel_name' | translate}}</label>
+      <input class="form-control" maxlength="10" ng-model="channel.name" form-tip="{{'content_articles_channel_name_tip' | translate}}" wm-validate="validateChannelName" required/>
+  </div>
+    <div class="row tag-edit-body-default-field mb25">
+      <div class="col-md-4 pr0">
+        <label class="dark-gray">{{'content_articles_default_field_one' | translate}}</label>
+        <span class="dark-gray tag-edit-body-default-field-text">{{'content_articles_title' | translate}}</span>
+      </div>
+      <div class="col-md-4 pl5 pr0">
+        <label class="dark-gray">{{'content_articles_default_field_two' | translate}}</label>
+        <span class="dark-gray tag-edit-body-default-field-text">{{'content_articles_image' | translate}}</span>
+      </div>
+      <div class="col-md-4 pl5 pr0">
+        <label class="dark-gray">{{'content_articles_default_field_three' | translate}}</label>
+        <span class="dark-gray tag-edit-body-default-field-text">{{'content_articles_body' | translate}}</span>
+      </div>
+    </div>
+    <div class="row tag-edit-body-customer-field form-group" ng-if="fields.length != 0">
+      <label class="dark-gray col-md-8">{{'content_articles_customer_fields' | translate}}</label>
+      <div class="col-md-4 pl5">
+        <label class="dark-gray">{{'content_articles_field_form' | translate}}</label>
+      </div>
+      <div ng-repeat="field in fields track by $index">
+        <div class="col-md-8 pr0">
+          <input class="form-control field-name" placeholder="{{'content_articles_field_title' | translate}}" ng-model="fields[$index].name" required/>
+        </div>
+        <div class="col-md-3 pl5 pr0">
+          <div wm-select class="tag-edit-body-customer-field-dropdown" ng-model="fields[$index].type" text-field="text" value-field="value" items="types" ></div>
+        </div>
+        <div class="col-md-1 pl5 pr0 cp">
+          <span class="tag-edit-body-customer-field-delete" ng-click="deleteField($index, $event)"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 mt10">
+        <span class="btn tag-edit-body-customer-field-add cp" ng-click="addField()" ng-disabled="fields.length >= 10">{{'content_articles_new_customer_fields' | translate}}</span>
+      </div>
+    </div>
+    <div class="center-text">
+      <input type="submit" class="btn btn-success tag-edit-body-btn" value="{{'customer_card_submit' | translate}}" form="tag-edit-form" />
+    </div>
+  </div>
+</form>

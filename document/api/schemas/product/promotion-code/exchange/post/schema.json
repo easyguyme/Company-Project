@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "required": true,
+      "description": "how namy codes must be pass a array"
+    },
+    "memberId": {
+      "type": "string",
+      "required": true,
+      "description": "member id"
+    },
+    "channelId": {
+      "type": "string",
+      "required": false,
+      "description": "channel id"
+    },
+    "exchangeTime": {
+      "type": "int",
+      "required": false,
+      "description": "time(毫秒)"
+    }
+  }
+}

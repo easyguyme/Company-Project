@@ -1,0 +1,28 @@
+.c-reminder-panel {
+  padding: .33rem 0;
+
+  &__tip {
+    margin: 0;
+    font-size: .4rem;
+    line-height: .6rem;
+    margin-bottom: .2rem;
+  }
+
+  .c-kv-list {
+    margin-bottom: .2rem;
+  }
+
+  &__footer {
+
+    &__btn {
+      float: right;
+      width: 100%;
+      text-align: right;
+    }
+
+    .c-btn {
+      width: 2.5rem;
+      margin-left: .31rem;
+    }
+  }
+}

@@ -1,0 +1,292 @@
+<div wm-breadcrumb="member.breadcrumb"></div>
+<div class="member-view-container clear-container-padding">
+  <!-- Display default property -->
+  <div class="row member-view-default clear-container-margin">
+    <!--member avatar-->
+    <div class="col-md-2 col-sm-4 col-xs-6 member-view-avatar" ng-style="{'background-image':'url(' + member.viewer.avatar + ')'}">
+      <span ng-show="member.gender" class="member-view-icon-gender view-icon-{{member.gender}}"></span>
+    </div>
+
+    <div class="col-md-10 col-sm-8 col-xs-6 member-view-porperty">
+      <!--name remark-->
+      <div class="col-md-12 member-view-name clearfix">
+        <span class="view-name-info pull-left fb">{{member.viewer.name || 'customer_member_information_no_exist' | translate}}</span>
+
+        <!-- Display member remarks property-->
+        <div class="row col-md-8 clear-container-margin member-remark clearpadding">
+          <div class="col-md-12 col-sm-12 col-xs-12 clear-container-padding" ng-show="!member.isShowEditRemarksPane">
+            <span class="member-view-icon view-icon-pencil member-operate-icon" ng-click="member.showEditRemarksPane()"></span>
+            <span class="member-attr-label member-view-label" ng-hide="member.viewer.remarks || member.isShowEditRemarksPane">{{'customer_member_remarks' | translate}}</span>
+            <span class="view-remark-content">{{member.displayRemarks}}</span>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12 clear-container-padding row edit-remark" ng-show="member.isShowEditRemarksPane">
+            <div class="form-group">
+              <div class="col-md-8">
+                <input class="form-control" type="text" maxlength="25" ng-model="member.viewer.remarks" placeholder="{{'member_remark_length' | translate}}"/>
+              </div>
+              <div class="col-md-4 clearpadding confirm-select">
+                <span class="btn btn-success" translate="ok" ng-click="member.saveRemarks()"></span><span class="btn btn-default" translate="cancel" ng-click="member.hideEditRemarksPane()"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--card qrcode-->
+      <div class="col-md-12">
+        <div class="member-property-item member-property-popup">
+          <span class="member-view-icon view-icon-vipcard"></span>
+          <span class="member-property-content" ng-bind="member.viewer.card.name"></span>
+          <span class="view-property-detail">
+            <a id="showMemberCardDetail" href="" ng-mouseover="member.showPopupPanel('CardPoster')" ng-mouseleave="member.hidePopupPanel('CardPoster')" class="link-show-panel" translate="member_content_detial"></a>
+            <div id="memberCardDetail" class="view-popup-pane view-vipcard-pane" ng-show="member.isShowCardPoster" ng-style="{'color': member.fontColor}">
+              <div class="member-vipcard-icon" ng-style="{'background-image': 'url(' + member.viewer.card.poster + ')'}">
+                <div class="vipcard-pane-name" ng-bind="member.viewer.card.name"></div>
+                <div class="member-pane-number" ng-bind="member.viewer.cardNumber"></div>
+                <div class="member-name" ng-bind="member.viewer.name"></div>
+                <div ng-show="member.viewer.cardExpiredAt" class="member-card-expired"><i>{{member.viewer.cardExpiredAt}}&nbsp;{{'member_expired_time' | translate}}</i></div>
+                <div class="member-card-qrcode"></div>
+              </div>
+              <i class="back-triangle"></i>
+              <i class="front-triangle"></i>
+            </div>
+          </span>
+          <span class="member-separator">|</span>
+        </div>
+
+        <div class="member-property-item member-property-popup">
+          <span class="member-view-icon view-icon-qrcode"></span>
+          <span class="member-property-content" translate="member_qrcode"></span>
+          <span class="view-property-detail">
+            <a id="showMemberQrcode" href="" ng-mouseover="member.showPopupPanel('Qrcode')" ng-mouseleave="member.hidePopupPanel('Qrcode')" class="link-show-panel" translate="member_content_detial"></a>
+            <div id="memberQrcode" class="view-popup-pane view-qrcode-pane" ng-show="member.isShowQrcode" ng-style="{'right': member.qrcodeImageRight}">
+              <img ng-src="{{member.viewer.qrcodeUrl}}" class="member-qrcode-icon"/>
+              <i class="back-triangle"></i>
+              <i class="front-triangle"></i>
+            </div>
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div class="member-property-item">
+          <label class="member-attr-label member-view-margin">{{'id' | translate}}:</label>
+          <div class="account-detail-content">
+            <span ng-bind="member.viewer.cardNumber"></span>
+          </div>
+          <span class="member-separator">|</span>
+        </div>
+
+        <div class="member-property-item" ng-if="member.viewer.socialAccount">
+          <label class="member-attr-label member-view-margin">{{'customer_follower_social_account' | translate}}:</label>
+          <div class="account-detail-content">
+            <span class="member-view-icon" ng-style="{'background-image':'url(/images/customer/' + member.accountTypeName + '.png)'}"></span>
+            <span translate="{{member.viewer.socialAccount.name}}"></span>
+          </div>
+          <span class="member-separator">|</span>
+        </div>
+
+        <div class="member-property-item">
+          <label class="member-attr-label member-view-margin">{{'customer_members_register_time' | translate}}:</label>
+          <div class="account-detail-content">
+            <span ng-bind="member.viewer.createdAt"></span>
+          </div>
+          <span class="member-separator">|</span>
+        </div>
+
+        <div class="member-property-item">
+          <label class="member-attr-label member-view-margin">{{'member_points_balance' | translate}}:</label>
+          <div class="account-detail-content">
+            <span class="member-property-content">{{member.viewer.score || 0}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display member tags property-->
+      <div class="col-md-12 row clear-container-margin member-view-tag">
+        <label class="col-md-2 col-sm-4 col-xs-6 clear-container-padding member-attr-label member-tag-label">{{'customer_follower_tag' | translate}}:</label>
+        <div class="col-md-10 col-sm-8 col-xs-6 clear-container-padding row clear-container-margin view-tags-list">
+          <div class="col-md-2  col-sm-3 col-xs-4 view-tag-item" ng-repeat="tag in member.viewer.tags track by $index" ng-bind="tag"></div>
+          <div class="col-md-2  col-sm-3 col-xs-4 " ng-if="member.viewer.tags.length <= 0">{{'customer_member_information_no_exist' | translate}}</div>
+        </div>
+      </div>
+
+      <!--Nickname Tel birthday email-->
+      <div class="col-md-12 clearpadding member-birthday-email">
+        <div class="member-property-item member-property-spacing pull-left" ng-if="member.viewer.socialMember">
+          <label class="member-attr-label member-view-margin">{{'nickname' | translate}}:</label>
+          <div class="account-detail-content">
+            <span ng-bind="member.viewer.socialMember"></span>
+          </div>
+        </div>
+
+        <div class="member-property-item member-property-spacing pull-left">
+          <label class="member-attr-label member-view-margin">{{'customer_follower_location' | translate}}:</label>
+          <div class="account-detail-content">
+            <span class="member-property-content">{{member.viewer.position || 'customer_member_information_no_exist' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="member-property-item member-property-spacing pull-left">
+          <label class="member-view-margin member-attr-label">{{'birthday' | translate}}:</label>
+          <div class="account-detail-content">
+            <span class="member-property-content">{{member.viewer.birthday || 'customer_member_information_no_exist' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="member-property-item member-property-spacing pull-left">
+          <label class="member-view-margin member-attr-label">{{'tel' | translate}}:</label>
+          <div class="account-detail-content">
+            <span class="member-property-content">{{member.viewer.tel || 'customer_member_information_no_exist' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="member-property-item member-property-spacing pull-left">
+          <label class="member-view-margin member-attr-label">{{'email' | translate}}:</label>
+          <div class="account-detail-content">
+            <span class="member-property-content" >{{member.viewer.email || 'customer_member_information_no_exist' | translate}}</span>
+          </div>
+        </div>
+
+        <!-- Display the extented properties of member-->
+        <div class = "member-extented-properties pull-right clearfix" ng-click="member.openProperties()" ng-show="member.extendedProperties.length > 0">
+          {{'member_search_extented_properties' | translate}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dispaly customer profile records-->
+  <div class="clearfix member-view-records">
+    <div wm-tabs="member.changTab()" tabs="member.tabs" ng-model="member.curTab"></div>
+    <div wm-tab-panes tabs="member.tabs" full-path="/build/modules/member/partials/profile/"></div>
+  </div>
+
+  <!-- Display purchase history -->
+  <div class="member-view-purchase" ng-if="member.isShowMemberOrderStats">
+    <div class="purchase-head">
+      <span class="purchase-head-item">{{'member_purchase_behavior' | translate}}</span>
+      <button ng-show="member.orderStats.lastOperateTime" type="button" class="btn btn-success purchase-button pull-right" ng-click="member.viewPurchase()">{{'member_view_purchase_records' | translate}}</button>
+    </div>
+    <div class="purchase-body">
+      <div class="member-table-title">
+        <span class="mr20" ng-show="member.orderStats.lastOperateTime">{{'member_not_purchase_one' | translate}}<i class="title-keyword">{{member.orderStats.operateInterval}}</i>{{'member_not_purchase_two' | translate}}</span>
+        <span ng-show="member.orderStats.lastOperateTime">{{'member_last_purchase' | translate}}&nbsp;&nbsp;<i class="title-keyword">{{member.orderStats.lastOperateTime}}</i></span>
+        <div class="member-no-record-order" ng-show="!member.orderStats.lastOperateTime">{{'member_no_records' | translate}}</div>
+      </div>
+      <div class="purchase-stats clearfix" ng-show="member.orderStats.lastOperateTime">
+        <div class="stats-item" ng-repeat="item in member.ordersStatsConf track by $index">
+          <div class="stats-title" translate="{{item.title}}"></div>
+          <div class="row col-md-9">
+            <div class="stats-icon" ng-style="{'background-image':'url(' + item.icon + ')','background-color': item.bgColor[0]}"></div>
+            <div class="stats-label">
+              <div class="stats-label-one" ng-style="{'background-color': item.bgColor[0],'width': item.width[0]}"></div>
+              <div class="stats-label-two" ng-style="{'background-color': item.bgColor[1],'width': item.width[1]}"></div>
+            </div>
+          </div>
+          <div class="stats-data">
+            <div class="stats-data-one" ng-style="{color: item.fontColor[0]}">
+              <i>{{item.data[0]}}<span ng-hide="{{$index == 1}}" translate="yuan"></span><span ng-show="{{$index == 1}}" translate="times"></span></i>
+            </div>
+            <div class="stats-data-two" ng-style="{color: item.fontColor[1]}">
+              <i ng-hide="{{$index == 1}}">{{'member_avg_yuan' | translate:'{ count: item.data[1]}'}}</i>
+              <i ng-show="{{$index == 1}}">{{'member_avg_time' | translate:'{ count: item.data[1]}'}}</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Display the extented properties of member -->
+<script type="text/ng-template" id="properties.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'member_extented_properties' | translate}}</h4>
+  </div>
+  <div class="modal-bgcolor create-graphic-body properties-body">
+    <div class="member-property row" ng-repeat="property in properties track by $index">
+      <label class="property-label col-md-4">{{property.name}}:</label>
+      <div class="property-value col-md-8 clearpadding" ng-if="property.type != 'textarea'">{{property.value}}</div>
+      <div class="property-value col-md-8 clearpadding" ng-bind-html="property.value" ng-if="property.type == 'textarea'"></div>
+    </div>
+  </div>
+</script>
+
+<!-- Display the purchase of member -->
+<script type="text/ng-template" id="purchase.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="purchase.hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'member_purchase_records' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor">
+    <div class="modal-content-title clearfix">
+      <span class="span-center pull-left mr20">{{'date_range' | translate}}</span>
+      <div class="col-md-3 pull-left clearpadding">
+        <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" ng-model="purchase.startTime" min-date-picker-id="endDatePicker" time-handler="purchase.selectDate()" less-than-today="true" icon="calendar">
+        </div>
+      </div>
+      <div class="pull-left span-center">&nbsp;&nbsp;&minus;&nbsp;&nbsp;</div>
+      <div class="col-md-3 pull-left clearpadding mr20">
+        <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" ng-model="purchase.endTime" less-than-today="true" icon="calendar" time-handler="purchase.selectDate()"></div>
+      </div>
+      <span class = "member-extented-properties span-center" ng-click="purchase.clear()">
+          {{'customer_follower_clear' | translate}}
+      </span>
+      <span class="span-center pull-right">{{'member_purchase_records_amount' | translate:'{ count: purchase.totalCount}'}}</span>
+    </div>
+    <wm-table ng-model="purchase.list" class="colored-table"></wm-table>
+    <div class="broadcast-pagination interaction-foot-pagination">
+      <div wm-pagination current-page="purchase.currentPage" page-size="purchase.pageSize" total-items="purchase.totalCount" on-change-size="purchase.changeSize" on-change-page="purchase.changePage"></div>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="menu.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'member_menu_interact_detail' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor card-points-wrapper">
+    <label class="normal-label member-menu-content">{{'member_menu_content' | translate}}: </label>{{content}}<span ng-if="isDeleted" class="link-explaination" translate="member_menu_deleted"></span>
+    <div wm-fixed-table ng-model="list"></div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="message.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'member_message_record' | translate}}</h4>
+  </div>
+
+  <div class="history-message-wrapper modal-body modal-bgcolor member-message-wrapper">
+    <div class="history-message-body">
+      <div class="history-message-quantity fs12">
+        <sapn>{{totalCount}}</span>
+        <span translate="channel_history_quantity"></span>
+      </div>
+      <div class="clearfix history-message-item" ng-repeat="historyMsg in historyMessages track by $index">
+        <div class="interact-message-info clearfix history-message-info">
+          <div class="row" ng-class="{'history-is-reply': historyMsg.direction != 'RECEIVE'}">
+            <img class="message-sender-avatar" ng-src="{{historyMsg.headerImgUrl}}">
+            <div class="col-md-10 message-sender-info fs14">
+              <div class="message-illustrate">
+                <div class="send-time fs12">{{historyMsg.message.createTime | formatdate}}</div>
+              </div>
+              <div class="message-content" ng-bind-html="historyMsg.message.content" ng-if="historyMsg.message.msgType == 'TEXT'"></div>
+
+              <div class="news-view" ng-if="historyMsg.message.msgType == 'NEWS' || historyMsg.message.msgType == 'MPNEWS'">
+                <div wm-graphic graphic="historyMsg.message"></div>
+              </div>
+
+              <div class="message-content" ng-if="historyMsg.message.msgType != 'TEXT' && historyMsg.message.msgType != 'NEWS' && historyMsg.message.msgType != 'MPNEWS'">{{historyMsg.message.content | translate}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="history-message-pagination" ng-show="showPagination" ng-click="loadMore()" translate="channel_load_more"></div>
+    </div>
+  </div>
+</script>
+

@@ -1,0 +1,9 @@
+<div ng-controller="wm.ctrl.microsite.page.config.html as html">
+    <form id="form-html" ng-submit="cpts.sendData(html.data)">
+      <div class="form-group">
+        <label for="html">Html</label>
+        <textarea class="form-control content-component-config-html-textarea" id="html" ng-model="html.data.content" required></textarea>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

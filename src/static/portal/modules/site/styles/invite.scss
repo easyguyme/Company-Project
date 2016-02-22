@@ -1,0 +1,101 @@
+$site-invite-bg-color:       #fff;
+$site-invite-tip-color:      #198c78;
+$site-invite-border-color:   #19a582;
+$site-invite-border1-color:  #1c9a83;
+
+.login-page {
+  overflow-y: auto;
+
+  .activate-content {
+    @include size(700px, auto);
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    margin-top: 2%;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .reminder-wrapper {
+    margin-bottom: 60px;
+
+    .activate-reminder {
+      @extend .fs24;
+      color: $site-invite-bg-color;
+      text-align: center;
+    }
+  }
+
+  .form-avatar-tip {
+    color: $site-invite-tip-color;
+    margin-top: 8px;
+  }
+
+  .activate-form {
+    margin: 0 auto;
+    max-width: 465px;
+    width: 90%;
+  }
+
+  form {
+
+    .mb20 {
+      margin-bottom: 20px;
+    }
+
+    .mb50 {
+      margin-bottom: 50px;
+    }
+
+    .mb35 {
+      margin-bottom: 35px;
+    }
+  }
+
+  .avatar {
+    text-align: center;
+
+    .avatar-wrapper {
+      @include size(122px, 122px);
+      margin: 0 auto;
+      margin-bottom: 5px;
+      position: relative;
+
+      .edit-avatar {
+        @include size(122px, 122px);
+        @include wm-all-border-radius(4px);
+        background-size: cover;
+        border: 1px solid $site-invite-border-color;
+      }
+    }
+
+    .avatar-upload-btn {
+      display: inline-block;
+      right: -45px;
+      top: -31px;
+
+      .edit-icon {
+        @include size(30px, 30px);
+        @include wm-all-border-radius(2px);
+        background-image: url('/images/site/img_activate_account_edit_default.png');
+        border-color: $site-invite-border1-color;
+      }
+
+      &:hover {
+
+        .edit-icon {
+          background-image: url('/images/site/img_activate_account_edit_hover.png');
+        }
+      }
+
+      &:active {
+
+        .edit-icon {
+          background-image: url('/images/site/img_activate_account_edit_click.png');
+        }
+      }
+    }
+  }
+}
+

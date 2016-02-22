@@ -1,0 +1,282 @@
+.help-issue-detail {
+  @extend %issue-right-slide-page;
+  background: $white-color !important;
+
+  .cursor {
+    cursor: pointer;
+  }
+
+  .issue-relative {
+    position: relative;
+  }
+
+  .operation {
+    margin-bottom: 15px;
+
+    .col-md-10 {
+      @include font-size-color(18px, $detail-page-gray-text-color);
+      padding: 0;
+      word-wrap: break-word;
+    }
+
+    .col-md-2 {
+      padding: 0;
+    }
+  }
+
+  .scroll-content {
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .more {
+      .more-toggle {
+        @include font-size-color(14px, $right-slide-title-color);
+      }
+
+      .more-icon {
+        @include issue-norepeat-icon(16px, 11px, '/images/helpdesk/issue/more_normal.png');
+        margin-top: -2px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .dropdown {
+    text-align: right;
+  }
+
+  .dropdown-menu {
+    background-color: $navbar-background-color;
+    right: 0;
+    left: auto;
+    border: 1px solid $dropdown-menu-border-color;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, .24);
+    padding: 7px 0;
+
+    li {
+      padding: 0;
+      height: 34px;
+
+      label {
+        @include font-size-color(14px, $right-slide-title-color);
+        width: 100%;
+        text-align: center;
+        line-height: 34px;
+        cursor: pointer;
+        font-weight: normal;
+
+        &:hover {
+          color: $white-color;
+          background-color: $right-slide-title-color;
+        }
+      }
+    }
+
+    .btn-close-issue {margin-bottom: 6px;}
+
+  }
+
+  .thumbnail {
+    display: flex;
+    padding-right: 12px !important;
+
+    .thumbnail-list {
+      .thumbnail-icon {
+        cursor: pointer;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 8px;
+
+        .format-img {@include width-height (46px, 46px);}
+
+        .format-pic {
+          @include font-size-color(12px, $white-color);
+          @include width-height (46px, 46px);
+          display: block;
+          text-align: center;
+          line-height: 46px;
+        }
+      }
+    }
+
+    .thumbnail-download {
+      @include font-size-color(12px, $a-hover-color);
+      cursor: pointer;
+      margin-top: 4px;
+      height: 20px;
+    }
+
+    .thumbnail-attachment-icon {
+      @include issue-norepeat-icon(30px, 36px, '/images/helpdesk/issue/task-attach-icon.png');
+    }
+
+    .media-content {
+      width: 400px;
+      padding-left: 6px;
+    }
+  }
+
+  .issue-table {
+    width: 100%;
+    border-collapse: inherit;
+    margin-top: 17px;
+    border-radius: 4px;
+
+    th {
+      padding-top: 16px;
+      padding-left: 20px;
+      font-weight: normal;
+      border-right: 1px solid $border-color;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: 0;
+    }
+
+    td {
+      padding-left: 20px;
+      border-right: 1px solid $border-color;
+    }
+  }
+
+  @each $status in $issue-detail-icons {
+    .task-#{$status}-icon {
+      @include issue-norepeat-icon(36px, 36px, "/images/helpdesk/issue/task-#{$status}-icon.png");
+    }
+  }
+
+  .circle-avatar {
+    @include width-height (36px, 36px);
+  }
+
+  .comment {
+    img {
+      margin: 0;
+    }
+
+    .media-left {
+      padding-top: 9px;
+    }
+
+    .media-body {
+      font-size: 14px !important;
+      color: $comment-text-color;
+
+      .comment-text {
+        color: $detail-page-gray-text-color;
+        max-width: 464px;
+        word-wrap: break-word;
+      }
+    }
+  }
+
+  .description {
+    word-wrap: break-word;
+    word-break: break-all;
+
+    * {
+      max-width: 466px !important;
+      height: auto !important;
+      position: relative !important;
+
+      th {
+        width: auto !important;
+      }
+    }
+  }
+
+  .content-description {
+    margin: 20px 0;
+    padding: 7px 22px 16px 10px;
+    background: $white-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    line-height: 24px;
+
+    .media-left {
+      padding-right: 6px;
+    }
+
+    .media-body {
+      padding-top: 6px;
+    }
+
+    li {
+      .description-wrapper {
+        @include font-size-color(12px, $detail-page-gray-text-color);
+        max-width: 463px;
+        word-wrap: break-word;
+        border-left: 3px outset $description-border-left-color;
+        padding-left: 14px;
+        max-height: 50px;
+        margin-top: 16px;
+        overflow: hidden;
+      }
+    }
+
+  }
+
+  .activities {
+    .media {
+      padding-top: 0;
+      margin-top: 0;
+    }
+  }
+
+  .date-position {
+    margin-left: 10px;
+  }
+
+  .scroll-height {
+    min-height: 206px;
+    margin-bottom: 0;
+
+    .media-body {
+      font-size: 12px;
+    }
+  }
+
+  .content-creator {
+    margin-top: 16px;
+  }
+}
+
+.creator-detail {
+  .popup-close {
+    outline: none;
+    margin-top: 2px;
+  }
+
+  label {
+    font-weight: normal;
+  }
+
+  .row {
+    margin: 20px 0;
+    color: $issue-gray-black;
+
+    .badge {
+      font-weight: normal;
+    }
+
+    .badge-helpdesk {
+      background-color: $issue-badge-helpdesk-color;
+      border-radius: 2px;
+      font-size: 14px;
+      padding: 5px;
+    }
+
+    .badge-user {
+      background-color: $issue-badge-user-color;
+    }
+
+    .avator {
+      max-width: 100px;
+    }
+  }
+}

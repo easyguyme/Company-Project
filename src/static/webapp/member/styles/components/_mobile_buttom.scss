@@ -1,0 +1,25 @@
+.mb-buttom-component {
+  @include size(100%, $wm-bottom-componet-height);
+  @include box-shadow(0 0 2px 5px rgba($wm-mobile-btn-shadox-color, .24) inset);
+  display: inline-block;
+  background-color: $wm-mobile-btn-bg-color;
+  color: $wm-mobile-btn-text-color;
+  line-height: $wm-bottom-componet-height;
+  text-align: center;
+  font-size: $wm-buttom-componet-font-size;
+  border-radius: 2px;
+  border: 0;
+  outline: none;
+
+  &.mb-buttom-disabled {
+    background-color: $wm-buttom-bg-color;
+    box-shadow: inset 1px 1px 2px 5px $wm-buttom-bg-color;
+  }
+}
+
+.mb-link-component {
+  display: inline-block;
+  padding-left: 10px;
+  color: $wm-mobile-btn-bg-color;
+  font-size: $wm-buttom-componet-font-size;
+}

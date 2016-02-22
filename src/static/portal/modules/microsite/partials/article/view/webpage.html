@@ -1,0 +1,47 @@
+<div class="article-view">
+  <div wm-breadcrumb="webpage.breadcrumb"></div>
+  <div class="clearfix article-content">
+    <div class="col-xs-6 col-lg-4">
+      <div class="mobile-preview">
+        <iframe ng-src="{{webpage.trustSrc(webpage.iframe)}}"></iframe>
+      </div>
+    </div>
+    <div class="article-info col-xs-6 col-lg-8">
+      <div class="info-item">
+        <span class="info-label" translate="content_article_title"></span>
+        <span>{{webpage.data.name}}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label" translate="content_article_url"></span>
+        <span>{{webpage.data.url}}</span>
+        <button wm-copy clipboard-text="webpage.data.url" class="btn btn-default btn-copy" translate="content_article_copy"></button>
+      </div>
+      <div class="info-item clearfix">
+        <span class="info-label pull-left" translate="content_article_qrcode"></span>
+        <div id="qrcode-container" class="pull-left" wm-qrcode text="webpage.data.url"></div>
+        <button class="pull-left btn btn-default btn-download" ng-click="webpage.downloadQrcode()"></button>
+      </div>
+      <div class="info-item">
+        <span class="info-label" translate="content_article_visit_times"></span>
+        <span>{{webpage.data.statistics.Clicks}}</span>
+      </div>
+    </div>
+  </div>
+  <div>
+    <label class = "col-md-12 article-trend-view">{{'content_article_trend_view' | translate}}</label>
+    <div class="clearfix">
+      <label class = "article-time-period">{{'content_article_time_period' | translate}}：</label>
+      <div class="col-xs-2 pull-left datepicker-container">
+        <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" min-date-picker-id="endDatePicker" time-handler="webpage.selectDate()" ng-model="webpage.beginDate" less-than-today="true" first-unbind-handler="true"></div>
+      </div>
+      <div class="pull-left datepicker-between-text">&minus;</div>
+      <div class="col-xs-2 pull-left datepicker-container">
+        <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="false" max-date-picker-id="beginDatePicker" time-handler="webpage.selectDate()" ng-model="webpage.endDate" less-than-today="true" first-unbind-handler="true"></div>
+      </div>
+      <div class="col-xs-3 pull-left select-container">
+        <div wm-select on-change="webpage.changeDateRange" ng-model="webpage.selectedDateRange" text-field="text" value-field="value" items="webpage.dateRange" default-text="content_article_last_seven_days"></div>
+      </div>
+    </div>
+    <div wm-line-chart options="webpage.chartData" width="100%" height="350px"></div>
+  </div>
+</div>

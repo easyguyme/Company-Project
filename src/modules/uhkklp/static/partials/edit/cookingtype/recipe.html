@@ -1,0 +1,33 @@
+<div class="ulkklp-edit-cookingtype">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{title}}</h4>
+  </div>
+  <form name="sampleForm" ng-submit="submitInfo(sampleForm.$error.required)" class="member-import-color">
+    <div class="modal-body modal-bgcolor center-text">
+      <div class="modal-body modal-bgcolor create-wiki-body clearfix">
+        <div class="form-group faq-input">
+          <label class="dark-gray">{{'recipe_list_cookingtype_name' | translate}}</label>
+          <input class="form-control input-name" name="name" id="iname" ng-model="formData.name" title="{{'recipe_list_cookingtype_name' | translate}}" type="text" required required-tip="" form-tip="{{'recipe_edit_name_tip' | translate}}" maxlength="20"/>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label class="dark-gray" required>{{'recipe_list_cookingtype_select_way' | translate}}</label>
+          <ul class="row category-list" required-tip="">
+            <li class="col-md-3 col-sm-4 col-xs-5 clear-container-padding wiki-other">
+                <wm-radio ng-model="formData.radio" ng-checked="true" value="true"></wm-radio>
+                {{'recipe_list_cookingtype_select_radio' | translate}}
+            </li>
+            <li class="col-md-3 col-sm-4 col-xs-5 clear-container-padding wiki-other">
+                <wm-radio ng-model="formData.radio" value="false"></wm-radio>
+                {{'recipe_list_cookingtype_select_multiselect' | translate}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'ok' | translate}}" ng-disabled="isClickable"/>
+    </div>
+  </form>
+</div>

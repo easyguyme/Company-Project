@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "accesstoken": {
+      "type": "string",
+      "required": false,
+      "description": "用户token（放在querystring中） type为'updateCompanyInfo'和'exchange'时必须"
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "description": "帐号名"
+    },
+    "appId": {
+      "type": "string",
+      "required": true,
+      "description": "帐号appid"
+    },
+    "headImageUrl": {
+      "type": "string",
+      "required": true,
+      "description": "头像"
+    },
+    "Description": {
+      "type": "string",
+      "required": false,
+      "description": "描述"
+    },
+    "id": {
+      "type": "string",
+      "required": false,
+      "description": "账号id (编辑的时候必填)"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div ng-controller="wm.ctrl.microsite.page.config.cover3 as cover3">
+    <form id="form-cover3" ng-submit="cpts.sendData(cover3.data)">
+      <div class="form-group component-cover3-hearder">
+      <label class="component-hearder-label" translate="content_component_config_nav"></label>
+      <label class="component-hearder-tip component-ib" translate="content_component_config_cover3_tip" ></label>
+    </div>
+      <div class="conf-item conf-item-border-dashed" ng-repeat="nav in cover3.data.navs track by $index">
+        <div class="conf-item-info">
+          <i class="conf-delete-icon cp glyphicon glyphicon-trash" ng-click="cover3.removeNav($index, $event)" ng-hide="cover3.data.navs.length <= 1"></i>
+          <div class="form-group clearfix form-group-slide">
+            <label class="sub-title" for="slide-redirect-{{$index}}" translate="content_component_config_slide_pic"></label>
+            <div class="file-upload-input" id="cover3-nav-pic{{$index}}">
+              <input class="form-control" name="slide-redirect-{{$index}}" ng-model="nav.pic" readonly="readonly"/>
+              <div id="{{'upload-pic-' + $index}}" wm-file-upload class="file-upload-wrap slide-file-upload" ng-model="nav.pic">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group clearfix form-group-slide">
+            <label class="sub-title" for="slide-redirect-{{$index}}" translate="content_component_config_cover3_icon"></label>
+            <div class="file-upload-input">
+              <input class="form-control" name="slide-redirect-{{$index}}" ng-model="nav.icon" readonly="readonly"/>
+              <span class="form-tip normal" translate="content_component_config_cover3_iconinfo"></span>
+              <div id="{{'upload-icon-' + $index}}" wm-file-upload class="file-upload-wrap slide-file-upload" ng-model="nav.icon">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group form-group-slide">
+            <label class="sub-title" for="nav-name-{{$index}}" translate="content_component_config_nav_name"></label>
+            <input id="cover3-nav-name{{$index}}" class="form-control" type="text" ng-model="nav.name" form-tip="{{'content_component_config_nav_tip' | translate}}" maxlength="6" required without-star >
+          </div>
+          <div class="form-group">
+            <div wm-link-select horizontal="true" id="cover3-nav-link{{$index}}" no-empty="true" ng-model="nav.linkUrl"></div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group slide-add-btn">
+        <span class="btn slide-addition" ng-click="cover3.addNav()" translate="content_component_config_nav_add" ng-disabled="cover3.data.navs.length >= 6"></span>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

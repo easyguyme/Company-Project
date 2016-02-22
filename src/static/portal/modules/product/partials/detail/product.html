@@ -1,0 +1,72 @@
+<div class="view-product-wrapper clearfix" ng-controller="wm.ctrl.product.detail.product as product">
+  <div class="product-pannel mb20">
+    <label class="product-detail-name product-colon" translate="product_number" ng-if="product.product.type == 'product'"></label>
+    <label class="product-detail-name product-colon" translate="product_service_id" ng-if="product.product.type != 'product'"></label>
+    <label class="product-detail-item">{{product.product.sku}}</label>
+  </div>
+  <div class="product-pannel mb10">
+    <strong class="product-detail-item" translate="channel_follower_basic_info"></strong>
+  </div>
+  <div class="product-pannel mb10">
+    <label class="product-detail-name product-colon" translate="channel_wechat_qrcode_name"></label>
+    <label class="product-detail-item">{{product.product.name}}</label>
+  </div>
+  <div class="product-pannel mb10">
+    <label class="product-detail-name product-colon" translate="product_price"></label>
+    <label class="product-detail-item">-</label>
+  </div>
+  <div class="product-pannel clearfix mb30">
+    <div class="product-detail-name product-colon" translate="picture"></div>
+    <ul class="clearfix col-md-12 col-xs-12 clearpadding" ng-if="product.product.pictures.length > 0">
+      <li class="col-md-3 col-xs-6 pl0 product-pic-size mr15" ng-repeat="picture in product.product.pictures track by $index">
+        <div class="piclist-show-box product-pic-size product-pic-clean">
+          <div class="piclist-pic-border product-pic-size product-pic-clean">
+            <div class="piclist-pic" ng-style="{'background-image':'url('+picture.url+')'}"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <label ng-if="product.product.pictures.length == 0" class="product-detail-item col-md-10 col-xs-9" translate="product_no_img"></label>
+  </div>
+
+  <div class="product-pannel mb10">
+    <strong class="product-detail-item" translate="product_setting_category"></strong>
+  </div>
+  <div class="col-md-12 col-xs-12 form-group mb20">
+    <div class="col-md-12 clearpadding" ng-repeat="property in product.product.category.properties track by $index">
+      <label class="product-detail-name product-colon">{{property.name}}</label>
+      <label class="product-detail-nametext-el">{{property.value}}</label>
+    </div>
+    <label ng-if="product.product.category.length == 0" class="product-detail-item col-md-10 col-xs-9" translate="product_product_no_category"></label>
+  </div>
+
+  <div class="product-pannel">
+    <div class="mb10">
+      <strong class="product-detail-item" translate="product_specification_price"></strong>
+    </div>
+
+    <div ng-if="product.specifications.length == 0">-</div>
+    <table border="1" class="product-table-wrap mb20" ng-if="product.rows > 0 && product.specifications.length > 0">
+      <thead>
+        <tr>
+          <th ng-repeat="specification in product.specifications" class="product-table-head"><span class="product-table-text">{{specification.name}}</span></th>
+          <th class="product-table-head"><span class="product-table-text">{{'product_price' | translate}}</span></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="row in product.rowNum">
+          <td ng-repeat="specification in product.specifications" rowspan="{{product.colNum[$index]}}" ng-if="row % product.colNum[$index] == 0">
+            <span class="product-table-text">{{specification.properties[(row % ($index == 0 ? product.rows : product.colNum[$index -1])) / product.colNum[$index]].name}}</span>
+          </td>
+          <td>-</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="product-float-qrcode" ng-style="product.qrcodeUrl">
+    <span translate="product_qrcode_tip"></span>
+  </div>
+
+</div>

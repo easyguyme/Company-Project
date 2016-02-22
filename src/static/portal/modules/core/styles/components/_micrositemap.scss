@@ -1,0 +1,21 @@
+.microsite-directive-map {
+  position: relative;
+  .microsite-map-close {
+    position: absolute;
+    z-index: 1001;
+    right: 8px;
+    font-size: 24px;
+    color: #428bca;
+    text-decoration: none;
+    background-color: #ffffff;
+    display: inline;
+    vertical-align: top;
+    height: 18px;
+    line-height: 18px;
+    &:hover {
+      color: #2a6496;
+      text-decoration: none;
+    }
+  }
+}
+

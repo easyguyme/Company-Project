@@ -1,0 +1,145 @@
+<div ng-if="!goods.goodsMissing" wm-breadcrumb="goods.breadcrumb"></div>
+
+<div ng-if="!goods.goodsMissing" class="row goods-detail-wrapper clear-container-margin">
+
+  <section class="col-md-6 col-sm-12 col-xs-12 form-group">
+
+    <h4 class="goods-basic-name">{{goods.product.name}}</h4>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="images"></label>
+      <div class="col-md-10 col-sm-10 col-xs-10 clearpadding goods-item-pictures">
+        <div wm-picture-show index="0" pictures="goods.goods.pictures"></div>
+      </div>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="product_number"></label>
+      <span class="col-md-10 col-sm-10 col-xs-10 clearpadding">{{goods.product.sku}}</span>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="product_category"></label>
+      <div class="col-md-10 col-sm-10 col-xs-10 clearpadding" ng-if="goods.product.category.length != 0">
+        <div ng-style="{'margin-bottom': '10px'}">{{goods.product.category.name}}</div>
+        <ul class="row goods-property-wrapper clear-margin" ng-if="goods.product.category.properties.length != 0">
+          <li class="col-md-6 col-sm-12 col-xs-12 clearpadding goods-property-item" ng-repeat="property in goods.product.category.properties track by $index">
+            <label class="product-detail-name col-md-4 col-sm-4 col-xs-4 clearpadding text-el">{{property.name}}:</label>
+            <label class="product-detail-name col-md-8 col-sm-8 col-xs-8 text-el" wm-tooltip="{{property.value}}">{{property.value}}</label>
+          </li>
+        </ul>
+      </div>
+      <label ng-if="goods.product.category.length == 0" class="col-md-10 col-sm-10 col-xs-10 clearpadding" translate="product_product_no_category"></label>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="product_goods_shipping_method"></label>
+      <div ng-if="goods.showExpress" class="col-md-10 col-sm-10 col-xs-10 clearpadding">
+        {{'product_goods_courier_service' | translate}}
+      </div>
+      <div class="col-md-10 col-sm-10 col-xs-10 clearpadding">
+        <div ng-if="goods.showSelf">{{'product_goods_local_pickup' | translate}} </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 normal-label" ng-repeat="addr in goods.selfAddress track by $index">
+        {{$index+1}}.&nbsp;{{addr.address}}&nbsp;&nbsp;&nbsp;{{addr.position}}
+        </div>
+      </div>
+      <span ng-if="!goods.showExpress && !goods.showSelf">-</span>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="product_description"></label>
+      <div ng-if="goods.product.intro != ''" class="col-md-10 col-sm-10 col-xs-10 clearpadding goods-intro-wrapper" ng-bind-html="goods.product.intro"></div>
+      <span ng-if="goods.product.intro == ''" class="col-md-10 col-sm-10 col-xs-10 clearpadding" translate="product_no_content"></span>
+    </div>
+
+  </section>
+
+  <section class="col-md-6 col-sm-12 col-xs-12">
+
+    <section class="col-md-9 col-sm-10 col-xs-12 clear-container-padding promotion-detail-wrapper goods-urls-wrapper form-group">
+      <div class="score-rule-box clear-padding" ng-if="goods.channels.length > 0">
+        <div class="promotion-panel-header" translate="product_goods_url"></div>
+        <section class="promotion-panel-body">
+          <ul class="clear-margin">
+            <li class="redemption-channels-item" ng-repeat="account in goods.channels track by $index">
+            <div class="channels-info-wrapper">
+              <div class="channels-icon-wrapper">
+                <img ng-src="/images/customer/{{account.icon}}.png"/>
+              </div>
+              <div class="channels-content-wrapper" translate="{{account.name}}"></div>
+            </div>
+
+            <div class="form-group promotion-links-wrapper">
+              <div class="product-detail-item links-item-content" wm-copy-input text="{{account.oauthUrl}}"></div>
+            </div>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+    </section>
+
+    <section class="col-md-9 col-sm-10 col-xs-12 clear-container-padding form-group">
+      <div class="goods-mall-header">
+        <span class="goods-mall-label" translate="product_mall_detail"></span><span class="goods-status-box fs12" ng-class="{true: 'on-shelves', false: 'off-shelves'}[goods.goods.labelColor == 'green']" translate="{{goods.goods.shelves}}"></span>
+      </div>
+      <div class="goods-mall-body">
+        <section class="row form-group clear-container-margin">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding" translate="product_goods_points_required"></label>
+          <label class="col-md-7 col-sm-8 col-xs-6 label-content">{{goods.goods.score}}</label>
+        </section>
+
+        <section class="row form-group clear-container-margin">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding" translate="product_goods_items_redeemable"></label>
+          <label class="col-md-7 col-sm-8 col-xs-6 label-content">{{goods.goods.total || 'channel_wechat_mass_unlimited' | translate}}</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-if="goods.goods.status == 'on'">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding goods-on-or-off-label" translate="store_goods_on_shelves_time"></label>
+          <label class="goods-on-or-off-time col-md-7 col-sm-8 col-xs-6 clear-container-padding label-content">{{goods.goods.onSaleTime || '--'}}</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-if="goods.goods.status == 'off' && goods.goods.onSaleTime == '' && goods.goods.offShelfTime == goods.goods.createdAt">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding goods-on-or-off-label" translate="store_goods_on_shelves_time"></label>
+          <label class="goods-on-or-off-time col-md-7 col-sm-8 col-xs-6 clear-container-padding label-content">--</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-if="goods.goods.status == 'off' && goods.goods.onSaleTime == '' && goods.goods.offShelfTime != goods.goods.createdAt">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding goods-on-or-off-label" translate="store_goods_off_shelves_time"></label>
+          <label class="goods-on-or-off-time col-md-7 col-sm-8 col-xs-6 clear-container-padding label-content">{{goods.goods.offShelfTime || '--'}}</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-if="goods.goods.status == 'off' && goods.goods.onSaleTime != ''">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding goods-on-or-off-label" translate="store_goods_booking_shelves_time"></label>
+          <label class="goods-on-or-off-time col-md-7 col-sm-8 col-xs-6 clear-container-padding label-content">{{goods.goods.onSaleTime || '--'}}</label>
+          <span class="goods-scheduled-box fs12" translate="store_scheduled"></span>
+        </section>
+
+        <section class="row form-group clear-container-margin">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding" translate="product_goods_items_redeemed"></label>
+          <label class="col-md-7 col-sm-8 col-xs-6 label-content">{{goods.goods.usedCount || '0'}}<span class="redeemed-all fs12" translate="product_goods_items_redeemed_all" ng-if="goods.goods.total === '0' || goods.goods.total === 0"></span>
+          </label>
+        </section>
+
+        <section class="row form-group clear-container-margin">
+          <label class="col-md-5 col-sm-4 col-xs-6 clear-container-padding" translate="product_goods_clicks"></label>
+          <label class="col-md-7 col-sm-8 col-xs-6 label-content">{{goods.goods.clicks || '0'}}</label>
+        </section>
+      </div>
+    </section>
+
+  </section>
+
+</div>
+
+<div ng-if="goods.goodsMissing">
+  <div class="missing-wrapper">
+    <div class="prompt-icon">
+      <div class="prompt-icon-bg"></div>
+      <div class="missing-icon-goodsdelete"></div>
+      <div class="prompt-text" translate="product_goods_missing"></div>
+      <a href="javascript:history.go(-1)" class="missing-icon-back"></a>
+      <div class="prompt-text-back"><a href="javascript:history.go(-1)" translate="site_missing_back"></a></div>
+    </div>
+  </div>
+</div>

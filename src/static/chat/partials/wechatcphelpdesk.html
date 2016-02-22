@@ -1,0 +1,125 @@
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<div class="container-fluid main-content-wra" ng-class="{'chat-main-content-wrap':isLogined}">
+  <div class="row ov main-content-row">
+    <!--top wrapper-->
+    <div class="select-list">
+      <div class="pure-u-1 pure-u-md-5-24 pure-u-lg-4-24 customer-header">
+          <span class="customer-nick">{{customer.nick}}</span>
+          <a href="#" class="custom-toggle" ng-class="{'x': isShowCustomerList}" id="toggle" ng-click="displayCustomerList()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </a>
+          <span class="unread-message-mark" ng-hide="unReadMessage == 0"></span>
+      </div>
+    </div>
+    <div class="customer-menu" ng-class="{'show': isShowCustomerList}">
+      <div class="customer-list">
+        <div class="pure-u-1 pure-u-md-11-24 pure-u-lg-14-24">
+            <ul>
+              <li class="no-session" ng-if="customers.length == 0" translate="helpdesk_no_session"></li>
+              <li class="pure-customer-item" ng-repeat="item in customers track by $index" ng-class="{'pure-customer-selected': item.nick == customer.nick}" ng-click="selectCustomer($index)">
+                <div class="customer-item-avatar">
+                  <img ng-src="{{item.avatar}}" class="message-avatar wechat-message-avatar" />
+                </div>
+                <div class="customer-item-detail">
+                  <span>{{item.nick}}</span>
+                  <span class="customer-item-lastest-message">{{item.lastMessage}}</span>
+                </div>
+                <div class="left-message">
+                  <span class="badge unread-message-count" ng-hide="!item.messages || item.messages.length <= item.loadedHistoryMessages" ng-bind="item.messages.length - item.loadedHistoryMessages"></span>
+                </div>
+              </li>
+            </ul>
+        </div>
+      </div>
+      <div class="helpdesk-menu-logout">
+        <div class="pure-u-1 pure-u-md-11-24 pure-u-lg-14-24">
+          <ul class="pure-menu-list">
+            <li class="pure-menu-item">
+              <a class="pure-button button-custom" ng-click="helpdeskLogout()" translate="helpdesk_wechat_logout"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- center wrapper -->
+    <div class="col-md-12 viewport-wrap viewport-content" ng-click="displayCustomerList(false)">
+      <!-- content area -->
+      <div class="helpdesk-chat-wiki clear-container-padding chat-wiki">
+        <div class="viewport embeded helpdesk-md-chat helpdesk-md-chat-content">
+          <!-- customer session history -->
+          <div class="session-history rel session-history-content">
+            <p class="middle" translate="helpdesk_select_customer_tip" ng-hide="hideSelectTip"></p>
+            <ul class="chat-messages">
+              <li class="history-tip" ng-show="customer.firstMessageId">
+                <a href="#" class="show-history" ng-click="showHistoryMessages()" translate="helpdesk_show_history_tip">
+                </a>
+              </li>
+              <li ng-repeat="session in sessions">
+                <ul class="session">
+                  <li class="text-center" ng-show="session.time">
+                    <span class="split-word wechat-split-word">{{session.time|date:'HH:mm'}}</span>
+                  </li>
+                  <li class="current-session-tip" ng-show="session.transferedSuccessMessage">
+                    <span class="split-word wechat-split-word">{{session.transferedSuccessMessage}}</span>
+                  </li>
+                  <li class="current-session-tip" ng-show="session.showMoreHistoryMessage">
+                    <a href="#" class="show-history" ng-click="showHistoryOfCurrentConversation()" translate="helpdesk_show_history_tip"></a>
+                  </li>
+                  <li ng-repeat="message in session.messages" class="chat-message" ng-class="{'align-right-message':message.isMine}">
+                    <div ng-if="!message.isMine" ng-switch="message.content.msgType" class="message-title">
+                      <img class="message-avatar wechat-message-avatar" ng-src="{{message.avatar}}" ng-show="message.avatar"/>
+                      <div class="system-message" translate="system_reply" ng-show="!message.avatar"></div>
+                      <div ng-if="message.content.msgType=='NEWS'" class="message-body ib">
+                        <div wm-wechat-graphic graphic="message.content.body" linkable="true" class="message-graphic"></div>
+                      </div>
+                      <span class="icon-system-bubble" ng-if="message.content.msgType=='TEXT'&&message.translate"></span>
+                      <p ng-if="message.content.msgType=='TEXT'&&message.translate" class="wechat-system-message-body message-body system-bubble" translate="{{message.content.body}}"></p>
+                      <span class="icon-user-bubble icon-user-bubble-arrows" ng-if="message.content.msgType=='TEXT'&&!message.translate"></span>
+                      <p ng-if="message.content.msgType=='TEXT'&&!message.translate" class="wechat-message-body message-body" ng-bind-html="message.content.body"></p>
+                    </div>
+                    <div ng-if="message.isMine" ng-switch="message.content.msgType" class="message-title">
+                      <div ng-if="message.content.msgType=='NEWS'" class="message-body ib">
+                        <div wm-wechat-graphic graphic="message.content.body" linkable="true" class="message-graphic"></div>
+                      </div>
+                      <p ng-if="message.content.msgType=='TEXT'" class="wechat-message-body message-body" ng-bind-html="message.content.body"></p>
+                      <span class="icon-helpdesk-bubble icon-helpdesk-bubble-arrows"></span>
+                      <img class="message-avatar wechat-message-avatar" ng-src="{{message.avatar}}"/>
+                    </div>
+                  </li>
+                  <li class="current-session-tip" ng-show="session.transferSuccessMessage">
+                    <span class="split-word wechat-split-word">{{session.transferSuccessMessage}}</span>
+                  </li>
+                </ul>
+              </li>
+              <li><a id="bottom"></a></li>
+            </ul>
+          </div>
+
+          <!-- helpdesk chat form -->
+          <div class="wechat-chat-form">
+            <div class="form-control reset" placeholder="{{helpdesk_chat_tip|translate}}" ng-keyup="checkKeyCode($event, message)" ng-model="message" ng-disabled="!customer.nick" requied contenteditable="true" ng-click="toBottom()"></div>
+            <button class="submitbtn btn" ng-class="{'wechat-btn-info':customer,'btn-disabled':!customer}" ng-click="sendMessage(message)" translate="send"></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- helpdesk offline -->
+  <script type="text/ng-template" id="offline.html">
+    <div class="modal-header wechat-modal">
+      <button type="button" class="close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+      <h4 class="modal-title">{{'helpdesk_offline_notice'|translate}}</h4>
+    </div>
+    <div class="modal-body">
+      <p class="main-notice"><i class="notice-warning"></i>{{'helpdesk_offline_notice_main_tip'|translate}}</p>
+      <p>{{'helpdesk_offline_notice_password_tip'|translate}}</p>
+      <p>{{'helpdesk_offline_notice_change_password_tip'|translate}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="close()">{{'ok'|translate}}</button>
+    </div>
+  </script>
+</div>

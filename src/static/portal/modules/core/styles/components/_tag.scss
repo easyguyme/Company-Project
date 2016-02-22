@@ -1,0 +1,44 @@
+$tag-icons:  text, graphic, wechat, website;
+//$tag-hover-background-color:  #00b9d7, #ff722e;
+
+.icon-text {
+  background-color: #e2e2e2;
+  background-position: 5px;
+  padding: 2px;
+  padding-left: 18px;
+  padding-right: 5px;
+  border-radius: 3px;
+  color: #fff;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+@each $icon in $tag-icons {
+  .#{$icon}-icon {
+    @include background-image("/images/core/tag_#{$icon}.png");
+  }
+}
+
+.icon-text:hover {
+  background-color: #00b9d7;
+}
+
+.icon-graphic:hover {
+  background-color: #ff722e;
+}
+
+.highlight-tag {
+  background-color: #37c3aa;
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+  padding-top: 1px;
+  margin-left: 10px;
+  color: #ffffff;
+}
+
+.tag-wechat {
+  @extend .icon-text;
+  background-color: #50a0e6;
+}

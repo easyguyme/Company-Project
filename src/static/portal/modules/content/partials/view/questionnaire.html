@@ -1,0 +1,59 @@
+<div wm-breadcrumb="questionnaire.breadcrumb"></div>
+<ul class="questionnaire-info">
+  <li class="row clear-container-margin mb20">
+    <label class="col-md-2 col-sm-2 col-xs-2 clearpadding questionnaire-title" translate="content_questionnaire_name"></label>
+    <b class="col-md-10 col-sm-10 col-xs-10 clearpadding">{{questionnaire.data.name}}</b>
+  </li>
+  <li class="row clear-container-margin mb20">
+    <label class="col-md-2 col-sm-2 col-xs-2 clearpadding questionnaire-title" translate="content_publish_state"></label>
+    <span class="col-md-10 col-sm-10 col-xs-10 clearpadding">
+      <label ng-if="questionnaire.data.isPublished" class="questionnaire-published fs12">{{'content_questionnaire_published' | translate}}</label>
+      <label ng-if="!questionnaire.data.isPublished" class="questionnaire-unpublished fs12">{{'content_questionnaire_unpublished' | translate}}</label>
+    </span>
+  </li>
+  <li class="row clear-container-margin mb20">
+    <label class="col-md-2 col-sm-2 col-xs-2 clearpadding questionnaire-title" translate="content_questionnaire_start_end_time"></label>
+    <span class="col-md-10 col-sm-10 col-xs-10 clearpadding">{{questionnaire.data.startTime}}&nbsp;{{'analytic_to' | translate}}&nbsp;{{questionnaire.data.endTime}}</span>
+  </li>
+  <li class="row clear-container-margin mb20">
+    <label class="col-md-2 col-sm-2 col-xs-2 clearpadding questionnaire-title" translate="content_article_description"></label>
+    <b class="col-md-10 col-sm-10 col-xs-10 clearpadding" ng-bind-html="questionnaire.data.description"></b>
+  </li>
+  <li class="row clear-container-margin">
+    <label class="col-md-2 col-sm-2 col-xs-2 clearpadding questionnaire-title" translate="content_question_setting"></label>
+    <div class="col-md-10 col-sm-10 col-xs-10 clearpadding">
+      <ul class="questions-area">
+        <li class="user-count">{{'content_questionnaire_user_count' | translate:{'userCount': questionnaire.data.userCount} }}</li>
+        <li ng-repeat="question in questionnaire.data.questions track by $index" class="question-area">
+          <div class="question-title">{{$index+1}}.{{question.title}}</div>
+          <span ng-repeat="option in question.options track by $index" ng-if="question.type != 'input'" class="question-option clearfix">
+            <i class="questionnaire-select" ng-style="{'background-image': 'url(\'/images/microsite/' + question.type + '_detialpage.png\')'}"></i>
+            <span class="image-content">
+              <i ng-if="option.icon != ''" class="questionnaire-select" ng-style="{'background-image': 'url(\'/images/content/icon_' + option.icon + '.png\')','background-size': '11px'}"></i>
+              <label class="option-content">{{option.content}}</label>
+            </span>
+            <div wm-percent-bar="option"></div>
+          </span>
+          <span ng-click="questionnaire.showAnswer(question.id, question.title)" ng-if="question.type == 'input'" class="view-answer" translate="content_questionnaire_view_answer"></span>
+          <span ng-if="question.type == 'input'">{{'content_questionnaire_user_total' | translate:{'userCount': question.count} }}</span>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<script type="text/ng-template" id="answer.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="station-title modal-title-font">{{'wechat_menu_question_results' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor">
+    <h4 class="modal-question-name">{{title}}</h4>
+    <ul>
+      <li class="answers" ng-repeat="answer in answers track by $index">
+        <span class="user-name">{{answer.name}}</span>
+        <span class="answer">{{answer.value}}</span>
+      </li>
+    </ul>
+  </div>
+</script>

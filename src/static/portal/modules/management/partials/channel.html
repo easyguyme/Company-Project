@@ -1,0 +1,666 @@
+<div ng-controller="wm.ctrl.management.channel as channel">
+  <div wm-breadcrumb="channel.breadcrumb"></div>
+  <div class="panel panel-default channel-main-content">
+    <div wm-list-header height="45" content="management_weibo_account" head-class="qrcode-header-wrapper">
+      <button type="button" class="btn btn-success btn-create-account fs14" ng-show="!channel.hasAccount(channel.channels.weibo) && channel.hasBindQuota()" ng-click="channel.bindChannel('weibo')">{{'management_bind_weibo_account' | translate}}</button>
+    </div>
+    <div class="panel-body panel-bind container-fluid panel-accounts-wrapper">
+
+      <div class="default-bind-box center-block" ng-class="{'bind-box': channel.hasBindQuota()}" ng-click="channel.bindChannel('weibo')" ng-show="channel.hasAccount(channel.channels.weibo)">
+        <div class="channel-add-wrap">
+          <div class="channel-picture-box">
+            <div class="channel-picture-icon channel-weibo-icon center-block"></div>
+          </div>
+          <div class="channel-unbind-info">{{'management_unbind_weibo_account' | translate}}</div>
+          <div class="channel-click-info">{{'management_click_to_bind' | translate}}</div>
+        </div>
+      </div>
+
+      <div class="row panel panel-default channel-account-item" ng-show="!channel.hasAccount(channel.channels.weibo)" ng-repeat="weibo in channel.channels.weibo track by $index">
+        <div class="container panel-heading account-item-title fs12 col-xs-6 col-md-12 clearfix">
+          <div class="row fs14">
+            <div class="col-xs-12 col-md-3">{{'management_weibo_name' | translate}}</div>
+            <div class="col-xs-12 col-md-6">{{'management_weibo_status' | translate}}</div>
+            <div class="col-xs-12 col-md-3">{{'operations' | translate}}</div>
+          </div>
+        </div>
+
+        <div class="panel-body container-fluid account-item-info col-xs-6 col-md-12 clearfix" ng-class="{'expire':weibo.overplusTime == 0}">
+          <div class="row fs14">
+            <div class="col-xs-12 col-md-3 bind-account-info">
+              <div class="bind-account-avatar pull-left" ng-style="{'background-image': 'url(' + weibo.avatar + ')'}" ng-click="channel.countTime()"></div>
+              <div class="bind-account-name pull-left text-el" ng-bind="weibo.name"></div>
+            </div>
+            <div class="col-xs-12 col-md-6 bind-weibo-status">
+              <div class="weibo-status text-el">
+                <span class="weibo-status-icon" ng-class="{true: 'weibo-disable-icon', false: 'weibo-enable-icon'}[weibo.overplusTime == 0]"></span>
+                <span>{{weibo.overplusTime|countdown:1}}</span>
+              </div>
+              <div class="weibo-access text-el">
+                <img ng-src="/images/management/{{weibo.accessIcon}}"/>
+                <span ng-class="{'weibo-unaccess':weibo.isUnAccess}">{{weibo.accessContent | translate}}</span>
+                <a class="btn btn-link weibo-complete-access" ng-click="channel.accessWeibo($index)" ng-if="weibo.isShowAccess">{{'management_channel_weibo_complete_access' | translate}}</a>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-3 bind-weibo-operation">
+              <a class="btn btn-link btn-channel-empower" ng-click="channel.bindChannel('weibo', 'extended')">{{'management_extend_authorization' | translate}}</a>
+              <a class="btn btn-link btn-channel-delete" data-confirm-target-color="true" ng-click="channel.deleteChannel('weibo', $index, $event)">{{'remove' | translate}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wechat Account Info-->
+
+  <div class="panel panel-default channel-main-content">
+    <!-- <div class="panel-heading panel-channel-title">
+      <label class="title-lable fs16">{{'management_wechat_account' | translate}}</label>
+      <button type="button" class="btn btn-success btn-create-account" ng-show="!channel.hasAccount(channel.channels.wechat) && channel.hasBindQuota()" ng-click="channel.bindChannel('wechat')">{{'management_bind_wechat_account' | translate}}</button>
+    </div> -->
+    <div wm-list-header height="45" content="management_wechat_account" head-class="qrcode-header-wrapper">
+      <button type="button" class="btn btn-success btn-create-account" ng-show="!channel.hasAccount(channel.channels.wechat) && channel.hasBindQuota()" ng-click="channel.bindChannel('wechat')">{{'management_bind_wechat_account' | translate}}</button>
+    </div>
+    <div class="panel-body panel-bind container-fluid panel-accounts-wrapper">
+
+      <div class="default-bind-box center-block" ng-class="{'bind-box': channel.hasBindQuota()}" ng-click="channel.bindChannel('wechat')" ng-show="channel.hasAccount(channel.channels.wechat)">
+        <div class="channel-add-wrap">
+          <div class="channel-picture-box">
+            <div class="channel-picture-icon channel-wechat-icon center-block"></div>
+          </div>
+          <div class="channel-unbind-info">{{'management_unbind_wechat_account' | translate}}</div>
+          <div class="channel-click-info">{{'management_click_to_bind' | translate}}</div>
+        </div>
+      </div>
+
+      <div class="row channel-account-item" ng-show="!channel.hasAccount(channel.channels.wechat)" ng-repeat="wechat in channel.channels.wechat track by $index">
+        <div class="container account-item-title fs12 col-xs-6 col-md-12 clearfix">
+          <div class="row fs14">
+            <div class="col-xs-12 col-md-2">{{'management_wechat_name' | translate}}</div>
+            <div class="col-xs-12 col-md-2" ng-class="{'col-md-3':!wechat.hasPayment}">{{'management_wechat_id' | translate}}</div>
+            <div class="col-xs-12 col-md-2">{{'management_wechat_type' | translate}}</div>
+            <div class="col-xs-12 col-md-2">{{'table_channel_verified_header' | translate}}</div>
+            <div class="col-xs-12 col-md-2" ng-if="wechat.hasPayment">{{'wechat_pay' | translate}}</div>
+            <div class="col-xs-12 col-md-2">{{'action' | translate}}</div>
+          </div>
+        </div>
+        <div class="container account-item-info col-xs-6 col-md-12 clearfix">
+            <div class="row fs14">
+              <div class="col-xs-12 col-md-2 bind-account-info">
+                  <div class="bind-account-avatar pull-left" ng-style="{'background-image': 'url(' + wechat.avatar + ')'}"></div>
+                  <div class="bind-account-name pull-left text-el" ng-bind="wechat.name"></div>
+              </div>
+              <div class="col-xs-12 col-md-2 bind-wechat-account" ng-class="{'col-md-3':!wechat.hasPayment}" ng-bind="wechat.channelAccount"></div>
+              <div class="col-xs-12 col-md-2 bind-wechat-type" translate="{{wechat.wechatType}}"></div>
+              <div class="col-xs-12 col-md-2 bind-wechat-status" translate="{{wechat.authType}}"></div>
+              <div class="col-xs-12 col-md-2 bind-wechat-status wechat-pay-wrapper" ng-if="wechat.hasPayment">
+                <span class="wechat-pay-status {{wechat.paymentStatus}}">{{'management_wechat_pay_' + wechat.paymentStatus | translate}}</span>
+                <a ng-if="wechat.paymentStatus == 'disable'" href="#" translate="management_open_immediately" ng-click="channel.openWechatPay(wechat.appId, wechat.id)"></a>
+                <span ng-if="wechat.paymentStatus == 'enable'">
+                  <a href="#" translate="edit" ng-click="channel.eidtWechatPay(wechat.appId, wechat.id)"></a>
+                  <a href="#" translate="management_channel_test" ng-click="channel.testWechatPay(wechat.appId)"></a>
+                </span>
+
+              </div>
+              <div class="col-xs-12 col-md-2 bind-wechat-operation">
+                <a class="btn btn-link btn-channel-delete" ng-click="channel.deleteChannel('wechat', $index, $event)">{{'management_cancel_authorization' | translate}}</a>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default channel-main-content">
+    <!-- <div class="panel-heading panel-channel-title">
+      <label class="title-lable fs16">{{'management_alipay_windows' | translate}}</label>
+      <button type="button" class="btn btn-success btn-create-account" ng-click="channel.addAlipy()" ng-show="!channel.hasAccount(channel.channels.alipay) && channel.hasBindQuota()">{{'management_service_add' | translate}}</button>
+    </div> -->
+    <div wm-list-header height="45" content="management_alipay_windows" head-class="qrcode-header-wrapper">
+      <button type="button" class="btn btn-success btn-create-account" ng-click="channel.addAlipy()" ng-show="!channel.hasAccount(channel.channels.alipay) && channel.hasBindQuota()">{{'management_service_add' | translate}}</button>
+    </div>
+    <div class="panel-body panel-bind container-fluid panel-accounts-wrapper">
+      <div class="default-bind-box center-block" ng-class="{'bind-box': channel.hasBindQuota()}" ng-click="channel.addAlipy()" ng-show="channel.hasAccount(channel.channels.alipay)">
+        <div class="channel-add-wrap">
+          <div class="channel-picture-box">
+            <div class="channel-picture-icon channel-alipy-icon center-block"></div>
+          </div>
+          <div class="channel-unbind-info">{{'management_noadd_alipay' | translate}}</div>
+          <div class="channel-click-info">{{'management_click_to_bind' | translate}}</div>
+        </div>
+      </div>
+
+      <div class="row channel-account-item" ng-repeat="alipay in channel.channels.alipay track by $index" ng-show="!channel.hasAccount(channel.channels.alipay)">
+        <div class="container account-item-title fs12 col-xs-6 col-md-12 clearfix">
+          <div class="row fs14">
+            <div class="col-xs-12 col-md-3">{{'management_service_name' | translate}}</div>
+            <div class="col-xs-12 col-md-6">{{'management_account_status' | translate}}</div>
+            <div class="col-xs-12 col-md-3">{{'action' | translate}}</div>
+          </div>
+        </div>
+        <div class="container account-item-info col-xs-6 col-md-12 clearfix">
+          <div class="row fs14">
+            <!-- <div class="col-xs-12 col-md-3 bind-account-info pointer" ng-click="channel.viewChannel('alipay', $index)" > -->
+            <div class="col-xs-12 col-md-3 bind-account-info">
+              <div class="bind-account-avatar pull-left" ng-style="{'background-image': 'url(' + alipay.avatar + ')'}"></div>
+              <div class="bind-account-name pull-left text-el " ng-bind="alipay.name" wm-tooltip="{{alipay.name}}"></div>
+            </div>
+            <div class="col-xs-12 col-md-6 bind-weibo-status">
+              <div class="weibo-access text-el">
+                <img ng-src="/images/management/{{alipay.accessIcon}}"/>
+                <span ng-class="{'weibo-unaccess':weibo.isUnAccess}">{{alipay.accessContent | translate}}</span>
+                <a class="btn btn-link weibo-complete-access" ng-click="channel.accessAlipay($index)" ng-if="alipay.isShowAccess">{{'management_channel_weibo_complete_access' | translate}}</a>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-3 bind-weibo-operation">
+              <a class="btn btn-link btn-channel-empower" ng-click="channel.editChannel('alipay', $index)">{{'edit' | translate}}</a>
+              <a class="btn btn-link btn-channel-delete" data-confirm-target-color="true" ng-click="channel.deleteChannel('alipay', $index, $event)">{{'remove' | translate}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Delete channel -->
+<script type="text/ng-template" id="deleteChannel.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_channel_system_prompt'|translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="modal-body-title">{{'management_channel_delete_step_title'|translate}}</div>
+    <div class="modal-body-content">
+      <div class="step-title">{{'management_channel_delete_step_action'|translate}}</div>
+      <div class="step-one">
+        <div class="step-one-title">{{'management_channel_delete_step_one'|translate}}</div>
+        <div class="step-one-bgi"></div>
+      </div>
+      <div class="step-two">
+        <div class="step-two-title">{{'management_channel_delete_step_two'|translate}}</div>
+        <div class="step-two-bgi"></div>
+      </div>
+      <div class="step-three">
+        <div class="step-three-title">{{'management_channel_delete_step_three'|translate}}</div>
+        <div class="step-three-bgi"></div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<!-- Access weibo channel -->
+<script type="text/ng-template" id="accessWeibo.html">
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+  <h4 class="modal-title create-graphics-title">{{'management_channel_weibo_access_title'|translate}}</h4>
+</div>
+<form ng-submit="save()">
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="step-one">
+      <img src="/images/management/stepone.png" class="step-icon">
+      <div class="step-content">
+        <div class="step-one-title">{{'management_channel_weibo_access_enter'|translate}}<a href="{{weiboLink}}" class="btn-link" target="_blank">{{'management_channel_weibo_management_center'|translate}}</a>{{'management_channel_weibo_access_stepone'|translate}}</div>
+        <img src="/images/management/screenshot1.png"/>
+      </div>
+    </div>
+    <div class="step-two">
+      <img src="/images/management/steptwo.png" class="step-icon">
+      <div class="step-content">
+        <div class="step-two-title">{{'management_channel_weibo_access_steptwo'|translate}}</div>
+        <div class="step-two-content">
+          <label>URL:</label>
+          <input id="url" type="text" class="form-control" value="{{url}}" readonly="readonly" ng-click="selectAll($event)" ng-if="isMobile"/>
+          <input id="url" type="text" class="form-control" value="{{url}}" readonly="readonly" ng-if="!isMobile"/>
+          <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="url"></i>
+        </div>
+        <div class="step-two-content">
+          <label>APP Key:</label>
+          <input id="appkey" type="text" class="form-control" value="{{appkey}}" readonly="readonly" ng-click="selectAll($event)" ng-if="isMobile"/>
+          <input id="appkey" type="text" class="form-control" value="{{appkey}}" readonly="readonly" ng-if="!isMobile"/>
+          <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="appkey"></i>
+        </div>
+      </div>
+    </div>
+    <div class="step-three">
+      <img src="/images/management/stepthree.png" class="step-icon">
+      <div class="step-content">
+        <div class="step-three-title">{{'management_channel_weibo_access_stepthree'|translate}}</div>
+        <img src="/images/management/screenshot2.png"/>
+      </div>
+    </div>
+    <div class="step-four">
+      <img src="/images/management/stepfour.png" class="step-icon">
+      <div class="step-content">
+        <div class="step-four-title">{{'management_channel_weibo_access_stepfour'|translate}}
+        </div>
+        <div>
+          <label>access_token:</label>&nbsp;&nbsp;&nbsp;
+          <input id="fansToken" type="text" class="form-control" ng-model="assessToken" required/>
+        </div>
+      </div>
+    </div>
+    <div class="center-text">
+      <button class="btn btn-success" translate="ok"></button>
+    </div>
+  </div>
+</form>
+</script>
+
+<!-- Add alipy -->
+<script type="text/ng-template" id="addAlipy.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_alipay_service_add'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor">
+    <ol class="steps qrcode-steps">
+      <li class="step" ng-class="{active:step.active,complete:step.complete}" ng-repeat="step in steps track by $index">
+        <span class="step-number" style="background-position:{{-16*step.active}}px {{-16*$index}}px"></span> {{step.name | translate}}
+      </li>
+    </ol>
+
+    <form id="stepOne" ng-submit="changeStep('1')">
+      <section class="bootstrap-first members-form" ng-if="steps[0].active">
+        <div class="form-group clearfix">
+          <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="management_service_name"></label>
+          <div class="col-md-10 col-xs-10 pl0">
+            <input class="form-control" required type="text" form-tip="{{'management_token_name_tip'|translate}}" ng-model="params.name" maxlength="20" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="dark-gray" translate="avatar" required></label>
+          <div class="model-token">
+            <div class="modal-avatar-wrapper-token clearfix">
+              <div class="thumbnail img-wrapper">
+                <div class="menber-avatar-icon"><img ng-src="{{params.headImageUrl|qiniu:80}}"/></div>
+                  <div id="user-profile-avatar" wm-file-upload process-bar='true' class="file-upload-wrap file-style" ng-model="params.headImageUrl" max-size="2048" callback="checkPicture">
+                    <div class="img-btn-style file-upload-wrap" translate="upload_picture"></div>
+                  </div>
+                </div>
+            </div>
+            <div class="token-pic-tip" ng-if="!showError">
+              <span class="form-tip normal" translate="management_token_icon_tip"></span>
+            </div>
+            <div class="token-pic-tip highlight" ng-if="showError">
+              <span class="form-tip" translate="product_upload_picture"></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group clearfix">
+          <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="management_business_introduction"></label>
+          <div class="col-md-10 col-xs-10 pl0">
+            <textarea class="form-control" ng-model="params.description" maxlength="120" >
+            </textarea>
+            <span class="form-tip normal" translate="management_token_description_tip"></span>
+          </div>
+        </div>
+        <div class="center-text">
+          <button class="btn btn-success" translate="next" form="stepOne"></button>
+        </div>
+      </section>
+    </form>
+
+    <form id="stepTwo" ng-submit="changeStep('2')">
+      <section class="bootstrap-second" ng-if="steps[1].active">
+        <div class="step-one">
+          <div class="step-one-title">1.{{'management_alipay_login'|translate}}
+            <a href="https://fuwu.alipay.com/platform/index.htm" target="_blank">{{'management_alipay_window'|translate}}</a>
+            {{'management_alipay_login_after'|translate}}
+          </div>
+          <div class="step-one-bgi"></div>
+        </div>
+        <div class="step-two">
+          <div class="step-two-title">2.{{'management_alipay_appid'|translate}}</div>
+          <div class="step-two-bgi"></div>
+        </div>
+        <div class="form-group clearfix">
+          <label class="fields-item-label col-md-2 col-xs-12 pl0">APPID:</label>
+          <div class="col-md-8 col-xs-8 pl0">
+            <input class="form-control" required type="text" ng-model="params.appId"/>
+          </div>
+        </div>
+        <div class="center-text">
+          <button class="btn btn-success" translate="next" form="stepTwo"></button>
+        </div>
+      </section>
+    </form>
+
+    <section class="bootstrap-third" ng-if="steps[2].active">
+      <div class="add-success">{{'management_alipay_add_success'|translate}}</div>
+      <div class="config-row">
+        <label>{{'management_developer_gateway'|translate}}:</label>
+        <input type="text" class="form-control" value="{{serviceUrl}}" readonly="readonly"/>
+        <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="serviceUrl"></i>
+      </div>
+      <div class="config-row">
+        <label>{{'management_developer_public_key'|translate}}:</label>
+        <textarea class="form-control" readonly="readonly">{{publicKey}}
+        </textarea>
+        <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="publicKey"></i>
+      </div class="step-item">
+        <div class="step-title">{{'management_developer_title_one'|translate}}
+          <a href="https://fuwu.alipay.com/platform/index.htm" target="_blank">{{'management_alipay_window'|translate}}</a>
+          {{'management_developer_title_two'|translate}}
+        </div>
+        <div class="step-bgi"></div>
+      <div class="center-text">
+        <button class="btn btn-success" translate="ok" ng-click="changeStep('3')"></button>
+      </div>
+    </section>
+
+  </div>
+
+</script>
+
+<!-- Access alipy -->
+<script type="text/ng-template" id="accessAlipay.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_access_account'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor">
+    <section class="bootstrap-third">
+      <div class="config-row">
+        <label>{{'management_developer_gateway'|translate}}:</label>
+        <input type="text" class="form-control" value="{{serviceUrl}}" readonly="readonly" ng-click="selectAll($event)" ng-if="isMobile"/>
+        <input type="text" class="form-control" value="{{serviceUrl}}" readonly="readonly" ng-if="!isMobile"/>
+        <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="serviceUrl"></i>
+      </div>
+      <div class="config-row">
+        <label>{{'management_developer_public_key'|translate}}:</label>
+        <textarea class="form-control" readonly="readonly" ng-click="selectAll($event)" ng-if="isMobile">{{publicKey}}
+        </textarea>
+        <textarea class="form-control" readonly="readonly" ng-if="!isMobile">{{publicKey}}
+        </textarea>
+        <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="publicKey"></i>
+      </div>
+      <div class="step-item">
+        <div class="step-title">{{'management_developer_title_one'|translate}}
+          <a href="https://fuwu.alipay.com/platform/index.htm" target="_blank">{{'management_alipay_window'|translate}}</a>
+          {{'management_developer_title_two'|translate}}
+        </div>
+        <div class="step-bgi"></div>
+      <div >
+    </section>
+  </div>
+
+</script>
+
+
+<!-- edit alipy -->
+<script type="text/ng-template" id="editAlipay.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_service_window_edit'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor">
+    <form id="editAlipay" class="members-form" ng-submit="save()">
+      <div class="form-group clearfix">
+        <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="management_service_name"></label>
+        <div class="col-md-10 col-xs-10 pl0">
+          <input class="form-control" required type="text" form-tip="{{'management_token_name_tip'|translate}}" ng-model="alipay.name" maxlength="20" />
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <label class="fields-item-label col-md-12 col-xs-12 pl0" required>APPID</label>
+        <div class="col-md-10 col-xs-10 pl0 font-black">
+          {{alipay.appId}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="dark-gray" translate="avatar" required></label>
+        <div class="model-token">
+          <div class="modal-avatar-wrapper-token clearfix">
+            <div class="thumbnail img-wrapper">
+              <div class="menber-avatar-icon"><img ng-src="{{alipay.headImageUrl|qiniu:80}}"/></div>
+                <div id="user-profile-avatar" wm-file-upload process-bar='true' class="file-upload-wrap file-style" ng-model="alipay.headImageUrl" max-size="2048">
+                  <div class="img-btn-style file-upload-wrap" translate="management_change_image"></div>
+                </div>
+              </div>
+          </div>
+          <div class="token-pic-tip">
+            <span class="form-tip normal" translate="management_token_icon_tip"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="management_business_introduction"></label>
+        <div class="col-md-10 col-xs-10 pl0">
+          <textarea class="form-control" ng-model="alipay.description" maxlength="120" >{{alipay.description}}
+          </textarea>
+          <span class="form-tip normal" translate="management_token_description_tip"></span>
+        </div>
+      </div>
+
+      <div class="center-text">
+        <button class="btn btn-success" translate="ok" form="editAlipay"></button>
+      </div>
+    </form>
+  </div>
+
+</script>
+
+<!-- view alipy -->
+<script type="text/ng-template" id="viewAlipay.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_service_window_detail'|translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor members-form">
+    <div class="form-group clearfix">
+      <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="management_service_name"></label>
+      <div class="col-md-10 col-xs-10 pl0 font-black">
+        {{alipay.name}}
+      </div>
+    </div>
+
+    <div class="form-group clearfix">
+      <label class="fields-item-label col-md-12 col-xs-12 pl0">APPID</label>
+      <div class="col-md-10 col-xs-10 pl0 font-black">
+        {{alipay.appId}}
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="dark-gray" translate="avatar"></label>
+      <div class="model-token padding-b0">
+        <div class="modal-avatar-wrapper-token clearfix">
+          <div class="thumbnail img-wrapper">
+            <div class="menber-avatar-icon"><img ng-src="{{alipay.headImageUrl|qiniu:80}}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group clearfix">
+      <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="management_business_introduction"></label>
+      <div class="col-md-11 col-xs-12 pl0 font-black">
+        {{alipay.description || '-'}}
+      </div>
+    </div>
+
+    <section class="bootstrap-third divider">
+      <div class="config-row">
+        <label>{{'management_developer_gateway'|translate}}:</label>
+        <input type="text" class="form-control" value="{{alipay.serviceUrl}}" readonly="readonly"/>
+        <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="alipay.serviceUrl"></i>
+      </div>
+      <div class="config-row">
+        <label>{{'management_developer_public_key'|translate}}:</label>
+        <textarea class="form-control" readonly="readonly">{{alipay.publicKey}}
+        </textarea>
+        <i wm-copy tip="{{'management_token_copy_hover_tip' | translate}}" class="icon-copy" clipboard-text="alipay.publicKey"></i>
+      </div>
+    </section>
+  </div>
+
+</script>
+
+<!-- Set Wechat Pay -->
+<script type="text/ng-template" id="setWechatPay.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'management_wechat_pay_title' | translate}}</h4>
+  </div>
+  <form class="wechat-pay-dialog" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <ol class="steps qrcode-steps">
+        <li class="step" ng-class="{active:step.active}" ng-repeat="step in steps track by $index">
+          <span class="step-number" style="background-position:{{-16*step.active}}px {{-16*$index}}px"></span> {{step.name | translate}}
+        </li>
+      </ol>
+
+      <!-- Bind Store Info -->
+      <section ng-show="steps[0].active">
+        <div class="form-group">
+          <label class="normal-label" translate="management_store_number"></label>
+          <input class="form-control" ng-model="sellerId" required />
+        </div>
+        <div class="form-group wechat-pay-file-upload">
+          <label class="normal-label" translate="management_certification"></label>
+          <div class="file-upload-input mb10" ng-repeat="file in fileNames track by $index">
+            <input class="form-control upload" ng-model="file" readonly="readonly" required form-tip="{{'management_certification_tip' | translate}}" />
+            <div class="file-upload-wrap">
+              <input class="fileUpload" name="file{{$index}}" type="file" />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="normal-label" translate="management_wechat_api_key"></label>
+          <input type="text" class="form-control" ng-model="apiKey" required />
+        </div>
+      </section>
+
+      <!-- Configure Wechat Pay -->
+      <section class="qrcode-message-wrapper" ng-show="steps[1].active">
+        <div class="form-group clearfix wechat-authorize-wrapper">
+          <label class="normal-label">{{'management_pay_authorize' | translate}}</label>
+          <input class="form-control" ng-model="authDirectory" readonly /><i wm-copy class="icon-copy" clipboard-text="authDirectory" tip="{{'management_token_copy_hover_tip' | translate}}"></i>
+        </div>
+
+        <div class="form-group">
+          <div class="wechat-pay-warning">
+            {{'management_pay_config_tip1' | translate}}
+            <a href="https://mp.weixin.qq.com/cgi-bin/loginpage?t=wxm2-login&lang=zh_CN" translate="management_pay_config_tip2"></a>
+            {{'management_pay_config_tip3' | translate}}
+          </div>
+        </div>
+        <img class="payment-img" src="/images/management/wechat_pay_screenshot.png" />
+      </section>
+    </div>
+
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{btnTip | translate}}" />
+    </div>
+  </form>
+</script>
+
+<!-- Edit Wechat Pay -->
+<script type="text/ng-template" id="eidtWechatPay.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'management_edit_wechat_pay_title' | translate}}</h4>
+  </div>
+  <form class="wechat-pay-dialog" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <!-- Bind Store Info -->
+      <section>
+        <label class="thin-label" translate="management_store_info"></label>
+        <div class="form-group pay-info-wrapper">
+          <label class="normal-label" translate="management_store_number"></label>
+          <input class="form-control" ng-model="payment.sellerId" required />
+        </div>
+
+        <div class="form-group wechat-pay-file-upload pay-info-wrapper">
+          <label class="normal-label" translate="management_certification"></label>
+          <div class="file-upload-input mb10" ng-repeat="file in payment.files track by $index">
+            <input class="form-control upload" ng-model="file.filename" readonly="readonly" required form-tip="{{'management_certification_tip' | translate}}" />
+            <div class="file-upload-wrap">
+              <input class="fileUpload" name="file{{$index}}" type="file" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group pay-info-wrapper">
+          <label class="normal-label" translate="management_wechat_api_key"></label>
+          <input type="text" class="form-control" ng-model="payment.apiKey" required />
+        </div>
+      </section>
+
+      <!-- Configure Wechat Pay -->
+      <section class="qrcode-message-wrapper">
+        <label class="thin-label" translate="management_configure_interface"></label>
+        <div class="form-group clearfix wechat-authorize-wrapper pay-info-wrapper">
+          <label class="normal-label">{{'management_pay_authorize' | translate}}</label>
+          <input class="form-control" ng-model="payment.authDirectory" readonly /><i wm-copy class="icon-copy" clipboard-text="payment.authDirectory" tip="{{'management_token_copy_hover_tip' | translate}}"></i>
+        </div>
+      </section>
+    </div>
+
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'ok' | translate}}" />
+    </div>
+  </form>
+</script>
+
+<!-- Test Wechat Pay -->
+<script type="text/ng-template" id="testWechatPay.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'management_test_wechat_pay_title' | translate}}</h4>
+  </div>
+  <form class="wechat-pay-dialog" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <div class="account-tip mb20">
+        <div class="helpdesk-img"><img src="/images/core/popup_tip.png"></div>
+        <div translate="management_test_pay_tip"></div>
+      </div>
+
+      <!-- Tabs -->
+      <ul class="tabs clearfix">
+        <li class="tab" ng-class="{'active': tab.active}" ng-repeat="tab in tabs track by $index" ng-click="changeTab($index)" translate="{{tab.name}}"></li>
+      </ul>
+
+      <section class="wechat-test-pay-wrapper" ng-if="curTab==0">
+        <div class="form-group">
+          <label class="normal-label" translate="management_test_money"></label>
+          <div class="clearfix">
+            <div class="pull-left">
+              <input id="price" maxlength="7" class="form-control" form-tip="{{tip | translate}}" ng-model="price" required wm-validate="checkMoney" />
+            </div>
+            <div class="pull-left wechat-pay-unit normal-label" translate="management_money_unit">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="normal-label required-field" translate="management_test_qrcode"></label>
+          <div>
+            <button ng-show="!payment.codeUrl" class="btn btn-success" translate="management_generate_qrcode"></button>
+            <div id="payment-qrcode" ng-show="payment.codeUrl" style="width:150px;height:150px" wm-qrcode text="payment.codeUrl"></div>
+          </div>
+        </div>
+        <div class="normal-label" translate="management_test_sure_tip"></div>
+      </section>
+
+      <section ng-if="curTab==1" class="wechat-test-refund-wrapper normal-label" translate="management_refund_tip">
+      </section>
+
+    </div>
+
+    <div class="modal-footer modal-bgcolor center-text create-user-footer" ng-show="curTab==1">
+      <input type="submit" ng-disabled="!payment" class="btn btn-success user-btn" value="{{'ok' | translate}}" />
+    </div>
+  </form>
+</script>

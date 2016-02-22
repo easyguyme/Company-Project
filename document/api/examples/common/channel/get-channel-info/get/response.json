@@ -1,0 +1,23 @@
+[
+    {
+        "id": "54d9c155e4b0abe717853ee1",
+        "appId": "wx2df5d7e4ce8a04ca",
+        "name": "熊猫Baby",
+        "channelAccount": "gh_b7f586690646",
+        "headImageUrl": "http://wx.qlogo.cn/mmopen/GPyw0pGicibl5Eda4GmSSbTguhjg9LZjumHmVjybjiaQXnE9XrXEts6ny9Uv4Fk6hOScWRDibq1fI0WOkSaAjaecNTict3n6EjJaC/0",
+        "channel": "WEIXIN",
+        "status": "ENABLE",
+        "createTime": 1423556949585,
+        "appSecret": "d348e89e0db5536d5c1dade129e9a5f8",
+        "token": "XF3E2FF34DFD4457FASAF34565FDA3562",
+        "encodingAESKey": "1QW34RDFB567UI34DGT60OWSMFJKE432WASXLPO0I7R",
+        "accountType": "SERVICE_AUTH_ACCOUNT",
+        "customerServiceSettings": {
+            "status": "ENABLE",
+            "accessToken": "94df164d-ce4d-e204-5d6b-4549111bcb11",
+            "sessionExpiresIn": 600000
+        },
+        "serviceUrl": "http://dev.wx.quncrm.com/wechat/wx2df5d7e4ce8a04ca",
+        "menuStatus": "UNPUBLISH"
+    }
+]

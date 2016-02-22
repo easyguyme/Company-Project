@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "id": "55363362d6f97f06048b4572",
+            "productId": "5530c520d6f97f47658b456a",
+            "pictures": ['http://wm.com/api/mall','http://wm.com/api/mall'],
+            "score": 1000,
+            "total": 10,
+            "status": true,
+            "onSaleTime": "2015年10月1号",
+            "url": "XXXXXXXXXXXX",
+            "order":100,
+        },
+        {
+            "id": "55363362d6f97f06048b4572",
+            "productId": "5530c520d6f97f47658b456a",
+            "pictures": ['http://wm.com/api/mall','http://wm.com/api/mall'],
+            "score": 1000,
+            "total": 10,
+            "status": true,
+            "onSaleTime": "2015年10月1号",
+            "url": "XXXXXXXXXXXX",
+            "order":100,
+        }
+    ]
+}

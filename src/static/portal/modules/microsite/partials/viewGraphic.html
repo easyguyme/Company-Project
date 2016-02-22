@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-3 left-position"></div>
+  <div class="col-md-6 title-detail">
+    <div class="micro-title">{{viewGraphic.graphic.articles[0].title}}</div>
+    <div class="micro-content">
+      <div class="data">{{viewGraphic.graphic.createdAt}}</div>
+      <div class="description">{{viewGraphic.graphic.articles[0].description}}</div>
+      <div class="micro-img"><img ng-src="{{viewGraphic.graphic.articles[0].picUrl}}"/></div>
+      <div class="content" ng-bind-html="viewGraphic.content"></div>
+    </div>
+    <div class="mark-position">
+      <div class="report cp" translate="content_graphic_report"></div>
+    </div>
+  </div>
+  <div class="col-md-3 left-position">
+    <div class="micro-position">
+      <div class="word-position">
+        <div translate="content_graphics_micro_message_sweep"></div>
+        <div translate="content_graphics_get_more_content"></div>
+      </div>
+    </div>
+  </div>
+</div>

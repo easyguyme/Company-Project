@@ -1,0 +1,31 @@
+<div ng-controller="wm.ctrl.microsite.page.config.map as map" class="component-rel">
+    <form id="form-map" ng-submit="cpts.sendData(map.data, map.submitCallback)">
+      <div class="form-group">
+        <label class="component-hearder-label" translate="content_component_map_title"></label>
+      </div>
+      <div class="form-group">
+        <label class="component-field-label" translate="content_component_map_name"></label>
+        <input id="mapName" name="mapName" class="form-control" type="text" maxlength="50" ng-model="map.data.name" required/>
+      </div>
+      <div class="form-group">
+        <label class="component-field-label" translate="content_component_map_street"></label>
+        <input id="mapTown" name="mapTown" class="form-control" type="text" maxlength="50" ng-model="map.data.town" ng-keydown="map.changeLocation()" required/>
+      </div>
+      <div class="form-group map-field-label">
+        <label class="component-field-label" translate="content_component_map_region"></label>
+        <div wm-microsite-location ng-model="map.data.location" change-handler="map.changeLocation()"></div>
+      </div>
+      <div class="form-group">
+          <a class="microsite-localized-btn cp" ng-click="map.relocationAddress()" name="relocationAddress">
+            <span class="glyphicon glyphicon-map-marker map-marker-icon"></span>
+            <span class="microsite-localized-content fs13" translate="content_component_map_relocation"></span>
+          </a>
+          <input id="relocationAddress" type="text" ng-hide="true" class="localized-message-holder" wm-validate="map.checkAddress" required value="1" without-star/>
+      </div>
+      <div class="form-group">
+          <div class="static-map-flag" wm-checkbox ng-model="map.data.isDisplayMapIcon"></div>
+          <div class="static-map-content" translate="content_component_map_show_image"></div>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

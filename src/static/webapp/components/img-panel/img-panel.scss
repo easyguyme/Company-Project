@@ -1,0 +1,47 @@
+.c-img-panel {
+  background-color: $panel-default-bg;
+  box-shadow: 0 .03rem .16rem $panel-shadow-color;
+  float: left;
+  margin-bottom: .2rem;
+  width: 100%;
+
+  &__img {
+    width: 100%;
+    height: 4.7rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+    &__loading {
+      position: absolute;
+      left: 50%;
+    }
+  }
+
+  &__bottom {
+    @include clearfix();
+    line-height: 1rem;
+    border-top: 1px solid $pannel-head-border-color;
+    font-size: .4rem;
+    padding: .16rem;
+  }
+
+  &--horizonal {
+    .c-panel {
+      @include c-box;
+      padding: .31rem;
+    }
+
+    .c-img-panel__img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .c-img-panel__bottom {
+      @include c-box-flex(1);
+      line-height: .6rem;
+      border-top: 0;
+      margin-left: .31rem;
+    }
+  }
+}

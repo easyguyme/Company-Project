@@ -1,0 +1,42 @@
+{
+    "id": "55d6cb8be9c2fb022c8b4579",
+    "name": "name",
+    "startTime": "2015-04-14 16:28:32",
+    "endTime": "2015-04-14 16:28:36",
+    "creator": {
+        "id": "54c58ea2e9c2fb51048b4569",
+        "name": "name"
+    },
+    "description": "good",
+    "questions": [
+        {
+            "id": "55d6cb8be9c2fb022c8b4576",
+            "title": "math",
+            "type": "radio",
+            "order": 0,
+            "options": [
+                {
+                    "icon": "support",
+                    "content": "A option"
+                },
+                {
+                    "icon": "support",
+                    "content": "B option"
+                }
+            ],
+            "createdAt": "2015-08-21 14:56:11"
+        },
+        {
+            "id": "55d6cb8be9c2fb022c8b4577",
+            "title": "This is a problem",
+            "order": 1,
+            "type": "input",
+            "options": [],
+            "createdAt": "2015-08-21 14:56:11"
+        }
+    ],
+    "isPublished": false,
+    "createdAt": "2015-08-21 14:56:11",
+    "answerTime": "2015-08-26 10:28:55",
+    "isAnswered": false
+}

@@ -1,0 +1,22 @@
+.statistics-chart-item {
+  .chart-canvas {
+    display: inline-block;
+    width: 49.5%;
+  }
+
+  .clearpadding {
+    margin-left: -30px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.analytic-panel {
+  margin-bottom: 0;
+
+  .panel-body {
+    padding-bottom: 0;
+  }
+}

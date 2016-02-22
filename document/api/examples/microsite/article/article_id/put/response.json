@@ -1,0 +1,20 @@
+{
+    "id": "54bcb51cdb4c0e7c3d8b4569",
+    "name": "test",
+    "url": "http://www.baidu.com",
+    "createdBy": "Devin",
+    "picUrl": "http://ww4.sinaimg.cn/bmiddle/6106a4f0gw1eo94gprrhaj20dw0agdhe.jpg",
+    "content": "abcabcabcabcabcabcabcabc",
+    "fields": [
+        {
+            "name": "aaa",
+            "type": "input"
+        },
+        {
+            "name": "bbb",
+            "type": "date"
+        }
+    ],
+    "createdAt": "2015-01-19 15:41:16",
+    "channel": ""
+}

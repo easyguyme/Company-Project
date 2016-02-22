@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "questionnaireId": {
+      "type": "string",
+      "required": true,
+      "description": "问卷Id"
+    },
+    "user": {
+      "type": "array",
+      "required": false,
+      "description": "回答人的信息"
+    },
+    "answers": {
+      "type": "array",
+      "required": true,
+      "description": "答卷"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "timeFrom": 1436429022171,
+    "items": [
+        {
+            "id": "559e2c18d6f97f6e1e8b4569",
+            "title": "page3",
+            "url": "http://u.augmarketing.com/BPEK",
+            "type": "page"
+        },
+        {
+            "id": "559e2c04d6f97f892f8b4568",
+            "title": "article4",
+            "url": "http://u.augmarketing.com/BPEl",
+            "type": "article"
+        },
+        {
+            "id": "559e2af7d6f97fee3d8b456a",
+            "title": "article3",
+            "url": "http://u.augmarketing.com/BPEw",
+            "type": "article"
+        },
+        {
+            "id": "559e2aded6f97fee3d8b4569",
+            "title": "article2",
+            "url": "http://u.augmarketing.com/BPEJ",
+            "type": "article"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<div class="ulkklp-edit-recipe">
+    <div wm-breadcrumb="homepage.breadcrumb"></div>
+	<form id="homepageform" name="homepageform" method="post" accept-charset="utf-8" enctype="multipart/form-data" novalidate ng-submit="submitInfo(homepageform.$error.required)">
+
+		<div class="cookitem">
+            <div class="cookitem-title">
+	            <label class="cookitem-lbl-required">更新消息提示時間</label><br/>
+	        </div>
+	         <div class="cookitem-content">
+	            <input wm-datetime-picker picker-id="updateTime" ng-model="formData.updateTime" required-field="true" name="updateTime" class="cookItem-input1" required/>
+	        </div>
+	    </div>
+
+	    <br/>
+
+		<div class="cookitem">
+	         <div class="cookitem-content">
+	            <input class="btn btn-primary" type="submit" value="{{'recipe_edit_send' | translate}}" ng-disabled="isClickable"/>&nbsp;&nbsp;&nbsp;
+	            <a ng-href="/uhkklp/homepage?active=1" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+	        </div>
+	    </div>
+		<br/>
+	</form>
+</div>

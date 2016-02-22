@@ -1,0 +1,9 @@
+{
+    "id": "558a9528d6f97f9e718b4567",
+    "totalNew": 2, //新注册活跃会员数
+    "totalActive": 2, //总活跃会员数
+    "totalInactive": 19, //总不活跃会员数
+    "year": 2015,
+    "quarter": 2,
+    "createdAt": "2015-06-24 19:31:52"
+}

@@ -1,0 +1,186 @@
+$tag-selected-color: #37af96;
+$tag-normal-color: #7d7d7d;
+$multi-select-box-bg-color: #fff;
+$multi-select-box-border-color: #ddd;
+$multi-select-box-hover-color: #f7f7f7;
+$helpdesk-email-font-color: #aaa;
+$add-arrow-enabled-color: #b7b7b7;
+$member-count-color: #aaa;
+$table-border-color: #ededed;
+$no-assigned-helpdesk-table-color: #999;
+
+.panel-helpdesk-content {
+  margin-bottom: 0;
+
+  .panel-account-container {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}
+
+.tag-helpdesk-body {
+  table {
+    td {
+      border-bottom: 1px solid $table-border-color;
+
+      &:last-child {
+        width: 10%;
+        min-width: 70px;
+      }
+    }
+
+    th:last-child {
+      width: 10%;
+      min-width: 70px;
+    }
+  }
+}
+
+.no-assigned-helpdesk {
+  color: $no-assigned-helpdesk-table-color;
+  text-align: center;
+  width: 100%;
+}
+
+.tag-list {
+  margin-bottom: 20px;
+
+  .tag-title {
+    display: inline-block;
+    float: left;
+    padding: 0 25px 0 15px;
+    color: $tab-shadow-color;
+  }
+
+  .tag-name {
+    color: $tag-normal-color;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 35px;
+
+    &.selected {
+      color: $tag-selected-color;
+    }
+  }
+}
+
+.tag-helpdesk {
+  .tag-helpdesk-head {
+    margin-bottom: 5px;
+  }
+
+  .assign-helpdesk {
+    cursor: pointer;
+    text-decoration: none;
+    padding-left: 18px;
+    background-image: url('/images/helpdesk/distribution_default.png');
+    background-repeat: no-repeat;
+    background-position-y: 3px;
+
+    &:hover {
+      background-image: url('/images/helpdesk/distribution_hover.png');
+    }
+  }
+
+  .tag-selected-name {
+    margin-right: 5px;
+  }
+
+  .tag-member-count {
+    color: $member-count-color;
+  }
+}
+
+.assign-helpdesk-dialog {
+  .modal-dialog {
+    width: 800px;
+  }
+}
+
+.all-helpdesk {
+  .all-helpdesk-title {
+    color: $tag-normal-color;
+    margin-bottom: 5px;
+  }
+
+  .helpdesk-name-filter {
+    margin-bottom: 10px;
+  }
+}
+
+.selected-helpdesk {
+  .selected-helpdesk-title {
+    color: $tag-normal-color;
+    margin-bottom: 5px;
+  }
+
+  .multi-select-box {
+    height: 440px;
+  }
+}
+
+.multi-select-box {
+  background: $multi-select-box-bg-color;
+  border: 1px solid $multi-select-box-border-color;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  height: 400px;
+  overflow: auto;
+  padding: 5px;
+
+  li {
+    cursor: pointer;
+    padding: 5px;
+
+    &:hover {
+      background-color: $multi-select-box-hover-color;
+    }
+
+    .helpdesk-name {
+      width: 130px;
+    }
+
+    .helpdesk-email {
+      color: $helpdesk-email-font-color;
+      width: 130px;
+    }
+
+    .selected-helpdesk-email {
+      color: $helpdesk-email-font-color;
+      margin-right: 10px;
+      width: 120px;
+    }
+  }
+
+  &.selected-helpdesk-box {
+    li:hover {
+      background-color: $multi-select-box-bg-color;
+    }
+  }
+
+  .selected {
+    background-color: $multi-select-box-hover-color;
+  }
+
+  .close {
+    border: 1px solid $add-arrow-enabled-color;
+    border-radius: 9px;
+    font-size: 18px;
+    height: 18px;
+    outline: none;
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 18px;
+  }
+}
+
+.add-arrow {
+  color: $add-arrow-enabled-color;
+  font-size: 20px;
+  position: absolute;
+  top: 225px;
+}
+
+.assign-helpdesk-footer {
+  padding-bottom: 30px;
+}

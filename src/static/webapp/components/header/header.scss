@@ -1,0 +1,25 @@
+.c-header {
+  background-color: $brand-default-bg;
+  color: $brand-default-color;
+  text-align: center;
+  position: relative;
+  font-size: .38rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+
+  &__return {
+    @include background-image('/images/mobile/components/return.png');
+    @include size(1.1rem, 100%);
+
+    background-size: .44rem;
+    background-position: .33rem center;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__title {
+    @include text-el;
+    margin: 0 1.1rem;
+  }
+}

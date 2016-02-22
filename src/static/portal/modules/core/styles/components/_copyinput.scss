@@ -1,0 +1,33 @@
+
+.copy-text-wapper {
+
+  .form-control {
+    cursor: pointer;
+    display: inline-block;
+    width: calc(100% - 40px);
+  }
+
+  .icon-copy {
+    $border-color: #ddd;
+
+    @include square(30px);
+
+    background-repeat: no-repeat;
+    background-size: 12px 14px;
+    background-position: center;
+    border: 1px solid $border-color;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 0;
+
+
+    &:hover, &.zeroclipboard-is-hover {
+      border: 1px solid $white-background-text-hover-color;
+      box-shadow: 0 0 2px $white-background-text-hover-color;
+    }
+    &:active, &:focus, &.zeroclipboard-is-active {
+      border: 1px solid $white-background-text-active-color;
+      box-shadow: 0 0 2px $white-background-text-active-color;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<div class="add-issue-page in waterfall-news-list">
+  <div class="issue-header clear-float">
+    <div class="issue-title">{{"issue_add_page_btn_title" | translate}}</div>
+    <a href="#" class="close" ng-click="closeAddPage()"></a>
+  </div>
+  <form class="issue-form" role="form" ng-submit="addIssue()">
+    <div class="right-slide-page-content">
+      <div class="form-group add-issue">
+        <label class="issue-label">{{"issue_add_page_title" | translate}}</label>
+        <input class="form-control" type="text" ng-model="issue.title" maxlength="100" required/>
+      </div>
+
+      <div class="form-group add-issue">
+        <label class="issue-label">{{"issue_add_page_description" | translate}}</label>
+        <div class="issue-ueditor">
+          <div class="ueditor" name="content" config="config" ng-model="issue.description"></div>
+          <input class="form-control hidden" ng-model="issue.description" required/>
+        </div>
+      </div>
+
+      <div class="form-group add-issue">
+        <span class="attachment-upload-title">{{"issue_add_page_attachment" | translate}}</span>
+        <span class="form-tip">{{"issue_attachment_type" | translate}}</span>
+        <div class="issue-attachment-list" ng-repeat="attachment in issue.attachments track by $index">
+          <div class="show-attachment-pic" ng-if="attachment.format=='Img'">
+            <span class="attachment-delete-icon" ng-click="cancelAttachment($index)"></span>
+            <span class="attachment-pic">
+              <img ng-src="{{attachment.url | qiniu:44}}" ng-click="previewAttachment(attachment)" wm-tooltip="{{attachment.name}}.{{attachment.type}}"/>
+            </span>
+          </div>
+          <div class="show-attachment-pic attachment-format-pic" ng-if="attachment.format!='Img'">
+            <span class="attachment-delete-icon" ng-click="cancelAttachment($index)"></span>
+            <span class="format-type show-type" ng-class="'format-'+attachment.format" ng-click="previewAttachment(attachment)" wm-tooltip="{{attachment.name}}.{{attachment.type}}">{{attachment.thumbnailName}}</span>
+          </div>
+        </div>
+
+        <div class="issue-add-attachment-operation">
+          <div class="add-attachment">
+            <span id="upload" class="file-upload-wrap" issue-attachment-upload max-size="1024" attachment-info="true" callback="addAttachments" process-bar="true">
+              <span class="issue-add-icon"></span>
+            </span>
+            <span class="issue-add-tip"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="issue-footer">
+      <button class="btn btn-success issue-create-btn" ng-click="submitForm()">
+        {{"issue_btn_create"|translate}}
+      </button>
+    </div>
+
+  </form>
+</div>

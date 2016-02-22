@@ -1,0 +1,79 @@
+$wm-graphic-detail-bg-color: #e2e2e2;
+$wm-graphic-preview-bg-color: #fff;
+$wm-graphic-qrcode-text-color: #2e2e2e;
+$wm-scrollbar-thumb-color:                      #38c4a9;
+$wm-scrollbar-track-color:                         #c8c9ca;
+
+// Scrollbar Styles
+::-webkit-scrollbar {
+  background-color: transparent;
+  height: 7px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $wm-scrollbar-thumb-color;
+  border-radius: 4px;
+  min-height: 6px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: $wm-scrollbar-track-color;
+  border-radius: 4px;
+}
+
+.graphic-detail-container {
+  background-color: $wm-graphic-detail-bg-color;
+  height: 100%;
+
+  .mobile-graphic-preview {
+    background-color: $wm-graphic-preview-bg-color;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 50%;
+
+    .graphic-preview-box {
+      border: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .graphic-qrcode-preview {
+    background-color: $wm-graphic-preview-bg-color;
+    position: absolute;
+    right: -180px;
+    text-align: center;
+    top: 20px;
+
+    .graphic-qrcode-icon {
+      background-size: cover;
+      height: 130px;
+      margin: 20px;
+      width: 130px;
+    }
+
+    .graphic-qrcode-explain {
+      color: $wm-graphic-qrcode-text-color;
+      font-size: 12px;
+      padding: 0 10px;
+
+      .qrcode-explain-sweep {
+        margin-bottom: 10px;
+      }
+
+      .qrcode-explain-more {
+        margin-bottom: 20px;
+        max-width: 150px;
+        word-break: break-all;
+
+        label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

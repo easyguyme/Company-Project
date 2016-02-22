@@ -1,0 +1,56 @@
+$coupon-stat-border-color: #eee;
+
+.coupon-list {
+  thead {
+
+    th:nth-child(1) {
+      width: 170px;
+    }
+
+    th:nth-child(2) {
+      width: 140px;
+    }
+
+    th:nth-child(3) {
+      width: 110px;
+    }
+
+    th:nth-child(6) {
+      width: 175px;
+    }
+  }
+}
+
+.coupon-header-wrapper {
+  margin-bottom: 20px;
+}
+
+.coupon-date {
+  width: 45%;
+}
+
+.coupon-horizon-line {
+  width: 10%;
+  text-align: center;
+  line-height: 30px;
+}
+
+.coupon-rule-text {
+  line-height: 30px;
+  margin-right: 5px;
+}
+
+.coupon-rule-type {
+  width: 100px;
+  margin-right: 5px;
+}
+
+.coupon-chart-wrapper {
+  background-color: $white-background-color;
+  margin-top: 20px;
+  border: 1px solid $coupon-stat-border-color;
+}
+
+.modal-dialog-padding {
+  padding: 20px;
+}

@@ -1,0 +1,507 @@
+<!-- offline exchange page-->
+<div ng-show="!offline.showCodePage && !offline.showGoodsPage">
+  <div wm-breadcrumb="offline.breadcrumb"></div>
+  <div class="container-fluid">
+
+    <section class="form-group redeemer-search-wrapper">
+      <label class="fields-item-label fields-color-label" translate="product_offline_redeemer_info"></label>
+      <div class="input-group col-md-8">
+        <div class="col-md-7 pd0">
+          <input id="memberInfo" type="text" class="form-control" ng-model="offline.params.searchKey" wm-enter="offline.searchMember()"/>
+        </div>
+        <button class="btn btn-success btn-input-search member-input-search" type="button" translate="customer_follower_search" ng-click="offline.searchMember()"></button>
+        <div class="offline-manage-filter" ng-click="offline.showConditions()">
+          <span class="mr10" translate="customer_follower_screening_conditions"></span>
+          <span ng-class="{isshow:offline.isShow, ishide:!offline.isShow}"></span>
+        </div>
+        <div class="form-tip normal" translate="product_offline_redeemer_info_tip"></div>
+      </div>
+    </section>
+
+    <section class="management-fans-item mt20 clearfix" ng-show="offline.followers">
+
+      <div class="management-fans-tag dark-gray row">
+          <label class="col-md-3 label-condition-title" translate="customer_follower_social_account"></label>
+          <div class="col-md-9 row clear-container-padding clear-container-margin">
+            <div wm-channels channels="offline.accounts" ng-model="offline.params.accounts"></div>
+          </div>
+        </div>
+
+      <div class="management-fans-tag dark-gray row" ng-if="offline.tags.length > 0">
+        <label class="col-md-3 label-condition-title" translate="customer_follower_tag"></label>
+        <div class="col-md-9 row clear-container-padding clear-container-margin">
+          <div class="operate-tags-items col-md-2 clear-container-padding">
+            <label class="check-all-items">
+              <wm-checkbox ng-model="offline.tagAll" ng-click="offline.selectAllTag()" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+            </label>
+          </div>
+
+          <div class="follower-tags-items col-md-10 clear-container-padding">
+            <ul class="row clear-container-margin member-tags-item">
+              <li class="col-md-2 col-sm-3 col-xs-4 follower-tag-item clear-container-padding text-el" wm-tooltip="{{tag.name}}" ng-repeat="tag in offline.tags">
+                <wm-checkbox ng-model="tag.check" ng-click="offline.selectTag(tag)" class="follower-checkbox-style"></wm-checkbox>{{tag.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row" ng-if="offline.cards.length > 0">
+        <label class="col-md-3 label-condition-title" translate="product_member_card_category"></label>
+        <div class="col-md-9 row clear-container-padding clear-container-margin">
+          <div class="operate-tags-items col-md-2 clear-container-padding">
+            <label class="check-all-items">
+              <wm-checkbox ng-model="offline.cardAll" ng-click="offline.selectAllCard()" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+            </label>
+          </div>
+
+          <div class="follower-tags-items col-md-10 clear-container-padding">
+            <ul class="member-card-items clearfix">
+              <li class="member-card-item pull-left" ng-repeat="card in offline.cards">
+                <wm-checkbox ng-model="card.check" ng-click="offline.selectCard(card)" class="follower-checkbox-style"></wm-checkbox>{{card.name}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="management-fans-tag dark-gray row" ng-if="offline.cards.length > 0">
+        <label class="col-md-3 label-condition-title" translate="product_member_card_status"></label>
+        <div class="col-md-9 row clear-container-padding clear-container-margin">
+          <div class="operate-tags-items col-md-2 clear-container-padding">
+            <label class="check-all-items">
+              <wm-checkbox ng-model="offline.cardStateAll" ng-click="offline.selectAllState()" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+            </label>
+          </div>
+
+          <div class="follower-tags-items col-md-10 clear-container-padding">
+            <ul class="member-card-items clearfix">
+              <li class="member-card-item pull-left" ng-repeat="status in offline.cardStates">
+                <wm-checkbox ng-model="status.check" ng-click="offline.selectState(status)" class="follower-checkbox-style"></wm-checkbox>{{status.name | translate}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Member Attribute -->
+      <div class="management-fans-attribute">
+          <div class="dark-gray row follower-fans-attribute">
+            <label class="label-condition-title col-md-3 label-fans-condition" for="social-account" translate="customer_members_setting"></label>
+            <div class="container-fluid col-md-9 clear-container-padding follower-filter-conditions">
+              <div>
+                <!-- datetime picker -->
+                <div class="inline-block follower-attribute-distance">
+                  <span class="inline-block follower-filter-label" translate="customer_follower_attention_spans"></span>
+                  <div class="inline-block follower-pick-width">
+                    <div class="pull-left coupon-date pd0">
+                      <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="beginPicker" min-date-picker-id="endPicker" ng-model="offline.params.startTime" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+                    </div>
+                    <div class="pull-left coupon-horizon-line">&minus;</div>
+                    <div class="pull-left coupon-date pd0">
+                      <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="endPicker" max-date-picker-id="beginPicker" ng-model="offline.params.endTime" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- gender -->
+                <div class="inline-block">
+                  <span class="inline-block follower-filter-label" translate="customer_follower_sex"></span>
+                  <div wm-select on-change="offline.changeGender" ng-model="offline.params.gender" text-field="text" value-field="value" items="offline.genderOptions" class="select-sex-style"></div>
+                </div>
+
+                <!-- location -->
+                <div>
+                  <span class="inline-block follower-filter-label" translate="customer_follower_location"></span>
+                  <div wm-location ng-model="offline.location" member class="follower-location-item location follower-location-wrapper"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <div class="management-fans-btn-group">
+        <span class="btn btn-success" ng-click="offline.search()" translate="customer_follower_search"></span>
+        <span type="submit" class="btn btn-default clear-btn-style" ng-click="offline.clear()" translate="customer_follower_clear"></span>
+      </div>
+    </section>
+
+    <section ng-show="!offline.followers" class="management-fans-item-all mt20">
+      <div class="dark-gray" ng-if="offline.conditions.accounts.length > 0 || offline.conditions.tags.length > 0 || offline.conditions.cards.length > 0 || offline.conditions.cardStates.length > 0 || offline.conditions.startTime || offline.conditions.endTime || offline.conditions.gender || (offline.conditions.location && offline.conditions.location.country)">
+        <label class="management-fans-tag follower-selected-conditions" for="selected-conditions" translate="customer_follower_selected_condition"></label>
+
+        <div class="management-shrink-condition clearfix">
+          <div class="display-button dark-gray follower-tag-items">
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.accounts != null && offline.conditions.accounts.length > 0">
+              <div class="tags-style">
+                {{'customer_follower_social_account' | translate}}:
+                <label class="label-style" ng-repeat="account in offline.accounts" ng-if="offline.isSelectedAccount(account.id)">
+                  <div class="channels-icon-wrapper">
+                    <img ng-src="/images/customer/{{account.icon}}.png"/>
+                  </div>
+                  <div class="font-social-style" translate="{{account.name}}"></div>
+                </label>
+                <label class="close-btn" ng-click="offline.clearAccounts()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.tags && offline.conditions.tags.length > 0">
+              <div class="tags-style">
+                {{'customer_follower_tag' | translate}}:&nbsp;&nbsp;&nbsp;{{offline.conditions.tags.join(' ')}}
+                <label class="close-btn" ng-click="offline.clearTags()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.cards && offline.conditions.cards.length > 0">
+              <div class="tags-style">
+                {{'product_member_card_category' | translate}}:&nbsp;&nbsp;&nbsp;{{offline.conditions.cards.join(' ')}}
+                <label class="close-btn" ng-click="offline.clearCards()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.cardStates && offline.conditions.cardStates.length > 0">
+              <div class="tags-style">
+                {{'product_member_card_status' | translate}}:&nbsp;&nbsp;&nbsp;
+                <span ng-repeat="state in offline.cardStatus">{{state | translate}}  </span>
+                <label class="close-btn" ng-click="offline.clearCardStates()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.startTime || offline.conditions.endTime">
+              <div class="tags-style">
+                <label class="position-label-style">{{'customer_follower_attention_spans' | translate}}:
+                  <label class="label-style">{{(offline.conditions.startTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(offline.conditions.endTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</label>
+                </label>
+                <label class="close-btn" ng-click="offline.clearCreatedAt()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.gender">
+              <div class="tags-style">
+                <label class="position-label-style">{{'customer_follower_sex' | translate}}:
+                  <label class="label-style">{{offline.conditions.genderText | translate}}</label>
+                </label>
+                <label class="close-btn" ng-click="offline.clearGender()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="offline.conditions.location && offline.conditions.location.country">
+              <div class="tags-style">
+                <label class="position-label-style">{{'customer_follower_location' | translate}}:
+                  <label class="label-style" ng-model="offline.conditions.location">{{offline.conditions.location.country | translate}}&nbsp;{{offline.conditions.location.province | translate}}&nbsp;{{offline.conditions.location.city | translate}}</label>
+                </label>
+                <label class="close-btn" ng-click="offline.clearLocation()"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel panel-default panel-center-content">
+
+      <div wm-list-header content="{{offline.totalCount <= 1 ? 'customer_members_total_member' : 'customer_members_total_members' | translate:'{ count: offline.totalCount }'}}" icon="{'url': '/images/customer/fans_numbers_icon.png', 'width': 16, height: 15}">
+        <button class="btn btn-success btn-listheader" ng-click="offline.addMember()" translate="product_new_member" ng-show="!offline.showCenterAdd"></button>
+      </div>
+    </section>
+
+    <section class="redeemer-info-wrapper">
+      <div class="info-box">
+        <div class="default-member-wrapper" translate="product_codechange_no_member_info" ng-show="offline.isShowDefault && !offline.showCenterAdd"></div>
+        <div class="add-item-wrapper" ng-show="offline.isShowDefault && !offline.hasMember && offline.showCenterAdd">
+          <div class="add-item-icon" ng-click="offline.addMember()"></div>
+          <span class="add-item-info" translate="product_codechange_add_member_info"></span>
+        </div>
+        <div class="info-member-wrapper clearfix" ng-show="!offline.isShowDefault && offline.hasMember && !offline.showCenterAdd">
+          <div wm-table class="colored-table" ng-model="offline.memberList"></div>
+          <div class="broadcast-pagination" ng-if="offline.totalCount > 10">
+            <div wm-pagination current-page="offline.params['page']" page-size="offline.params['per-page']" total-items="offline.totalCount" on-change-size="offline.changeSize" on-change-page="offline.changePage"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div ng-show="offline.showCodePage || offline.showGoodsPage">
+  <!-- Breadcrumb -->
+  <ol class="breadcrumb">
+    <li bindonce ng-repeat="breadcrumb in offline.breadcrumb2">
+      <a class="crumb-icon {{breadcrumb.icon}}-icon" bo-if="$index == 0 && breadcrumb.href" bo-href="breadcrumb.href"> </a>
+      <span class="arrow-icon ng-scope" bo-if="$index >= 1"> </span>
+      <a class="crumb-text href-text" bo-if="breadcrumb.href" bo-href="breadcrumb.href" ng-click="offline.displayOfflinePage()" translate="{{breadcrumb.text}}"></a>
+      <span bo-if="!breadcrumb.href" translate="{{breadcrumb}}"></span>
+    </li>
+  </ol>
+
+  <!-- Member information -->
+  <div class="form-group codechange-member-wrapper goods-exchange-box">
+    <label class="fields-item-label fields-color-label" translate="product_codechange_member_info"></label>
+    <div class="border-wrapper">
+      <div class="member-basic-wrapper row clear-margin">
+        <div class="col-md-3 member-item member-basic-name text-el">{{offline.member.name || '-'}}</div>
+        <div class="col-md-4 member-item member-basic-phone">{{offline.member.tel || '-'}}</div>
+        <div class="col-md-5 member-item member-basic-integration">{{offline.member.score || 0}}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- promo code exchange page -->
+  <div ng-if="offline.showCodePage" class="container-fluid">
+
+    <section class="form-group codechange-promocode-wrapper">
+      <label class="fields-item-label fields-color-label" translate="product_codechange_promo_code_input"></label>
+      <div class="border-wrapper row clear-margin">
+        <div class="col-md-6 operation-promocode-wrapper">
+          <label class="fields-item-label fields-color-label" translate="product_codechange_enter_promo_code_title"></label>
+          <form role="form" ng-submit="offline.addPromoCodes()">
+            <div class="input-group">
+              <input id="exchange-tip" type="text" class="form-control" ng-model="offline.promoCodeIds" ng-focus="offline.restoreCodesTip()" ng-keyup="offline.isCheckCode($event)"/>
+              <span class="normal form-tip">{{'product_input_code_tip' | translate}}</span>
+              <span class="input-group-btn input-add-wrapper">
+                <button class="btn btn-success btn-input-search btn-input-add" type="submit" translate="add"></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-12 display-promocode-wrapper">
+          <div wm-fixed-table class="promocodes-table" ng-model="offline.promoCodes"></div>
+          <div class="statistics-promocode-wrapper">
+            <span class="statistics-promocode-item">
+              <label class="fields-item-label fields-color-label clear-margin">{{'product_codechange_total_promo_codes' | translate}} : </label> {{offline.promoCodes.data.length}}
+            </span>
+
+            <span class="statistics-promocode-item">
+              <label class="fields-item-label fields-color-label clear-margin">{{'product_promo_codes_valid_quantity' | translate}} : </label> {{(offline.promoCodes.data | filter: {'isValid': true}).length}}
+            </span>
+
+            <span class="statistics-promocode-item">
+              <label class="fields-item-label fields-color-label clear-margin">{{'product_codechange_total_points_redeemable' | translate}} : </label> {{offline.promoCodeTotalScore}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-group codechange-member-wrapper">
+      <label class="fields-item-label fields-color-label" translate="product_code_redeem_time"></label>
+      <div class="offline-datetime-picker">
+        <div wm-datetime-picker picker-id="schedule-picker" format-type="YYYY-MM-DD HH:mm" pick-date="true" pick-time="true" ng-model="offline.exchangeTime" hide-handler="offline.checkAllPromoCodes()"></div>
+      </div>
+    </section>
+
+    <section class="form-group btn-promocode-wrapper">
+      <button class="btn btn-success" type="button" translate="product_codechange_exchange_now" ng-disabled="(offline.promoCodes.data | filter: {'isValid': true}).length == 0 || offline.isShowExpired" ng-click="offline.redeemPromoCodes()"></button>
+    </section>
+
+  </div>
+
+  <!-- goods exchange page-->
+  <form ng-show="offline.showGoodsPage" class="product-detail-wrapper goods-exchange-box clearfix" ng-submit="offline.submit()">
+
+    <section>
+      <div class="form-group clearfix">
+        <label class="product-detail-name col-md-12 col-xs-12 pd0">{{'product_select_exchange_goods' | translate}}</label>
+
+        <div class="col-md-10 col-xs-10 pd0" ng-class="{'exchange-goods-wrapper':offline.items.length > 0}">
+          <div class="clearfix" ng-class="{'exchange-goods-items-wrapper':offline.items.length > 0}">
+            <ul class="clearfix" ng-class="{'col-md-12,col-xs-12':offline.items.length > 0}">
+              <li class="col-md-4 col-xs-6 pl0" ng-repeat="item in offline.items track by $index">
+                <div class="piclist-pic-box cp">
+                  <span class="pic-delete-icon" ng-click="offline.deleteItem($index)"></span>
+                  <div class="piclist-pic-border pull-left">
+                    <div class="piclist-pic" ng-style="{'background-image':'url('+item.pictures[0]+')'}"></div>
+                  </div>
+                  <div class="pull-left exchange-goods-name-wrapper">
+                    <div class="exchange-goods-name text-el" wm-tooltip="{{item.productName}}">{{item.productName}}</div>
+                    <span>
+                      <span class="product-detail-name fs12">{{'customer_points' | translate}} : {{item.score}}</span>
+                      <span class="pull-right">
+                        <span class="product-detail-name fs12 pr3">{{'product_goods_total_amount' | translate}}</span>
+                        <input id="{{item.id}}" type="text" class="form-control exchange-goods-amount-input" data-index="{{$index}}" ng-model="item.quantity"/>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </li>
+              <li class="col-md-4 col-xs-6 goods-pic-item pd0" ng-click="offline.selectGoods()">
+                <div class=" piclist-new-pic-box cp">
+                  <div class="pic-operation" >
+                    <span class="add-pic-tip" translate="product_click_to_add_items"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="exchange-goods-footer" ng-show="offline.items.length > 0">
+            <span class="offline-exchange-footer pull-left">
+              {{'product_redemption_required_points' | translate}} :
+              <div ng-style="{'display': 'inline-block'}">
+                <b>{{offline.totalScore || 0}}</b>
+              </div>
+              {{'product_promotion_basic_score_unit' | translate}}
+            </span>
+            <div class="clearfix rel">
+              <span class="pull-left">{{'product_redemption_actual_points' | translate}} :</span>
+              <div class="pull-left">
+                <input type="text" class="form-control" ng-model="offline.realTotalScore" id="totalScore"/>
+              </div>
+              <span class="pull-left">{{'product_promotion_basic_score_unit' | translate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <label class="product-detail-name col-md-12 col-xs-12 pd0">{{'product_receive_address' | translate}}</label>
+        <ul class="promotion-content-color">
+          <li class="repeat-radio-item" ng-repeat="type in offline.receiveModes track by $index" ng-hide="type.disabled === 'true'">
+            <div wm-radio ng-model="offline.receiveMode" value="{{type.value}}" is-disabled="{{type.disabled}}"></div>
+            <label class="fields-item-label associated-gift-item" translate="{{type.name}}"></label>
+          </li>
+        </ul>
+        <div class="col-md-7 col-xs-8 pd0">
+          <div class="receive-modes-wrapper" ng-if="offline.receiveMode === 'express'">
+            <input class="form-control" ng-model="offline.address" type="text" required form-tip="{{'product_receive_address_tip' | translate}}"/>
+          </div>
+          <div id="receiveModesReceive" class="receive-modes-wrapper" ng-if="offline.receiveMode === 'self'">
+            <div class="receive-address-title" wm-select ng-model="offline.pickedAddressId" text-field="text" value-field="value" items="offline.receiveAddresss" on-change="offline.changeReceiveAddress" default-text="channel_wechat_mass_unlimited"></div>
+            <div class="receive-address-detail">{{offline.pickedAddress}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group clearfix" ng-if="offline.receiveMode === 'express'">
+        <label class="product-detail-name col-md-12 col-xs-12 pd0">{{'product_receive_postcode' | translate}}</label>
+        <div class="col-md-7 col-xs-8 pd0"><input class="form-control" ng-model="offline.postcode" type="text" required form-tip="{{'product_receive_postcode_tip' | translate}}"/></div>
+      </div>
+
+    </section>
+
+    <div class="col-md-12 col-xs-12 mt30 mb30 pd0">
+      <input type="submit" class="btn btn-success user-btn" value="{{'product_codechange_exchange_now' | translate}}" ng-disabled="!offline.member || offline.items.length == 0 || !offline.address || (!offline.postcode && offline.receiveMode === 'express')"/>
+    </div>
+  </form>
+
+</div>
+
+<script type="text/ng-template" id="addMember.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'customer_create_member' | translate}}</h4>
+  </div>
+  <form class="form-add-member member-add" role="form" ng-submit="submit()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <div class="form-group member-attr-wrapper clearfix" ng-repeat="property in memberProperties track by $index">
+        <label class="member-attr-label" translate="{{property.name}}" ng-class="{'required-field': property.isRequired}"></label>
+        <div ng-include="property.url"></div>
+      </div>
+
+      <div class="form-group member-attr-wrapper clearfix">
+        <label class="member-attr-label" translate="tags"></label>
+        <div class="autodropdown-wrapper" ng-mouseleave="hideAutoDropdown()">
+          <div class="autodropdown-body" ng-click="showAutoDropdown()">
+            <ul class="autodropdown-tags">
+              <li ng-repeat="tag in checkedTags track by $index" class="autodropdown-tag">
+                <span ng-bind="tag"></span>
+                <span class="close-btn cp" ng-click="removeTag($index, $event)"></span>
+              </li>
+              <li class="autodropdown-keycode-wrapper">
+                <input onkeydown="if(event.keyCode==13){return false;}" id="tagsValue"
+                ng-keyup="operateTag($event)" class="form-control autodropdown-input" ng-model="tagValue" maxlength=30>
+              </li>
+            </ul>
+          </div>
+          <ul class="autodropdown-items" ng-if="tagsStore.length > 0" ng-show="isShowDropdown">
+            <li ng-repeat="item in tagsStore | filter:tagValue track by $index" ng-click="checkTag(item)" class="autodropdown-item" ng-mouseover="hoverDropItem($index)">
+              <span ng-bind="item"></span>
+            </li>
+          </ul>
+          <span id="tagsTip" class="form-tip normal" translate="product_codechange_tags_tip"></span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'ok' | translate}}" />
+    </div>
+  </form>
+</script>
+
+<script type="text/ng-template" id="selectGoods.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'product_select_exchange_goods' | translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor create-user-body search-goods-popup clearfix">
+    <div wm-list-header>
+      <div class="pull-left select-goods-status-checkbox"><div wm-checkbox ng-model="status" ng-click="checkStatus(status)"></div>{{'product_include_offshelve' | translate}}</div>
+      <wm-search ng-model="params.searchKey" class="search-box pull-right mr20" click-func="search()" placeholder="{{'product_promotion_goods_search_key' | translate}}"></wm-search>
+    </div>
+
+    <div class="mt30 clearfix">
+      <div class="col-md-2 col-xs-2 product-detail-name product-categories-title">{{'product_goods_categories' | translate}} :</div>
+      <div class="col-md-1 col-xs-2 cp" ng-class="{'exchange-cat-active':index==-1}" ng-click="getItems('', -1)">{{'management_all' | translate}}</div>
+      <ul class="col-md-9 col-xs-8">
+        <li class="exchange-goods-catitem text-el cp" ng-class="{'exchange-cat-active':$index==index}" ng-repeat="cat in categories track by $index" ng-click="getItems(cat.id, $index)" wm-tooltip="{{cat.name}}">{{cat.name}}</li>
+      </ul>
+    </div>
+
+    <div class="form-group choose-pictures-wrapper">
+      <div class="pictures-no-data absolute-center" translate="product_no_exchange_goods" ng-show="items.length == 0"></div>
+      <div class="waterfall clearfix">
+        <div ng-repeat="item in items track by $index" class="waterfall-item pull-left">
+          <div class="picture-wrapper cp" ng-click="choose($index)" ng-class="{'wrapper-checked cp' : item.checked}">
+            <div class="exchange-goods-sku text-el">{{'product_number' | translate}}: {{item.sku}}</div>
+            <div class="picture-box">
+              <img wm-center-img class="picture-source" ng-src="{{item.pictures[0]}}">
+              <div ng-if="item.status == 'off'" class="offline-goods-status" translate="product_offshelve_goods_status"></div>
+            </div>
+            <div class="picture-name text-el" style="height:60px">{{item.productName}}</div>
+            <div class="checked-picture-flag" ng-show="item.checked" translate="product_selected_items"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer modal-bgcolor center-text create-user-footer">
+    <input ng-disabled="selectedItems.length == 0" type="submit" class="btn btn-success user-btn" value="{{'ok' | translate}}" ng-click="submit()"/>
+  </div>
+</script>
+
+<script type="text/ng-template" id="codeScore.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'product_codechange_exchange_now' | translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor create-user-body search-goods-popup clearfix">
+    <section class="form-group codechange-member-wrapper" style="margin-bottom: 20px">
+      <label class="fields-item-label fields-color-label" translate="product_codechange_member_info"></label>
+      <div class="member-basic-wrapper row">
+        <div class="col-md-5 member-item member-basic-name text-el">{{member.name}}</div>
+        <div class="col-md-7 member-item member-basic-phone">{{member.tel}}</div>
+      </div>
+    </section>
+
+    <section style="margin-bottom: 40px">
+      <label class="fields-item-label fields-color-label" translate="product_point_change"></label>
+      <div>
+        <span style="margin-right: 30px">{{'product_member_present_score' | translate}} : <b>{{member.score || 0}}</b></span>
+        <span>{{'product_codechange_points_redeemable' | translate}} : <b>{{totalScore}}</b></span>
+      </div>
+    </section>
+
+    <section class="product-redeem-tip fields-item-label fields-color-label">{{'product_add_code_score_tip' | translate}}</section>
+
+  </div>
+
+  <div class="modal-footer modal-bgcolor center-text create-user-footer">
+    <input type="submit" ng-click="submit()" ng-disabled="disableBtn" class="btn btn-success user-btn" value="{{'ok' | translate}}" />
+  </div>
+</script>

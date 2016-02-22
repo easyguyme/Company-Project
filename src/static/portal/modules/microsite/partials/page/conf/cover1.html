@@ -1,0 +1,71 @@
+<div ng-controller="wm.ctrl.microsite.page.config.cover1 as cover1">
+  <form id="form-cover1" ng-submit="cpts.sendData(cover1.data)">
+    <div class="form-group cover1-slide-title">
+      <label translate="content_component_config_cover1_slide"></label>
+      <span class="cover1-title-tip">{{'content_component_config_cover1_slide_tip' | translate:{'minPiece': 2, 'maxPiece': 6} }}</span>
+    </div>
+    <div ng-model="cover1.data.slideInfo">
+    <div class="conf-item conf-item-border-dashed" ng-repeat="slide in cover1.data.slideInfo track by $index">
+      <div class="conf-item-info">
+        <i class="conf-delete-icon cp glyphicon glyphicon-trash" ng-click="cover1.removeSlide($index, $event)" ng-hide="cover1.data.slideInfo.length <= 2"></i>
+        <div class="form-group cover1-form-group">
+          <label class="sub-title" for="picName{{$index}}" translate="content_component_config_cover1_slide_picname"></label>
+          <input class="form-control" type="text" id="picName{{$index}}" ng-model="slide.name" maxlength="16" below-msg>
+          <span class="form-tip normal" translate="content_component_config_cover1_slide_pictip"></span>
+        </div>
+        <div class="form-group clearfix cover1-form-group">
+          <label class="sub-title" for="pic{{$index}}">{{'content_component_config_cover1_slide_pic'|translate}}</label>
+          <div class="file-upload-input">
+            <input class="form-control cover1-upload-picture" id="pic{{$index}}" ng-model="slide.pic" readonly="readonly"/>
+            <span class="form-tip normal" translate="content_component_config_slide_picinfo"></span>
+            <div id="{{'upload-' + $index}}" wm-file-upload class="file-upload-wrap cover1-upload-picture-button" ng-model="slide.pic">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group cover1-goto-link">
+          <label class="sub-title" for="slide-linkUrl{{$index}}" translate="content_component_config_slide_redirect"></label>
+          <div wm-link-select horizontal="true" id="slide-linkUrl{{$index}}" ng-model="slide.linkUrl"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="cover1-slide-addbutton-layout">
+      <div class="btn-add-radius btn" ng-click="cover1.addSlide()" translate="content_component_config_cover1_slide_addpic" ng-disabled="cover1.data.slideInfo.length >= 6"></div>
+    </div>
+    <div class="cover1-nav-title-layout">
+      <label translate="content_component_config_cover1_nav"></label>
+      <span class="cover1-title-tip">{{'content_component_config_cover1_nav_tip' | translate:{'minNumber': 3, 'maxNumber': 6} }}
+      </span>
+    </div>
+    <div ng-model="cover1.data.navInfo">
+      <div class="conf-item conf-item-border-dashed" ng-repeat="nav in cover1.data.navInfo track by $index">
+        <div class="conf-item-info">
+          <i class="conf-delete-icon glyphicon glyphicon-trash cp" ng-click="cover1.deleteInfo($index, $event)" ng-hide="cover1.data.navInfo.length <= 3"></i>
+          <div class="form-group clearfix cover1-form-group">
+            <label class="sub-title" for="iconUrl{{$index}}">{{'content_component_config_cover1_nav_icon'|translate}}</label>
+            <div class="file-upload-input">
+              <input class="form-control cover1-upload-picture" id="iconUrl{{$index}}" ng-model="nav.iconUrl" readonly="readonly"/>
+              <span class="form-tip normal" translate="content_component_config_cover1_nav_icontip"></span>
+              <div id="{{'upload-' + $index}}" wm-file-upload class="file-upload-wrap cover1-upload-picture-button" ng-model="nav.iconUrl">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group cover1-form-group">
+            <label class="label-control" for="navName{{$index}}" translate="content_component_config_cover1_nav_name"></label>
+            <input class="form-control cover1-nav-name" type="text" id="navName{{$index}}" ng-model="nav.name" maxlength="6" below-msg>
+            <span class="form-tip normal" translate="content_component_config_cover1_nav_nametip"></span>
+          </div>
+          <div class="form-group cover1-goto-link">
+            <div wm-link-select horizontal="true" no-empty="true" id="nav-linkUrl{{$index}}" ng-model="nav.linkUrl"></div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-addbutton-layout">
+        <div class="btn-add-radius btn" ng-click="cover1.addInfo()" translate="content_component_config_nav_add" ng-disabled="cover1.data.navInfo.length >= 6"></div>
+      </div>
+    </div>
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+  </form>
+</div>

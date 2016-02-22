@@ -1,0 +1,15 @@
+$wm-page-header-background-color: #f5f5f5;
+$wm-page-header-color: #787878;
+
+.wm-page {
+  .wm-page-header {
+    background: $wm-page-header-background-color;
+    color: $wm-page-header-color;
+    font-size: 16px;
+    padding: 5px 20px;
+  }
+
+  .wm-page-body {
+    padding: 30px;
+  }
+}

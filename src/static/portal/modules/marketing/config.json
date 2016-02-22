@@ -1,0 +1,16 @@
+{
+  "name": "marketing",
+  "states": [
+    "marketing-coupon",
+    "marketing-create-coupon",
+    "marketing-view-coupon-{id}"
+  ],
+  "resources": {
+    "couponLogs": "/api/marketing/coupon-logs",
+    "coupons": "/api/marketing/coupons",
+    "coupon": "/api/marketing/coupon",
+    "createCouponQrcode": "/api/marketing/coupon/qrcode",
+    "couponStatOverview": "/api/marketing/coupon-log/stats-total-coupon",
+    "couponStats": "/api/marketing/coupon-log/stats-coupon"
+  }
+}

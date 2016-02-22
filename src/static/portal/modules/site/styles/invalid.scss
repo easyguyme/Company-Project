@@ -1,0 +1,46 @@
+.invalid-page {
+  $box-shadow-color: #c4c4c4;
+  $fail-link-color: #c33a37;
+  $tip-msg-color: #646464;
+  margin: 0;
+  padding-bottom: 240px;
+  padding-top: 310px;
+
+  .invalid-wrapper {
+    box-shadow: 0 0 5px 1px $box-shadow-color;
+    height: 145px;
+    margin: 0 auto;
+    text-align: center;
+    width: 610px;
+  }
+
+  .glyphicon-position {
+    top: -1px;
+    vertical-align: middle;
+  }
+
+  .fail-link {
+    color: $fail-link-color;
+    font-size: 20px;
+    padding-top: 32px;
+  }
+
+  .fail-word {
+    margin-left: 10px;
+  }
+
+  .tip-msg {
+    color: $tip-msg-color;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+
+.invalid {
+  background: url('/images/site/invalid_account_background.png');
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

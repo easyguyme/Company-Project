@@ -1,0 +1,167 @@
+$delete-icon-color: #aaa;
+$product-category-names-color: #1c1c1c;
+$product-category-properties-color: #cfcfcf;
+$modal-label-color: #787878;
+
+.product-setting {
+  $operate-icons: add, delete;
+
+  .colored-table {
+    .form-control {
+      width: 30%;
+    }
+  }
+
+  .ml20 {
+    margin-left: 20px;
+  }
+
+  .mr15 {
+    margin-right: 15px;
+  }
+
+  .ml15 {
+    margin-left: 15px;
+  }
+
+  .mb15 {
+    margin-bottom: 15px;
+  }
+
+  .wm-table-wrap {
+    margin: 20px 0 0;
+
+    .product-category-input {
+      margin-top: 20px;
+
+      .product-operation {
+        margin-top: 10px;
+      }
+    }
+
+    .product-category-label {
+      margin-top: 20px;
+    }
+
+    .table>thead {
+
+      th:nth-child(1) {
+        width: 30%;
+      }
+
+      th:nth-child(3) {
+        width: 18%;
+      }
+    }
+  }
+
+  .product-category-sort {
+    margin-top: 10px;
+  }
+
+  .product-category {
+    margin-bottom: 10px;
+    padding-right: 15px;
+
+    .product-category-names {
+      color: $product-category-names-color;
+      cursor: pointer;
+    }
+
+    .product-category-properties {
+      color: $product-category-properties-color;
+    }
+
+    .product-create-operation {
+      .btn {
+        height: 30px;
+      }
+    }
+
+    .product-operation {
+      float: right;
+
+      @each $icon in $operate-icons {
+        .#{$icon}-icon {
+          @include background-image('/images/core/#{$icon}_default_icon.png');
+
+          background-position: 0 4px;
+          box-shadow: none;
+          cursor: pointer;
+          display: inline-block;
+          padding: 2px 0 2px 18px;
+
+          &:hover {
+            @include background-image('/images/core/#{$icon}_hover_icon.png');
+            color: $gray-background-text-hover-color;
+          }
+        }
+      }
+
+      .delete-operation-wrapper {
+        display: inline-block;
+      }
+
+      .delete-icon {
+        color: $delete-icon-color;
+      }
+
+      .add-icon {
+        color: $gray-background-text-color;
+      }
+    }
+  }
+
+  .product-block {
+    height: 150px;
+  }
+}
+
+.recive-address {
+  .name-width {
+    width: 25%;
+  }
+
+  .address-width {
+    width: 40%;
+  }
+}
+
+.receive-address-dialog {
+  .modal-dialog {
+    top: 100px;
+    width: 500px;
+
+    .modal-body {
+      padding-bottom: 30px;
+
+      .fields-item-label {
+        color: $modal-label-color;
+      }
+    }
+
+    .location-wrap {
+      .col-md-4 {
+        padding-left: 0;
+        padding-right: 5px;
+
+        &:first-child {
+          padding-left: 15px;
+        }
+
+        &:last-child {
+          padding-right: 15px;
+        }
+      }
+    }
+
+    .modal-footer {
+      margin-top: 30px;
+    }
+  }
+}
+
+.disable-edit {
+  pointer-events: none;
+}
+

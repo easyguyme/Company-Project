@@ -1,0 +1,32 @@
+.mb-breadcrumb {
+  background-color: $yellow-bg-color;
+  color: $white;
+  display: inline-block;
+  font-size: 1.2rem;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0 3.4rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  .mb-breadcrumb-back {
+    @include background-image("/images/mobile/return.png");
+    @include size(3.4rem, 100%);
+
+    background-size: 1.4rem;
+    background-position: center;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .mb-breadcrumb-title {
+    @include text-overflow();
+
+    display: inline-block;
+    max-width: 100%;
+    word-break: break-word;
+  }
+}

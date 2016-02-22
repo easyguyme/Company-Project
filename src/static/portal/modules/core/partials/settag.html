@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <h4 class="title create-user-title">
+    {{'core_label_management' | translate}}
+    <button type="button" class="close popup-close" ng-click="closeDialog()"></button>
+  </h4>
+</div>
+<div class="modal-body-user modal-bgcolor create-user-body clearfix label-body p-style">
+  <div class="label-pannel">
+
+    <div class="label-title">
+      <div class="row">
+        <div class="col-md-5 label-text" translate="core_label"></div>
+        <div class="col-md-6 label-operation" translate="core_operation"></div>
+      </div>
+    </div>
+    <div class="tag-label-content">
+      <div class="label-content row">
+        <!-- show label -->
+        <ul ng-repeat="item in list.data track by $index">
+          <li class="row label-rename clearfix" ng-show="editIndex != $index || !isEdit">
+            <div class="col-md-10">
+              <div class="label-name text-el" ng-click="reNameEdit($index, item.name)" wm-tooltip="{{'core_label_click'|translate}}" ng-model="item.name">{{item.name}}</div>
+              <div class="label-number row">
+                <span class="core-follower-num" ng-show="item.followerNum >= 0 && isOpenChannle">{{item.followerNum}}{{item.followerNum>=0?'core_follower_count': '' | translate}}{{item.memberNum>=0?'core_follower_comma': '' | translate}}</span>
+                <span class="tag-member-num" ng-show="item.memberNum >= 0">{{item.memberNum}}{{item.memberNum>=0?'core_member_count': '' | translate}}</span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="delete-label-icon" wm-tooltip="{{'delete' | translate}}" ng-click="deleteTag(item.name, $index, $event)"></div>
+            </div>
+          </li>
+          <!-- rename label -->
+          <li class="row label-rename clearfix" ng-if="editIndex == $index && isEdit">
+            <div class="col-md-6 label">
+              <input id="newTagName" type="text" class="form-control tag-name-text name" ng-model="item.name" maxlength="5" below-msg wm-validate="checkTag(item.name)" required without-star/>
+              <div class="label-number-text">
+                <span ng-show="item.followerNum >= 0 && isOpenChannle">{{item.followerNum}}{{item.followerNum>=0?'core_follower_count': '' | translate}}{{item.memberNum>=0?'core_follower_comma': '' | translate}}</span>
+                <span class="tag-member-num" ng-show="item.memberNum >= 0">{{item.memberNum}}{{item.memberNum>=0?'core_member_count': '' | translate}}</span>
+              </div>
+            </div>
+            <div class="col-md-3 label">
+              <button type="button" class="btn btn-success btn-operate-tag btn-tag-ok btn-label" ng-click="reNameTag($index, item.name)" translate="core_label_sure"></button>
+            </div>
+            <div class="col-md-3 label">
+              <button type="button" class="btn btn-operate-tag btn-default btn-label btn-label-cannel" ng-click="cancelTag($index)" translate="cancel"></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

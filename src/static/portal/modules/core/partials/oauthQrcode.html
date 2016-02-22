@@ -1,0 +1,29 @@
+<div class="modal-header pd30">
+  <button type="button" class="close popup-close" ng-click="hideModal()"></button>
+  <h4 class="modal-title create-user-title">{{title | translate}}</h4>
+</div>
+<form name="accountCreateForm" ng-submit="save()">
+  <div class="modal-body modal-bgcolor create-user-body clearfix">
+    <div>
+      <p>{{'management_store_choose_account' | translate}}</p>
+      <p class="form-tip">{{tip | translate}}
+      </p>
+      <div class="qrcode-channel-wrapper">
+        <div class="clearfix mb10" ng-repeat="channels in allChannels track by $index" ng-if="!!channels">
+          <div class="mb10"><span translate="{{channels.type}}_account"></span></div>
+          <div class="col-md-6 col-xs-6" ng-repeat="channel in channels.channels track by $index">
+            <div class="col-md-2 col-xs-2 qrcode-radio"><wm-checkbox ng-model="channel.checked"></wm-checkbox></div>
+            <div class="qrcode-channel-box col-md-10 col-xs-10">
+              <img ng-src="{{channel.avatar}}" />
+              <span class="channel-name text-el" wm-tooltip="{{channel.name}}">{{channel.name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer modal-bgcolor center-text create-user-footer">
+    <input type="submit" class="btn btn-success user-btn" value="{{'submit' | translate}}" />
+  </div>
+</form>

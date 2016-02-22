@@ -1,0 +1,324 @@
+$message-list-background-color: #f7f7f7;
+$message-list-title-color: #19be9b;
+$message-item-background-color: #fff;
+$message-item-title-color: #1c1c1c;
+$message-item-content-color: #878787;
+$message-item-hover-background-color: #fafafa;
+$message-item-hover-border-color: #e2e2e2;
+$message-list-footer-color: #555;
+$message-list-footer-focus-color: #37af96;
+$message-list-footer-hover-color: #37b9a0;
+$message-operation-color: #8b8b8b;
+$message-operation-focus-color: #19a582;
+$message-operation-hover-color: #19af8c;
+$message-badge-color: #f37b73;
+
+.message-list-content {
+  @include box-sizing(-1px 0 2px rgba(160, 160, 160, .2));
+  z-index: 9999;
+  width: 590px;
+  height: calc(100% - 40px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: $message-list-background-color;
+  border-left: 1px outset rgba(160, 160, 160, .2);
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+
+  .message-list-inner-content {
+    position: relative;
+    height: 100%;
+  }
+
+  .message-list-header {
+    padding: 12px;
+    background-color: $message-item-background-color;
+    border-bottom: 1px outset rgba(238, 238, 238, .3);
+
+    .popup-close {
+      background: url('/images/management/icon_popup_close_default.png') no-repeat;
+      height: 18px;
+      margin-right: 10px;
+      margin-top: 2px;
+      opacity: 1;
+      outline: none;
+      width: 18px;
+    }
+
+    .message-list-title {
+      color: $message-list-title-color;
+      line-height: 18px;
+      margin: 0;
+    }
+  }
+
+  .message-list-body {
+    height: 100%;
+    overflow-y: scroll;
+    padding: 20px 80px 20px 30px;
+
+    .message {
+      background-color: $message-item-background-color;
+      padding: 10px 10px 10px 30px;
+      margin-bottom: 10px;
+      position: relative;
+      border: 1px solid $message-item-background-color;
+      box-shadow: 0 0 3px rgba(166, 166, 166, .75);
+
+      .message-title {
+        color: $message-item-title-color;
+        margin: 0 0 10px;
+
+        .message-title-content {
+          margin-left: 10px;
+        }
+      }
+
+      .message-content {
+        margin: 0;
+        color: $message-item-content-color;
+      }
+
+      .warning-icon {
+        background-image: url('/images/core/warning_default.png');
+        background-repeat: no-repeat;
+      }
+
+      .success-icon {
+        background-image: url('/images/core/success_default.png');
+        background-repeat: no-repeat;
+      }
+
+      .error-icon {
+        background-image: url('/images/core/error_default.png');
+        background-repeat: no-repeat;
+      }
+
+      .message-is-read-mark {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .message-read-icon {
+        background-image: url('/images/core/read_default.png');
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+        width: 18px;
+        height: 15px;
+      }
+
+      .message-unread-icon {
+        background-image: url('/images/core/unread_default.png');
+        background-repeat: no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+        width: 18px;
+        height: 19px;
+      }
+
+      &:hover {
+        background-color: $message-item-hover-background-color;
+        border: 1px solid $message-item-hover-border-color;
+        box-shadow: 0 0 2px rgba(194, 194, 194, .4);
+
+        .warning-icon {
+          background-image: url('/images/core/warning_hover.png');
+        }
+
+        .success-icon {
+          background-image: url('/images/core/success_hover.png');
+        }
+
+        .error-icon {
+          background-image: url('/images/core/error_hover.png');
+        }
+
+        .message-read-icon {
+          background-image: url('/images/core/read_hover.png');
+        }
+
+        .message-unread-icon {
+          background-image: url('/images/core/unread_hover.png');
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+
+  .message-list-footer {
+    text-align: center;
+    cursor: pointer;
+    color: $message-list-footer-color;
+    background-color: $message-item-background-color;
+    line-height: 35px;
+    position: fixed;
+    right: 7px;
+    width: 581px;
+
+    .view-read-message-icon {
+      background-image: url('/images/core/viewreadmessage_default.png');
+      background-repeat: no-repeat;
+    }
+
+    .view-read-message-title {
+      margin-left: 8px;
+    }
+
+    &:focus {
+      color: $message-list-footer-focus-color;
+
+      .view-read-message-icon {
+        background-image: url('/images/core/viewreadmessage_click.png');
+      }
+    }
+
+    &:hover {
+      color: $message-list-footer-hover-color;
+
+      .view-read-message-icon {
+        background-image: url('/images/core/viewreadmessage_hover.png');
+      }
+    }
+  }
+
+  .no-unread-message {
+    font-size: 14px;
+    color: $message-list-footer-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -42px;
+    margin-top: -10px;
+  }
+
+  .message-status-icon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 14px;
+    width: 12px;
+  }
+
+  .message-operation {
+    color: $message-operation-color;
+    cursor: pointer;
+    margin-bottom: 15px;
+
+    .mark-icon {
+      background-image: url('/images/core/mark_default.png');
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 14px;
+      height: 10px;
+      vertical-align: middle;
+    }
+
+    .delete-icon {
+      background-image: url('/images/core/delete_default_icon.png');
+      background-repeat: no-repeat;
+      display: inline-block;
+      width: 10px;
+      height: 16px;
+      vertical-align: middle;
+    }
+  }
+
+  .message-operation:hover {
+    color: $message-operation-hover-color;
+
+    .mark-icon {
+      background-image: url('/images/core/mark_hover.png');
+      background-repeat: no-repeat;
+    }
+
+    .delete-icon {
+      background-image: url('/images/core/delete_hover_icon.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  .message-operation:focus {
+    color: $message-operation-focus-color;
+
+    .mark-icon {
+      background-image: url('/images/core/mark_click.png');
+      background-repeat: no-repeat;
+    }
+
+    .delete-icon {
+      background-image: url('/images/core/delete_click_icon.png');
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.message-nav {
+  .badge {
+    background-color: $message-badge-color;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+//Portal Message
+.portal-message {
+  margin: -2px -16px 0 -15px;
+
+  a {
+    color: $white-background-text-color;
+  }
+
+  .message {
+    line-height: 25px;
+    margin: 0 auto;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+    display: none;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: -25px;
+    }
+
+    .message-content {
+      position: relative;
+      display: inline-block;
+    }
+
+    .portal-list {
+      display: inline-block;
+      margin-bottom: 0;
+      padding-left: 15px;
+
+      li {
+        text-align: left;
+        position: relative;
+      }
+    }
+
+    .text {
+      width: 75%;
+      line-height: 22px;
+    }
+
+    &.message-warning {
+      background-color: $warning-message-background-color;
+      color: $warning-message-font-color;
+
+      .icon {
+        background: url('/images/core/icon_warning.png') no-repeat;
+        background-position-y: center;
+      }
+    }
+  }
+}

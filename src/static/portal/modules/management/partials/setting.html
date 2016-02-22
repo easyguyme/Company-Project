@@ -1,0 +1,86 @@
+<!-- <div class="breadcrumb">
+  <span translate="customer_property"></span>
+</div> -->
+<div wm-breadcrumb="setting.breadcrumb">
+  <button ng-disabled="setting.totalItems >= 100" class="btn btn-success pull-right" ng-click="setting.editProperty()" translate="customer_members_add_attribute"></button>
+</div>
+<div class="panel-body clearpadding member-setting-wrap">
+  <div class="wm-table-wrap">
+    <wm-table ng-model="setting.tableDef" class="colored-table member-setting"></wm-table>
+  </div>
+
+  <div class="table-instrument-wrapper clearfix">
+    <section class="sort-wrapper pull-left">
+      <button class="btn btn-success" translate="customer_members_btn_sort" ng-click="setting.sort()"></button>
+    </section>
+
+    <!-- The pagination -->
+    <section class="broadcast-pagination pagination-wrapper" ng-if="setting.pageCount > 0">
+      <div wm-pagination current-page="setting.currentPage" page-size="setting.pageSize" total-items="setting.totalItems" on-change-size="setting.changeSize" on-change-page="setting.changePage"></div>
+    </section>
+  </div>
+</div>
+
+<!-- Add menbers attribute -->
+<script type="text/ng-template" id="addMembersAttribute.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{title | translate}}</h4>
+  </div>
+
+  <div class="modal-body modal-bgcolor clearfix">
+    <form role="form" class="members-form" ng-submit="submit()">
+      <div class="member-form-tip">
+        <span class="tip-icon"></span>
+        <span class="tip form-tip" translate="customer_members_form_tip"></span>
+      </div>
+      <div class="form-group">
+        <label class="dark-gray" translate="customer_members_attribute_names"></label>
+        <input id="memberPropertyName" ng-if="property.isDefault == false" class="form-control" maxlength="6" ng-model="property.name" form-tip="{{'customer_members_attributenames_tip'|translate}}" required>
+        <div ng-if="property.isDefault == true">{{property.name | translate}}</div>
+      </div>
+      <div class="form-group" ng-if="property.isDefault == false">
+        <label class="dark-gray" translate="member_attribute_id"></label>
+        <input id="memberPropertyId" class="form-control" ng-model="property.propertyId" required maxlength="20" wm-validate="checkPropertyId" ng-if="title=='customer_members_add_attribute'" form-tip="{{'member_property_code_error'|translate}}">
+        <div ng-if="title=='customer_members_edit_attribute'" ng-bind="property.propertyId"></div>
+      </div>
+      <div class="form-group">
+        <label class="dark-gray required-star" translate="customer_members_type"></label>
+        <div ng-if="property.isDefault == false" wm-select on-change="changeType" ng-model="property.type" text-field="text" value-field="value" items="typeOptions" default-text="type" class="members-attribute-text dark-gray"></div>
+        <div ng-if="property.isDefault == true">{{property.type | translate}}</div>
+      </div>
+      <div class="form-group add-option-wrap" ng-if="isOptionType">
+        <div class="form-group">
+          <label ng-if="property.type!='radio'" class="dark-gray">{{"option"|translate}}1</label>
+          <label ng-if="property.type=='radio'" class="dark-gray">{{"default_option"|translate}}</label>
+          <div style="padding-bottom: 15px;"><input ng-if="property.isDefault == false" type="text" class="option-input form-control" ng-model="property.defaultValue" required />
+          <div ng-if="property.isDefault == true">{{property.defaultValue | translate}}</div>
+        </div>
+        <div class="form-group col-md-12 pd0" ng-repeat="option in options">
+          <label class="dark-gray setting-label">{{"option"|translate}}{{$index+2}}</label>
+          <div class="col-md-10 pd0">
+            <input type="text" class="form-control ib" ng-model="option.value" required ng-if="property.isDefault == false"/>
+            <div ng-if="property.isDefault == true">{{option.value | translate}}</div>
+          </div>
+          <div class="col-md-2 pd0">
+            <a href="#" ng-click="deleteOption($index)" class="operate-icon delete-icon" ng-if="property.isDefault == false"></a>
+          </div>
+        </div>
+        <span class="btn-add-radius cp"  ng-if="property.isDefault == false" ng-click="addOption()" translate="customer_members_add_choice"></span>
+      </div>
+    </div>
+      <ul class="row">
+        <li class="col-md-3" ng-if="editedData.data.name != 'tel'">
+          <wm-checkbox ng-model="property.isRequired"></wm-checkbox>{{"customer_members_necessary" | translate}}
+        </li>
+        <li class="col-md-3" ng-if="editedData.data.name != 'gender' && editedData.data.name != 'birthday' && editedData.data.name != 'tel'">
+          <wm-checkbox ng-model="property.isUnique"></wm-checkbox>{{"customer_members_only" | translate}}
+        </li>
+        <li class="col-md-3" ng-if="membersProperty.showVisibleCheckbox == true || showVisibleCheckbox == true">
+          <wm-checkbox ng-model="property.isVisible"></wm-checkbox>{{"customer_members_visible" | translate}}
+        </li>
+      </ul>
+      <div class="center-text"><button class="btn btn-success btn-position ng-scope user-btn" translate="ok"></button></div>
+    </form>
+  </div>
+</script>

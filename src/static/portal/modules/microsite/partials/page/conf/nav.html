@@ -1,0 +1,26 @@
+<div ng-controller="wm.ctrl.microsite.page.config.nav as nav">
+  <form id="form-nav" ng-submit="nav.checkData()">
+    <div class="form-group form-slide-title">
+      <label translate="content_component_config_nav"></label>
+      <label translate="content_component_config_nav_count_tip" class="slides-tip"></label>
+    </div>
+    <div ng-model="nav.data.infos">
+      <div class="conf-item conf-item-border-dashed" ng-repeat="data in nav.data.infos track by $index">
+        <div class="conf-item-info">
+          <i class="conf-delete-icon glyphicon glyphicon-trash cp" ng-click="nav.deleteInfo($event, $index)" ng-class="{'active':nav.deleteIndex === $index}" ng-hide="nav.data.infos.length <= 2"></i>
+          <div class="form-group">
+            <label for="name{{$index}}" translate="content_component_config_nav_name"></label>
+            <input class="form-control nav-name" type="text" id="name{{$index}}" ng-model="data.name" form-tip="{{'content_component_config_nav_tip'|translate}}" below-msg required wm-validate="nav.checkName" maxlength="6">
+          </div>
+          <div class="form-group nav-link">
+            <div wm-link-select no-empty="true" horizontal="true" id="linkUrl{{$index}}" ng-model="data.linkUrl"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-addbutton-layout">
+      <div class="btn-add-radius btn" ng-click="nav.addInfo()" translate="content_component_config_nav_add" ng-disabled="nav.data.infos.length >= 5"></div>
+    </div>
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+  </form>
+</div>

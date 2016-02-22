@@ -1,0 +1,30 @@
+{
+    "items": [
+        {
+            "id": "55a61053d6f97f7b3d8b4569",
+            "productId": "5576c25ed6f97fe84c8b4567",
+            "pictures": [
+                "http://vincenthou.qiniudn.com/8e664c055899162b6bffaacd.jpg"
+            ],
+            "status": "off",
+            "onSaleTime": "",
+            "categoryName": "asd",
+            "productName": "乐事薯片",
+            "sku": "1433846341601811",
+            "storeId": "55753c71d6f97fe3338b4567",
+            "price": 12.00
+            "offShelfTime": ""
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://wm.com/api/store/goodss?tmoffset=-8&accesstoken=081c2f43-62b9-2dfa-ace3-781d27c711ca&page=1"
+        }
+    },
+    "_meta": {
+        "totalCount": 1,
+        "pageCount": 1,
+        "currentPage": 1,
+        "perPage": 20
+    }
+}

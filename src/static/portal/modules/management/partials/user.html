@@ -1,0 +1,101 @@
+<div class="panel-default panel-main-content">
+  <div wm-breadcrumb="user.breadcrumb"></div>
+  <div class="panel-body panel-container-fluid">
+    <ul class="nav nav-pills list-keywords" role="tablist">
+      <li role="presentation" class="keyword-item" ng-click="user.filter(0)" ng-class="{'active':user.filterType == 0}">
+        <span>{{'management_all' | translate}}({{user.totalCount}})</span>
+      </li>
+      <li role="presentation" class="keyword-item" ng-click="user.filter(1)" ng-class="{'active':user.filterType == 1}">
+        <span>{{'management_administrators' | translate}}({{user.adminCount}})</span>
+      </li>
+      <li role="presentation" class="keyword-item" ng-click="user.filter(2)" ng-class="{'active':user.filterType == 2}">
+        <span>{{'management_staff' | translate}}({{user.operatorCount}})</span>
+      </li>
+    </ul>
+
+    <div class="management-menber-list">
+      <div class="col-md-4 col-sm-6 col-xs-12" ng-hide="user.filterType == 1 || user.filterType == 2" >
+        <div class="management-menber-item menber-item-add cp" ng-click="user.open()">
+          <div class="menber-create">
+            <div class="menber-create-icon pull-left"></div>
+            <div class="menber-create-describe pull-left">{{'management_click_add_user' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="management-nodata hide" ng-class="{show:user.filterType == 1 && user.adminCount == 0}">
+        {{'management_no_administrator' | translate}}
+      </div>
+      <div class="management-nodata hide" ng-class="{show:user.filterType == 2 && user.operatorCount == 0}">
+        {{'management_no_staff' | translate}}
+      </div>
+      <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="userInfo in user.userList track by $index">
+        <div class="management-menber-item menber-item-info">
+          <div class="menber-item-identity" ng-hide="!userInfo.isActivated">
+            <div class="menber-identity-icon" ng-class="{'member-admin':userInfo.role == 'admin', 'member-operator':userInfo.role == 'operator'}"></div>
+            <div class="menber-identity-label">
+              <span class="label label-primary label-identity-management" ng-show="userInfo.role == 'operator'">{{'management_staff' | translate}}</span>
+              <span class="label label-primary label-identity-operation" ng-hide="userInfo.role == 'operator'">{{'management_administrator' | translate}}</span>
+            </div>
+          </div>
+
+          <div ng-hide="!userInfo.isActivated">
+            <div class="menber-item-center menber-display member-verify">
+              <div class="menber-display-icon pull-left">
+                <img ng-src="{{userInfo.avatar|qiniu:50}}"/>
+              </div>
+              <div class="menber-display-describe pull-left">
+                <div class="describe-menber-name text-el fb" wm-tooltip="{{userInfo.name}}">{{userInfo.name}}</div>
+                <div class="describe-menber-email text-el" wm-tooltip="{{userInfo.email}}">{{userInfo.email}}</div>
+              </div>
+            </div>
+            <div class="btn-delete-menber cp" ng-click="user.deleteMember(userInfo.id, $index, $event)" wm-tooltip="{{'management_delete_user' | translate}}" ng-if="$parent.$parent.user.id!==userInfo.id && user.showDelete"></div>
+            <!--'$parent.$parent' is used to solve the conflict withs controller name-->
+          </div>
+
+          <div ng-hide="userInfo.isActivated">
+            <div class="menber-item-center menber-display">
+              <div class="menber-display-icon pull-left">
+                <img ng-src="{{userInfo.avatar|qiniu:50}}"/>
+              </div>
+              <div class="menber-display-describe pull-left">
+                <div class="describe-verify-email text-el" wm-tooltip="{{userInfo.email}}">{{userInfo.email}}</div>
+                <div class="describe-verify-explain">{{'management_wait_activate' | translate}}</div>
+              </div>
+            </div>
+            <div class="btn-verify-email cp" ng-click="user.sendEmail(userInfo.id)" wm-tooltip="{{'management_send_again' | translate}}"></div>
+            <div class="btn-delete-menber cp" ng-click="user.deleteMember(userInfo.id, $index, $event)" wm-tooltip="{{'management_delete_user' | translate}}" ng-if="user.showDelete"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="createUser.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'management_add_user' | translate}}</h4>
+  </div>
+  <form name="userCreateForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <div class="form-group">
+        <label class="dark-gray" for="email">{{'management_email' | translate}}</label>
+        <input placeholder="{{'management_enter_email' | translate}}" name="email" type="email" id="email" class="form-control" ng-model="data.email" required below-msg wm-email />
+      </div>
+      <div class="form-group">
+        <label class="dark-gray">{{'management_select_role' | translate}}</label>
+        <div class="clearfix">
+          <div class="pull-left role-item">
+            <wm-radio ng-model="data.role" value="operator"></wm-radio><span>{{'management_staff' | translate}}</span>
+          </div>
+          <div class="role-item">
+            <wm-radio ng-model="data.role" value="admin"></wm-radio>{{'management_administrator' | translate}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>

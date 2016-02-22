@@ -1,0 +1,30 @@
+<div class="channelpayment clearfix" ng-controller="wm.ctrl.channel.payment.refund as refund">
+  <!-- player table header wrapper -->
+  <div class="panel panel-default panel-center-content">
+    <div wm-list-header content="{{'channel_refund_records_count' | translate:'{ count: refund.totalItems }'}}" icon="{'url': '/images/core/record.png', 'width': 16, height: 15}">
+      <span class="btn-export pull-right" ng-style="{margin: '9px 10px'}" ng-click="refund.export()" ng-class="{'export-disabled':!refund.enableExport}" translate="export"></span>
+    </div>
+  </div>
+
+  <div class="data-picker clearfix">
+    <wm-search ng-model="refund.searchKey" class="search-wrapper-input col-md-2 clearpadding mr30" click-func="refund.search()" placeholder="{{'channel_transaction_number' | translate}}"></wm-search>
+    <span class="span-center pull-left mr20">{{'channel_refund_records_date' | translate}}</span>
+    <div class="col-md-2 pull-left clearpadding">
+      <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" ng-model="refund.startTime" min-date-picker-id="endDatePicker" time-handler="refund.selectDate()" icon="calendar" less-than-today="true">
+      </div>
+    </div>
+    <div class="pull-left span-center">&nbsp;&nbsp;&minus;&nbsp;&nbsp;</div>
+    <div class="col-md-2 pull-left clearpadding">
+      <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" ng-model="refund.endTime" icon="calendar" time-handler="refund.selectDate()" less-than-today="true"></div>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <wm-table ng-model="refund.list" class="colored-table member-setting"></wm-table>
+  </div>
+
+  <!-- pagination wrapper -->
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="refund.currentPage" page-size="refund.pageSize" total-items="refund.totalItems" on-change-size="refund.changeSize" on-change-page="refund.changePage"></div>
+  </div>
+</div>

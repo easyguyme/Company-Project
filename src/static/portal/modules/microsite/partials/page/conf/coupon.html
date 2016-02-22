@@ -1,0 +1,42 @@
+<div ng-controller="wm.ctrl.microsite.page.config.coupon as coupon">
+  <form id="form-coupon" ng-submit="coupon.createOauth()">
+
+    <div class="form-group">
+      <b class="fwbold" translate="microsite_coupon_info"></b>
+      <span class="coupon-tip-title" translate="microsite_coupon_select"></span>
+      <div wm-select ng-model="coupon.data.couponId" items="coupon.columns" text-field="title" value-field="couponId" default-text="microsite_coupon_please_select" on-change="coupon.changeSelect"></div>
+    </div>
+
+    <span class="coupon-tip-title" translate="microsite_coupon_channel"></span>
+    <ul class="clearfix">
+      <li ng-repeat="channel in coupon.channels track by $index" class="coupon-channel">
+        <wm-radio ng-model="coupon.data.channelId" value="{{channel.id}}" ng-click="coupon.changeChannel()"></wm-radio>
+        <img ng-src="/images/customer/{{channel.icon}}" wm-tooltip="{{channel.title|translate}}">
+        <span wm-tooltip="{{channel.name}}">{{channel.shortName}}</span>
+      </li>
+    </ul>
+
+    <div class="form-group">
+      <b class="fwbold" translate="content_component_config_tel_display_stype"></b>
+      <ul class="questionnaire-radio-items">
+        <li class="radio-item">
+            <wm-radio class="pull-left coupon-radio-1" ng-model="coupon.data.style" value="1"></wm-radio>
+            <div class="coupon-inline coupon-wrapper">
+              <div class="coupon-image-wrapper">
+                <img class="coupon-image" ng-src="{{coupon.data.image}}">
+              </div>
+              <div class="coupon-title-wrapper">
+                <span class="coupon-title">{{coupon.data.title}}</span>
+              </div>
+            </div>
+        </li>
+        <li class="radio-item">
+            <wm-radio class="pull-left coupon-radio-2" ng-model="coupon.data.style" value="2"></wm-radio>
+            <div class="radio-content radio-content-1 coupon-inline" translate="microsite_coupon_claim"></div>
+        </li>
+      </ul>
+    </div>
+
+    <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+  </form>
+</div>

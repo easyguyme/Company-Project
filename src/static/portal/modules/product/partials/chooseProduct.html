@@ -1,0 +1,48 @@
+<div class="modal-header pd30">
+  <button type="button" class="close popup-close" ng-click="hideModal()"></button>
+  <h4 class="modal-title create-user-title">{{'product_promotion_associated_goods' | translate}}</h4>
+</div>
+<div class="modal-body modal-bgcolor create-user-body search-goods-popup clearfix">
+  <div class="member-form-tip reservation-layout-form-tip" ng-if="type === 'reservation'">
+    <span class="tip-icon"></span>
+    <span class="tip form-tip" translate="reservation_layout_form_tip"></span>
+  </div>
+
+  <div wm-tabs="changeTab()" data-inner="true" tabs="tabs" ng-model="curTab"></div>
+
+  <div class="mt30 goods-table-select" ng-show="curTab.value == 0">
+    <div ng-style="{'width':'150px'}" ng-hide="type === 'reservation'"><div wm-select ng-model="categoryId" text-field="text" value-field="value" items="selectItems" on-change="changeSelect"></div></div>
+    <div wm-fixed-table is-select-all="{{isSelectAll}}" class="colored-table" ng-model="searchList"></div>
+  </div>
+
+  <div class="mt30" ng-show="curTab.value == 1">
+    <div class="clearfix mb10">
+      <div class="col-md-11 col-xs-11 pd0">
+        <input class="form-control" type="text" ng-model="searchKey" placeholder="{{'product_goods_search_key' | translate}}" wm-enter="search()" />
+      </div>
+      <button class="btn btn-success col-md-1 col-xs-1 pd0" ng-style="{'height': '31px'}" translate="customer_follower_search" ng-click="search()"></button>
+    </div>
+
+    <div class="goods-search-box" ng-if="!searchFlag">
+      <img ng-style="{'margin-top':'70px'}" src="/images/product/search_empty.png" />
+      <div class="mt20">{{'product_goods_search_tip' | translate}}</div>
+    </div>
+
+    <div wm-fixed-table ng-if="searchFlag" class="colored-table" ng-model="searchList"></div>
+  </div>
+
+  <div class="clearfix mt20">
+    <div class="pull-left mr20" ng-style="{'color':'#787878', 'margin-top':'28px'}">{{'product_selected_goods_tip' | translate}}</div>
+    <ul class="pull-left selected-goods-wrap">
+      <li class="selected-goods-box cp" ng-repeat="item in selectedList track by $index">
+        <div class="img-wrap" ng-style="{'background-image':'url(' + (item.goodsName.url || '/images/content/default.png') + ')'}"></div>
+        <span class="selected-goods-delete-icon" ng-click="deleteSelectedItem($index)"></span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="modal-footer modal-bgcolor center-text create-user-footer">
+  <input type="submit" class="btn btn-success user-btn" value="{{'ok' | translate}}" ng-click="submit()"/>
+</div>

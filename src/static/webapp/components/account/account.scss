@@ -1,0 +1,28 @@
+.c-account {
+  font-size: .4rem;
+  color: $theme-gray-text;
+  padding-bottom: .2rem;
+
+  &__key {
+    @include text-overflow();
+    width: 2.2rem;
+    display: inline-block;
+  }
+
+  &__item {
+    padding-right: .15rem;
+    display: inline-block;
+    vertical-align: top;
+
+    &__icon {
+      background-size: cover;
+      width: .36rem;
+      height: .36rem;
+      display: inline-block;
+      margin-right: .16rem;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+    }
+  }
+
+}

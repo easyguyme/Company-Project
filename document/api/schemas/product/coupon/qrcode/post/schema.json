@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "type": "object",
+  "properties": {
+    "channels": {
+      "type": "array",
+      "required": true,
+      "description": ""
+    },
+    "couponId": {
+      "type": "string",
+      "required": true,
+      "description": ""
+    }
+  }
+}

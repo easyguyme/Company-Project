@@ -1,0 +1,53 @@
+<div wm-breadcrumb="member.breadcrumb"></div>
+<div class="container-fluid">
+  <form id="editMemberForm" ng-submit="member.submit($event)">
+    <!-- Member avatar -->
+    <div class="form-group member-attr-wrapper">
+      <label class="member-attr-label" translate="avatar"></label>
+
+      <div class="member-attr-item member-attr-avatar">
+        <div class="thumbnail member-avatar-thumbnail">
+          <div class="menber-avatar-icon"><img ng-src="{{member.associator.avatar|qiniu:80}}"/></div>
+          <div id="memberAvatarUpload" wm-file-upload process-bar='false' class="file-upload-wrap member-avatar-upload" ng-model="member.associator.avatar">
+            <div class="btn-upload-avatar fs14" translate="upload_picture"></div>
+          </div>
+        </div>
+        <div class="form-tip" translate="customer_member_avatar_tip"></div>
+      </div>
+    </div>
+
+    <!-- Property template -->
+    <div class="form-group member-attr-wrapper clearfix" ng-repeat="property in member.memberProperties track by $index">
+        <label class="member-attr-label" translate="{{property.name}}" ng-class="{'required-field': property.isRequired}"></label>
+        <div ng-include="property.url"></div>
+    </div>
+
+    <!-- Member location -->
+    <div class="form-group member-attr-wrapper clearfix">
+      <label class="member-attr-label" translate="customer_follower_location"></label>
+      <div class="member-attr-item clearfix">
+        <div wm-location static ng-model="member.associator.location" class="member-item-location member-select-item location"></div>
+        <input type="text" class="form-control member-attr" ng-model="member.associator.location.detail" placeholder="{{'customer_member_location_detail' | translate}}" ng-disabled="member.associator.location.country == ''">
+      </div>
+    </div>
+
+    <!-- Member tag -->
+    <div class="form-group member-attr-wrapper clearfix" ng-show="member.optionTags.length != 0">
+      <label class="member-attr-label" translate="tag"></label>
+      <div class="member-attr-item member-item-tag clearfix">
+        <div class="container-fluid member-attr-tags clearfix">
+          <ul class="row member-attr-tags-items">
+            <li class="col-md-2 text-el" ng-repeat="tag in member.optionTags" wm-tooltip="{{tag.name}}">
+              <wm-checkbox ng-model="tag.check" class="follower-checkbox-style"></wm-checkbox>{{tag.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="member-operation-wrapper">
+      <input class="btn btn-success" value="{{'channel_wechat_mass_submit' | translate}}" type="submit" />
+      <span class="btn btn-default" ng-click="member.cancel()" translate="channel_wechat_mass_cancel"></span>
+    </div>
+  </form>
+</div>

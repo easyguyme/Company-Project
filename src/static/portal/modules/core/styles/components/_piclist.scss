@@ -1,0 +1,303 @@
+$pic-box-border-color: #dcdcdc;
+$pic-box-text-color: #555;
+$pic-box-tip-color: #aaa;
+$pic-box-bg-color: #fafafa;
+$pic-content-hover-bg-color: #aeaeae;
+$pic-box-hover-bg-color: #f2f2f2;
+$page-wrapper-bg-color: #777;
+$pic-scrollbar-thumb-color: #ccc;
+
+.goods-pic-item {
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.forbidden-add-pic {
+  pointer-events: none;
+}
+
+.add-pic-mask {
+  position: absolute;
+  top: 0;
+  height: 70px;
+  z-index: 10;
+}
+
+.piclist-new-pic-box {
+  height: 60px;
+  border-radius: 3px;
+  border: 1px solid $pic-box-border-color;
+
+  .pic-operation {
+    @include text-overflow();
+    @include square(100%);
+
+    text-align: center;
+
+    .file-upload-wrap {
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+
+      .upload-mask {
+        left: 0;
+      }
+    }
+
+  }
+
+  .pic-add-icon {
+    @include size(360px, 60px);
+    border-radius: 2px;
+    display: inline-block;
+
+    input {
+      margin-top: -2px !important;
+    }
+  }
+
+  .add-pic-tip {
+    @include text-overflow();
+
+    background-image: url('/images/management/btn_create_user_default.png');
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    color: $pic-box-tip-color;
+    height: 26px;
+    line-height: 26px;
+    max-width: 100%;
+    margin: 16px auto;
+    padding-left: 36px;
+    vertical-align: top;
+  }
+
+  &:hover {
+    border: 1px solid $white-background-text-color;
+
+    .add-pic-tip {
+      background-image: url('/images/management/btn_create_user_hover.png');
+      color: $white-background-text-color;
+    }
+  }
+}
+
+.piclist-pic-box,
+.piclist-show-box {
+  height: 60px;
+  border-radius: 1px;
+  padding: 3px 10px 3px 3px;
+  position: relative;
+  margin-bottom: 10px;
+
+  .piclist-pic-border {
+    @include size(60px, 55px);
+    display: inline-block;
+    border: 1px solid $pic-box-border-color;
+    padding: 2px;
+    border-radius: 2px;
+    vertical-align: top;
+  }
+
+  .piclist-pic {
+    @include size(54px, 49px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+  }
+
+  .exchange-goods-name-wrapper {
+    padding-left: 10px;
+    width: calc(100% - 60px);
+  }
+
+  .piclist-pic-name {
+    @include text-overflow();
+    height: 52px;
+    line-height: 52px;
+    display: inline-block;
+    padding-left: 10px;
+    color: $pic-box-text-color;
+    width: 65%;
+  }
+
+  .exchange-goods-name {
+    @include size(100%, 20px);
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+
+  .pr3 {
+    padding-right: 3px;
+  }
+
+  .exchange-goods-amount-input {
+    @include size(50px, 20px);
+    padding: 0 2px;
+    display: inline-block;
+  }
+
+  @media screen and (max-width: 1255px) and (min-width: 990px) {
+    .piclist-pic-name {
+      width: 50%;
+    }
+  }
+}
+
+.piclist-pic-box:hover {
+  background-color: $pic-box-hover-bg-color;
+
+  .pic-delete-icon {
+    @include square(13px);
+    background: url('/images/core/close_default.png') no-repeat;
+    display: inline-block;
+    background-position-y: 1px;
+    margin-left: 10px;
+    position: absolute;
+    right: -4px;
+    top: -4px;
+  }
+}
+
+.show-pic-wrapper {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 10%;
+  bottom: 5%;
+  z-index: 1050;
+
+  ::-webkit-scrollbar-thumb {
+    background: $pic-scrollbar-thumb-color;
+    border-radius: 4px;
+    min-height: 6px;
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $white-background-color;
+    border-radius: 4px;
+  }
+
+  .page-wrapper {
+    @include size(2%, 80px);
+    background-color: $page-wrapper-bg-color;
+    margin-top: 150px;
+    margin-left: 2%;
+    margin-right: 2%;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+
+    img {
+      margin-top: 28px;
+      width: 40%;
+    }
+
+    &:hover {
+      background-color: $pic-content-hover-bg-color;
+    }
+  }
+
+  .big-pic-wrapper {
+    position: relative;
+    width: 62%;
+    height: 100%;
+    padding: 2.5%;
+    background-color: $pic-box-bg-color;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba($pic-box-tip-color, .75);
+    float: left;
+    margin-right: .8%;
+    text-align: center;
+
+    img {
+      max-width: 90%;
+      max-height: 85%;
+    }
+  }
+
+  .thumb-pic-wrapper {
+    @include size(25%, 540px);
+    padding: 2.5%;
+    background-color: $pic-box-bg-color;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba($pic-box-tip-color, .75);
+    float: left;
+    position: relative;
+    overflow: auto;
+
+    .pic-name {
+      font-size: 16px;
+      color: $pic-box-text-color;
+      margin-bottom: 20px;
+      width: 70%;
+    }
+
+    .pic-close-btn {
+      @include size(14px, 13px);
+      background-image: url('/images/management/icon_popup_close_default.png');
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+
+      &:hover {
+        background-image: url('/images/management/icon_popup_close_hover.png');
+      }
+    }
+
+    .pic-operation-wrapper {
+      padding-bottom: 10px;
+      border-bottom: 1px solid $pic-box-border-color;
+      margin-bottom: 20px;
+      position: relative;
+
+      .pic-size {
+        color: $pic-box-tip-color;
+      }
+
+      .pic-delete-icon {
+        @include operation-icon(delete, 30px);
+        float: right;
+      }
+    }
+
+    .thumb-box-border {
+      @include size(100%, 100px);
+      background-color: $white-background-color;
+      outline: 1px solid $pic-box-border-color;
+      padding: 5px;
+
+      &:hover {
+        outline: 1px solid $gray-background-text-color;
+      }
+    }
+
+    .thumb-box {
+      @include size(100%, 90px);
+      background-size: cover;
+      background-position: center;
+      opacity: .4;
+    }
+
+    .pic-select-border {
+      outline: 1px solid $gray-background-text-color;
+
+      .thumb-box {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

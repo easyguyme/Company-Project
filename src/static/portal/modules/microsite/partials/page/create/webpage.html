@@ -1,0 +1,9 @@
+<div>
+  <div wm-breadcrumb="webpage.breadcrumb"></div>
+  <ol class="steps">
+    <li class="step" ng-repeat="step in webpage.steps" ng-class="{active:step.active,finished:step.finished}">
+      <span class="step-number" style="background-position-y:{{-16*$index}}px;"></span><span translate="{{step.text}}"></span>
+    </li>
+  </ol>
+  <div ng-include="webpage.stepPage"></div>
+</div>

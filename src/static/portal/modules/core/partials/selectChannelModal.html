@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <button type="button" class="close popup-close graphic-btn-close cp" ng-click="cancel()"></button>
+  <h4 class="modal-title create-graphics-title" translate="gen_oauth_link"></h4>
+</div>
+<div class="modal-body">
+  <form ng-submit="submit()">
+    <div class="form-group oauth-link-wrapper" ng-show="target == 'ueditor'">
+      <label class="oauth-link-label" translate="URL"></label>
+      <div class="oauth-link-content">
+        <input type="url" class="form-control" placeholder="{{'content_choose_channel_enter_url' | translate}}" ng-model="url" wm-url required without-star>
+      </div>
+    </div>
+    <label class="modal-body-title" translate="select_gen_channel_label" ng-if="target != 'ueditor'"></label>
+    <label class="modal-body-title" translate="gen_channel_label" ng-if="target == 'ueditor'"></label>
+    <div class="modal-body-content">
+      <div class="radio-inline channel-inline" ng-repeat="channel in channels" ng-switch="channel.type">
+        <div wm-radio ng-model="$parent.selected" value="{{channel.id}}"></div>
+        <div class="channels-icon-wrapper" ng-switch-when="wechat">
+          <img ng-if="channel.isService" ng-src="/images/customer/wechat_service.png" wm-tooltip="{{'follower_wechat_service_number'| translate}}"/>
+          <img ng-if="!channel.isService" ng-src="/images/customer/wechat_subscription.png" wm-tooltip="{{'follower_wechat_subscription_number'| translate}}"/>
+        </div>
+        <div class="channels-icon-wrapper" ng-switch-when="weibo"><img ng-src="/images/customer/weibo.png" wm-tooltip="{{'follower_weibo_service_number'| translate}}"></div>
+        <div class="channels-icon-wrapper" ng-switch-when="alipay"><img ng-src="/images/customer/alipay.png" wm-tooltip="{{'follower_alipay_number'| translate}}"></div>
+
+        <div class="font-social-style">{{channel.name}}</div>
+      </div>
+    </div>
+    <div class="center-text modal-footer">
+      <button class="btn btn-success" translate="ok"></button>
+    </div>
+  </form>
+</div>

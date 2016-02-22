@@ -1,0 +1,12 @@
+<div>会员更新时间</div>
+<div class="clearfix clear-container-padding datepicker-wrapper">
+  <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+    <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="beginPicker" min-date-picker-id="endPicker" pick-date="true" pick-time="true" ng-model="member.beginDate" first-unbind-handler="true" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+  </div>
+  <div class="pull-left datepicker-between-text">&minus;</div>
+  <div class="col-md-4 col-xs-5 datepicker-container clearpadding">
+    <div wm-datetime-picker format-type="YYYY-MM-DD" picker-id="endPicker" max-date-picker-id="beginPicker" pick-date="true" pick-time="true" ng-model="member.endDate" first-unbind-handler="true" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+  </div>
+</div>
+
+  <div><a href="#" ng-click="member.download() ">点击下载会员</a></div>

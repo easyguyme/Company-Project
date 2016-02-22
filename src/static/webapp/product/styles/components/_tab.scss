@@ -1,0 +1,44 @@
+.mb-tab {
+  @include size(100%, 4rem);
+  @extend .clearfix;
+
+  background-color: $white;
+  color: $tab-color;
+  display: inline-block;
+  font-size: 1.3rem;
+
+  .mb-tab-item {
+    @include size(50%, 100%);
+    @include text-overflow();
+
+    border-bottom: 0.25rem solid $white;
+
+    box-sizing: border-box;
+    display: inline-block;
+    float: left;
+    padding: 0.75rem 0;
+    text-align: center;
+
+    .mb-tab-content {
+      @include square(100%);
+
+      border-right: 0.1rem solid $item-shadow-color;
+      display: inline-block;
+      line-height: 2.5rem;
+    }
+
+    &:last-child {
+      .mb-tab-content {
+        border-right: none;
+      }
+    }
+  }
+
+  .mb-checked-item {
+    border-bottom: 0.25rem solid $yellow-bg-color;
+    color: $yellow-bg-color;
+    display: inline-block;
+    text-align: center;
+  }
+
+}

@@ -1,0 +1,157 @@
+$tip-color: #999;
+$btn-color: #37b9a0;
+
+.uhkklp-earlybird {
+  padding: 14px;
+
+  .required-tip:before {
+    content: none;
+  }
+
+  .draw-item {
+    height: 650px;
+  }
+
+  .earlybird-item-body {
+    padding: 10px;
+    width: 410px;
+
+    .draw-date-set {
+      width: 480px;
+      height: 40px;
+
+      label {
+        font-weight: normal;
+        float: left;
+        margin-right: 15px;
+        line-height: 33px;
+      }
+
+      .draw-date {
+        float: left;
+
+        input {
+          width: 170px;
+        }
+
+        .cut-off {
+          margin: 0 10px;
+          line-height: 33px;
+        }
+      }
+    }
+
+    .prize-set {
+      position: relative;
+
+      label {
+        font-weight: normal;
+        margin-right: 15px;
+        line-height: 33px;
+      }
+
+      .prize {
+        height: 560px;
+        width: 560px;
+        position: absolute;
+        top: 0;
+        left: 100px;
+      }
+    }
+
+    .prize-order {
+      position: relative;
+
+      .prize-input {
+        width: 223px;
+        position: absolute;
+        top: 0;
+        left: 145px;
+      }
+
+      .quantity {
+        position: absolute;
+        top: 55px;
+        left: 65px;
+
+        .quantity-input {
+          left: 80px;
+        }
+      }
+
+      .prize-name {
+        position: absolute;
+        top: 110px;
+        left: 65px;
+
+        .name-input {
+          left: 80px;
+        }
+      }
+    }
+
+    .sms-sample-text {
+      width: 400px;
+      height: 100px;
+      outline: none;
+      resize: none;
+    }
+
+    .sms-tip {
+      color: $tip-color;
+      font-size: 12px;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+
+    .sms-left {
+      float: left;
+      width: 410px;
+    }
+
+    .sms-right {
+      margin-left: 450px;
+      min-height: 170px;
+      width: 500px;
+
+      .sms-record-span {
+        color: $btn-color;
+      }
+
+      .sms-pointer {
+        cursor: pointer;
+      }
+
+      .sms-record-div {
+        margin: 8px 0 0 8px;
+
+        label {
+          margin-bottom: 2px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  .draw-item-panel {
+    margin-bottom: 30px;
+    min-height: 135px;
+
+    .earlybird-draw-body {
+      padding: 10px;
+
+      .broadcast-pagination {
+        padding-bottom: 25px;
+      }
+    }
+
+    .winner-list {
+      min-height: 145px;
+      width: auto;
+    }
+  }
+
+  // .modal-body {
+  // }
+
+}

@@ -1,0 +1,33 @@
+{
+    "id":               "54d2c22f2736e73d058b456b"，
+    "name":             "某公司"，               //门店名
+    "branchName":       "国贸店"，               //分店名
+    "type":             "购物"，                 //门店服务类型
+    "subtype":          "数码家电"，              //门店子服务类型
+    "telephone"：       "021-8921222"，          //门店电话
+    "location":         "上海浦东新区郭守敬路598号"，
+    "position":""，         //定位
+    "image":"http://vincenthou.qiniudn.com/a80d4d78d1536b0c1de91222.jpg"， //门店图片
+    "businessHours": "10:00-20:00"，
+    "description":""，
+    "wechat": {
+        "channelId":"54d9c155e4b0abe717853ee1"，
+        "qrcodeId":"54eeef15e4b0068a6eefbbbb"，
+        "qrcode":"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQEl8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL05VamU0Y1htWjVrZXpoY2RKV1RQAAIEh760VAMEAAAAAA=="
+    },
+    "weibo": {
+        "channelId":"54f51cefe4b0c5896e262375"，
+        "qrcodeId":"54f66124e4b0bc118cb053af"，
+        "qrcode":"https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=gQFs8DoAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL2NVaXlza0htR3BsalhWTmZTV1RQAAIEhzKqVAMEAAAAAA=="
+    },
+    "storeGoods": {
+        "total" : 300,
+        "onSaleTotal": 260,
+        "offSaleTotal": 40
+    },
+    "staff": {
+        "total": 300,
+        "onlineTotal": 240,
+        "offlineTotal": 60
+    }
+}

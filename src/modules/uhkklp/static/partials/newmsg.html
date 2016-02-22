@@ -1,0 +1,23 @@
+<div wm-breadcrumb="breadcrumb"></div>
+<div wm-tabs="newmsg.changeTab()" tabs="newmsg.tabs" ng-model="newmsg.curTab"></div>
+
+<div class="mt-panel" ng-show="newmsg.list.data.length > 0 && !newmsg.list.hasLoading">
+  <img class="mt-panel-img" src="/images/nav/message_default.png">{{'mt_push_count' | translate : '{count: newmsg.totalCount}'}}
+  <a class="btn btn-success user-btn pull-right" style="margin-right: 5px; margin-top: 5px;" href="/uhkklp/edit/newmsg">{{'mt_bt_create_push' | translate}}</a>
+</div>
+
+<div class="uhkklp-push-tab tab-view-wrap mt-message-tab-view-wrap">
+
+  <div ng-show="newmsg.list.data.length > 0" wm-table class="colored-table" ng-model="newmsg.list"></div>
+
+  <div class="keywordlist-zero" ng-show="newmsg.list.data.length == 0 && !newmsg.list.hasLoading">
+    <a href="/uhkklp/edit/newmsg"><div class="keywordlist-zero-img center-block"></div></a>
+    <span class="keywordlist-zero-text">{{'mt_bt_create_push' | translate}}</span>
+  </div>
+
+  <div class="clearfix">
+    <div class="broadcast-pagination">
+      <div wm-pagination current-page="newmsg.page" page-size="newmsg.pageSize" total-items="newmsg.totalCount" on-change-size="newmsg.changeSize" on-change-page="newmsg.changePage"></div>
+    </div>
+  </div>
+</div>

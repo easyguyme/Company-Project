@@ -1,0 +1,127 @@
+<div wm-breadcrumb="promotion.breadcrumb"></div>
+
+<div class="product-detail-wrapper promotion-detail-wrapper clearfix">
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_name"></label>
+    <label class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.campaign.name}}</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_status"></label>
+    <label class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.isActivated | translate}}</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_time"></label>
+    <label class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{'time_to' | translate: '{startTime: promotion.campaign.startTime, endTime: promotion.campaign.endTime}' }}</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_member_number"></label>
+    <label ng-if="promotion.campaign.participantCount != ''" class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.campaign.participantCount}}{{'product_promotion_activity_member_number_unit'| translate}}</label>
+    <label ng-if="promotion.campaign.participantCount == ''" class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">-</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_limit_times"></label>
+    <label ng-if="promotion.campaign.limitTimes != ''" class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.campaign.limitTimes}}{{'product_promotion_activity_limit_times_unit'| translate}}</label>
+    <label ng-if="promotion.campaign.limitTimes == ''" class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">-</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_goods"></label>
+    <label class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.chosenGoodsName}}</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_associated_gift"></label>
+    <div class="col-md-8 col-sm-9 col-xs-9 score-rule-box clear-padding">
+      <ul class="clear-margin" ng-if="promotion.campaign.promotion.gift.type == 'score'">
+        <li class="gift-rule-item">
+          <div class="promotion-panel-header" translate="member_score"></div>
+          <div class="promotion-panel-body">
+            <section class="form-group">
+              <label class="product-detail-name">{{promotion.scoreType | translate}} : </label>
+              <label class="product-detail-item">{{promotion.campaign.promotion.gift.config.number}}</label>
+            </section>
+          </div>
+        </li>
+      </ul>
+
+      <section ng-if="promotion.campaign.promotion.gift.type == 'lottery'">
+        <div class="promotion-panel-header" translate="product_promotion_lotto"></div>
+        <div class="promotion-panel-body rule-body-lottery">
+          <section class="form-group row" ng-repeat="prize in promotion.campaign.promotion.gift.config.prize track by $index">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+              <label class="product-detail-name">{{'product_promotion_gift_name' | translate}} : </label>
+              <label class="product-detail-item">{{prize.name}}</label>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12" ng-if="promotion.campaign.promotion.gift.config.method == 'scale'">
+              <label class="product-detail-name">{{'product_promotion_winning_odds' | translate}} : </label>
+              <label class="product-detail-item">{{prize.number | number:2}}%</label>
+            </div>
+            <div class="col-md-5 col-sm-5 col-xs-12" ng-if="promotion.campaign.promotion.gift.config.method == 'number'">
+              <label class="product-detail-name">{{'product_promotion_gift_number' | translate}} : </label>
+              <label class="product-detail-item">{{prize.number}}</label>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_involved_situation"></label>
+    <label class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.productsText | translate}}</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_tags"></label>
+    <label class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding">{{promotion.tagsText}}</label>
+  </section>
+
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_campaign_channel"></label>
+    <div class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding" ng-if="promotion.checkedChannels.length > 0">
+      <ul class="clear-margin">
+        <li class="redemption-channels-item display-redemption-channels" ng-repeat="account in promotion.checkedChannels track by $index">
+          <div class="channels-icon-wrapper">
+            <img ng-src="/images/customer/{{account.icon}}.png">
+          </div>
+          <div class="channels-content-wrapper" translate="{{account.name}}"></div>
+        </li>
+      </ul>
+    </div>
+    <div class="product-detail-item col-md-8 col-sm-9 col-xs-9 clear-container-padding" ng-if="promotion.checkedChannels.length <= 0">-</div>
+  </section>
+
+  <!-- Promotion Links Wrapper -->
+  <section class="col-md-12 col-sm-12 col-xs-12 form-group clear-container-padding">
+    <label class="product-detail-name col-md-2 col-sm-3 col-xs-3" translate="product_promotion_activity_link"></label>
+    <div class="col-md-8 col-sm-9 col-xs-9 score-rule-box clear-padding" ng-if="promotion.checkedChannels.length > 0">
+      <ul class="clear-margin">
+        <li class="redemption-channels-item" ng-repeat="account in promotion.checkedChannels | filter: {'online': true} track by $index">
+          <div class="promotion-panel-header">
+            <div class="channels-icon-wrapper">
+              <img ng-src="/images/customer/{{account.icon}}.png">
+            </div>
+            <div class="channels-content-wrapper" translate="{{account.name}}"></div>
+          </div>
+          <div class="promotion-panel-body">
+            <section class="form-group promotion-links-wrapper">
+              <label class="product-detail-name links-item-title">{{'product_promotion_activity_exchange_entrance' | translate}} </label>
+              <div class="product-detail-item links-item-content" wm-copy-input text="{{account.entranceUrl}}"></div>
+            </section>
+            <section class="form-group promotion-links-wrapper">
+              <label class="product-detail-name links-item-title">{{'product_promotion_activity_exchange_record' | translate}} </label>
+              <div class="product-detail-item links-item-content" wm-copy-input text="{{account.recordUrl}}"></div>
+            </section>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="product-detail-item col-md-8 col-sm-9 col-xs-9 score-rule-box clear-padding" ng-if="promotion.checkedChannels.length <= 0">-</div>
+  </section>
+
+</div>

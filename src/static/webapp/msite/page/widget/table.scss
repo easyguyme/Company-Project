@@ -1,0 +1,41 @@
+$m-table-box-color:        #666;
+$m-table-box-border-color: #e5e5e5;
+
+.m-table-box {
+  color: $m-table-box-color;
+  font-size: .50rem;
+  overflow: hidden;
+  padding: .50rem;
+  word-break: break-word;
+
+  table {
+    border: 1px $m-table-box-border-color solid;
+    -moz-border-radius: .03rem;
+    -webkit-border-radius: .03rem;
+    border-radius: .03rem;
+    color: $m-table-box-color;
+    font-size: .50rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+
+    tr {
+      height: 1.25rem;
+      line-height: 1.25rem;
+
+      td {
+        border: 1px $m-table-box-border-color solid;
+      }
+
+    }
+  }
+}
+
+.m-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.m-vamiddle {
+  vertical-align: middle;
+}

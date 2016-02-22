@@ -1,0 +1,262 @@
+<div>
+  <div wm-breadcrumb="setting.breadcrumb"></div>
+  <div wm-tabs="setting.changeTab()" tabs="setting.tabs" ng-model="setting.curTab"></div>
+  <div  ng-switch="setting.flag">
+    <div class="reminderlist-table-wrap helpdesk-table" ng-switch-when="0">
+      <wm-table ng-model="setting.reminderList" class="colored-table"></wm-table>
+    </div>
+    <div class="service-time-capacity-div" ng-switch-when="1">
+      <div class="service-time-capacity-title service-time-capacity-one">{{'helpdesk_setting_session_end_time' | translate}}</div>
+      <div class="service-time-capacity-two">
+        <div class="service-time-capacity-select" wm-select on-change="setting.changeTime" ng-model="setting.time" text-field="text" value-field="value" items="setting.times" ></div>
+        <div class="service-time-capacity-select-tail">{{'helpdesk_setting_minutes_later' | translate}}</div>
+      </div>
+      <div class="service-time-capacity-title service-time-capacity-three">{{'helpdesk_setting_maximum_number' | translate}}</div>
+      <div class="service-time-capacity-four">
+        <div class="service-time-capacity-select" wm-select on-change="setting.changePerson" ng-model="setting.person" text-field="text" value-field="value" items="setting.persons" ></div>
+        <div class="service-time-capacity-select-tail">{{'helpdesk_setting_people' | translate}}</div>
+      </div>
+      <div class="service-time-capacity-title service-time-capacity-five">{{'helpdesk_setting_work_time' | translate}}</div>
+      <div class="service-time-capacity-six">
+        <div class="service-time-capacity-select" wm-select on-change="setting.changeStartHour" ng-model="setting.startHour" text-field="text" value-field="value" items="setting.hours" ></div>
+        <div class="service-time-capacity-select-colon">:</div>
+        <div class="service-time-capacity-select" wm-select on-change="setting.changeStartMinute" ng-model="setting.startMinute" text-field="text" value-field="value" items="setting.minutes" ></div>
+        <div class="service-time-capacity-select-underline">-</div>
+        <div class="service-time-capacity-select" wm-select on-change="setting.changeEndHour" ng-model="setting.endHour" text-field="text" value-field="value" items="setting.hours" ></div>
+        <div class="service-time-capacity-select-colon">:</div>
+        <div class="service-time-capacity-select" wm-select on-change="setting.changeEndMinute" ng-model="setting.endMinute" text-field="text" value-field="value" items="setting.minutes" ></div>
+      </div>
+      <div class="service-time-capacity-seven">
+        <input type="submit" class="btn btn-success service-time-capacity-btn-disable[disabled]" value="{{'helpdesk_setting_submit' | translate}}" ng-disabled="setting.btnDisabled || setting.timeError" ng-click="setting.update()"/>
+      </div>
+    </div>
+    <div ng-switch-when="2">
+      <div>
+        <div class="panel">
+          <!-- <div class="panel-heading">
+            <label class="panel-title">{{'helpdesk_setting_social_accounts'|translate}}</label>
+            <button type="button" class="btn btn-success pull-right" ng-if="!!setting.channels.length" ng-click="setting.addChannel()">{{'helpdesk_setting_add_wechat_account'|translate}}</button>
+          </div> -->
+          <div wm-list-header content="helpdesk_setting_social_accounts" head-class="qrcode-header-wrapper">
+            <button class="btn btn-success btn-listheader" ng-if="!!setting.channels.length" ng-click="setting.addChannel()" translate="helpdesk_setting_add_wechat_account"></button>
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="channel-block btn-add-wrap" ng-if="!setting.channels.length">
+            <div class="btn-add" ng-click="setting.addChannel()"></div>
+            <div>{{'helpdesk_setting_add_wechat_service_account'|translate}}</div>
+          </div>
+          <div class="channel-account-item clearfix" ng-repeat="channel in setting.channels">
+            <div class="container account-item-title fs12 col-xs-6 col-md-12 clearfix">
+              <div class="row fs14">
+                <div class="col-xs-12 col-md-3" translate="helpdesk_setting_{{channel.type}}_name"></div>
+                <div class="col-xs-12 col-md-3" translate="helpdesk_setting_{{channel.type}}_type"></div>
+                <div class="col-xs-12 col-md-4" translate="helpdesk_setting_{{channel.type}}_menu"></div>
+                <div class="col-xs-12 col-md-2" translate="helpdesk_setting_operation"></div>
+              </div>
+            </div>
+            <div class="container account-item-info col-xs-6 col-md-12 clearfix">
+              <div class="row fs14">
+                <div class="col-xs-12 col-md-3 bind-account-info">
+                    <div class="bind-account-avatar account-avatar-border pull-left" ng-class="{'account-avatar-green':channel.type=='wechat', 'account-avatar-yellow':channel.type=='weibo', 'account-avatar-blue':channel.type=='alipay'}"><img class="avatar-img" ng-src="{{channel.avatar}}" /><img class="avatar-icon" ng-src="/images/core/{{channel.type}}-icon.png" /></div>
+                    <div class="bind-account-name pull-left text-el">{{channel.name}}</div>
+                </div>
+                <div class="col-xs-12 col-md-3 bind-wechat-type">{{channel.accountCat|translate}}</div>
+                <div class="col-xs-12 col-md-4"><span ng-class="{'channel-setting':!channel.isSet}" ng-click="!channel.isSet && setting.enableHelpDesk(channel.id)" wm-tooltip="{{(channel.isSet?'':channel.menu)|translate}}">{{'setting_channel_' + channel.isSet|translate}}<i class="channel-setting-icon"></i></span></div>
+                <div class="col-xs-12 col-md-2">
+                  <a class="operate-icon delete-icon cp" wm-tooltip="{{'delete' | translate}}" ng-click="setting.deleteChannel($index, $event)"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="hide">
+        <div class="panel">
+          <div wm-list-header content="helpdesk_setting_enterprise_accounts" head-class="qrcode-header-wrapper">
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="channel-block btn-add-wrap" ng-if="!setting.enterprise.corpId">
+            <div class="btn-add" ng-click="setting.addWeChatCp()"></div>
+            <div>{{'helpdesk_setting_add_enterprise_service_account'|translate}}</div>
+          </div>
+          <div class="channel-account-item clearfix" ng-if="setting.enterprise.corpId">
+            <div class="container account-item-title fs12 col-xs-6 col-md-12 clearfix">
+              <div class="row fs14">
+                <div class="col-xs-12 col-md-2" translate="helpdesk_setting_enterprise_id"></div>
+                <div class="col-xs-12 col-md-3" translate="helpdesk_setting_enterprise_name"></div>
+                <div class="col-xs-12 col-md-2" translate="helpdesk_setting_agent_id"></div>
+                <div class="col-xs-12 col-md-3" translate="helpdesk_setting_agent_name"></div>
+                <div class="col-xs-12 col-md-2" translate="helpdesk_setting_operation"></div>
+              </div>
+            </div>
+            <div class="container account-item-info col-xs-6 col-md-12 clearfix">
+              <div class="row fs14">
+                <div class="col-xs-12 col-md-2">{{setting.enterprise.corpId}}</div>
+                <div class="col-xs-12 col-md-3">{{setting.enterprise.corpName}}</div>
+                <div class="col-xs-12 col-md-2">{{setting.enterprise.agentId}}</div>
+                <div class="col-xs-12 col-md-3">{{setting.enterprise.agentName}}</div>
+                <div class="col-xs-12 col-md-2">
+                  <a class="btn btn-link btn-wechatcp-delete" wm-tooltip="{{'delete' | translate}}" ng-click="setting.deleteWeChatCp()">{{'management_cancel_authorization' | translate}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="helpdesk-setting">
+        <div class="panel">
+          <!-- <div class="panel-heading">
+            <label class="panel-title">{{'helpdesk_setting_website'|translate}}</label>
+            <button type="button" class="btn btn-success pull-right" ng-if="!!setting.websites.length" ng-click="setting.addWebsite()">{{'helpdesk_setting_add_website'|translate}}</button>
+          </div> -->
+          <div wm-list-header content="helpdesk_setting_website" head-class="qrcode-header-wrapper">
+            <button type="button" class="btn btn-success btn-listheader" ng-if="!!setting.websites.length" ng-click="setting.addWebsite()" translate="helpdesk_setting_add_website"></button>
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="channel-block btn-add-wrap" ng-if="!setting.websites.length">
+            <div class="btn-add" ng-click="setting.addWebsite()"></div>
+            <div>{{'helpdesk_setting_add_service_website'|translate}}</div>
+          </div>
+          <div class="channel-account-item clearfix" ng-repeat="website in setting.websites">
+            <div class="container account-item-title fs12 col-xs-6 col-md-12 clearfix">
+              <div class="row fs14">
+                <div class="col-xs-12 col-md-2">{{'helpdesk_setting_website_name'|translate}}</div>
+                <div class="col-xs-12 col-md-3">{{'helpdesk_setting_website_url'|translate}}</div>
+                <div class="col-xs-12 col-md-5">{{'helpdesk_setting_website_code'|translate}}</div>
+                <div class="col-xs-12 col-md-2">{{'helpdesk_setting_operation'|translate}}</div>
+              </div>
+            </div>
+            <div class="container account-item-info col-xs-6 col-md-12 clearfix">
+              <div class="row fs14">
+                <div class="col-xs-12 col-md-2">{{website.name}}</div>
+                <div class="col-xs-12 col-md-3">{{website.url}}</div>
+                <div class="col-xs-12 col-md-5 website-code">
+                  <input type="text" class="form-control copy-text" value="{{website.code}}" readonly="readonly" ng-style="{'width': '200px'}" />
+                  <i wm-copy class="icon-copy" clipboard-text="website.code" tip="{{'helpdesk_setting_hover_tip' | translate}}" tooltip-max-width="160"></i>
+                  <a href="#" class="btn btn-success" ng-click="setting.openClient($index)" translate="helpdesk_contact_helpdesk"></a>
+                </div>
+                <div class="col-xs-12 col-md-2">
+                  <a class="operate-icon delete-icon" ng-click="setting.deleteWebsite($index, $event)"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- mobile applications -->
+          <div class="panel panel-default store-pannel">
+            <!-- <div class="panel-heading panel-title-block helpdesk-mobile-title">
+              <span class="mobile-application" translate="helpdesk_mobile_applications"></span>
+            </div> -->
+            <div wm-list-header content="helpdesk_mobile_applications" head-class="qrcode-header-wrapper"></div>
+            <div class="mobile-application-link">
+              <div class="mobile-icon cp">
+              </div>
+              <div class="mobile-link" translate="helpdesk_mobile_link">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="updateReminder.html">
+  <div class="setting-channel-title">
+    <button type="button" class="setting-channel-title-close close" ng-click="hideReminderUpdate()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="setting-channel-title-text">{{'helpdesk_setting_edit_reply' | translate}}</h4>
+  </div>
+  <form name="reminderupdate-form" >
+    <div class="reminderupdate-body">
+      <textarea class="form-control reminderupdate-body-textarea" ng-model="reminderReplyText" maxLength="250"> </textarea>
+      <div class="reminderupdate-body-text"><h6>{{'helpdesk_setting_character_tip' | translate}}<h6></div>
+      <div class="center-text">
+        <input type="submit" class="btn btn-success reminderupdate-body-btn" value="{{'helpdesk_setting_submit' | translate}}" ng-click="updateReminder()" />
+      </div>
+    </div>
+  </form>
+</script>
+<script type="text/ng-template" id="addChannel.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hide()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'helpdesk_setting_select_channel' | translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor create-user-body clearfix">
+    <ul class="col-md-12 col-xs-12 pd0" ng-if="notAddChannels.length > 0">
+      <li class="col-md-6 col-xs-6 setting-channel-split" ng-repeat="channel in notAddChannels track by $index">
+        <div class="col-md-2 col-xs-2 setting-channel-check">
+          <wm-checkbox ng-model="channel.checked"></wm-checkbox>
+        </div>
+        <div class="setting-channel-info pd0 col-md-10 col-xs-10 clearfix">
+          <div class="setting-channel-avatar-wrap" ng-class="{'account-avatar-green':channel.type=='wechat', 'account-avatar-yellow':channel.type=='weibo'}"><img class="setting-channel-avatar" ng-src="{{channel.avatar}}"/><img class="sign-icon" ng-src="/images/core/{{channel.type}}-icon.png"></div>
+          <div class="pull-right setting-channel-info-width">
+            <div class="setting-channel-name" wm-tooltip="{{channel.name}}">{{channel.name}}</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="no-channels-wrapper" ng-if="notAddChannels.length == 0">
+      <span class="no-channels-tip">{{ 'helpdesk_setting_no_channels_tip' | translate}}</span>
+      <a href="/management/channel" ng-click="hide()">{{ 'helpdesk_setting_add_channel' | translate}}</a>
+    </div>
+  </div>
+  <div class="modal-footer modal-bgcolor center-text create-user-footer" ng-if="notAddChannels.length > 0">
+    <input type="submit" class="btn btn-success user-btn" value="{{'channel_wechat_mass_submit' | translate}}" ng-click="submit()"/>
+  </div>
+</script>
+<script type="text/ng-template" id="addWebsite.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hide()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'helpdesk_setting_select_website' | translate}}</h4>
+  </div>
+  <form name="accountCreateForm" ng-submit="save()">
+    <div class="modal-body modal-bgcolor create-user-body clearfix">
+      <span class="account-tip mb20 tip">
+        <span>
+          <img src="/images/core/popup_tip.png"/>
+          <span>{{'helpdesk_setting_website_tip' | translate}}</span>
+        </span>
+      </span>
+      <div class="form-group">
+        <label class="dark-gray" for="name">{{'helpdesk_setting_website_name' | translate}}</label>
+        <input name="name" type="text" id="name" class="form-control" ng-model="websiteName" required below-msg maxlength="30" form-tip="{{'helpdesk_session_website_name_tip' | translate}}"/>
+      </div>
+      <div class="form-group">
+        <label class="dark-gray" for="url">{{'helpdesk_setting_website_url' | translate}}</label>
+        <input id="url" type="url" class="form-control" ng-model="linkUrl" required below-msg wm-url form-tip="{{'wechat_menu_link_tip' | translate}}"/>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input type="submit" class="btn btn-success user-btn" value="{{'channel_wechat_mass_submit' | translate}}"/>
+    </div>
+  </form>
+</script>
+<!-- Delete wechatcp -->
+<script type="text/ng-template" id="deleteWechatcp.html">
+  <div class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title">{{'management_channel_system_prompt'|translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="modal-body-title">{{'management_channel_delete_step_title'|translate}}</div>
+    <div class="modal-body-content">
+      <div class="step-title">{{'management_channel_delete_step_action'|translate}}</div>
+      <div class="step-one">
+        <div class="step-one-title">{{'management_channel_delete_step_one'|translate}}</div>
+        <div class="step-one-bgi"></div>
+      </div>
+      <div class="step-two">
+        <div class="step-two-title">{{'management_channel_delete_step_two'|translate}}</div>
+        <div class="step-two-bgi"></div>
+      </div>
+      <div class="step-three">
+        <div class="step-three-title">{{'management_channel_delete_step_three'|translate}}</div>
+        <div class="step-three-bgi"></div>
+      </div>
+    </div>
+  </div>
+</script>

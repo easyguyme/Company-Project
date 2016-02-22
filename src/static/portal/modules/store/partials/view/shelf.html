@@ -1,0 +1,82 @@
+<div wm-breadcrumb="shelf.breadcrumb"></div>
+
+<div class="row storeGoods-detail-wrapper clear-container-margin">
+
+  <section class="col-md-6 col-sm-12 col-xs-12 form-group">
+    <h4 class="goods-basic-name" ng-style="{'font-size': '22px'}">{{shelf.product.name}}</h4>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="images"></label>
+      <div class="col-md-10 col-sm-10 col-xs-10 clearpadding goods-item-pictures">
+        <div wm-picture-show index="0" pictures="shelf.goods.pictures"></div>
+      </div>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="store_product_number"></label>
+      <span class="col-md-10 col-sm-10 col-xs-10 clearpadding">{{shelf.product.sku}}</span>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="price"></label>
+      <span class="col-md-10 col-sm-10 col-xs-10 clearpadding">{{shelf.goods.price | currency: '￥'}}</span>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="product_category"></label>
+      <div class="col-md-10 col-sm-10 col-xs-10 clearpadding" ng-if="shelf.product.type.length != 0">
+        <div ng-style="{'margin-bottom': '10px'}">{{shelf.product.type.name}}</div>
+        <ul class="row goods-property-wrapper clear-margin" ng-if="shelf.product.type.properties.length != 0">
+          <li class="col-md-6 col-sm-12 col-xs-12 clearpadding goods-property-item" ng-repeat="property in shelf.product.type.properties track by $index">
+            <label class="goods-detail-name clearpadding text-el">{{property.name}}:</label>
+            <label class="goods-detail-name text-el" wm-tooltip="{{property.value}}">{{property.value}}</label>
+          </li>
+        </ul>
+      </div>
+      <label ng-if="shelf.product.type.length == 0" class="col-md-10 col-sm-10 col-xs-10 clearpadding" translate="product_product_no_category"></label>
+    </div>
+
+    <div class="row form-group clear-container-margin">
+      <label class="col-md-2 col-sm-2 col-xs-2 clearpadding" translate="store_goods_detail"></label>
+      <div ng-if="shelf.product.intro != ''" class="col-md-10 col-sm-10 col-xs-10 clearpadding goods-intro-wrapper" ng-bind-html="shelf.product.intro"></div>
+      <span ng-if="shelf.product.intro == ''" class="col-md-10 col-sm-10 col-xs-10 clearpadding" translate="product_no_content"></span>
+    </div>
+
+  </section>
+
+  <section class="col-md-6 col-sm-12 col-xs-12">
+
+    <section class="col-md-9 col-sm-10 col-xs-12 clear-container-padding form-group">
+      <div class="goods-status-header">
+        <span class="goods-status-label" translate="store_goods_status"></span>
+        <span class="goods-status-box fs12" ng-class="{true: 'on-shelves', false: 'off-shelves'}[shelf.goods.labelColor == 'green']" translate="{{shelf.goods.shelves}}"></span>
+      </div>
+      <div class="goods-status-body">
+
+        <section class="row form-group clear-container-margin" ng-if="shelf.goods.status == 'on'">
+          <label class="clear-container-padding goods-on-or-off-label" translate="store_goods_on_shelves_time"></label>
+          <label class="goods-on-or-off-time clear-container-padding">{{shelf.goods.onSaleTime || '--'}}</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-if="shelf.goods.status == 'off' && shelf.goods.offShelfTime == shelf.goods.createdAt">
+          <label class="clear-container-padding goods-on-or-off-label" translate="store_goods_on_shelves_time"></label>
+          <label class="goods-on-or-off-time clear-container-padding">--</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-class="{'english-store-time': shelf.language == 'en_us'}" ng-if="shelf.goods.status == 'off' && shelf.goods.onSaleTime == '' && shelf.goods.offShelfTime != shelf.goods.createdAt">
+          <label class="clear-container-padding goods-on-or-off-label" translate="store_goods_off_shelves_time"></label>
+          <label class="goods-on-or-off-time clear-container-padding">{{shelf.goods.offShelfTime || '--'}}</label>
+        </section>
+
+        <section class="row form-group clear-container-margin" ng-class="{'english-store-time': shelf.language == 'en_us'}" ng-if="shelf.goods.status == 'off' && shelf.goods.onSaleTime != ''">
+          <label class="clear-container-padding goods-on-or-off-label" translate="store_goods_booking_shelves_time"></label>
+          <label class="goods-on-or-off-time clear-container-padding">{{shelf.goods.onSaleTime || '--'}}</label>
+          <span class="goods-scheduled-box fs12" translate="store_scheduled"></span>
+        </section>
+
+      </div>
+    </section>
+
+  </section>
+
+</div>

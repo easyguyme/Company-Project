@@ -1,0 +1,55 @@
+$wm-tab-btn-border-active: #2bb29a;
+$wm-tab-btn-border-default: #d2d2d2;
+$wm-tab-btn-bg: #f7f7f7;
+$wm-tab-btn-bg-hover: #eee;
+$wm-tab-font: #878787;
+
+.tab-list {
+  cursor: pointer;
+
+  .tab-btn {
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    min-width: 92px;
+    padding: 0 10px;
+    border: 1px solid $wm-tab-btn-border-default;
+    background-color: $wm-tab-btn-bg;
+    color: $wm-tab-font;
+
+    &:first-child {
+      border-radius: 2px 0 0 2px;
+    }
+
+    &:last-child {
+      border-radius: 0 2px 2px 0;
+    }
+
+    &:hover {
+      background-color: $wm-tab-btn-bg-hover;
+    }
+
+    &.active {
+      color: $white-background-color;
+      background-color: $white-background-text-color;
+      border: 1px solid $wm-tab-btn-border-active;
+    }
+
+  }
+}
+
+.c-horizontal-list {
+  margin-bottom: 15px;
+  color: $wm-tab-font;
+  cursor: pointer;
+
+  .list-item {
+    float: left;
+    margin-right: 40px;
+
+    &:hover,
+    &.active {
+      color: $wm-green;
+    }
+  }
+}

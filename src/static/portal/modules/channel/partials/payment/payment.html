@@ -1,0 +1,30 @@
+<div class="channelpayment clearfix" ng-controller="wm.ctrl.channel.payment.payment as payment">
+  <!-- player table header wrapper -->
+  <div class="panel panel-default panel-center-content">
+    <div wm-list-header content="{{'channel_payment_records_count' | translate:'{ count: payment.totalItems }'}}" icon="{'url': '/images/core/record.png', 'width': 16, height: 15}">
+      <span class="btn-export pull-right" ng-style="{margin: '9px 10px'}" ng-click="payment.export()" ng-class="{'export-disabled':!payment.enableExport}" translate="export"></span>
+    </div>
+  </div>
+
+  <div class="data-picker clearfix">
+    <wm-search ng-model="payment.searchKey" class="search-wrapper-input col-md-2 clearpadding mr30" click-func="payment.search()" placeholder="{{'channel_transaction_number' | translate}}"></wm-search>
+    <span class="span-center pull-left mr20">{{'channel_payment_records_date' | translate}}</span>
+    <div class="col-md-2 pull-left clearpadding">
+      <div wm-datetime-picker picker-id="beginDatePicker" format-type="YYYY-MM-DD" pick-date="true" ng-model="payment.startTime" min-date-picker-id="endDatePicker" time-handler="payment.selectDate()" icon="calendar" less-than-today="true">
+      </div>
+    </div>
+    <div class="pull-left span-center">&nbsp;&nbsp;&minus;&nbsp;&nbsp;</div>
+    <div class="col-md-2 pull-left clearpadding">
+      <div wm-datetime-picker picker-id="endDatePicker" format-type="YYYY-MM-DD" pick-date="true" pick-time="true" max-date-picker-id="beginDatePicker" ng-model="payment.endTime" icon="calendar" time-handler="payment.selectDate()" less-than-today="true"></div>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <wm-table ng-model="payment.list" class="colored-table member-setting"></wm-table>
+  </div>
+
+  <!-- pagination wrapper -->
+  <div class="broadcast-pagination">
+    <div wm-pagination current-page="payment.currentPage" page-size="payment.pageSize" total-items="payment.totalItems" on-change-size="payment.changeSize" on-change-page="payment.changePage"></div>
+  </div>
+</div>

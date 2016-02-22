@@ -1,0 +1,227 @@
+<div class="ulkklp-edit-recipe">
+    <div wm-breadcrumb="westpromotion.breadcrumb">
+    </div>
+    <form id="registrationForm" name="registrationForm" method="post" accept-charset="utf-8" ng-submit="submit()" novalidate>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'activity_activity_name' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+            <select style="display: block; height: 30px;" name="activityName" id="activityName" class="left select" title="活動名稱" ng-change="getRegisNums()" ng-model="formData.activityName" required ng-options="s for s in activities">
+                <option value=""></option>
+            </select>
+            <div class="ng-invalid" ng-show="submitted">
+                <div>
+                    <span>{{'activityName_required' | translate}}</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_name' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="name" id="name" class="cookitem-input" type="text" ng-model="formData.name" required form-tip="{{'registrationForm_name_tip' | translate}}" ng-minlength="2" maxlength="30" ng-maxlength="30" />
+                <div class="ng-invalid" ng-show="(registrationForm.name.$touched || registrationForm.name.$dirty) && registrationForm.name.$invalid || submitted">
+                    <div>
+                        <span ng-show="registrationForm.name.$error.maxlength">{{'message_name_maxlength' | translate}}</span>
+                    </div>
+                    <div>
+                        <span ng-show="registrationForm.name.$error.minlength">{{'message_name_minlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <span class="cookitem-lbl-required">{{'registration_mobile' | translate}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input class="btn btn-primary btn-sm" type="button" value="{{'registration_validation' | translate}}" ng-click="validateNumber()" ng-disabled="isEnable" ng-show='isShowValidateBtn' />
+            </div>
+            <div class="cookitem-content">
+                <input name="mobile" id="mobile" class="cookitem-input" type="text" ng-model="formData.mobile" required />
+            </div>
+            <div style="margin-left:10px;color:#b42d14;font-size: 12px;" ng-show="showError">
+                <div>
+                    <span>{{'mobile_format' | translate}}</span>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_restaurantName' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="restaurantName" id="restaurantName" class="cookitem-input" type="text" ng-model="formData.restaurantName" required />
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_city' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <select style="display: block; height: 30px;" name="city" id="city" class="left select" title="餐廳城市" ng-model="formData.city">
+                  <option value=""></option>
+                  <option value="基隆市">基隆市</option>
+                  <option value="台北市">台北市</option>
+                  <option value="新北市">新北市</option>
+                  <option value="桃園市">桃園市</option>
+                  <option value="新竹市">新竹市</option>
+                  <option value="新竹縣">新竹縣</option>
+                  <option value="苗栗縣">苗栗縣</option>
+                  <option value="台中市">台中市</option>
+                  <option value="彰化縣">彰化縣</option>
+                  <option value="雲林縣">雲林縣</option>
+                  <option value="嘉義市">嘉義市</option>
+                  <option value="嘉義縣">嘉義縣</option>
+                  <option value="台南市">台南市</option>
+                  <option value="高雄市">高雄市</option>
+                  <option value="屏東縣">屏東縣</option>
+                  <option value="南投縣">南投縣</option>
+                  <option value="宜蘭縣">宜蘭縣</option>
+                  <option value="花蓮縣">花蓮縣</option>
+                  <option value="台東縣">台東縣</option>
+                  <option value="澎湖縣">澎湖縣</option>
+                  <option value="金門縣">金門縣</option>
+                  <option value="連江縣">連江縣</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_address' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="address" id="address" class="cookitem-input" type="text" ng-model="formData.address" required />
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_businessForm' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <select style="display: block; height: 30px;" name="businessForm" id="businessForm" class="left select" title="經營形態" ng-model="formData.businessForm">
+                  <option value=""></option>
+                  <option value="中餐">中餐</option>
+                  <option value="團膳">團膳</option>
+                  <option value="小吃">小吃</option>
+                  <option value="西餐">西餐</option>
+                  <option value="速食快餐連鎖">速食快餐連鎖</option>
+                  <option value="飯店">飯店</option>
+                  <option value="其他">其他</option>
+                </select>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_perPrice' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+            <select style="display: block; height: 30px;" name="perPrice" id="perPrice" class="left select" title="平均消費單價" ng-model="formData.perPrice">
+                <option value="未選">未選</option>
+                <option value="$100以下">$100以下</option>
+                <option value="$101-400">$101-400</option>
+                <option value="$401-700">$401-700</option>
+                <option value="$701-1,500">$701-1,500</option>
+                <option value="$1,500以上">$1,500以上</option>
+            </select>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_perComingDay' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+            <select style="display: block; height: 30px;" name="perComingDay" id="perComingDay" class="left select" title="每日來客數量" ng-model="formData.perComingDay">
+                <option value="未選">未選</option>
+                <option value="0-100">0-100</option>
+                <option value="100-300">100-300</option>
+                <option value="300-500">300-500</option>
+                <option value="500以上">500以上</option>
+            </select>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="cookitem-lbl-required">{{'registration_registrationNumber' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+            <select style="display: block; height: 30px;" name="registrationNumber" id="registrationNumber" class="left select" title="報名場次" required ng-model="formData.registrationNumber" ng-options="item for item in westpromotion.regisNums" ng-change="reset()">
+                <option value=""></option>
+            </select>
+            <div class="ng-invalid" ng-show="submitted">
+                <div>
+                    <span>{{'registrationNumber_required' | translate}}</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_lineName' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="lineName" id="lineName" class="cookitem-input" type="text" ng-model="formData.lineName" ng-maxlength="30" maxlength="30" />
+                <div class="ng-invalid" ng-show="(registrationForm.lineName.$touched || registrationForm.lineName.$dirty) && registrationForm.lineName.$invalid || submitted">
+                    <div>
+                        <span ng-show="registrationForm.lineName.$error.maxlength">{{'name_maxlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+          <div class="cookitem-title">
+              <label for="">{{'registration_registrationTime' | translate}}</label><br/>
+          </div>
+          <div class="cookitem-content" ng-class="{'time-invalid': registrationForm.registrationTime.$invalid}">
+            <input type="hidden" name="registrationTime" ng-model="formData.registrationTime" binded="false">
+            <input style="width: 30%;" name="registrationTime" ng-model="formData.registrationTime" wm-datetime-picker picker-id="registrationTime">
+          </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_restaurantId' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+                <input name="restaurantId" id="restaurantId" class="cookitem-input" type="text" ng-model="formData.restaurantId" ng-maxlength="30" maxlength="30" />
+                <div class="ng-invalid" ng-show="(registrationForm.restaurantId.$touched || registrationForm.restaurantId.$dirty) && registrationForm.restaurantId.$invalid || submitted">
+                    <div>
+                        <span ng-show="registrationForm.restaurantId.$error.maxlength">{{'name_maxlength' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-title">
+                <label class="">{{'registration_confirmRegistration' | translate}}</label><br/>
+            </div>
+            <div class="cookitem-content">
+            <select style="display: block; height: 30px;" name="confirmRegistration" id="confirmRegistration" class="left select" title="確認報名" ng-model="formData.confirmRegistration">
+                <option value=""></option>
+                <option value="Yes">Yes</option>
+                <option value="NO">NO</option>
+            </select>
+            </div>
+        </div>
+        <br/>
+        <div class="cookitem">
+            <div class="cookitem-content">
+                <input class="btn btn-primary" type="submit" value="{{'recipe_edit_send' | translate}}" ng-disabled="isClickable"/>&nbsp;&nbsp;&nbsp;
+                <a ng-href="/uhkklp/westpromotion?active={{active}}" class="btn btn-default active">{{'recipe_edit_back' | translate}}</a>
+            </div>
+        </div>
+    </form>
+</div>

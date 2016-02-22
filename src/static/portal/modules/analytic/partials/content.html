@@ -1,0 +1,10 @@
+<div wm-breadcrumb="content.breadcrumb"></div>
+<ul class="tabs">
+  <li class="tab" ng-class="{'active': channelItem.id == content.currentChannelId}" ng-repeat="channelItem in content.allChannels" ng-click="content.changeChannel(channelItem)">
+    <span class="tab-icon-wrap">
+      <span class="icon tab-icon" ng-style="{'background-image': 'url(/images/analytic/tab_{{channelItem.type}}_icon.png)'}"></span>
+    </span>
+    <span>{{channelItem.name}}</span>
+  </li>
+</ul>
+<div ng-include="content.fileName"></div>

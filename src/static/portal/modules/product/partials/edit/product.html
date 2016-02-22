@@ -1,0 +1,212 @@
+<div wm-breadcrumb="product.breadcrumb"></div>
+<form id="product-form" role="form" ng-submit="product.submit()">
+  <div class="store-form store-basic-container clearfix">
+    <div class="form-group col-md-8 col-xs-12 mb30">
+      <label class="fields-item-label col-md-12 col-xs-12 pl0 required-field" translate="product_number" ng-if="product.categoryType == 'product'"></label>
+      <label class="fields-item-label col-md-12 col-xs-12 pl0 required-field" translate="product_service_id" ng-if="product.categoryType != 'product'"></label>
+      <div class="clearfix">
+        <div class="col-md-8 col-xs-8 pl0">
+          <input id="number" class="form-control" required without-star type="text" form-tip="{{'product_number_tip'|translate}}" ng-model="product.product.sku" maxlength="20" wm-validate="product.validateCode"/>
+        </div>
+        <button type="button" class="btn btn-success generate-btn" translate="product_generate_automatically" ng-click="product.generateSku()"></button>
+      </div>
+    </div>
+
+    <div class="form-group col-md-8 col-xs-12 mb30">
+      <label class="fields-item-label col-md-12 col-xs-12 pl0" translate="product_specification_price"></label>
+      <div class="clearfix product-specification-wrap">
+        <span class="fields-item-label col-md-12 col-xs-12 pl0 second-title-color" translate="product_specification"></span>
+        <label class="fields-item-label col-md-12 col-xs-12 pl0 fs12 form-tip" translate="product_specification_tip"></label>
+
+        <div ng-repeat="specification in product.specifications">
+          <div class="col-md-12 col-xs-12 pl0 product-specification-item mb10">
+            <div class="form-group" ng-if="specification.name.length == 0">
+              <div class="product-specification-input-wrap form-group">
+                <input class="form-control mr10 product-specification-input" placeholder="{{'product_add_specification_tip' | translate}}" maxlength="10" ng-model="specification.firstName" required without-star/>
+              </div>
+              <label class="btn btn-success user-btn mr10" translate="ok" ng-click="product.addSpecificationName($index)" ></label>
+              <label class="btn btn-default user-btn" translate="channel_wechat_mass_cancel" ng-click="product.deleteSpecification($index)"></label>
+            </div>
+
+            <div ng-if="specification.name.length > 0">
+              <label class="fields-item-label col-md-12 col-xs-12 pl0">{{specification.name}}</label>
+              <ul class="product-propertie-items">
+                <li class="product-propertie-item" ng-repeat="propertie in specification.properties">
+                  {{propertie}}
+                  <i class="propertie-delete-icon cp" ng-click="product.propertieDelete($parent.$index, $index, $event)"></i>
+                </li>
+              </ul>
+
+              <span class="product-add-specification-value cp" ng-click="product.propertiesEditShow($index)">
+                <span class="fs16">+</span>
+                {{'product_add_specification_value' | translate}}
+
+                <div class="specification-value-wrap" ng-if="specification.isShow">
+                  <i class="back-triangle"></i>
+                  <i class="front-triangle"></i>
+                  <span class="fields-item-label col-md-12 col-xs-12 pl0 second-title-color required-field" translate="product_specification_value"></span>
+                  <label class="fields-item-label col-md-12 col-xs-12 pl0 fs12 form-tip" translate="product_add_specification_value_tip"></label>
+                  <span wm-tag-input ng-model="specification.propertiesEdit" class="mr10" show-error="{{product.showTagError}}"></span>
+                  <label class="btn btn-success user-btn mr10" translate="ok" ng-click="product.propertiesEditOk($index, $event)"></label>
+                  <label class="btn btn-default user-btn" translate="channel_wechat_mass_cancel" ng-click="product.propertiesEditHide($index, $event)"></label>
+                </div>
+
+                <div class="specification-close-wrap" ng-if="specification.isShow" ng-click="product.propertiesEditHide($index, $event)"></div>
+              </span>
+            </div>
+
+            <i class="specification-delete-icon cp" ng-if="specification.name.length > 0" ng-click="product.deleteSpecification($index, $event)"></i>
+
+          </div>
+          <span class="goods-error-tip" ng-if="specification.showError" translate="product_specification_empty_tip"></span>
+        </div>
+
+        <div class="col-md-12 col-xs-12 pl0">
+          <span class="product-add-specification" translate="product_add_specification" ng-click="product.addSpecification()"></span>
+        </div>
+
+        <table border="1" class="product-table-wrap mb20" ng-if="product.rows > 0 && product.specificationsShow.length > 0">
+          <thead>
+            <tr>
+              <th ng-repeat="specification in product.specificationsShow" class="product-table-head"><span class="product-table-text">{{specification.name}}</span></th>
+              <th class="product-table-head"><span class="product-table-text">{{'product_price' | translate}}</span></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr ng-repeat="row in product.rowNum">
+              <td ng-repeat="specification in product.specificationsShow" rowspan="{{product.colNum[$index]}}" ng-if="row % product.colNum[$index] == 0">
+                <span class="product-table-text">{{specification.properties[(row % ($index == 0 ? product.rows : product.colNum[$index -1])) / product.colNum[$index]]}}</span>
+              </td>
+              <td>
+                <span class="product-table-input text-el" translate="product_set_price_tip"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <label class="fields-item-label col-md-12 col-xs-12 pl0 second-title-color" translate="product_price"></label>
+        <span class="product-table-input text-el" translate="product_set_price_tip"></span>
+      </div>
+
+    </div>
+
+    <label class="fields-item-label col-md-12 col-xs-12" translate="content_page_information"></label>
+    <div class="ml10 clearfix mb10">
+      <div class="form-group col-md-8 col-xs-12">
+        <label class="fields-item-label col-md-12 col-xs-12 pl0 second-title-color" translate="product_name"></label>
+        <div class="col-md-8 col-xs-8 pl0">
+          <input class="form-control" required type="text" form-tip="{{'product_name_tip'|translate}}" ng-model="product.product.name" wm-max-character-size="60"/>
+        </div>
+      </div>
+
+      <div class="form-group col-md-12 col-xs-12 mb5">
+        <span class="fields-item-label col-md-12 col-xs-12 pl0 required-field second-title-color" translate="picture"></span>
+        <span class="form-tip mb10" translate="product_piclib_tip"></span>
+        <ul class="clearfix">
+          <div wm-sortable="product.sortPicOptions">
+            <li class="product-pic-size mr15 col-md-3 col-xs-6 pl0 product-pic-sort product-pic-sort-{{$index}}" ng-repeat="picture in product.product.pictures">
+              <div class=" piclist-pic-box cp product-pic-size product-pic-clean" ng-click="product.showPicLib($index)">
+                <span class="pic-delete-icon" ng-click="product.deletePicture($index, $event)"></span>
+                <div class="piclist-pic-border product-pic-size product-pic-clean">
+                  <div class="piclist-pic" ng-style="{'background-image':'url('+picture.url+')'}"></div>
+                </div>
+              </div>
+            </li>
+          </div>
+          <li class="product-pic-size mr15 col-md-3 col-xs-6 goods-pic-item pd0" ng-click="product.beforeAddPicture($event)">
+            <div class=" piclist-new-pic-box cp">
+              <div class="pic-operation" >
+                <span id="pic-lib-upload" class="file-upload-wrap" wm-file-upload max-size="1024" pic-info="true" callback="product.addPicture" ng-model="product.url" accept="image/jpg, image/png, image/jpeg, image/pjpeg, image/x-png" accept-type-names="JPG/PNG">
+                  <span class="product-add-icon"></span>
+                </span>
+                <span class="add-pic-tip product-pic-tip">
+                  <span class="fs16">+</span>
+                  {{'images' | translate}}
+                </span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <span class="goods-error-tip" ng-if="product.showError" translate="product_upload_picture"></span>
+      </div>
+    </div>
+
+    <label class="fields-item-label col-md-12 col-xs-12" translate="product_setting_category"></label>
+    <div class="form-group product-cat-wrapper col-md-12 col-xs-12 ml10 mb30">
+      <label class="fields-item-label col-md-12 col-xs-12 pl0 second-title-color" translate="product_attribute_split"></label>
+      <div class="col-md-2 col-xs-4 pl0">
+        <div wm-select on-change="product.selectCategory" ng-model="product.categoryId" text-field="name" value-field="id" items="product.categories" default-text="product_please_select"></div>
+      </div>
+      <!-- attribute -->
+      <div class="col-md-12 col-xs-12 pd0" ng-if="product.category.properties.length > 0">
+        <div class="col-md-8 col-xs-12 product-cat-bg">
+          <div class="form-group col-md-6 col-xs-10 clearfix product-property-height" ng-repeat="property in product.category.properties track by $index">
+            <label class="member-attr-label text-el pd0 product-detail-name fs12 col-md-3 lh30" wm-tooltip="{{property.name}}">{{property.name}}:
+            </label>
+            <div class="col-md-8" ng-include="property.template"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- attribute -->
+    </div>
+
+    <label class="fields-item-label col-md-12 col-xs-12" translate="product_detail_description"></label>
+    <div class="form-group col-md-12 col-xs-12 pr0 ml10">
+
+      <div class="product-left-detail">
+        <div class="phone-header">
+        </div>
+
+        <div class="phone-empty-tip" ng-if="product.descriptions.length == 0">
+          {{'product_description_empty_tip' | translate}}
+        </div>
+
+        <ul class="product-detail-items">
+          <li ng-repeat="description in product.descriptions track by $index" ng-if="product.descriptions.length > 0" class="product-detail-item">
+            <div ng-bind-html="description.html"></div>
+            <div class="delete-wrap" ng-click="product.editItem($index)" ng-class="{'delete-wrap-active': $index == product.itemIndex}">
+              <i class="delete-icon" ng-click="product.removeItem($index, $event)"></i>
+            </div>
+          </li>
+        </ul>
+
+        <div class="phone-btns">
+          <span class="phone-btn" ng-click="product.addItem('image')">{{'product_add_image' | translate}}</span>
+          <span class="phone-btn" ng-click="product.addItem('text')">{{'product_add_text' | translate}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-xs-6 clearpadding product-right-content">
+        <div class="content-header">
+          {{'product_add_content' | translate}}
+        </div>
+
+        <div class="form-group description-edit-wrap" ng-if="product.showDesc == 'text'">
+          <label class="content-title">{{'content_component_config_text_information' | translate}}</label>
+          <div class="ueditor" name="intro" config="product.config" ng-model="product.textEdit" ng-click="product.hideError('text')"></div>
+          <input class="form-control ng-hide product-desc-text" ng-model="product.textEdit" wm-validate="product.validateText"/>
+        </div>
+
+        <div class="form-group description-edit-wrap" ng-if="product.showDesc == 'image'">
+          <label class="content-title">{{'picture' | translate}}</label>
+          <div class="content-pic-wrap">
+            <input class="form-control readonly-style product-desc-image" ng-model="product.imageEdit" onkeydown="return false;" below-msg form-tip="{{'product_add_image_tip'|translate}}" wm-validate="product.validateImage"/>
+            <div id="upload" wm-file-upload class="file-upload-wrap" ng-model="product.imageEdit" max-size="50" ng-click="product.hideError('image')" accept="image/jpg, image/png, image/jpeg, image/pjpeg, image/x-png" accept-type-names="JPG/PNG">
+              <span></span>
+            </div>
+          </div>
+        </div>
+
+        <label class="btn btn-success user-btn ml15" ng-if="product.showDesc != 'other'" ng-click="product.saveItem()">{{'ok' | translate}}</label>
+      </div>
+
+    </div>
+    <div class="col-md-12 col-xs-12 mt20">
+      <button id="product-submit" form="product-form" type="submit" class="btn btn-success mr20 user-btn" translate="ok"></button>
+      <span class="btn btn-default user-btn" ng-click="product.cancel()">{{'channel_wechat_mass_cancel' | translate}}</span>
+    </div>
+  </div>
+  <div wm-picture-lib ng-if="product.isShow" pictures="product.product.pictures" is-show="product.isShow" index="product.index"></div>
+</form>

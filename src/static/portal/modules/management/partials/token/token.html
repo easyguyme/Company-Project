@@ -1,0 +1,76 @@
+<div class="developer-wrapper" ng-controller="wm.ctrl.management.token.token as token">
+  <section class="token-wrapper wechat-menu">
+    <!-- <div class="main-title">
+      <span class="wrapper-hearder-content" translate="token_management"></span>
+    </div> -->
+    <div wm-list-header content="token_management" head-class="qrcode-header-wrapper"></div>
+
+    <p class="token-title-word" translate="management_token_key"></p>
+    <wm-table ng-model="token.tokens" class="colored-table token-wrapper-body tokens-table" ng-if="token.tokens.data.length > 0"></wm-table>
+
+    <ul class="form-tip tokens-tips fs12" ng-style="{'display': 'inline-block'}">
+      <label class="tokens-prompt-label">{{'management_token_friendly_yips' | translate}}：</label>
+      <li class="tokens-prompt-item">1. {{'management_token_friendly_yips_one' | translate}}</li>
+      <li class="tokens-prompt-item">2. {{'management_token_friendly_yips_two' | translate}}</li>
+    </ul>
+  </section>
+
+  <section class="private-token-wrapper wechat-menu clearfix">
+    <div class="token-main-title clearfix">
+      <span class="wrapper-hearder-content header-title" translate="management_private_token"></span><div class="help-info-wrapper">
+      <div class="help-main-info private-token-info" ng-class="{'active':token.info}">{{'management_private_token_info' | translate}}<div class="info-close" ng-click="token.info=false;"></div></div></div>
+      <div ng-if="token.privateTokens.data.length == 0" class="token-title-pannel clearfix"></div>
+      <div ng-if="token.privateTokens.data.length > 0" class="token-title pull-right" ng-click="token.editPrivateToken()" translate="management_add_private_token"></div>
+    </div>
+
+    <div class="mt30 new-wrapper" ng-if="token.privateTokens.data.length == 0">
+      <div class="menber-create-icon center-block cp" ng-click="token.editPrivateToken()"></div>
+      <div class="new-broadcast" translate="management_click_add_private_token"></div>
+    </div>
+
+    <wm-table ng-model="token.privateTokens" class="colored-table token-wrapper-body" ng-if="token.privateTokens.data.length > 0"></wm-table>
+
+    <div class="token-pagination" ng-if="token.privateTokens.data.length > 0">
+      <div wm-pagination current-page="token.currentPage" page-size="token.pageSize" total-items="token.totalItems" on-change-size="token.changeSize" on-change-page="token.changePage"></div>
+    </div>
+
+  </section>
+
+  <section class="private-token-wrapper wechat-menu clearfix">
+    <div class="token-main-title clearfix">
+      <span class="wrapper-header-content header-title" translate="management_wechat_test_account"></span>
+      <div ng-if="token.testAccounts.data.length == 0" class="token-title-pannel clearfix"></div>
+      <div ng-if="token.testAccounts.data.length > 0" class="token-title pull-right" ng-click="token.addTestAccount()" translate="management_add_wechat_test_account"></div>
+    </div>
+
+    <div class="mt30 new-wrapper" ng-if="token.testAccounts.data.length == 0">
+      <div class="menber-create-icon center-block cp" ng-click="token.addTestAccount()"></div>
+      <div class="new-broadcast" translate="management_click_add_wechat_test_account"></div>
+    </div>
+
+    <wm-table ng-model="token.testAccounts" class="colored-table token-wrapper-body" ng-if="token.testAccounts.data.length > 0"></wm-table>
+
+    <div class="broadcast-pagination token-pagination" ng-if="token.testAccounts.data.length > 0">
+      <div wm-pagination current-page="token.testAccountCurrentPage" page-size="token.testAccountPageSize" total-items="token.testAccountTotalItems" on-change-size="token.changeTestAccountSize" on-change-page="token.changeTestAccountPage"></div>
+    </div>
+  </section>
+
+  <!-- css need to be refined -->
+  <section class="web-hook-wrapper wechat-menu clearfix">
+    <div class="token-main-title clearfix">
+      <span class="wrapper-hearder-content header-title" translate="management_web_hook"></span><div class="help-info-wrapper">
+        <div class="help-main-info private-token-info" ng-class="{'active':token.info}">{{'management_private_token_info' | translate}}<div class="info-close" ng-click="token.info=false;"></div></div>
+      </div>
+      <div ng-if="token.webHooks.data.length == 0" class="token-title-pannel clearfix"></div>
+      <div ng-if="token.webHooks.data.length > 0" class="token-title pull-right" ng-click="token.editWebHook()" translate="management_add_web_hook"></div>
+    </div>
+
+    <div class="mt30 new-wrapper" ng-if="token.webHooks.data.length == 0">
+      <div class="menber-create-icon center-block cp" ng-click="token.editWebHook()"></div>
+      <div class="new-broadcast" translate="management_click_add_web_hook"></div>
+    </div>
+
+    <wm-table ng-model="token.webHooks" class="colored-table token-wrapper-body" ng-if="token.webHooks.data.length > 0"></wm-table>
+
+  </section>
+</div>

@@ -1,0 +1,140 @@
+
+// Commom css
+
+// 404(missing)
+$prompt-site-text-color: #787878;
+$prompt-site-back-text-color: #38c4a9;
+$site-icon: (zero, planet, 80px, 80px, 200px, 184px), (flag, flag, 37px, 39px, 278px, 224px), (back, back, 24px, 24px, 90px, 195px), (left-four, four, 46px, 65px, 205px, 120px), (right-four, four, 46px, 65px, 205px, 283px), (goodsdelete, goodsdelete, 88px, 88px, 195px, 180px);
+$site-text: (prompt-text, $prompt-site-text-color, 160px, 0, center), (prompt-text-back, $prompt-site-back-text-color, 96px, 225px, null);
+$wite-color: #fff;
+$pannel-border-color: #ecf0f6;
+
+@each $name, $icon, $width, $height, $bottom, $left in $site-icon {
+  .missing-icon-#{$name} {
+    @include size($width, $height);
+    background-image: url('/images/site/#{$icon}.png');
+    background-size: 100%;
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+  }
+}
+
+@each $name, $color, $bottom, $left, $center in $site-text {
+
+  .#{$name} {
+    @include size(100%, 14px);
+    bottom: $bottom;
+    color: $color;
+    font-size: 18px;
+    left: $left;
+    line-height: 14px;
+    position: absolute;
+    text-align: $center;
+  }
+}
+
+.prompt-wrapper {
+  @include size(100%, 100%);
+  position: relative;
+
+  .prompt-icon {
+    @include size(444px, 449px);
+    left: 50%;
+    margin: auto auto auto -222px;
+    position: relative;
+  }
+
+  .prompt-icon-bg {
+    @include size(444px, 449px);
+    background-image: url('/images/site/background.png');
+    background-size: 100%;
+    margin-top: 20%;
+  }
+}
+
+// 500(error)
+$site-icon-error: (zero, planet, 80px, 80px, 200px, 184px), (ghost, ghost, 37px, 49px, 280px, 190px), (back, back, 24px, 24px, 90px, 200px), (five, five, 41px, 65px, 205px, 120px), (zero-right, zero, 45px, 65px, 205px, 283px);
+
+@each $name, $icon, $width, $height, $bottom, $left in $site-icon-error {
+  .error-icon-#{$name} {
+    @include size($width, $height);
+    background-image: url('/images/site/#{$icon}.png');
+    background-size: 100%;
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+  }
+}
+
+// 403(forbidden)
+.forbidden-pannel {
+  @include size(30%, 18%);
+  background-color: $wite-color;
+  border: 1px solid $pannel-border-color;
+  border-radius: 4px;
+  bottom: 20px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  min-width: 35%;
+  min-height: 30%;
+  right: 0;
+  top: 0;
+
+  .forbidden-word {
+    @include size(100%, 100%);
+    position: relative;
+
+    .forbidden-icon-left {
+      @include size(35px, 40px);
+      background-image: url('/images/site/forbidden_icon.png');
+      background-size: 100%;
+      left: 10%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .forbidden-icon-right {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0%;
+      margin: auto;
+      width: 70%;
+      display: table;
+
+      .forbidden-title {
+        font-size: 16px;
+      }
+
+      .forbidden-tip {
+        font-size: 12px;
+        color: $prompt-site-text-color;
+      }
+
+      .back-btn {
+        @include background-image('/images/site/back.png');
+        background-size: 20px;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+
+// comming
+$site-icon-comming: (zero, planet, 80px, 80px, 200px, 184px), (spaceship, spaceship, 50px, 145px, 335px, 200px), (soon, comingsoon, 457px, 51px, 200px, -7px);
+
+@each $name, $icon, $width, $height, $bottom, $left in $site-icon-comming {
+  .comming-icon-#{$name} {
+    @include size($width, $height);
+    background-image: url('/images/site/#{$icon}.png');
+    background-size: 100%;
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+  }
+}

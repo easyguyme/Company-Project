@@ -1,0 +1,67 @@
+<div ng-controller="wm.ctrl.microsite.page.config.articles as articles">
+    <form id="form-articles" ng-submit="articles.formateData()">
+      <div class="form-group">
+        <label translate="content_component_articles_title"></label>
+        <div class="help-info-wrapper">
+          <i class="help-info" ng-class="{'active':articles.info}" ng-click="articles.showInfo()"></i>
+          <div class="help-main-info" ng-class="{'active':articles.info}">{{'content_conf_articles_help'|translate}}<div class="info-close" ng-click="articles.info=false"></div></div>
+        </div>
+      </div>
+      <div class="form-group">
+      <label translate="content_component_config_articles_list_source"></label>
+        <div wm-multi-select ng-model="articles.data.channelId" choices="articles.choices" text-field="name" value-field="id" on-change="articles.changeChannel"></div>
+        <input type="text" ng-hide="true" id="channel" />
+      </div>
+      <div class="form-group">
+        <label translate="content_component_config_articles_display_number"></label>
+        <wm-select ng-model="articles.data.showNum" items="articles.displayNumbers" text-field="text" value-field="value"></wm-select>
+        <input type="text" ng-hide="true" id="showNum" />
+      </div>
+      <div class="form-group">
+        <label translate="content_component_config_tel_display_stype"></label>
+          <!-- style 1 -->
+        <div class="article-style-wrapper clearfix">
+          <div class="article-style-rodio pull-left" ng-click="articles.clearSelect()"><wm-radio ng-model="articles.data.style" value="1"></wm-radio></div>
+          <div class="article-style-detail pull-left clearfix" ng-class="{'selected':'1' == articles.data.style}">
+            <div class="article-pic pull-left"></div>
+            <div class="style-detail pull-left">
+              <div class="article-block">{{'content_articles_title' | translate}}</div>
+              <div class="article-block">{{'content_component_config_articles_content_abstract' | translate}}</div>
+            </div>
+            <div class="article-arrow pull-right"><img src="/images/content/conf/webmaterial_article_viewdetails.png"></div>
+          </div>
+        </div>
+
+        <!-- style2 -->
+        <div class="article-style-wrapper clearfix">
+          <div class="article-style-rodio pull-left" ng-click="articles.clearSelect()"><wm-radio ng-model="articles.data.style" value="2"></wm-radio></div>
+          <div class="article-style-detail pull-left clearfix" ng-class="{'selected':'2' == articles.data.style}">
+            <div class="article-pic pull-left"></div>
+            <div class="style-detail pull-left">
+              <div class="article-block">{{'content_articles_title' | translate}}</div>
+              <div class="article-select-field-horizon" ng-repeat="field in articles.style2.fields track by $index">
+                <wm-select ng-model="articles.style2.fields[$index]" items="articles.channelFields" text-field="name" value-field="id" default-text="content_component_config_articles_select_field"></wm-select>
+              </div>
+            </div>
+            <div class="article-arrow pull-right"><img src="/images/content/conf/webmaterial_article_viewdetails.png"></div>
+          </div>
+        </div>
+
+        <!-- style3 -->
+        <div class="article-style-wrapper clearfix">
+          <div class="style3-rodio pull-left" ng-click="articles.clearSelect()"><wm-radio ng-model="articles.data.style" value="3"></wm-radio></div>
+          <div class="article-style-detail pull-left clearfix" ng-class="{'selected':'3' == articles.data.style}">
+            <div class="article-pic pull-left"></div>
+            <div class="style-detail pull-left">
+              <div class="article-block">{{'content_articles_title' | translate}}</div>
+              <div class="article-select-field-vertical" ng-repeat="field in articles.style3.fields track by $index">
+                <wm-select ng-model="articles.style3.fields[$index]" items="articles.channelFields" text-field="name" value-field="id" default-text="content_component_config_articles_select_field"></wm-select>
+              </div>
+            </div>
+            <div class="pull-right style3-arrow"><img src="/images/content/conf/webmaterial_article_viewdetails.png"></div>
+          </div>
+        </div>
+      </div>
+      <input type="submit" form="form-{{cpts.editedCptName}}" class="btn btn-success" value="{{'ok'|translate}}" ng-click="cpts.checkErrors()" ng-show="cpts.editedCptName">
+    </form>
+</div>

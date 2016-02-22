@@ -1,0 +1,24 @@
+<section class="wm-page">
+  <div wm-breadcrumb="sensitive.breadcrumb"></div>
+  <div class="sensitive-body">
+    <wm-table ng-model="sensitive.list" class="colored-table with-underline-table"></wm-table>
+  </div>
+</section>
+
+<script type="text/ng-template" id="privilegeSettings.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'management_sensitive_operations_privilege_settings'|translate}}</h4>
+  </div>
+  <div class="modal-body modal-bgcolor clearfix">
+    <div class="sensitive-operation">
+      <span class="selected-label">{{'management_sensitive_operations_name'|translate}}:</span>
+      <span class="selected-name">{{sensitiveOperationName|translate}}</span>
+    </div>
+    <wm-bidirection-select all-choices="allOperators" all-choices-title="management_sensitive_operations_all_operators" selected-choices="selectedOperators" selected-choices-title="management_sensitive_operations_selected_operators" order-by="badge" text-field="name" sub-text-field="email" filter-placeholder="management_sensitive_operations_enter_operator_name" filter-fields="name,email"></wm-bidirection-select>
+  </div>
+  <div class="modal-footer modal-bgcolor center-text assign-helpdesk-footer">
+    <div class="sensitive-operation-footer-tip">{{'management_sensitive_operations_click_ok_tip'|translate}}</div>
+    <input type="submit" class="btn btn-success" ng-click="submit()" value="{{'ok'|translate}}">
+  </div>
+</script>

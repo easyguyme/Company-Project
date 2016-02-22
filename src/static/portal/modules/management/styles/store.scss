@@ -1,0 +1,170 @@
+$store-icon-border-color: #eee;
+
+.store-form {
+  $store-type: basic, service;
+  $store-type-title-color: #999;
+  $store-type-content-color: #555;
+
+  .title-description {
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    color: $store-type-content-color;
+    padding-left: 16px;
+  }
+
+  @each $type in $store-type {
+    .#{$type}-title-description {
+      background-image: url('/images/management/icon_store_#{$type}.png');
+      @if $type == 'service' {
+        background-size: 14px 14px;
+      }
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .store-title-tip {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  .display-form-tip {
+    display: block;
+  }
+
+  .error-location-tip {
+    $error-tip-color: #b42d14;
+    color: $error-tip-color;
+  }
+
+  .fields-item-label {
+    font-weight: normal;
+  }
+
+  .store-fields-item {
+    .col-md-4 {
+      padding-left: 0;
+      padding-right: 5px;
+
+      &:first-child {
+        padding-left: 15px;
+      }
+
+      &:last-child {
+        padding-right: 15px;
+      }
+    }
+
+    .address-detial-box {
+      padding-left: 0;
+      padding-right: 5px;
+    }
+  }
+
+  .store-operation-item {
+    padding-left: 15px;
+    margin-bottom: 0;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  .btn-search-location {
+    padding: 4px 12px;
+  }
+
+  .store-service-container {
+    margin-bottom: 50px;
+    margin-top: 35px;
+
+    .store-fields-item:last-child {
+      .form-group {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .store-position-icon {
+    width: 100%;
+  }
+
+}
+
+.view-store-container {
+
+  span {
+    display: inline-block;
+  }
+
+  .store-detail-left {
+    margin-bottom: 0;
+    margin-left: 15px;
+    width: 650px;
+  }
+
+  .store-detail-right {
+    border: 1px solid $store-icon-border-color;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px $store-icon-border-color;
+    float: right;
+    height: 170px;
+    margin-right: 20px;
+    width: 290px;
+
+    .store-detail-image {
+      background-size: cover;
+      border-radius: 2px;
+      height: 170px;
+      width: 290px;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    .store-detail-left {
+      margin-bottom: 0;
+    }
+
+    .store-detail-right {
+      float: left;
+      margin: 10px 0 50px 15px;
+    }
+  }
+
+  .store-detail-name {
+    $store-detail-name-color: #787878;
+    color: $store-detail-name-color;
+    font-weight: normal;
+    width: 100px;
+  }
+
+  .store-detail-text {
+    $store-detail-text-color: #1c1c1c;
+    color: $store-detail-text-color;
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-left: 15px;
+    width: 520px;
+  }
+
+  .store-name-margin {
+    margin-bottom: 5px;
+  }
+
+  .store-name-box {
+    font-size: 16px;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .store-type-box {
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
+
+.store-position-icon {
+  border: 1px solid $store-icon-border-color;
+}

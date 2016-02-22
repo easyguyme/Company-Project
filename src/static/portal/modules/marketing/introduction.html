@@ -1,0 +1,39 @@
+<div class="extension-continue-title" ng-if="extension.detail.active">
+  <img class="extension-icon-mr" src="/images/management/alert.png"/>
+  <span class="extension-gray2 fs16">{{'management_extension_continue' | translate}}</span>
+</div>
+<div ng-if="extension.detail.active">
+  <div class="extension-continue-member row mlr0 extension-gray1 rel extension-todo-spacing">
+    <div class="extension-link-line"></div>
+    <div class="col-md-5 extension-continue">
+      <div class="mb115">
+        <div><img class="extension-step" src="/images/management/stepone.png"/><a ng-href="{{extension.detail.link['coupon']}}" class="fs18">{{'marketing_extension_todo_add_coupons' | translate}}</a></div>
+        <div class="clearfix" ng-repeat="stepOne in extension.detail.stepOne">
+          <div ng-class="{true: 'extension-middle-line', false: 'extension-other-line'}[$index === 0]"></div><div ng-class="{true: 'middle-title', false: 'other-title'}[$index === 0]"><img ng-src="{{extension.detail.firstDot}}"/>{{stepOne | translate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7 pd0">
+      <img class="col-md-12 pd0" ng-src="{{extension.detail.images[0]}}"/>
+    </div>
+  </div>
+
+  <div class="row mlr0 extension-gray1">
+    <div class="col-md-5 extension-continue">
+      <div class="mb115">
+        <div class="fs16">
+          <img class="extension-step" src="/images/management/steptwo.png"/>
+          <a ng-href="{{extension.detail.link['game']}}" class="fs18">{{'interaction_extension_game_setting' | translate}}</a>
+        </div>
+
+        <div class="clearfix" ng-repeat="stepTwo in extension.detail.stepTwo track by $index">
+          <div ng-class="{true: 'extension-middle-line', false: 'extension-other-line'}[$index === 0]"></div><div ng-class="{true: 'middle-title', false: 'other-title'}[$index === 0]"><img ng-src="{{extension.detail.firstDot}}"/>{{stepTwo | translate}}</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-7 pd0">
+      <img class="col-md-12 pd0" ng-src="{{extension.detail.images[1]}}"/>
+    </div>
+  </div>
+</div>

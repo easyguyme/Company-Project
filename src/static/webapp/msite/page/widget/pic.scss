@@ -1,0 +1,67 @@
+$pic-title-height: 1.13rem;
+$pic-background-color: #000;
+$pic-title-color: #fff;
+
+.m-pic {
+  position: relative;
+
+  .m-pic-swipe {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .m-swipe-wrap {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    div {
+      float: left;
+      position: relative;
+      width: 100%;
+    }
+  }
+
+  .m-pic-bg {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .m-default-wrap {
+    background-image: url('/images/content/default.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .m-title-wrapper {
+    bottom: 0;
+    color: $pic-title-color;
+    font-size: .5rem;
+    height: 1.13rem;
+    left: 0;
+    padding: 0 .5rem;
+    position: absolute;
+    right: 0;
+  }
+
+  .m-pic-title {
+    display: inline-block;
+    height: $pic-title-height;
+    line-height: 1.13rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .m-dn {
+    display: none;
+  }
+}

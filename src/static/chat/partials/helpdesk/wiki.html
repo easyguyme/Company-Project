@@ -1,0 +1,41 @@
+<div class="helpdeskwiki" ng-controller="wm.ctrl.helpdesk.tabs.wiki as wiki">
+  <h2 class="helpdesk-tabs-title" translate="helpdesk_wiki"></h2>
+
+  <div class="wiki-faq-content">
+    <div class="wiki-search hide">
+      <span class="search-icon"></span>
+      <span class="clear-icon" ng-class="{'show-clear': wiki.keyword}"></span>
+      <input type="text" class="form-control search-input" placeholder="{{'helpdesk_search_placeholder' | translate}}" ng-model="wiki.keyword"/>
+    </div>
+    <div class="wiki-categories">
+      <ul class="category-list">
+        <li class="category-style" ng-class="{'category-clicked-style': selectedCategory=='helpdesk_wiki_all'}" ng-click="chooseCategory(-1)">{{'helpdesk_wiki_all' | translate}}</li>
+        <li class="category-style" ng-class="{'category-clicked-style': selectedCategory==category.name}" ng-repeat="category in categories track by $index">
+          <span ng-click="chooseCategory($index)">{{category.name}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="wiki-category-content">
+      <label class="tag-style large-tag-style">
+        <span>{{selectedCategory | translate}}</span>
+        <span class="tag-btn-style btn btn-success" ng-click="putMessage(currentLink)" ng-disabled="!wiki.enableWiki">{{'helpdesk_send_link' | translate}}</span>
+      </label>
+      <div class="faq-detail-body">
+        <ul class="faq-list-scroll">
+          <li class="category-style faq-item" ng-repeat="faq in FAQs track by $index">
+            <button class="btn btn-info faq-send-button" translate="helpdesk_wiki_use" ng-click="putMessage(faq.answer)" ng-disabled="!wiki.enableWiki"></button>
+            <div class="answer-detail">
+              <span class="faq-question-style text-el" wm-tooltip="{{faq.question}}">{{faq.question}}</span>
+            </div>
+            <div class="answer-detail">
+              <span class="faq-answer-style text-el" wm-tooltip="{{faq.answer}}" tooltip-max-width="356">{{faq.answer}}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pagination-wrapper">
+      <div wm-pagination current-page="wiki.pagination.currentPage" page-size="wiki.pagination.pageSize" total-items="wiki.pagination.totalItems" on-change-page="wiki.pagination.changePage" on-change-size="wiki.pagination.changeSize" hide-page-size="true"></div>
+    </div>
+  </div>
+</div>

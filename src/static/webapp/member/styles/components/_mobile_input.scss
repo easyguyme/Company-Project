@@ -1,0 +1,44 @@
+$wm-input-componet-text-height: 20px;
+$wm-componet-label-max-width: 30%;
+.mb-input-component {
+  @include size(100%, $wm-input-componet-height);
+  @include box-shadow(0px 0px 7px rgba(#c1c1c1, 0.24));
+  border: 1px $wm-mobile-default-border-color solid;
+  border-radius: 4px;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+  .input-component-item {
+    height: 100%;
+    line-height: $wm-input-componet-height;
+    color: $wm-mobile-default-color;
+    font-size: $wm-input-componet-font-size;
+    box-sizing: border-box;
+  }
+
+  .input-component-label {
+    width: auto;
+    max-width: $wm-componet-label-max-width;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+  }
+
+  .input-component-text {
+    @include size(100% - $wm-componet-label-max-width, $wm-input-componet-text-height);
+    line-height: $wm-input-componet-text-height;
+    padding: 0px 0px 0px 32px;
+    border: none;
+    margin: ($wm-input-componet-height - $wm-input-componet-text-height)/2 0px;
+    background-color: $wm-white-background-color;
+    color: $wm-mobile-default-color;
+    &:disabled {
+      color: $wm-mobile-default-color;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+
+}

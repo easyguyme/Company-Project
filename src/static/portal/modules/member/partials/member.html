@@ -1,0 +1,368 @@
+<div>
+  <div wm-breadcrumb="member.breadcrumb"></div>
+  <div class="customer-filter">
+    <div class="panel-heading panel-fans-title">
+      <section class="form-group redeemer-search-wrapper">
+        <div class="input-group col-md-8">
+          <div class="col-md-7 pd0">
+            <input id="memberInfo" type="text" class="form-control" ng-model="member.params.searchKey" wm-enter="member.search()" />
+          </div>
+          <button class="btn btn-success btn-input-search member-input-search" type="button" translate="customer_follower_search" ng-click="member.search()"></button>
+          <div class="offline-manage-filter" ng-click="member.showConditions()">
+            <span class="mr10" translate="customer_follower_screening_conditions"></span>
+            <span ng-class="{isshow:member.isShow, ishide:!member.isShow}"></span>
+          </div>
+          <div class="form-tip normal" translate="product_offline_redeemer_info_tip"></div>
+        </div>
+      </section>
+
+      <div class="management-fans-item mt20 clearfix" ng-show="member.showCondition">
+
+        <div class="management-fans-tag dark-gray row">
+          <label class="col-md-3 label-condition-title" translate="customer_follower_social_account"></label>
+          <div class="col-md-9 row clear-container-padding clear-container-margin">
+            <div wm-channels channels="member.accounts" ng-model="member.params.accounts"></div>
+          </div>
+        </div>
+
+        <div class="management-fans-tag dark-gray row" ng-if="member.tags.length > 0">
+          <label class="col-md-3 label-condition-title" translate="customer_follower_tag"></label>
+          <div class="col-md-9 row clear-container-padding clear-container-margin">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="check-all-items">
+                <wm-checkbox ng-model="member.tagAll" ng-click="member.selectAllTag()" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+              </label>
+            </div>
+
+            <div class="follower-tags-items col-md-10 clear-container-padding">
+              <ul class="row clear-container-margin member-tags-item">
+                <li class="col-md-2 col-sm-3 col-xs-4 follower-tag-item clear-container-padding text-el" wm-tooltip="{{tag.name}}" ng-repeat="tag in member.tags">
+                  <wm-checkbox ng-model="tag.check" ng-click="member.selectTag(tag)" class="follower-checkbox-style"></wm-checkbox>{{tag.name}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="management-fans-tag dark-gray row" ng-if="member.cards.length > 0">
+          <label class="col-md-3 label-condition-title" translate="product_member_card_category"></label>
+          <div class="col-md-9 row clear-container-padding clear-container-margin">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="check-all-items">
+                <wm-checkbox ng-model="member.cardAll" ng-click="member.selectAllCard()" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+              </label>
+            </div>
+
+            <div class="follower-tags-items col-md-10 clear-container-padding">
+              <ul class="member-card-items clearfix">
+                <li class="member-card-item pull-left" ng-repeat="card in member.cards">
+                  <wm-checkbox ng-model="card.check" ng-click="member.selectCard(card)" class="follower-checkbox-style"></wm-checkbox>{{card.name}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="management-fans-tag dark-gray row" ng-if="member.cards.length > 0">
+          <label class="col-md-3 label-condition-title" translate="product_member_card_status"></label>
+          <div class="col-md-9 row clear-container-padding clear-container-margin">
+            <div class="operate-tags-items col-md-2 clear-container-padding">
+              <label class="check-all-items">
+                <wm-checkbox ng-model="member.cardStateAll" ng-click="member.selectAllState()" class="follower-checkbox-style"></wm-checkbox>{{'customer_follower_all' | translate}}
+              </label>
+            </div>
+
+            <div class="follower-tags-items col-md-10 clear-container-padding">
+              <ul class="member-card-items clearfix">
+                <li class="member-card-item pull-left" ng-repeat="status in member.cardStates">
+                  <wm-checkbox ng-model="status.check" ng-click="member.selectState(status)" class="follower-checkbox-style"></wm-checkbox>{{status.name | translate}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="management-fans-attribute">
+          <div class="dark-gray row follower-fans-attribute">
+            <label class="label-condition-title col-md-3 label-fans-condition" for="social-account" translate="customer_members_setting"></label>
+            <div class="container-fluid col-md-9 clear-container-padding follower-filter-conditions">
+              <div>
+                <!-- datetime picker -->
+                <div class="inline-block follower-attribute-distance">
+                  <span class="inline-block follower-filter-label" translate="customer_follower_attention_spans"></span>
+                  <div class="inline-block follower-pick-width">
+                    <div class="pull-left coupon-date pd0">
+                      <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="beginPicker" min-date-picker-id="endPicker" ng-model="member.params.startTime" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+                    </div>
+                    <div class="pull-left coupon-horizon-line">&minus;</div>
+                    <div class="pull-left coupon-date pd0">
+                      <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="endPicker" max-date-picker-id="beginPicker" ng-model="member.params.endTime" class="shelf-date-time-picker" icon="calendar" less-than-today="true"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- gender -->
+                <div class="inline-block">
+                  <span class="inline-block follower-filter-label" translate="customer_follower_sex"></span>
+                  <div wm-select on-change="member.changeGender" ng-model="member.params.gender" text-field="text" value-field="value" items="member.genderOptions" class="select-sex-style"></div>
+                </div>
+
+                <!-- location -->
+                <div>
+                  <span class="inline-block follower-filter-label" translate="customer_follower_location"></span>
+                  <div wm-location ng-model="member.location" member class="follower-location-item location follower-location-wrapper"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="management-fans-btn-group">
+          <span class="btn btn-success" ng-click="member.search()" translate="customer_follower_search"></span>
+          <span type="submit" class="btn btn-default clear-btn-style" ng-click="member.clear()" translate="customer_follower_clear"></span>
+        </div>
+      </div>
+    </div>
+    <div ng-if="!member.showCondition" class="management-fans-item-all mt20">
+      <div class="dark-gray" ng-if="member.conditions.accounts.length > 0 || member.conditions.tags.length > 0 || member.conditions.cards.length > 0 || member.conditions.startTime || member.conditions.endTime || member.conditions.gender || member.conditions.location.country || member.conditions.cardStates.length > 0">
+        <label class="management-fans-tag follower-selected-conditions" for="selected-conditions" translate="customer_follower_selected_condition"></label>
+
+        <div class="management-shrink-condition clearfix">
+          <div class="display-button dark-gray follower-tag-items">
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.accounts && member.conditions.accounts.length > 0">
+              <div class="tags-style">
+                {{'customer_follower_social_account' | translate}}:
+                <label class="label-style" ng-repeat="account in member.accounts" ng-if="member.isSelectedAccount(account.id)">
+                  <div class="channels-icon-wrapper">
+                    <img ng-src="/images/customer/{{account.icon}}.png" />
+                  </div>
+                  <div class="font-social-style" translate="{{account.name}}"></div>
+                </label>
+                <label class="close-btn" ng-click="member.clearAccounts()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.tags && member.conditions.tags.length > 0">
+              <div class="tags-style">
+                {{'customer_follower_tag' | translate}}:&nbsp;&nbsp;&nbsp;{{member.conditions.tags.join(' ')}}
+                <label class="close-btn" ng-click="member.clearTags()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.cards && member.conditions.cards.length > 0">
+              <div class="tags-style">
+                {{'product_member_card_category' | translate}}:&nbsp;&nbsp;&nbsp;{{member.conditions.cards.join(' ')}}
+                <label class="close-btn" ng-click="member.clearCards()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.cardStates && member.conditions.cardStates.length > 0">
+              <div class="tags-style">
+                {{'product_member_card_status' | translate}}:&nbsp;&nbsp;&nbsp;
+                <span ng-repeat="state in member.cardStatus">{{state | translate}}  </span>
+                <label class="close-btn" ng-click="member.clearCardStates()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.startTime || member.conditions.endTime">
+              <div class="tags-style">
+                <label class="position-label-style">{{'customer_follower_attention_spans' | translate}}:
+                  <label class="label-style">{{(member.conditions.startTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}} {{'content_article_to' | translate}} {{(member.conditions.endTime|date:'yyyy-MM-dd HH:mm:ss') || '-'}}</label>
+                </label>
+                <label class="close-btn" ng-click="member.clearCreatedAt()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.gender">
+              <div class="tags-style">
+                <label class="position-label-style">{{'customer_follower_sex' | translate}}:
+                  <label class="label-style">{{member.conditions.genderText | translate}}</label>
+                </label>
+                <label class="close-btn" ng-click="member.clearGender()"></label>
+              </div>
+            </div>
+
+            <div class="panel panel-tags-default panel-center-content" ng-if="member.conditions.location && member.conditions.location.country">
+              <div class="tags-style">
+                <label class="position-label-style">{{'customer_follower_location' | translate}}:
+                  <label class="label-style" ng-model="member.conditions.location">{{member.conditions.location.country | translate}}&nbsp;{{member.conditions.location.province | translate}}&nbsp;{{member.conditions.location.city | translate}}</label>
+                </label>
+                <label class="close-btn" ng-click="member.clearLocation()"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div wm-list-header content="{{member.totalCount <= 1 ? 'customer_members_total_member' : 'customer_members_total_members' | translate:'{ count: member.totalCount }'}}" icon="{'url': '/images/customer/fans_numbers_icon.png', 'width': 16, height: 15}">
+    <span class="btn-import member-button-import" ng-click="member.import()" translate="customer_follower_import"></span>
+    <span class="btn-export member-button-export" ng-click="member.export()" ng-class="{'export-disabled':!member.enableExport}" translate="export"></span>
+    <a href="/member/edit/member" class="btn btn-success btn-listheader" translate="member_new_member"></a>
+  </div>
+  <!-- <div class="panel panel-default panel-center-content">
+    <div class="panel-center-title panel-follower-header clearfix">
+      <div class="total-follower-style">
+        <div class="follower clearfix">
+          <div class="total-follower-icon-style"></div>
+          <div class="total-follower">
+            <span class="member-span" ng-show="member.totalCount > 1">{{'customer_members_total_members' | translate:'{ count: member.totalCount }'}}</span>
+            <span class="member-span" ng-show="member.totalCount <= 1">{{'customer_members_total_member' | translate:'{ count: member.totalCount }'}}</span>
+          </div>
+        </div>
+      </div>
+      <a href="/member/edit/member" class="btn btn-success pull-right member-button-success" translate="member_new_member"></a>
+      <span class="btn-export pull-right member-button-export" ng-click="member.export()" ng-class="{'export-disabled':!member.enableExport}" translate="export"></span>
+
+      <span class="btn-import pull-right member-button-import" ng-click="member.import()" translate="customer_follower_import"></span>
+    </div>
+  </div> -->
+  <div class="tag-dropdown-wrap assist-table-wrapper" ng-show="member.checkedMembersStore.length > 0">
+    <div class="tag-dropdown mr5" ng-click="member.showBatchBindTag()">{{'tag'|translate}}<b class="caret"></b></div>
+    <!-- Label -->
+    <div wm-label class="follower-label" checked-item-store="member.checkedMembersStore" module="member" on-change="member.updateTags()" type="batch" ng-if="member.isShowBatchBindTagDropdown" on-close="member.hideTagModal"></div>
+    <div ng-show="member.mergeMembers.length > 1" class="tag-dropdown broadcast-dropdown" ng-style="{'background-image': 'url(\'/images/core/merge.png\')'}" ng-click="member.showMergeModal()">
+        {{'member_merge'|translate}}
+    </div>
+
+    <!-- Point -->
+    <div ng-show="member.mergeMembers.length > 0" class="point-issued-wrapper">
+      <div class="tag-dropdown broadcast-dropdown" ng-style="{'background-image': 'url(\'/images/core/icon_pointsreward.png\')'}" ng-click="member.showScoreModal()">
+        {{'customer_score_reward'|translate}}
+        <b class="caret"></b>
+      </div>
+      <div class="tag-modal" ng-show="member.isShowScoreModal">
+        <h3 class="tag-title">{{"customer_score_reward" | translate}}</h3>
+        <div class="tag-content store-channel-content">
+          <form ng-submit="member.issuePoint()">
+            <section class="form-group">
+              <label class="normal-label">{{'customer_send_target' | translate}}</label>
+              <div>{{'customer_members_total_members' | translate:'{ count: member.mergeMembers.length }'}}</div>
+            </section>
+
+            <section class="form-group clearfix">
+              <label class="normal-label block">{{'customer_send_point' | translate}}</label>
+              <div class="score-point-type pull-left">
+                <div wm-select on-change="" ng-model="member.pointType" text-field="text" value-field="value" items="member.pointItems"></div>
+              </div>
+              <div class="point-fill pull-left"><input id="points" ng-model="member.point" class="form-control" type="text" form-tip="{{'customert_point_input_string' | translate}}" wm-validate="member.checkPoint"  maxlength="5" required /></div><span class="point-label">{{'customer_points' | translate}}</span>
+            </section>
+
+            <section class="form-group">
+              <label class="normal-label">{{'customer_rule_desc'|translate}}</label>
+              <textarea name="rule" ng-model="member.description" class="form-control txteare-nosize" rows="5">
+              </textarea>
+            </section>
+
+            <div class="confirm-select">
+              <input type="submit" class="btn btn-success btn-operate-tag btn-tag-ok" value="{{'ok' | translate}}"/>
+              <span class="btn btn-operate-tag btn-default" translate="cancel" ng-click="member.hidePointModal()"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card -->
+    <div ng-show="member.manualCards.length > 0 && member.mergeMembers.length > 0" class="point-issued-wrapper">
+      <div class="tag-dropdown broadcast-dropdown" ng-style="{'background-image': 'url(\'/images/core/grantingcard.png\')'}" ng-click="member.showCardModal()">
+        {{'member_extented_card'|translate}}
+        <b class="caret"></b>
+      </div>
+      <div class="tag-modal" ng-show="member.isShowCardModal">
+        <h3 class="tag-title">{{"member_extented_card" | translate}}</h3>
+        <div class="tag-content store-channel-content">
+          <form ng-submit="member.sendCard()">
+            <section class="form-group">
+              <label class="normal-label">{{'customer_send_target' | translate}}</label>
+              <div>{{'customer_members_total_members' | translate:'{ count: member.mergeMembers.length }'}}</div>
+            </section>
+
+            <section class="form-group clearfix">
+              <label class="normal-label block">{{'product_member_card_category' | translate}}</label>
+              <div class="choose-card-type">
+                <div wm-select ng-model="member.sendCardId" text-field="text" value-field="value" items="member.manualCards"></div>
+              </div>
+            </section>
+
+            <section class="form-group">
+              <label class="normal-label">{{'customer_card_time_out'|translate}}</label>
+              <div wm-datetime-picker format-type="YYYY-MM-DD HH:mm:ss" picker-id="schedule-picker" pick-date="true" pick-time="true" ng-model="member.expiredAt" more-than-today="true" required-field="true"></div>
+            </section>
+
+            <div class="confirm-select">
+              <input type="submit" class="btn btn-success btn-operate-tag btn-tag-ok" value="{{'ok' | translate}}"/>
+              <span class="btn btn-operate-tag btn-default" translate="cancel" ng-click="member.hideTagModal()"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="member-management member-table-wrap">
+    <div class="table-wrap">
+      <wm-table ng-model="member.list" is-select-all="true"></wm-table>
+    </div>
+  </div>
+  <div class="clearfix">
+    <div class="broadcast-pagination" ng-if="member.pageCount > 0">
+      <div wm-pagination current-page="member.params.page" page-size="member.params['per-page']" total-items="member.totalCount" on-change-size="member.changeSize" on-change-page="member.changePage"></div>
+    </div>
+  </div>
+
+  <div class="tag-modal member-tag-show" ng-if="member.isShowEditTagDropdown" ng-style="member.tagStyle">
+    <div wm-label class="follower-label" checked-item-store="member.bindTagMemberStore" module="member" on-change="member.updateTags()" type="single" bound-tags="member.targetBoundTags"  on-close="member.hideTagModal"></div>
+  </div>
+  <!-- hide tag modal -->
+  <div class="modal-no-color ng-scope" ng-show="member.isShowBatchBindTagDropdown || member.isShowEditTagDropdown || member.isShowScoreModal || member.isShowCardModal" ng-click="member.hideTagModal()">
+  </div>
+</div>
+
+<script type="text/ng-template" id="mergeMember.html">
+  <header class="modal-header">
+    <button type="button" class="close popup-close graphic-btn-close cp" ng-click="hideModal()"></button>
+    <h4 class="modal-title create-graphics-title" translate="member_merge_member"></h4>
+  </header>
+
+  <section class="modal-body modal-bgcolor clearfix">
+    <span class="account-tip mb20">
+      <div class="helpdesk-img"><img src="/images/core/popup_tip.png"/></div>
+      <div>{{'member_merge_tip' | translate}}</div>
+    </span>
+    <div class="merge-member-table"><div wm-table ng-model="memberList"></div></div>
+    <div class="form-group center-text" style="margin-bottom: 45px;">
+      <button class="btn btn-success" translate="member_merge_now" ng-click="merge()"></button>
+    </div>
+
+  </section>
+
+</script>
+
+<!-- Import member information -->
+<div id="upload-loading" class="mask-loading product-upload-loading">
+    <div class="loading-icon"></div>
+</div>
+
+<script type="text/ng-template" id="importMember.html">
+  <div class="modal-header pd30">
+    <button type="button" class="close popup-close" ng-click="hideModal()" style="outline: -webkit-focus-ring-color auto 0px;"></button>
+    <h4 class="modal-title create-user-title">{{'customer_import_member' | translate}}</h4>
+  </div>
+  <form name="promocodeForm" ng-submit="import()" class="member-import-color">
+    <div class="modal-body modal-bgcolor create-user-body member-import clearfix">
+      <p class="product-detail-name member-file-name" translate="member_upload_select_file"></p>
+      <div class="form-group clearfix">
+        <div style="margin-left:7px" class="file-upload-input col-md-10 col-xs-10">
+          <input class="form-control" name="code-file" id="import-file" ng-model="file" readonly="readonly" placeholder="{{'product_no_file' | translate}}"/>
+          <div id="upload" ng-file-select ng-file-change="upload($files)" class="file-upload-wrap" multiple="true" ng-model="file">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer modal-bgcolor center-text create-user-footer">
+      <input ng-disabled="file == '' || status != true" type="submit" class="btn btn-success user-btn" value="{{'management_submit' | translate}}" />
+    </div>
+  </form>
+</script>
